@@ -1,14 +1,15 @@
-import Phaser from '../lib/phaser.js'
-import Carrot from '../game/Carrot.js'
+import Phaser, { Physics } from 'phaser'
+import Carrot from '../game/Carrot'
 
 export default class Game extends Phaser.Scene {
 
-  player
-  platforms
-  cursors
-  carrots
-  carrotsCollected = 0
-  carrotsCollectedText
+  private player?: Phaser.Physics.Arcade.Sprite
+  private platforms?: Phaser.Physics.Arcade.StaticGroup
+  private cursors?: Phaser.Types.Input.Keyboard.CursorKeys
+  private carrots?: Phaser.Physics.Arcade.Group
+  private carrotsCollected: integer = 0
+  private carrotsCollectedText: Phaser.GameObjects.Text
+  private powerup?: Phaser.Physics.Arcade.Sprite
 
   constructor() {
     super('game')
@@ -21,6 +22,8 @@ export default class Game extends Phaser.Scene {
     this.load.image('bunny-stand', 'assets/PNG/Players/bunny1_stand.png')
     this.load.image('carrot', 'assets/PNG/Items/carrot.png')
     this.load.image('bunny-jump', 'assets/PNG/Players/bunny1_jump.png')
+
+    this.load.image('powerup', 'assets/PNG/Items/powerup_bunny.png')
     this.load.audio('jump', 'assets/sfx/phaseJump1.ogg')
     this.cursors = this.input.keyboard.createCursorKeys()
   }
@@ -35,6 +38,7 @@ export default class Game extends Phaser.Scene {
     this.createBunnySprite()
     this.createCarrots();
     this.createPontuationIndicator();
+    this.createDraggablePowerUp();
     this.setupCollisions()
     this.setupCamera()
   }
@@ -51,14 +55,14 @@ export default class Game extends Phaser.Scene {
   }
 
   handleFallDown() {
-    const bottomPlatform = this.findBottomMostPlatform();
+    const bottomPlatform: Phaser.Physics.Arcade.Image = this.findBottomMostPlatform();
     if (this.player.body.y > bottomPlatform.y) {
       this.scene.start('game-over')
     }
   }
 
-  findBottomMostPlatform() {
-    const platforms = this.platforms.getChildren();
+  findBottomMostPlatform(): Phaser.Physics.Arcade.Image {
+    const platforms = this.platforms.getChildren() as Array<Phaser.Physics.Arcade.Image>;
     let bottomPlatform = platforms[0];
     for (let i = 1; i < platforms.length; i++) {
       const platform = platforms[i];
@@ -70,7 +74,7 @@ export default class Game extends Phaser.Scene {
     return bottomPlatform;
   }
 
-  horizontalWrap(sprite) {
+  horizontalWrap(sprite: Phaser.Physics.Arcade.Sprite) {
     const halfWidth = sprite.displayWidth * 0.5
     const gameWidth = this.scale.width
     if (sprite.x < -halfWidth) {
@@ -82,18 +86,18 @@ export default class Game extends Phaser.Scene {
   }
 
   reusePlatforms() {
-    this.platforms.children.iterate(child => {
+    this.platforms.children.iterate((child: Phaser.Physics.Arcade.Image) => {
       const platform = child;
       const scrollY = this.cameras.main.scrollY;
       if (platform.y >= scrollY + 700) {
         platform.y = scrollY - Phaser.Math.Between(50, 100);
-        platform.body.updateFromGameObject();
+        (platform.body as Physics.Arcade.StaticBody).updateFromGameObject();
         this.addCarrotAbove(platform);
       }
     })
   }
 
-  addCarrotAbove(sprite) {
+  addCarrotAbove(sprite: Phaser.GameObjects.Image) {
     const y = sprite.y - sprite.displayHeight;
     const carrot = this.carrots.get(sprite.x, y, 'carrot');
     carrot.body.checkCollision.up = false;
@@ -149,6 +153,22 @@ export default class Game extends Phaser.Scene {
       .setScrollFactor(0)
   }
 
+  createDraggablePowerUp() {
+    const powerup = this.physics.add.staticSprite(0, 0, 'powerup');
+    // const body = powerup.body as Phaser.Physics.Arcade.Body;
+    // body.setAllowGravity(false);
+
+    const container = this.add.container(100, 100, [powerup]);
+    container.setSize(powerup.width, powerup.height)
+    container.setInteractive();
+    this.input.setDraggable(container);
+    this.input.on('drag', (pointer: string, obj: Phaser.Physics.Arcade.Body, x: number, y: number) => {
+      obj.y = y
+      obj.x = x
+    })
+    this.powerup = powerup;
+  }
+
   createPlatforms() {
     const platforms = this.physics.add.staticGroup();
     for (let i = 0; i < 5; i++) {
@@ -186,17 +206,30 @@ export default class Game extends Phaser.Scene {
       undefined,
       this
     )
+    this.physics.add.overlap(
+      this.player,
+      this.powerup,
+      this.handlePowerup,
+      undefined,
+      this
+    )
   }
 
-  handleCollectCarrot(player, carrot) {
+  handleCollectCarrot(player: Phaser.GameObjects.GameObject, carrot: Phaser.GameObjects.GameObject) {
     this.carrots.killAndHide(carrot);
-    this.physics.world.disableBody(carrot.body);
+    const localCarrot = carrot as Phaser.GameObjects.GameObject
+    this.physics.world.disableBody(localCarrot.body as Phaser.Physics.Arcade.Body);
     this.carrotsCollected++
     this.carrotsCollectedText.text = `Carrots: ${this.carrotsCollected}`
   }
 
+  handlePowerup(player: Phaser.GameObjects.GameObject, powerup: Phaser.GameObjects.GameObject) {
+    const localPlayer = player as Phaser.Physics.Arcade.Sprite
+    localPlayer.setScale(localPlayer.scale + 0.003)
+  }
+
   setupCamera() {
     this.cameras.main.startFollow(this.player);
-    this.cameras.main.setDeadzone(this.scale.width * 1.5);
+    this.cameras.main.setDeadzone(800 * 1.5);
   }
 }

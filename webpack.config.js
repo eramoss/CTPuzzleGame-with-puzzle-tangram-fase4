@@ -22,7 +22,9 @@ module.exports = {
           options: {
             // // IMPORTANT! use happyPackMode mode to speed-up compilation and reduce errors reported to webpack
             // happyPackMode: true
-            onlyCompileBundledFiles: true
+            onlyCompileBundledFiles: true,
+            transpileOnly: true,
+            experimentalWatchApi: true,
           }
         }],
 
@@ -33,6 +35,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   output: {
+    pathinfo: false,
     filename: 'bundle.js',
     path: dist,
   },

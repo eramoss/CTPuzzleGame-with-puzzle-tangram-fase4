@@ -1,85 +1,153 @@
 import { Physics, Scene } from 'phaser';
 import Matrix from '../geom/Matrix'
 import IsometricPoint from '../geom/IsometricPoint'
+import Command from '../program/Command';
 
+class DudeMove {
+  point: IsometricPoint;
+  matrix: Matrix;
+  possibleMove: boolean;
+  animation: string;
+
+  constructor(matrix: Matrix, x: integer, y: integer, animation: string) {
+    this.matrix = matrix;
+    this.possibleMove = this.canMoveTo(x, y);
+    if (this.possibleMove) {
+      this.point = matrix.points[x][y];
+    }
+    this.animation = animation;
+  }
+  canMoveTo(x: number, y: number) {
+    return !!(this.matrix.points[x] && this.matrix.points[x][y]);
+  }
+}
 export default class Dude {
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
-  destination: IsometricPoint;
-  path: IsometricPoint[]
+  step: DudeMove;
+  path: DudeMove[]
   x: number;
   y: number;
+  walking: boolean;
 
   constructor(scene: Scene, matrix: Matrix) {
     this.path = new Array()
     this.scene = scene;
     this.matrix = matrix;
-    this.character = scene.physics.add.sprite(490, 490, 'x');
+    [
+      { key: 'walk-down', start: 0, end: 4, first: 4 },
+      { key: 'walk-left', start: 9, end: 5, first: 9 },
+      { key: 'walk-up', start: 10, end: 14, first: 10 },
+      { key: 'walk-right', start: 15, end: 19, first: 15 },
+    ].forEach(anim => {
+      this.scene.anims.create({
+        key: anim.key,
+        frames: scene.anims.generateFrameNumbers('sprite-boy', anim),
+        frameRate: 11,
+        repeat: 1
+      });
+    })
+    this.character = scene.physics.add.sprite(485, 485, 'sprite-boy');
   }
 
   setPosition(x: number, y: number) {
     this.x = x;
     this.y = y;
     const point: IsometricPoint = this.matrix.points[x][y]
+    this.setPoint(point);
+  }
+
+  setPoint(point: IsometricPoint) {
     this.character.x = point.x
     this.character.y = point.y
   }
 
   move() {
-    if (!this.destination) {
-      this.destination = this.path.splice(0, 1)[0]
-    }
-    if (this.destination) {
-      this.scene.physics.moveTo(this.character, this.destination.x, this.destination.y, 100)
-    }
-  }
-
-  update() {
-    if (this.destination) {
-      if (Math.abs(Math.floor(this.character.x) - this.destination.x) < 10 &&
-        Math.abs(Math.floor(this.character.y) - this.destination.y) < 10) {
-        this.character.body.stop()
-        this.destination = undefined
-        this.move();
+    this.character.clearTint()
+    if (!this.walking) {
+      if (!this.step) {
+        this.step = this.path.splice(0, 1)[0]
+      }
+      if (this.step) {
+        this.character.play(this.step.animation);
+        if (this.step.possibleMove) {
+          this.scene.physics.moveToObject(this.character, this.step.point, 80)
+        } else {
+          this.character.setTint(0xff0000);
+          this.walking = true;
+          setTimeout(() => {
+            this.walking = false;
+            this.step = undefined
+            this.move()
+          }, 800)
+        }
       }
     }
   }
 
-  canMoveTo(x: number, y: number) {
-    return !!(this.matrix.points[x] && this.matrix.points[x][y]);
+  stop() {
+    this.setPosition(this.x, this.y)
+    this.path.splice(0)
+    this.character.body.stop();
   }
 
-  moveTo(x: number, y: number) {
-    const point: IsometricPoint = this.matrix.points[x][y]
-    this.path.push(point)
+  update() {
+    if (this.step) {
+      if (this.step.point) {
+        const point = this.step.point;
+        const distance = Phaser.Math.Distance.Between(
+          this.character.x,
+          this.character.y,
+          point.x,
+          point.y)
+        if (distance < 4) {
+          this.character.body.reset(point.x, point.y);
+          this.step = undefined
+          this.move()
+        }
+      }
+    }
+  }
+
+  moveTo(dudeMove: DudeMove) {
+    this.path.push(dudeMove)
     this.move();
   }
 
-  advance(x: integer, y: integer) {
+  advance(x: integer, y: integer, animation: string) {
     let nextX = this.x + x;
     let nextY = this.y + y;
-    if (this.canMoveTo(nextX, nextY)) {
-      this.moveTo(nextX, nextY);
+    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation);
+    this.moveTo(dudeMove);
+    if (dudeMove.possibleMove) {
       this.x = nextX;
       this.y = nextY;
     }
   }
 
   moveUp() {
-    this.advance(0, -1);
+    this.advance(0, -1, 'walk-up');
   }
 
   moveDown() {
-    this.advance(0, +1);
+    this.advance(0, +1, 'walk-down');
   }
 
   moveLeft() {
-    this.advance(-1, 0)
+    this.advance(-1, 0, 'walk-left')
   }
 
   moveRight() {
-    this.advance(+1, 0)
+    this.advance(+1, 0, 'walk-right')
+  }
+
+  execute(commands: Command[]) {
+    this.stop()
+    commands.forEach(command => {
+      this[command.getAction()]()
+    })
   }
 
 }

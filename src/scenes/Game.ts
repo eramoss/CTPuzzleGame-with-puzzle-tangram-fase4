@@ -9,11 +9,11 @@ import Command from '../program/Command'
 export default class Game extends Scene {
 
   dropZone: DropZone
-  cursors: Types.Input.Keyboard.CursorKeys
   program: Program
   currentObject: GameObjects.Image;
   dude: Dude
   matrix: Matrix
+  cursors: Types.Input.Keyboard.CursorKeys
 
   constructor() {
     super('game')
@@ -32,6 +32,8 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 700, frameHeight: 256 });
+    this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
+    this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 30, frameHeight: 75 });
   }
 
   create() {
@@ -42,7 +44,7 @@ export default class Game extends Scene {
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.cursors = this.input.keyboard.createCursorKeys()
-    this.matrix = new Matrix(this, 490, 140, 50)
+    this.matrix = new Matrix(this, 490, 110, 50)
 
     this.dude = new Dude(this, this.matrix)
     this.dude.setPosition(3, 3);
@@ -114,7 +116,7 @@ export default class Game extends Scene {
       this.runCode();
     })
     new Button(this, 75, 555, 'btn-stop', () => {
-      this.runCode();
+      this.dude.stop();
     })
   }
 
@@ -126,9 +128,7 @@ export default class Game extends Scene {
   }
 
   private runCode() {
-    this.program.commands.map((command: Command) => {
-      this.dude[command.getAction()]()
-    })
+    this.dude.execute(this.program.commands);
   }
 
   init() {

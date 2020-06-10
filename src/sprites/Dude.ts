@@ -31,6 +31,8 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
+  onStepChange: (step: integer) => void
+  totalComands: number;
 
   constructor(scene: Scene, matrix: Matrix) {
     this.path = new Array()
@@ -45,8 +47,8 @@ export default class Dude {
       this.scene.anims.create({
         key: anim.key,
         frames: scene.anims.generateFrameNumbers('sprite-boy', anim),
-        frameRate: 11,
-        repeat: 1
+        frameRate: 7,
+        repeat: 0
       });
     })
     this.character = scene.physics.add.sprite(485, 485, 'sprite-boy');
@@ -68,6 +70,7 @@ export default class Dude {
     this.character.clearTint()
     if (!this.walking) {
       if (!this.step) {
+        this.onStepChange(this.totalComands - this.path.length);
         this.step = this.path.splice(0, 1)[0]
       }
       if (this.step) {
@@ -104,23 +107,18 @@ export default class Dude {
           point.y)
         if (distance < 4) {
           this.character.body.reset(point.x, point.y);
-          this.step = undefined
-          this.move()
+          this.step = undefined;
+          this.move();
         }
       }
     }
   }
 
-  moveTo(dudeMove: DudeMove) {
-    this.path.push(dudeMove)
-    this.move();
-  }
-
-  advance(x: integer, y: integer, animation: string) {
+  pushMove(x: integer, y: integer, animation: string) {
     let nextX = this.x + x;
     let nextY = this.y + y;
     const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation);
-    this.moveTo(dudeMove);
+    this.path.push(dudeMove)
     if (dudeMove.possibleMove) {
       this.x = nextX;
       this.y = nextY;
@@ -128,26 +126,28 @@ export default class Dude {
   }
 
   moveUp() {
-    this.advance(0, -1, 'walk-up');
+    this.pushMove(0, -1, 'walk-up');
   }
 
   moveDown() {
-    this.advance(0, +1, 'walk-down');
+    this.pushMove(0, +1, 'walk-down');
   }
 
   moveLeft() {
-    this.advance(-1, 0, 'walk-left')
+    this.pushMove(-1, 0, 'walk-left');
   }
 
   moveRight() {
-    this.advance(+1, 0, 'walk-right')
+    this.pushMove(+1, 0, 'walk-right');
   }
 
   execute(commands: Command[]) {
     this.stop()
+    this.totalComands = commands.length
     commands.forEach(command => {
       this[command.getAction()]()
     })
+    this.move();
   }
 
 }

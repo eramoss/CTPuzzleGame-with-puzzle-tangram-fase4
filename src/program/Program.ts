@@ -1,12 +1,15 @@
 import { GameObjects } from 'phaser'
 import Command from './Command'
+import Sounds from '../sounds/Sounds';
 
 export default class Program {
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: GameObjects.Zone;
+  sounds: Sounds;
 
-  constructor(scene: Phaser.Scene) {
+  constructor(scene: Phaser.Scene, sounds:Sounds) {
+    this.sounds = sounds;
     this.scene = scene;
     this.commands = new Array();
   }
@@ -18,6 +21,7 @@ export default class Program {
     this.commands.push(command);
     this.findBestPosition(command);
     command.onRemoveCommand = (command: Command) => {
+      this.sounds.remove();
       this.removeCommand(command);
     }
   }

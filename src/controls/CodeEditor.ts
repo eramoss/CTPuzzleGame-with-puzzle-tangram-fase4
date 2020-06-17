@@ -2,6 +2,7 @@ import { Scene, Input, GameObjects } from 'phaser';
 import Button from './Button';
 import Program from '../program/Program';
 import DropZone from './DropZone';
+import Sounds from '../sounds/Sounds';
 
 export default class CodeEditor {
 
@@ -10,16 +11,16 @@ export default class CodeEditor {
   dropZone: DropZone
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
-  listener: Listener
+  sounds: Sounds;
 
-  constructor(scene: Scene, program: Program, listener: Listener) {
+  constructor(scene: Scene, program: Program, sounds:Sounds) {
+    this.sounds = sounds;
     this.program = program;
     this.scene = scene;
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.createDropZone();
     this.createStartStopButtons();
-    this.listener = listener
   }
 
   private createGlobalDragLogic() {
@@ -31,8 +32,6 @@ export default class CodeEditor {
       gameObject.y = dragY;
     });
     this.scene.input.on('dragend', (pointer: Input.Pointer, gameObject: GameObjects.Sprite, dropped: boolean) => {
-      if (dropped) {
-      }
       if (!dropped) {
         gameObject.x = gameObject.input.dragStartX;
         gameObject.y = gameObject.input.dragStartY;
@@ -58,6 +57,7 @@ export default class CodeEditor {
         this.dropZone.highlight(false)
       });
       command.on('pointerover', _ => {
+        this.sounds.hover();
         command.setScale(0.7);
       });
       command.on('pointerout', _ => {
@@ -65,6 +65,7 @@ export default class CodeEditor {
       });
       command.on('dragstart', _ => {
         // Não deixa acabar os comandos
+        this.sounds.drag();
         this.createDraggableProgramCommands();
         command.setScale(0.8)
       })
@@ -72,6 +73,7 @@ export default class CodeEditor {
         command.setScale(0.5);
       })
       command.on('drop', (pointer: Input.Pointer, dropZone: GameObjects.Zone) => {
+        this.sounds.drop();
         this.program.addCommand(command, dropZone)
       })
     })
@@ -82,11 +84,12 @@ export default class CodeEditor {
   }
 
   private createStartStopButtons() {
-    new Button(this.scene, 35, 555, 'btn-play', () => {
+    new Button(this.scene, this.sounds, 35, 555, 'btn-play', () => {
       this.fnOnClickRun();
     })
-    new Button(this.scene, 75, 555, 'btn-stop', () => {
-      this.fnOnClickStop()
+    new Button(this.scene, this.sounds, 75, 555, 'btn-stop', () => {
+      this.sounds.stop();
+      this.fnOnClickStop();
     })
   }
 
@@ -102,8 +105,4 @@ export default class CodeEditor {
     this.program.commands.forEach(command => command.sprite.clearTint())
     this.program.commands[step]?.sprite?.setTint(0x0ffff0);
   }
-}
-
-class Listener {
-  constructor() { }
 }

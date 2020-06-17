@@ -2,6 +2,7 @@ import { Physics, Scene } from 'phaser';
 import Matrix from '../geom/Matrix'
 import IsometricPoint from '../geom/IsometricPoint'
 import Command from '../program/Command';
+import Sounds from '../sounds/Sounds';
 
 class DudeMove {
   point: IsometricPoint;
@@ -33,22 +34,24 @@ export default class Dude {
   walking: boolean;
   onStepChange: (step: integer) => void
   totalComands: number;
+  sounds: Sounds;
 
-  constructor(scene: Scene, matrix: Matrix) {
+  constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
+    this.sounds = sounds;
     this.path = new Array()
     this.scene = scene;
     this.matrix = matrix;
     [
-      { key: 'walk-down', start: 0, end: 4, first: 4 },
-      { key: 'walk-left', start: 9, end: 5, first: 9 },
-      { key: 'walk-up', start: 10, end: 14, first: 10 },
-      { key: 'walk-right', start: 15, end: 19, first: 15 },
+      { key: 'walk-down', frames: [1, 2, 0] },
+      { key: 'walk-left', frames: [4, 5, 3] },
+      { key: 'walk-up', frames: [6, 7, 8] },
+      { key: 'walk-right', frames: [9, 10, 11] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
         frames: scene.anims.generateFrameNumbers('sprite-boy', anim),
         frameRate: 7,
-        repeat: 0
+        repeat: 1
       });
     })
     this.character = scene.physics.add.sprite(485, 485, 'sprite-boy');
@@ -76,8 +79,10 @@ export default class Dude {
       if (this.step) {
         this.character.play(this.step.animation);
         if (this.step.possibleMove) {
+          this.sounds.start();
           this.scene.physics.moveToObject(this.character, this.step.point, 80)
         } else {
+          this.sounds.blocked();
           this.character.setTint(0xff0000);
           this.walking = true;
           setTimeout(() => {

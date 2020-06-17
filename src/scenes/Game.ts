@@ -33,7 +33,7 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 700, frameHeight: 256 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
-    this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 30, frameHeight: 75 });
+    this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
 
     this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
@@ -47,10 +47,10 @@ export default class Game extends Scene {
     this.addEnvironmentImages();
 
     this.sounds = new Sounds(this)
-    this.program = new Program(this);
-    this.codeEditor = new CodeEditor(this, this.program);
+    this.program = new Program(this, this.sounds);
+    this.codeEditor = new CodeEditor(this, this.program, this.sounds);
     this.matrix = new Matrix(this, 490, 110, 50)
-    this.dude = new Dude(this, this.matrix)
+    this.dude = new Dude(this, this.matrix, this.sounds)
     this.dude.setPosition(3, 3);
 
     this.dude.onStepChange = ((step: integer) => {
@@ -76,7 +76,7 @@ export default class Game extends Scene {
   private addEnvironmentImages() {
     this.input.setDefaultCursor('pointer');
     this.add.image(500, 400, 'scene').setInteractive();
-    this.add.image(490, 326, 'ground').setInteractive();
+    this.add.image(490, 335, 'ground').setInteractive();
     this.add.image(857, 677, 'controls').setInteractive();
   }
 

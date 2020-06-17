@@ -30,7 +30,7 @@ export default class Sounds {
   }
 
   hover() {
-    this.hoverSound.play()
+    //this.hoverSound.play()
   }
 
   remove() {
@@ -45,6 +45,9 @@ export default class Sounds {
     this.blockedSound.play()
   }
 
+  stop() {
+    this.blockedSound.play()
+  }
 
 
 }

@@ -34,6 +34,7 @@ export default class Game extends Scene {
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 700, frameHeight: 256 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
+    this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
 
     this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
@@ -45,6 +46,15 @@ export default class Game extends Scene {
 
   create() {
     this.addEnvironmentImages();
+
+    this.anims.create({
+      key: 'gold-spining',
+      frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+      frameRate: 7,
+      repeat: -1
+    })
+
+    this.add.sprite(300, 300, 'coin-gold').play('gold-spining');
 
     this.sounds = new Sounds(this)
     this.program = new Program(this, this.sounds);

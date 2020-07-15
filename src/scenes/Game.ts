@@ -1,6 +1,6 @@
 import { GameObjects, Input, Types, Scene } from 'phaser'
 import Matrix from '../geom/Matrix'
-import Dude from '../sprites/Dude'
+import Dude, { DudeMove } from '../sprites/Dude'
 import Program from '../program/Program'
 import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
@@ -14,6 +14,7 @@ export default class Game extends Scene {
   matrix: Matrix
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
+  gameObjects: GameObjects.GameObject[][]
 
   constructor() {
     super('game')
@@ -28,6 +29,7 @@ export default class Game extends Scene {
     this.load.image('ground', 'assets/ct/ground_sand.png');
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
+    this.load.image('block', 'assets/ct/obstacle_orange.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
@@ -47,7 +49,7 @@ export default class Game extends Scene {
   create() {
     this.addEnvironmentImages();
 
-    this.anims.create({
+    /* this.anims.create({
       key: 'gold-spining',
       frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
       frameRate: 7,
@@ -55,18 +57,65 @@ export default class Game extends Scene {
     })
 
     this.add.sprite(300, 300, 'coin-gold').play('gold-spining');
+    */
 
     this.sounds = new Sounds(this)
     this.program = new Program(this, this.sounds);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds);
-    this.matrix = new Matrix(this, 490, 110, 50)
-    this.dude = new Dude(this, this.matrix, this.sounds)
-    this.dude.setPosition(3, 3);
 
-    this.dude.onStepChange = ((step: integer) => {
-      console.log('step ', step);
-      this.codeEditor.highlight(step);
-    })
+    let obstaclesMatrix = [
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 1, 0, 0, 0],
+      [0, 0, 1, 0, 1, 0, 0, 0],
+      [0, 0, 1, 0, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+    ];
+    this.matrix = new Matrix(this,
+      obstaclesMatrix,
+      490, 110, 50);
+
+    let obstacleTypes = {
+      1: 'block',
+      2: 'block'
+    }
+
+    let gameObjects: GameObjects.GameObject[][] = []
+    for (let y = 0; y < this.matrix.height; y++) {
+      if (!gameObjects[y]) gameObjects[y] = [];
+      for (let x = 0; x < this.matrix.width; x++) {
+        let obstacleType = obstacleTypes[obstaclesMatrix[y][x]]
+        if (obstacleType) {
+          const point = this.matrix.points[x][y];
+          const obstacle = this.add.image(point.x, point.y + 25, obstacleType);
+          gameObjects[y][x] = obstacle;
+        }
+      }
+    }
+
+    this.dude = new Dude(this, this.matrix, this.sounds);
+    gameObjects[3][5] = this.dude.character
+    this.dude.setPosition(5, 3);
+
+    this.gameObjects = gameObjects;
+
+    this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
+      console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
+      if (movingTo) {
+        let currentPosition = movingTo.previousMove
+        if (currentPosition) {
+          this.gameObjects[currentPosition.y][currentPosition.x] = undefined
+          this.gameObjects[movingTo.y][movingTo.x] = this.dude.character
+        }
+      }
+      this.updateBringFront();
+      this.codeEditor.highlight(stepCount);
+    }
+    this.updateBringFront();
+
+    this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
 
     this.codeEditor.onClickRun(() => {
       this.dude.execute(this.program.commands);
@@ -82,7 +131,6 @@ export default class Game extends Scene {
     })
   }
 
-
   private addEnvironmentImages() {
     this.input.setDefaultCursor('pointer');
     this.add.image(500, 400, 'scene').setInteractive();
@@ -92,6 +140,24 @@ export default class Game extends Scene {
 
   init() {
 
+  }
+
+  updateBringFront() {
+    let gameObjects = this.gameObjects;
+    let matrix = '\n';
+    for (let y = 0; y < this.matrix.height; y++) {
+      for (let x = 0; x < this.matrix.width; x++) {
+        const object = gameObjects[y][x];
+        let c = '-';
+        if (object) {
+          c = object.type.substring(0, 1);
+          this.children.bringToTop(object);
+        }
+        matrix += c + ' ';
+      }
+      matrix += '\n';
+    }
+    console.log('GAME_OBJECTS', matrix)
   }
 
   update() {

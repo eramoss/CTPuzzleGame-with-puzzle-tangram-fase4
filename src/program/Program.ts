@@ -3,20 +3,27 @@ import Command from './Command'
 import Sounds from '../sounds/Sounds';
 
 export default class Program {
+  addCommands(commands: string[], dropZone: Phaser.GameObjects.Zone) {
+    commands.forEach(command => {
+      const commandSprite = this.scene.add.sprite(0, 0, `arrow-${command}`)
+      this.addCommand(commandSprite.setScale(0.5), dropZone)
+    })
+  }
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: GameObjects.Zone;
   sounds: Sounds;
 
-  constructor(scene: Phaser.Scene, sounds:Sounds) {
+  constructor(scene: Phaser.Scene, sounds: Sounds) {
     this.sounds = sounds;
     this.scene = scene;
     this.commands = new Array();
   }
 
   addCommand(sprite: GameObjects.Sprite, dropZone: Phaser.GameObjects.Zone) {
-    sprite.setScale(1);
-    this.dropZone = dropZone;
+    if (dropZone) {
+      this.dropZone = dropZone;
+    }
     const command = new Command(this.scene, sprite, 'x');
     this.commands.push(command);
     this.findBestPosition(command);

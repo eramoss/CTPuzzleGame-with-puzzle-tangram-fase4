@@ -4,19 +4,25 @@ import IsometricPoint from '../geom/IsometricPoint'
 import Command from '../program/Command';
 import Sounds from '../sounds/Sounds';
 
-class DudeMove {
+export class DudeMove {
   point: IsometricPoint;
   matrix: Matrix;
   possibleMove: boolean;
   animation: string;
+  x: integer;
+  y: integer;
+  previousMove: DudeMove
 
-  constructor(matrix: Matrix, x: integer, y: integer, animation: string) {
+  constructor(matrix: Matrix, x: integer, y: integer, animation: string, previousMove: DudeMove) {
     this.matrix = matrix;
     this.possibleMove = this.canMoveTo(x, y);
+    this.x = x
+    this.y = y
     if (this.possibleMove) {
       this.point = matrix.points[x][y];
     }
     this.animation = animation;
+    this.previousMove = previousMove;
   }
   canMoveTo(x: number, y: number) {
     return !!(this.matrix.points[x] && this.matrix.points[x][y]);
@@ -32,7 +38,7 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onStepChange: (step: integer) => void
+  onStepChange: (step: integer, current: DudeMove) => void
   totalComands: number;
   sounds: Sounds;
 
@@ -73,8 +79,9 @@ export default class Dude {
     this.character.clearTint()
     if (!this.walking) {
       if (!this.step) {
-        this.onStepChange(this.totalComands - this.path.length);
         this.step = this.path.splice(0, 1)[0]
+        const countDown = this.totalComands - this.path.length;
+        this.onStepChange(countDown, this.step);
       }
       if (this.step) {
         this.character.play(this.step.animation);
@@ -122,7 +129,11 @@ export default class Dude {
   pushMove(x: integer, y: integer, animation: string) {
     let nextX = this.x + x;
     let nextY = this.y + y;
-    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation);
+    let previousMove = this.path[this.path.length - 1]
+    if (!previousMove) {
+      previousMove = new DudeMove(this.matrix, this.x, this.y, animation, undefined);
+    }
+    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove);
     this.path.push(dudeMove)
     if (dudeMove.possibleMove) {
       this.x = nextX;

@@ -6,25 +6,19 @@ export default class Matrix {
   x: number;
   y: number;
   points: IsometricPoint[][];
-  constructor(scene: Scene, x: integer, y: integer, distanceBetweenPoints: integer) {
+  width: number;
+  height: number;
+  constructor(scene: Scene, matrix: integer[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.x = x;
     this.y = y;
     this.scene = scene;
 
-    const matrix: integer[][] = [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-    ]
-
     this.points = []
     for (let y = 0; y < matrix.length; y++)
       this.points[y] = []
+
+    this.height = matrix.length;
+    this.width = matrix[0].length;
 
     const graphics = scene.add.graphics();
     graphics.fillStyle(0xff0000)

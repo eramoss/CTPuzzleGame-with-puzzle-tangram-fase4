@@ -106,12 +106,16 @@ export default class Game extends Scene {
       if (movingTo) {
         let currentPosition = movingTo.previousMove
         if (currentPosition) {
-          this.gameObjects[currentPosition.y][currentPosition.x] = undefined
-          this.gameObjects[movingTo.y][movingTo.x] = this.dude.character
+          try {
+            this.gameObjects[currentPosition.y][currentPosition.x] = undefined
+            this.gameObjects[movingTo.y][movingTo.x] = this.dude.character
+          } catch (e) {
+            console.log('Dude out of bounds');
+          }
         }
       }
       this.updateBringFront();
-      this.codeEditor.highlight(stepCount);
+      this.codeEditor.highlight(stepCount - 1);
     }
     this.updateBringFront();
 

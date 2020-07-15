@@ -103,6 +103,7 @@ export default class Game extends Scene {
 
     this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
       console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
+      this.codeEditor.highlight(stepCount);
       if (movingTo) {
         let currentPosition = movingTo.previousMove
         if (currentPosition) {
@@ -115,11 +116,10 @@ export default class Game extends Scene {
         }
       }
       this.updateBringFront();
-      this.codeEditor.highlight(stepCount - 1);
     }
     this.updateBringFront();
 
-    this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
+    //this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
 
     this.codeEditor.onClickRun(() => {
       this.dude.execute(this.program.commands);

@@ -79,9 +79,9 @@ export default class Dude {
     this.character.clearTint()
     if (!this.walking) {
       if (!this.step) {
+        const stepCount = this.totalComands - this.path.length;
         this.step = this.path.splice(0, 1)[0]
-        const countDown = this.totalComands - this.path.length;
-        this.onStepChange(countDown, this.step);
+        this.onStepChange(stepCount, this.step);
       }
       if (this.step) {
         this.character.play(this.step.animation);
@@ -131,6 +131,7 @@ export default class Dude {
     let nextY = this.y + y;
     let previousMove = this.path[this.path.length - 1]
     if (!previousMove) {
+      // Guardo ponto de partida
       previousMove = new DudeMove(this.matrix, this.x, this.y, animation, undefined);
     }
     const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove);
@@ -165,5 +166,4 @@ export default class Dude {
     })
     this.move();
   }
-
 }

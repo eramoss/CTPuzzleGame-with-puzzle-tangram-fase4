@@ -23,8 +23,8 @@ export default class Matrix {
     const graphics = scene.add.graphics();
     graphics.fillStyle(0xff0000)
 
-    for (let y = 0; y < matrix.length; y++) {
-      for (let x = 0; x < matrix[y].length; x++) {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
         let point: IsometricPoint = new IsometricPoint(x * distanceBetweenPoints, y * distanceBetweenPoints)
         point.x += this.x
         point.y += this.y

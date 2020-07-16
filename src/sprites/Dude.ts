@@ -38,7 +38,7 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onStepChange: (step: integer, current: DudeMove) => void
+  onStepChange: (step: integer, movingTo: DudeMove) => boolean
   totalComands: number;
   sounds: Sounds;
 
@@ -81,7 +81,10 @@ export default class Dude {
       if (!this.step) {
         const stepCount = this.totalComands - this.path.length;
         this.step = this.path.splice(0, 1)[0]
-        this.onStepChange(stepCount, this.step);
+        let possibleMove = this.onStepChange(stepCount, this.step);
+        if (this.step) {
+          this.step.possibleMove = possibleMove
+        }
       }
       if (this.step) {
         this.character.play(this.step.animation);

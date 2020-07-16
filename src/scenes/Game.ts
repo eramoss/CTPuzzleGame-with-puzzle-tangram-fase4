@@ -4,6 +4,7 @@ import Dude, { DudeMove } from '../sprites/Dude'
 import Program from '../program/Program'
 import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
+import MazeBuilder from '../game/MazeBuilder'
 
 export default class Game extends Scene {
 
@@ -14,7 +15,7 @@ export default class Game extends Scene {
   matrix: Matrix
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
-  gameObjects: GameObjects.GameObject[][]
+  mazeBuilder: MazeBuilder
 
   constructor() {
     super('game')
@@ -63,61 +64,52 @@ export default class Game extends Scene {
     this.program = new Program(this, this.sounds);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds);
 
-    let obstaclesMatrix = [
-      [0, 0, 0, 0, 0, 0, 0, 0],
+    let obstaclesMatrix: number[][] = [
+      [0, 0, 0, 0, 0, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 0, 0, 1, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 1],
     ];
+
     this.matrix = new Matrix(this,
       obstaclesMatrix,
       490, 110, 50);
 
-    let obstacleTypes = {
-      1: 'block',
-      2: 'block'
-    }
+    let spritesFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
+    spritesFunctions[1] = (x: integer, y: integer) => this.add.image(x, y + 25, 'block');
 
-    let gameObjects: GameObjects.GameObject[][] = []
-    for (let y = 0; y < this.matrix.height; y++) {
-      if (!gameObjects[y]) gameObjects[y] = [];
-      for (let x = 0; x < this.matrix.width; x++) {
-        let obstacleType = obstacleTypes[obstaclesMatrix[y][x]]
-        if (obstacleType) {
-          const point = this.matrix.points[x][y];
-          const obstacle = this.add.image(point.x, point.y + 25, obstacleType);
-          gameObjects[y][x] = obstacle;
-        }
-      }
-    }
-
+    this.mazeBuilder = new MazeBuilder(this, this.matrix, spritesFunctions, obstaclesMatrix)
     this.dude = new Dude(this, this.matrix, this.sounds);
-    gameObjects[3][5] = this.dude.character
+
+    this.mazeBuilder.putSprite(5, 3, this.dude.character)
     this.dude.setPosition(5, 3);
 
-    this.gameObjects = gameObjects;
-
     this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
+      let possibleMove = false
       console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
       this.codeEditor.highlight(stepCount);
       if (movingTo) {
-        let currentPosition = movingTo.previousMove
-        if (currentPosition) {
-          try {
-            this.gameObjects[currentPosition.y][currentPosition.x] = undefined
-            this.gameObjects[movingTo.y][movingTo.x] = this.dude.character
-          } catch (e) {
-            console.log('Dude out of bounds');
+        possibleMove = obstaclesMatrix[movingTo.y][movingTo.x] === 0
+        if (possibleMove) {
+          let currentPosition = movingTo.previousMove
+          if (currentPosition) {
+            try {
+              this.mazeBuilder.putSprite(currentPosition.x, currentPosition.y, undefined)
+              this.mazeBuilder.putSprite(movingTo.x, movingTo.y, this.dude.character)
+            } catch (e) {
+              console.log('Dude out of bounds');
+            }
           }
         }
       }
-      this.updateBringFront();
+      this.mazeBuilder.updateBringFront();
+      return possibleMove
     }
-    this.updateBringFront();
+    this.mazeBuilder.updateBringFront();
 
     //this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
 
@@ -146,27 +138,9 @@ export default class Game extends Scene {
 
   }
 
-  updateBringFront() {
-    let gameObjects = this.gameObjects;
-    let matrix = '\n';
-    for (let y = 0; y < this.matrix.height; y++) {
-      for (let x = 0; x < this.matrix.width; x++) {
-        const object = gameObjects[y][x];
-        let c = '-';
-        if (object) {
-          c = object.type.substring(0, 1);
-          this.children.bringToTop(object);
-        }
-        matrix += c + ' ';
-      }
-      matrix += '\n';
-    }
-    console.log('GAME_OBJECTS', matrix)
-  }
 
   update() {
     this.dude.update()
-    /* this.updateCurrentObjectPosition() */
   }
 
   /* updateCurrentObjectPosition() {

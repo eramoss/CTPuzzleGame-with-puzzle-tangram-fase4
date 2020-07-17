@@ -1,7 +1,7 @@
 import { GameObjects } from "phaser";
 import Matrix from "../geom/Matrix";
 
-export default class MazeBuilder {
+export default class MazeModel {
 
   gameObjects: GameObjects.GameObject[][]
   matrix: Matrix;

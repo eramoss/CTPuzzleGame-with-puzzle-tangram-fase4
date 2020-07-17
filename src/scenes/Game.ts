@@ -4,7 +4,7 @@ import Dude, { DudeMove } from '../sprites/Dude'
 import Program from '../program/Program'
 import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
-import MazeBuilder from '../game/MazeBuilder'
+import MazeModel from '../game/MazeModel'
 
 export default class Game extends Scene {
 
@@ -15,7 +15,7 @@ export default class Game extends Scene {
   matrix: Matrix
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
-  mazeBuilder: MazeBuilder
+  mazeModel: MazeModel
 
   constructor() {
     super('game')
@@ -82,34 +82,39 @@ export default class Game extends Scene {
     let spritesFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spritesFunctions[1] = (x: integer, y: integer) => this.add.image(x, y + 25, 'block');
 
-    this.mazeBuilder = new MazeBuilder(this, this.matrix, spritesFunctions, obstaclesMatrix)
+    this.mazeModel = new MazeModel(this, this.matrix, spritesFunctions, obstaclesMatrix)
     this.dude = new Dude(this, this.matrix, this.sounds);
 
-    this.mazeBuilder.putSprite(5, 3, this.dude.character)
+    this.mazeModel.putSprite(5, 3, this.dude.character)
     this.dude.setPosition(5, 3);
 
+    this.dude.canMoveTo = (x: number, y: number) => {
+      let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
+      let noBlocked = obstaclesMatrix[y][x] === 0
+      return insideCorners && noBlocked
+    }
+
     this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
-      let possibleMove = false
       console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
       this.codeEditor.highlight(stepCount);
       if (movingTo) {
-        possibleMove = obstaclesMatrix[movingTo.y][movingTo.x] === 0
-        if (possibleMove) {
+        if (movingTo.possibleMove) {
           let currentPosition = movingTo.previousMove
           if (currentPosition) {
             try {
-              this.mazeBuilder.putSprite(currentPosition.x, currentPosition.y, undefined)
-              this.mazeBuilder.putSprite(movingTo.x, movingTo.y, this.dude.character)
+              if (currentPosition.possibleMove) {
+                this.mazeModel.putSprite(currentPosition.x, currentPosition.y, undefined)
+              }
+              this.mazeModel.putSprite(movingTo.x, movingTo.y, this.dude.character)
             } catch (e) {
               console.log('Dude out of bounds');
             }
           }
         }
       }
-      this.mazeBuilder.updateBringFront();
-      return possibleMove
+      this.mazeModel.updateBringFront();
     }
-    this.mazeBuilder.updateBringFront();
+    this.mazeModel.updateBringFront();
 
     //this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
 

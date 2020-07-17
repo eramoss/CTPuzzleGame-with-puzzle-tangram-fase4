@@ -13,9 +13,9 @@ export class DudeMove {
   y: integer;
   previousMove: DudeMove
 
-  constructor(matrix: Matrix, x: integer, y: integer, animation: string, previousMove: DudeMove) {
+  constructor(matrix: Matrix, x: integer, y: integer, animation: string, previousMove: DudeMove, canMoveTo: (x: integer, y: integer) => boolean) {
     this.matrix = matrix;
-    this.possibleMove = this.canMoveTo(x, y);
+    this.possibleMove = canMoveTo(x, y);
     this.x = x
     this.y = y
     if (this.possibleMove) {
@@ -23,9 +23,6 @@ export class DudeMove {
     }
     this.animation = animation;
     this.previousMove = previousMove;
-  }
-  canMoveTo(x: number, y: number) {
-    return !!(this.matrix.points[x] && this.matrix.points[x][y]);
   }
 }
 export default class Dude {
@@ -38,9 +35,10 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onStepChange: (step: integer, movingTo: DudeMove) => boolean
+  onStepChange: (step: integer, movingTo: DudeMove) => void
   totalComands: number;
   sounds: Sounds;
+  canMoveTo: (x: number, y: number) => boolean;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -81,10 +79,7 @@ export default class Dude {
       if (!this.step) {
         const stepCount = this.totalComands - this.path.length;
         this.step = this.path.splice(0, 1)[0]
-        let possibleMove = this.onStepChange(stepCount, this.step);
-        if (this.step) {
-          this.step.possibleMove = possibleMove
-        }
+        this.onStepChange(stepCount, this.step);
       }
       if (this.step) {
         this.character.play(this.step.animation);
@@ -135,9 +130,9 @@ export default class Dude {
     let previousMove = this.path[this.path.length - 1]
     if (!previousMove) {
       // Guardo ponto de partida
-      previousMove = new DudeMove(this.matrix, this.x, this.y, animation, undefined);
+      previousMove = new DudeMove(this.matrix, this.x, this.y, animation, undefined, this.canMoveTo);
     }
-    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove);
+    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove, this.canMoveTo);
     this.path.push(dudeMove)
     if (dudeMove.possibleMove) {
       this.x = nextX;

@@ -129,9 +129,15 @@ export default class Dude {
     let nextY = this.y + y;
     let previousMove = this.path[this.path.length - 1]
     if (!previousMove) {
-      // Guardo ponto de partida
-      previousMove = new DudeMove(this.matrix, this.x, this.y, animation, undefined, this.canMoveTo);
+      const startPoint = new DudeMove(this.matrix, this.x, this.y, animation, undefined, this.canMoveTo);
+      previousMove = startPoint;
+    } else {
+      if (!previousMove.possibleMove) {
+        const possibleMove = previousMove.previousMove;
+        previousMove = possibleMove;
+      }
     }
+
     const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove, this.canMoveTo);
     this.path.push(dudeMove)
     if (dudeMove.possibleMove) {

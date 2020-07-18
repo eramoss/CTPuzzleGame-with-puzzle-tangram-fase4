@@ -101,9 +101,9 @@ export default class Dude {
   }
 
   stop() {
-    this.setPosition(this.x, this.y)
-    this.path.splice(0)
     this.character.body.stop();
+    this.path.splice(0);
+    this.step = undefined;
   }
 
   update() {
@@ -163,11 +163,15 @@ export default class Dude {
   }
 
   execute(commands: Command[]) {
-    this.stop()
+    this.buildPath(commands);
+    this.move();
+  }
+
+  buildPath(commands: Command[]) {
+    this.path.splice(0);
     this.totalComands = commands.length
     commands.forEach(command => {
       this[command.getAction()]()
     })
-    this.move();
   }
 }

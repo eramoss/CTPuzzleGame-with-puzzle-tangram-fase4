@@ -50,28 +50,18 @@ export default class Game extends Scene {
   create() {
     this.addEnvironmentImages();
 
-    /* this.anims.create({
-      key: 'gold-spining',
-      frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-      frameRate: 7,
-      repeat: -1
-    })
-
-    this.add.sprite(300, 300, 'coin-gold').play('gold-spining');
-    */
-
     this.sounds = new Sounds(this)
     this.program = new Program(this, this.sounds);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds);
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 1, 0, 1, 0, 0, 0],
-      [0, 0, 1, 0, 1, 0, 0, 0],
-      [0, 0, 1, 0, 1, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 1, 0, 0, 1, 0, 0, 0],
+      [1, 0, 0, 0, 2, 0, 0, 1],
+      [0, 1, 1, 0, 0, 1, 1, 0],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 1, 0, 0, 0, 0, 1, 0],
+      [0, 1, 1, 1, 1, 1, 1, 0],
       [1, 0, 0, 0, 0, 0, 0, 1],
     ];
 
@@ -79,18 +69,33 @@ export default class Game extends Scene {
       obstaclesMatrix,
       490, 110, 50);
 
-    let spritesFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
-    spritesFunctions[1] = (x: integer, y: integer) => this.add.image(x, y + 25, 'block');
+    let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
+    spriteCreateFunctions[1] = (x: integer, y: integer) => {
+      return this.add.image(x, y + 25, 'block')
+    };
+    spriteCreateFunctions[2] = (x: integer, y: integer) => {
+      this.anims.create({
+        key: 'gold-spining',
+        frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+        frameRate: 7,
+        repeat: -1
+      })
+      return this.add.sprite(x, y+10, 'coin-gold').play('gold-spining').setScale(0.7);
+    }
 
-    this.mazeModel = new MazeModel(this, this.matrix, spritesFunctions, obstaclesMatrix)
+    let initGame = () => {
+      this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
+      this.mazeModel.putSprite(5, 3, this.dude.character)
+      this.dude.setPosition(5, 3);
+      this.mazeModel.updateBringFront();
+      this.codeEditor.highlight(-1);
+    }
+
     this.dude = new Dude(this, this.matrix, this.sounds);
-
-    this.mazeModel.putSprite(5, 3, this.dude.character)
-    this.dude.setPosition(5, 3);
 
     this.dude.canMoveTo = (x: number, y: number) => {
       let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
-      let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] === 0
+      let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] !== 1
       return insideCorners && noBlocked
     }
 
@@ -114,9 +119,6 @@ export default class Game extends Scene {
       }
       this.mazeModel.updateBringFront();
     }
-    this.mazeModel.updateBringFront();
-
-    //this.program.addCommands(['up', 'up', 'left', 'left', 'left', 'left', 'down'], this.codeEditor.dropZone.zone)
 
     this.codeEditor.onClickRun(() => {
       this.dude.execute(this.program.commands);
@@ -124,12 +126,17 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickStop(() => {
       this.dude.stop();
+      initGame();
     })
 
-    this.cursors = this.input.keyboard.createCursorKeys()
+    //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
+
+    /* this.cursors = this.input.keyboard.createCursorKeys()
     this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
       this.currentObject = gameObject[0] as GameObjects.Sprite
-    })
+    }) */
+
+    initGame();
   }
 
   private addEnvironmentImages() {

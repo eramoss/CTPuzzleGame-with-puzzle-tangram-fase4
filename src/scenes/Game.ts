@@ -90,7 +90,7 @@ export default class Game extends Scene {
 
     this.dude.canMoveTo = (x: number, y: number) => {
       let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
-      let noBlocked = obstaclesMatrix[y][x] === 0
+      let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] === 0
       return insideCorners && noBlocked
     }
 

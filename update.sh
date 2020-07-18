@@ -1,3 +1,5 @@
+#!/bin/bash
+git pull
 docker container stop ctplat
 docker container rm ctplat
 docker image rm ctplatform:1.0

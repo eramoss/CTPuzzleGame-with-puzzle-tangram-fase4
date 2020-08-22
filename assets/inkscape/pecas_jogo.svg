@@ -399,8 +399,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="556.2974"
-     inkscape:cy="332.51125"
+     inkscape:cx="137.49466"
+     inkscape:cy="-212.65517"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -9629,40 +9629,43 @@
     <path
        inkscape:export-ydpi="95.999985"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_zone.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        id="path2976"
-       d="m -6.8199539,336.97848 c -2.1533151,0 -3.8872111,1.73126 -3.8872111,3.88194 v 8.57415 c 0,0.22438 0.02326,0.44252 0.0595,0.65629 -0.02698,0.14853 -0.04346,0.30131 -0.04346,0.45785 v 51.72604 c 0,1.40206 1.1304347,2.5306 2.5342158,2.5306 H 171.96695 c 1.40378,0 2.53422,-1.12854 2.53422,-2.5306 v -51.72604 c 0,-1.40206 -1.13044,-2.53111 -2.53422,-2.53111 H 16.048522 v -7.15718 c 0,-2.15068 -1.733377,-3.88194 -3.886693,-3.88194 z"
+       d="m -8.9301541,337.07202 c -0.9843727,0 -1.7770109,1.72887 -1.7770109,3.87658 v 8.56233 c 0,0.22407 0.01063,0.44191 0.0272,0.65539 -0.01234,0.14832 -0.01987,0.30089 -0.01987,0.45721 v 51.65471 c 0,1.40012 0.51677,2.52711 1.1584983,2.52711 H 72.801008 c 0.641727,0 1.1585,-1.12699 1.1585,-2.52711 v -51.65471 c 0,-1.40013 -0.516773,-2.52761 -1.1585,-2.52761 h -28.88757 v -7.14732 c 0,-2.14771 -0.7924,-3.87658 -1.776773,-3.87658 z"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#d2cb92;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ssscssssssscsss" />
     <path
        inkscape:connector-curvature="0"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#c837ab;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 178.38846,336.97848 c -2.15331,0 -3.88721,1.73126 -3.88721,3.88194 v 8.57415 c 0,0.22438 0.0232,0.44252 0.0595,0.65629 -0.0269,0.14853 -0.0435,0.30131 -0.0435,0.45785 v 51.72604 c 0,1.40206 1.13044,2.5306 2.53422,2.5306 h 180.1238 c 1.40378,0 2.53421,-1.12854 2.53421,-2.5306 v -51.72604 c 0,-1.40206 -1.13043,-2.53111 -2.53421,-2.53111 H 201.25693 v -7.15718 c 0,-2.15068 -1.73338,-3.88194 -3.88669,-3.88194 z"
+       d="m 75.736554,337.17186 c -0.984369,0 -1.777009,1.72633 -1.777009,3.87087 v 8.54971 c 0,0.22374 0.0106,0.44126 0.0272,0.65442 -0.0123,0.1481 -0.01989,0.30045 -0.01989,0.45654 v 51.57857 c 0,1.39806 0.516773,2.52338 1.158502,2.52338 h 82.342313 c 0.64173,0 1.1585,-1.12532 1.1585,-2.52338 V 350.7034 c 0,-1.39806 -0.51677,-2.52389 -1.1585,-2.52389 h -28.88753 v -7.13678 c 0,-2.14454 -0.79239,-3.87087 -1.77677,-3.87087 z"
        id="path2980"
-       inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_zone.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985" />
+       inkscape:export-ydpi="95.999985"
+       sodipodi:nodetypes="ssscssssssscsss" />
     <path
        inkscape:export-ydpi="95.999985"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_zone.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        id="path2986"
-       d="m 179.44679,338.03681 c -2.15331,0 -3.88721,1.73126 -3.88721,3.88194 v 8.57415 c 0,0.22438 0.0232,0.44252 0.0595,0.65629 -0.0269,0.14853 -0.0435,0.30131 -0.0435,0.45785 v 49.60938 c 0,1.40206 1.13044,2.5306 2.53422,2.5306 h 178.00714 c 1.40378,0 2.53421,-1.12854 2.53421,-2.5306 v -49.60938 c 0,-1.40206 -1.13044,-2.52634 -2.53421,-2.53111 H 200.1986 v -7.15718 c 0,-2.15068 -1.73338,-3.88194 -3.88669,-3.88194 z"
+       d="m 76.750231,338.22717 c -0.984371,0 -1.777011,1.72633 -1.777011,3.87088 v 8.5497 c 0,0.22374 0.0106,0.44126 0.0272,0.65442 -0.0123,0.14811 -0.01989,0.30045 -0.01989,0.45654 v 49.46794 c 0,1.39807 0.516773,2.52339 1.158501,2.52339 h 80.314949 c 0.64173,0 1.1585,-1.12532 1.1585,-2.52339 v -49.46794 c 0,-1.39806 -0.51675,-2.52389 -1.1585,-2.52389 h -28.88752 v -7.13677 c 0,-2.14455 -0.7924,-3.87088 -1.77677,-3.87088 z"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#d2cb92;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ssscssssssscsss" />
     <text
        inkscape:export-ydpi="95.999985"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_zone.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        id="text2984"
-       y="378.56668"
-       x="239.5672"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#c837ab;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       xml:space="preserve"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'SF Atarian System Extended';-inkscape-font-specification:'SF Atarian System Extended';fill:#c837ab;stroke-width:0.26458332px;fill-opacity:1;"
-         y="378.56668"
-         x="239.5672"
+       y="376.44247"
+       x="89.596046"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87021923px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#c837ab;fill-opacity:1;stroke:none;stroke-width:0.26438087px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       transform="scale(1.0020919,0.99791243)"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'SF Atarian System Extended';-inkscape-font-specification:'SF Atarian System Extended';fill:#c837ab;fill-opacity:1;stroke-width:0.26438087px"
+         y="376.44247"
+         x="89.596046"
          id="tspan2982"
          sodipodi:role="line">solte aqui...</tspan></text>
     <rect

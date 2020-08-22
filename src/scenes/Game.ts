@@ -16,6 +16,15 @@ export default class Game extends Scene {
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
   mazeModel: MazeModel
+  
+  groundX:number = 315
+  groundY:number = 190
+  tileWidth:number = 50
+  programmingAreaScale:number= 0.75
+
+  controlsX:number=857
+  controlsY:number=177
+  controlsScale:number=1
 
   constructor() {
     super('game')
@@ -34,7 +43,7 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 700, frameHeight: 256 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 320, frameHeight: 256 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
@@ -48,30 +57,32 @@ export default class Game extends Scene {
   }
 
   create() {
+    this.controlsX = this.cameras.default.width - 160
+    this.controlsY = this.cameras.default.height - 100
     this.addEnvironmentImages();
 
     this.sounds = new Sounds(this)
     this.program = new Program(this, this.sounds);
-    this.codeEditor = new CodeEditor(this, this.program, this.sounds);
+    this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.controlsX,this.controlsY,this.controlsScale);
 
     let obstaclesMatrix: number[][] = [
-      [1, 0, 0, 0, 2, 0, 0, 1],
-      [0, 1, 1, 0, 0, 1, 1, 0],
-      [0, 1, 0, 0, 0, 0, 1, 0],
-      [0, 1, 0, 0, 0, 0, 1, 0],
-      [0, 1, 0, 0, 0, 0, 1, 0],
-      [0, 1, 0, 0, 0, 0, 1, 0],
-      [0, 1, 1, 1, 1, 1, 1, 0],
-      [1, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 2, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 1],
     ];
 
     this.matrix = new Matrix(this,
       obstaclesMatrix,
-      490, 110, 50);
+      this.groundX, (this.groundY - 225 * this.programmingAreaScale), this.tileWidth * this.programmingAreaScale);
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 25, 'block')
+      return this.add.image(x, y + 25, 'block').setScale(this.programmingAreaScale)
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({
@@ -92,6 +103,7 @@ export default class Game extends Scene {
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds);
+    this.dude.character.setScale(this.programmingAreaScale)
 
     this.dude.canMoveTo = (x: number, y: number) => {
       let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
@@ -106,6 +118,7 @@ export default class Game extends Scene {
         if (movingTo.possibleMove) {
           let currentPosition = movingTo.previousMove
           if (currentPosition) {
+            //this.mazeModel.detectColision()
             try {
               if (currentPosition.possibleMove) {
                 this.mazeModel.putSprite(currentPosition.x, currentPosition.y, undefined)
@@ -141,9 +154,8 @@ export default class Game extends Scene {
 
   private addEnvironmentImages() {
     this.input.setDefaultCursor('pointer');
-    this.add.image(500, 400, 'scene').setInteractive();
-    this.add.image(490, 335, 'ground').setInteractive();
-    this.add.image(857, 677, 'controls').setInteractive();
+    this.add.image(this.groundX, this.groundY, 'ground').setScale(this.programmingAreaScale);
+    this.add.image(this.controlsX, this.controlsY, 'controls');
   }
 
   init() {

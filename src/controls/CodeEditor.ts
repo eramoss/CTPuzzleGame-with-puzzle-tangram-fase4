@@ -12,11 +12,17 @@ export default class CodeEditor {
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
   sounds: Sounds;
+  controlsX: number;
+  controlsY: number;
+  controlsScale: number;
 
-  constructor(scene: Scene, program: Program, sounds:Sounds) {
+  constructor(scene: Scene, program: Program, sounds:Sounds, controlsX:number, controlsY:number, controlsScale:number) {
     this.sounds = sounds;
     this.program = program;
     this.scene = scene;
+    this.controlsX = controlsX
+    this.controlsY = controlsY
+    this.controlsScale = controlsScale
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.createDropZone();
@@ -42,10 +48,10 @@ export default class CodeEditor {
   private createDraggableProgramCommands() {
     const commandGroup = this.scene.add.group();
     const commands: Phaser.GameObjects.Sprite[] = [
-      commandGroup.get(810, 644, 'arrow-left').setScale(0.5),
-      commandGroup.get(905, 644, 'arrow-up').setScale(0.5),
-      commandGroup.get(810, 695, 'arrow-down').setScale(0.5),
-      commandGroup.get(908, 695, 'arrow-right').setScale(0.5)
+      commandGroup.get(this.controlsX - 47, this.controlsY - 33, 'arrow-left').setScale(0.5),
+      commandGroup.get(this.controlsX + 50, this.controlsY - 33, 'arrow-up').setScale(0.5),
+      commandGroup.get(this.controlsX - 47, this.controlsY + 18, 'arrow-down').setScale(0.5),
+      commandGroup.get(this.controlsX + 50, this.controlsY + 18, 'arrow-right').setScale(0.5)
     ];
 
     commands.forEach((command: Phaser.GameObjects.Sprite) => {
@@ -80,7 +86,9 @@ export default class CodeEditor {
   }
 
   private createDropZone() {
-    this.dropZone = new DropZone(this.scene, 360, 657, 700, 210, 16, 'drop-zone');
+    const width = this.scene.cameras.default.width;
+    const height = this.scene.cameras.default.height;
+    this.dropZone = new DropZone(this.scene, width-340/2, 125, 320, 256, 16, 'drop-zone');
   }
 
   private createStartStopButtons() {

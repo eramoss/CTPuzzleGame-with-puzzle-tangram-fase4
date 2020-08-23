@@ -3,6 +3,7 @@ import Button from './Button';
 import Program from '../program/Program';
 import DropZone from './DropZone';
 import Sounds from '../sounds/Sounds';
+import AlignGrid from '../geom/AlignGrid';
 
 export default class CodeEditor {
 
@@ -12,17 +13,16 @@ export default class CodeEditor {
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
   sounds: Sounds;
-  controlsX: number;
-  controlsY: number;
+  controlsX: number = 857;
+  controlsY: number = 177;
   controlsScale: number;
+  grid: AlignGrid;
 
-  constructor(scene: Scene, program: Program, sounds:Sounds, controlsX:number, controlsY:number, controlsScale:number) {
+  constructor(scene: Scene, program: Program, sounds:Sounds, grid:AlignGrid) {
     this.sounds = sounds;
     this.program = program;
     this.scene = scene;
-    this.controlsX = controlsX
-    this.controlsY = controlsY
-    this.controlsScale = controlsScale
+    this.grid = grid;
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.createDropZone();
@@ -48,11 +48,15 @@ export default class CodeEditor {
   private createDraggableProgramCommands() {
     const commandGroup = this.scene.add.group();
     const commands: Phaser.GameObjects.Sprite[] = [
-      commandGroup.get(this.controlsX - 47, this.controlsY - 33, 'arrow-left').setScale(0.5),
-      commandGroup.get(this.controlsX + 50, this.controlsY - 33, 'arrow-up').setScale(0.5),
-      commandGroup.get(this.controlsX - 47, this.controlsY + 18, 'arrow-down').setScale(0.5),
-      commandGroup.get(this.controlsX + 50, this.controlsY + 18, 'arrow-right').setScale(0.5)
+      commandGroup.get(0,0, 'arrow-left'),
+      commandGroup.get(0,0, 'arrow-up'),
+      commandGroup.get(0,0, 'arrow-down'),
+      commandGroup.get(0,0, 'arrow-right')
     ];
+    this.grid.placeAt(19,10, commands[0],2,2);
+    this.grid.placeAt(22,10, commands[1],2,2);
+    this.grid.placeAt(19,13, commands[2],2,2);
+    this.grid.placeAt(22,13, commands[3],2,2);
 
     commands.forEach((command: Phaser.GameObjects.Sprite) => {
       this.scene.input.setDraggable(command.setInteractive({ cursor: 'grab' }));

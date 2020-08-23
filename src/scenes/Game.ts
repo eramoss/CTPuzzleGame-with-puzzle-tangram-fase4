@@ -59,90 +59,95 @@ export default class Game extends Scene {
   }
 
   create() {
-    this.grid = new AlignGrid(this,5,5);
+    this.grid = new AlignGrid(
+      this,26,26,
+      this.game.config.width as number,
+      this.game.config.height as number
+    );
+    
     this.grid.show();
     this.addEnvironmentImages();
 
-    // this.sounds = new Sounds(this)
-    // this.program = new Program(this, this.sounds);
-    // this.codeEditor = new CodeEditor(this, this.program, this.sounds);
+    this.sounds = new Sounds(this)
+    this.program = new Program(this, this.sounds);
+    this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
-    // let obstaclesMatrix: number[][] = [
-    //   [0, 0, 0, 0, 2, 0, 0, 1],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 1],
-    // ];
+    let obstaclesMatrix: number[][] = [
+      [0, 0, 0, 0, 2, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+    ];
 
-    // this.matrix = new Matrix(this,
-    //   obstaclesMatrix,
-    //   this.groundX, (this.groundY - 225), this.tileWidth);
+    this.matrix = new Matrix(this,
+      obstaclesMatrix,
+      this.groundX, (this.groundY - 225), this.tileWidth);
 
-    // let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
-    // spriteCreateFunctions[1] = (x: integer, y: integer) => {
-    //   return this.add.image(x, y + 25, 'block')
-    // };
-    // spriteCreateFunctions[2] = (x: integer, y: integer) => {
-    //   this.anims.create({
-    //     key: 'gold-spining',
-    //     frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-    //     frameRate: 7,
-    //     repeat: -1
-    //   })
-    //   return this.add.sprite(x, y+10, 'coin-gold').play('gold-spining').setScale(0.7);
-    // }
+    let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
+    spriteCreateFunctions[1] = (x: integer, y: integer) => {
+      return this.add.image(x, y + 25, 'block')
+    };
+    spriteCreateFunctions[2] = (x: integer, y: integer) => {
+      this.anims.create({
+        key: 'gold-spining',
+        frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+        frameRate: 7,
+        repeat: -1
+      })
+      return this.add.sprite(x, y+10, 'coin-gold').play('gold-spining').setScale(0.7);
+    }
 
-    // let initGame = () => {
-    //   this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
-    //   this.mazeModel.putSprite(5, 3, this.dude.character)
-    //   this.dude.setPosition(5, 3);
-    //   this.mazeModel.updateBringFront();
-    //   this.codeEditor.highlight(-1);
-    // }
+    let initGame = () => {
+      this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
+      this.mazeModel.putSprite(5, 3, this.dude.character)
+      this.dude.setPosition(5, 3);
+      this.mazeModel.updateBringFront();
+      this.codeEditor.highlight(-1);
+    }
 
-    // this.dude = new Dude(this, this.matrix, this.sounds);
-    // this.dude.character
+    this.dude = new Dude(this, this.matrix, this.sounds);
+    this.dude.character
 
-    // this.dude.canMoveTo = (x: number, y: number) => {
-    //   let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
-    //   let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] !== 1
-    //   return insideCorners && noBlocked
-    // }
+    this.dude.canMoveTo = (x: number, y: number) => {
+      let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
+      let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] !== 1
+      return insideCorners && noBlocked
+    }
 
-    // this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
-    //   console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
-    //   this.codeEditor.highlight(stepCount);
-    //   if (movingTo) {
-    //     if (movingTo.possibleMove) {
-    //       let currentPosition = movingTo.previousMove
-    //       if (currentPosition) {
-    //         //this.mazeModel.detectColision()
-    //         try {
-    //           if (currentPosition.possibleMove) {
-    //             this.mazeModel.putSprite(currentPosition.x, currentPosition.y, undefined)
-    //           }
-    //           this.mazeModel.putSprite(movingTo.x, movingTo.y, this.dude.character)
-    //         } catch (e) {
-    //           console.log('Dude out of bounds');
-    //         }
-    //       }
-    //     }
-    //   }
-    //   this.mazeModel.updateBringFront();
-    // }
+    this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
+      console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
+      this.codeEditor.highlight(stepCount);
+      if (movingTo) {
+        if (movingTo.possibleMove) {
+          let currentPosition = movingTo.previousMove
+          if (currentPosition) {
+            //this.mazeModel.detectColision()
+            try {
+              if (currentPosition.possibleMove) {
+                this.mazeModel.putSprite(currentPosition.x, currentPosition.y, undefined)
+              }
+              this.mazeModel.putSprite(movingTo.x, movingTo.y, this.dude.character)
+            } catch (e) {
+              console.log('Dude out of bounds');
+            }
+          }
+        }
+      }
+      this.mazeModel.updateBringFront();
+    }
 
-    // this.codeEditor.onClickRun(() => {
-    //   this.dude.execute(this.program.commands);
-    // })
+    this.codeEditor.onClickRun(() => {
+      this.dude.execute(this.program.commands);
+    })
 
-    // this.codeEditor.onClickStop(() => {
-    //   this.dude.stop();
-    //   initGame();
-    // })
+    this.codeEditor.onClickStop(() => {
+      this.dude.stop();
+      initGame();
+    })
 
     //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
 
@@ -151,13 +156,14 @@ export default class Game extends Scene {
       this.currentObject = gameObject[0] as GameObjects.Sprite
     }) */
 
-    //initGame();
+   initGame();
   }
 
   private addEnvironmentImages() {
-    this.grid.addImage(1,1, 'ground');
+    this.grid.addImage(1,1, 'ground', 17, 15);
+    this.grid.addImage(19, 10, 'controls', 6, 6);
     this.input.setDefaultCursor('pointer');
-    this.add.image(0, 0, 'controls');
+    
   }
 
   init() {
@@ -165,7 +171,7 @@ export default class Game extends Scene {
   }
 
   update() {
-    //this.dude.update()
+    this.dude.update()
   }
 
   /* updateCurrentObjectPosition() {

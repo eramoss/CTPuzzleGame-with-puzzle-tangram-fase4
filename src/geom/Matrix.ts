@@ -31,7 +31,7 @@ export default class Matrix {
 
         if (scene.game.config.physics.arcade?.debug) {
           const pt = new Phaser.Geom.Point(point.x, point.y);
-          this.scene.add.text(pt.x, pt.y, `(${pt.y})`);
+          this.scene.add.text(pt.x, pt.y, `(${pt.y.toFixed(2)})`);
           graphics.fillCircle(pt.x, pt.y, 3);
         }
         this.points[x][y] = point

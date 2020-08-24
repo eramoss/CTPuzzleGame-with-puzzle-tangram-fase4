@@ -17,12 +17,15 @@ export default class CodeEditor {
   controlsY: number = 177;
   controlsScale: number;
   grid: AlignGrid;
+  cellBaseX = 19
+  cellBaseY = 14
 
-  constructor(scene: Scene, program: Program, sounds:Sounds, grid:AlignGrid) {
+  constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
     this.program = program;
     this.scene = scene;
     this.grid = grid;
+    this.grid.addImage(this.cellBaseX, this.cellBaseY, 'controls', 6, 6);
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.createDropZone();
@@ -45,19 +48,32 @@ export default class CodeEditor {
     });
   }
 
-  private createDraggableProgramCommands() {
-    const commandGroup = this.scene.add.group();
-    const commands: Phaser.GameObjects.Sprite[] = [
-      commandGroup.get(0,0, 'arrow-left'),
-      commandGroup.get(0,0, 'arrow-up'),
-      commandGroup.get(0,0, 'arrow-down'),
-      commandGroup.get(0,0, 'arrow-right')
-    ];
-    this.grid.placeAt(19,10, commands[0],2,2);
-    this.grid.placeAt(22,10, commands[1],2,2);
-    this.grid.placeAt(19,13, commands[2],2,2);
-    this.grid.placeAt(22,13, commands[3],2,2);
+  private getByTextureName(commands: Phaser.GameObjects.Sprite[], textureName: string): Phaser.GameObjects.Sprite {
+    return commands.filter(c => c.texture.key === textureName)[0]
+  }
 
+  private createDraggableProgramCommands(command: Phaser.GameObjects.Sprite = null) {
+    const commandGroup = this.scene.add.group();
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right']
+    if (command) {
+      commandNames = commandNames.filter(c=>c == command.texture.key)
+    }
+    const commands: Phaser.GameObjects.Sprite[] = commandNames.map(commandName => commandGroup.get(0, 0, commandName))
+
+    console.log('COMMAND_NAMES', commandNames);
+
+    let positions = {
+      'arrow-left': {x: this.cellBaseX, y: this.cellBaseY},
+      'arrow-up': {x: this.cellBaseX+3, y: this.cellBaseY},
+      'arrow-down': {x: this.cellBaseX, y: this.cellBaseY+3},
+      'arrow-right': {x: this.cellBaseX+3, y: this.cellBaseY+3},
+    }
+    
+    Object.getOwnPropertyNames(positions).forEach(key => {
+      let position = positions[key]
+      this.grid.placeAt(position.x, position.y, this.getByTextureName(commands, key), 3);  
+    });
+    
     commands.forEach((command: Phaser.GameObjects.Sprite) => {
       this.scene.input.setDraggable(command.setInteractive({ cursor: 'grab' }));
       command.on('pointerdown', _ => {
@@ -68,19 +84,19 @@ export default class CodeEditor {
       });
       command.on('pointerover', _ => {
         this.sounds.hover();
-        command.setScale(0.7);
+        command.setScale(this.grid.scale * 1.2);
       });
       command.on('pointerout', _ => {
-        command.setScale(0.5);
+        command.setScale(this.grid.scale);
       });
       command.on('dragstart', _ => {
         // Não deixa acabar os comandos
         this.sounds.drag();
-        this.createDraggableProgramCommands();
-        command.setScale(0.8)
+        this.createDraggableProgramCommands(command);
+        command.setScale(this.grid.scale * 1.2)
       })
       command.on('dragend', _ => {
-        command.setScale(0.5);
+        command.setScale(this.grid.scale);
       })
       command.on('drop', (pointer: Input.Pointer, dropZone: GameObjects.Zone) => {
         this.sounds.drop();
@@ -90,19 +106,22 @@ export default class CodeEditor {
   }
 
   private createDropZone() {
-    const width = this.scene.cameras.default.width;
-    const height = this.scene.cameras.default.height;
-    this.dropZone = new DropZone(this.scene, width-340/2, 125, 320, 256, 16, 'drop-zone');
+    const rect: Phaser.Geom.Rectangle = this.grid.getArea(17, 1, 6, 8);
+    this.dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, 'drop-zone');
+    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7);
   }
 
   private createStartStopButtons() {
-    new Button(this.scene, this.sounds, 35, 555, 'btn-play', () => {
+    const btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
       this.fnOnClickRun();
     })
-    new Button(this.scene, this.sounds, 75, 555, 'btn-stop', () => {
+    const btnStop = new Button(this.scene, this.sounds, 0, 0, 'btn-stop', () => {
       this.sounds.stop();
       this.fnOnClickStop();
     })
+    this.grid.placeAt(1, 1, btnPlay.sprite, 2)
+    this.grid.placeAt(3, 1, btnStop.sprite, 2)
+
   }
 
   onClickRun(fnOnClickRun: () => void) {

@@ -2,22 +2,24 @@ import { Scene } from 'phaser';
 import Sounds from '../sounds/Sounds';
 
 export default class Button {
+  sprite: Phaser.GameObjects.Sprite;
 
   constructor(scene: Scene, sounds:Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
-    const btnPlay = scene.add.sprite(x, y, spriteKey, 0).setInteractive({ cursor: 'pointer' });
-    btnPlay.on('pointerover', () => {
-      btnPlay.setFrame(1)
+    const sprite = scene.add.sprite(x, y, spriteKey, 0).setInteractive({ cursor: 'pointer' });
+    sprite.on('pointerover', () => {
+      sprite.setFrame(1)
       sounds.hover();
     })
-    btnPlay.on('pointerout', () => {
-      btnPlay.setFrame(0)
+    sprite.on('pointerout', () => {
+      sprite.setFrame(0)
     })
-    btnPlay.on('pointerup', () => {
-      btnPlay.setFrame(1)
+    sprite.on('pointerup', () => {
+      sprite.setFrame(1)
     })
-    btnPlay.on('pointerdown', () => {
-      btnPlay.setFrame(2)
+    sprite.on('pointerdown', () => {
+      sprite.setFrame(2)
       onClickHandler();
     })
+    this.sprite = sprite;
   }
 }

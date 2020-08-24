@@ -3,14 +3,35 @@ import { Scene } from 'phaser';
 export default class DropZone {
   sprite: Phaser.GameObjects.Sprite;
   zone: Phaser.GameObjects.Zone;
+  scene: Scene;
 
-  constructor(scene: Scene, x: integer, y: integer, width: integer, height: integer, paddingTop: integer, texture: string) {
-    this.zone = scene.add.zone(x, y + paddingTop, width, height).setRectangleDropZone(width, height);
-    this.sprite = scene.add.sprite(x, y, texture, 0).setInteractive();
+  constructor(scene: Scene, x: integer, y: integer, width: integer, height: integer, texture: string) {
+    this.scene = scene;
+    this.zone = scene.add.zone(x, y, width, height).setRectangleDropZone(width, height);
+    this.zone.setDisplayOrigin(0,0);
+    this.sprite = scene.add.sprite(x, y, texture, 0);
   }
 
   highlight(enabled: boolean = true) {
+    const zone = this.zone;
     this.sprite.setFrame(enabled ? 1 : 0);
+    if(this.scene.game.config.physics.arcade?.debug){
+      var graphics = this.scene.add.graphics();
+      graphics.lineStyle(2, 0xffff00);
+      graphics.strokeRect(
+        zone.x,
+        zone.y,
+        zone.width,
+        zone.height
+      );
+      /* graphics.lineStyle(2, 0xff00ff);
+      graphics.strokeRect(
+        zone.x - zone.input.hitArea.width / 2,
+        zone.y - zone.input.hitArea.height / 2, 
+        zone.input.hitArea.width, 
+        zone.input.hitArea.height
+      ); */
+    }
   }
 
 }

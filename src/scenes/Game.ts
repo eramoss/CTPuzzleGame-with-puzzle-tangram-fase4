@@ -18,15 +18,6 @@ export default class Game extends Scene {
   cursors: Types.Input.Keyboard.CursorKeys
   mazeModel: MazeModel
   grid: AlignGrid
-  
-  groundX:number = 315
-  groundY:number = 190
-  tileWidth:number = 50
-  programmingAreaScale:number= 0.75
-
-  controlsX:number=857
-  controlsY:number=177
-  controlsScale:number=1
 
   constructor() {
     super('game')
@@ -45,7 +36,7 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 30, frameHeight: 30 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 320, frameHeight: 256 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 320, frameHeight: 316 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
@@ -59,58 +50,61 @@ export default class Game extends Scene {
   }
 
   create() {
+    this.input.setDefaultCursor('pointer');
+
     this.grid = new AlignGrid(
-      this,26,26,
+      this, 26, 26,
       this.game.config.width as number,
       this.game.config.height as number
     );
-    
-    this.grid.show();
-    this.addEnvironmentImages();
 
     this.sounds = new Sounds(this)
-    this.program = new Program(this, this.sounds);
+
+    this.grid.addImage(1, 4, 'ground', 17);
+    this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
     let obstaclesMatrix: number[][] = [
       [0, 0, 0, 0, 2, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 1],
     ];
 
+    const cell = this.grid.getCell(1, 4);
     this.matrix = new Matrix(this,
       obstaclesMatrix,
-      this.groundX, (this.groundY - 225), this.tileWidth);
+      cell.x + this.grid.cellWidth * 17 / 2, cell.y, this.grid.cellWidth * 1.06);
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 25, 'block')
+      return this.add.image(x, y + (10 * this.grid.scale), 'block').setScale(this.grid.scale)
     };
-    spriteCreateFunctions[2] = (x: integer, y: integer) => {
-      this.anims.create({
-        key: 'gold-spining',
-        frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-        frameRate: 7,
-        repeat: -1
-      })
-      return this.add.sprite(x, y+10, 'coin-gold').play('gold-spining').setScale(0.7);
-    }
+    // spriteCreateFunctions[2] = (x: integer, y: integer) => {
+    //   this.anims.create({
+    //     key: 'gold-spining',
+    //     frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+    //     frameRate: 7,
+    //     repeat: -1
+    //   })
+    //   return this.add.sprite(x, y + 10, 'coin-gold').play('gold-spining').setScale(this.grid.scale);
+    // }
 
     let initGame = () => {
       this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
-      this.mazeModel.putSprite(5, 3, this.dude.character)
-      this.dude.setPosition(5, 3);
+      this.mazeModel.putSprite(0, 0, this.dude.character)
+      this.dude.setPosition(0, 0);
       this.mazeModel.updateBringFront();
       this.codeEditor.highlight(-1);
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds);
-    this.dude.character
+    this.dude.character.setScale(this.grid.scale)
+    this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 
     this.dude.canMoveTo = (x: number, y: number) => {
       let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
@@ -156,14 +150,7 @@ export default class Game extends Scene {
       this.currentObject = gameObject[0] as GameObjects.Sprite
     }) */
 
-   initGame();
-  }
-
-  private addEnvironmentImages() {
-    this.grid.addImage(1,1, 'ground', 17, 15);
-    this.grid.addImage(19, 10, 'controls', 6, 6);
-    this.input.setDefaultCursor('pointer');
-    
+    initGame();
   }
 
   init() {

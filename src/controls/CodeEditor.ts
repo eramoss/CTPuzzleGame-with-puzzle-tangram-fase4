@@ -65,8 +65,8 @@ export default class CodeEditor {
     let positions = {
       'arrow-left': {x: this.cellBaseX, y: this.cellBaseY},
       'arrow-up': {x: this.cellBaseX+3, y: this.cellBaseY},
-      'arrow-down': {x: this.cellBaseX, y: this.cellBaseY+3},
-      'arrow-right': {x: this.cellBaseX+3, y: this.cellBaseY+3},
+      'arrow-down': {x: this.cellBaseX, y: this.cellBaseY+3*0.85},
+      'arrow-right': {x: this.cellBaseX+3, y: this.cellBaseY+3*0.85},
     }
     
     Object.getOwnPropertyNames(positions).forEach(key => {
@@ -84,10 +84,10 @@ export default class CodeEditor {
       });
       command.on('pointerover', _ => {
         this.sounds.hover();
-        command.setScale(this.grid.scale * 1.2);
+        command.setScale(this.grid.scale);
       });
       command.on('pointerout', _ => {
-        command.setScale(this.grid.scale);
+        command.setScale(this.grid.scale * 0.85);
       });
       command.on('dragstart', _ => {
         // Não deixa acabar os comandos
@@ -95,18 +95,16 @@ export default class CodeEditor {
         this.createDraggableProgramCommands(command);
         command.setScale(this.grid.scale * 1.2)
       })
-      command.on('dragend', _ => {
-        command.setScale(this.grid.scale);
-      })
       command.on('drop', (pointer: Input.Pointer, dropZone: GameObjects.Zone) => {
         this.sounds.drop();
+        command.setScale(this.grid.scale * 0.75);
         this.program.addCommand(command, dropZone)
       })
     })
   }
 
   private createDropZone() {
-    const rect: Phaser.Geom.Rectangle = this.grid.getArea(17, 1, 6, 8);
+    const rect: Phaser.Geom.Rectangle = this.grid.getArea(18.5, 1, 7, 12);
     this.dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, 'drop-zone');
     this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7);
   }
@@ -119,8 +117,8 @@ export default class CodeEditor {
       this.sounds.stop();
       this.fnOnClickStop();
     })
-    this.grid.placeAt(1, 1, btnPlay.sprite, 2)
-    this.grid.placeAt(3, 1, btnStop.sprite, 2)
+    this.grid.placeAt(1, 1, btnPlay.sprite, 1.7)
+    this.grid.placeAt(3, 1, btnStop.sprite, 1.7)
 
   }
 

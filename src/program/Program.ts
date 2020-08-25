@@ -10,7 +10,7 @@ export default class Program {
   sounds: Sounds;
   grid: AlignGrid;
 
-  constructor(scene: Phaser.Scene, sounds: Sounds, grid:AlignGrid) {
+  constructor(scene: Phaser.Scene, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
     this.scene = scene;
     this.grid = grid;
@@ -36,13 +36,22 @@ export default class Program {
   }
 
   findBestPosition(command: Command) {
-    const spriteHeight = command.sprite.displayOriginY / 2;
-    const spriteWidth = command.sprite.displayWidth / 2;
-    const columns: integer = Math.floor(this.dropZone.width / spriteWidth);
     const index = this.commands.indexOf(command);
-    let x = index % columns * spriteWidth + spriteWidth + this.dropZone.x;
-    let y = Math.floor(index / columns) * spriteHeight + this.dropZone.y;
+    const spriteWidth = command.sprite.displayWidth * 0.6;
+    const spriteHeight = command.sprite.displayHeight * 0.6;
+
+    const columns: integer = Math.floor(this.dropZone.width / spriteWidth);
+    const rows: integer = Math.floor(this.dropZone.height / spriteHeight);
+
+    let x = this.dropZone.x + (index % columns * spriteWidth) + spriteWidth * 0.5;
+    let y = this.dropZone.y + Math.floor(index / columns) * spriteHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
+
+    if(this.scene.game.config.physics.arcade?.debug){
+      const g = this.scene.add.graphics();
+      g.fillStyle(0xff0f0f);
+      g.fillRect(this.dropZone.x, this.dropZone.y, spriteWidth, spriteHeight);
+    }
   }
 
   removeCommand(command: Command) {

@@ -52,11 +52,11 @@ export default class CodeEditor {
     return commands.filter(c => c.texture.key === textureName)[0]
   }
 
-  private createDraggableProgramCommands(command: Phaser.GameObjects.Sprite = null) {
+  private createDraggableProgramCommands(commandName:string = null) {
     const commandGroup = this.scene.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right']
-    if (command) {
-      commandNames = commandNames.filter(c=>c == command.texture.key)
+    if (commandName) {
+      commandNames = commandNames.filter(c=>c == commandName)
     }
     const commands: Phaser.GameObjects.Sprite[] = commandNames.map(commandName => commandGroup.get(0, 0, commandName))
 
@@ -68,7 +68,6 @@ export default class CodeEditor {
       'arrow-down': {x: this.cellBaseX, y: this.cellBaseY+3*0.85},
       'arrow-right': {x: this.cellBaseX+3, y: this.cellBaseY+3*0.85},
     }
-    
     Object.getOwnPropertyNames(positions).forEach(key => {
       let position = positions[key]
       this.grid.placeAt(position.x, position.y, this.getByTextureName(commands, key), 3);  
@@ -92,7 +91,7 @@ export default class CodeEditor {
       command.on('dragstart', _ => {
         // Não deixa acabar os comandos
         this.sounds.drag();
-        this.createDraggableProgramCommands(command);
+        this.createDraggableProgramCommands(command.texture.key);
         command.setScale(this.grid.scale * 1.2)
       })
       command.on('drop', (pointer: Input.Pointer, dropZone: GameObjects.Zone) => {

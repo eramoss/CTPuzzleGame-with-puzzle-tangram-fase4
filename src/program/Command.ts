@@ -10,26 +10,22 @@ export default class Command {
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite, removeBtnTexture: string) {
     this.sprite = sprite;
     this.scene = scene;
-    this.removeSprite = scene.add.sprite(this.sprite.x - 10, this.sprite.y - 10, removeBtnTexture);
-    this.removeSprite.visible = false;
-    this.removeSprite.setScale(2);
+    this.removeSprite = scene.add.sprite(this.sprite.x, this.sprite.y, removeBtnTexture);
+    this.removeSprite.setScale(sprite.scale);
 
     scene.input.setDraggable(sprite.setInteractive({ cursor: 'pointer' }), false);
     sprite.removeAllListeners('pointerover');
     sprite.removeAllListeners('pointerout');
 
-    new Array(this.sprite, this.removeSprite)
-      .forEach((item: GameObjects.GameObject) => {
-        item.setInteractive({ cursor: 'pointer' })
-        item.on('pointerover', () => {
-          this.removeSprite.visible = true;
-        })
-        item.on('pointerout', () => {
-          this.removeSprite.visible = false;
-        })
-      })
+    sprite.on('pointerover', () => {
+      this.removeSprite.visible = true;
+    })
 
-    this.removeSprite.on('pointerdown', () => {
+    sprite.on('pointerout', () => {
+      this.removeSprite.visible = false;
+    })
+
+    sprite.on('pointerdown', () => {
       if (this.onRemoveCommand) {
         this.onRemoveCommand(this);
         scene.children.remove(sprite);

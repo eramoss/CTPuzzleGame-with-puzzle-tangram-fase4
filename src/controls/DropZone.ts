@@ -24,13 +24,6 @@ export default class DropZone {
         zone.width,
         zone.height
       );
-      /* graphics.lineStyle(2, 0xff00ff);
-      graphics.strokeRect(
-        zone.x - zone.input.hitArea.width / 2,
-        zone.y - zone.input.hitArea.height / 2, 
-        zone.input.hitArea.width, 
-        zone.input.hitArea.height
-      ); */
     }
   }
 

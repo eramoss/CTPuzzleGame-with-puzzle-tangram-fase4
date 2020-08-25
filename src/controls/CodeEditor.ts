@@ -106,7 +106,7 @@ export default class CodeEditor {
   private createDropZone() {
     const rect: Phaser.Geom.Rectangle = this.grid.getArea(18.5, 1, 7, 12);
     this.dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, 'drop-zone');
-    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7);
+    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7,12);
   }
 
   private createStartStopButtons() {

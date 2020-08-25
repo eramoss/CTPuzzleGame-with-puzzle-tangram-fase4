@@ -144,7 +144,6 @@ export default class Game extends Scene {
     })
 
     //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
-
     /* this.cursors = this.input.keyboard.createCursorKeys()
     this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
       this.currentObject = gameObject[0] as GameObjects.Sprite

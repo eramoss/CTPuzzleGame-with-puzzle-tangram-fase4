@@ -20,7 +20,7 @@ export default class Program {
   addCommands(commands: string[], dropZone: Phaser.GameObjects.Zone) {
     commands.forEach(command => {
       const commandSprite = this.scene.add.sprite(0, 0, `arrow-${command}`)
-      this.addCommand(commandSprite.setScale(0.5), dropZone)
+      this.addCommand(commandSprite, dropZone)
     })
   }
 
@@ -40,11 +40,14 @@ export default class Program {
     const spriteWidth = command.sprite.displayWidth * 0.6;
     const spriteHeight = command.sprite.displayHeight * 0.6;
 
-    const columns: integer = Math.floor(this.dropZone.width / spriteWidth);
+    const cols: integer = Math.floor(this.dropZone.width / spriteWidth);
     const rows: integer = Math.floor(this.dropZone.height / spriteHeight);
 
-    let x = this.dropZone.x + (index % columns * spriteWidth) + spriteWidth * 0.5;
-    let y = this.dropZone.y + Math.floor(index / columns) * spriteHeight + spriteHeight * 0.5;
+    const tileWidth = spriteWidth + (this.dropZone.width - spriteWidth * cols) / cols
+    const tileHeight = spriteHeight + (this.dropZone.height - spriteHeight * rows) / rows
+
+    let x = this.dropZone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
+    let y = this.dropZone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
 
     if(this.scene.game.config.physics.arcade?.debug){

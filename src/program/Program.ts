@@ -69,6 +69,8 @@ export default class Program {
   }
 
   removeCommandBySprite(commandSprite: GameObjects.Sprite) {
+    this.scene.children.remove(commandSprite);
+    this.sounds.remove();
     let command = this.findCommandBySprite(commandSprite);
     if (command) {
       this.removeCommand(command);
@@ -76,8 +78,6 @@ export default class Program {
   }
 
   removeCommand(command: Command) {
-    this.scene.children.remove(command.sprite);
-    this.sounds.remove();
     let index = this.commands.indexOf(command);
     this.commands.splice(index, 1);
     console.log('ADD_REMOVE_COMMANDS', this.commands)

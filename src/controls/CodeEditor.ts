@@ -102,6 +102,8 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         this.trash.close();
         commandSprite.setScale(this.grid.scale * 0.75);
+      })
+      commandSprite.on('drop', _ => {
         if (this.trash.spriteIsHover(commandSprite)) {
           this.removeCommandFromProgram(commandSprite)
         } else {

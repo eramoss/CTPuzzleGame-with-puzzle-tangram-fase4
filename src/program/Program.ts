@@ -46,8 +46,10 @@ export default class Program {
 
   allocateInProgramArea(command: Command) {
     const index = this.commands.indexOf(command);
-    const spriteWidth = command.sprite.displayWidth * 0.6;
-    const spriteHeight = command.sprite.displayHeight * 0.6;
+    const spriteWidth = command.sprite.width * this.grid.scale * 0.6;
+    const spriteHeight = command.sprite.height * this.grid.scale * 0.6;
+
+    console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
 
     const cols: integer = Math.floor(this.dropZone.width / spriteWidth);
     const rows: integer = Math.floor(this.dropZone.height / spriteHeight);

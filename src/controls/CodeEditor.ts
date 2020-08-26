@@ -97,10 +97,12 @@ export default class CodeEditor {
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(this.grid.scale * 1.2)
+        this.trash.open();
       })
       commandSprite.on('dragend', _ => {
+        this.trash.close();
         commandSprite.setScale(this.grid.scale * 0.75);
-        if (this.trash.contains(commandSprite)) {
+        if (this.trash.spriteIsHover(commandSprite)) {
           this.removeCommandFromProgram(commandSprite)
         } else {
           this.sounds.drop();

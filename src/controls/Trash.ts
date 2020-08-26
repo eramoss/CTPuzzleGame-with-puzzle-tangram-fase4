@@ -30,9 +30,15 @@ export default class Trash {
         scene.input.on('drop', closeTrash)
     }
 
+    open(){
+        this.dropzone.highlight();
+    }
 
+    close(){
+        this.dropzone.highlight(false);
+    }
 
-    contains(obj: GameObjects.Sprite): boolean {
+    spriteIsHover(obj: GameObjects.Sprite): boolean {
         const rect: Phaser.Geom.Rectangle = this.zone.getBounds();
         return rect.contains(obj.x, obj.y);
     }

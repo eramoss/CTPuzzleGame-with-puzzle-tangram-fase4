@@ -20,6 +20,7 @@ export default class CodeEditor {
   grid: AlignGrid;
   cellBaseX = 19
   cellBaseY = 14
+  timeBefore = new Date().getTime()
 
   constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -77,9 +78,14 @@ export default class CodeEditor {
     commands.forEach((command: Phaser.GameObjects.Sprite) => {
       this.scene.input.setDraggable(command.setInteractive({ cursor: 'grab' }));
       command.on('pointerdown', _ => {
+        this.timeBefore = new Date().getTime()
         this.dropZone.highlight()
       });
       command.on('pointerup', _ => {
+        if(new Date().getTime() - this.timeBefore < 100){
+          // Simulate click
+          this.addCommandToProgram(command, this.dropZone);
+        }
         this.dropZone.highlight(false)
       });
       command.on('pointerover', _ => {

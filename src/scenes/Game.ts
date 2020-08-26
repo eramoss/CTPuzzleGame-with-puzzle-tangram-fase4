@@ -34,8 +34,8 @@ export default class Game extends Scene {
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', 'assets/ct/obstacle_orange.png');
 
-    this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 30, frameHeight: 30 });
-    this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 30, frameHeight: 30 });
+    this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 320, frameHeight: 316 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
@@ -67,12 +67,12 @@ export default class Game extends Scene {
     let obstaclesMatrix: number[][] = [
       [0, 0, 0, 0, 2, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
+      [0, 0, 0, 0, 1, 0, 0, 1],
     ];
 
     const cell = this.grid.getCell(1, 4);

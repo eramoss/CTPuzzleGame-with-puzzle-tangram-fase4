@@ -4,6 +4,7 @@ import Program from '../program/Program';
 import DropZone from './DropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
+import Command from '../program/Command';
 
 export default class CodeEditor {
 
@@ -94,12 +95,16 @@ export default class CodeEditor {
         this.createDraggableProgramCommands(command.texture.key);
         command.setScale(this.grid.scale * 1.2)
       })
-      command.on('drop', (pointer: Input.Pointer, dropZone: GameObjects.Zone) => {
+      command.on('drop', _ => {
         this.sounds.drop();
-        command.setScale(this.grid.scale * 0.75);
-        this.program.addCommand(command, dropZone)
+        this.addCommandToProgram(command, this.dropZone);
       })
     })
+  }
+
+  private addCommandToProgram(command:Phaser.GameObjects.Sprite, dropZone:DropZone){
+    command.setScale(this.grid.scale * 0.75);
+        this.program.addCommand(command, dropZone.zone)
   }
 
   private createDropZone() {

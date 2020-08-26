@@ -16,6 +16,7 @@ export default class Command {
     scene.input.setDraggable(sprite.setInteractive({ cursor: 'pointer' }), false);
     sprite.removeAllListeners('pointerover');
     sprite.removeAllListeners('pointerout');
+    sprite.removeAllListeners('pointerdown');
 
     sprite.on('pointerover', () => {
       this.removeSprite.visible = true;

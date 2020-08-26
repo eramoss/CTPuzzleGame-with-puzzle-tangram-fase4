@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import DropZone from "../controls/DropZone";
 
 export default class AlignGrid {
 
@@ -49,10 +50,17 @@ export default class AlignGrid {
         this.graphics.strokePath();
     }
 
-    addImage(x: number, y: number, key: string, colspan: number = null, rowspan: number = null): Phaser.GameObjects.GameObject {
+    addImage(x: number, y: number, key: string, colspan: number = null, rowspan: number = null): Phaser.GameObjects.Image {
         let image = this.scene.add.image(0, 0, key);
         this.placeAt(x, y, image, colspan, rowspan);
         return image;
+    }
+
+    placeDropZone(x: number, y: number, width: number, height: number, texture: string): DropZone {
+        const rect: Phaser.Geom.Rectangle = this.getArea(x, y, width, height);
+        const dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, texture);
+        this.placeAt(x, y, dropZone.sprite, width, height);
+        return dropZone;
     }
 
     getCell(cellHorizontalNumber: number, cellVerticalNumber: number): Phaser.Geom.Point {

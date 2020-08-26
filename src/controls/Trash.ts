@@ -8,10 +8,8 @@ export default class Trash {
     dropzone: DropZone;
     constructor(scene: Phaser.Scene, grid: AlignGrid) {
         this.scene = scene;
-        const dropArea = grid.getArea(16, 1, 2, 4);
-        this.dropzone = new DropZone(scene, dropArea.x, dropArea.y, dropArea.width, dropArea.height, 'trash');
+        this.dropzone = grid.placeDropZone(16, 1, 2, 4, 'trash');
         this.zone = this.dropzone.zone;
-        grid.placeAt(16.3, 1, this.dropzone.sprite, 1.4);
 
         let openTrash = (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, zone: GameObjects.Zone) => {
             if (zone === this.zone) {

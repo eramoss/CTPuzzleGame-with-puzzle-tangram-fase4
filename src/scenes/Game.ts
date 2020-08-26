@@ -40,7 +40,7 @@ export default class Game extends Scene {
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
-    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 202, frameHeight: 265 });
+    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 199, frameHeight: 265 });
 
     this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
@@ -61,22 +61,22 @@ export default class Game extends Scene {
 
     this.sounds = new Sounds(this)
 
-    this.grid.addImage(1, 4, 'ground', 17);
+    this.grid.addImage(1, 5, 'ground', 17);
     this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 0, 2, 0, 0, 1],
       [0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
-      [0, 0, 0, 0, 1, 0, 0, 1],
+      [1, 0, 0, 0, 1, 1, 0, 1],
+      [1, 0, 1, 1, 1, 0, 0, 1],
+      [1, 0, 1, 2, 1, 2, 0, 1],
+      [1, 0, 1, 0, 1, 1, 0, 1],
+      [1, 0, 0, 0, 1, 2, 0, 1],
+      [1, 0, 0, 0, 1, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
     ];
 
-    const cell = this.grid.getCell(1, 4);
+    const cell = this.grid.getCell(1, 5);
     this.matrix = new Matrix(this,
       obstaclesMatrix,
       cell.x + this.grid.cellWidth * 17 / 2, cell.y, this.grid.cellWidth * 1.06);
@@ -85,15 +85,15 @@ export default class Game extends Scene {
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
       return this.add.image(x, y + (10 * this.grid.scale), 'block').setScale(this.grid.scale)
     };
-    // spriteCreateFunctions[2] = (x: integer, y: integer) => {
-    //   this.anims.create({
-    //     key: 'gold-spining',
-    //     frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-    //     frameRate: 7,
-    //     repeat: -1
-    //   })
-    //   return this.add.sprite(x, y + 10, 'coin-gold').play('gold-spining').setScale(this.grid.scale);
-    // }
+    spriteCreateFunctions[2] = (x: integer, y: integer) => {
+      this.anims.create({
+        key: 'gold-spining',
+        frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+        frameRate: 7,
+        repeat: -1
+      })
+      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale);
+    }
 
     let initGame = () => {
       this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)

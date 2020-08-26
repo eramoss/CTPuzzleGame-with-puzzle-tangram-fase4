@@ -21,7 +21,8 @@ export default class CodeEditor {
   grid: AlignGrid;
   trash: Trash;
   cellBaseX = 19
-  cellBaseY = 14
+  cellBaseY = 18
+  clickTime: number = this.getTime()
 
   constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -81,9 +82,13 @@ export default class CodeEditor {
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
       commandSprite.on('pointerdown', _ => {
         this.dropZone.highlight()
+        this.clickTime = this.getTime()
       });
-      commandSprite.on('pointerup', (event) => {
+      commandSprite.on('pointerup', _ => {
         this.dropZone.highlight(false)
+        if (this.getTime() - this.clickTime < 100) {
+          this.addCommandToProgram(commandSprite)
+        }
       });
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
@@ -107,15 +112,19 @@ export default class CodeEditor {
         if (this.trash.spriteIsHover(commandSprite)) {
           this.removeCommandFromProgram(commandSprite)
         } else {
-          this.sounds.drop();
-          this.addCommandToProgram(commandSprite, this.dropZone);
+          this.addCommandToProgram(commandSprite);
         }
       })
     })
   }
 
-  private addCommandToProgram(command: Phaser.GameObjects.Sprite, dropZone: DropZone) {
-    this.program.addCommand(command, dropZone.zone)
+  getTime(): number {
+    return new Date().getTime()
+  }
+
+  private addCommandToProgram(command: Phaser.GameObjects.Sprite) {
+    this.sounds.drop();
+    this.program.addCommand(command, this.dropZone.zone)
   }
 
   private removeCommandFromProgram(command: Phaser.GameObjects.Sprite) {
@@ -123,9 +132,7 @@ export default class CodeEditor {
   }
 
   private createDropZone() {
-    const rect: Phaser.Geom.Rectangle = this.grid.getArea(18.5, 1, 7, 12);
-    this.dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, 'drop-zone');
-    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7, 12);
+    this.dropZone = this.grid.placeDropZone(18.5, 1, 7, 16, 'drop-zone')
   }
 
   private createStartStopButtons() {

@@ -5,6 +5,7 @@ import DropZone from './DropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import Command from '../program/Command';
+import Trash from './Trash';
 
 export default class CodeEditor {
 
@@ -18,9 +19,9 @@ export default class CodeEditor {
   controlsY: number = 177;
   controlsScale: number;
   grid: AlignGrid;
+  trash: Trash;
   cellBaseX = 19
   cellBaseY = 14
-  timeBefore = new Date().getTime()
 
   constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -28,6 +29,7 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
     this.grid.addImage(this.cellBaseX, this.cellBaseY, 'controls', 6, 6);
+    this.trash = new Trash(this.scene, grid);
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
     this.createDropZone();
@@ -54,69 +56,72 @@ export default class CodeEditor {
     return commands.filter(c => c.texture.key === textureName)[0]
   }
 
-  private createDraggableProgramCommands(commandName:string = null) {
+  private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right']
     if (commandName) {
-      commandNames = commandNames.filter(c=>c == commandName)
+      commandNames = commandNames.filter(c => c == commandName)
     }
     const commands: Phaser.GameObjects.Sprite[] = commandNames.map(commandName => commandGroup.get(0, 0, commandName))
 
     console.log('COMMAND_NAMES', commandNames);
 
     let positions = {
-      'arrow-left': {x: this.cellBaseX, y: this.cellBaseY},
-      'arrow-up': {x: this.cellBaseX+3, y: this.cellBaseY},
-      'arrow-down': {x: this.cellBaseX, y: this.cellBaseY+3*0.85},
-      'arrow-right': {x: this.cellBaseX+3, y: this.cellBaseY+3*0.85},
+      'arrow-left': { x: this.cellBaseX, y: this.cellBaseY },
+      'arrow-up': { x: this.cellBaseX + 3, y: this.cellBaseY },
+      'arrow-down': { x: this.cellBaseX, y: this.cellBaseY + 3 * 0.85 },
+      'arrow-right': { x: this.cellBaseX + 3, y: this.cellBaseY + 3 * 0.85 },
     }
     Object.getOwnPropertyNames(positions).forEach(key => {
       let position = positions[key]
-      this.grid.placeAt(position.x, position.y, this.getByTextureName(commands, key), 3);  
+      this.grid.placeAt(position.x, position.y, this.getByTextureName(commands, key), 3);
     });
-    
-    commands.forEach((command: Phaser.GameObjects.Sprite) => {
-      this.scene.input.setDraggable(command.setInteractive({ cursor: 'grab' }));
-      command.on('pointerdown', _ => {
-        this.timeBefore = new Date().getTime()
+
+    commands.forEach((commandSprite: Phaser.GameObjects.Sprite) => {
+      this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
+      commandSprite.on('pointerdown', _ => {
         this.dropZone.highlight()
       });
-      command.on('pointerup', _ => {
-        if(new Date().getTime() - this.timeBefore < 100){
-          // Simulate click
-          this.addCommandToProgram(command, this.dropZone);
-        }
+      commandSprite.on('pointerup', (event) => {
         this.dropZone.highlight(false)
       });
-      command.on('pointerover', _ => {
+      commandSprite.on('pointerover', _ => {
         this.sounds.hover();
-        command.setScale(this.grid.scale);
+        commandSprite.setScale(this.grid.scale);
       });
-      command.on('pointerout', _ => {
-        command.setScale(this.grid.scale * 0.85);
+      commandSprite.on('pointerout', _ => {
+        commandSprite.setScale(this.grid.scale * 0.85);
       });
-      command.on('dragstart', _ => {
+      commandSprite.on('dragstart', _ => {
         // Não deixa acabar os comandos
         this.sounds.drag();
-        this.createDraggableProgramCommands(command.texture.key);
-        command.setScale(this.grid.scale * 1.2)
+        this.createDraggableProgramCommands(commandSprite.texture.key);
+        commandSprite.setScale(this.grid.scale * 1.2)
       })
-      command.on('drop', _ => {
-        this.sounds.drop();
-        this.addCommandToProgram(command, this.dropZone);
+      commandSprite.on('dragend', _ => {
+        commandSprite.setScale(this.grid.scale * 0.75);
+        if (this.trash.contains(commandSprite)) {
+          this.removeCommandFromProgram(commandSprite)
+        } else {
+          this.sounds.drop();
+          this.addCommandToProgram(commandSprite, this.dropZone);
+        }
       })
     })
   }
 
-  private addCommandToProgram(command:Phaser.GameObjects.Sprite, dropZone:DropZone){
-    command.setScale(this.grid.scale * 0.75);
-        this.program.addCommand(command, dropZone.zone)
+  private addCommandToProgram(command: Phaser.GameObjects.Sprite, dropZone: DropZone) {
+    this.program.addCommand(command, dropZone.zone)
+  }
+
+  private removeCommandFromProgram(command: Phaser.GameObjects.Sprite) {
+    this.program.removeCommandBySprite(command);
   }
 
   private createDropZone() {
     const rect: Phaser.Geom.Rectangle = this.grid.getArea(18.5, 1, 7, 12);
     this.dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, 'drop-zone');
-    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7,12);
+    this.grid.placeAt(18.5, 1, this.dropZone.sprite, 7, 12);
   }
 
   private createStartStopButtons() {

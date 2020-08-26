@@ -49,9 +49,10 @@ export default class AlignGrid {
         this.graphics.strokePath();
     }
 
-    addImage(x: number, y: number, key: string, colspan: number = null, rowspan: number = null) {
+    addImage(x: number, y: number, key: string, colspan: number = null, rowspan: number = null): Phaser.GameObjects.GameObject {
         let image = this.scene.add.image(0, 0, key);
         this.placeAt(x, y, image, colspan, rowspan);
+        return image;
     }
 
     getCell(cellHorizontalNumber: number, cellVerticalNumber: number): Phaser.Geom.Point {
@@ -69,7 +70,7 @@ export default class AlignGrid {
     }
 
     placeAt(cellHorizontalNumber: number, cellVerticalNumber: number, obj: Phaser.GameObjects.Image | Phaser.GameObjects.Sprite, colspan: number = null, rowspan: number = null) {
-        if(obj != null){
+        if (obj != null) {
             const point: Phaser.Geom.Point = this.getCell(cellHorizontalNumber, cellVerticalNumber)
             if (colspan) {
                 obj.displayWidth = this.cellWidth * colspan;

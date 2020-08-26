@@ -26,16 +26,25 @@ export default class Program {
 
   addCommand(sprite: GameObjects.Sprite, dropZone: Phaser.GameObjects.Zone) {
     this.dropZone = dropZone;
-    const command = new Command(this.scene, sprite, 'x');
-    this.commands.push(command);
-    this.findBestPosition(command);
-    command.onRemoveCommand = (command: Command) => {
-      this.sounds.remove();
-      this.removeCommand(command);
+    let command = this.findCommandBySprite(sprite);
+    if (!command) {
+      command = new Command(this.scene, sprite);
+      this.commands.push(command);
     }
+    console.log('ADD_REMOVE_COMMANDS', this.commands)
+    this.allocateInProgramArea(command);
   }
 
-  findBestPosition(command: Command) {
+  private findCommandBySprite(sprite: GameObjects.Sprite): Command {
+    const commands = this.commands.filter(c => c.sprite === sprite);
+    let command: Command;
+    if (commands.length > 0) {
+      command = commands[0]
+    }
+    return command;
+  }
+
+  allocateInProgramArea(command: Command) {
     const index = this.commands.indexOf(command);
     const spriteWidth = command.sprite.displayWidth * 0.6;
     const spriteHeight = command.sprite.displayHeight * 0.6;
@@ -50,19 +59,28 @@ export default class Program {
     let y = this.dropZone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
 
-    if(this.scene.game.config.physics.arcade?.debug){
+    if (this.scene.game.config.physics.arcade?.debug) {
       const g = this.scene.add.graphics();
       g.fillStyle(0xff0f0f);
       g.fillRect(this.dropZone.x, this.dropZone.y, spriteWidth, spriteHeight);
     }
   }
 
+  removeCommandBySprite(commandSprite: GameObjects.Sprite) {
+    let command = this.findCommandBySprite(commandSprite);
+    if (command) {
+      this.removeCommand(command);
+    }
+  }
+
   removeCommand(command: Command) {
-    command.removeSelf();
+    this.scene.children.remove(command.sprite);
+    this.sounds.remove();
     let index = this.commands.indexOf(command);
     this.commands.splice(index, 1);
+    console.log('ADD_REMOVE_COMMANDS', this.commands)
     this.commands.forEach((command: Command) => {
-      this.findBestPosition(command);
+      this.allocateInProgramArea(command);
     })
   }
 }

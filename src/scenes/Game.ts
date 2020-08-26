@@ -40,6 +40,7 @@ export default class Game extends Scene {
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
+    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 180, frameHeight: 273 });
 
     this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');

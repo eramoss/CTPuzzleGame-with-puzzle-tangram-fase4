@@ -8,8 +8,14 @@ import Game from './scenes/Game'
 import GameOver from './scenes/GameOver'
 
 //https://www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser
+let proportionHeightByWidth = 0.50
 let width = window.innerWidth
-let height = window.innerWidth * 0.58
+let height = width * proportionHeightByWidth
+
+if (height > window.innerHeight) {
+  height = window.innerHeight
+  width = height * proportionHeightByWidth * 3
+}
 
 export default new Phaser.Game({
   type: Phaser.AUTO,
@@ -25,7 +31,7 @@ export default new Phaser.Game({
       gravity: {
         y: 0
       },
-      //debug: true
+      debug: false
     }
   }
 })

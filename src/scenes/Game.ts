@@ -94,9 +94,10 @@ export default class Game extends Scene {
       })
       return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale);
     }
+    this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
 
     let initGame = () => {
-      this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
+      //this.mazeModel.clear();
       this.mazeModel.putSprite(0, 0, this.dude.character)
       this.dude.setPosition(0, 0);
       this.mazeModel.updateBringFront();

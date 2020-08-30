@@ -8,8 +8,8 @@ import Game from './scenes/Game'
 import GameOver from './scenes/GameOver'
 
 //https://www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser
-let proportionHeightByWidth = 0.50
-let width = window.innerWidth
+let proportionHeightByWidth = 0.58
+let width = window.innerWidth * 0.85
 let height = width * proportionHeightByWidth
 
 if (height > window.innerHeight) {

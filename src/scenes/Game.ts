@@ -52,6 +52,7 @@ export default class Game extends Scene {
 
   create() {
     this.input.setDefaultCursor('pointer');
+    this.sounds = new Sounds(this)
 
     this.grid = new AlignGrid(
       this, 26, 26,
@@ -59,24 +60,25 @@ export default class Game extends Scene {
       this.game.config.height as number
     );
 
-    this.sounds = new Sounds(this)
-
-    this.grid.addImage(1, 5, 'ground', 17);
+    let groundCol = 4.5
+    let groundRow = 5
+    
+    this.grid.addImage(groundCol, groundRow, 'ground', 17);
     this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 1, 1, 0, 1],
-      [1, 0, 1, 1, 1, 0, 0, 1],
-      [1, 0, 1, 2, 1, 2, 0, 1],
-      [1, 0, 1, 0, 1, 1, 0, 1],
-      [1, 0, 0, 0, 1, 2, 0, 1],
-      [1, 0, 0, 0, 1, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
     ];
 
-    const cell = this.grid.getCell(1, 5);
+    const cell = this.grid.getCell(groundCol, groundRow);
     this.matrix = new Matrix(this,
       obstaclesMatrix,
       cell.x + this.grid.cellWidth * 17 / 2, cell.y, this.grid.cellWidth * 1.06);

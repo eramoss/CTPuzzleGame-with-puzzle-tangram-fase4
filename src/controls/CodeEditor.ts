@@ -20,8 +20,8 @@ export default class CodeEditor {
   controlsScale: number;
   grid: AlignGrid;
   trash: Trash;
-  cellBaseX = 19
-  cellBaseY = 18
+  cellBaseX = 0.5
+  cellBaseY = 4
   clickTime: number = this.getTime()
 
   constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
@@ -29,7 +29,7 @@ export default class CodeEditor {
     this.program = program;
     this.scene = scene;
     this.grid = grid;
-    this.grid.addImage(this.cellBaseX, this.cellBaseY, 'controls', 6, 6);
+    this.grid.addImage(this.cellBaseX, this.cellBaseY, 'controls', 3);
     this.trash = new Trash(this.scene, grid);
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands()
@@ -132,7 +132,7 @@ export default class CodeEditor {
   }
 
   private createDropZone() {
-    this.dropZone = this.grid.placeDropZone(18.5, 1, 7, 16, 'drop-zone')
+    this.dropZone = this.grid.placeDropZone(1, 21, 24, 4, 'drop-zone')
   }
 
   private createStartStopButtons() {

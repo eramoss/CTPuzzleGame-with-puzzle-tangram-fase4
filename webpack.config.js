@@ -5,12 +5,10 @@ const dist = path.resolve(__dirname, 'dist')
 
 module.exports = {
   entry: './src/main.ts',
-  devtool: 'inline-source-map',
+  //devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    compress: true,
     port: 9000,
-    hot: true
   },
   module: {
     rules: [

@@ -1,14 +1,16 @@
 import AlignGrid from "../geom/AlignGrid";
 import DropZone from "./DropZone";
 import { GameObjects } from "phaser";
+import { createDropZone } from "../utils/Utils";
 
 export default class Trash {
     scene: Phaser.Scene;
     zone: Phaser.GameObjects.Zone;
     dropzone: DropZone;
-    constructor(scene: Phaser.Scene, grid: AlignGrid) {
+    constructor(scene: Phaser.Scene, grid: AlignGrid, cellx: number, celly: number, colspan: number, rowspan: number) {
         this.scene = scene;
-        this.dropzone = grid.placeDropZone(16, 1, 2, 4, 'trash');
+
+        this.dropzone = createDropZone(grid, cellx, celly, colspan, rowspan, 'trash');
         this.zone = this.dropzone.zone;
 
         let openTrash = (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, zone: GameObjects.Zone) => {
@@ -28,11 +30,11 @@ export default class Trash {
         scene.input.on('drop', closeTrash)
     }
 
-    open(){
+    open() {
         this.dropzone.highlight();
     }
 
-    close(){
+    close() {
         this.dropzone.highlight(false);
     }
 

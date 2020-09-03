@@ -4,8 +4,8 @@ import Program from '../program/Program';
 import DropZone from './DropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
-import Command from '../program/Command';
 import Trash from './Trash';
+import FlexFlow from '../geom/FlexFlow';
 
 export default class CodeEditor {
 
@@ -15,25 +15,34 @@ export default class CodeEditor {
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
   sounds: Sounds;
-  controlsX: number = 857;
-  controlsY: number = 177;
   controlsScale: number;
-  grid: AlignGrid;
   trash: Trash;
-  cellBaseX = 0.5
-  cellBaseY = 4
+  scale: number
   clickTime: number = this.getTime()
+  arrowsGrid: FlexFlow;
+  grid: AlignGrid;
 
   constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
     this.program = program;
     this.scene = scene;
     this.grid = grid;
-    this.grid.addImage(this.cellBaseX, this.cellBaseY, 'controls', 3);
-    this.trash = new Trash(this.scene, grid);
+
+    const controlsImage = grid.addImage(0.5, 3.3, 'controls', 3);
+    this.arrowsGrid = new FlexFlow(scene)
+    this.arrowsGrid.flow = 'column'
+
+    this.arrowsGrid.x = controlsImage.x - controlsImage.displayWidth / 2
+    this.arrowsGrid.y = controlsImage.y - controlsImage.displayHeight / 2
+    this.arrowsGrid.width = controlsImage.displayWidth
+    this.arrowsGrid.height = controlsImage.displayHeight
+
+    this.scale = grid.scale
+    this.trash = new Trash(this.scene, this.grid, 22.5, 11.5, 2.5, 4);
     this.createGlobalDragLogic();
+
     this.createDraggableProgramCommands()
-    this.createDropZone();
+    this.dropZone = program.dropZone
     this.createStartStopButtons();
   }
 
@@ -63,22 +72,24 @@ export default class CodeEditor {
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
-    const commands: Phaser.GameObjects.Sprite[] = commandNames.map(commandName => commandGroup.get(0, 0, commandName))
+    const commands: Phaser.GameObjects.Sprite[] = commandNames
+      .map(commandName => commandGroup.get(0, 0, commandName))
 
     console.log('COMMAND_NAMES', commandNames);
 
     let positions = {
-      'arrow-left': { x: this.cellBaseX, y: this.cellBaseY },
-      'arrow-up': { x: this.cellBaseX + 3, y: this.cellBaseY },
-      'arrow-down': { x: this.cellBaseX, y: this.cellBaseY + 3 * 0.85 },
-      'arrow-right': { x: this.cellBaseX + 3, y: this.cellBaseY + 3 * 0.85 },
+      'arrow-left': 0,
+      'arrow-right': 1,
+      'arrow-up': 2,
+      'arrow-down': 3,
     }
     Object.getOwnPropertyNames(positions).forEach(key => {
       let position = positions[key]
-      this.grid.placeAt(position.x, position.y, this.getByTextureName(commands, key), 3);
+      this.arrowsGrid.setChildAt(this.getByTextureName(commands, key), position)
     });
 
     commands.forEach((commandSprite: Phaser.GameObjects.Sprite) => {
+      commandSprite.setScale(this.scale);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
       commandSprite.on('pointerdown', _ => {
         this.dropZone.highlight()
@@ -92,21 +103,21 @@ export default class CodeEditor {
       });
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
-        commandSprite.setScale(this.grid.scale);
+        commandSprite.setScale(this.scale * 1.2);
       });
       commandSprite.on('pointerout', _ => {
-        commandSprite.setScale(this.grid.scale * 0.85);
+        commandSprite.setScale(this.scale);
       });
       commandSprite.on('dragstart', _ => {
         // Não deixa acabar os comandos
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
-        commandSprite.setScale(this.grid.scale * 1.2)
+        commandSprite.setScale(this.scale * 1.2)
         this.trash.open();
       })
       commandSprite.on('dragend', _ => {
         this.trash.close();
-        commandSprite.setScale(this.grid.scale * 0.75);
+        commandSprite.setScale(this.scale);
       })
       commandSprite.on('drop', _ => {
         if (this.trash.spriteIsHover(commandSprite)) {
@@ -124,15 +135,11 @@ export default class CodeEditor {
 
   private addCommandToProgram(command: Phaser.GameObjects.Sprite) {
     this.sounds.drop();
-    this.program.addCommand(command, this.dropZone.zone)
+    this.program.addCommand(command)
   }
 
   private removeCommandFromProgram(command: Phaser.GameObjects.Sprite) {
     this.program.removeCommandBySprite(command);
-  }
-
-  private createDropZone() {
-    this.dropZone = this.grid.placeDropZone(1, 21, 24, 4, 'drop-zone')
   }
 
   private createStartStopButtons() {
@@ -143,8 +150,8 @@ export default class CodeEditor {
       this.sounds.stop();
       this.fnOnClickStop();
     })
-    this.grid.placeAt(1, 1, btnPlay.sprite, 1.7)
-    this.grid.placeAt(3, 1, btnStop.sprite, 1.7)
+    this.grid.placeAt(22.5, 4.2, btnPlay.sprite, 2.3)
+    this.grid.placeAt(22.5, 8, btnStop.sprite, 2.3)
 
   }
 

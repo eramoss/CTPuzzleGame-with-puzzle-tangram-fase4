@@ -2,11 +2,13 @@ import { GameObjects } from 'phaser'
 import Command from './Command'
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
+import DropZone from '../controls/DropZone';
+import drawRect, { createDropZone } from '../utils/Utils';
 
 export default class Program {
   commands: Command[];
   scene: Phaser.Scene;
-  dropZone: GameObjects.Zone;
+  dropZone: DropZone;
   sounds: Sounds;
   grid: AlignGrid;
 
@@ -15,17 +17,17 @@ export default class Program {
     this.scene = scene;
     this.grid = grid;
     this.commands = new Array();
+    this.dropZone = createDropZone(this.grid, 0.5, 17.5, 25, 4, 'drop-zone');
   }
 
-  addCommands(commands: string[], dropZone: Phaser.GameObjects.Zone) {
+  addCommands(commands: string[]) {
     commands.forEach(command => {
       const commandSprite = this.scene.add.sprite(0, 0, `arrow-${command}`)
-      this.addCommand(commandSprite, dropZone)
+      this.addCommand(commandSprite)
     })
   }
 
-  addCommand(sprite: GameObjects.Sprite, dropZone: Phaser.GameObjects.Zone) {
-    this.dropZone = dropZone;
+  addCommand(sprite: GameObjects.Sprite) {
     let command = this.findCommandBySprite(sprite);
     if (!command) {
       command = new Command(this.scene, sprite);
@@ -45,27 +47,23 @@ export default class Program {
   }
 
   allocateInProgramArea(command: Command) {
+    const zone = this.dropZone.zone;
     const index = this.commands.indexOf(command);
-    const spriteWidth = command.sprite.width * this.grid.scale * 0.6;
-    const spriteHeight = command.sprite.height * this.grid.scale * 0.6;
+    const spriteWidth = command.sprite.width * this.grid.scale;
+    const spriteHeight = command.sprite.height * this.grid.scale * 1.4;
 
     console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
 
-    const cols: integer = Math.floor(this.dropZone.width / spriteWidth);
-    const rows: integer = Math.floor(this.dropZone.height / spriteHeight);
+    const cols: integer = Math.floor(zone.width / spriteWidth);
+    const rows: integer = Math.floor(zone.height / spriteHeight);
 
-    const tileWidth = spriteWidth + (this.dropZone.width - spriteWidth * cols) / cols
-    const tileHeight = spriteHeight + (this.dropZone.height - spriteHeight * rows) / rows
+    const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols
+    const tileHeight = spriteHeight + (zone.height - spriteHeight * rows) / rows
 
-    let x = this.dropZone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
-    let y = this.dropZone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
+    let x = zone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
+    let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
-
-    if (this.scene.game.config.physics.arcade?.debug) {
-      const g = this.scene.add.graphics();
-      g.fillStyle(0xff0f0f);
-      g.fillRect(this.dropZone.x, this.dropZone.y, spriteWidth, spriteHeight);
-    }
+    drawRect(this.scene, zone.x, zone.y, spriteWidth, spriteHeight)
   }
 
   removeCommandBySprite(commandSprite: GameObjects.Sprite) {

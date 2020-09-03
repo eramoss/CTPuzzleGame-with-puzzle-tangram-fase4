@@ -56,12 +56,7 @@ export default class AlignGrid {
         return image;
     }
 
-    placeDropZone(x: number, y: number, width: number, height: number, texture: string): DropZone {
-        const rect: Phaser.Geom.Rectangle = this.getArea(x, y, width, height);
-        const dropZone = new DropZone(this.scene, rect.x, rect.y, rect.width, rect.height, texture);
-        this.placeAt(x, y, dropZone.sprite, width, height);
-        return dropZone;
-    }
+    
 
     getCell(cellHorizontalNumber: number, cellVerticalNumber: number): Phaser.Geom.Point {
         let x = this.cellWidth * cellHorizontalNumber;

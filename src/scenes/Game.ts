@@ -6,6 +6,7 @@ import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
+import FlexFlow from '../geom/FlexFlow'
 
 export default class Game extends Scene {
 
@@ -24,10 +25,10 @@ export default class Game extends Scene {
   }
 
   preload() {
-    this.load.image('arrow-up', 'assets/ct/arrowUpRight.png');
-    this.load.image('arrow-down', 'assets/ct/arrowDownLeft.png');
-    this.load.image('arrow-right', 'assets/ct/arrowDownRight.png');
-    this.load.image('arrow-left', 'assets/ct/arrowUpLeft.png');
+    this.load.image('arrow-up', 'assets/ct/arrow_up.png');
+    this.load.image('arrow-down', 'assets/ct/arrow_down.png');
+    this.load.image('arrow-right', 'assets/ct/arrow_right.png');
+    this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('scene', 'assets/ct/programming_scene.png');
     this.load.image('ground', 'assets/ct/ground_sand.png');
     this.load.image('controls', 'assets/ct/controls_sand.png');
@@ -36,11 +37,11 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 320, frameHeight: 316 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 1278, frameHeight: 130 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
-    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 199, frameHeight: 265 });
+    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 119 });
 
     this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
@@ -51,19 +52,20 @@ export default class Game extends Scene {
   }
 
   create() {
-    this.input.setDefaultCursor('pointer');
-    this.sounds = new Sounds(this)
 
     this.grid = new AlignGrid(
-      this, 26, 26,
+      this, 26, 22,
       this.game.config.width as number,
       this.game.config.height as number
     );
+    
+    this.input.setDefaultCursor('pointer');
+    this.sounds = new Sounds(this)
 
     let groundCol = 4.5
-    let groundRow = 5
-    
+    let groundRow = 3
     this.grid.addImage(groundCol, groundRow, 'ground', 17);
+
     this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
@@ -145,7 +147,7 @@ export default class Game extends Scene {
     this.codeEditor.onClickStop(() => {
       this.dude.stop();
       initGame();
-    })
+    }) 
 
     //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
     /* this.cursors = this.input.keyboard.createCursorKeys()
@@ -161,7 +163,7 @@ export default class Game extends Scene {
   }
 
   update() {
-    this.dude.update()
+    //this.dude.update()
   }
 
   /* updateCurrentObjectPosition() {

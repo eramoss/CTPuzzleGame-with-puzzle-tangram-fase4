@@ -6,6 +6,7 @@ import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import Trash from './Trash';
 import FlexFlow from '../geom/FlexFlow';
+import { createDropZone } from '../utils/Utils';
 
 export default class CodeEditor {
 
@@ -36,6 +37,7 @@ export default class CodeEditor {
     this.arrowsGrid.y = controlsImage.y - controlsImage.displayHeight / 2
     this.arrowsGrid.width = controlsImage.displayWidth
     this.arrowsGrid.height = controlsImage.displayHeight
+
 
     this.scale = grid.scale
     this.trash = new Trash(this.scene, this.grid, 22.5, 11.5, 2.5, 4);
@@ -95,12 +97,6 @@ export default class CodeEditor {
         this.dropZone.highlight()
         this.clickTime = this.getTime()
       });
-      commandSprite.on('pointerup', _ => {
-        this.dropZone.highlight(false)
-        if (this.getTime() - this.clickTime < 100) {
-          this.addCommandToProgram(commandSprite)
-        }
-      });
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
         commandSprite.setScale(this.scale * 1.2);
@@ -115,6 +111,14 @@ export default class CodeEditor {
         commandSprite.setScale(this.scale * 1.2)
         this.trash.open();
       })
+      this.scene.input.on('pointerup', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
+        if (obj == commandSprite) {
+          this.dropZone.highlight(false)
+          if (this.getTime() - this.clickTime < 100) {
+            this.addCommandToProgram(commandSprite)
+          }
+        }
+      });
       this.scene.input.on('dragend', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
         if (obj == commandSprite) {
           if (!dropZone) {
@@ -123,7 +127,6 @@ export default class CodeEditor {
         }
       });
       commandSprite.on('dragend', (teste, teste2) => {
-        console.log(teste2);
         this.trash.close();
         commandSprite.setScale(this.scale);
       })

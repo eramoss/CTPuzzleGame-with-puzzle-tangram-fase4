@@ -115,7 +115,15 @@ export default class CodeEditor {
         commandSprite.setScale(this.scale * 1.2)
         this.trash.open();
       })
-      commandSprite.on('dragend', _ => {
+      this.scene.input.on('dragend', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
+        if (obj == commandSprite) {
+          if (!dropZone) {
+            this.removeCommandFromProgram(commandSprite)
+          }
+        }
+      });
+      commandSprite.on('dragend', (teste, teste2) => {
+        console.log(teste2);
         this.trash.close();
         commandSprite.setScale(this.scale);
       })

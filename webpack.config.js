@@ -34,7 +34,7 @@ module.exports = {
   },
   output: {
     pathinfo: false,
-    filename: 'bundle.js',
+    filename: '[hash]bundle.js',
     path: dist,
   },
   plugins: [

@@ -83,4 +83,8 @@ export default class Program {
       this.allocateInProgramArea(command);
     })
   }
+
+  clear() {
+    this.commands.splice(0, this.commands.length)
+  }
 }

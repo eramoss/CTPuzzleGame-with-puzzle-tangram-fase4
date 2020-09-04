@@ -46,6 +46,10 @@ export default class CodeEditor {
     this.createDraggableProgramCommands()
     this.dropZone = program.dropZone
     this.createStartStopButtons();
+
+    this.trash.onClick(_=>{
+      program.clear()
+    })
   }
 
   private createGlobalDragLogic() {
@@ -111,18 +115,18 @@ export default class CodeEditor {
         commandSprite.setScale(this.scale * 1.2)
         this.trash.open();
       })
-      this.scene.input.on('pointerup', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
-        if (obj == commandSprite) {
+      commandSprite.on('pointerup', _ => {
           this.dropZone.highlight(false)
-          if (this.getTime() - this.clickTime < 100) {
+          if (this.getTime() - this.clickTime < 700) {
             this.addCommandToProgram(commandSprite)
           }
-        }
       });
       this.scene.input.on('dragend', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
-        if (obj == commandSprite) {
-          if (!dropZone) {
-            this.removeCommandFromProgram(commandSprite)
+        if (this.getTime() - this.clickTime > 700) {
+          if (obj == commandSprite) {
+            if (!dropZone) {
+              this.removeCommandFromProgram(commandSprite)
+            }
           }
         }
       });

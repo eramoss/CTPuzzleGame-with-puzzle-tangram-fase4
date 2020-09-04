@@ -42,4 +42,8 @@ export default class Trash {
         const rect: Phaser.Geom.Rectangle = this.zone.getBounds();
         return rect.contains(obj.x, obj.y);
     }
+
+    onClick(fn: (_: any) => void) {
+        this.dropzone.sprite.on('click', fn)
+    }
 }

@@ -6,7 +6,6 @@ import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
-import FlexFlow from '../geom/FlexFlow'
 
 export default class Game extends Scene {
 
@@ -70,14 +69,14 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 1, 0, 0, 0, 0, 0],
-      [1, 0, 1, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 1],
+      [1, 1, 1, 1, 1, 1, 1, 1],
     ];
 
     const cell = this.grid.getCell(groundCol, groundRow);
@@ -102,8 +101,8 @@ export default class Game extends Scene {
 
     let initGame = () => {
       //this.mazeModel.clear();
-      this.mazeModel.putSprite(0, 0, this.dude.character)
-      this.dude.setPosition(0, 0);
+      this.mazeModel.putSprite(1, 3, this.dude.character)
+      this.dude.setPosition(1, 3);
       this.mazeModel.updateBringFront();
       this.codeEditor.highlight(-1);
     }

@@ -18,8 +18,15 @@ if (height > window.innerHeight) {
 
 export default new Phaser.Game({
   type: Phaser.AUTO,
+  //type: Phaser.CANVAS,
   width: width,
   height: height,
+  fps: {
+    smoothStep: true,
+    min: 13,
+    forceSetTimeOut: true,
+    target: 15
+  },
   scene: [Game, GameOver],
   render: {
     transparent: true,

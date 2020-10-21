@@ -46,19 +46,19 @@ export default class Dude {
     this.scene = scene;
     this.matrix = matrix;
     [
-      { key: 'walk-down', frames: [1, 2, 0] },
-      { key: 'walk-left', frames: [4, 5, 3] },
-      { key: 'walk-up', frames: [6, 7, 8] },
-      { key: 'walk-right', frames: [9, 10, 11] },
+      { key: 'walk-down', frames: [1] },
+      { key: 'walk-left', frames: [0] },
+      { key: 'walk-up', frames: [3] },
+      { key: 'walk-right', frames: [2] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
-        frames: scene.anims.generateFrameNumbers('sprite-boy', anim),
+        frames: scene.anims.generateFrameNumbers('sprite-rope', anim),
         frameRate: 7,
         repeat: 1
       });
     })
-    this.character = scene.physics.add.sprite(485, 485, 'sprite-boy');
+    this.character = scene.physics.add.sprite(485, 485, 'sprite-rope');
   }
 
   setPosition(x: number, y: number) {

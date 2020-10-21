@@ -119,25 +119,6 @@
        y1="273.18747"
        x2="191.60873"
        y2="235.43184" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3176"
-       id="linearGradient7818"
-       x1="213.91586"
-       y1="250.18547"
-       x2="216.42917"
-       y2="303.47952"
-       gradientUnits="userSpaceOnUse" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient3176"
-       id="linearGradient7824"
-       gradientUnits="userSpaceOnUse"
-       x1="213.91586"
-       y1="250.18547"
-       x2="216.42917"
-       y2="303.47952"
-       gradientTransform="matrix(0.99530465,0,0,0.84782615,0.71640892,-505.4121)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -146,9 +127,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5"
-     inkscape:cx="988.47323"
-     inkscape:cy="572.76376"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="2150.0908"
+     inkscape:cy="505.81893"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -176,7 +157,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1019,7 +1000,7 @@
     </g>
     <g
        id="g7779"
-       transform="translate(75.672706,349.65853)">
+       transform="translate(407.91419,157.28426)">
       <ellipse
          inkscape:export-ydpi="96.357773"
          inkscape:export-xdpi="96.357773"
@@ -4119,7 +4100,7 @@
        height="34.424328"
        width="338.63049"
        id="rect2914"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient7818);fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d8cb9d;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
@@ -4341,158 +4322,523 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
        inkscape:export-xdpi="95.742599"
        inkscape:export-ydpi="95.742599" />
-    <ellipse
-       ry="0.59531248"
-       rx="0.54570311"
-       cy="201.82698"
-       cx="512.06958"
-       id="ellipse7941"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path7939"
-       cx="501.03247"
-       cy="201.89229"
-       rx="0.54570311"
-       ry="0.59531248" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7835"
-       d="m 497.75849,193.0956 2.09758,8.7904 h 13.12934 l 1.97143,-8.7904 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7837"
-       d="m 497.75849,193.0956 0.83634,-10.18647 h 15.73024 l 0.63174,10.18647 z"
-       style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path7843"
-       cx="504.30206"
-       cy="196.25984"
-       rx="1.4013115"
-       ry="1.077196" />
-    <ellipse
-       ry="1.0169333"
-       rx="1.3229165"
-       cy="196.51607"
-       cx="508.13611"
-       id="ellipse7845"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <path
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path7849"
-       sodipodi:type="arc"
-       sodipodi:cx="506.16269"
-       sodipodi:cy="198.5594"
-       sodipodi:rx="2.9900599"
-       sodipodi:ry="1.6972244"
-       sodipodi:start="0"
-       sodipodi:end="3.1567639"
-       d="m 509.15275,198.5594 a 2.9900599,1.6972244 0 0 1 -1.50815,1.47411 2.9900599,1.6972244 0 0 1 -3.00305,-0.0129 2.9900599,1.6972244 0 0 1 -1.46858,-1.48693 l 2.98972,0.0258 z" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path7863"
-       cx="506.60632"
-       cy="187.57826"
-       rx="2.2324216"
-       ry="1.3725258" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7865"
-       d="m 504.85598,185.54987 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7867"
-       d="m 504.85598,185.54987 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 500.41262,188.47313 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       id="path7869"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect8192"
+       width="17.75757"
+       height="24.231598"
+       x="560.6618"
+       y="136.50017"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        inkscape:export-xdpi="95.742599"
        inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 500.41262,188.47313 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       id="path7871"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7873"
-       d="m 509.41626,188.62619 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7875"
-       d="m 509.41626,188.62619 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 504.76243,191.31559 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       id="path7877"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 504.76243,191.31559 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       id="path7879"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <ellipse
-       ry="1.3725258"
-       rx="2.2324216"
-       cy="187.0491"
-       cx="506.60632"
-       id="ellipse7881"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <g
-       id="g7969"
-       transform="matrix(1,0,0,1.1335286,11.814616,0.29244953)">
+       id="g8139"
+       transform="translate(63.227874,-42.849639)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599">
       <ellipse
-         ry="3.6380208"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse7941"
+         cx="512.06958"
+         cy="201.82698"
+         rx="0.54570311"
+         ry="0.59531248" />
+      <ellipse
+         ry="0.59531248"
+         rx="0.54570311"
+         cy="201.89229"
+         cx="501.03247"
+         id="path7939"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 497.75849,193.0956 2.09758,8.7904 h 13.12934 l 1.97143,-8.7904 z"
+         id="path7835"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 497.75849,193.0956 0.83634,-10.18647 h 15.73024 l 0.63174,10.18647 z"
+         id="path7837"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <ellipse
+         ry="1.077196"
+         rx="1.4013115"
+         cy="196.25984"
+         cx="504.30206"
+         id="path7843"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <ellipse
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse7845"
+         cx="508.13611"
+         cy="196.51607"
+         rx="1.3229165"
+         ry="1.0169333" />
+      <path
+         d="m 509.15275,198.5594 a 2.9900599,1.6972244 0 0 1 -1.50815,1.47411 2.9900599,1.6972244 0 0 1 -3.00305,-0.0129 2.9900599,1.6972244 0 0 1 -1.46858,-1.48693 l 2.98972,0.0258 z"
+         sodipodi:end="3.1567639"
+         sodipodi:start="0"
+         sodipodi:ry="1.6972244"
+         sodipodi:rx="2.9900599"
+         sodipodi:cy="198.5594"
+         sodipodi:cx="506.16269"
+         sodipodi:type="arc"
+         id="path7849"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <ellipse
+         ry="1.3725258"
+         rx="2.2324216"
+         cy="187.57826"
+         cx="506.60632"
+         id="path7863"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 504.85598,185.54987 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         id="path7865"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 504.85598,185.54987 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
+         id="path7867"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7869"
+         d="m 500.41262,188.47313 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7871"
+         d="m 500.41262,188.47313 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 509.41626,188.62619 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         id="path7873"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 509.41626,188.62619 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
+         id="path7875"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7877"
+         d="m 504.76243,191.31559 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7879"
+         d="m 504.76243,191.31559 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <ellipse
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse7881"
+         cx="506.60632"
+         cy="187.0491"
+         rx="2.2324216"
+         ry="1.3725258" />
+    </g>
+    <rect
+       y="136.50017"
+       x="578.41937"
+       height="24.231598"
+       width="17.75757"
+       id="rect8194"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599" />
+    <g
+       id="g8159"
+       transform="translate(59.018477,-43.581499)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599">
+      <g
+         transform="matrix(1,0,0,1.1335286,11.814616,0.29244953)"
+         id="g7969">
+        <ellipse
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="path7853"
+           cx="516.88049"
+           cy="175.22388"
+           rx="3.8240554"
+           ry="3.6380208" />
+        <path
+           style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 507.61941,169.74947 3.98563,8.02972 12.12767,0.42994 -1.56121,-8.45966 z"
+           id="path7839"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <path
+           style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+           d="m 507.61941,169.74947 5.79728,-7.54064 9.9094,0.19844 -1.15419,7.3422 z"
+           id="path7841"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <path
+           inkscape:export-ydpi="95.742599"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7851"
+           d="m 523.73271,178.20913 1.52409,-6.51258 -1.93071,-9.28928 -1.15419,7.3422 z"
+           style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+        <ellipse
+           ry="0.83957648"
+           rx="1.3158122"
+           cy="165.65543"
+           cx="516.92175"
+           id="ellipse7883"
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+        <path
+           style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 515.81755,164.01003 0.0333,0.34878 h 2.60222 l 0.0282,-0.34878 z"
+           id="path7885"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <path
+           inkscape:export-ydpi="95.742599"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7889"
+           d="m 511.77317,166.06726 0.0333,0.27234 h 2.60221 l 0.0282,-0.27234 z"
+           style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+           style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 518.74087,166.27269 0.0333,0.26538 h 2.60221 l 0.0282,-0.26538 z"
+           id="path7893"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <ellipse
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="ellipse7901"
+           cx="516.92175"
+           cy="165.33174"
+           rx="1.3158122"
+           ry="0.83957648" />
+        <path
+           inkscape:export-ydpi="95.742599"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7925"
+           d="m 511.77902,166.06727 1.0509,-1.66533 2.06092,0.0439 -0.47381,1.6215 z"
+           style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+        <path
+           style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+           d="m 515.84326,164.01 0.46625,-1.36973 2.31083,0.0116 -0.13907,1.35815 z"
+           id="path7927"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <path
+           style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+           d="m 518.74087,166.27269 0.47212,-1.6227 2.04439,0.0171 0.1215,1.60564 z"
+           id="path7929"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-ydpi="95.742599" />
+        <path
+           inkscape:export-ydpi="95.742599"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7931"
+           d="m 514.64555,168.32733 0.0371,0.39977 h 2.89707 l 0.0315,-0.39977 z"
+           style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        <path
+           inkscape:export-ydpi="95.742599"
+           inkscape:export-xdpi="95.742599"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+           sodipodi:nodetypes="ccccc"
+           inkscape:connector-curvature="0"
+           id="path7933"
+           d="m 514.67425,168.32726 0.51908,-1.56995 2.57268,0.0133 -0.15484,1.55667 z"
+           style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+        <ellipse
+           ry="1.3793657"
+           rx="0.5579527"
+           cy="262.8656"
+           cx="503.08978"
+           id="ellipse7943"
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           transform="matrix(0.98346679,-0.18108856,0.10843556,0.99410348,0,0)" />
+        <path
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           d="m 524.41303,170.63255 a 0.6956121,1.7590942 10.138271 0 1 0.12154,1.51681 0.6956121,1.7590942 10.138271 0 1 -0.58683,1.49852 0.6956121,1.7590942 10.138271 0 1 -0.70316,-0.0314 l 0.58786,-1.48522 z"
+           id="path7947"
+           inkscape:connector-curvature="0"
+           inkscape:transform-center-x="0.60272482"
+           inkscape:transform-center-y="-0.3820603" />
+        <ellipse
+           transform="matrix(0.98539187,-0.17030227,0.11543748,0.99331475,0,0)"
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="ellipse7950"
+           cx="501.52701"
+           cy="255.0959"
+           rx="0.32215473"
+           ry="0.74958473" />
+      </g>
+    </g>
+    <rect
+       y="136.50017"
+       x="542.90424"
+       height="24.231598"
+       width="17.75757"
+       id="rect8190"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599" />
+    <g
+       id="g8120"
+       transform="translate(66.193774,-43.428675)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599">
+      <ellipse
+         transform="scale(-1,1)"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse7971"
+         cx="-485.15411"
+         cy="199.09879"
          rx="3.8240554"
-         cy="175.22388"
-         cx="516.88049"
-         id="path7853"
+         ry="4.1238008" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 494.41519,192.89338 -3.98563,9.10192 -12.12767,0.48735 1.56121,-9.58927 z"
+         id="path7973"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 494.41519,192.89338 -5.79728,-8.54753 -9.9094,0.22494 1.15419,8.32259 z"
+         id="path7975"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7977"
+         d="m 478.30189,202.48265 -1.52409,-7.3822 1.93071,-10.52966 1.15419,8.32259 z"
+         style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <ellipse
+         transform="scale(-1,1)"
+         ry="0.95168394"
+         rx="1.3158122"
+         cy="188.25267"
+         cx="-485.11285"
+         id="ellipse7979"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 486.21705,186.38756 -0.0333,0.39536 h -2.60222 l -0.0282,-0.39536 z"
+         id="path7981"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7983"
+         d="m 490.26143,188.71949 -0.0333,0.30871 h -2.60221 l -0.0282,-0.30871 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 483.29373,188.95235 -0.0333,0.30082 h -2.60221 l -0.0282,-0.30082 z"
+         id="path7985"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <ellipse
+         transform="scale(-1,1)"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse7987"
+         cx="-485.11285"
+         cy="187.88576"
+         rx="1.3158122"
+         ry="0.95168394" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7989"
+         d="m 490.25558,188.7195 -1.0509,-1.8877 -2.06092,0.0498 0.47381,1.83801 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 486.19134,186.38753 -0.46625,-1.55263 -2.31083,0.0131 0.13907,1.5395 z"
+         id="path7991"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 483.29373,188.95235 -0.47212,-1.83937 -2.04439,0.0194 -0.1215,1.82004 z"
+         id="path7993"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7995"
+         d="m 487.38905,191.28135 -0.0371,0.45315 h -2.89707 l -0.0315,-0.45315 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path7997"
+         d="m 487.36035,191.28127 -0.51908,-1.77959 -2.57268,0.0151 0.15484,1.76453 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <ellipse
+         ry="1.5615109"
+         rx="0.56055295"
+         cy="92.073601"
+         cx="-498.08517"
+         id="ellipse7999"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         transform="matrix(-0.9789048,-0.20431688,-0.0957869,0.99540186,0,0)" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 477.62157,193.89438 a 1.9873877,0.69792074 81.386459 0 0 -0.12154,1.71935 1.9873877,0.69792074 81.386459 0 0 0.58683,1.69861 1.9873877,0.69792074 81.386459 0 0 0.70316,-0.0356 l -0.58786,-1.68354 z"
+         id="path8001"
+         inkscape:connector-curvature="0"
+         inkscape:transform-center-x="0.60272482"
+         inkscape:transform-center-y="-0.3820603" />
+      <ellipse
+         transform="matrix(-0.981346,-0.19224989,-0.10198983,0.99478544,0,0)"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse8003"
+         cx="-497.43146"
+         cy="95.755066"
+         rx="0.3234829"
+         ry="0.84841961" />
+    </g>
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect8196"
+       width="17.75757"
+       height="24.231598"
+       x="596.17694"
+       y="136.50017"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599" />
+    <g
+       id="g8188"
+       transform="translate(55.500272,-43.619413)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
+       inkscape:export-xdpi="95.742599"
+       inkscape:export-ydpi="95.742599">
+      <ellipse
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse8026"
+         cx="544.20557"
+         cy="203.13536"
+         rx="0.54570311"
+         ry="0.59531248" />
+      <ellipse
+         transform="scale(-1,1)"
+         ry="0.59531248"
+         rx="0.54570311"
+         cy="202.9015"
+         cx="-554.96777"
+         id="ellipse8068"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
          inkscape:export-ydpi="95.742599"
@@ -4500,8 +4846,8 @@
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
-         id="path7839"
-         d="m 507.61941,169.74947 3.98563,8.02972 12.12767,0.42994 -1.56121,-8.45966 z"
+         id="path8028"
+         d="m 540.9316,194.33865 2.09758,8.7904 h 13.12934 l 1.97143,-8.7904 z"
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
          inkscape:export-ydpi="95.742599"
@@ -4509,90 +4855,38 @@
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
-         id="path7841"
-         d="m 507.61941,169.74947 5.79728,-7.54064 9.9094,0.19844 -1.15419,7.3422 z"
+         id="path8030"
+         d="m 540.9316,194.33865 1.31575,-10.18647 h 14.77142 l 1.11115,10.18647 z"
          style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-      <path
-         style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 523.73271,178.20913 1.52409,-6.51258 -1.93071,-9.28928 -1.15419,7.3422 z"
-         id="path7851"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccc"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-         inkscape:export-xdpi="95.742599"
-         inkscape:export-ydpi="95.742599" />
       <ellipse
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-         id="ellipse7883"
-         cx="516.92175"
-         cy="165.65543"
-         rx="1.3158122"
-         ry="0.83957648" />
+         id="ellipse8038"
+         cx="549.77942"
+         cy="188.82133"
+         rx="2.2324216"
+         ry="1.3725258" />
       <path
          inkscape:export-ydpi="95.742599"
          inkscape:export-xdpi="95.742599"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
-         id="path7885"
-         d="m 515.81755,164.01003 0.0333,0.34878 h 2.60222 l 0.0282,-0.34878 z"
+         id="path8040"
+         d="m 548.02909,186.79292 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <path
-         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 511.77317,166.06726 0.0333,0.27234 h 2.60221 l 0.0282,-0.27234 z"
-         id="path7889"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccc"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-         inkscape:export-xdpi="95.742599"
-         inkscape:export-ydpi="95.742599" />
-      <path
          inkscape:export-ydpi="95.742599"
          inkscape:export-xdpi="95.742599"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
-         id="path7893"
-         d="m 518.74087,166.27269 0.0333,0.26538 h 2.60221 l 0.0282,-0.26538 z"
-         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      <ellipse
-         ry="0.83957648"
-         rx="1.3158122"
-         cy="165.33174"
-         cx="516.92175"
-         id="ellipse7901"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      <path
-         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 511.77902,166.06727 1.0509,-1.66533 2.06092,0.0439 -0.47381,1.6215 z"
-         id="path7925"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccccc"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-         inkscape:export-xdpi="95.742599"
-         inkscape:export-ydpi="95.742599" />
-      <path
-         inkscape:export-ydpi="95.742599"
-         inkscape:export-xdpi="95.742599"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-         sodipodi:nodetypes="ccccc"
-         inkscape:connector-curvature="0"
-         id="path7927"
-         d="m 515.84326,164.01 0.46625,-1.36973 2.31083,0.0116 -0.13907,1.35815 z"
-         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-      <path
-         inkscape:export-ydpi="95.742599"
-         inkscape:export-xdpi="95.742599"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-         sodipodi:nodetypes="ccccc"
-         inkscape:connector-curvature="0"
-         id="path7929"
-         d="m 518.74087,166.27269 0.47212,-1.6227 2.04439,0.0171 0.1215,1.60564 z"
+         id="path8042"
+         d="m 548.02909,186.79292 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
          style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="m 514.64555,168.32733 0.0371,0.39977 h 2.89707 l 0.0315,-0.39977 z"
-         id="path7931"
+         d="m 543.58573,189.71618 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         id="path8044"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccc"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
@@ -4600,414 +4894,135 @@
          inkscape:export-ydpi="95.742599" />
       <path
          style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-         d="m 514.67425,168.32726 0.51908,-1.56995 2.57268,0.0133 -0.15484,1.55667 z"
-         id="path7933"
+         d="m 543.58573,189.71618 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
+         id="path8046"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path8048"
+         d="m 552.58937,189.86924 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="95.742599"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path8050"
+         d="m 552.58937,189.86924 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 547.93554,192.55864 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
+         id="path8052"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
+         inkscape:export-xdpi="95.742599"
+         inkscape:export-ydpi="95.742599" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 547.93554,192.55864 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
+         id="path8054"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccc"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
          inkscape:export-xdpi="95.742599"
          inkscape:export-ydpi="95.742599" />
       <ellipse
-         transform="matrix(0.98346679,-0.18108856,0.10843556,0.99410348,0,0)"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-         id="ellipse7943"
-         cx="503.08978"
-         cy="262.8656"
-         rx="0.5579527"
-         ry="1.3793657" />
-      <path
-         inkscape:transform-center-y="-0.3820603"
-         inkscape:transform-center-x="0.60272482"
-         inkscape:connector-curvature="0"
-         id="path7947"
-         d="m 524.41303,170.63255 a 0.6956121,1.7590942 10.138271 0 1 0.12154,1.51681 0.6956121,1.7590942 10.138271 0 1 -0.58683,1.49852 0.6956121,1.7590942 10.138271 0 1 -0.70316,-0.0314 l 0.58786,-1.48522 z"
+         ry="1.3725258"
+         rx="2.2324216"
+         cy="188.29218"
+         cx="549.77942"
+         id="ellipse8056"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <ellipse
-         ry="0.74958473"
-         rx="0.32215473"
-         cy="255.0959"
-         cx="501.52701"
-         id="ellipse7950"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-         transform="matrix(0.98539187,-0.17030227,0.11543748,0.99331475,0,0)" />
+         ry="1.1558899"
+         rx="0.90759963"
+         cy="196.96146"
+         cx="550.13763"
+         id="path8062"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path8064"
+         d="m 541.46618,196.58237 0.69565,-0.0182 0.51457,2.03458 -0.70514,-0.004 z"
+         style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 542.3506,200.194 0.69565,-0.0182 0.51457,2.03458 -0.70514,-0.004 z"
+         id="path8066"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 557.7072,196.3485 -0.69565,-0.0182 -0.51457,2.03458 0.70514,-0.004 z"
+         id="path8070"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path8072"
+         d="m 556.82278,199.96013 -0.69565,-0.0182 -0.51457,2.03458 0.70514,-0.004 z"
+         style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="rect8082"
+         d="m 547.30918,200.02234 2.30235,-0.37418 2.19923,0.37418 0.0935,2.47645 -2.09397,-0.35634 -1.62417,0.36804 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#84634a;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#b7967c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 547.30918,200.02234 2.29066,-0.3391 2.21092,0.3391 -0.25729,-0.65729 -3.71814,0.0117 z"
+         id="path8085"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccc" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#6a503b;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 547.30918,200.02234 2.30235,-0.37418 0.19876,2.49429 -1.62417,0.36804 z"
+         id="path8087"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <ellipse
+         ry="0.25724691"
+         rx="0.53203338"
+         cy="201.45876"
+         cx="550.72821"
+         id="path8091"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path8093"
+         d="m 551.12597,201.17074 -0.81029,-0.0496 -0.0206,-0.1571 0.57878,-0.14882 -0.60772,-0.0744 0.0164,-0.22737 0.83511,0.13642 c 0,0 -0.0414,0.28112 -0.0661,0.28112 -0.0249,0 -0.49197,0.0744 -0.49197,0.0744 l 0.57878,0.008 z"
+         style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         transform="rotate(-14.710795)"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse8095"
+         cx="479.68301"
+         cy="334.48538"
+         rx="0.53203338"
+         ry="0.25724691" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path8097"
+         d="m 549.33674,201.20734 c -0.0233,0 -1.03484,0.26309 -1.03484,0.26309 l -0.15785,-0.46772 0.27477,-0.0877 -0.0116,0.3391 c 0,0 0.22217,-0.0292 0.21048,-0.0585 -0.0116,-0.0292 -0.14031,-0.34495 -0.10523,-0.34495 0.0351,0 0.19294,-0.0877 0.20463,-0.0585 0.0116,0.0292 0.0526,0.33909 0.0526,0.33909 l 0.61388,-0.1637 z"
+         style="fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 549.23735,200.61099 c -0.0233,0 -1.03484,0.26309 -1.03484,0.26309 l -0.15785,-0.46772 0.27477,-0.0877 -0.0116,0.3391 c 0,0 0.22217,-0.0292 0.21048,-0.0585 -0.0116,-0.0292 -0.14031,-0.34495 -0.10523,-0.34495 0.0351,0 0.19294,-0.0877 0.20463,-0.0585 0.0116,0.0292 0.0526,0.33909 0.0526,0.33909 l 0.61388,-0.1637 z"
+         id="path8099"
+         inkscape:connector-curvature="0" />
     </g>
-    <ellipse
-       ry="4.1238008"
-       rx="3.8240554"
-       cy="199.09879"
-       cx="-485.15411"
-       id="ellipse7971"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="scale(-1,1)" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7973"
-       d="m 494.41519,192.89338 -3.98563,9.10192 -12.12767,0.48735 1.56121,-9.58927 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7975"
-       d="m 494.41519,192.89338 -5.79728,-8.54753 -9.9094,0.22494 1.15419,8.32259 z"
-       style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 478.30189,202.48265 -1.52409,-7.3822 1.93071,-10.52966 1.15419,8.32259 z"
-       id="path7977"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="ellipse7979"
-       cx="-485.11285"
-       cy="188.25267"
-       rx="1.3158122"
-       ry="0.95168394"
-       transform="scale(-1,1)" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7981"
-       d="m 486.21705,186.38756 -0.0333,0.39536 h -2.60222 l -0.0282,-0.39536 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 490.26143,188.71949 -0.0333,0.30871 h -2.60221 l -0.0282,-0.30871 z"
-       id="path7983"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7985"
-       d="m 483.29373,188.95235 -0.0333,0.30082 h -2.60221 l -0.0282,-0.30082 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <ellipse
-       ry="0.95168394"
-       rx="1.3158122"
-       cy="187.88576"
-       cx="-485.11285"
-       id="ellipse7987"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="scale(-1,1)" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 490.25558,188.7195 -1.0509,-1.8877 -2.06092,0.0498 0.47381,1.83801 z"
-       id="path7989"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7991"
-       d="m 486.19134,186.38753 -0.46625,-1.55263 -2.31083,0.0131 0.13907,1.5395 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path7993"
-       d="m 483.29373,188.95235 -0.47212,-1.83937 -2.04439,0.0194 -0.1215,1.82004 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 487.38905,191.28135 -0.0371,0.45315 h -2.89707 l -0.0315,-0.45315 z"
-       id="path7995"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 487.36035,191.28127 -0.51908,-1.77959 -2.57268,0.0151 0.15484,1.76453 z"
-       id="path7997"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <ellipse
-       transform="matrix(-0.9789048,-0.20431688,-0.0957869,0.99540186,0,0)"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="ellipse7999"
-       cx="-498.08517"
-       cy="92.073601"
-       rx="0.56055295"
-       ry="1.5615109" />
-    <path
-       inkscape:transform-center-y="-0.3820603"
-       inkscape:transform-center-x="0.60272482"
-       inkscape:connector-curvature="0"
-       id="path8001"
-       d="m 477.62157,193.89438 a 1.9873877,0.69792074 81.386459 0 0 -0.12154,1.71935 1.9873877,0.69792074 81.386459 0 0 0.58683,1.69861 1.9873877,0.69792074 81.386459 0 0 0.70316,-0.0356 l -0.58786,-1.68354 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <ellipse
-       ry="0.84841961"
-       rx="0.3234829"
-       cy="95.755066"
-       cx="-497.43146"
-       id="ellipse8003"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="matrix(-0.981346,-0.19224989,-0.10198983,0.99478544,0,0)" />
-    <ellipse
-       ry="0.59531248"
-       rx="0.54570311"
-       cy="178.81808"
-       cx="500.69345"
-       id="ellipse8026"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="ellipse8068"
-       cx="-511.45563"
-       cy="178.58423"
-       rx="0.54570311"
-       ry="0.59531248"
-       transform="scale(-1,1)" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 497.41945,170.02139 2.09758,8.7904 h 13.12934 l 1.97143,-8.7904 z"
-       id="path8028"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 497.41945,170.02139 1.31575,-10.18647 h 14.77142 l 1.11115,10.18647 z"
-       id="path8030"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <ellipse
-       ry="1.3725258"
-       rx="2.2324216"
-       cy="164.50406"
-       cx="506.2673"
-       id="ellipse8038"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 504.51694,162.47566 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       id="path8040"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 504.51694,162.47566 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
-       id="path8042"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8044"
-       d="m 500.07358,165.39892 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8046"
-       d="m 500.07358,165.39892 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <path
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 509.07722,165.55198 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       id="path8048"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
-       d="m 509.07722,165.55198 0.0166,-2.04238 h 3.53987 l 10e-4,2.04238 z"
-       id="path8050"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8052"
-       d="m 504.42339,168.24138 0.0445,0.44399 h 3.47579 l 0.0377,-0.44399 z"
-       style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       inkscape:export-ydpi="95.742599"
-       inkscape:export-xdpi="95.742599"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8054"
-       d="m 504.42339,168.24138 0.0166,-2.04238 h 3.53987 l 0.001,2.04238 z"
-       style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="ellipse8056"
-       cx="506.2673"
-       cy="163.9749"
-       rx="2.2324216"
-       ry="1.3725258" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path8062"
-       cx="506.62552"
-       cy="172.64418"
-       rx="0.90759963"
-       ry="1.1558899" />
-    <path
-       style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 497.95403,172.26511 0.69565,-0.0182 0.51457,2.03458 -0.70514,-0.004 z"
-       id="path8064"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
-    <path
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8066"
-       d="m 498.83845,175.87674 0.69565,-0.0182 0.51457,2.03458 -0.70514,-0.004 z"
-       style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8070"
-       d="m 514.19505,172.03124 -0.69565,-0.0182 -0.51457,2.03458 0.70514,-0.004 z"
-       style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       style="fill:#70543e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 513.31063,175.64287 -0.69565,-0.0182 -0.51457,2.03458 0.70514,-0.004 z"
-       id="path8072"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
-    <path
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#84634a;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 503.79703,175.70508 2.30235,-0.37418 2.19923,0.37418 0.0935,2.47645 -2.09397,-0.35634 -1.62417,0.36804 z"
-       id="rect8082"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccc" />
-    <path
-       sodipodi:nodetypes="cccccc"
-       inkscape:connector-curvature="0"
-       id="path8085"
-       d="m 503.79703,175.70508 2.29066,-0.3391 2.21092,0.3391 -0.25729,-0.65729 -3.71814,0.0117 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#b7967c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <path
-       sodipodi:nodetypes="ccccc"
-       inkscape:connector-curvature="0"
-       id="path8087"
-       d="m 503.79703,175.70508 2.30235,-0.37418 0.19876,2.49429 -1.62417,0.36804 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#6a503b;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#6a503b;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path8091"
-       cx="507.21606"
-       cy="177.14148"
-       rx="0.53203338"
-       ry="0.25724691" />
-    <path
-       style="fill:#6a503b;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 507.61382,176.85348 -0.81029,-0.0496 -0.0206,-0.1571 0.57878,-0.14882 -0.60772,-0.0744 0.0164,-0.22737 0.83511,0.13642 c 0,0 -0.0414,0.28112 -0.0661,0.28112 -0.0249,0 -0.49197,0.0744 -0.49197,0.0744 l 0.57878,0.008 z"
-       id="path8093"
-       inkscape:connector-curvature="0" />
-    <ellipse
-       ry="0.25724691"
-       rx="0.53203338"
-       cy="299.91574"
-       cx="443.77234"
-       id="ellipse8095"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#84634a;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="rotate(-14.710795)" />
-    <path
-       style="fill:#84634a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 505.82459,176.89008 c -0.0233,0 -1.03484,0.26309 -1.03484,0.26309 l -0.15785,-0.46772 0.27477,-0.0877 -0.0116,0.3391 c 0,0 0.22217,-0.0292 0.21048,-0.0585 -0.0116,-0.0292 -0.14031,-0.34495 -0.10523,-0.34495 0.0351,0 0.19294,-0.0877 0.20463,-0.0585 0.0116,0.0292 0.0526,0.33909 0.0526,0.33909 l 0.61388,-0.1637 z"
-       id="path8097"
-       inkscape:connector-curvature="0" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path8099"
-       d="m 505.7252,176.29373 c -0.0233,0 -1.03484,0.26309 -1.03484,0.26309 l -0.15785,-0.46772 0.27477,-0.0877 -0.0116,0.3391 c 0,0 0.22217,-0.0292 0.21048,-0.0585 -0.0116,-0.0292 -0.14031,-0.34495 -0.10523,-0.34495 0.0351,0 0.19294,-0.0877 0.20463,-0.0585 0.0116,0.0292 0.0526,0.33909 0.0526,0.33909 l 0.61388,-0.1637 z"
-       style="fill:#84634a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d8cb9d;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="rect7800"
-       width="336.51382"
-       height="28.811668"
-       x="5.5173283"
-       y="259.1113"
-       ry="2.5053616" />
-    <rect
-       ry="2.5053616"
-       y="259.1113"
-       x="5.5173283"
-       height="28.811668"
-       width="336.51382"
-       id="rect7820"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d8cb9d;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <rect
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient7824);fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="rect7822"
-       width="337.0405"
-       height="29.185844"
-       x="5.1544662"
-       y="-288.11005"
-       ry="2.5378985"
-       transform="scale(1,-1)" />
   </g>
 </svg>

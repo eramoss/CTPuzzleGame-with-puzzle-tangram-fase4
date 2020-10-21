@@ -29,10 +29,10 @@ export default class Game extends Scene {
     this.load.image('arrow-right', 'assets/ct/arrow_right.png');
     this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('scene', 'assets/ct/programming_scene.png');
-    this.load.image('ground', 'assets/ct/ground_sand.png');
+    //this.load.image('ground', 'assets/ct/ground_sand.png');
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
-    this.load.image('block', 'assets/ct/obstacle_orange.png');
+    this.load.image('block', 'assets/ct/obstacle_orange_normal.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
@@ -57,32 +57,32 @@ export default class Game extends Scene {
       this.game.config.width as number,
       this.game.config.height as number
     );
-    
+
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
     let groundCol = 4.5
     let groundRow = 3
-    this.grid.addImage(groundCol, groundRow, 'ground', 17);
+    /*this.grid.addImage(groundCol, groundRow, 'ground', 17); */
 
     this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
 
     let obstaclesMatrix: number[][] = [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 1, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 2, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
     ];
 
-    const cell = this.grid.getCell(groundCol, groundRow);
     this.matrix = new Matrix(this,
+      Matrix.NORMAL,
       obstaclesMatrix,
-      cell.x + this.grid.cellWidth * 17 / 2, cell.y, this.grid.cellWidth * 1.06);
+      this.grid.width / 2, this.grid.height / 2, this.grid.cellWidth * 1.3);
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
@@ -146,7 +146,7 @@ export default class Game extends Scene {
     this.codeEditor.onClickStop(() => {
       this.dude.stop();
       initGame();
-    }) 
+    })
 
     //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
     /* this.cursors = this.input.keyboard.createCursorKeys()

@@ -18,7 +18,6 @@ if (height > window.innerHeight) {
 
 export default new Phaser.Game({
   type: Phaser.AUTO,
-  //type: Phaser.CANVAS,
   width: width,
   height: height,
   fps: {
@@ -37,7 +36,8 @@ export default new Phaser.Game({
       gravity: {
         y: 0
       },
-      debug: false
+      debug: true
+      //debug: false
     }
   }
 })

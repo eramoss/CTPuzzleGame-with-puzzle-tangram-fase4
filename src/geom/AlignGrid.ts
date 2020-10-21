@@ -26,6 +26,10 @@ export default class AlignGrid {
         }
     }
 
+    getCenterCell(): Phaser.Geom.Point {
+        return this.getCell(this.rows / 2, this.cols / 2)
+    }
+
     show(alpha = 1) {
         this.graphics = this.scene.add.graphics();
         this.graphics.lineStyle(2, 0xff0000, alpha);
@@ -56,7 +60,7 @@ export default class AlignGrid {
         return image;
     }
 
-    
+
 
     getCell(cellHorizontalNumber: number, cellVerticalNumber: number): Phaser.Geom.Point {
         let x = this.cellWidth * cellHorizontalNumber;

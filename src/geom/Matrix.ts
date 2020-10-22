@@ -12,10 +12,15 @@ export default class Matrix {
   points: IsometricPoint[][];
   width: number;
   height: number;
+  matrix: number[][];
+  mode: String;
+  
   constructor(scene: Scene, mode: String = Matrix.NORMAL, matrix: integer[][], x: integer, y: integer, distanceBetweenPoints: integer) {
+    this.mode = mode;
     this.x = x;
     this.y = y;
     this.scene = scene;
+    this.matrix = matrix;
 
     this.points = []
     for (let y = 0; y < matrix.length; y++)

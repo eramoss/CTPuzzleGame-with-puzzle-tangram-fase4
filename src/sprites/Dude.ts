@@ -46,10 +46,10 @@ export default class Dude {
     this.scene = scene;
     this.matrix = matrix;
     [
-      { key: 'walk-down', frames: [1] },
+      { key: 'walk-down', frames: [2] },
       { key: 'walk-left', frames: [0] },
-      { key: 'walk-up', frames: [3] },
-      { key: 'walk-right', frames: [2] },
+      { key: 'walk-up', frames: [1] },
+      { key: 'walk-right', frames: [3] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,

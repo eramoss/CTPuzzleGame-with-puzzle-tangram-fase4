@@ -29,7 +29,7 @@ export default class Game extends Scene {
     this.load.image('arrow-right', 'assets/ct/arrow_right.png');
     this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('scene', 'assets/ct/programming_scene.png');
-    //this.load.image('ground', 'assets/ct/ground_sand.png');
+    this.load.image('tile', 'assets/ct/tile.png');
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', 'assets/ct/obstacle_orange_normal.png');
@@ -39,7 +39,7 @@ export default class Game extends Scene {
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 1278, frameHeight: 130 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
-    this.load.spritesheet('sprite-rope', 'assets/ct/rope_walk.png', { frameWidth: 67, frameHeight: 91 });
+    this.load.spritesheet('sprite-rope', 'assets/ct/rope_walk.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 122 });
 
@@ -62,12 +62,20 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    let groundCol = 4.5
-    let groundRow = 3
-    /*this.grid.addImage(groundCol, groundRow, 'ground', 17); */
-
     this.program = new Program(this, this.sounds, this.grid);
     this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
+
+    let baseMatrix: number[][] = [
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1, -1],
+    ];
+
 
     let obstaclesMatrix: number[][] = [
       [1, 1, 0, 0, 0, 0, 0, 1],
@@ -85,9 +93,17 @@ export default class Game extends Scene {
       obstaclesMatrix,
       this.grid.width / 2, this.grid.height / 2, this.grid.cellWidth * 1.3);
 
+    const base = new Matrix(this,
+      Matrix.NORMAL,
+      baseMatrix,
+      this.grid.width / 2, this.grid.height / 2, this.grid.cellWidth * 1.3);
+    
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y + (10 * this.grid.scale), 'block').setScale(this.grid.scale)
+      return this.add.image(x, y, 'block').setScale(this.grid.scale).setDepth(2)
+    };
+    spriteCreateFunctions[-1] = (x: integer, y: integer) => {
+      return this.add.image(x, y, 'tile').setScale(this.grid.scale).setDepth(1)
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({
@@ -96,12 +112,14 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale);
+      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale).setDepth(3);
     }
-    this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions, obstaclesMatrix)
+    new MazeModel(this, base, spriteCreateFunctions)
+    this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
     let initGame = () => {
       //this.mazeModel.clear();
+      this.dude.character.setDepth(4)
       this.mazeModel.putSprite(1, 3, this.dude.character)
       this.dude.setPosition(1, 3);
       this.mazeModel.updateBringFront();

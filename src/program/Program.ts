@@ -17,12 +17,12 @@ export default class Program {
     this.scene = scene;
     this.grid = grid;
     this.commands = new Array();
-    this.dropZone = createDropZone(this.grid, 0.5, 17.5, 25, 4, 'drop-zone');
+    this.dropZone = createDropZone(this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
   }
 
   addCommands(commands: string[]) {
     commands.forEach(command => {
-      const commandSprite = this.scene.add.sprite(0, 0, `arrow-${command}`)
+      const commandSprite = this.scene.add.sprite(0, 0, command)
       this.addCommand(commandSprite)
     })
   }

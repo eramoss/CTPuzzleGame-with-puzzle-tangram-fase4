@@ -52,7 +52,7 @@ export default class Matrix {
           this.scene.add.text(pt.x, pt.y, `(${pt.y.toFixed(2)})`);
           graphics.fillCircle(pt.x, pt.y, 3);
         }
-        this.points[x][y] = point
+        this.points[y][x] = point
       }
     }
   }

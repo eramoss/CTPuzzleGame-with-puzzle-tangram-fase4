@@ -29,7 +29,7 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
 
-    const controlsImage = grid.addImage(0.5, 3.3, 'controls', 3);
+    const controlsImage = grid.addImage(0.5, 1, 'controls', 2.4);
     this.arrowsGrid = new FlexFlow(scene)
     this.arrowsGrid.flow = 'column'
 
@@ -74,7 +74,7 @@ export default class CodeEditor {
 
   private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
-    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right']
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_1', 'prog_2']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
@@ -88,6 +88,8 @@ export default class CodeEditor {
       'arrow-right': 1,
       'arrow-up': 2,
       'arrow-down': 3,
+      'prog_1': 4,
+      'prog_2': 5,
     }
     Object.getOwnPropertyNames(positions).forEach(key => {
       let position = positions[key]

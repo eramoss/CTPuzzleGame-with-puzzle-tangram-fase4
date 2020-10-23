@@ -33,7 +33,7 @@ export default class MazeModel {
         let spriteCreateFn = spriteCreateFunctions[spriteNumber]
         if (spriteCreateFn) {
           // Cria os objeto e adiciona no ponto
-          const point = matrix.points[x][y];
+          const point = matrix.points[y][x];
           const gameObject = spriteCreateFn(point.x, point.y);
           this.gameObjects[y][x] = new MazeModelObject(gameObject, spriteNumber);
         }

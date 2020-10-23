@@ -33,6 +33,8 @@ export default class Game extends Scene {
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', 'assets/ct/obstacle_orange_normal.png');
+    this.load.image('prog_1', 'assets/ct/prog_1.png');
+    this.load.image('prog_2', 'assets/ct/prog_2.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
@@ -91,12 +93,12 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       Matrix.NORMAL,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 2, this.grid.cellWidth * 1.3);
+      this.grid.width / 2, this.grid.height / 2.5, this.grid.cellWidth * 1);
 
     const base = new Matrix(this,
       Matrix.NORMAL,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 2, this.grid.cellWidth * 1.3);
+      this.grid.width / 2, this.grid.height / 2.5, this.grid.cellWidth * 1);
     
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
@@ -167,11 +169,11 @@ export default class Game extends Scene {
       initGame();
     })
 
-    //this.program.addCommands(['down', 'down', 'down', 'down', 'down', 'down'], this.codeEditor.dropZone.zone)
-    /* this.cursors = this.input.keyboard.createCursorKeys()
-    this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
-      this.currentObject = gameObject[0] as GameObjects.Sprite
-    }) */
+    this.program.addCommands(['arrow-down', 'arrow-up','prog_1'])
+    // this.cursors = this.input.keyboard.createCursorKeys()
+    // this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
+    //   this.currentObject = gameObject[0] as GameObjects.Sprite
+    // }) 
 
     initGame();
   }

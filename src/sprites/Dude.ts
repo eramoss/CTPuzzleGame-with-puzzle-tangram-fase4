@@ -15,11 +15,11 @@ export class DudeMove {
 
   constructor(matrix: Matrix, x: integer, y: integer, animation: string, previousMove: DudeMove, canMoveTo: (x: integer, y: integer) => boolean) {
     this.matrix = matrix;
-    this.possibleMove = canMoveTo(x, y);
+    this.possibleMove = canMoveTo(y, x);
     this.x = x
     this.y = y
     if (this.possibleMove) {
-      this.point = matrix.points[x][y];
+      this.point = matrix.points[y][x];
     }
     this.animation = animation;
     this.previousMove = previousMove;
@@ -64,7 +64,7 @@ export default class Dude {
   setPosition(x: number, y: number) {
     this.x = x;
     this.y = y;
-    const point: IsometricPoint = this.matrix.points[x][y]
+    const point: IsometricPoint = this.matrix.points[y][x]
     this.setPoint(point);
   }
 

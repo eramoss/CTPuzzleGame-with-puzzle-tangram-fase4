@@ -134,7 +134,7 @@ export default class CodeEditor {
         }
 
         if (clicked && isAddedToSomeProgram) {
-          if (!(dropped && programToDropInto != command.program) {
+          if (!(dropped && programToDropInto != command.program)) {
             command.removeSelf();
           } else {
             command.cancelMovement();

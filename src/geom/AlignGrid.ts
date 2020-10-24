@@ -1,5 +1,4 @@
 import { Scene } from "phaser";
-import DropZone from "../controls/DropZone";
 
 export default class AlignGrid {
 
@@ -60,13 +59,12 @@ export default class AlignGrid {
         return image;
     }
 
-
-
     getCell(cellHorizontalNumber: number, cellVerticalNumber: number): Phaser.Geom.Point {
         let x = this.cellWidth * cellHorizontalNumber;
         let y = this.cellHeight * cellVerticalNumber;
         return new Phaser.Geom.Point(x, y);
     }
+    
     getArea(cellHorizontalNumber: number, cellVerticalNumber: number, colspan: number, rolspan: number): Phaser.Geom.Rectangle {
         const cell = this.getCell(cellHorizontalNumber, cellVerticalNumber);
         return new Phaser.Geom.Rectangle(

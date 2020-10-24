@@ -6,13 +6,13 @@ import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import Trash from './Trash';
 import FlexFlow from '../geom/FlexFlow';
-import { createDropZone } from '../utils/Utils';
+import Command from '../program/Command';
 
 export default class CodeEditor {
 
   scene: Scene;
-  program: Program;
-  dropZone: DropZone
+  programs: Program[];
+  dropZones: DropZone[]
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
   sounds: Sounds;
@@ -23,9 +23,9 @@ export default class CodeEditor {
   arrowsGrid: FlexFlow;
   grid: AlignGrid;
 
-  constructor(scene: Scene, program: Program, sounds: Sounds, grid: AlignGrid) {
+  constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
-    this.program = program;
+    this.programs = programs;
     this.scene = scene;
     this.grid = grid;
 
@@ -44,12 +44,12 @@ export default class CodeEditor {
     this.createGlobalDragLogic();
 
     this.createDraggableProgramCommands()
-    this.dropZone = program.dropZone
+    this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopButtons();
 
-    this.trash.onClick(_=>{
+    /* this.trash.onClick(_=>{
       program.clear()
-    })
+    }) */
   }
 
   private createGlobalDragLogic() {
@@ -60,16 +60,10 @@ export default class CodeEditor {
       gameObject.x = dragX;
       gameObject.y = dragY;
     });
-    this.scene.input.on('dragend', (pointer: Input.Pointer, gameObject: GameObjects.Sprite, dropped: boolean) => {
-      if (!dropped) {
-        gameObject.x = gameObject.input.dragStartX;
-        gameObject.y = gameObject.input.dragStartY;
-      }
-    });
   }
 
-  private getByTextureName(commands: Phaser.GameObjects.Sprite[], textureName: string): Phaser.GameObjects.Sprite {
-    return commands.filter(c => c.texture.key === textureName)[0]
+  private getByTextureName(commands: Command[], textureName: string): Command {
+    return commands.filter(c => c.sprite.texture.key === textureName)[0]
   }
 
   private createDraggableProgramCommands(commandName: string = null) {
@@ -78,8 +72,11 @@ export default class CodeEditor {
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
-    const commands: Phaser.GameObjects.Sprite[] = commandNames
-      .map(commandName => commandGroup.get(0, 0, commandName))
+    const commands: Command[] = commandNames
+      .map(commandName => {
+        let sprite = commandGroup.get(0, 0, commandName)
+        return new Command(this.scene, sprite, null)
+      })
 
     console.log('COMMAND_NAMES', commandNames);
 
@@ -91,18 +88,19 @@ export default class CodeEditor {
       'prog_1': 4,
       'prog_2': 5,
     }
-    Object.getOwnPropertyNames(positions).forEach(key => {
-      let position = positions[key]
-      this.arrowsGrid.setChildAt(this.getByTextureName(commands, key), position)
-    });
+    Object.getOwnPropertyNames(positions)
+      .forEach(commandName => {
+        let position = positions[commandName]
+        const commandToPutAtPallet = this.getByTextureName(commands, commandName);
+        if (commandToPutAtPallet) {
+          this.arrowsGrid.setChildAt(commandToPutAtPallet.sprite, position)
+        }
+      });
 
-    commands.forEach((commandSprite: Phaser.GameObjects.Sprite) => {
+    commands.forEach((command: Command) => {
+      let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
       commandSprite.setScale(this.scale);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
-      commandSprite.on('pointerdown', _ => {
-        this.dropZone.highlight()
-        this.clickTime = this.getTime()
-      });
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
         commandSprite.setScale(this.scale * 1.2);
@@ -111,38 +109,67 @@ export default class CodeEditor {
         commandSprite.setScale(this.scale);
       });
       commandSprite.on('dragstart', _ => {
+        console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
+        command.dropZone = null;
+        this.highlightDropZones()
+        this.clickTime = this.getTime()
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(this.scale * 1.2)
         this.trash.open();
       })
-      commandSprite.on('pointerup', _ => {
-          this.dropZone.highlight(false)
-          if (this.getTime() - this.clickTime < 700) {
-            this.addCommandToProgram(commandSprite)
-          }
-      });
-      this.scene.input.on('dragend', (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, dropZone: DropZone) => {
-        if (this.getTime() - this.clickTime > 700) {
-          if (obj == commandSprite) {
-            if (!dropZone) {
-              this.removeCommandFromProgram(commandSprite)
-            }
+      commandSprite.on('dragend', _ => {
+        console.log("MOVE_EVENT", "dragend");
+        let clicked = this.getTime() - this.clickTime < 400;
+        let dropped = command.dropZone != null;
+
+        let dropZone = command.dropZone;
+        let programToDropInto = this.getProgramByDropzone(dropZone);
+        const isAddedToSomeProgram = command.program != null;
+
+        if (clicked && !isAddedToSomeProgram) {
+          let main = this.getMainProgram();
+          command.setProgram(main);
+        }
+
+        if (clicked && isAddedToSomeProgram) {
+          if (!(dropped && programToDropInto != command.program) {
+            command.removeSelf();
+          } else {
+            command.cancelMovement();
           }
         }
-      });
-      commandSprite.on('dragend', (teste, teste2) => {
+
+        if (!clicked) {
+          if (dropped) {
+            const isHoverTrash = this.trash.spriteIsHover(commandSprite);
+            if (!isHoverTrash) {
+              command.setProgram(programToDropInto);
+            }
+            if (isHoverTrash) {
+              command.removeSelf();
+            }
+          }
+
+          if (!dropped) {
+            command.cancelMovement();
+          }
+        }
+
+        this.highlightDropZones(false);
         this.trash.close();
         commandSprite.setScale(this.scale);
       })
-      commandSprite.on('drop', _ => {
-        if (this.trash.spriteIsHover(commandSprite)) {
-          this.removeCommandFromProgram(commandSprite)
-        } else {
-          this.addCommandToProgram(commandSprite);
-        }
+      commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+        console.log("MOVE_EVENT", "drop ", dropZone)
+        command.dropZone = dropZone;
       })
+    })
+  }
+  highlightDropZones(highlight: boolean = true) {
+    this.dropZones.forEach(dropZone => {
+      dropZone.highlight(highlight);
     })
   }
 
@@ -150,13 +177,26 @@ export default class CodeEditor {
     return new Date().getTime()
   }
 
-  private addCommandToProgram(command: Phaser.GameObjects.Sprite) {
-    this.sounds.drop();
-    this.program.addCommand(command)
+  private addCommandToProgram(program: Program, command: Command) {
+    if (program)
+      program.addCommand(command)
   }
 
-  private removeCommandFromProgram(command: Phaser.GameObjects.Sprite) {
-    this.program.removeCommandBySprite(command);
+  private removeCommandFromProgram(sprite: GameObjects.Sprite) {
+    let command = this.findCommandBySprite(sprite);
+    if (command)
+      command.removeSelf()
+  }
+
+  private findCommandBySprite(sprite: GameObjects.Sprite): Command {
+    let command: Command = null;
+    for (let p of this.programs) {
+      command = p.findCommandBySprite(sprite)
+      if (command != null) {
+        break;
+      }
+    }
+    return command;
   }
 
   private createStartStopButtons() {
@@ -181,7 +221,15 @@ export default class CodeEditor {
   }
 
   highlight(step: number) {
-    this.program.commands.forEach(command => command.sprite.clearTint())
-    this.program.commands[step]?.sprite?.setTint(0x0ffff0);
+    /* this.program.commands.forEach(command => command.sprite.clearTint())
+    this.program.commands[step]?.sprite?.setTint(0x0ffff0); */
+  }
+
+  getProgramByDropzone(zone: Phaser.GameObjects.Zone) {
+    return this.programs.filter(program => program.dropZone.zone === zone)[0]
+  }
+
+  getMainProgram(): Program {
+    return this.programs[0]
   }
 }

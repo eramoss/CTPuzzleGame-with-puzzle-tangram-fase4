@@ -64,8 +64,9 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, this.sounds, this.grid);
-    this.codeEditor = new CodeEditor(this, this.program, this.sounds, this.grid);
+    this.program = new Program(this, this.sounds, this.grid, 0.5, 15.5, 18, 2.7, 'drop-zone');
+    let prog1 = new Program(this, this.sounds, this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
+    this.codeEditor = new CodeEditor(this, [this.program, prog1], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
       [-1, -1, -1, -1, -1, -1, -1, -1],
@@ -99,7 +100,7 @@ export default class Game extends Scene {
       Matrix.NORMAL,
       baseMatrix,
       this.grid.width / 2, this.grid.height / 2.5, this.grid.cellWidth * 1);
-    
+
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
       return this.add.image(x, y, 'block').setScale(this.grid.scale).setDepth(2)
@@ -169,7 +170,7 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.program.addCommands(['arrow-down', 'arrow-up','prog_1'])
+    // this.program.addCommands(['arrow-down', 'arrow-up', 'prog_1'])
     // this.cursors = this.input.keyboard.createCursorKeys()
     // this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
     //   this.currentObject = gameObject[0] as GameObjects.Sprite

@@ -12,32 +12,41 @@ export default class Program {
   sounds: Sounds;
   grid: AlignGrid;
 
-  constructor(scene: Phaser.Scene, sounds: Sounds, grid: AlignGrid) {
+  constructor(scene: Phaser.Scene, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.sounds = sounds;
     this.scene = scene;
     this.grid = grid;
     this.commands = new Array();
-    this.dropZone = createDropZone(this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
+    this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
   }
 
   addCommands(commands: string[]) {
     commands.forEach(command => {
-      const commandSprite = this.scene.add.sprite(0, 0, command)
-      this.addCommand(commandSprite)
+      const commandSprite = this.scene.add.sprite(0, 0, command).setScale(this.grid.scale)
+      this.addCommandBySprite(commandSprite)
     })
   }
 
-  addCommand(sprite: GameObjects.Sprite) {
-    let command = this.findCommandBySprite(sprite);
-    if (!command) {
-      command = new Command(this.scene, sprite);
+  addCommand(command: Command) {
+    if (this.commands.indexOf(command) == -1) {
+      this.sounds.drop();
       this.commands.push(command);
+      console.log('ADD_REMOVE_COMMANDS', this.commands)
+    } else {
+      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
     }
-    console.log('ADD_REMOVE_COMMANDS', this.commands)
-    this.allocateInProgramArea(command);
+    this.organizeInProgramArea(command);
   }
 
-  private findCommandBySprite(sprite: GameObjects.Sprite): Command {
+  addCommandBySprite(sprite: GameObjects.Sprite) {
+    let command = this.findCommandBySprite(sprite);
+    if (!command) {
+      command = new Command(this.scene, sprite, this);
+      this.addCommand(command);
+    }
+  }
+
+  findCommandBySprite(sprite: GameObjects.Sprite): Command {
     const commands = this.commands.filter(c => c.sprite === sprite);
     let command: Command;
     if (commands.length > 0) {
@@ -46,7 +55,7 @@ export default class Program {
     return command;
   }
 
-  allocateInProgramArea(command: Command) {
+  organizeInProgramArea(command: Command) {
     const zone = this.dropZone.zone;
     const index = this.commands.indexOf(command);
     const spriteWidth = command.sprite.width * this.grid.scale;
@@ -63,24 +72,23 @@ export default class Program {
     let x = zone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
     let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
-    drawRect(this.scene, zone.x, zone.y, spriteWidth, spriteHeight)
+    drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight)
   }
 
-  removeCommandBySprite(commandSprite: GameObjects.Sprite) {
+  removeCommandSprite(commandSprite: GameObjects.Sprite) {
     this.scene.children.remove(commandSprite);
     this.sounds.remove();
-    let command = this.findCommandBySprite(commandSprite);
-    if (command) {
-      this.removeCommand(command);
-    }
   }
 
-  removeCommand(command: Command) {
+  removeCommand(command: Command, removeSpriteFromScene:Boolean = false) {
+    if (removeSpriteFromScene) {
+      this.removeCommandSprite(command.sprite);
+    }
     let index = this.commands.indexOf(command);
     this.commands.splice(index, 1);
     console.log('ADD_REMOVE_COMMANDS', this.commands)
     this.commands.forEach((command: Command) => {
-      this.allocateInProgramArea(command);
+      this.organizeInProgramArea(command);
     })
   }
 

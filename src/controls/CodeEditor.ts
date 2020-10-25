@@ -9,7 +9,6 @@ import FlexFlow from '../geom/FlexFlow';
 import Command from '../program/Command';
 
 export default class CodeEditor {
-
   scene: Scene;
   programs: Program[];
   dropZones: DropZone[]
@@ -38,18 +37,23 @@ export default class CodeEditor {
     this.arrowsGrid.width = controlsImage.displayWidth
     this.arrowsGrid.height = controlsImage.displayHeight
 
-
     this.scale = grid.scale
     this.trash = new Trash(this.scene, this.grid, 22.5, 11.5, 2.5, 4);
     this.createGlobalDragLogic();
+    this.createDraggableProgramCommands();
 
-    this.createDraggableProgramCommands()
     this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopButtons();
 
     /* this.trash.onClick(_=>{
       program.clear()
     }) */
+  }
+
+  createEventsToCommandsForAddedPrograms() {
+    this.programs.forEach(p => {
+      this.createEventsToCommands(p.commands);
+    })
   }
 
   private createGlobalDragLogic() {
@@ -96,7 +100,10 @@ export default class CodeEditor {
           this.arrowsGrid.setChildAt(commandToPutAtPallet.sprite, position)
         }
       });
+    this.createEventsToCommands(commands);
+  }
 
+  createEventsToCommands(commands: Command[]) {
     commands.forEach((command: Command) => {
       let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
       commandSprite.setScale(this.scale);

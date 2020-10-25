@@ -31,6 +31,7 @@ export default class Program {
   }
 
   addCommand(command: Command) {
+    command.dropZone = this.dropZone.zone;
     if (this.commands.indexOf(command) == -1) {
       this.sounds.drop();
       this.commands.push(command);
@@ -45,7 +46,7 @@ export default class Program {
     let command = this.findCommandBySprite(sprite);
     if (!command) {
       command = new Command(this.scene, sprite);
-      this.addCommand(command);
+      command.setProgram(this);
     }
   }
 
@@ -83,7 +84,7 @@ export default class Program {
     this.sounds.remove();
   }
 
-  removeCommand(command: Command, removeSpriteFromScene:Boolean = false) {
+  removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (removeSpriteFromScene) {
       this.removeCommandSprite(command.sprite);
     }

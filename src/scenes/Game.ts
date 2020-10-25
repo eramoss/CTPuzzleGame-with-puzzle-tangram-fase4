@@ -61,7 +61,7 @@ export default class Game extends Scene {
       this.game.config.height as number
     );
 
-    this.grid.scale = this.cameras.main.width / window.innerWidth
+    //this.grid.scale = this.cameras.main.width / window.innerWidth
 
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)

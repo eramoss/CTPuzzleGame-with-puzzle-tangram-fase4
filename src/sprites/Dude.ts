@@ -52,7 +52,10 @@ export class DudeMove {
     let onCompleteBranch = () => {
       this.disanimate();
     }
-    this.dude.onBranch(this, onCompleteBranch);
+    const moveToContinueWhenBackToThisBranch = this.next;
+    const progToCall = this.action;
+    let branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
+    this.dude.onBranch(progToCall, branch);
   }
 
   execute(previousMove: DudeMove = null) {
@@ -115,8 +118,7 @@ export default class Dude {
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
-  branchMove: DudeMove;
-  onCompleteBranch: Function;
+  branchMoves: Array<Branch> = new Array();
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -186,24 +188,37 @@ export default class Dude {
     this.character.body.stop();
   }
 
-  onBranch(dudeMove: DudeMove, onCompleteBranch: Function) {
-    this.branchMove = dudeMove;
-    this.onCompleteBranch = onCompleteBranch;
-    let progs = this.programs.filter(p => p.name == dudeMove.action)
+  onBranch(progName: string, branch: Branch) {
+    this.branchMoves.push(branch);
+    let progs = this.programs.filter(p => p.name == progName)
     if (progs.length) {
       this.executeProgram(progs[0])
     }
+  }
+
+  getBranchToBackTo(): Branch {
+    let branchToBack: Branch = null
+    if (this.branchMoves.length) {
+      let branchMove = this.branchMoves.pop();
+      if (branchMove) {
+        branchMove.onComplete();
+        if (branchMove.dudeMove) {
+          branchToBack = branchMove;
+        } else {
+          branchToBack = this.getBranchToBackTo()
+        }
+      }
+    }
+    return branchToBack
   }
 
   onCompleteMove(previousMove: DudeMove) {
     this.character.clearTint();
     this.currentStep = previousMove.next
     if (!previousMove.next) {
-      if (this.branchMove) {
-        this.onCompleteBranch();
-        this.currentStep = this.branchMove.next
-        console.log("RESET_BRANCH_MOVE")
-        this.branchMove = null;
+      let branchToBackTo = this.getBranchToBackTo()
+      if (branchToBackTo) {
+        this.currentStep = branchToBackTo.dudeMove
       }
     }
     if (previousMove.couldExecute)
@@ -236,5 +251,15 @@ export default class Dude {
       }
     })
     this.currentStep = moves[0]
+  }
+}
+
+class Branch {
+  dudeMove: DudeMove
+  onComplete: Function
+
+  constructor(dudeMove: DudeMove, onComplete: Function) {
+    this.dudeMove = dudeMove;
+    this.onComplete = onComplete;
   }
 }

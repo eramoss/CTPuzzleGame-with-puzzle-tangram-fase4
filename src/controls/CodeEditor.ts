@@ -72,7 +72,7 @@ export default class CodeEditor {
 
   private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
-    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_1', 'prog_2']
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
@@ -89,8 +89,9 @@ export default class CodeEditor {
       'arrow-right': 1,
       'arrow-up': 2,
       'arrow-down': 3,
-      'prog_1': 4,
-      'prog_2': 5,
+      'prog_0': 4,
+      'prog_1': 5,
+      'prog_2': 6,
     }
     Object.getOwnPropertyNames(positions)
       .forEach(commandName => {

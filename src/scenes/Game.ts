@@ -33,6 +33,7 @@ export default class Game extends Scene {
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', 'assets/ct/obstacle_orange_normal.png');
+    this.load.image('prog_0', 'assets/ct/prog_0.png');
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
 
@@ -66,7 +67,7 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'main', this.sounds, this.grid, 4, 13, 18, 2.7, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 4, 13, 18, 2.7, 'drop-zone');
     let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 4, 16, 18, 2.7, 'drop-zone');
     let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 4, 19, 18, 2.7, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);

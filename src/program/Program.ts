@@ -6,22 +6,23 @@ import DropZone from '../controls/DropZone';
 import drawRect, { createDropZone } from '../utils/Utils';
 
 export default class Program {
-  
+
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: DropZone;
   sounds: Sounds;
   grid: AlignGrid;
-  name: String;
+  name: string;
   parent: Program;
 
-  constructor(scene: Phaser.Scene, name: String, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
+  constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
     this.name = name;
     this.sounds = sounds;
     this.grid = grid;
     this.commands = new Array();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
+    this.grid.addImage(x - 2, y, name).setScale(0.6);
   }
 
   addCommands(commands: string[]) {
@@ -32,7 +33,7 @@ export default class Program {
   }
 
   disanimateCommands() {
-    this.commands.forEach(c=>c.disanimateSprite());
+    this.commands.forEach(c => c.disanimateSprite());
   }
 
   addCommand(command: Command) {

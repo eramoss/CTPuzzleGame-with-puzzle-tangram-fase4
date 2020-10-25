@@ -85,9 +85,6 @@ export default class AlignGrid {
             } else {
                 obj.displayHeight = obj.height / obj.width * obj.displayWidth
             }
-            if (!this.scale) {
-                this.scale = obj.displayWidth / obj.width;
-            }
             obj.setPosition(point.x + obj.displayWidth / 2, point.y + obj.displayHeight / 2);
         }
     }

@@ -61,12 +61,15 @@ export default class Game extends Scene {
       this.game.config.height as number
     );
 
+    this.grid.scale = this.cameras.main.width / window.innerWidth
+
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'main', this.sounds, this.grid, 0.5, 15.5, 18, 2.7, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
-    this.codeEditor = new CodeEditor(this, [this.program, prog1], this.sounds, this.grid);
+    this.program = new Program(this, 'main', this.sounds, this.grid, 4, 13, 18, 2.7, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 4, 16, 18, 2.7, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 4, 19, 18, 2.7, 'drop-zone');
+    this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
       [-1, -1, -1, -1, -1, -1, -1, -1],
@@ -94,12 +97,12 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       Matrix.NORMAL,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 2.5, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
     const base = new Matrix(this,
       Matrix.NORMAL,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 2.5, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
@@ -142,7 +145,7 @@ export default class Game extends Scene {
     this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
       console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
       this.codeEditor.highlight(stepCount);
-      if (movingTo) {
+      /* if (movingTo) {
         if (movingTo.possibleMove) {
           let currentPosition = movingTo.previousMove
           if (currentPosition) {
@@ -157,12 +160,12 @@ export default class Game extends Scene {
             }
           }
         }
-      }
+      } */
       this.mazeModel.updateBringFront();
     }
 
     this.codeEditor.onClickRun(() => {
-      this.dude.execute([this.program, prog1]);
+      this.dude.execute([this.program, prog1, prog2]);
     })
 
     this.codeEditor.onClickStop(() => {

@@ -202,6 +202,7 @@ export default class Dude {
       if (this.branchMove) {
         this.onCompleteBranch();
         this.currentStep = this.branchMove.next
+        console.log("RESET_BRANCH_MOVE")
         this.branchMove = null;
       }
     }

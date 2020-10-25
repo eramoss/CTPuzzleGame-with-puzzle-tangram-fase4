@@ -173,8 +173,9 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.program.addCommands(['arrow-down', 'prog_1'])
-    prog1.addCommands(['prog_1'])
+    this.program.addCommands(['arrow-down', 'prog_1', 'arrow-down'])
+    prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
+    prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])
     // this.cursors = this.input.keyboard.createCursorKeys()

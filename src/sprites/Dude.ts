@@ -36,6 +36,7 @@ export class DudeMove {
   }
 
   animate() {
+    console.log('animate');
     this.command.animateSprite();
   }
 
@@ -60,9 +61,15 @@ export class DudeMove {
 
   execute(previousMove: DudeMove = null) {
     console.log("DUDE_MOVE", this.action)
-
     this.executing = true;
+
     this.animate();
+    
+    this.command.sprite.setTint(0xffff00);
+    setTimeout(() => {
+      this.command.sprite.clearTint();
+      //this.disanimate();
+    }, 80)
 
     let x: number, y: number;
     if (previousMove == null) {
@@ -81,7 +88,7 @@ export class DudeMove {
       case 'moveRight': x++; break;
       case 'moveLeft': x--; break;
       default:
-        if (this.action.indexOf('prog') > -1) {
+        if (this.isProgMove()) {
           this.onBranchMove();
           branched = true;
         }
@@ -104,6 +111,10 @@ export class DudeMove {
       }
     }
   }
+
+  isProgMove() {
+    return this.action.indexOf('prog') > -1
+  }
 }
 export default class Dude {
 
@@ -119,6 +130,7 @@ export default class Dude {
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
   branchMoves: Array<Branch> = new Array();
+  executeTimeout: number;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -186,6 +198,8 @@ export default class Dude {
 
   stop() {
     this.character.body.stop();
+    this.currentStep = null;
+    clearTimeout(this.executeTimeout);
   }
 
   onBranch(progName: string, branch: Branch) {
@@ -237,16 +251,21 @@ export default class Dude {
   }
 
   execute(programs: Program[]) {
+    this.stop();
     this.programs = programs;
+    this.programs.forEach(p=>p.disanimateCommands());
     this.executeProgram(programs[0])
   }
 
   executeProgram(program: Program) {
-    this.buildPath(program.commands);
-    if (!this.currentStep) {
-      this.continuePreviousBranchIfExists();
-    }
-    this.currentStep?.execute()
+    program.disanimateCommands();
+    this.executeTimeout = setTimeout(() => {
+      this.buildPath(program.commands);
+      if (!this.currentStep) {
+        this.continuePreviousBranchIfExists();
+      }
+      this.currentStep?.execute()
+    }, 200);
   }
 
   buildPath(commands: Command[]) {

@@ -64,16 +64,17 @@ export default class Command {
 
   animateSprite() {
     if (!this.animated) {
+      this.animated = true;
       this.sprite.rotation += 0.05
       this.sprite.setScale(this.sprite.scale + 0.1);
-      this.animated = true;
     }
   }
 
   disanimateSprite() {
-    if (this.animated)
+    if (this.animated) {
+      this.animated = false;
       this.sprite.rotation -= 0.05
-    this.sprite.setScale(this.sprite.scale - 0.1);
-    this.animated = false;
+      this.sprite.setScale(this.sprite.scale - 0.1);
+    }
   }
 }

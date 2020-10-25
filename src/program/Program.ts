@@ -6,6 +6,7 @@ import DropZone from '../controls/DropZone';
 import drawRect, { createDropZone } from '../utils/Utils';
 
 export default class Program {
+  
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: DropZone;
@@ -28,6 +29,10 @@ export default class Program {
       const commandSprite = this.scene.add.sprite(0, 0, command).setScale(this.grid.scale)
       this.addCommandBySprite(commandSprite)
     })
+  }
+
+  disanimateCommands() {
+    this.commands.forEach(c=>c.disanimateSprite());
   }
 
   addCommand(command: Command) {

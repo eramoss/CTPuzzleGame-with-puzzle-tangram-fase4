@@ -44,7 +44,7 @@ export default class Program {
   addCommandBySprite(sprite: GameObjects.Sprite) {
     let command = this.findCommandBySprite(sprite);
     if (!command) {
-      command = new Command(this.scene, sprite, this);
+      command = new Command(this.scene, sprite);
       this.addCommand(command);
     }
   }

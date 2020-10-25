@@ -216,15 +216,19 @@ export default class Dude {
     this.character.clearTint();
     this.currentStep = previousMove.next
     if (!previousMove.next) {
-      let branchToBackTo = this.getBranchToBackTo()
-      if (branchToBackTo) {
-        this.currentStep = branchToBackTo.dudeMove
-      }
+      this.continuePreviousBranchIfExists();
     }
     if (previousMove.couldExecute)
       this.resetAt(previousMove);
     this.currentStep?.execute(previousMove);
-  };
+  }
+
+  continuePreviousBranchIfExists() {
+    let branchToBackTo = this.getBranchToBackTo()
+    if (branchToBackTo) {
+      this.currentStep = branchToBackTo.dudeMove
+    }
+  }
 
   update() {
     if (this.currentStep) {
@@ -239,6 +243,9 @@ export default class Dude {
 
   executeProgram(program: Program) {
     this.buildPath(program.commands);
+    if (!this.currentStep) {
+      this.continuePreviousBranchIfExists();
+    }
     this.currentStep?.execute()
   }
 

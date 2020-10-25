@@ -11,10 +11,13 @@ export default class Program {
   dropZone: DropZone;
   sounds: Sounds;
   grid: AlignGrid;
+  name: String;
+  parent: Program;
 
-  constructor(scene: Phaser.Scene, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
-    this.sounds = sounds;
+  constructor(scene: Phaser.Scene, name: String, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
+    this.name = name;
+    this.sounds = sounds;
     this.grid = grid;
     this.commands = new Array();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);

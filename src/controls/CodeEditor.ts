@@ -75,7 +75,7 @@ export default class CodeEditor {
     const commands: Command[] = commandNames
       .map(commandName => {
         let sprite = commandGroup.get(0, 0, commandName)
-        return new Command(this.scene, sprite, null)
+        return new Command(this.scene, sprite)
       })
 
     console.log('COMMAND_NAMES', commandNames);
@@ -153,7 +153,7 @@ export default class CodeEditor {
           }
 
           if (!dropped) {
-            command.cancelMovement();
+            command.removeSelf();
           }
         }
 
@@ -175,28 +175,6 @@ export default class CodeEditor {
 
   getTime(): number {
     return new Date().getTime()
-  }
-
-  private addCommandToProgram(program: Program, command: Command) {
-    if (program)
-      program.addCommand(command)
-  }
-
-  private removeCommandFromProgram(sprite: GameObjects.Sprite) {
-    let command = this.findCommandBySprite(sprite);
-    if (command)
-      command.removeSelf()
-  }
-
-  private findCommandBySprite(sprite: GameObjects.Sprite): Command {
-    let command: Command = null;
-    for (let p of this.programs) {
-      command = p.findCommandBySprite(sprite)
-      if (command != null) {
-        break;
-      }
-    }
-    return command;
   }
 
   private createStartStopButtons() {

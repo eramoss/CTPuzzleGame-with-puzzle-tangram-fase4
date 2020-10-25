@@ -16,10 +16,12 @@ export class DudeMove {
   next?: DudeMove;
   executing: boolean = false;
   couldExecute: boolean;
+  command: Command;
 
-  constructor(dude: Dude, action: string) {
+  constructor(dude: Dude, command: Command) {
     this.dude = dude;
-    this.action = action;
+    this.command = command;
+    this.action = command.getAction();
   }
 
   update() {
@@ -27,16 +29,37 @@ export class DudeMove {
       if (this.point) {
         if (this.dude.achieved(this.point)) {
           console.log("MOVE_ACHIEVED [x,y]", this.x, this.y)
-          this.dude.onCompleteMove(this)
+          this.onCompleteMove();
         }
       }
     }
+  }
+
+  animate() {
+    this.command.animateSprite();
+  }
+
+  disanimate() {
+    this.command.disanimateSprite();
+  }
+
+  onCompleteMove() {
+    this.disanimate();
+    this.dude.onCompleteMove(this);
+  }
+
+  onBranchMove() {
+    let onCompleteBranch = () => {
+      this.disanimate();
+    }
+    this.dude.onBranch(this, onCompleteBranch);
   }
 
   execute(previousMove: DudeMove = null) {
     console.log("DUDE_MOVE", this.action)
 
     this.executing = true;
+    this.animate();
 
     let x: number, y: number;
     if (previousMove == null) {
@@ -47,10 +70,7 @@ export class DudeMove {
       y = previousMove.y
     }
 
-    console.log("DUDE")
-
-    let backupX = x;
-    let backupY = y;
+    let branched = false;
 
     switch (this.action) {
       case 'moveDown': y++; break;
@@ -58,31 +78,31 @@ export class DudeMove {
       case 'moveRight': x++; break;
       case 'moveLeft': x--; break;
       default:
+        if (this.action.indexOf('prog') > -1) {
+          this.onBranchMove();
+          branched = true;
+        }
         break;
     }
 
-    this.x = x;
-    this.y = y;
-    console.log('MOVE [x,y]', x, y)
-    console.log('MOVE_BACKUP [x,y]', backupX, backupY)
-
-    this.couldExecute = this.dude.canMoveTo(x, y)
-    if (this.couldExecute) {
-      this.point = this.dude.matrix.getPoint(y, x);
-      this.dude.moveTo(this)
-    } else {
-      this.dude.warmBlocked(this)
-      this.x = backupX;
-      this.y = backupY;
-      setTimeout(() => {
-        this.dude.onCompleteMove(this)
-      }, 500);
+    if (!branched) {
+      console.log('MOVE [x,y]', x, y)
+      this.couldExecute = this.dude.canMoveTo(x, y)
+      if (this.couldExecute) {
+        this.x = x;
+        this.y = y;
+        this.point = this.dude.matrix.getPoint(y, x);
+        this.dude.moveTo(this)
+      } else {
+        this.dude.warmBlocked(this)
+        setTimeout(() => {
+          this.onCompleteMove();
+        }, 500);
+      }
     }
   }
 }
 export default class Dude {
-
-
 
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
@@ -94,6 +114,9 @@ export default class Dude {
   onStepChange: (step: integer, movingTo: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
+  programs: Program[];
+  branchMove: DudeMove;
+  onCompleteBranch: Function;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -163,11 +186,25 @@ export default class Dude {
     this.character.body.stop();
   }
 
-  onCompleteMove(previousMove: DudeMove) {
-    if (!previousMove.next) {
-      this.character.clearTint();
+  onBranch(dudeMove: DudeMove, onCompleteBranch: Function) {
+    this.branchMove = dudeMove;
+    this.onCompleteBranch = onCompleteBranch;
+    let progs = this.programs.filter(p => p.name == dudeMove.action)
+    if (progs.length) {
+      this.executeProgram(progs[0])
     }
+  }
+
+  onCompleteMove(previousMove: DudeMove) {
+    this.character.clearTint();
     this.currentStep = previousMove.next
+    if (!previousMove.next) {
+      if (this.branchMove) {
+        this.onCompleteBranch();
+        this.currentStep = this.branchMove.next
+        this.branchMove = null;
+      }
+    }
     if (previousMove.couldExecute)
       this.resetAt(previousMove);
     this.currentStep?.execute(previousMove);
@@ -180,13 +217,18 @@ export default class Dude {
   }
 
   execute(programs: Program[]) {
-    this.buildPath(programs[0].commands);
+    this.programs = programs;
+    this.executeProgram(programs[0])
+  }
+
+  executeProgram(program: Program) {
+    this.buildPath(program.commands);
     this.currentStep?.execute()
   }
 
   buildPath(commands: Command[]) {
     let moves: Array<DudeMove> = commands
-      .map(command => new DudeMove(this, command.getAction()))
+      .map(command => new DudeMove(this, command))
     moves.forEach((move, index) => {
       if (index > 0) {
         moves[index - 1].next = move

@@ -64,8 +64,8 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, this.sounds, this.grid, 0.5, 15.5, 18, 2.7, 'drop-zone');
-    let prog1 = new Program(this, this.sounds, this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
+    this.program = new Program(this, 'main', this.sounds, this.grid, 0.5, 15.5, 18, 2.7, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 0.5, 18.5, 18, 2.7, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [

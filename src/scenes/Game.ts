@@ -173,9 +173,9 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.program.addCommands(['arrow-down', 'arrow-up', 'prog_1', 'arrow-up'])
+    /* this.program.addCommands(['arrow-down', 'arrow-up', 'prog_1', 'arrow-up'])
     prog1.addCommands(['arrow-down', 'prog_2'])
-    prog2.addCommands(['arrow-down'])
+    prog2.addCommands(['arrow-down']) */
     // this.cursors = this.input.keyboard.createCursorKeys()
     // this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
     //   this.currentObject = gameObject[0] as GameObjects.Sprite

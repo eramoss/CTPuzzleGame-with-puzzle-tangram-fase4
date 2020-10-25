@@ -66,10 +66,9 @@ export class DudeMove {
     console.log('MOVE [x,y]', x, y)
     console.log('MOVE_BACKUP [x,y]', backupX, backupY)
 
-    this.point = this.dude.matrix.getPoint(y, x);
-
     this.couldExecute = this.dude.canMoveTo(x, y)
     if (this.couldExecute) {
+      this.point = this.dude.matrix.getPoint(y, x);
       this.dude.moveTo(this)
     } else {
       this.dude.warmBlocked(this)
@@ -165,6 +164,9 @@ export default class Dude {
   }
 
   onCompleteMove(previousMove: DudeMove) {
+    if (!previousMove.next) {
+      this.character.clearTint();
+    }
     this.currentStep = previousMove.next
     if (previousMove.couldExecute)
       this.resetAt(previousMove);

@@ -58,6 +58,11 @@ export default class Matrix {
   }
 
   getPoint(y: number, x: number): IsometricPoint {
-    return this.points[y][x]
+    let point = null
+    const row = this.points[y];
+    if (row) {
+      point = row[x];
+    }
+    return point;
   }
 }

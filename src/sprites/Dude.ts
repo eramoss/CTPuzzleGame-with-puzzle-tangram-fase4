@@ -3,175 +3,193 @@ import Matrix from '../geom/Matrix'
 import IsometricPoint from '../geom/IsometricPoint'
 import Command from '../program/Command';
 import Sounds from '../sounds/Sounds';
+import Program from '../program/Program';
 
 export class DudeMove {
-  point: IsometricPoint;
-  matrix: Matrix;
-  possibleMove: boolean;
-  animation: string;
-  x: integer;
-  y: integer;
-  previousMove: DudeMove
 
-  constructor(matrix: Matrix, x: integer, y: integer, animation: string, previousMove: DudeMove, canMoveTo: (x: integer, y: integer) => boolean) {
-    this.matrix = matrix;
-    this.possibleMove = canMoveTo(y, x);
-    this.x = x
-    this.y = y
-    if (this.possibleMove) {
-      this.point = matrix.points[y][x];
+  name: string;
+  dude: Dude;
+  action: string;
+  point: IsometricPoint;
+  x: number;
+  y: number;
+  next?: DudeMove;
+  executing: boolean = false;
+  couldExecute: boolean;
+
+  constructor(dude: Dude, action: string) {
+    this.dude = dude;
+    this.action = action;
+  }
+
+  update() {
+    if (this.executing) {
+      if (this.point) {
+        if (this.dude.achieved(this.point)) {
+          console.log("MOVE_ACHIEVED [x,y]", this.x, this.y)
+          this.dude.onCompleteMove(this)
+        }
+      }
     }
-    this.animation = animation;
-    this.previousMove = previousMove;
+  }
+
+  execute(previousMove: DudeMove = null) {
+    console.log("DUDE_MOVE", this.action)
+
+    this.executing = true;
+
+    let x: number, y: number;
+    if (previousMove == null) {
+      x = this.dude.x
+      y = this.dude.y
+    } else {
+      x = previousMove.x
+      y = previousMove.y
+    }
+
+    console.log("DUDE")
+
+    let backupX = x;
+    let backupY = y;
+
+    switch (this.action) {
+      case 'moveDown': y++; break;
+      case 'moveUp': y--; break;
+      case 'moveRight': x++; break;
+      case 'moveLeft': x--; break;
+      default:
+        break;
+    }
+
+    this.x = x;
+    this.y = y;
+    console.log('MOVE [x,y]', x, y)
+    console.log('MOVE_BACKUP [x,y]', backupX, backupY)
+
+    this.point = this.dude.matrix.getPoint(y, x);
+
+    this.couldExecute = this.dude.canMoveTo(x, y)
+    if (this.couldExecute) {
+      this.dude.moveTo(this)
+    } else {
+      this.dude.warmBlocked(this)
+      this.x = backupX;
+      this.y = backupY;
+      setTimeout(() => {
+        this.dude.onCompleteMove(this)
+      }, 500);
+    }
   }
 }
 export default class Dude {
 
+
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
-  step: DudeMove;
-  path: DudeMove[]
+  currentStep: DudeMove;
   x: number;
   y: number;
   walking: boolean;
   onStepChange: (step: integer, movingTo: DudeMove) => void
-  totalComands: number;
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
-    this.path = new Array()
     this.scene = scene;
     this.matrix = matrix;
+    this.character = scene.physics.add.sprite(485, 485, 'sprite-rope');
+    this.createAnimations();
+  }
+
+  createAnimations() {
     [
-      { key: 'walk-down', frames: [2] },
-      { key: 'walk-left', frames: [0] },
-      { key: 'walk-up', frames: [1] },
-      { key: 'walk-right', frames: [3] },
+      { key: 'moveDown', frames: [2] },
+      { key: 'moveLeft', frames: [0] },
+      { key: 'moveUp', frames: [1] },
+      { key: 'moveRight', frames: [3] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
-        frames: scene.anims.generateFrameNumbers('sprite-rope', anim),
+        frames: this.scene.anims.generateFrameNumbers('sprite-rope', anim),
         frameRate: 7,
         repeat: 1
       });
     })
-    this.character = scene.physics.add.sprite(485, 485, 'sprite-rope');
+  }
+
+  moveTo(dudeMove: DudeMove) {
+    this.character.clearTint()
+    this.sounds.start();
+    this.playAnimation(dudeMove.action);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 40);
+  }
+
+  warmBlocked(dudeMove: DudeMove) {
+    this.playAnimation(dudeMove.action);
+    this.sounds.blocked();
+    this.character.setTint(0xff0000);
+  }
+
+  achieved(point: IsometricPoint) {
+    const distance = Phaser.Math.Distance.Between(
+      this.character.x,
+      this.character.y,
+      point.x,
+      point.y)
+    return distance <= 4
+  }
+
+  resetAt(dudeMove: DudeMove) {
+    console.log("MOVE_RESET_AT [x,y]", dudeMove.x, dudeMove.y)
+    this.setPosition(dudeMove.x, dudeMove.y)
+    this.character.body.reset(dudeMove.point.x, dudeMove.point.y);
+  }
+
+  playAnimation(action: string) {
+    this.character.play(action);
   }
 
   setPosition(x: number, y: number) {
     this.x = x;
     this.y = y;
     const point: IsometricPoint = this.matrix.points[y][x]
-    this.setPoint(point);
-  }
-
-  setPoint(point: IsometricPoint) {
     this.character.x = point.x
     this.character.y = point.y
   }
 
-  move() {
-    this.character.clearTint()
-    if (!this.walking) {
-      if (!this.step) {
-        const stepCount = this.totalComands - this.path.length;
-        this.step = this.path.splice(0, 1)[0]
-        this.onStepChange(stepCount, this.step);
-      }
-      if (this.step) {
-        this.character.play(this.step.animation);
-        if (this.step.possibleMove) {
-          this.sounds.start();
-          this.scene.physics.moveToObject(this.character, this.step.point, 80)
-        } else {
-          this.sounds.blocked();
-          this.character.setTint(0xff0000);
-          this.walking = true;
-          setTimeout(() => {
-            this.walking = false;
-            this.step = undefined
-            this.move()
-          }, 800)
-        }
-      }
-    }
-  }
-
   stop() {
     this.character.body.stop();
-    this.path.splice(0);
-    this.step = undefined;
   }
+
+  onCompleteMove(previousMove: DudeMove) {
+    this.currentStep = previousMove.next
+    if (previousMove.couldExecute)
+      this.resetAt(previousMove);
+    this.currentStep?.execute(previousMove);
+  };
 
   update() {
-    if (this.step) {
-      if (this.step.point) {
-        const point = this.step.point;
-        const distance = Phaser.Math.Distance.Between(
-          this.character.x,
-          this.character.y,
-          point.x,
-          point.y)
-        if (distance < 4) {
-          this.character.body.reset(point.x, point.y);
-          this.step = undefined;
-          this.move();
-        }
-      }
+    if (this.currentStep) {
+      this.currentStep?.update();
     }
   }
 
-  pushMove(x: integer, y: integer, animation: string) {
-    let nextX = this.x + x;
-    let nextY = this.y + y;
-    let previousMove = this.path[this.path.length - 1]
-    if (!previousMove) {
-      const startPoint = new DudeMove(this.matrix, this.x, this.y, animation, undefined, this.canMoveTo);
-      previousMove = startPoint;
-    } else {
-      if (!previousMove.possibleMove) {
-        const possibleMove = previousMove.previousMove;
-        previousMove = possibleMove;
-      }
-    }
-
-    const dudeMove = new DudeMove(this.matrix, nextX, nextY, animation, previousMove, this.canMoveTo);
-    this.path.push(dudeMove)
-    if (dudeMove.possibleMove) {
-      this.x = nextX;
-      this.y = nextY;
-    }
-  }
-
-  moveUp() {
-    this.pushMove(0, -1, 'walk-up');
-  }
-
-  moveDown() {
-    this.pushMove(0, +1, 'walk-down');
-  }
-
-  moveLeft() {
-    this.pushMove(-1, 0, 'walk-left');
-  }
-
-  moveRight() {
-    this.pushMove(+1, 0, 'walk-right');
-  }
-
-  execute(commands: Command[]) {
-    this.buildPath(commands);
-    this.move();
+  execute(programs: Program[]) {
+    this.buildPath(programs[0].commands);
+    this.currentStep?.execute()
   }
 
   buildPath(commands: Command[]) {
-    this.path.splice(0);
-    this.totalComands = commands.length
-    commands.forEach(command => {
-      this[command.getAction()]()
+    let moves: Array<DudeMove> = commands
+      .map(command => new DudeMove(this, command.getAction()))
+    moves.forEach((move, index) => {
+      if (index > 0) {
+        moves[index - 1].next = move
+      }
     })
+    this.currentStep = moves[0]
   }
 }

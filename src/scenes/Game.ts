@@ -162,7 +162,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickRun(() => {
-      this.dude.execute(this.program.commands);
+      this.dude.execute([this.program, prog1]);
     })
 
     this.codeEditor.onClickStop(() => {

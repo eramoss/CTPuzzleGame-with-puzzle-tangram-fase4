@@ -14,7 +14,7 @@ export default class Matrix {
   height: number;
   matrix: number[][];
   mode: String;
-  
+
   constructor(scene: Scene, mode: String = Matrix.NORMAL, matrix: integer[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.mode = mode;
     this.x = x;
@@ -55,5 +55,9 @@ export default class Matrix {
         this.points[y][x] = point
       }
     }
+  }
+
+  getPoint(y: number, x: number): IsometricPoint {
+    return this.points[y][x]
   }
 }

@@ -22,7 +22,7 @@ export default class Program {
     this.grid = grid;
     this.commands = new Array();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
-    this.grid.addImage(x - 2, y, name, 2, 3);
+    this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
   }
 
   addCommands(commands: string[]) {

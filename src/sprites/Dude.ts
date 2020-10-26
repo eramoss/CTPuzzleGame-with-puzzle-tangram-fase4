@@ -245,7 +245,10 @@ export default class Dude {
   resetAt(dudeMove: DudeMove) {
     console.log("MOVE_RESET_AT [x,y]", dudeMove.x, dudeMove.y)
     this.setPosition(dudeMove.x, dudeMove.y)
-    this.character.body.reset(dudeMove.point.x, dudeMove.point.y);
+    let point = dudeMove.point;
+    if (point) {
+      this.character.body.reset(point.x, point.y);
+    }
   }
 
   playAnimation(face: string = null) {

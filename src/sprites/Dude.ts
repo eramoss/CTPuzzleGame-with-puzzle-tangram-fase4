@@ -20,7 +20,7 @@ export class DudeMove {
 
   // move / current face / action (x,y) / new face
 
-  prepareMove(x: number, y: number, move: string, currentFace: string): { newX: number, newY: number, newFace: string } {
+  prepareMove(x: number, y: number, move: string, currentFace: string): { newX: number, newY: number, newFace: string, animation: string } {
     let newFace = currentFace;
     let newX = x;
     let newY = y;
@@ -52,8 +52,12 @@ export class DudeMove {
       if (currentFace == 'left') { newFace = 'down'; }
       if (currentFace == 'right') { newFace = 'up'; }
     }
+    let animation = newFace
+    if (this.dude.matrix.mode == Matrix.ISOMETRIC) {
+      animation = currentFace + "-" + newFace;
+    }
 
-    return { newX, newY, newFace }
+    return { newX, newY, newFace, animation }
   }
 
   constructor(dude: Dude, command: Command) {
@@ -118,7 +122,7 @@ export class DudeMove {
       y = previousMove.y
     }
 
-    let { newX, newY, newFace } = this.prepareMove(x, y, this.action, this.dude.currentFace);
+    let { newX, newY, newFace, animation } = this.prepareMove(x, y, this.action, this.dude.currentFace);
     if (newX) x = newX;
     if (newY) y = newY;
     this.dude.currentFace = newFace;
@@ -135,7 +139,7 @@ export class DudeMove {
 
     if (turnMove) {
       setTimeout(() => { this.onCompleteMove() }, 600);
-      this.dude.playAnimation()
+      this.dude.playAnimation(animation)
     }
 
     if (!branched && !turnMove) {
@@ -186,16 +190,24 @@ export default class Dude {
   createAnimations() {
     let isometric = this.matrix.mode == Matrix.ISOMETRIC;
     [
-      { key: 'down', frames: isometric?[1]:[2] },
-      { key: 'left', frames: isometric?[3]:[0] },
-      { key: 'up', frames: isometric?[5]:[1] },
-      { key: 'right', frames: isometric?[7]:[3] },
+      { key: 'down', frames: isometric ? [1] : [2] },
+      { key: 'left', frames: isometric ? [3] : [0] },
+      { key: 'up', frames: isometric ? [5] : [1] },
+      { key: 'right', frames: isometric ? [7] : [3] },
+      { key: 'right-up', frames: [6, 5] },
+      { key: 'right-down', frames: [0, 1] },
+      { key: 'left-up', frames: [4, 5] },
+      { key: 'left-down', frames: [2, 1] },
+      { key: 'up-left', frames: [4, 3] },
+      { key: 'up-right', frames: [6, 7] },
+      { key: 'down-left', frames: [2, 3] },
+      { key: 'down-right', frames: [0, 7] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
         frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${this.matrix.mode}`, anim),
         frameRate: 7,
-        repeat: 1
+        repeat: 0
       });
     })
   }

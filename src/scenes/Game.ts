@@ -112,7 +112,8 @@ export default class Game extends Scene {
       return this.add.image(x, y, 'block').setScale(this.grid.scale).setDepth(2)
     };
     spriteCreateFunctions[-1] = (x: integer, y: integer) => {
-      return this.add.image(x, y, 'tile').setScale(this.grid.scale * 1.3).setDepth(1)
+      let isometric = this.mode == Matrix.ISOMETRIC
+      return this.add.image(x, y, 'tile').setScale(this.grid.scale * (isometric ? 1.3 : 1)).setDepth(1)
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({

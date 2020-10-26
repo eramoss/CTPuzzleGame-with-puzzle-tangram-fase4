@@ -197,11 +197,6 @@ export default class CodeEditor {
     this.fnOnClickStop = fnOnClickStop;
   }
 
-  highlight(step: number) {
-    /* this.program.commands.forEach(command => command.sprite.clearTint())
-    this.program.commands[step]?.sprite?.setTint(0x0ffff0); */
-  }
-
   getProgramByDropzone(zone: Phaser.GameObjects.Zone) {
     return this.programs.filter(program => program.dropZone.zone === zone)[0]
   }

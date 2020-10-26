@@ -91,7 +91,7 @@ export default class Game extends Scene {
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 1, 1, 1, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0],
       [2, 0, 0, 0, 0, 0, 0, 2],
@@ -107,13 +107,13 @@ export default class Game extends Scene {
       baseMatrix,
       this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
+    let isometric = this.mode == Matrix.ISOMETRIC;
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y, 'block').setScale(this.grid.scale).setDepth(2)
+      return this.add.image(x, y, 'block').setScale(this.grid.scale * (isometric ? 1.3 : 1))
     };
     spriteCreateFunctions[-1] = (x: integer, y: integer) => {
-      let isometric = this.mode == Matrix.ISOMETRIC
-      return this.add.image(x, y, 'tile').setScale(this.grid.scale * (isometric ? 1.3 : 1)).setDepth(1)
+      return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.3 : 1))
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({
@@ -122,18 +122,17 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale).setDepth(3);
+      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
     new MazeModel(this, base, spriteCreateFunctions)
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
     let initGame = () => {
       //this.mazeModel.clear();
-      this.dude.character.setDepth(4)
+      this.dude.character;
       this.mazeModel.putSprite(1, 3, this.dude.character)
       this.dude.setPosition(3, 3);
       this.mazeModel.updateBringFront();
-      this.codeEditor.highlight(-1);
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds);
@@ -146,9 +145,8 @@ export default class Game extends Scene {
       return insideCorners && noBlocked
     }
 
-    this.dude.onStepChange = (stepCount: integer, movingTo: DudeMove) => {
-      console.log('ON_STEP_CHANGE', stepCount, 'current', movingTo);
-      this.codeEditor.highlight(stepCount);
+    this.dude.onStepChange = (movingTo: DudeMove) => {
+      console.log('ON_STEP_CHANGE', 'current', movingTo);
       /* if (movingTo) {
         if (movingTo.possibleMove) {
           let currentPosition = movingTo.previousMove
@@ -178,8 +176,8 @@ export default class Game extends Scene {
     })
 
     this.dude.playAnimation('right');
-    this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-up'])
-    //prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
+    this.program.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-up', 'prog_1'])
+    //prog1.addCommands(['arrow-down', 'arrow-down', 'arrow-down', 'prog_0', 'arrow-left'])
     //prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])

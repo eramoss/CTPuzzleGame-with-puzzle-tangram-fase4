@@ -66,6 +66,8 @@ export class DudeMove {
     this.action = command.getAction();
   }
 
+
+
   update() {
     if (this.executing) {
       if (this.point) {
@@ -108,10 +110,10 @@ export class DudeMove {
     this.animate();
 
     this.command.sprite.setTint(0xffff00);
-    setTimeout(() => {
+    this.dude.setTimeout(() => {
       this.command.sprite.clearTint();
       //this.disanimate();
-    }, 80)
+    }, 80);
 
     let x: number, y: number;
     if (previousMove == null) {
@@ -126,9 +128,12 @@ export class DudeMove {
     if (newX) x = newX;
     if (newY) y = newY;
     this.dude.currentFace = newFace;
+    this.couldExecute = this.dude.canMoveTo(x, y);
 
-    this.x = x;
-    this.y = y;
+    if (this.couldExecute) {
+      this.x = x;
+      this.y = y;
+    }
 
     let branched = this.isProgMove();
     let turnMove = this.action == 'left' || this.action == 'right';
@@ -138,19 +143,18 @@ export class DudeMove {
     }
 
     if (turnMove) {
-      setTimeout(() => { this.onCompleteMove() }, 600);
-      this.dude.playAnimation(animation)
+      this.dude.setTimeout(() => { this.onCompleteMove(); }, 600);
+      this.dude.playAnimation(animation);
     }
 
     if (!branched && !turnMove) {
       console.log('MOVE [x,y]', x, y)
-      this.couldExecute = this.dude.canMoveTo(x, y)
       if (this.couldExecute) {
         this.point = this.dude.matrix.getPoint(y, x);
-        this.dude.moveTo(this)
+        this.dude.moveTo(this);
       } else {
-        this.dude.warmBlocked()
-        setTimeout(() => {
+        this.dude.warmBlocked();
+        this.dude.setTimeout(() => {
           this.onCompleteMove();
         }, 500);
       }
@@ -163,7 +167,6 @@ export class DudeMove {
 }
 export default class Dude {
 
-
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -171,12 +174,12 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onStepChange: (step: integer, movingTo: DudeMove) => void
+  onStepChange: (movingTo: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
   branchMoves: Array<Branch> = new Array();
-  executeTimeout: number;
+  functionsRunningByTimeout: number[] = [];
   currentFace: string;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
@@ -185,6 +188,10 @@ export default class Dude {
     this.matrix = matrix;
     this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrix.mode}`);
     this.createAnimations();
+  }
+
+  setTimeout(fn: Function, timeout: number) {
+    this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
   }
 
   createAnimations() {
@@ -217,6 +224,7 @@ export default class Dude {
     this.sounds.start();
     this.playAnimation();
     this.scene.physics.moveToObject(this.character, dudeMove.point, 40);
+    this.onStepChange(this.currentStep);
   }
 
   warmBlocked() {
@@ -258,7 +266,8 @@ export default class Dude {
   stop() {
     this.character.body.stop();
     this.currentStep = null;
-    clearTimeout(this.executeTimeout);
+    this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
+    this.functionsRunningByTimeout = []
   }
 
   onBranch(progName: string, branch: Branch) {
@@ -318,7 +327,7 @@ export default class Dude {
 
   executeProgram(program: Program) {
     program.disanimateCommands();
-    this.executeTimeout = setTimeout(() => {
+    this.setTimeout(() => {
       this.buildPath(program.commands);
       if (!this.currentStep) {
         this.continuePreviousBranchIfExists();

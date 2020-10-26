@@ -18,6 +18,44 @@ export class DudeMove {
   couldExecute: boolean;
   command: Command;
 
+  // move / current face / action (x,y) / new face
+
+  prepareMove(x: number, y: number, move: string, currentFace: string): { newX: number, newY: number, newFace: string } {
+    let newFace = currentFace;
+    let newX = x;
+    let newY = y;
+
+    if (move == 'down') {
+      if (currentFace == 'up') { newX; newY++; }
+      if (currentFace == 'down') { newX; newY--; }
+      if (currentFace == 'left') { newX++; newY; }
+      if (currentFace == 'right') { newX--; newY; }
+    }
+
+    if (move == 'up') {
+      if (currentFace == 'up') { newX; newY--; }
+      if (currentFace == 'down') { newX; newY++; }
+      if (currentFace == 'left') { newX--; newY; }
+      if (currentFace == 'right') { newX++; newY; }
+    }
+
+    if (move == 'right') {
+      if (currentFace == 'up') { newFace = 'right'; }
+      if (currentFace == 'down') { newFace = 'left'; }
+      if (currentFace == 'left') { newFace = 'up'; }
+      if (currentFace == 'right') { newFace = 'down'; }
+    }
+
+    if (move == 'left') {
+      if (currentFace == 'up') { newFace = 'left'; }
+      if (currentFace == 'down') { newFace = 'right'; }
+      if (currentFace == 'left') { newFace = 'down'; }
+      if (currentFace == 'right') { newFace = 'up'; }
+    }
+
+    return { newX, newY, newFace }
+  }
+
   constructor(dude: Dude, command: Command) {
     this.dude = dude;
     this.command = command;
@@ -80,27 +118,21 @@ export class DudeMove {
       y = previousMove.y
     }
 
-    let branched = false;
-    let turnMove = false;
+    let { newX, newY, newFace } = this.prepareMove(x, y, this.action, this.dude.currentFace);
+    x = newX;
+    y = newY;
+    this.dude.currentFace = newFace;
 
-    switch (this.action) {
-      case 'moveDown': y++; break;
-      case 'moveUp': y--; break;
-      case 'moveRight':
-      case 'moveLeft':
-        turnMove = true;
-        break;
-      default:
-        if (this.isProgMove()) {
-          this.onBranchMove();
-          branched = true;
-        }
-        break;
+    let branched = this.isProgMove();
+    let turnMove = this.action == 'left' || this.action == 'right';
+
+    if (branched) {
+      this.onBranchMove();
     }
 
     if (turnMove) {
       setTimeout(() => { this.onCompleteMove() }, 600);
-      this.dude.playTurnAnimation(this.action)
+      this.dude.playAnimation()
     }
 
     if (!branched && !turnMove) {
@@ -112,7 +144,7 @@ export class DudeMove {
         this.point = this.dude.matrix.getPoint(y, x);
         this.dude.moveTo(this)
       } else {
-        this.dude.warmBlocked(this)
+        this.dude.warmBlocked()
         setTimeout(() => {
           this.onCompleteMove();
         }, 500);
@@ -140,7 +172,7 @@ export default class Dude {
   programs: Program[];
   branchMoves: Array<Branch> = new Array();
   executeTimeout: number;
-  currentAction: string;
+  currentFace: string;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -152,10 +184,10 @@ export default class Dude {
 
   createAnimations() {
     [
-      { key: 'moveDown', frames: [2] },
-      { key: 'moveLeft', frames: [0] },
-      { key: 'moveUp', frames: [1] },
-      { key: 'moveRight', frames: [3] },
+      { key: 'down', frames: [2] },
+      { key: 'left', frames: [0] },
+      { key: 'up', frames: [1] },
+      { key: 'right', frames: [3] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
@@ -169,12 +201,12 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.sounds.start();
-    this.playAnimation(dudeMove.action);
+    this.playAnimation();
     this.scene.physics.moveToObject(this.character, dudeMove.point, 40);
   }
 
-  warmBlocked(dudeMove: DudeMove) {
-    this.playAnimation(dudeMove.action);
+  warmBlocked() {
+    //this.playAnimation(dudeMove.action);
     this.sounds.blocked();
     this.character.setTint(0xff0000);
   }
@@ -194,30 +226,11 @@ export default class Dude {
     this.character.body.reset(dudeMove.point.x, dudeMove.point.y);
   }
 
-  playAnimation(action: string) {
-    this.currentAction = action;
-    this.character.play(action);
-  }
-
-  playTurnAnimation(turnAction: string) {
-    console.log('ANIMATION', turnAction);
-    let animations = ['moveLeft', 'moveUp', 'moveRight', 'moveDown']
-    let nextAnimationIndex = animations.indexOf(this.currentAction);
-    if (turnAction == 'moveLeft') {
-      nextAnimationIndex--;
+  playAnimation(face: string = null) {
+    if (!this.currentFace) {
+      this.currentFace = face;
     }
-    if (turnAction == 'moveRight') {
-      nextAnimationIndex++;
-    }
-    if (nextAnimationIndex < 0) {
-      nextAnimationIndex = animations.length + nextAnimationIndex;
-    }
-    if (nextAnimationIndex > animations.length - 1) {
-      nextAnimationIndex = 0;
-    }
-    let nextAnimation = animations[nextAnimationIndex];
-    console.log('NEXT_ANIMATION', nextAnimation)
-    this.playAnimation(nextAnimation);
+    this.character.play(face || this.currentFace);
   }
 
   setPosition(x: number, y: number) {

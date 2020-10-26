@@ -85,14 +85,14 @@ export default class Game extends Scene {
 
 
     let obstaclesMatrix: number[][] = [
-      [1, 1, 0, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [1, 0, 1, 1, 1, 1, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 2, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0],
+      [2, 0, 0, 0, 0, 0, 0, 2],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [2, 0, 0, 0, 0, 0, 0, 2],
     ]
 
     this.matrix = new Matrix(this,
@@ -128,7 +128,7 @@ export default class Game extends Scene {
       //this.mazeModel.clear();
       this.dude.character.setDepth(4)
       this.mazeModel.putSprite(1, 3, this.dude.character)
-      this.dude.setPosition(1, 3);
+      this.dude.setPosition(3, 3);
       this.mazeModel.updateBringFront();
       this.codeEditor.highlight(-1);
     }
@@ -174,7 +174,8 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.program.addCommands(['arrow-right', 'arrow-right', 'prog_0'])
+    this.dude.playAnimation('right');
+    this.program.addCommands(['arrow-up', 'arrow-down'])
     //prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
     //prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();

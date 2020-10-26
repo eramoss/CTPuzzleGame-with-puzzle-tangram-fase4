@@ -22,10 +22,10 @@ export default class Command {
     let action: string = ''
     const textureKey = this.sprite.texture.key;
     switch (textureKey) {
-      case 'arrow-up': action = 'moveUp'; break;
-      case 'arrow-down': action = 'moveDown'; break;
-      case 'arrow-left': action = 'moveLeft'; break;
-      case 'arrow-right': action = 'moveRight'; break;
+      case 'arrow-up': action = 'up'; break;
+      case 'arrow-down': action = 'down'; break;
+      case 'arrow-left': action = 'left'; break;
+      case 'arrow-right': action = 'right'; break;
       default: action = textureKey
     }
     return action;

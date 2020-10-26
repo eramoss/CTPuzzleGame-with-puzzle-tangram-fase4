@@ -64,7 +64,7 @@ export class DudeMove {
     this.executing = true;
 
     this.animate();
-    
+
     this.command.sprite.setTint(0xffff00);
     setTimeout(() => {
       this.command.sprite.clearTint();
@@ -81,12 +81,15 @@ export class DudeMove {
     }
 
     let branched = false;
+    let turnMove = false;
 
     switch (this.action) {
       case 'moveDown': y++; break;
       case 'moveUp': y--; break;
-      case 'moveRight': x++; break;
-      case 'moveLeft': x--; break;
+      case 'moveRight':
+      case 'moveLeft':
+        turnMove = true;
+        break;
       default:
         if (this.isProgMove()) {
           this.onBranchMove();
@@ -95,7 +98,12 @@ export class DudeMove {
         break;
     }
 
-    if (!branched) {
+    if (turnMove) {
+      setTimeout(() => { this.onCompleteMove() }, 600);
+      this.dude.playTurnAnimation(this.action)
+    }
+
+    if (!branched && !turnMove) {
       console.log('MOVE [x,y]', x, y)
       this.couldExecute = this.dude.canMoveTo(x, y)
       if (this.couldExecute) {
@@ -118,6 +126,7 @@ export class DudeMove {
 }
 export default class Dude {
 
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -131,6 +140,7 @@ export default class Dude {
   programs: Program[];
   branchMoves: Array<Branch> = new Array();
   executeTimeout: number;
+  currentAction: string;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -185,7 +195,29 @@ export default class Dude {
   }
 
   playAnimation(action: string) {
+    this.currentAction = action;
     this.character.play(action);
+  }
+
+  playTurnAnimation(turnAction: string) {
+    console.log('ANIMATION', turnAction);
+    let animations = ['moveLeft', 'moveUp', 'moveRight', 'moveDown']
+    let nextAnimationIndex = animations.indexOf(this.currentAction);
+    if (turnAction == 'moveLeft') {
+      nextAnimationIndex--;
+    }
+    if (turnAction == 'moveRight') {
+      nextAnimationIndex++;
+    }
+    if (nextAnimationIndex < 0) {
+      nextAnimationIndex = animations.length + nextAnimationIndex;
+    }
+    if (nextAnimationIndex > animations.length - 1) {
+      nextAnimationIndex = 0;
+    }
+    let nextAnimation = animations[nextAnimationIndex];
+    console.log('NEXT_ANIMATION', nextAnimation)
+    this.playAnimation(nextAnimation);
   }
 
   setPosition(x: number, y: number) {
@@ -253,7 +285,7 @@ export default class Dude {
   execute(programs: Program[]) {
     this.stop();
     this.programs = programs;
-    this.programs.forEach(p=>p.disanimateCommands());
+    this.programs.forEach(p => p.disanimateCommands());
     this.executeProgram(programs[0])
   }
 

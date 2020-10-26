@@ -26,7 +26,7 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
 
-    const controlsImage = grid.addImage(0.5, 1, 'controls', 2.4);
+    const controlsImage = grid.addImage(0.5, 1, 'controls', 2.4, 15);
     this.arrowsGrid = new FlexFlow(scene)
     this.arrowsGrid.flow = 'column'
 

@@ -85,15 +85,15 @@ export default class Game extends Scene {
 
 
     let obstaclesMatrix: number[][] = [
-      [1, 1, 0, 0, 0, 0, 0, 1],
-      [0, 0, 0, 0, 0, 0, 0, 0],
       [1, 1, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 1, 1, 1, 1, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 2, 0],
-      [1, 0, 0, 0, 0, 0, 0, 1],
-    ];
+      [1, 0, 0, 0, 0, 0, 0, 0],
+    ]
 
     this.matrix = new Matrix(this,
       Matrix.NORMAL,
@@ -174,9 +174,9 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.program.addCommands(['arrow-down', 'prog_1', 'arrow-down'])
-    prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
-    prog2.addCommands(['prog_2'])
+    this.program.addCommands(['arrow-right', 'arrow-right', 'prog_0'])
+    //prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
+    //prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])
     // this.cursors = this.input.keyboard.createCursorKeys()

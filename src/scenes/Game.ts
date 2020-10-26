@@ -18,6 +18,7 @@ export default class Game extends Scene {
   cursors: Types.Input.Keyboard.CursorKeys
   mazeModel: MazeModel
   grid: AlignGrid
+  mode: String = Matrix.ISOMETRIC
 
   constructor() {
     super('game')
@@ -29,10 +30,10 @@ export default class Game extends Scene {
     this.load.image('arrow-right', 'assets/ct/arrow_right.png');
     this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('scene', 'assets/ct/programming_scene.png');
-    this.load.image('tile', 'assets/ct/tile.png');
+    this.load.image('tile', `assets/ct/tile_${this.mode}.png`);
     this.load.image('controls', 'assets/ct/controls_sand.png');
     this.load.image('x', 'assets/ct/x.png');
-    this.load.image('block', 'assets/ct/obstacle_orange_normal.png');
+    this.load.image('block', `assets/ct/obstacle_orange_${this.mode}.png`);
     this.load.image('prog_0', 'assets/ct/prog_0.png');
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
@@ -42,7 +43,8 @@ export default class Game extends Scene {
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 861, frameHeight: 105 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
-    this.load.spritesheet('sprite-rope', 'assets/ct/rope_walk.png', { frameWidth: 65, frameHeight: 89 });
+    this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
+    this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 122 });
 
@@ -73,13 +75,13 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
+      [0, -1, -1, -1, -1, -1, -1, -1],
       [-1, -1, -1, -1, -1, -1, -1, -1],
       [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, 0, -1, -1, -1, -1, -1],
       [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, 0, -1, -1, -1, -1, 0],
+      [-1, -1, -1, -1, 0, -1, -1, -1],
       [-1, -1, -1, -1, -1, -1, -1, -1],
     ];
 
@@ -96,12 +98,12 @@ export default class Game extends Scene {
     ]
 
     this.matrix = new Matrix(this,
-      Matrix.NORMAL,
+      this.mode,
       obstaclesMatrix,
       this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
     const base = new Matrix(this,
-      Matrix.NORMAL,
+      this.mode,
       baseMatrix,
       this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
@@ -110,7 +112,7 @@ export default class Game extends Scene {
       return this.add.image(x, y, 'block').setScale(this.grid.scale).setDepth(2)
     };
     spriteCreateFunctions[-1] = (x: integer, y: integer) => {
-      return this.add.image(x, y, 'tile').setScale(this.grid.scale).setDepth(1)
+      return this.add.image(x, y, 'tile').setScale(this.grid.scale * 1.3).setDepth(1)
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({
@@ -175,7 +177,7 @@ export default class Game extends Scene {
     })
 
     this.dude.playAnimation('right');
-    this.program.addCommands(['arrow-up', 'arrow-down'])
+    this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-up'])
     //prog1.addCommands(['arrow-up','arrow-down','arrow-left', 'prog_2'])
     //prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();

@@ -119,9 +119,12 @@ export class DudeMove {
     }
 
     let { newX, newY, newFace } = this.prepareMove(x, y, this.action, this.dude.currentFace);
-    x = newX;
-    y = newY;
+    if (newX) x = newX;
+    if (newY) y = newY;
     this.dude.currentFace = newFace;
+
+    this.x = x;
+    this.y = y;
 
     let branched = this.isProgMove();
     let turnMove = this.action == 'left' || this.action == 'right';
@@ -139,8 +142,6 @@ export class DudeMove {
       console.log('MOVE [x,y]', x, y)
       this.couldExecute = this.dude.canMoveTo(x, y)
       if (this.couldExecute) {
-        this.x = x;
-        this.y = y;
         this.point = this.dude.matrix.getPoint(y, x);
         this.dude.moveTo(this)
       } else {
@@ -178,20 +179,21 @@ export default class Dude {
     this.sounds = sounds;
     this.scene = scene;
     this.matrix = matrix;
-    this.character = scene.physics.add.sprite(485, 485, 'sprite-rope');
+    this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrix.mode}`);
     this.createAnimations();
   }
 
   createAnimations() {
+    let isometric = this.matrix.mode == Matrix.ISOMETRIC;
     [
-      { key: 'down', frames: [2] },
-      { key: 'left', frames: [0] },
-      { key: 'up', frames: [1] },
-      { key: 'right', frames: [3] },
+      { key: 'down', frames: isometric?[1]:[2] },
+      { key: 'left', frames: isometric?[3]:[0] },
+      { key: 'up', frames: isometric?[5]:[1] },
+      { key: 'right', frames: isometric?[7]:[3] },
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
-        frames: this.scene.anims.generateFrameNumbers('sprite-rope', anim),
+        frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${this.matrix.mode}`, anim),
         frameRate: 7,
         repeat: 1
       });

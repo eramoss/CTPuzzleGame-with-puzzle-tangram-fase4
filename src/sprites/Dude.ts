@@ -181,6 +181,7 @@ export default class Dude {
   branchMoves: Array<Branch> = new Array();
   functionsRunningByTimeout: number[] = [];
   currentFace: string;
+  initialFace: string;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -254,6 +255,9 @@ export default class Dude {
   playAnimation(face: string = null) {
     if (!this.currentFace) {
       this.currentFace = face;
+      if (!this.initialFace) {
+        this.initialFace = face;
+      }
     }
     this.character.play(face || this.currentFace);
   }
@@ -267,10 +271,14 @@ export default class Dude {
   }
 
   stop() {
+    this.character.clearTint();
     this.character.body.stop();
     this.currentStep = null;
+    this.disanimatePrograms();
     this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
     this.functionsRunningByTimeout = []
+    this.currentFace = null;
+    this.playAnimation(this.initialFace);
   }
 
   onBranch(progName: string, branch: Branch) {
@@ -324,8 +332,12 @@ export default class Dude {
   execute(programs: Program[]) {
     this.stop();
     this.programs = programs;
-    this.programs.forEach(p => p.disanimateCommands());
+    this.disanimatePrograms();
     this.executeProgram(programs[0])
+  }
+
+  disanimatePrograms() {
+    (this.programs || []).forEach(p => p.disanimateCommands());
   }
 
   executeProgram(program: Program) {

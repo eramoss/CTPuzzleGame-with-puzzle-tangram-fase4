@@ -74,6 +74,7 @@ export default class Command {
     if (this.animated) {
       this.animated = false;
       this.sprite.rotation -= 0.05
+      this.sprite.clearTint();
       this.sprite.setScale(this.sprite.scale - 0.1);
     }
   }

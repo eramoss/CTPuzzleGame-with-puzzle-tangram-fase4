@@ -45,7 +45,10 @@ export default class Program {
     } else {
       console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
     }
-    this.organizeInProgramArea(command);
+    let fit = this.organizeInProgramArea(command);
+    if (!fit) {
+      command.removeSelf();
+    }
   }
 
   addCommandBySprite(sprite: GameObjects.Sprite) {
@@ -79,10 +82,16 @@ export default class Program {
     const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols
     const tileHeight = spriteHeight + (zone.height - spriteHeight * rows) / rows
 
+    const row = Math.floor(index / cols) * tileHeight;
+    let fitInFirstRow = row == 0;
+
     let x = zone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
-    let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
+    let y = zone.y + row + spriteHeight * 0.5;
+    //let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
-    drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight)
+    drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);
+
+    return fitInFirstRow;
   }
 
   removeCommandSprite(commandSprite: GameObjects.Sprite) {

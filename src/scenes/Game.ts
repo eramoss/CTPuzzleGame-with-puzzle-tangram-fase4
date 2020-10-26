@@ -39,7 +39,7 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 861, frameHeight: 108 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 861, frameHeight: 105 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('sprite-rope', 'assets/ct/rope_walk.png', { frameWidth: 65, frameHeight: 89 });

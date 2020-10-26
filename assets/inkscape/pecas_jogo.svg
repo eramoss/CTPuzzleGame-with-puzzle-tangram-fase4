@@ -183,37 +183,6 @@
          offset="1"
          id="stop3174" />
     </linearGradient>
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#SVGID_11_"
-       id="linearGradient5275"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(-14.28748,18.7084)"
-       x1="193.14584"
-       y1="273.18747"
-       x2="191.60873"
-       y2="235.43184" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient2435"
-       id="radialGradient2659"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.7268445,0.10138448,-0.07179688,1.0112467,3.0774528,-6.206506)"
-       cx="22.339979"
-       cy="279.86847"
-       fx="22.339979"
-       fy="279.86847"
-       r="15.362421" />
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#SVGID_11_"
-       id="linearGradient1636"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(324.343,18.7084)"
-       x1="193.14584"
-       y1="273.18747"
-       x2="191.60873"
-       y2="235.43184" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient2435"
@@ -245,6 +214,17 @@
        y1="147.31198"
        x2="-84.981705"
        y2="175.50795" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2435"
+       id="radialGradient1641"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.7268445,0.10138448,-0.07179688,1.0112467,3.0774528,-6.206506)"
+       cx="22.339979"
+       cy="279.86847"
+       fx="22.339979"
+       fy="279.86847"
+       r="15.362421" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -253,9 +233,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="131.82313"
-     inkscape:cy="307.32724"
+     inkscape:zoom="0.5"
+     inkscape:cx="718.45322"
+     inkscape:cy="91.400922"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -4464,34 +4444,24 @@
        id="g1602"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454">
-      <rect
-         inkscape:export-ydpi="95.923454"
-         inkscape:export-xdpi="95.923454"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-         ry="2.9934187"
-         y="256.30496"
-         x="4.4589953"
-         height="34.424328"
-         width="338.63049"
-         id="rect2834"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient5275);fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+       inkscape:export-ydpi="95.923454"
+       transform="matrix(0.99912429,0,0,1,0.13619649,0)">
       <rect
          inkscape:export-ydpi="95.923454"
          inkscape:export-xdpi="95.923454"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#5c7d88;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="rect2914"
-         width="338.63049"
-         height="34.424328"
+         width="228.24818"
+         height="27.876225"
          x="4.4589953"
-         y="256.30496"
-         ry="2.9934187" />
+         y="259.57901"
+         ry="2.4240186" />
       <g
          transform="matrix(0.90935794,0,0,1,-1.3038894,-0.12284691)"
          id="g6547">
         <path
-           style="fill:url(#radialGradient2659);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="fill:url(#radialGradient1641);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            d="M 9.1589895,286.00909 C 10.030902,281.07568 7.6537992,261.94291 7.6537992,261.94291 l 28.4570688,-0.52936 c 2.622196,8.3289 3.400274,16.59962 0,24.73853 z"
            id="path6531"
            inkscape:connector-curvature="0"
@@ -4550,38 +4520,6 @@
          width="100%"
          transform="translate(196.47286,-2.8261523e-5)"
          id="use6561"
-         xlink:href="#g6547"
-         y="0"
-         x="0" />
-      <use
-         x="0"
-         y="0"
-         xlink:href="#g6547"
-         id="use6563"
-         transform="translate(224.54041,-3.2301523e-5)"
-         width="100%"
-         height="100%" />
-      <use
-         height="100%"
-         width="100%"
-         transform="translate(252.60796,-3.6341523e-5)"
-         id="use6565"
-         xlink:href="#g6547"
-         y="0"
-         x="0" />
-      <use
-         x="0"
-         y="0"
-         xlink:href="#g6547"
-         id="use6567"
-         transform="translate(280.67551,-4.0371523e-5)"
-         width="100%"
-         height="100%" />
-      <use
-         height="100%"
-         width="100%"
-         transform="translate(308.74306,-4.3041523e-5)"
-         id="use6571"
          xlink:href="#g6547"
          y="0"
          x="0" />
@@ -5346,26 +5284,15 @@
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       ry="2.9934187"
-       y="256.30496"
-       x="343.08948"
-       height="34.424328"
-       width="338.63049"
-       id="rect1604"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient1636);fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-    <rect
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#86a4ad;fill-opacity:1;fill-rule:evenodd;stroke:#333333;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96803661;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect1606"
-       width="338.63049"
-       height="34.424328"
-       x="343.08948"
-       y="256.30496"
-       ry="2.9934187" />
+       width="228.04831"
+       height="27.876225"
+       x="232.68465"
+       y="259.57901"
+       ry="2.4240186" />
     <g
-       transform="matrix(0.90935794,0,0,1,337.32659,-0.12284691)"
+       transform="matrix(0.90926811,0,0,1,226.92234,-0.12284691)"
        id="g1610"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
@@ -5380,7 +5307,7 @@
     <use
        height="100%"
        width="100%"
-       transform="translate(366.69803,-4.0415234e-6)"
+       transform="matrix(0.99990122,0,0,1,256.29087,-4.042008e-6)"
        id="use1612"
        xlink:href="#g6547"
        y="0"
@@ -5393,7 +5320,7 @@
        y="0"
        xlink:href="#g6547"
        id="use1614"
-       transform="translate(394.76558,-8.0815234e-6)"
+       transform="matrix(0.99990122,0,0,1,284.35565,-8.082008e-6)"
        width="100%"
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
@@ -5402,7 +5329,7 @@
     <use
        height="100%"
        width="100%"
-       transform="translate(422.83314,-1.2111523e-5)"
+       transform="matrix(0.99990122,0,0,1,312.42044,-1.2112008e-5)"
        id="use1616"
        xlink:href="#g6547"
        y="0"
@@ -5415,7 +5342,7 @@
        y="0"
        xlink:href="#g6547"
        id="use1618"
-       transform="translate(450.90069,-1.6151523e-5)"
+       transform="matrix(0.99990122,0,0,1,340.48522,-1.6152008e-5)"
        width="100%"
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
@@ -5424,7 +5351,7 @@
     <use
        height="100%"
        width="100%"
-       transform="translate(478.96824,-2.0191523e-5)"
+       transform="matrix(0.99990122,0,0,1,368.54999,-2.0192008e-5)"
        id="use1620"
        xlink:href="#g6547"
        y="0"
@@ -5437,7 +5364,7 @@
        y="0"
        xlink:href="#g6547"
        id="use1622"
-       transform="translate(507.03579,-2.4221523e-5)"
+       transform="matrix(0.99990122,0,0,1,396.61477,-2.4222008e-5)"
        width="100%"
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
@@ -5446,52 +5373,8 @@
     <use
        height="100%"
        width="100%"
-       transform="translate(535.10334,-2.8261523e-5)"
+       transform="matrix(0.99990122,0,0,1,424.67955,-2.8262008e-5)"
        id="use1624"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use1626"
-       transform="translate(563.17089,-3.2301523e-5)"
-       width="100%"
-       height="100%"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <use
-       height="100%"
-       width="100%"
-       transform="translate(591.23844,-3.6341523e-5)"
-       id="use1628"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use1630"
-       transform="translate(619.30599,-4.0371523e-5)"
-       width="100%"
-       height="100%"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <use
-       height="100%"
-       width="100%"
-       transform="translate(647.37354,-4.3041523e-5)"
-       id="use1632"
        xlink:href="#g6547"
        y="0"
        x="0"

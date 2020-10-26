@@ -4,7 +4,6 @@ import Program from '../program/Program';
 import DropZone from './DropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
-import Trash from './Trash';
 import FlexFlow from '../geom/FlexFlow';
 import Command from '../program/Command';
 
@@ -16,7 +15,6 @@ export default class CodeEditor {
   fnOnClickStop: () => void;
   sounds: Sounds;
   controlsScale: number;
-  trash: Trash;
   scale: number
   clickTime: number = this.getTime()
   arrowsGrid: FlexFlow;
@@ -38,16 +36,12 @@ export default class CodeEditor {
     this.arrowsGrid.height = controlsImage.displayHeight
 
     this.scale = grid.scale
-    this.trash = new Trash(this.scene, this.grid, 22.5, 11.5, 2.5, 4);
     this.createGlobalDragLogic();
     this.createDraggableProgramCommands();
 
     this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopButtons();
 
-    /* this.trash.onClick(_=>{
-      program.clear()
-    }) */
   }
 
   createEventsToCommandsForAddedPrograms() {
@@ -125,7 +119,6 @@ export default class CodeEditor {
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(this.scale * 1.2)
-        this.trash.open();
       })
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
@@ -151,11 +144,10 @@ export default class CodeEditor {
 
         if (!clicked) {
           if (dropped) {
-            const isHoverTrash = this.trash.spriteIsHover(commandSprite);
-            if (!isHoverTrash) {
+            if(programToDropInto){
               command.setProgram(programToDropInto);
             }
-            if (isHoverTrash) {
+            if(!programToDropInto){
               command.removeSelf();
             }
           }
@@ -166,7 +158,6 @@ export default class CodeEditor {
         }
 
         this.highlightDropZones(false);
-        this.trash.close();
         commandSprite.setScale(this.scale);
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {

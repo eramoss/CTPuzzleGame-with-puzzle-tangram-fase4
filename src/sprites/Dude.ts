@@ -177,7 +177,7 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onCompleteMoveCallback: (previous: DudeMove, current: DudeMove) => void
+  onCompleteMoveCallback: (current: DudeMove) => void
   onStartMoveCallback: (previous: DudeMove, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
@@ -324,7 +324,7 @@ export default class Dude {
     if (move.couldExecute)
       this.resetAt(move);
     this.currentStep?.execute(move);
-    this.onCompleteMoveCallback(move.previous, move)
+    this.onCompleteMoveCallback(move)
   }
 
   continuePreviousBranchIfExists() {

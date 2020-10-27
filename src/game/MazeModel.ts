@@ -59,7 +59,7 @@ export default class MazeModel {
   }
 
   private updateIsometric() {
-    
+
     let diagonalsToPass = (this.matrix.height + this.matrix.width) - 1;
     let itensDiagonalToPass = 1;
     for (let diagonalsPassed = 0; diagonalsPassed < diagonalsToPass;) {
@@ -70,18 +70,18 @@ export default class MazeModel {
         y--;
         let object = this.getObjectAt(y, x);
         if (object) {
-          //console.log(y, x)
+          console.log('MAZE_MODEL_ORDERING [y,x]', y, x);
           this.scene.children.bringToTop(object.gameObject);
         }
       }
       diagonalsPassed++;
       itensDiagonalToPass++;
     }
-    
+
     this.logMatrix();
   }
-  
-  logMatrix(){
+
+  logMatrix() {
     let logMatrix = '\n';
     for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {

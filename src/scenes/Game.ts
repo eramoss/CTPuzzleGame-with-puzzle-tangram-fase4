@@ -146,20 +146,22 @@ export default class Game extends Scene {
       return can
     }
 
-    this.dude.onCompleteMoveCallback = (previous: DudeMove, current: DudeMove) => {
-      if (previous) {
+    /*this.dude.onCompleteMoveCallback = (current: DudeMove) => {
+       if (previous) {
         this.mazeModel.putSprite(previous.x, previous.y, undefined);
       }
       if (current) {
         this.mazeModel.putSprite(current.x, current.y, this.dude.character)
       }
-      this.mazeModel.updateBringFront();
-    }
+      this.mazeModel.updateBringFront(); 
+    }*/
 
     this.dude.onStartMoveCallback = (previous:DudeMove, current: DudeMove) => {
+      if (previous) {
+        this.mazeModel.putSprite(previous.x, previous.y, undefined);
+      }
       if (current) {
         this.mazeModel.putSprite(current.x, current.y, this.dude.character)
-        this.mazeModel.updateBringFront();
       }
       this.mazeModel.updateBringFront();
     }
@@ -175,7 +177,7 @@ export default class Game extends Scene {
     })
 
     this.dude.playAnimation('down');
-    this.program.addCommands(['arrow-up'])
+    this.program.addCommands(['arrow-down', 'arrow-right', 'arrow-up', 'arrow-up','arrow-left','arrow-up'])
     //prog1.addCommands(['arrow-left', 'prog_2'])
     //prog2.addCommands(['arrow-up', 'arrow-up'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();

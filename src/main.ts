@@ -8,7 +8,7 @@ import Game from './scenes/Game'
 import GameOver from './scenes/GameOver'
 
 let proportionHeightByWidth = 0.58
-let width = window.innerWidth * 0.85
+let width = window.innerWidth * 1
 let height = width * proportionHeightByWidth
 
 if (height > window.innerHeight) {

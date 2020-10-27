@@ -1,10 +1,10 @@
-import { GameObjects, Types, Scene } from 'phaser'
+import { GameObjects, Types, Scene, Physics } from 'phaser'
 import Matrix from '../geom/Matrix'
 import Dude, { DudeMove } from '../sprites/Dude'
 import Program from '../program/Program'
 import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
-import MazeModel from '../game/MazeModel'
+import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
 
 export default class Game extends Scene {
@@ -54,6 +54,7 @@ export default class Game extends Scene {
     this.load.audio('hover', 'assets/ct/sounds/hover.ogg');
     this.load.audio('remove', 'assets/ct/sounds/remove.ogg');
     this.load.audio('start', 'assets/ct/sounds/start.ogg');
+    this.load.audio('coin', 'assets/ct/sounds/mario.wav');
   }
 
   create() {
@@ -64,8 +65,6 @@ export default class Game extends Scene {
       this.game.config.height as number
     );
 
-    //this.grid.scale = this.cameras.main.width / window.innerWidth
-
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
@@ -75,40 +74,40 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
     ];
 
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 0, 0, 0],
-      [2, 0, 0, 0, 0, 2],
-      [0, 0, 1, 0, 1, 0],
-      [0, 0, 1, 0, 1, 0],
-      [0, 0, 1, 1, 1, 0],
-      [0, 0, 1, 1, 1, 0],
-      [2, 0, 0, 0, 0, 2],
+      [0, 0, 0, 0, 0, 0, 0],
+      [2, 0, 0, 0, 0, 0, 2],
+      [0, 0, 1, 0, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 1, 0, 0],
+      [0, 0, 1, 0, 1, 0, 0],
+      [2, 0, 0, 0, 0, 0, 2],
     ]
 
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth);
 
     let isometric = this.mode == Matrix.ISOMETRIC;
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y - 5, 'block').setScale(this.grid.scale * (isometric ? 1.4 : 1))
+      return this.add.image(x, y - 5, 'block').setScale(this.grid.scale * (isometric ? 1.2 : 1))
     };
     spriteCreateFunctions[-1] = (x: integer, y: integer) => {
       return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.4 : 1))
@@ -120,18 +119,16 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
+      return this.physics.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
     new MazeModel(this, base, spriteCreateFunctions)
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
     let initGame = () => {
-      //this.mazeModel.clear();
-      this.dude.character;
       this.mazeModel.putSprite(4, 1, this.dude.character)
       this.dude.setPosition(4, 1);
+      this.dude.setFacedTo('right');
       this.mazeModel.updateBringFront();
-      this.dude.playAnimation('right');
       this.program.clear();
       prog1.clear();
       prog2.clear();
@@ -153,7 +150,11 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      //this.mazeModel.updateBringFront();
+      /* if(baseMatrix[current.y][current.x] == 0){
+        this.dude.character.setVelocityX(0)
+        this.dude.character.setVelocityY(100)
+        this.dude.character.setGravityY(100)
+      } */
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, current: DudeMove) => {
@@ -164,6 +165,15 @@ export default class Game extends Scene {
       this.mazeModel.updateBringFront();
     }
 
+    this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
+      if (other.spriteNumber == 2) {//coin
+        this.children.remove(other.gameObject);
+        //coin.setGravityY(-200);
+        //coin.setVelocityY(-100)
+        this.sounds.coin();
+      }
+    }
+
     this.codeEditor.onClickRun(() => {
       this.dude.execute([this.program, prog1, prog2]);
     })
@@ -171,10 +181,9 @@ export default class Game extends Scene {
     this.codeEditor.onClickStop(() => {
       let resetFace = true;
       this.dude.stop(resetFace);
+      //this.mazeModel.clear();
       initGame();
     })
-
-
 
     initGame();
   }

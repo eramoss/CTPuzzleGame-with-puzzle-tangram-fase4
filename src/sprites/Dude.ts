@@ -168,6 +168,7 @@ export class DudeMove {
 }
 export default class Dude {
 
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -176,7 +177,7 @@ export default class Dude {
   y: number;
   walking: boolean;
   onCompleteMoveCallback: (current: DudeMove) => void
-  onStartMoveCallback: (x: number, y:number, current: DudeMove) => void
+  onStartMoveCallback: (x: number, y: number, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
@@ -225,7 +226,6 @@ export default class Dude {
 
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
-    this.sounds.start();
     this.playAnimation();
     this.scene.physics.moveToObject(this.character, dudeMove.point, 80);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
@@ -256,6 +256,11 @@ export default class Dude {
   }
 
   playAnimation(face: string = null) {
+    this.sounds.start();
+    this.setFacedTo(face);
+  }
+
+  setFacedTo(face: string) {
     if (!this.currentFace) {
       this.currentFace = face;
       if (!this.initialFace) {
@@ -282,7 +287,7 @@ export default class Dude {
     this.functionsRunningByTimeout = []
     if (resetFace) {
       this.currentFace = null;
-      this.playAnimation(this.initialFace);
+      this.setFacedTo(this.initialFace);
     }
   }
 
@@ -314,6 +319,7 @@ export default class Dude {
 
   onCompleteMove(move: DudeMove) {
     this.character.clearTint();
+    this.onCompleteMoveCallback(this.currentStep);
     this.currentStep = move.next
     if (!move.next) {
       this.continuePreviousBranchIfExists();
@@ -322,7 +328,6 @@ export default class Dude {
     if (move.couldExecute)
       this.resetAt(move);
     this.currentStep?.execute(move);
-    this.onCompleteMoveCallback(this.currentStep);
   }
 
   continuePreviousBranchIfExists() {

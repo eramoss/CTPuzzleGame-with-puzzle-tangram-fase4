@@ -6,6 +6,7 @@ export default class Sounds {
   dropSound: Phaser.Sound.BaseSound;
   hoverSound: Phaser.Sound.BaseSound;
   removeSound: Phaser.Sound.BaseSound;
+  coinSound: Phaser.Sound.BaseSound;
   blockedSound: Phaser.Sound.BaseSound;
   startSound: Phaser.Sound.BaseSound;
 
@@ -18,6 +19,7 @@ export default class Sounds {
     this.removeSound = scene.sound.add('remove');
     this.startSound = scene.sound.add('start');
     this.blockedSound = scene.sound.add('blocked');
+    this.coinSound = scene.sound.add('coin');
   }
 
 
@@ -35,6 +37,10 @@ export default class Sounds {
 
   remove() {
     this.removeSound.play()
+  }
+
+  coin() {
+    this.coinSound.play()
   }
 
   start() {

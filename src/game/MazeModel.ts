@@ -1,7 +1,7 @@
 import { GameObjects } from "phaser";
 import Matrix from "../geom/Matrix";
 
-class MazeModelObject {
+export class MazeModelObject {
   gameObject: GameObjects.GameObject;
   spriteNumber: number
 
@@ -12,6 +12,8 @@ class MazeModelObject {
 }
 
 export default class MazeModel {
+  
+  onOverlap: (x: number, y: number, other: MazeModelObject) => void;
   getObjectAt(y: number, x: number): MazeModelObject {
     let object: MazeModelObject = null
     let row = this.gameObjects[y];
@@ -118,6 +120,12 @@ export default class MazeModel {
   }
 
   putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteNumber: number = -1) {
+    const existentObjectOnPosition = this.getObjectAt(y, x);
+    if (sprite) {
+      if (existentObjectOnPosition) {
+        this.onOverlap(x, y, existentObjectOnPosition);
+      }
+    }
     let object = null;
     if (sprite) {
       object = new MazeModelObject(sprite, spriteNumber)
@@ -125,4 +133,14 @@ export default class MazeModel {
     this.gameObjects[y][x] = object
   }
 
+  clear() {
+    for (let y = 0; y < this.matrix.height; y++) {
+      for (let x = 0; x < this.matrix.width; x++) {
+        let object = this.getObjectAt(y, x);
+        if(object){
+          this.scene.children.remove(object.gameObject);
+        }
+      }
+    }
+  }
 }

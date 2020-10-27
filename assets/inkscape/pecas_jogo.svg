@@ -374,6 +374,16 @@
        y1="97.355347"
        x2="637.9931"
        y2="97.305733" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4507"
+       id="linearGradient3134"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-4.2913599,0.18623973)"
+       x1="639.90308"
+       y1="97.355347"
+       x2="637.9931"
+       y2="97.305733" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -382,9 +392,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.94828806"
-     inkscape:cx="1871.0861"
-     inkscape:cy="1768.1899"
+     inkscape:zoom="0.67054092"
+     inkscape:cx="2017.43"
+     inkscape:cy="2249.6187"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -5689,7 +5699,7 @@
        inkscape:export-ydpi="96.010002"
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tile_ISOMETRIC.png"
-       transform="matrix(1.1051503,0,0,1.1051503,1505.1551,94.70326)"
+       transform="matrix(1.1051503,0,0,1.1051503,1346.8099,-172.03179)"
        id="g2070">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
@@ -12495,8 +12505,8 @@
        x="539.59082"
        y="-137.13634"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-192x192.png"
-       inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95" />
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <g
        inkscape:export-ydpi="95"
        inkscape:export-xdpi="95"
@@ -12676,8 +12686,8 @@
          sodipodi:nodetypes="ccccc" />
     </g>
     <rect
-       inkscape:export-ydpi="95"
-       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-128x128.png"
        y="-115.02267"
        x="615.06348"
@@ -12864,8 +12874,8 @@
          style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <rect
-       inkscape:export-ydpi="95"
-       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-512x512.png"
        y="-220.6041"
        x="370.00299"
@@ -12877,8 +12887,8 @@
        id="g3057"
        transform="matrix(4.1972323,0,0,4.1972323,-2221.0208,-595.21715)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-512x512.png"
-       inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <path
          sodipodi:nodetypes="cccccccc"
          inkscape:connector-curvature="0"
@@ -13050,6 +13060,493 @@
          id="path3055"
          d="m 644.39684,107.23025 -0.24895,2.7577 0.70387,-0.064 0.27028,-2.98399 z"
          style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffdd55;fill-opacity:1;fill-rule:evenodd;stroke:#383958;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3072"
+       width="270.93332"
+       height="132.29167"
+       x="462.845"
+       y="-409.80264"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g3234"
+       transform="matrix(3.8555142,0,0,3.8555142,2456.4197,-548.97982)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         id="path3222"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         inkscape:connector-curvature="0"
+         style="fill:#9e7758;stroke-width:0.26458332" />
+      <path
+         id="path3224"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bb8d5d;stroke-width:0.26458332" />
+      <path
+         id="path3226"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;stroke-width:0.26458332" />
+      <path
+         id="path3228"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         inkscape:connector-curvature="0"
+         style="fill:#d8d19e;stroke-width:0.26458332" />
+      <path
+         id="path3230"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#c1b868;stroke-width:0.26458332" />
+      <path
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         id="path3232" />
+    </g>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       transform="matrix(3.626422,0,0,3.626422,-1628.4266,-737.055)"
+       id="g3132">
+      <path
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 634.24349,93.494146 c -0.0829,-0.167589 0.14147,-0.422997 -0.32845,-0.480025 l -10.19047,3.820408 c -0.27104,0.187413 -0.30249,0.374827 -0.3638,0.56224 l -2.57401,15.143381 c 0.13188,0.54303 0.38237,0.25587 0.59531,0.23151 l 12.7,-8.40052 z"
+         id="path3074"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccc" />
+      <path
+         style="fill:#000000;fill-opacity:0.41935485;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 620.96297,113.30149 11.13372,5.3056 12.84534,-6.11913 -11.95861,-5.42792 z"
+         id="path3076"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#c59d76;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 621.16162,112.33811 2.54381,-15.114995 11.72695,5.364835 -2.64331,15.14256 z"
+         id="path3078"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#c2a97f;fill-opacity:1;fill-rule:evenodd;stroke:#c2a97f;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 623.70543,97.223115 10.37438,-4.07976 11.74119,4.560168 -10.38862,4.884427 z"
+         id="path3080"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#f6d2af;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 624.80924,104.23095 c 0.41277,-2.51959 3.16333,-1.07761 2.97003,1.09914 z"
+         id="path3082"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         id="path3084"
+         d="m 628.62145,105.6174 c 0.96466,-3.16763 3.98978,-0.32153 3.47297,1.28527 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#f6d2af;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#f6d2af;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 630.14264,109.27328 c -0.53068,3.41936 -5.59937,2.02624 -5.07632,-1.68283 z"
+         id="path3086"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:#58cffc;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 629.60164,98.32919 2.12378,-1.011033 2.06964,0.912057 -2.24066,1.011033 z"
+         id="path3088"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#58cffc;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 629.60164,98.32919 -0.11692,0.724968 2.04629,0.982212 0.0234,-0.795123 z"
+         id="path3090"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#09759f;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 631.53683,100.01883 2.30939,-1.075756 -0.076,-0.719122 -2.21581,1.017295 z"
+         id="path3092"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3094"
+         d="m 635.55359,95.587257 1.80205,-0.857876 1.75612,0.773894 -1.90123,0.857874 z"
+         style="fill:#fc58e7;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3096"
+         d="m 635.55359,95.587257 -0.0992,0.615146 1.73631,0.833424 0.0198,-0.674678 z"
+         style="fill:#fd8eef;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3098"
+         d="m 637.19562,97.020943 1.95955,-0.912797 -0.0645,-0.610185 -1.88015,0.863188 z"
+         style="fill:#a52695;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3100"
+         d="m 630.10203,95.410102 1.76201,-0.838815 1.7171,0.756698 -1.85899,0.838813 z"
+         style="fill:#fce758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3102"
+         d="m 630.10203,95.410102 -0.097,0.601476 1.69772,0.814906 0.0194,-0.659686 z"
+         style="fill:#fcf758;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3104"
+         d="m 631.70757,96.811931 1.91601,-0.892515 -0.063,-0.596626 -1.83835,0.844008 z"
+         style="fill:#ac980e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#fc6358;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 635.9443,98.207787 2.04625,-0.97413 1.9941,0.878766 -2.15888,0.974128 z"
+         id="path3106"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#fc776e;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 635.9443,98.207787 -0.11265,0.698505 1.97159,0.946364 0.0225,-0.766105 z"
+         id="path3108"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         style="fill:#aa1a10;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 637.80884,99.835755 2.2251,-1.036493 -0.0732,-0.692872 -2.1349,0.980161 z"
+         id="path3110"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:url(#linearGradient3134);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 632.98241,96.632079 0.008,0.744141 c 0.14453,0.854282 2.90061,0.79619 3.05925,0.157096 l -10e-6,-0.926041 z"
+         id="path3112"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <ellipse
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#0ff00f;fill-opacity:1;fill-rule:evenodd;stroke:#f6d2af;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse3114"
+         cx="634.52295"
+         cy="96.650574"
+         rx="1.5317885"
+         ry="0.53787994" />
+      <path
+         style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 623.33832,100.06044 -0.56126,-0.175388 -0.51449,2.899878 0.65479,0.18709 z"
+         id="path3116"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3118"
+         d="m 622.18997,107.27699 -0.56126,-0.17539 -0.51449,2.89987 0.65479,0.18709 z"
+         style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <ellipse
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#391f06;fill-opacity:1;fill-rule:evenodd;stroke:#f6d2af;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="ellipse3120"
+         cx="656.34198"
+         cy="112.89371"
+         rx="3.5955272"
+         ry="4.4993148"
+         transform="matrix(1,0,-0.15562589,0.98781607,0,0)" />
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path3122"
+         d="m 646.28202,97.956901 c -0.0829,-0.16759 0.14147,-0.423 -0.32845,-0.48003 l -11.01729,4.316509 c -0.27104,0.18741 -0.30249,0.37483 -0.3638,0.56224 l -2.57401,15.14338 c 0.13188,0.54303 0.38237,0.25587 0.59531,0.23151 l 12.04118,-5.749 c 0.35569,-0.1863 0.45993,-0.5989 0.50673,-1.0632 z"
+         style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 635.22449,103.80672 -0.46774,3.32082 0.72497,-0.30406 0.53789,-3.2039 z"
+         id="path3124"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3126"
+         d="m 633.72778,110.8927 -0.58066,3.31847 0.77174,-0.0702 0.60404,-3.27171 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path3128"
+         d="m 644.98955,100.46339 -0.2332,3.02597 0.59379,-0.2394 0.37469,-3.05348 z"
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 644.39684,107.23025 -0.24895,2.7577 0.70387,-0.064 0.27028,-2.98399 z"
+         id="path3130"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+    </g>
+    <rect
+       transform="scale(-1)"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3142"
+       width="26.238003"
+       height="23.091209"
+       x="-437.22101"
+       y="333.4686" />
+    <g
+       transform="matrix(-0.49743126,0.90099103,-0.90099103,-0.49743126,691.30399,-291.18321)"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       id="g3140">
+      <rect
+         y="210.18559"
+         x="9.0533829"
+         height="23.091209"
+         width="26.238003"
+         id="rect3136"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path3138"
+         d="m 12.486698,220.49589 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
+    </g>
+    <g
+       id="g3178"
+       transform="matrix(2.2825219,0,0,2.2825219,1585.924,-454.40597)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         id="path3166"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         inkscape:connector-curvature="0"
+         style="fill:#9e7758;stroke-width:0.26458332" />
+      <path
+         id="path3168"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bb8d5d;stroke-width:0.26458332" />
+      <path
+         id="path3170"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;stroke-width:0.26458332" />
+      <path
+         id="path3172"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         inkscape:connector-curvature="0"
+         style="fill:#d8d19e;stroke-width:0.26458332" />
+      <path
+         id="path3174"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#c1b868;stroke-width:0.26458332" />
+      <path
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         id="path3176" />
+    </g>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       transform="matrix(1.4794964,0,0,1.4794964,1234.5274,-445.29448)"
+       id="g3192">
+      <path
+         style="fill:#9e7758;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         id="path3180" />
+      <path
+         style="fill:#bb8d5d;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         id="path3182" />
+      <path
+         style="fill:#cdc687;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         id="path3184" />
+      <path
+         style="fill:#d8d19e;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         id="path3186" />
+      <path
+         style="fill:#c1b868;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         id="path3188" />
+      <path
+         id="path3190"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332" />
+    </g>
+    <g
+       style="stroke:#384958;stroke-opacity:1"
+       transform="matrix(-0.71677991,-0.69729947,-0.69729947,0.71677991,624.79719,-511.57416)"
+       id="g3164"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         transform="scale(-1)"
+         y="-179.64761"
+         x="-2.7120414"
+         height="23.091209"
+         width="26.238003"
+         id="rect3160"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="ccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path3162"
+         d="m -8.201102,177.9087 0.1714296,-7.54295 h -4.1143306 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858259,-0.34285 0.162816,15.45814 z"
+         style="fill:#ccff00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+    </g>
+    <g
+       id="g3206"
+       transform="matrix(1.9383681,0,0,1.9383681,1397.714,-464.62585)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         id="path3194"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         inkscape:connector-curvature="0"
+         style="fill:#9e7758;stroke-width:0.26458332" />
+      <path
+         id="path3196"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bb8d5d;stroke-width:0.26458332" />
+      <path
+         id="path3198"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;stroke-width:0.26458332" />
+      <path
+         id="path3200"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         inkscape:connector-curvature="0"
+         style="fill:#d8d19e;stroke-width:0.26458332" />
+      <path
+         id="path3202"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#c1b868;stroke-width:0.26458332" />
+      <path
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         id="path3204" />
+    </g>
+    <g
+       transform="rotate(-52.490313,-276.50019,-640.6261)"
+       style="fill:#ffff00;fill-opacity:1"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       id="g3152">
+      <g
+         style="fill:#ffff00;fill-opacity:1"
+         id="g3150"
+         transform="rotate(180,22.723883,183.95136)"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/g8844.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985">
+        <g
+           style="fill:#ffff00;fill-opacity:1"
+           inkscape:export-ydpi="95.999985"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           id="g3146">
+          <rect
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             id="rect3144"
+             width="26.238003"
+             height="23.091209"
+             x="10.456549"
+             y="183.619" />
+        </g>
+        <path
+           inkscape:export-ydpi="95.999985"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:connector-curvature="0"
+           id="path3148"
+           d="m 13.889859,196.3999 9.77567,-10.18429 9.59571,10.18429 h -4.57679 v 7.71366 h -10.49121 v -7.71366 z"
+           style="fill:#ff00c5;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+      </g>
+    </g>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       transform="matrix(2.3857681,0,0,2.3857681,1692.6686,-479.40287)"
+       id="g3220">
+      <path
+         style="fill:#9e7758;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         id="path3208" />
+      <path
+         style="fill:#bb8d5d;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         id="path3210" />
+      <path
+         style="fill:#cdc687;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         id="path3212" />
+      <path
+         style="fill:#d8d19e;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         id="path3214" />
+      <path
+         style="fill:#c1b868;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         id="path3216" />
+      <path
+         id="path3218"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332" />
+    </g>
+    <g
+       style="stroke:#384958;stroke-opacity:1"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
+       id="g3158"
+       transform="matrix(0.13231982,1.1133072,-1.1133072,0.13231982,767.41363,-388.4189)">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect3154"
+         width="26.238003"
+         height="23.091209"
+         x="-2.7120414"
+         y="-179.64761"
+         transform="scale(-1)" />
+      <path
+         style="fill:#f91505;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         d="m -8.201102,177.9087 0.1714296,-7.54295 h -4.1143306 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858259,-0.34285 0.162816,15.45814 z"
+         id="path3156"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccc" />
     </g>
   </g>
 </svg>

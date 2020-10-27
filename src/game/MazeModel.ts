@@ -59,14 +59,36 @@ export default class MazeModel {
   }
 
   private updateIsometric() {
+    
+    let diagonalsToPass = (this.matrix.height + this.matrix.width) - 1;
+    let itensDiagonalToPass = 1;
+    for (let diagonalsPassed = 0; diagonalsPassed < diagonalsToPass;) {
+      let y = diagonalsPassed;
+      let x = 0;
+      for (let itensDiagonalPassed = 0; itensDiagonalPassed < itensDiagonalToPass; itensDiagonalPassed++) {
+        x++;
+        y--;
+        let object = this.getObjectAt(y, x);
+        if (object) {
+          //console.log(y, x)
+          this.scene.children.bringToTop(object.gameObject);
+        }
+      }
+      diagonalsPassed++;
+      itensDiagonalToPass++;
+    }
+    
+    this.logMatrix();
+  }
+  
+  logMatrix(){
     let logMatrix = '\n';
     for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
         let c = '-';
-        let object = this.gameObjects[y][x];
+        let object = this.getObjectAt(y, x);
         if (object) {
           c = this.obstaclesMatrix[y][x].toString();
-          this.scene.children.bringToTop(object.gameObject);
         }
         logMatrix += c + ' ';
       }
@@ -92,8 +114,12 @@ export default class MazeModel {
     console.log('GAME_OBJECTS', logMatrix) */
   }
 
-  putSprite(x: number, y: number, sprite: GameObjects.GameObject, zIndex: number = -1) {
-    this.gameObjects[y][x] = new MazeModelObject(sprite, zIndex)
+  putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteNumber: number = -1) {
+    let object = null;
+    if (sprite) {
+      object = new MazeModelObject(sprite, spriteNumber)
+    }
+    this.gameObjects[y][x] = object
   }
 
 }

@@ -75,26 +75,24 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1],
     ];
 
 
     let obstaclesMatrix: number[][] = [
-      [2, 0, 0, 0, 0, 0, 2],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 1, 1, 1, 1, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [2, 0, 0, 0, 0, 0, 2],
+      [0, 0, 0, 0, 0, 0],
+      [2, 0, 0, 0, 0, 2],
+      [0, 0, 1, 0, 1, 0],
+      [0, 0, 1, 0, 1, 0],
+      [0, 0, 1, 0, 1, 0],
+      [0, 0, 1, 2, 1, 0],
+      [2, 0, 0, 0, 0, 2],
     ]
 
     this.matrix = new Matrix(this,
@@ -130,7 +128,7 @@ export default class Game extends Scene {
     let initGame = () => {
       //this.mazeModel.clear();
       this.dude.character;
-      this.mazeModel.putSprite(1, 3, this.dude.character)
+      this.mazeModel.putSprite(3, 2, this.dude.character)
       this.dude.setPosition(3, 2);
       this.mazeModel.updateBringFront();
     }
@@ -148,24 +146,21 @@ export default class Game extends Scene {
       return can
     }
 
-    this.dude.onStepChange = (movingTo: DudeMove) => {
-      console.log('ON_STEP_CHANGE', 'current', movingTo);
-      /* if (movingTo) {
-        if (movingTo.possibleMove) {
-          let currentPosition = movingTo.previousMove
-          if (currentPosition) {
-            //this.mazeModel.detectColision()
-            try {
-              if (currentPosition.possibleMove) {
-                this.mazeModel.putSprite(currentPosition.x, currentPosition.y, undefined)
-              }
-              this.mazeModel.putSprite(movingTo.x, movingTo.y, this.dude.character)
-            } catch (e) {
-              console.log('Dude out of bounds');
-            }
-          }
-        }
-      } */
+    this.dude.onCompleteMoveCallback = (previous: DudeMove, current: DudeMove) => {
+      if (previous) {
+        this.mazeModel.putSprite(previous.x, previous.y, undefined);
+      }
+      if (current) {
+        this.mazeModel.putSprite(current.x, current.y, this.dude.character)
+      }
+      this.mazeModel.updateBringFront();
+    }
+
+    this.dude.onStartMoveCallback = (previous:DudeMove, current: DudeMove) => {
+      if (current) {
+        this.mazeModel.putSprite(current.x, current.y, this.dude.character)
+        this.mazeModel.updateBringFront();
+      }
       this.mazeModel.updateBringFront();
     }
 
@@ -180,7 +175,7 @@ export default class Game extends Scene {
     })
 
     this.dude.playAnimation('down');
-    this.program.addCommands(['arrow-up', 'arrow-up', 'arrow-up', 'arrow-up'])
+    this.program.addCommands(['arrow-up'])
     //prog1.addCommands(['arrow-left', 'prog_2'])
     //prog2.addCommands(['arrow-up', 'arrow-up'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();

@@ -14,12 +14,22 @@ export class DudeMove {
   x: number;
   y: number;
   next?: DudeMove;
+  previous?: DudeMove;
   executing: boolean = false;
   couldExecute: boolean;
   command: Command;
   branch: Branch;
 
-  // move / current face / action (x,y) / new face
+  constructor(dude: Dude, command: Command) {
+    this.dude = dude;
+    this.command = command;
+    this.action = command?.getAction();
+  }
+
+  setNext(move: DudeMove) {
+    this.next = move;
+    move.previous = this;
+  }
 
   prepareMove(x: number, y: number, move: string, currentFace: string): { newX: number, newY: number, newFace: string, animation: string } {
     let newFace = currentFace;
@@ -60,13 +70,6 @@ export class DudeMove {
 
     return { newX, newY, newFace, animation }
   }
-
-  constructor(dude: Dude, command: Command) {
-    this.dude = dude;
-    this.command = command;
-    this.action = command.getAction();
-  }
-
 
 
   update() {
@@ -174,7 +177,8 @@ export default class Dude {
   x: number;
   y: number;
   walking: boolean;
-  onStepChange: (movingTo: DudeMove) => void
+  onCompleteMoveCallback: (previous: DudeMove, current: DudeMove) => void
+  onStartMoveCallback: (previous: DudeMove, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
@@ -226,7 +230,7 @@ export default class Dude {
     this.sounds.start();
     this.playAnimation();
     this.scene.physics.moveToObject(this.character, dudeMove.point, 40);
-    this.onStepChange(this.currentStep);
+    this.onStartMoveCallback(this.currentStep.previous, this.currentStep);
   }
 
   warmBlocked() {
@@ -310,16 +314,17 @@ export default class Dude {
     return branchToBack
   }
 
-  onCompleteMove(previousMove: DudeMove) {
+  onCompleteMove(move: DudeMove) {
     this.character.clearTint();
-    this.currentStep = previousMove.next
-    if (!previousMove.next) {
+    this.currentStep = move.next
+    if (!move.next) {
       this.continuePreviousBranchIfExists();
       this.programBeingExecuted.disanimate();
     }
-    if (previousMove.couldExecute)
-      this.resetAt(previousMove);
-    this.currentStep?.execute(previousMove);
+    if (move.couldExecute)
+      this.resetAt(move);
+    this.currentStep?.execute(move);
+    this.onCompleteMoveCallback(move.previous, move)
   }
 
   continuePreviousBranchIfExists() {
@@ -358,6 +363,10 @@ export default class Dude {
       if (!this.currentStep) {
         this.continuePreviousBranchIfExists();
       }
+      let previousStep = new DudeMove(this, null);
+      previousStep.x = this.x;
+      previousStep.y = this.y;
+      this.currentStep.previous = previousStep;
       this.currentStep?.execute()
     }, 200);
   }
@@ -367,7 +376,7 @@ export default class Dude {
       .map(command => new DudeMove(this, command))
     moves.forEach((move, index) => {
       if (index > 0) {
-        moves[index - 1].next = move
+        moves[index - 1].setNext(move)
       }
     })
     this.currentStep = moves[0]

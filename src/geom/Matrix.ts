@@ -2,10 +2,10 @@ import IsometricPoint from './IsometricPoint'
 import { Scene } from 'phaser'
 
 export default class Matrix {
-
+  
   static ISOMETRIC = "ISOMETRIC"
   static NORMAL = "NORMAL"
-
+  
   scene: Phaser.Scene;
   x: number;
   y: number;
@@ -14,7 +14,7 @@ export default class Matrix {
   height: number;
   matrix: number[][];
   mode: String;
-
+  
   constructor(scene: Scene, mode: String = Matrix.NORMAL, matrix: integer[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.mode = mode;
     this.x = x;
@@ -24,8 +24,8 @@ export default class Matrix {
 
     this.points = []
     for (let y = 0; y < matrix.length; y++)
-      this.points[y] = []
-
+    this.points[y] = []
+    
     this.height = matrix.length;
     this.width = matrix[0].length;
 
@@ -34,15 +34,15 @@ export default class Matrix {
     }
     this.y = this.y - (distanceBetweenPoints * this.height) / 2
 
-
+    
     const graphics = scene.add.graphics();
     graphics.fillStyle(0xff0000)
-
+    
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         let point: IsometricPoint = new IsometricPoint(x * distanceBetweenPoints, y * distanceBetweenPoints)
         if (mode == Matrix.NORMAL)
-          point.toCartesian()
+        point.toCartesian()
 
         point.x += this.x
         point.y += this.y
@@ -56,7 +56,7 @@ export default class Matrix {
       }
     }
   }
-
+  
   getPoint(y: number, x: number): IsometricPoint {
     let point = null
     const row = this.points[y];
@@ -64,5 +64,9 @@ export default class Matrix {
       point = row[x];
     }
     return point;
+  }
+
+  getTotalElements():number {
+    return this.width * this.height
   }
 }

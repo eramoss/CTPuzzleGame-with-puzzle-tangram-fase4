@@ -100,12 +100,12 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1.2);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1.2);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
 
     let isometric = this.mode == Matrix.ISOMETRIC;
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
@@ -179,11 +179,9 @@ export default class Game extends Scene {
     })
 
     this.dude.playAnimation('up');
-    this.program.addCommands(['arrow-up', 'arrow-up', 'arrow-up'])
-    //prog1.addCommands(['arrow-left','arrow-right','prog_0'])
-    /* this.program.addCommands(['arrow-left','arrow-up', 'arrow-up', 'arrow-up','prog_1'])
-    prog1.addCommands(['arrow-left','prog_0']) */
-    //prog2.addCommands(['prog_2'])
+    this.program.addCommands(['arrow-left', 'arrow-up', 'arrow-up', 'arrow-up', 'prog_1'])
+    prog1.addCommands(['arrow-left', 'prog_2'])
+    prog2.addCommands(['arrow-up', 'arrow-up'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])
     // this.cursors = this.input.keyboard.createCursorKeys()

@@ -62,6 +62,10 @@ export default class Command {
     this.sprite.y = this.sprite.input.dragStartY;
   }
 
+  isProgCommand() {
+    return this.getAction().indexOf('prog') > -1
+  }
+
   animateSprite() {
     if (!this.animated) {
       this.animated = true;

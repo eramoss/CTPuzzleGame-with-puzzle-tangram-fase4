@@ -17,6 +17,7 @@ export class DudeMove {
   executing: boolean = false;
   couldExecute: boolean;
   command: Command;
+  branch: Branch;
 
   // move / current face / action (x,y) / new face
 
@@ -94,12 +95,14 @@ export class DudeMove {
 
   onBranchMove() {
     let onCompleteBranch = () => {
+      let branch = this.branch;
+      console.log('BRANCH_ON_COMPLETE [prog.name]', branch.program.name)
       this.disanimate();
     }
     const moveToContinueWhenBackToThisBranch = this.next;
     const progToCall = this.action;
-    let branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
-    this.dude.onBranch(progToCall, branch);
+    this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
+    this.dude.onBranch(progToCall, this.branch);
   }
 
   execute(previousMove: DudeMove = null) {
@@ -160,7 +163,7 @@ export class DudeMove {
   }
 
   isProgMove() {
-    return this.action.indexOf('prog') > -1
+    return this.command.isProgCommand()
   }
 }
 export default class Dude {
@@ -180,6 +183,7 @@ export default class Dude {
   functionsRunningByTimeout: number[] = [];
   currentFace: string;
   initialFace: string;
+  programBeingExecuted: Program;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
     this.sounds = sounds;
@@ -285,7 +289,9 @@ export default class Dude {
     this.branchMoves.push(branch);
     let progs = this.programs.filter(p => p.name == progName)
     if (progs.length) {
-      this.executeProgram(progs[0])
+      let progToExecute = progs[0]
+      branch.program = progToExecute;
+      this.executeProgram(progToExecute)
     }
   }
 
@@ -294,7 +300,7 @@ export default class Dude {
     if (this.branchMoves.length) {
       let branchMove = this.branchMoves.pop();
       if (branchMove) {
-        branchMove.onComplete();
+        branchMove.onCompleteBranch();
         if (branchMove.dudeMove) {
           branchToBack = branchMove;
         } else {
@@ -310,6 +316,7 @@ export default class Dude {
     this.currentStep = previousMove.next
     if (!previousMove.next) {
       this.continuePreviousBranchIfExists();
+      this.programBeingExecuted.disanimate();
     }
     if (previousMove.couldExecute)
       this.resetAt(previousMove);
@@ -337,10 +344,15 @@ export default class Dude {
   }
 
   disanimatePrograms() {
-    (this.programs || []).forEach(p => p.disanimateCommands());
+    (this.programs || []).forEach(p => {
+      p.disanimateCommands()
+    });
   }
 
   executeProgram(program: Program) {
+    this.programBeingExecuted?.disanimate();
+    this.programBeingExecuted = program;
+    this.programBeingExecuted.animate();
     program.disanimateCommands();
     this.setTimeout(() => {
       this.buildPath(program.commands);
@@ -365,10 +377,11 @@ export default class Dude {
 
 class Branch {
   dudeMove: DudeMove
-  onComplete: Function
+  onCompleteBranch: () => void
+  program: Program;
 
-  constructor(dudeMove: DudeMove, onComplete: Function) {
+  constructor(dudeMove: DudeMove, onCompleteBranch: () => void) {
     this.dudeMove = dudeMove;
-    this.onComplete = onComplete;
+    this.onCompleteBranch = onCompleteBranch;
   }
 }

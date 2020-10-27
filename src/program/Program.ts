@@ -7,6 +7,7 @@ import drawRect, { createDropZone } from '../utils/Utils';
 
 export default class Program {
 
+
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: DropZone;
@@ -14,6 +15,8 @@ export default class Program {
   grid: AlignGrid;
   name: string;
   parent: Program;
+  programNameImage: GameObjects.Image;
+  animated: any;
 
   constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
@@ -22,7 +25,23 @@ export default class Program {
     this.grid = grid;
     this.commands = new Array();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
-    this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
+    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
+  }
+
+  animate() {
+    if (!this.animated) {
+      this.programNameImage.scale += 0.1
+      this.programNameImage.rotation += 0.05
+      this.animated = true;
+    }
+  }
+
+  disanimate() {
+    if (this.animated) {
+      this.programNameImage.scale -= 0.1
+      this.programNameImage.rotation -= 0.05
+      this.animated = false;
+    }
   }
 
   addCommands(commands: string[]) {

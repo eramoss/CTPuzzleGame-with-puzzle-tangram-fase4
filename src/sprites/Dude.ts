@@ -352,6 +352,7 @@ export default class Dude {
 
   disanimatePrograms() {
     (this.programs || []).forEach(p => {
+      p.disanimate();
       p.disanimateCommands()
     });
   }

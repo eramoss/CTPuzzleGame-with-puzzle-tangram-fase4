@@ -46,7 +46,7 @@ export default class Sounds {
   }
 
   stop() {
-    this.blockedSound.play()
+    //this.blockedSound.play()
   }
 
 

@@ -131,6 +131,8 @@ export default class Program {
   }
 
   clear() {
-    this.commands.splice(0, this.commands.length)
+    let commands = this.commands.splice(0)
+    commands.forEach(c=>c.removeSelf());
+    this.commands = []
   }
 }

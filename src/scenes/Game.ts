@@ -90,8 +90,8 @@ export default class Game extends Scene {
       [2, 0, 0, 0, 0, 2],
       [0, 0, 1, 0, 1, 0],
       [0, 0, 1, 0, 1, 0],
-      [0, 0, 1, 0, 1, 0],
-      [0, 0, 1, 2, 1, 0],
+      [0, 0, 1, 1, 1, 0],
+      [0, 0, 1, 1, 1, 0],
       [2, 0, 0, 0, 0, 2],
     ]
 
@@ -128,9 +128,15 @@ export default class Game extends Scene {
     let initGame = () => {
       //this.mazeModel.clear();
       this.dude.character;
-      this.mazeModel.putSprite(3, 2, this.dude.character)
-      this.dude.setPosition(3, 2);
+      this.mazeModel.putSprite(4, 1, this.dude.character)
+      this.dude.setPosition(4, 1);
       this.mazeModel.updateBringFront();
+      this.dude.playAnimation('right');
+      this.program.clear();
+      prog1.clear();
+      prog2.clear();
+      this.program.addCommands(['arrow-up'])
+      this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds);
@@ -146,20 +152,12 @@ export default class Game extends Scene {
       return can
     }
 
-    /*this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-       if (previous) {
-        this.mazeModel.putSprite(previous.x, previous.y, undefined);
-      }
-      if (current) {
-        this.mazeModel.putSprite(current.x, current.y, this.dude.character)
-      }
-      this.mazeModel.updateBringFront(); 
-    }*/
+    this.dude.onCompleteMoveCallback = (current: DudeMove) => {
+      //this.mazeModel.updateBringFront();
+    }
 
-    this.dude.onStartMoveCallback = (previous:DudeMove, current: DudeMove) => {
-      if (previous) {
-        this.mazeModel.putSprite(previous.x, previous.y, undefined);
-      }
+    this.dude.onStartMoveCallback = (x: number, y: number, current: DudeMove) => {
+      this.mazeModel.putSprite(x, y, undefined);
       if (current) {
         this.mazeModel.putSprite(current.x, current.y, this.dude.character)
       }
@@ -176,16 +174,7 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.dude.playAnimation('down');
-    this.program.addCommands(['arrow-down', 'arrow-right', 'arrow-up', 'arrow-up','arrow-left','arrow-up'])
-    //prog1.addCommands(['arrow-left', 'prog_2'])
-    //prog2.addCommands(['arrow-up', 'arrow-up'])
-    this.codeEditor.createEventsToCommandsForAddedPrograms();
-    //prog2.addCommands(['arrow-down'])
-    // this.cursors = this.input.keyboard.createCursorKeys()
-    // this.input.on('pointerdown', (pointer: Input.Pointer, gameObject: GameObjects.GameObject[]) => {
-    //   this.currentObject = gameObject[0] as GameObjects.Sprite
-    // }) 
+
 
     initGame();
   }

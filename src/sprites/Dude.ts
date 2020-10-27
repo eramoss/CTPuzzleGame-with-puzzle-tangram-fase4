@@ -14,7 +14,6 @@ export class DudeMove {
   x: number;
   y: number;
   next?: DudeMove;
-  previous?: DudeMove;
   executing: boolean = false;
   couldExecute: boolean;
   command: Command;
@@ -28,7 +27,6 @@ export class DudeMove {
 
   setNext(move: DudeMove) {
     this.next = move;
-    move.previous = this;
   }
 
   prepareMove(x: number, y: number, move: string, currentFace: string): { newX: number, newY: number, newFace: string, animation: string } {
@@ -178,7 +176,7 @@ export default class Dude {
   y: number;
   walking: boolean;
   onCompleteMoveCallback: (current: DudeMove) => void
-  onStartMoveCallback: (previous: DudeMove, current: DudeMove) => void
+  onStartMoveCallback: (x: number, y:number, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
   programs: Program[];
@@ -229,8 +227,8 @@ export default class Dude {
     this.character.clearTint()
     this.sounds.start();
     this.playAnimation();
-    this.scene.physics.moveToObject(this.character, dudeMove.point, 40);
-    this.onStartMoveCallback(this.currentStep.previous, this.currentStep);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 80);
+    this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 
   warmBlocked() {
@@ -324,7 +322,7 @@ export default class Dude {
     if (move.couldExecute)
       this.resetAt(move);
     this.currentStep?.execute(move);
-    this.onCompleteMoveCallback(move)
+    this.onCompleteMoveCallback(this.currentStep);
   }
 
   continuePreviousBranchIfExists() {
@@ -363,10 +361,6 @@ export default class Dude {
       if (!this.currentStep) {
         this.continuePreviousBranchIfExists();
       }
-      let previousStep = new DudeMove(this, null);
-      previousStep.x = this.x;
-      previousStep.y = this.y;
-      this.currentStep.previous = previousStep;
       this.currentStep?.execute()
     }, 200);
   }

@@ -62,6 +62,7 @@ export default class MazeModel {
 
     let diagonalsToPass = (this.matrix.height + this.matrix.width) - 1;
     let itensDiagonalToPass = 1;
+    let depth = 10;
     for (let diagonalsPassed = 0; diagonalsPassed < diagonalsToPass;) {
       let y = diagonalsPassed;
       let x = 0;
@@ -71,9 +72,11 @@ export default class MazeModel {
         let object = this.getObjectAt(y, x);
         if (object) {
           console.log('MAZE_MODEL_ORDERING [y,x]', y, x);
-          this.scene.children.bringToTop(object.gameObject);
+          (object.gameObject as GameObjects.Sprite).depth = depth
+          //this.scene.children.bringToTop(object.gameObject);
         }
       }
+      depth++;
       diagonalsPassed++;
       itensDiagonalToPass++;
     }

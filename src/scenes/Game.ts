@@ -75,26 +75,26 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
+      [-1, -1, -1, -1, -1, -1, -1],
     ];
 
 
     let obstaclesMatrix: number[][] = [
-      [2, 0, 0, 0, 0, 0, 0, 2],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0],
-      [2, 0, 0, 0, 0, 0, 0, 2],
+      [2, 0, 0, 0, 0, 0, 2],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 1, 1, 1, 1, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [2, 0, 0, 0, 0, 0, 2],
     ]
 
     this.matrix = new Matrix(this,
@@ -140,9 +140,10 @@ export default class Game extends Scene {
     this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 
     this.dude.canMoveTo = (x: number, y: number) => {
-      let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
-      let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] !== 1
-      const can = insideCorners && noBlocked
+      let point = this.matrix.getPoint(y, x);
+      let object = this.mazeModel.getObjectAt(y, x)
+      let blockNumber = 1
+      const can = point != null && object?.spriteNumber != blockNumber
       console.log('CAN_MOVE_TO [x, y, can]', x, y, can)
       return can
     }
@@ -178,10 +179,10 @@ export default class Game extends Scene {
       initGame();
     })
 
-    this.dude.playAnimation('up');
-    this.program.addCommands(['arrow-left', 'arrow-up', 'arrow-up', 'arrow-up', 'prog_1'])
-    prog1.addCommands(['arrow-left', 'prog_2'])
-    prog2.addCommands(['arrow-up', 'arrow-up'])
+    this.dude.playAnimation('down');
+    this.program.addCommands(['arrow-up', 'arrow-up', 'arrow-up', 'arrow-up'])
+    //prog1.addCommands(['arrow-left', 'prog_2'])
+    //prog2.addCommands(['arrow-up', 'arrow-up'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])
     // this.cursors = this.input.keyboard.createCursorKeys()

@@ -117,17 +117,16 @@ export class DudeMove {
       //this.disanimate();
     }, 80);
 
-    let x: number, y: number;
     if (previousMove == null) {
-      x = this.dude.x
-      y = this.dude.y
+      this.x = this.dude.x
+      this.y = this.dude.y
     } else {
-      x = previousMove.x
-      y = previousMove.y
+      this.x = previousMove.x
+      this.y = previousMove.y
     }
 
-    let { newX, newY, newFace, animation } = this.prepareMove(x, y, this.action, this.dude.currentFace);
-    console.log("PREPARE_MOVE [prev xy] [next xy]", x, y, newX, newY)
+    let { newX, newY, newFace, animation } = this.prepareMove(this.x, this.y, this.action, this.dude.currentFace);
+    console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY)
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY);
 

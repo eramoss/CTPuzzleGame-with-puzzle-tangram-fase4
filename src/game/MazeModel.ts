@@ -12,6 +12,14 @@ class MazeModelObject {
 }
 
 export default class MazeModel {
+  getObjectAt(y: number, x: number): MazeModelObject {
+    let object: MazeModelObject = null
+    let row = this.gameObjects[y];
+    if (row) {
+      object = row[x]
+    }
+    return object
+  }
 
   gameObjects: MazeModelObject[][]
   matrix: Matrix;

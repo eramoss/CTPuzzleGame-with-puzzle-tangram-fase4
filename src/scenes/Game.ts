@@ -100,20 +100,20 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1.2);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1);
+      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth * 1.2);
 
     let isometric = this.mode == Matrix.ISOMETRIC;
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions[1] = (x: integer, y: integer) => {
-      return this.add.image(x, y, 'block').setScale(this.grid.scale * (isometric ? 1.3 : 1))
+      return this.add.image(x, y - 5, 'block').setScale(this.grid.scale * (isometric ? 1.4 : 1))
     };
     spriteCreateFunctions[-1] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.3 : 1))
+      return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.4 : 1))
     };
     spriteCreateFunctions[2] = (x: integer, y: integer) => {
       this.anims.create({
@@ -131,7 +131,7 @@ export default class Game extends Scene {
       //this.mazeModel.clear();
       this.dude.character;
       this.mazeModel.putSprite(1, 3, this.dude.character)
-      this.dude.setPosition(3, 3);
+      this.dude.setPosition(3, 2);
       this.mazeModel.updateBringFront();
     }
 
@@ -142,7 +142,9 @@ export default class Game extends Scene {
     this.dude.canMoveTo = (x: number, y: number) => {
       let insideCorners = !!(this.matrix.points[x] && this.matrix.points[x][y]);
       let noBlocked = obstaclesMatrix[y] && obstaclesMatrix[y][x] !== 1
-      return insideCorners && noBlocked
+      const can = insideCorners && noBlocked
+      console.log('CAN_MOVE_TO [x, y, can]', x, y, can)
+      return can
     }
 
     this.dude.onStepChange = (movingTo: DudeMove) => {
@@ -171,13 +173,16 @@ export default class Game extends Scene {
     })
 
     this.codeEditor.onClickStop(() => {
-      this.dude.stop();
+      let resetFace = true;
+      this.dude.stop(resetFace);
       initGame();
     })
 
-    this.dude.playAnimation('right');
-    this.program.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-up', 'prog_1'])
-    //prog1.addCommands(['arrow-down', 'arrow-down', 'arrow-down', 'prog_0', 'arrow-left'])
+    this.dude.playAnimation('up');
+    this.program.addCommands(['arrow-up', 'arrow-up', 'arrow-up'])
+    //prog1.addCommands(['arrow-left','arrow-right','prog_0'])
+    /* this.program.addCommands(['arrow-left','arrow-up', 'arrow-up', 'arrow-up','prog_1'])
+    prog1.addCommands(['arrow-left','prog_0']) */
     //prog2.addCommands(['prog_2'])
     this.codeEditor.createEventsToCommandsForAddedPrograms();
     //prog2.addCommands(['arrow-down'])

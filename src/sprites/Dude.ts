@@ -80,7 +80,6 @@ export class DudeMove {
   }
 
   animate() {
-    console.log('animate');
     this.command.animateSprite();
   }
 
@@ -125,14 +124,13 @@ export class DudeMove {
     }
 
     let { newX, newY, newFace, animation } = this.prepareMove(x, y, this.action, this.dude.currentFace);
-    if (newX) x = newX;
-    if (newY) y = newY;
+    console.log("PREPARE_MOVE [prev xy] [next xy]", x, y, newX, newY)
     this.dude.currentFace = newFace;
-    this.couldExecute = this.dude.canMoveTo(x, y);
+    this.couldExecute = this.dude.canMoveTo(newX, newY);
 
     if (this.couldExecute) {
-      this.x = x;
-      this.y = y;
+      this.x = newX;
+      this.y = newY;
     }
 
     let branched = this.isProgMove();
@@ -148,9 +146,9 @@ export class DudeMove {
     }
 
     if (!branched && !turnMove) {
-      console.log('MOVE [x,y]', x, y)
+      console.log('MOVE [x,y]', this.x, this.y)
       if (this.couldExecute) {
-        this.point = this.dude.matrix.getPoint(y, x);
+        this.point = this.dude.matrix.getPoint(this.y, this.x);
         this.dude.moveTo(this);
       } else {
         this.dude.warmBlocked();
@@ -270,15 +268,17 @@ export default class Dude {
     this.character.y = point.y
   }
 
-  stop() {
+  stop(resetFace: boolean = false) {
     this.character.clearTint();
     this.character.body.stop();
     this.currentStep = null;
     this.disanimatePrograms();
     this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
     this.functionsRunningByTimeout = []
-    this.currentFace = null;
-    this.playAnimation(this.initialFace);
+    if (resetFace) {
+      this.currentFace = null;
+      this.playAnimation(this.initialFace);
+    }
   }
 
   onBranch(progName: string, branch: Branch) {

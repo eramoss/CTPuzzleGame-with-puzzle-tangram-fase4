@@ -13,27 +13,18 @@ export class MazeModelObject {
 
 export default class MazeModel {
   
-  onOverlap: (x: number, y: number, other: MazeModelObject) => void;
-  getObjectAt(y: number, x: number): MazeModelObject {
-    let object: MazeModelObject = null
-    let row = this.gameObjects[y];
-    if (row) {
-      object = row[x]
-    }
-    return object
-  }
-
+  
   gameObjects: MazeModelObject[][]
   matrix: Matrix;
   scene: Phaser.Scene;
   obstaclesMatrix: number[][];
-
+  
   constructor(scene: Phaser.Scene, matrix: Matrix, spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
     this.scene = scene;
     this.matrix = matrix;
     this.gameObjects = []
     this.obstaclesMatrix = matrix.matrix;
-
+    
     for (let y = 0; y < matrix.height; y++) {
       if (!this.gameObjects[y]) {
         this.gameObjects[y] = [];
@@ -50,7 +41,17 @@ export default class MazeModel {
       }
     }
   }
-
+  
+  onOverlap: (x: number, y: number, other: MazeModelObject) => void;
+  getObjectAt(y: number, x: number): MazeModelObject {
+    let object: MazeModelObject = null
+    let row = this.gameObjects[y];
+    if (row) {
+      object = row[x]
+    }
+    return object
+  }
+  
   updateBringFront() {
     if (this.matrix.mode == Matrix.ISOMETRIC) {
       this.updateIsometric()
@@ -134,13 +135,13 @@ export default class MazeModel {
   }
 
   clear() {
-    for (let y = 0; y < this.matrix.height; y++) {
+    /* for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
         let object = this.getObjectAt(y, x);
         if(object){
           this.scene.children.remove(object.gameObject);
         }
-      }
-    }
+      } 
+    }*/
   }
 }

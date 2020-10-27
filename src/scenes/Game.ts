@@ -125,14 +125,16 @@ export default class Game extends Scene {
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
     let initGame = () => {
+      if (this.dude.x)
+        this.mazeModel.putSprite(this.dude.x, this.dude.y, undefined, -1)
       this.mazeModel.putSprite(4, 1, this.dude.character)
       this.dude.setPosition(4, 1);
-      this.dude.setFacedTo('right');
       this.mazeModel.updateBringFront();
+      this.dude.setFacedTo('right');
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up'])
+      this.program.addCommands(['arrow-up', 'arrow-right', 'arrow-up', 'prog_0'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

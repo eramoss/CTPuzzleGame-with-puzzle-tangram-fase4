@@ -111,13 +111,16 @@ export default class CodeEditor {
       commandSprite.on('pointerout', _ => {
         commandSprite.setScale(this.scale);
       });
-      commandSprite.on('dragstart', _ => {
-        console.log("MOVE_EVENT", "dragstart")
-        // Não deixa acabar os comandos
+      commandSprite.on('drag', _ => {
+        console.log("MOVE_EVENT", "drag")
         if(command.programDropZone){
           command.removeSelf(false);
           command.programDropZone = null;
         }
+      })
+      commandSprite.on('dragstart', _ => {
+        console.log("MOVE_EVENT", "dragstart")
+        // Não deixa acabar os comandos
         this.highlightDropZones()
         this.clickTime = this.getTime()
         this.sounds.drag();

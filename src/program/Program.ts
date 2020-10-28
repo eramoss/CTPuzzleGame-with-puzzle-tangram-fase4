@@ -2,21 +2,22 @@ import { GameObjects } from 'phaser'
 import Command from './Command'
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
-import DropZone from '../controls/DropZone';
-import drawRect, { createDropZone } from '../utils/Utils';
+import SpriteDropZone from '../controls/SpriteDropZone';
+import { createDropZone } from '../utils/Utils';
 
 export default class Program {
+  
 
 
   commands: Command[];
   scene: Phaser.Scene;
-  dropZone: DropZone;
+  dropZone: SpriteDropZone;
   sounds: Sounds;
   grid: AlignGrid;
   name: string;
   parent: Program;
   programNameImage: GameObjects.Image;
-  animated: any;
+  animated: boolean;
 
   constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
@@ -26,6 +27,7 @@ export default class Program {
     this.commands = new Array();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
     this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
+    //this.crossOrganizer = new CrossOrganizer();
   }
 
   animate() {
@@ -55,19 +57,29 @@ export default class Program {
     this.commands.forEach(c => c.disanimateSprite());
   }
 
-  addCommand(command: Command) {
-    command.dropZone = this.dropZone.zone;
+  addCommand(command: Command, index: number = -1) {
+    command.programDropZone = this.dropZone;
     if (this.commands.indexOf(command) == -1) {
-      this.sounds.drop();
-      this.commands.push(command);
+      if (!command.commandIntent)
+        this.sounds.drop();
+      if (index == -1) {
+        index = this.commands.length;
+      }
+      this.commands.splice(index, 0, command);
       console.log('ADD_REMOVE_COMMANDS', this.commands)
     } else {
       console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
     }
     let fit = this.organizeInProgramArea(command);
+    if (fit) {
+      if (!command.commandIntent) {
+        command.createTileDropZone();
+      }
+    }
     if (!fit) {
       command.removeSelf();
     }
+    this.commands.forEach(c => this.organizeInProgramArea(c))
   }
 
   addCommandBySprite(sprite: GameObjects.Sprite) {
@@ -108,19 +120,21 @@ export default class Program {
     let y = zone.y + row + spriteHeight * 0.5;
     //let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
-    drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);
+    //drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);
 
     return fitInFirstRow;
   }
 
-  removeCommandSprite(commandSprite: GameObjects.Sprite) {
+  removeCommandSprite(commandSprite: GameObjects.Sprite, playSound: boolean = true) {
     this.scene.children.remove(commandSprite);
-    this.sounds.remove();
+    if (playSound)
+      this.sounds.remove();
   }
 
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (removeSpriteFromScene) {
-      this.removeCommandSprite(command.sprite);
+      let playSound = !command.commandIntent
+      this.removeCommandSprite(command.sprite, playSound);
     }
     let index = this.commands.indexOf(command);
     this.commands.splice(index, 1);
@@ -130,9 +144,13 @@ export default class Program {
     })
   }
 
+  updateCommandsDropZonesPositions() {
+    this.commands.forEach(c=>c.updateTileDropZonePosition())
+  }
+
   clear() {
     let commands = this.commands.splice(0)
-    commands.forEach(c=>c.removeSelf());
+    commands.forEach(c => c.removeSelf());
     this.commands = []
   }
 }

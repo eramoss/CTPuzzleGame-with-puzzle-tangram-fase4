@@ -1,16 +1,17 @@
 import { Scene, Input, GameObjects } from 'phaser';
 import Button from './Button';
 import Program from '../program/Program';
-import DropZone from './DropZone';
+import SpriteDropZone from './SpriteDropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import FlexFlow from '../geom/FlexFlow';
 import Command from '../program/Command';
+import CommandIntent from '../program/CommandIntent';
 
 export default class CodeEditor {
   scene: Scene;
   programs: Program[];
-  dropZones: DropZone[]
+  dropZones: SpriteDropZone[]
   fnOnClickRun: () => void;
   fnOnClickStop: () => void;
   sounds: Sounds;
@@ -113,7 +114,7 @@ export default class CodeEditor {
       commandSprite.on('dragstart', _ => {
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
-        command.dropZone = null;
+        command.programDropZone = null;
         this.highlightDropZones()
         this.clickTime = this.getTime()
         this.sounds.drag();
@@ -123,9 +124,9 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
         let clicked = this.getTime() - this.clickTime < 400;
-        let dropped = command.dropZone != null;
+        let dropped = command.programDropZone != null;
 
-        let dropZone = command.dropZone;
+        let dropZone = command.programDropZone;
         let programToDropInto = this.getProgramByDropzone(dropZone);
         const isAddedToSomeProgram = command.program != null;
 
@@ -144,10 +145,10 @@ export default class CodeEditor {
 
         if (!clicked) {
           if (dropped) {
-            if(programToDropInto){
+            if (programToDropInto) {
               command.setProgram(programToDropInto);
             }
-            if(!programToDropInto){
+            if (!programToDropInto) {
               command.removeSelf();
             }
           }
@@ -162,7 +163,39 @@ export default class CodeEditor {
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "drop ", dropZone)
-        command.dropZone = dropZone;
+        let programWhereAreDropped = this.programs
+          .flatMap(p => p.dropZone)
+          .filter(d => d.zone == dropZone)[0];
+        if (!programWhereAreDropped) {
+          const commandIntentWhereAreDroppedInPlace: Command = this.programs
+            .flatMap(p => p.commands)
+            .filter(c => c.commandIntent)
+            .find(c => c.tileDropZone?.zone == dropZone);
+          if (commandIntentWhereAreDroppedInPlace) {
+            programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
+            commandIntentWhereAreDroppedInPlace.commandIntent.consolidateIntentionToDrop(command);
+          }
+        }
+        command.programDropZone = programWhereAreDropped;
+      })
+      commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+        const commandIntentLeaved: Command = this.programs
+          .flatMap(p => p.commands)
+          .filter(c => c.commandIntent)
+          .find(c => c.tileDropZone?.zone == dropZone);
+        if (commandIntentLeaved) {
+          commandIntentLeaved.removeSelf();
+        }
+      })
+      commandSprite.on('dragenter', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+        const commandHovered: Command = this.programs
+          .flatMap(p => p.commands)
+          .filter(c => !c.commandIntent)
+          .find(c => c.tileDropZone?.zone == dropZone);
+        if (commandHovered) {
+          console.log("MOVE_OBJECT", 'dragenter [command]', commandHovered);
+          const commandIntent = new CommandIntent(this.scene, commandHovered)
+        }
       })
     })
   }
@@ -197,8 +230,8 @@ export default class CodeEditor {
     this.fnOnClickStop = fnOnClickStop;
   }
 
-  getProgramByDropzone(zone: Phaser.GameObjects.Zone) {
-    return this.programs.filter(program => program.dropZone.zone === zone)[0]
+  getProgramByDropzone(zone: SpriteDropZone) {
+    return this.programs.filter(program => program.dropZone === zone)[0]
   }
 
   getMainProgram(): Program {

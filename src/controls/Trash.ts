@@ -1,12 +1,12 @@
 import AlignGrid from "../geom/AlignGrid";
-import DropZone from "./DropZone";
+import SpriteDropZone from "./SpriteDropZone";
 import { GameObjects } from "phaser";
 import { createDropZone } from "../utils/Utils";
 
 export default class Trash {
     scene: Phaser.Scene;
     zone: Phaser.GameObjects.Zone;
-    dropzone: DropZone;
+    dropzone: SpriteDropZone;
     constructor(scene: Phaser.Scene, grid: AlignGrid, cellx: number, celly: number, colspan: number, rowspan: number) {
         this.scene = scene;
 

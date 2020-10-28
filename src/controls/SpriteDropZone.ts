@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 
-export default class DropZone {
+export default class SpriteDropZone {
+  
   sprite: Phaser.GameObjects.Sprite;
   zone: Phaser.GameObjects.Zone;
   scene: Scene;
@@ -10,6 +11,7 @@ export default class DropZone {
     this.zone = scene.add.zone(x, y, width, height).setRectangleDropZone(width, height);
     this.zone.setDisplayOrigin(0, 0);
     this.sprite = scene.add.sprite(x, y, texture, 0);
+    //this.highlight();
   }
 
   highlight(enabled: boolean = true) {
@@ -25,6 +27,11 @@ export default class DropZone {
         zone.height
       );
     }
+  }
+
+  removeSelf() {
+    this.scene.children.remove(this.sprite);
+    this.scene.children.remove(this.zone);
   }
 
 }

@@ -37,10 +37,12 @@ export default class Game extends Scene {
     this.load.image('prog_0', 'assets/ct/prog_0.png');
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
+    this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 861, frameHeight: 105 });
+    this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
@@ -134,7 +136,7 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-right', 'arrow-up', 'prog_0'])
+      this.program.addCommands(['arrow-up'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

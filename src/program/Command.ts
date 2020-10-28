@@ -1,4 +1,7 @@
 import { GameObjects } from 'phaser';
+import SpriteDropZone from '../controls/SpriteDropZone';
+import drawRect from '../utils/Utils';
+import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command {
@@ -7,15 +10,46 @@ export default class Command {
   scene: Phaser.Scene;
   program: Program;
   name: string;
-  dropZone: Phaser.GameObjects.Zone;
+  programDropZone: SpriteDropZone;
+  tileDropZone: SpriteDropZone;
   animated: boolean;
+  commandIntent: CommandIntent = null;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
+    this.sprite.setDepth(2);
     this.scene = scene;
-    sprite.removeAllListeners('pointerover');
-    sprite.removeAllListeners('pointerdown');
+  }
+
+  index(): number {
+    return this.program?.commands.indexOf(this)
+  }
+
+  createTileDropZone() {
+    let scale = this.program.grid.scale;
+    const width = this.sprite.width * scale;
+    const height = this.sprite.height * scale;
+    this.tileDropZone = new SpriteDropZone(this.scene,
+      this.sprite.x - width / 2,
+      this.sprite.y - height / 2,
+      width,
+      height,
+      'tile-drop-zone'
+    );
+    this.tileDropZone.highlight();
+    this.tileDropZone.sprite.displayOriginX = 0;
+    this.tileDropZone.sprite.displayWidth = width
+    this.tileDropZone.sprite.displayOriginY = 0;
+    this.tileDropZone.sprite.displayHeight = height
+    this.tileDropZone.sprite.setDepth(1);
+  }
+
+  updateTileDropZonePosition(): void {
+    if (this.tileDropZone) {
+      this.tileDropZone.removeSelf();
+      this.createTileDropZone();
+    }
   }
 
   getAction(): string {
@@ -36,13 +70,15 @@ export default class Command {
     this.sprite.y = y;
   }
 
-  setProgram(program: Program) {
+  setProgram(program: Program, index: number = -1) {
     if (this.program != program) {
-      let removeSpriteFromScene = false;
-      this.removeSelf(removeSpriteFromScene);
+      if (this.program != undefined) {
+        let removeSpriteFromScene = false;
+        this.removeSelf(removeSpriteFromScene);
+      }
     }
     this.program = program;
-    this.program.addCommand(this);
+    this.program.addCommand(this, index);
   }
 
   removeSelf(removeFromScene: Boolean = true) {
@@ -53,6 +89,10 @@ export default class Command {
       if (removeFromScene) {
         this.scene.children.remove(this.sprite);
       }
+    }
+    if (!this.commandIntent) {
+      this.tileDropZone?.removeSelf();
+      this.tileDropZone = null;
     }
   }
 

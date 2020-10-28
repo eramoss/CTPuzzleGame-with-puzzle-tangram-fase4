@@ -114,7 +114,10 @@ export default class CodeEditor {
       commandSprite.on('dragstart', _ => {
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
-        command.programDropZone = null;
+        if(command.programDropZone){
+          command.removeSelf(false);
+          command.programDropZone = null;
+        }
         this.highlightDropZones()
         this.clickTime = this.getTime()
         this.sounds.drag();
@@ -174,11 +177,16 @@ export default class CodeEditor {
             .find(c => c.tileDropZone?.zone == dropZone);
           if (commandIntentWhereAreDroppedInPlace) {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
+          } else {
+            if (command.tileDropZone.zone == dropZone) {
+              programWhereAreDropped = command.program.dropZone;
+            }
           }
         }
         command.programDropZone = programWhereAreDropped;
       })
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+        console.log("MOVE_EVENT", "dragleave")
         const commandIntentLeaved: Command = this.programs
           .flatMap(p => p.commands)
           .filter(c => c.isIntent)
@@ -194,7 +202,7 @@ export default class CodeEditor {
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered) {
           if (commandHovered != command) {
-            console.log("MOVE_OBJECT", 'dragenter [command]', commandHovered);
+            console.log("MOVE_EVENT", 'dragenter [command]', commandHovered);
             const commandIntent = new CommandIntent(this.scene, commandHovered);
             command.intent = commandIntent;
           }

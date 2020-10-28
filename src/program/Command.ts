@@ -101,8 +101,10 @@ export default class Command {
       }
     }
     if (!this.isIntent) {
-      this.tileDropZone?.removeSelf();
-      this.tileDropZone = null;
+      if (removeFromScene) {
+        this.tileDropZone?.removeSelf();
+        this.tileDropZone = null;
+      }
     }
   }
 

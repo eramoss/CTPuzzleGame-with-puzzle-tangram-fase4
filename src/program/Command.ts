@@ -26,7 +26,13 @@ export default class Command {
     return this.program?.commands.indexOf(this)
   }
 
-  createTileDropZone() {
+  createTileDropZone(updatingPosition: boolean = false) {
+    if (this.tileDropZone) {
+      if (!updatingPosition) {
+        this.updateTileDropZonePosition();
+        return;
+      }
+    }
     let scale = this.program.grid.scale;
     const width = this.sprite.width * scale;
     const height = this.sprite.height * scale;
@@ -48,7 +54,8 @@ export default class Command {
   updateTileDropZonePosition(): void {
     if (this.tileDropZone) {
       this.tileDropZone.removeSelf();
-      this.createTileDropZone();
+      let updating = true;
+      this.createTileDropZone(updating);
     }
   }
 
@@ -85,6 +92,7 @@ export default class Command {
     if (this.program != null) {
       console.log("COMMAND_REMOVE_SELF")
       this.program.removeCommand(this, removeFromScene);
+      this.program.updateCommandsDropZonesPositions();
     } else {
       if (removeFromScene) {
         this.scene.children.remove(this.sprite);

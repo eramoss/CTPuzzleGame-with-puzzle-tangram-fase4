@@ -60,7 +60,7 @@ export default class Program {
   addCommand(command: Command, index: number = -1) {
     command.programDropZone = this.dropZone;
     if (this.commands.indexOf(command) == -1) {
-      if (!command.commandIntent)
+      if (!command.isIntent)
         this.sounds.drop();
       if (index == -1) {
         index = this.commands.length;
@@ -68,11 +68,11 @@ export default class Program {
       this.commands.splice(index, 0, command);
       console.log('ADD_REMOVE_COMMANDS', this.commands)
     } else {
-      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
+      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED [command.name][index][command.index()]", command.name, index, command.index())
     }
     let fit = this.organizeInProgramArea(command);
     if (fit) {
-      if (!command.commandIntent) {
+      if (!command.isIntent) {
         command.createTileDropZone();
       }
     }
@@ -133,7 +133,7 @@ export default class Program {
 
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (removeSpriteFromScene) {
-      let playSound = !command.commandIntent
+      let playSound = !command.isIntent
       this.removeCommandSprite(command.sprite, playSound);
     }
     let index = this.commands.indexOf(command);

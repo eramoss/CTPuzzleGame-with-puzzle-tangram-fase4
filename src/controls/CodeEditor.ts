@@ -146,6 +146,7 @@ export default class CodeEditor {
         if (!clicked) {
           if (dropped) {
             if (programToDropInto) {
+              command.intent?.consolidateIntentionToDrop(command);
               command.setProgram(programToDropInto);
             }
             if (!programToDropInto) {
@@ -169,11 +170,10 @@ export default class CodeEditor {
         if (!programWhereAreDropped) {
           const commandIntentWhereAreDroppedInPlace: Command = this.programs
             .flatMap(p => p.commands)
-            .filter(c => c.commandIntent)
+            .filter(c => c.isIntent)
             .find(c => c.tileDropZone?.zone == dropZone);
           if (commandIntentWhereAreDroppedInPlace) {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
-            commandIntentWhereAreDroppedInPlace.commandIntent.consolidateIntentionToDrop(command);
           }
         }
         command.programDropZone = programWhereAreDropped;
@@ -181,7 +181,7 @@ export default class CodeEditor {
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         const commandIntentLeaved: Command = this.programs
           .flatMap(p => p.commands)
-          .filter(c => c.commandIntent)
+          .filter(c => c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandIntentLeaved) {
           commandIntentLeaved.removeSelf();
@@ -190,11 +190,14 @@ export default class CodeEditor {
       commandSprite.on('dragenter', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         const commandHovered: Command = this.programs
           .flatMap(p => p.commands)
-          .filter(c => !c.commandIntent)
+          .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered) {
-          console.log("MOVE_OBJECT", 'dragenter [command]', commandHovered);
-          const commandIntent = new CommandIntent(this.scene, commandHovered)
+          if (commandHovered != command) {
+            console.log("MOVE_OBJECT", 'dragenter [command]', commandHovered);
+            const commandIntent = new CommandIntent(this.scene, commandHovered);
+            command.intent = commandIntent;
+          }
         }
       })
     })

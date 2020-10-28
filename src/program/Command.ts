@@ -13,7 +13,8 @@ export default class Command {
   programDropZone: SpriteDropZone;
   tileDropZone: SpriteDropZone;
   animated: boolean;
-  commandIntent: CommandIntent = null;
+  isIntent: boolean = false;
+  intent: CommandIntent;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -85,6 +86,7 @@ export default class Command {
       }
     }
     this.program = program;
+    this.intent = null;
     this.program.addCommand(this, index);
   }
 
@@ -98,7 +100,7 @@ export default class Command {
         this.scene.children.remove(this.sprite);
       }
     }
-    if (!this.commandIntent) {
+    if (!this.isIntent) {
       this.tileDropZone?.removeSelf();
       this.tileDropZone = null;
     }

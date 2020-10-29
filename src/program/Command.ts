@@ -90,9 +90,7 @@ export default class Command {
   removeSelf(removeFromScene: Boolean = true) {
     if (this.program != null) {
       console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
-      //this.program.commands.splice(this.index(), 1);
       this.program.removeCommand(this, removeFromScene);
-      this.program.reorganize();
     } else {
       if (removeFromScene) {
         this.scene.children.remove(this.sprite);

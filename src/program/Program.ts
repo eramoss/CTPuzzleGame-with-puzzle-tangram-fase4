@@ -58,6 +58,7 @@ export default class Program {
   }
 
   addCommand(command: Command, index: number = -1) {
+    console.log('ADD_REMOVE_COMMANDS [index]', index)
     command.programDropZone = this.dropZone;
     if (this.commands.indexOf(command) == -1) {
       if (!command.isIntent)
@@ -68,11 +69,9 @@ export default class Program {
       this.commands.splice(index, 0, command);
     } else {
       let previousIndex = command.index();
-      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
       this.commands.splice(previousIndex, 1, command);
     }
     let fit = this.organizeInProgramArea(command);
-    console.log('ADD_REMOVE_COMMANDS [fit]', fit)
     if (!fit) {
       command.removeSelf();
     }
@@ -84,11 +83,7 @@ export default class Program {
     this.distributeAllCommands();
   }
 
-  private distributeAllCommands() {
-    this.commands.forEach(c => {
-      this.organizeInProgramArea(c)
-    });
-  }
+
 
   addCommandBySprite(sprite: GameObjects.Sprite) {
     let command = this.findCommandBySprite(sprite);
@@ -147,9 +142,19 @@ export default class Program {
       let playSound = !command.isIntent
       this.removeCommandSprite(command.sprite, playSound);
     }
+    this.reorganize();
   }
 
-  removeOverflowCommands() {
+  reorganize() {
+    this.distributeAllCommands();
+    this.updateCommandsDropZonesPositions();
+  }
+
+  updateCommandsDropZonesPositions() {
+    this.commands.forEach(c => c.updateTileDropZonePosition())
+  }
+
+  distributeAllCommands() {
     this.commands.forEach(c => {
       let fit = this.organizeInProgramArea(c);
       if (!fit) {
@@ -158,14 +163,6 @@ export default class Program {
     })
   }
 
-  updateCommandsDropZonesPositions() {
-    this.commands.forEach(c => c.updateTileDropZonePosition())
-  }
-
-  reorganize() {
-    this.removeOverflowCommands();
-    this.updateCommandsDropZonesPositions();
-  }
 
   clear() {
     let commands = this.commands.splice(0)

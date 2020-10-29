@@ -87,13 +87,13 @@ export default class Game extends Scene {
 
 
     let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 2, 0, 0, 0],
       [2, 0, 0, 0, 0, 0, 2],
       [0, 0, 1, 0, 1, 0, 0],
+      [0, 2, 0, 2, 0, 2, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 0],
-      [0, 0, 1, 0, 1, 0, 0],
-      [2, 0, 0, 0, 0, 0, 2],
+      [2, 0, 0, 2, 0, 0, 2],
     ]
 
     this.matrix = new Matrix(this,
@@ -135,7 +135,8 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down', 'arrow-up', 'arrow-left', 'arrow-down', 'arrow-up', 'arrow-left', 'arrow-down',])
+      /* this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down'])
+      prog1.addCommands(['arrow-down']) */
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

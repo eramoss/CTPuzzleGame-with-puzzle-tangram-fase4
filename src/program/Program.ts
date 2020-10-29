@@ -140,21 +140,18 @@ export default class Program {
   }
 
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
+    this.commands.splice(command.index(), 1);
     if (removeSpriteFromScene) {
       let playSound = !command.isIntent
       this.removeCommandSprite(command.sprite, playSound);
     }
-    let index = command.index();
-    if (index > -1) {
-      this.commands.splice(index, 1);
-    }
     this.distributeAllCommands()
   }
 
-  removeOverflowCommands(){
-    this.commands.forEach(c=>{
+  removeOverflowCommands() {
+    this.commands.forEach(c => {
       let fit = this.organizeInProgramArea(c);
-      if(!fit){
+      if (!fit) {
         c.removeSelf();
       }
     })
@@ -164,8 +161,8 @@ export default class Program {
     this.commands.forEach(c => c.updateTileDropZonePosition())
   }
 
-  reorganize(){
-    this.removeOverflowCommands();
+  reorganize() {
+    //this.removeOverflowCommands();
     this.updateCommandsDropZonesPositions();
   }
 

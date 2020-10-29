@@ -90,6 +90,7 @@ export default class Command {
   removeSelf(removeFromScene: Boolean = true) {
     if (this.program != null) {
       console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
+      //this.program.commands.splice(this.index(), 1);
       this.program.removeCommand(this, removeFromScene);
       this.program.updateCommandsDropZonesPositions();
     } else {
@@ -111,7 +112,7 @@ export default class Command {
     this.sprite.y = this.sprite.input.dragStartY;
   }
 
-  isDragged(){
+  isDragged() {
     let xChanged = this.sprite.x != this.sprite.input.dragStartX;
     let yChanged = this.sprite.y != this.sprite.input.dragStartY;
     return yChanged || xChanged

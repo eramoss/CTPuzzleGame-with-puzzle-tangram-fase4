@@ -11,7 +11,7 @@ export default class SpriteDropZone {
     this.zone = scene.add.zone(x, y, width, height).setRectangleDropZone(width, height);
     this.zone.setDisplayOrigin(0, 0);
     this.sprite = scene.add.sprite(x, y, texture, 0);
-    this.highlight();
+    //this.highlight();
   }
 
   highlight(enabled: boolean = true) {

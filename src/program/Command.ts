@@ -39,7 +39,7 @@ export default class Command {
         height,
         'tile-drop-zone'
       );
-      this.tileDropZone.highlight();
+      //this.tileDropZone.highlight();
       this.tileDropZone.sprite.displayOriginX = 0;
       this.tileDropZone.sprite.displayWidth = width
       this.tileDropZone.sprite.displayOriginY = 0;
@@ -59,7 +59,7 @@ export default class Command {
       this.tileDropZone.zone.y = y - height / 2
       this.tileDropZone.sprite.x = x - width / 2
       this.tileDropZone.sprite.y = y - height / 2
-      this.tileDropZone.highlight();
+      //this.tileDropZone.highlight();
     }
   }
 

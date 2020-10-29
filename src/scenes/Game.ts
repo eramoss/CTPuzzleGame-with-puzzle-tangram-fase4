@@ -140,7 +140,7 @@ export default class Game extends Scene {
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
-    this.dude = new Dude(this, this.matrix, this.sounds);
+    this.dude = new Dude(this, this.matrix, this.sounds, this.grid);
     this.dude.character.setScale(this.grid.scale)
     this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 

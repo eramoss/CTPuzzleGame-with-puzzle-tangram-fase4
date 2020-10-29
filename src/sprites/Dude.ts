@@ -4,6 +4,7 @@ import IsometricPoint from '../geom/IsometricPoint'
 import Command from '../program/Command';
 import Sounds from '../sounds/Sounds';
 import Program from '../program/Program';
+import AlignGrid from '../geom/AlignGrid';
 
 export class DudeMove {
 
@@ -168,7 +169,6 @@ export class DudeMove {
 }
 export default class Dude {
 
-
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -186,8 +186,10 @@ export default class Dude {
   currentFace: string;
   initialFace: string;
   programBeingExecuted: Program;
+  grid: AlignGrid;
 
-  constructor(scene: Scene, matrix: Matrix, sounds: Sounds) {
+  constructor(scene: Scene, matrix: Matrix, sounds: Sounds, grid: AlignGrid) {
+    this.grid = grid;
     this.sounds = sounds;
     this.scene = scene;
     this.matrix = matrix;
@@ -227,7 +229,7 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.playAnimation();
-    this.scene.physics.moveToObject(this.character, dudeMove.point, 80);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 80 * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 

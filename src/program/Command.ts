@@ -15,6 +15,7 @@ export default class Command {
   animated: boolean;
   isIntent: boolean = false;
   intent: CommandIntent;
+  isDroppedOverItself:boolean = false;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;

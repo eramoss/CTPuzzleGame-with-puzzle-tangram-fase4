@@ -24,12 +24,8 @@ export default class CommandIntent {
     consolidateIntentionToDrop(newCommand: Command) {
         let index = this.commandIntent.index();
         let program = this.commandIntent.program;
-        let previousProgram = newCommand.program;
         newCommand.setProgram(program, index);
         this.commandIntent.removeSelf();
-        previousProgram?.updateCommandsDropZonesPositions()
-        console.log('CONSOLIDATING MOVE', program)
-        //program?.updateCommandsDropZonesPositions();
     }
 
 }

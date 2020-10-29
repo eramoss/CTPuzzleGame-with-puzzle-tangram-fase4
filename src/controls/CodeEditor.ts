@@ -188,7 +188,7 @@ export default class CodeEditor {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
           } else {
             if (command.tileDropZone.zone == dropZone) {
-              programWhereAreDropped = command.program.dropZone;
+              programWhereAreDropped = command.program?.dropZone;
             }
           }
         }

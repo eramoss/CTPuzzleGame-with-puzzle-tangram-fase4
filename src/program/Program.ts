@@ -140,12 +140,13 @@ export default class Program {
   }
 
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
-    this.commands.splice(command.index(), 1);
+    if (command.index() > -1) {
+      this.commands.splice(command.index(), 1);
+    }
     if (removeSpriteFromScene) {
       let playSound = !command.isIntent
       this.removeCommandSprite(command.sprite, playSound);
     }
-    this.distributeAllCommands()
   }
 
   removeOverflowCommands() {
@@ -162,7 +163,7 @@ export default class Program {
   }
 
   reorganize() {
-    //this.removeOverflowCommands();
+    this.removeOverflowCommands();
     this.updateCommandsDropZonesPositions();
   }
 

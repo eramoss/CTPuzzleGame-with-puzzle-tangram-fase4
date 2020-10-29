@@ -68,20 +68,26 @@ export default class Program {
       this.commands.splice(index, 0, command);
     } else {
       let previousIndex = command.index();
-      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED [command.name][index][previousIndex]", command.name, index, previousIndex)
+      console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED")
       this.commands.splice(previousIndex, 1, command);
     }
     let fit = this.organizeInProgramArea(command);
+    console.log('ADD_REMOVE_COMMANDS [fit]', fit)
+    if (!fit) {
+      command.removeSelf();
+    }
     if (fit) {
       if (!command.isIntent) {
         command.createTileDropZone();
       }
     }
-    if (!fit) {
-      command.removeSelf();
-    }
-    this.commands.forEach(c => this.organizeInProgramArea(c))
-    console.log('ADD_REMOVE_COMMANDS [prog.name]', this.name, this.commands.map(c => c.name).join())
+    this.distributeAllCommands();
+  }
+
+  private distributeAllCommands() {
+    this.commands.forEach(c => {
+      this.organizeInProgramArea(c)
+    });
   }
 
   addCommandBySprite(sprite: GameObjects.Sprite) {
@@ -138,16 +144,29 @@ export default class Program {
       let playSound = !command.isIntent
       this.removeCommandSprite(command.sprite, playSound);
     }
-    let index = this.commands.indexOf(command);
-    this.commands.splice(index, 1);
-    console.log('ADD_REMOVE_COMMANDS [prog.name][command.name][commands]', this.name, command.name, this.commands)
-    this.commands.forEach((command: Command) => {
-      this.organizeInProgramArea(command);
+    let index = command.index();
+    if (index > -1) {
+      this.commands.splice(index, 1);
+    }
+    this.distributeAllCommands()
+  }
+
+  removeOverflowCommands(){
+    this.commands.forEach(c=>{
+      let fit = this.organizeInProgramArea(c);
+      if(!fit){
+        c.removeSelf();
+      }
     })
   }
 
   updateCommandsDropZonesPositions() {
     this.commands.forEach(c => c.updateTileDropZonePosition())
+  }
+
+  reorganize(){
+    this.removeOverflowCommands();
+    this.updateCommandsDropZonesPositions();
   }
 
   clear() {

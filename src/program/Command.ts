@@ -89,7 +89,7 @@ export default class Command {
 
   removeSelf(removeFromScene: Boolean = true) {
     if (this.program != null) {
-      console.log("COMMAND_REMOVE_SELF [command][removeFromScene]", this.name, removeFromScene)
+      console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
       this.program.removeCommand(this, removeFromScene);
       this.program.updateCommandsDropZonesPositions();
     } else {

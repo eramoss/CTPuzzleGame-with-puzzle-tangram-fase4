@@ -136,7 +136,7 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left','arrow-down'])
+      this.program.addCommands(['arrow-up', 'arrow-left','arrow-down','arrow-up', 'arrow-left','arrow-down','arrow-up', 'arrow-left','arrow-down',])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
@@ -183,6 +183,7 @@ export default class Game extends Scene {
     })
 
     this.codeEditor.onClickStop(() => {
+      console.clear();
       let resetFace = true;
       this.dude.stop(resetFace);
       //this.mazeModel.clear();

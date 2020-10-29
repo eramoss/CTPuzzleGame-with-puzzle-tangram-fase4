@@ -116,6 +116,7 @@ export default class CodeEditor {
         if (command.programDropZone) {
           command.removeSelf(false);
           command.programDropZone = null;
+          this.logPrograms('drag')
         }
       })
       commandSprite.on('dragstart', _ => {
@@ -123,13 +124,14 @@ export default class CodeEditor {
         // Não deixa acabar os comandos
         this.highlightDropZones()
         this.clickTime = this.getTime()
-        command.isDroppedOverItself = false;
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(this.scale * 1.2)
+        this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
+        
         let dragged = command.isDragged();
         let clicked = this.getTime() - this.clickTime < 2000 && !dragged;
         let dropped = command.programDropZone != null;
@@ -157,19 +159,20 @@ export default class CodeEditor {
               command.intent?.consolidateIntentionToDrop(command);
               command.setProgram(programToDropInto);
             }
-            if (!programToDropInto) {
-              command.removeSelf();
-            }
           }
+
+          //this.logPrograms('dragend begin')
 
           if (!dropped) {
             command.removeSelf();
           }
         }
 
-        command.program?.updateCommandsDropZonesPositions();
+        command.program?.reorganize();
         this.highlightDropZones(false);
         commandSprite.setScale(this.scale);
+
+        this.logPrograms('dragend');
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "drop ", dropZone)
@@ -190,6 +193,7 @@ export default class CodeEditor {
           }
         }
         command.programDropZone = programWhereAreDropped;
+        this.logPrograms('drop');
       })
 
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
@@ -218,6 +222,12 @@ export default class CodeEditor {
       })
     })
   }
+  private logPrograms(moment: string) {
+    this.programs.forEach(p => {
+      console.log('MOVE_EVENT', moment, 'finish => ', p.name, '=> [', p.commands.map(c => c.name).join(', '), ']');
+    });
+  }
+
   highlightDropZones(highlight: boolean = true) {
     this.dropZones.forEach(dropZone => {
       dropZone.highlight(highlight);

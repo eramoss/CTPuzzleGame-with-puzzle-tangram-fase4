@@ -12,37 +12,41 @@ export class MazeModelObject {
 }
 
 export default class MazeModel {
-  
-  
   gameObjects: MazeModelObject[][]
   matrix: Matrix;
   scene: Phaser.Scene;
   obstaclesMatrix: number[][];
-  
+  spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
+  onOverlap: (x: number, y: number, other: MazeModelObject) => void;
+
   constructor(scene: Phaser.Scene, matrix: Matrix, spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
     this.scene = scene;
     this.matrix = matrix;
     this.gameObjects = []
     this.obstaclesMatrix = matrix.matrix;
-    
-    for (let y = 0; y < matrix.height; y++) {
+    this.spriteCreateFunctions = spriteCreateFunctions;
+    this.buildObjectsModel();
+  }
+
+
+  private buildObjectsModel() {
+    for (let y = 0; y < this.matrix.height; y++) {
       if (!this.gameObjects[y]) {
         this.gameObjects[y] = [];
       }
-      for (let x = 0; x < matrix.width; x++) {
+      for (let x = 0; x < this.matrix.width; x++) {
         const spriteNumber = this.obstaclesMatrix[y][x];
-        let spriteCreateFn = spriteCreateFunctions[spriteNumber]
+        let spriteCreateFn = this.spriteCreateFunctions[spriteNumber];
         if (spriteCreateFn) {
           // Cria os objeto e adiciona no ponto
-          const point = matrix.points[y][x];
+          const point = this.matrix.points[y][x];
           const gameObject = spriteCreateFn(point.x, point.y);
           this.gameObjects[y][x] = new MazeModelObject(gameObject, spriteNumber);
         }
       }
     }
   }
-  
-  onOverlap: (x: number, y: number, other: MazeModelObject) => void;
+
   getObjectAt(y: number, x: number): MazeModelObject {
     let object: MazeModelObject = null
     let row = this.gameObjects[y];
@@ -51,7 +55,7 @@ export default class MazeModel {
     }
     return object
   }
-  
+
   updateBringFront() {
     if (this.matrix.mode == Matrix.ISOMETRIC) {
       this.updateIsometric()
@@ -134,14 +138,17 @@ export default class MazeModel {
     this.gameObjects[y][x] = object
   }
 
-  clear() {
-    /* for (let y = 0; y < this.matrix.height; y++) {
+  clearKeepingInModel(keepInModel: GameObjects.GameObject) {
+    for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
         let object = this.getObjectAt(y, x);
-        if(object){
-          this.scene.children.remove(object.gameObject);
+        if (object) {
+          if (object.gameObject != keepInModel) {
+            this.scene.children.remove(object.gameObject);
+          }
         }
-      } 
-    }*/
+      }
+    }
+    this.buildObjectsModel();
   }
 }

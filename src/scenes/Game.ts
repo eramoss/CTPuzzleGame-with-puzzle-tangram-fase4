@@ -127,8 +127,7 @@ export default class Game extends Scene {
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
     let initGame = () => {
-      if (this.dude.x)
-        this.mazeModel.putSprite(this.dude.x, this.dude.y, undefined, -1)
+      this.mazeModel.clearKeepingInModel(this.dude.character);
       this.mazeModel.putSprite(4, 1, this.dude.character)
       this.dude.setPosition(4, 1);
       this.mazeModel.updateBringFront();
@@ -136,7 +135,7 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left','arrow-down','arrow-up', 'arrow-left','arrow-down','arrow-up', 'arrow-left','arrow-down',])
+      this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down', 'arrow-up', 'arrow-left', 'arrow-down', 'arrow-up', 'arrow-left', 'arrow-down',])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
@@ -183,7 +182,7 @@ export default class Game extends Scene {
     })
 
     this.codeEditor.onClickStop(() => {
-      console.clear();
+      //console.clear();
       let resetFace = true;
       this.dude.stop(resetFace);
       //this.mazeModel.clear();

@@ -165,6 +165,7 @@ export default class CodeEditor {
           }
         }
 
+        command.program?.updateCommandsDropZonesPositions();
         this.highlightDropZones(false);
         commandSprite.setScale(this.scale);
       })
@@ -188,6 +189,7 @@ export default class CodeEditor {
         }
         command.programDropZone = programWhereAreDropped;
       })
+      
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "dragleave")
         const commandIntentLeaved: Command = this.programs
@@ -198,14 +200,15 @@ export default class CodeEditor {
           commandIntentLeaved.removeSelf();
         }
       })
+
       commandSprite.on('dragenter', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         const commandHovered: Command = this.programs
           .flatMap(p => p.commands)
           .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered) {
-          if (commandHovered != command) {
-            console.log("MOVE_EVENT", 'dragenter [command]', commandHovered);
+          console.log("MOVE_EVENT", 'dragenter [commandHovered]', commandHovered);
+          if (dropZone != command?.tileDropZone?.zone) {
             const commandIntent = new CommandIntent(this.scene, commandHovered);
             command.intent = commandIntent;
           }

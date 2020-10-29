@@ -66,7 +66,6 @@ export default class Program {
         index = this.commands.length;
       }
       this.commands.splice(index, 0, command);
-      console.log('ADD_REMOVE_COMMANDS', this.commands.map(c => c.name).join())
     } else {
       let previousIndex = command.index();
       console.log('ADD_REMOVE_COMMANDS', "ALREADY ADDED [command.name][index][previousIndex]", command.name, index, previousIndex)
@@ -82,7 +81,7 @@ export default class Program {
       command.removeSelf();
     }
     this.commands.forEach(c => this.organizeInProgramArea(c))
-    console.log('ADD_REMOVE_COMMANDS [!intent length]', this.commands.filter(c => !c.isIntent).length)
+    console.log('ADD_REMOVE_COMMANDS [prog.name]', this.name, this.commands.map(c => c.name).join())
   }
 
   addCommandBySprite(sprite: GameObjects.Sprite) {
@@ -141,7 +140,7 @@ export default class Program {
     }
     let index = this.commands.indexOf(command);
     this.commands.splice(index, 1);
-    console.log('ADD_REMOVE_COMMANDS', this.commands)
+    console.log('ADD_REMOVE_COMMANDS [prog.name][command.name][commands]', this.name, command.name, this.commands)
     this.commands.forEach((command: Command) => {
       this.organizeInProgramArea(command);
     })

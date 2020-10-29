@@ -27,36 +27,39 @@ export default class Command {
     return this.program?.commands.indexOf(this)
   }
 
-  createTileDropZone(updatingPosition: boolean = false) {
-    if (this.tileDropZone) {
-      if (!updatingPosition) {
-        this.updateTileDropZonePosition();
-        return;
-      }
+  createTileDropZone() {
+    if (this.tileDropZone == null) {
+      let scale = this.program.grid.scale;
+      const width = this.sprite.width * scale;
+      const height = this.sprite.height * scale;
+      this.tileDropZone = new SpriteDropZone(this.scene,
+        this.sprite.x - width / 2,
+        this.sprite.y - height / 2,
+        width,
+        height,
+        'tile-drop-zone'
+      );
+      this.tileDropZone.highlight();
+      this.tileDropZone.sprite.displayOriginX = 0;
+      this.tileDropZone.sprite.displayWidth = width
+      this.tileDropZone.sprite.displayOriginY = 0;
+      this.tileDropZone.sprite.displayHeight = height
+      this.tileDropZone.sprite.setDepth(1);
     }
-    let scale = this.program.grid.scale;
-    const width = this.sprite.width * scale;
-    const height = this.sprite.height * scale;
-    this.tileDropZone = new SpriteDropZone(this.scene,
-      this.sprite.x - width / 2,
-      this.sprite.y - height / 2,
-      width,
-      height,
-      'tile-drop-zone'
-    );
-    this.tileDropZone.highlight();
-    this.tileDropZone.sprite.displayOriginX = 0;
-    this.tileDropZone.sprite.displayWidth = width
-    this.tileDropZone.sprite.displayOriginY = 0;
-    this.tileDropZone.sprite.displayHeight = height
-    this.tileDropZone.sprite.setDepth(1);
   }
 
   updateTileDropZonePosition(): void {
     if (this.tileDropZone) {
-      this.tileDropZone.removeSelf();
-      let updating = true;
-      this.createTileDropZone(updating);
+      let scale = this.program.grid.scale;
+      const width = this.sprite.width * scale;
+      const height = this.sprite.height * scale;
+      let x = this.sprite.x;
+      let y = this.sprite.y;
+      this.tileDropZone.zone.x = x - width / 2
+      this.tileDropZone.zone.y = y - height / 2
+      this.tileDropZone.sprite.x = x - width / 2
+      this.tileDropZone.sprite.y = y - height / 2
+      this.tileDropZone.highlight();
     }
   }
 
@@ -79,12 +82,6 @@ export default class Command {
   }
 
   setProgram(program: Program, index: number = -1) {
-    if (this.program != program) {
-      if (this.program != undefined) {
-        let removeSpriteFromScene = false;
-        this.removeSelf(removeSpriteFromScene);
-      }
-    }
     this.program = program;
     this.intent = null;
     this.program.addCommand(this, index);
@@ -92,7 +89,7 @@ export default class Command {
 
   removeSelf(removeFromScene: Boolean = true) {
     if (this.program != null) {
-      console.log("COMMAND_REMOVE_SELF")
+      console.log("COMMAND_REMOVE_SELF [command][removeFromScene]", this.name, removeFromScene)
       this.program.removeCommand(this, removeFromScene);
       this.program.updateCommandsDropZonesPositions();
     } else {

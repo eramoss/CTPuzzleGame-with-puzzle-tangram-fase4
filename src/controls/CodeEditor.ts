@@ -145,11 +145,7 @@ export default class CodeEditor {
 
         if (clicked && isAddedToSomeProgram) {
           if (!(dropped && programToDropInto != command.program)) {
-            if (command.isDroppedOverItself) {
-              command.cancelMovement();
-            } else {
-              command.removeSelf();
-            }
+            command.removeSelf();
           } else {
             command.cancelMovement();
           }
@@ -187,9 +183,6 @@ export default class CodeEditor {
             .find(c => c.tileDropZone?.zone == dropZone);
           if (commandIntentWhereAreDroppedInPlace) {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
-            if (commandIntentWhereAreDroppedInPlace == command.intent.commandIntent) {
-              //command.isDroppedOverItself = true;
-            }
           } else {
             if (command.tileDropZone.zone == dropZone) {
               programWhereAreDropped = command.program.dropZone;

@@ -28,7 +28,8 @@ export default class CommandIntent {
         newCommand.setProgram(program, index);
         this.commandIntent.removeSelf();
         previousProgram?.updateCommandsDropZonesPositions()
-        program.updateCommandsDropZonesPositions();
+        console.log('CONSOLIDATING MOVE', program)
+        //program?.updateCommandsDropZonesPositions();
     }
 
 }

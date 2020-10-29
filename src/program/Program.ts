@@ -137,6 +137,7 @@ export default class Program {
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (command.index() > -1) {
       this.commands.splice(command.index(), 1);
+      command.program = null;
     }
     if (removeSpriteFromScene) {
       let playSound = !command.isIntent

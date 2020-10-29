@@ -135,8 +135,8 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      /* this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down'])
-      prog1.addCommands(['arrow-down']) */
+      this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down'])
+      //prog1.addCommands(['arrow-down'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

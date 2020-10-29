@@ -84,7 +84,7 @@ export default class Command {
   setProgram(program: Program, index: number = -1) {
     this.program = program;
     this.intent = null;
-    this.program.addCommand(this, index);
+    this.program?.addCommand(this, index);
   }
 
   removeSelf(removeFromScene: Boolean = true) {

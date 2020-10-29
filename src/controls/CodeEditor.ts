@@ -113,7 +113,7 @@ export default class CodeEditor {
       });
       commandSprite.on('drag', _ => {
         console.log("MOVE_EVENT", "drag")
-        if(command.programDropZone){
+        if (command.programDropZone) {
           command.removeSelf(false);
           command.programDropZone = null;
         }
@@ -123,13 +123,15 @@ export default class CodeEditor {
         // Não deixa acabar os comandos
         this.highlightDropZones()
         this.clickTime = this.getTime()
+        command.isDroppedOverItself = false;
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(this.scale * 1.2)
       })
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
-        let clicked = this.getTime() - this.clickTime < 400;
+        let dragged = command.isDragged();
+        let clicked = this.getTime() - this.clickTime < 2000 && !dragged;
         let dropped = command.programDropZone != null;
 
         let dropZone = command.programDropZone;
@@ -143,7 +145,11 @@ export default class CodeEditor {
 
         if (clicked && isAddedToSomeProgram) {
           if (!(dropped && programToDropInto != command.program)) {
-            command.removeSelf();
+            if (command.isDroppedOverItself) {
+              command.cancelMovement();
+            } else {
+              command.removeSelf();
+            }
           } else {
             command.cancelMovement();
           }
@@ -181,6 +187,9 @@ export default class CodeEditor {
             .find(c => c.tileDropZone?.zone == dropZone);
           if (commandIntentWhereAreDroppedInPlace) {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
+            if (commandIntentWhereAreDroppedInPlace == command.intent.commandIntent) {
+              //command.isDroppedOverItself = true;
+            }
           } else {
             if (command.tileDropZone.zone == dropZone) {
               programWhereAreDropped = command.program.dropZone;
@@ -189,7 +198,7 @@ export default class CodeEditor {
         }
         command.programDropZone = programWhereAreDropped;
       })
-      
+
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "dragleave")
         const commandIntentLeaved: Command = this.programs

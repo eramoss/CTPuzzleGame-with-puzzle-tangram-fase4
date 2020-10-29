@@ -15,6 +15,7 @@ export default class Command {
   animated: boolean;
   isIntent: boolean = false;
   intent: CommandIntent;
+  isDroppedOverItself:boolean = false;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -39,7 +40,7 @@ export default class Command {
         height,
         'tile-drop-zone'
       );
-      //this.tileDropZone.highlight();
+      this.tileDropZone.highlight();
       this.tileDropZone.sprite.displayOriginX = 0;
       this.tileDropZone.sprite.displayWidth = width
       this.tileDropZone.sprite.displayOriginY = 0;
@@ -59,7 +60,7 @@ export default class Command {
       this.tileDropZone.zone.y = y - height / 2
       this.tileDropZone.sprite.x = x - width / 2
       this.tileDropZone.sprite.y = y - height / 2
-      //this.tileDropZone.highlight();
+      this.tileDropZone.highlight();
     }
   }
 
@@ -106,9 +107,15 @@ export default class Command {
   }
 
   cancelMovement() {
-    console.log("CANCEL_MOVEMENT")
+    console.log("CANCEL_MOVEMENT");
     this.sprite.x = this.sprite.input.dragStartX;
     this.sprite.y = this.sprite.input.dragStartY;
+  }
+
+  isDragged(){
+    let xChanged = this.sprite.x != this.sprite.input.dragStartX;
+    let yChanged = this.sprite.y != this.sprite.input.dragStartY;
+    return yChanged || xChanged
   }
 
   isProgCommand() {

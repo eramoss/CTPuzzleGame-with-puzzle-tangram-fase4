@@ -1,9 +1,11 @@
-import { GameObjects } from 'phaser';
+import { GameObjects, Sound } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
+import Sounds from '../sounds/Sounds';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command {
+
 
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
@@ -17,7 +19,8 @@ export default class Command {
   intent: CommandIntent;
   condition: Command;
   placedOver: Command;
-  isDragged:boolean = false;
+  isDragged: boolean = false;
+  highlightConditionalImage: GameObjects.Image;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -31,6 +34,7 @@ export default class Command {
     return this.program?.commands.indexOf(this)
   }
 
+
   setCondition(ifCommand: Command) {
     if (this.condition && this.condition != ifCommand) {
       this.condition.removeSelf();
@@ -40,15 +44,25 @@ export default class Command {
     }
     this.condition = ifCommand;
     ifCommand.placedOver = this;
-    ifCommand.setPosition(this.sprite.x, this.sprite.y - this.sprite.height * this.program.grid.scale);
+    let { x, y } = this.getConditionalPosition();
+    ifCommand.setPosition(x, y);
+    new Sounds(this.scene).drop()
+  }
+
+  getConditionalPosition(): { x: number, y: number, width: number, height: number } {
+    const x = this.sprite.x;
+    const y = this.sprite.y - this.sprite.height * this.program.grid.scale;
+    const width = this.sprite.width;
+    const height = this.sprite.height;
+    return { x, y, width, height };
   }
 
   getDropzonePosition(): { x: number, y: number, width: number, height: number } {
     let scale = this.program.grid.scale;
     const width = this.sprite.width * scale;
-    const height = this.sprite.height * scale * 1.5;
+    const height = this.sprite.height * scale * 1.7;
     const x = this.sprite.x - width / 2;
-    const y = this.sprite.y - height / 1.6;
+    const y = this.sprite.y - height / 1.4;
     return { x, y, width, height }
   }
 
@@ -119,6 +133,7 @@ export default class Command {
       this.program.removeCommand(this, removeFromScene);
     } else {
       if (removeFromScene) {
+        new Sounds(this.scene).remove()
         this.scene.children.remove(this.sprite);
       }
     }
@@ -155,5 +170,14 @@ export default class Command {
       this.sprite.clearTint();
       this.sprite.setScale(this.sprite.scale - 0.1);
     }
+  }
+
+  removeHighlightConditionImage() {
+    this.scene.children.remove(this.highlightConditionalImage)
+  }
+  addHighlightConditionalImage() {
+    let { x, y } = this.getConditionalPosition();
+    this.highlightConditionalImage = this.scene.add.image(x, y, 'if_highlight')
+    this.highlightConditionalImage.scale = this.program.grid.scale;
   }
 }

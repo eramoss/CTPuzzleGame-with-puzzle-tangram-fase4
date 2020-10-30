@@ -8,7 +8,6 @@ import { createDropZone } from '../utils/Utils';
 export default class Program {
 
 
-
   commands: Command[];
   scene: Phaser.Scene;
   dropZone: SpriteDropZone;
@@ -165,6 +164,20 @@ export default class Program {
     })
   }
 
+  highlightConditionalAreas(ifCommand: Command): void {
+    this.commands.forEach(c => {
+      if (c.condition == null || c.condition == ifCommand) {
+        c.addHighlightConditionalImage();
+      }
+    })
+
+  }
+
+  unhighlightConditionalAreas() {
+    this.commands.forEach(c => {
+      c.removeHighlightConditionImage();
+    })
+  }
 
   clear() {
     let commands = this.commands.splice(0)

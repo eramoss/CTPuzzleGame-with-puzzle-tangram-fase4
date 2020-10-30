@@ -125,7 +125,7 @@ export default class CodeEditor {
       commandSprite.on('dragstart', _ => {
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
-        this.highlightDropZones()
+        this.highlightDropZones(command)
         this.clickTime = this.getTime()
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
@@ -190,7 +190,7 @@ export default class CodeEditor {
           command.program?.reorganize();
         }
         command.isDragged = false;
-        this.highlightDropZones(false);
+        this.unhighlightDropZones(command);
         commandSprite.setScale(this.scale);
 
         this.logPrograms('dragend');
@@ -269,9 +269,23 @@ export default class CodeEditor {
     });
   }
 
-  highlightDropZones(highlight: boolean = true) {
+  highlightDropZones(command: Command) {
+    if (command.isConditional) {
+      this.programs.forEach(p => p.highlightConditionalAreas(command))
+    }
+    if (!command.isConditional) {
+      this.dropZones.forEach(dropZone => {
+        dropZone.highlight(true);
+      })
+    }
+  }
+
+  unhighlightDropZones(command: Command) {
+    if (command.isConditional) {
+      this.programs.forEach(p => p.unhighlightConditionalAreas())
+    }
     this.dropZones.forEach(dropZone => {
-      dropZone.highlight(highlight);
+      dropZone.highlight(false);
     })
   }
 

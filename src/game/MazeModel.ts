@@ -145,6 +145,8 @@ export default class MazeModel {
         if (object) {
           if (object.gameObject != keepInModel) {
             this.scene.children.remove(object.gameObject);
+          }else{
+            this.gameObjects[y][x] = null;
           }
         }
       }

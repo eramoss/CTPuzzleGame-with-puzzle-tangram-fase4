@@ -1,6 +1,5 @@
 import { GameObjects } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
-import drawRect from '../utils/Utils';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
 
@@ -15,7 +14,7 @@ export default class Command {
   animated: boolean;
   isIntent: boolean = false;
   intent: CommandIntent;
-  isDroppedOverItself:boolean = false;
+  isDroppedOverItself: boolean = false;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -51,16 +50,18 @@ export default class Command {
 
   updateTileDropZonePosition(): void {
     if (this.tileDropZone) {
-      let scale = this.program.grid.scale;
-      const width = this.sprite.width * scale;
-      const height = this.sprite.height * scale;
-      let x = this.sprite.x;
-      let y = this.sprite.y;
-      this.tileDropZone.zone.x = x - width / 2
-      this.tileDropZone.zone.y = y - height / 2
-      this.tileDropZone.sprite.x = x - width / 2
-      this.tileDropZone.sprite.y = y - height / 2
-      this.tileDropZone.highlight();
+      if (this.program) {
+        let scale = this.program.grid.scale;
+        const width = this.sprite.width * scale;
+        const height = this.sprite.height * scale;
+        let x = this.sprite.x;
+        let y = this.sprite.y;
+        this.tileDropZone.zone.x = x - width / 2
+        this.tileDropZone.zone.y = y - height / 2
+        this.tileDropZone.sprite.x = x - width / 2
+        this.tileDropZone.sprite.y = y - height / 2
+        this.tileDropZone.highlight();
+      }
     }
   }
 

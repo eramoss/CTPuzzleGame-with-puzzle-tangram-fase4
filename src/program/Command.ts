@@ -15,9 +15,9 @@ export default class Command {
   isIntent: boolean = false;
   isConditional: boolean = false;
   intent: CommandIntent;
-  isDroppedOverItself: boolean = false;
   condition: Command;
   placedOver: Command;
+  isDragged:boolean = false;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -32,6 +32,9 @@ export default class Command {
   }
 
   setCondition(ifCommand: Command) {
+    if (this.condition && this.condition != ifCommand) {
+      this.condition.removeSelf();
+    }
     if (ifCommand.placedOver) {
       ifCommand.placedOver.condition = null;
     }
@@ -40,14 +43,21 @@ export default class Command {
     ifCommand.setPosition(this.sprite.x, this.sprite.y - this.sprite.height * this.program.grid.scale);
   }
 
+  getDropzonePosition(): { x: number, y: number, width: number, height: number } {
+    let scale = this.program.grid.scale;
+    const width = this.sprite.width * scale;
+    const height = this.sprite.height * scale * 1.5;
+    const x = this.sprite.x - width / 2;
+    const y = this.sprite.y - height / 1.6;
+    return { x, y, width, height }
+  }
+
   createTileDropZone() {
     if (this.tileDropZone == null) {
-      let scale = this.program.grid.scale;
-      const width = this.sprite.width * scale;
-      const height = this.sprite.height * scale;
+      let { x, y, width, height } = this.getDropzonePosition();
       this.tileDropZone = new SpriteDropZone(this.scene,
-        this.sprite.x - width / 2,
-        this.sprite.y - height / 2,
+        x,
+        y,
         width,
         height,
         'tile-drop-zone'
@@ -64,15 +74,11 @@ export default class Command {
   updateTileDropZonePosition(): void {
     if (this.tileDropZone) {
       if (this.program) {
-        let scale = this.program.grid.scale;
-        const width = this.sprite.width * scale;
-        const height = this.sprite.height * scale;
-        let x = this.sprite.x;
-        let y = this.sprite.y;
-        this.tileDropZone.zone.x = x - width / 2
-        this.tileDropZone.zone.y = y - height / 2
-        this.tileDropZone.sprite.x = x - width / 2
-        this.tileDropZone.sprite.y = y - height / 2
+        let { x, y } = this.getDropzonePosition();
+        this.tileDropZone.zone.x = x
+        this.tileDropZone.zone.y = y
+        this.tileDropZone.sprite.x = x
+        this.tileDropZone.sprite.y = y
         this.tileDropZone.highlight();
       }
     }
@@ -105,8 +111,11 @@ export default class Command {
   }
 
   removeSelf(removeFromScene: Boolean = true) {
+    console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
+    if (this.isConditional && this.placedOver) {
+      this.placedOver.condition = null;
+    }
     if (this.program != null) {
-      console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
       this.program.removeCommand(this, removeFromScene);
     } else {
       if (removeFromScene) {
@@ -125,12 +134,6 @@ export default class Command {
     console.log("CANCEL_MOVEMENT");
     this.sprite.x = this.sprite.input.dragStartX;
     this.sprite.y = this.sprite.input.dragStartY;
-  }
-
-  isDragged() {
-    let xChanged = this.sprite.x != this.sprite.input.dragStartX;
-    let yChanged = this.sprite.y != this.sprite.input.dragStartY;
-    return yChanged || xChanged
   }
 
   isProgCommand() {

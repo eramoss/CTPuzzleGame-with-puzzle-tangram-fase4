@@ -115,6 +115,7 @@ export default class CodeEditor {
       });
       commandSprite.on('drag', _ => {
         console.log("MOVE_EVENT", "drag")
+        command.isDragged = true;
         if (command.programDropZone) {
           command.removeSelf(false);
           command.programDropZone = null;
@@ -134,16 +135,21 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
 
-        let dragged = command.isDragged();
-        let clicked = this.getTime() - this.clickTime < 2000 && !dragged;
+        let dragged = command.isDragged;
+        let clicked = this.getTime() - this.clickTime < 1000 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
         if (isConditional) {
-          if (clicked) {
+          if (clicked && !dragged) {
             command.removeSelf();
           }
           if (dropped) {
             if (!command.placedOver) {
+              command.removeSelf();
+            }
+          }
+          if (!dropped) {
+            if (dragged) {
               command.removeSelf();
             }
           }
@@ -182,8 +188,8 @@ export default class CodeEditor {
             }
           }
           command.program?.reorganize();
-
         }
+        command.isDragged = false;
         this.highlightDropZones(false);
         commandSprite.setScale(this.scale);
 
@@ -215,13 +221,16 @@ export default class CodeEditor {
             }
           }
         }
-        command.programDropZone = programWhereAreDropped;
 
         if (command.isConditional) {
-          if (!programWhereAreDropped) {
+          programWhereAreDropped = null;
+          if (ordinalCommandWhereIfArePlacedOver) {
             ordinalCommandWhereIfArePlacedOver.setCondition(command);
+            programWhereAreDropped = ordinalCommandWhereIfArePlacedOver.programDropZone
           }
         }
+
+        command.programDropZone = programWhereAreDropped;
 
         this.logPrograms('drop');
       })

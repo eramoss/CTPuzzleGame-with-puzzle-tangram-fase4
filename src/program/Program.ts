@@ -110,7 +110,7 @@ export default class Program {
 
     console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
 
-    const cols: integer = Math.floor(zone.width / spriteWidth) + 1// 1 de overflow permitido;
+    const cols: integer = Math.floor(zone.width / spriteWidth);
     const rows: integer = Math.floor(zone.height / spriteHeight);
 
     const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols

@@ -1,6 +1,7 @@
 import { GameObjects, Sound } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import Sounds from '../sounds/Sounds';
+import CommandAction from './CommandAction';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
 
@@ -33,7 +34,6 @@ export default class Command {
   index(): number {
     return this.program?.commands.indexOf(this)
   }
-
 
   setCondition(ifCommand: Command) {
     if (this.condition && this.condition != ifCommand) {
@@ -98,9 +98,10 @@ export default class Command {
     }
   }
 
-  getAction(): string {
+  getAction(): CommandAction {
     let action: string = ''
     const textureKey = this.sprite.texture.key;
+    const condition = this.condition?.sprite.texture.key
     switch (textureKey) {
       case 'arrow-up': action = 'up'; break;
       case 'arrow-down': action = 'down'; break;
@@ -108,7 +109,7 @@ export default class Command {
       case 'arrow-right': action = 'right'; break;
       default: action = textureKey
     }
-    return action;
+    return new CommandAction(action, condition);
   }
 
   setPosition(x: number, y: number) {
@@ -152,7 +153,7 @@ export default class Command {
   }
 
   isProgCommand() {
-    return this.getAction().indexOf('prog') > -1
+    return this.getAction().action.indexOf('prog') > -1
   }
 
   animateSprite() {
@@ -181,3 +182,5 @@ export default class Command {
     this.highlightConditionalImage.scale = this.program.grid.scale;
   }
 }
+
+

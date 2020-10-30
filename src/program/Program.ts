@@ -46,9 +46,21 @@ export default class Program {
   }
 
   addCommands(commands: string[]) {
-    commands.forEach(command => {
-      const commandSprite = this.scene.add.sprite(0, 0, command).setScale(this.grid.scale)
-      this.addCommandBySprite(commandSprite)
+    commands.forEach(texture => {
+      let textures = texture.split(':');
+      let conditionTexture = null;
+      if (textures.length > 1) {
+        texture = textures[0]
+        conditionTexture = textures[1];
+      }
+      const commandSprite = this.scene.add.sprite(0, 0, texture).setScale(this.grid.scale);
+      let command = new Command(this.scene, commandSprite);
+      command.setProgram(this);
+      if (conditionTexture) {
+        let conditionSprite = this.scene.add.sprite(0, 0, conditionTexture).setScale(this.grid.scale);
+        let conditionCommand = new Command(this.scene, conditionSprite);
+        command.setCondition(conditionCommand);
+      }
     })
   }
 
@@ -80,25 +92,6 @@ export default class Program {
       }
     }
     this.distributeAllCommands();
-  }
-
-
-
-  addCommandBySprite(sprite: GameObjects.Sprite) {
-    let command = this.findCommandBySprite(sprite);
-    if (!command) {
-      command = new Command(this.scene, sprite);
-      command.setProgram(this);
-    }
-  }
-
-  findCommandBySprite(sprite: GameObjects.Sprite): Command {
-    const commands = this.commands.filter(c => c.sprite === sprite);
-    let command: Command;
-    if (commands.length > 0) {
-      command = commands[0]
-    }
-    return command;
   }
 
   organizeInProgramArea(command: Command) {
@@ -183,5 +176,9 @@ export default class Program {
     let commands = this.commands.splice(0)
     commands.forEach(c => c.removeSelf());
     this.commands = []
+  }
+
+  getCommandsWithConditions(): Command[] {
+    return this.commands.flatMap(c => [c, c.condition]).filter(c => c != undefined);
   }
 }

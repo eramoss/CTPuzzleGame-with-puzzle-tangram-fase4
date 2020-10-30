@@ -47,7 +47,7 @@ export default class CodeEditor {
 
   createEventsToCommandsForAddedPrograms() {
     this.programs.forEach(p => {
-      this.createEventsToCommands(p.commands);
+      this.createEventsToCommands(p.getCommandsWithConditions());
     })
   }
 

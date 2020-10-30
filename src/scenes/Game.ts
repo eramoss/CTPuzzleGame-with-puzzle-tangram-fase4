@@ -1,6 +1,7 @@
 import { GameObjects, Types, Scene, Physics } from 'phaser'
 import Matrix from '../geom/Matrix'
-import Dude, { DudeMove } from '../sprites/Dude'
+import Dude from '../sprites/Dude'
+import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
 import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
@@ -79,25 +80,24 @@ export default class Game extends Scene {
     let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.6, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, /* prog_if_1, */ prog1, prog2], this.sounds, this.grid);
 
-    let baseMatrix: number[][] = [
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
-      [-1, -1, -1, -1, -1, -1, -1],
+    let baseMatrix: string[][] = [
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
     ];
 
-
-    let obstaclesMatrix: number[][] = [
-      [0, 0, 0, 2, 0, 0, 0],
-      [2, 0, 0, 0, 0, 0, 2],
-      [0, 0, 1, 0, 1, 0, 0],
-      [0, 2, 0, 2, 0, 2, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 1, 0, 1, 0, 0],
-      [2, 0, 0, 2, 0, 0, 2],
+    let obstaclesMatrix: string[][] = [
+      ['null', 'null', 'null', 'null', 'null', 'null', 'coin'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
 
     this.matrix = new Matrix(this,
@@ -112,13 +112,13 @@ export default class Game extends Scene {
 
     let isometric = this.mode == Matrix.ISOMETRIC;
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
-    spriteCreateFunctions[1] = (x: integer, y: integer) => {
+    spriteCreateFunctions['block'] = (x: integer, y: integer) => {
       return this.add.image(x, y - 5, 'block').setScale(this.grid.scale * (isometric ? 1.2 : 1))
     };
-    spriteCreateFunctions[-1] = (x: integer, y: integer) => {
+    spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
       return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.4 : 1))
     };
-    spriteCreateFunctions[2] = (x: integer, y: integer) => {
+    spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({
         key: 'gold-spining',
         frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
@@ -132,14 +132,14 @@ export default class Game extends Scene {
 
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      this.mazeModel.putSprite(4, 1, this.dude.character)
-      this.dude.setPosition(4, 1);
+      this.mazeModel.putSprite(0, 3, this.dude.character)
+      this.dude.setPosition(0, 3);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left', 'arrow-down'])
+      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0'])
       //prog1.addCommands(['arrow-down'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
@@ -151,18 +151,23 @@ export default class Game extends Scene {
     this.dude.canMoveTo = (x: number, y: number) => {
       let point = this.matrix.getPoint(y, x);
       let object = this.mazeModel.getObjectAt(y, x)
-      let blockNumber = 1
-      const can = point != null && object?.spriteNumber != blockNumber
+      const can = point != null && object?.spriteName != 'block'
       console.log('CAN_MOVE_TO [x, y, can]', x, y, can)
       return can
     }
 
+    this.dude.isConditionValid = (condition: string, x: number, y: number) => {
+      let valid = false
+      if (condition == 'if_coin') {
+        if (this.mazeModel.getObjectNameAt(y, x) == 'coin') {
+          valid = true
+        }
+      }
+      return valid
+    }
+
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      /* if(baseMatrix[current.y][current.x] == 0){
-        this.dude.character.setVelocityX(0)
-        this.dude.character.setVelocityY(100)
-        this.dude.character.setGravityY(100)
-      } */
+      this.mazeModel.clearObjectNameAt(current.y, current.x)
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, current: DudeMove) => {
@@ -174,12 +179,12 @@ export default class Game extends Scene {
     }
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteNumber == 2) {//coin
+      /* if (other.spriteName == 'coin') {//coin
         this.children.remove(other.gameObject);
         //coin.setGravityY(-200);
         //coin.setVelocityY(-100)
         this.sounds.coin();
-      }
+      } */
     }
 
     this.codeEditor.onClickRun(() => {

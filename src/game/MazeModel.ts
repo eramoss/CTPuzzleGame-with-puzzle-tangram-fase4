@@ -3,33 +3,40 @@ import Matrix from "../geom/Matrix";
 
 export class MazeModelObject {
   gameObject: GameObjects.GameObject;
-  spriteNumber: number
+  spriteName: string
 
-  constructor(gameObject: GameObjects.GameObject, spriteNumber: number) {
+  constructor(gameObject: GameObjects.GameObject, spriteName: string) {
     this.gameObject = gameObject;
-    this.spriteNumber = spriteNumber;
+    this.spriteName = spriteName;
   }
 }
 
 export default class MazeModel {
+
   gameObjects: MazeModelObject[][]
   matrix: Matrix;
   scene: Phaser.Scene;
-  obstaclesMatrix: number[][];
+  obstaclesMatrix: string[][];
+  obstaclesMatrixNames: string[][];
   spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
 
-  constructor(scene: Phaser.Scene, matrix: Matrix, spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
+  constructor(
+    scene: Phaser.Scene,
+    matrix: Matrix,
+    spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
+
     this.scene = scene;
     this.matrix = matrix;
     this.gameObjects = []
     this.obstaclesMatrix = matrix.matrix;
+    this.obstaclesMatrixNames = matrix.matrix
     this.spriteCreateFunctions = spriteCreateFunctions;
     this.buildObjectsModel();
   }
 
-
   private buildObjectsModel() {
+    this.obstaclesMatrixNames = this.obstaclesMatrixNames;
     for (let y = 0; y < this.matrix.height; y++) {
       if (!this.gameObjects[y]) {
         this.gameObjects[y] = [];
@@ -98,9 +105,12 @@ export default class MazeModel {
         let c = '-';
         let object = this.getObjectAt(y, x);
         if (object) {
-          c = this.obstaclesMatrix[y][x].toString();
+          c = this.obstaclesMatrixNames[y][x];
+          if (!c) {
+            c = '-';
+          }
         }
-        logMatrix += c + ' ';
+        logMatrix += c.substring(0, 1) + ' ';
       }
       logMatrix += '\n';
     }
@@ -124,33 +134,48 @@ export default class MazeModel {
     console.log('GAME_OBJECTS', logMatrix) */
   }
 
-  putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteNumber: number = -1) {
+  putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteName: string = null) {
     const existentObjectOnPosition = this.getObjectAt(y, x);
     if (sprite) {
       if (existentObjectOnPosition) {
         this.onOverlap(x, y, existentObjectOnPosition);
       }
     }
-    let object = null;
+    let object: MazeModelObject = null;
     if (sprite) {
-      object = new MazeModelObject(sprite, spriteNumber)
+      object = new MazeModelObject(sprite, spriteName)
     }
     this.gameObjects[y][x] = object
+    //this.obstaclesMatrixNames[y][x] = object?.spriteName
   }
 
   clearKeepingInModel(keepInModel: GameObjects.GameObject) {
+
     for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
         let object = this.getObjectAt(y, x);
         if (object) {
           if (object.gameObject != keepInModel) {
             this.scene.children.remove(object.gameObject);
-          }else{
+          } else {
             this.gameObjects[y][x] = null;
           }
         }
       }
     }
     this.buildObjectsModel();
+  }
+
+  getObjectNameAt(y: number, x: number): string {
+    const objectName = this.obstaclesMatrixNames[y][x];
+    console.log('MAZE_MODEL [getObjectNameAt]', objectName)
+    return objectName
+  }
+
+  clearObjectNameAt(y: number, x: number) {
+    console.log('MAZE_MODEL [clearObjectAt]')
+    setTimeout(() => {
+      this.obstaclesMatrixNames[y][x] = 'null';
+    }, 300);
   }
 }

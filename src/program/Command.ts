@@ -13,18 +13,31 @@ export default class Command {
   tileDropZone: SpriteDropZone;
   animated: boolean;
   isIntent: boolean = false;
+  isConditional: boolean = false;
   intent: CommandIntent;
   isDroppedOverItself: boolean = false;
+  condition: Command;
+  placedOver: Command;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
     this.sprite.setDepth(2);
     this.scene = scene;
+    this.isConditional = this.name.startsWith('if');
   }
 
   index(): number {
     return this.program?.commands.indexOf(this)
+  }
+
+  setCondition(ifCommand: Command) {
+    if (ifCommand.placedOver) {
+      ifCommand.placedOver.condition = null;
+    }
+    this.condition = ifCommand;
+    ifCommand.placedOver = this;
+    ifCommand.setPosition(this.sprite.x, this.sprite.y - this.sprite.height * this.program.grid.scale);
   }
 
   createTileDropZone() {
@@ -84,9 +97,11 @@ export default class Command {
   }
 
   setProgram(program: Program, index: number = -1) {
-    this.program = program;
-    this.intent = null;
-    this.program?.addCommand(this, index);
+    if (!this.isConditional) {
+      this.program = program;
+      this.intent = null;
+      this.program?.addCommand(this, index);
+    }
   }
 
   removeSelf(removeFromScene: Boolean = true) {

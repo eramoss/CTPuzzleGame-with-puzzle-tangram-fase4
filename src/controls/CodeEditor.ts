@@ -67,7 +67,7 @@ export default class CodeEditor {
 
   private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
-    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2']
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
@@ -87,6 +87,8 @@ export default class CodeEditor {
       'prog_0': 4,
       'prog_1': 5,
       'prog_2': 6,
+      'if_block': 7,
+      'if_coin': 8,
     }
     Object.getOwnPropertyNames(positions)
       .forEach(commandName => {
@@ -131,44 +133,57 @@ export default class CodeEditor {
       })
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
-        
+
         let dragged = command.isDragged();
         let clicked = this.getTime() - this.clickTime < 2000 && !dragged;
         let dropped = command.programDropZone != null;
-
-        let dropZone = command.programDropZone;
-        let programToDropInto = this.getProgramByDropzone(dropZone);
-        const isAddedToSomeProgram = command.program != null;
-
-        if (clicked && !isAddedToSomeProgram) {
-          let main = this.getMainProgram();
-          command.setProgram(main);
-        }
-
-        if (clicked && isAddedToSomeProgram) {
-          if (!(dropped && programToDropInto != command.program)) {
+        let isConditional = command.isConditional;
+        if (isConditional) {
+          if (clicked) {
             command.removeSelf();
-          } else {
-            command.cancelMovement();
+          }
+          if (dropped) {
+            if (!command.placedOver) {
+              command.removeSelf();
+            }
           }
         }
+        if (!isConditional) {
 
-        if (!clicked) {
-          if (dropped) {
-            if (programToDropInto) {
-              command.intent?.consolidateIntentionToDrop(command);
-              command.setProgram(programToDropInto);
+          let dropZone = command.programDropZone;
+          let programToDropInto = this.getProgramByDropzone(dropZone);
+          const isAddedToSomeProgram = command.program != null;
+
+          if (clicked && !isAddedToSomeProgram) {
+            let main = this.getMainProgram();
+            command.setProgram(main);
+          }
+
+          if (clicked && isAddedToSomeProgram) {
+            if (!(dropped && programToDropInto != command.program)) {
+              command.removeSelf();
+            } else {
+              command.cancelMovement();
             }
           }
 
-          //this.logPrograms('dragend begin')
+          if (!clicked) {
+            if (dropped) {
+              if (programToDropInto) {
+                command.intent?.consolidateIntentionToDrop(command);
+                command.setProgram(programToDropInto);
+              }
+            }
 
-          if (!dropped) {
-            command.removeSelf();
+            //this.logPrograms('dragend begin')
+
+            if (!dropped) {
+              command.removeSelf();
+            }
           }
-        }
+          command.program?.reorganize();
 
-        command.program?.reorganize();
+        }
         this.highlightDropZones(false);
         commandSprite.setScale(this.scale);
 
@@ -176,23 +191,38 @@ export default class CodeEditor {
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "drop ", dropZone)
+
         let programWhereAreDropped = this.programs
           .flatMap(p => p.dropZone)
           .filter(d => d.zone == dropZone)[0];
+
+        const commandIntentWhereAreDroppedInPlace: Command = this.programs
+          .flatMap(p => p.commands)
+          .filter(c => c.isIntent)
+          .find(c => c.tileDropZone?.zone == dropZone);
+
+        const ordinalCommandWhereIfArePlacedOver: Command = this.programs
+          .flatMap(p => p.commands)
+          .filter(c => !c.isIntent && !c.isConditional)
+          .find(c => c.tileDropZone?.zone == dropZone);
+
         if (!programWhereAreDropped) {
-          const commandIntentWhereAreDroppedInPlace: Command = this.programs
-            .flatMap(p => p.commands)
-            .filter(c => c.isIntent)
-            .find(c => c.tileDropZone?.zone == dropZone);
           if (commandIntentWhereAreDroppedInPlace) {
             programWhereAreDropped = commandIntentWhereAreDroppedInPlace.program.dropZone;
           } else {
-            if (command.tileDropZone.zone == dropZone) {
+            if (command.tileDropZone?.zone == dropZone) {
               programWhereAreDropped = command.program?.dropZone;
             }
           }
         }
         command.programDropZone = programWhereAreDropped;
+
+        if (command.isConditional) {
+          if (!programWhereAreDropped) {
+            ordinalCommandWhereIfArePlacedOver.setCondition(command);
+          }
+        }
+
         this.logPrograms('drop');
       })
 
@@ -215,8 +245,10 @@ export default class CodeEditor {
         if (commandHovered) {
           console.log("MOVE_EVENT", 'dragenter [commandHovered]', commandHovered);
           if (dropZone != command?.tileDropZone?.zone) {
-            const commandIntent = new CommandIntent(this.scene, commandHovered);
-            command.intent = commandIntent;
+            if (!command.isConditional) {
+              const commandIntent = new CommandIntent(this.scene, commandHovered);
+              command.intent = commandIntent;
+            }
           }
         }
       })

@@ -38,6 +38,8 @@ export default class Game extends Scene {
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
+    this.load.image('if_coin', 'assets/ct/if_coin.png');
+    this.load.image('if_block', 'assets/ct/if_block.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
@@ -70,10 +72,11 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
+    //let prog_if_1 = new Program(this, 'prog_0', this.sounds, this.grid, 7, 12, 12, 1, 'drop-zone');
     this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7, 13, 12, 2.6, 'drop-zone');
     let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7, 16, 12, 2.6, 'drop-zone');
     let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.6, 'drop-zone');
-    this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
+    this.codeEditor = new CodeEditor(this, [this.program, /* prog_if_1, */ prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: number[][] = [
       [-1, -1, -1, -1, -1, -1, -1],

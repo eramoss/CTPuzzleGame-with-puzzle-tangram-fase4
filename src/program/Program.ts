@@ -76,7 +76,7 @@ export default class Program {
       command.removeSelf();
     }
     if (fit) {
-      if (!command.isIntent) {
+      if (!(command.isIntent || command.isConditional)) {
         command.createTileDropZone();
       }
     }
@@ -121,6 +121,7 @@ export default class Program {
 
     let x = zone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
     let y = zone.y + row + spriteHeight * 0.5;
+
     //let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
     //drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);

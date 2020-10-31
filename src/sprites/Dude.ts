@@ -206,6 +206,11 @@ export default class Dude {
     this.programBeingExecuted?.disanimate();
     this.programBeingExecuted = program;
     this.programBeingExecuted.animate();
+    if (!program.commands.length) {
+      setTimeout(() => {
+        this.programBeingExecuted?.disanimate();
+      }, 300);
+    }
     program.disanimateCommands();
     this.setTimeout(() => {
       this.buildPath(program.commands);

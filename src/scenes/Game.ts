@@ -92,10 +92,10 @@ export default class Game extends Scene {
 
     let obstaclesMatrix: string[][] = [
       ['null', 'coin', 'null', 'null', 'null', 'null', 'coin'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
+      ['null', 'block', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -110,13 +110,15 @@ export default class Game extends Scene {
       baseMatrix,
       this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth);
 
+    const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;
+
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {
-      return this.add.image(x, y - 5, 'block').setScale(this.grid.scale * (isometric ? 1.2 : 1))
+      return this.add.image(x, y - 15 * scale, 'block').setScale(scale * (isometric ? 1.2 : 1))
     };
     spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 10, 'tile').setScale(this.grid.scale * (isometric ? 1.4 : 1))
+      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.4 : 1))
     };
     spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({
@@ -125,7 +127,7 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.physics.add.sprite(x, y, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
+      return this.physics.add.sprite(x, y - 15, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
     new MazeModel(this, base, spriteCreateFunctions)
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)

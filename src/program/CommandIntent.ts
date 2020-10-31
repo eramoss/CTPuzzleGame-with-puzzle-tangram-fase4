@@ -24,8 +24,8 @@ export default class CommandIntent {
     consolidateIntentionToDrop(newCommand: Command) {
         let index = this.commandIntent.index();
         let program = this.commandIntent.program;
-        newCommand.setProgram(program, index);
         this.commandIntent.removeSelf();
+        newCommand.setProgram(program, index);
     }
 
 }

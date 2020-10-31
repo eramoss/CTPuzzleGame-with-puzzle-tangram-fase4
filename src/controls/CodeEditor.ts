@@ -256,7 +256,7 @@ export default class CodeEditor {
           .flatMap(p => p.commands)
           .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
-        if (commandHovered) {
+        if (commandHovered && !commandHovered.program?.isFull()) {
           console.log("MOVE_EVENT", 'dragenter [commandHovered]', commandHovered);
           if (dropZone != command?.tileDropZone?.zone) {
             if (!command.isConditional) {

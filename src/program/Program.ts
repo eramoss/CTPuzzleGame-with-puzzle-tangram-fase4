@@ -17,6 +17,7 @@ export default class Program {
   parent: Program;
   programNameImage: GameObjects.Image;
   animated: boolean;
+  maxSupportedCommandsByRow: number;
 
   constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
@@ -69,6 +70,9 @@ export default class Program {
   }
 
   addCommand(command: Command, index: number = -1) {
+    if (this.isFull()) {
+      return;
+    }
     console.log('ADD_REMOVE_COMMANDS [index]', index)
     command.programDropZone = this.dropZone;
     if (this.commands.indexOf(command) == -1) {
@@ -102,7 +106,8 @@ export default class Program {
 
     console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
 
-    const cols: integer = Math.floor(zone.width / spriteWidth);
+    this.maxSupportedCommandsByRow = Math.floor(zone.width / spriteWidth);
+    let cols = this.maxSupportedCommandsByRow;
     const rows: integer = Math.floor(zone.height / spriteHeight);
 
     const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols
@@ -176,6 +181,10 @@ export default class Program {
     let commands = this.commands.splice(0)
     commands.forEach(c => c.removeSelf());
     this.commands = []
+  }
+
+  isFull(): boolean {
+    return this.commands.filter(c => !c.isIntent).length == this.maxSupportedCommandsByRow
   }
 
   getCommandsWithConditions(): Command[] {

@@ -172,6 +172,8 @@ export default class Command {
     }
   }
 
+  
+
   removeHighlightConditionImage() {
     this.scene.children.remove(this.highlightConditionalImage)
   }

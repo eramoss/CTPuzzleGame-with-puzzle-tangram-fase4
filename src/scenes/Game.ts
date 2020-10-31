@@ -91,7 +91,7 @@ export default class Game extends Scene {
     ];
 
     let obstaclesMatrix: string[][] = [
-      ['null', 'coin', 'null', 'null', 'null', 'null', 'coin'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],

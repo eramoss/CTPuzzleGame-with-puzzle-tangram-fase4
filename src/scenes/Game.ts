@@ -138,13 +138,13 @@ export default class Game extends Scene {
       this.dude.setPosition(0, 4);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
-      // this.program.clear();
+      this.program.clear();
       // prog1.clear();
       // prog2.clear(); 
 
-      // this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0']) 
+      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-left:if_block', 'prog_0'])
       // prog1.addCommands(['arrow-down'])
-      // this.codeEditor.createEventsToCommandsForAddedPrograms();
+      this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);
@@ -160,30 +160,23 @@ export default class Game extends Scene {
     }
 
     this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
-      let valid = false
+      let valid = true;
       if (condition == 'if_coin') {
-        if (dudeMove.tag == 'coin') {
-          valid = true
-        }
+        valid = this.dude.tag == 'got coin';
+        this.dude.tag = null;
       }
       if (condition == 'if_block') {
-        if (dudeMove.tag == 'block') {
-          valid = true
-        }
+        let { x, y } = dudeMove.getAheadPosition();
+        valid = this.mazeModel.getObjectNameAt(y, x) == 'block'
       }
       return valid
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      let { x, y } = current.getAheadPosition();
-      if (!this.matrix.getPoint(y, x) || this.mazeModel.getObjectNameAt(y, x) == 'block') {
-        current.tag = 'block'
-      }
       this.mazeModel.updateBringFront();
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
-      currentDestine.tag = this.mazeModel.getObjectNameAt(currentDestine.y, currentDestine.x);
       this.mazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {
@@ -201,6 +194,7 @@ export default class Game extends Scene {
           //coin.setGravityY(-200);
           //coin.setVelocityY(-100)
           this.sounds.coin();
+          this.dude.tag = 'got coin';
         }, waitALittleBitBeforeColide);
       }
     }

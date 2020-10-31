@@ -17,7 +17,6 @@ export class DudeMove {
   couldExecute: boolean;
   command: Command;
   branch: Branch;
-  tag: string;
 
   constructor(dude: Dude, command: Command) {
     this.dude = dude;
@@ -114,15 +113,14 @@ export class DudeMove {
     let branched = this.isProgMove();
     let turnMove = this.action.isTurnMove();
     let isCondition = this.action.isCondition();
-
     this.animate();
-
+    
     this.command.sprite.setTint(0xffff00);
     this.dude.setTimeout(() => {
       this.command.sprite.clearTint();
       //this.disanimate();
     }, 80);
-
+    
     if (previousMove == null) {
       this.x = this.dude.x;
       this.y = this.dude.y;
@@ -130,22 +128,17 @@ export class DudeMove {
       this.x = previousMove.x;
       this.y = previousMove.y;
     }
+    
+    let isConditionValid = this.dude?.isConditionValid(this.action.action, this);;
 
     let { newX, newY, newFace, animation } = this.prepareMove(this.x, this.y, this.action, this.dude.currentFace);
     console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
-    this.couldExecute = this.dude.canMoveTo(newX, newY);
+    this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
 
     if (this.couldExecute) {
       this.x = newX;
       this.y = newY;
-    }
-
-    if (isCondition) {
-      const isConditionValid = this.dude?.isConditionValid(this.action.action, this);
-      if (!isConditionValid) {
-        this.couldExecute = false
-      }
     }
 
     if (branched) {

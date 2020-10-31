@@ -29,6 +29,7 @@ export default class Dude {
   initialFace: string;
   programBeingExecuted: Program;
   grid: AlignGrid;
+  tag: string;
 
   constructor(scene: Scene, matrix: Matrix, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -71,7 +72,7 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.playAnimation();
-    this.scene.physics.moveToObject(this.character, dudeMove.point, 80 * this.grid.scale);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 100 * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 
@@ -165,9 +166,6 @@ export default class Dude {
     this.character.clearTint();
     this.onCompleteMoveCallback(this.currentStep);
     this.currentStep = move.next
-    if (move.next) {
-      this.currentStep.tag = move.tag;
-    }
     if (!move.next) {
       this.continuePreviousBranchIfExists();
       this.programBeingExecuted.disanimate();

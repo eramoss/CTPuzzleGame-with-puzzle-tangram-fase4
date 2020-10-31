@@ -181,4 +181,22 @@ export class DudeMove {
   isProgMove() {
     return this.command.isProgCommand();
   }
+
+  getAheadPosition(): { x: number, y: number } {
+    let x = this.x;
+    let y = this.y;
+    if (this.dude.currentFace == "down") {
+      y++;
+    }
+    if (this.dude.currentFace == "up") {
+      y--;
+    }
+    if (this.dude.currentFace == "left") {
+      x--;
+    }
+    if (this.dude.currentFace == "right") {
+      x++;
+    }
+    return { x, y }
+  }
 }

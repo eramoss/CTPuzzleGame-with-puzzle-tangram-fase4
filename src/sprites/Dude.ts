@@ -71,7 +71,7 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.playAnimation();
-    this.scene.physics.moveToObject(this.character, dudeMove.point, 40 * this.grid.scale);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 80 * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 

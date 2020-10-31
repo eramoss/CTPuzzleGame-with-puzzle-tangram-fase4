@@ -92,10 +92,10 @@ export default class Game extends Scene {
 
     let obstaclesMatrix: string[][] = [
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'coin', 'block', 'block', 'coin', 'null'],
+      ['coin', 'null', 'coin', 'null', 'null', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
-      ['null', 'null', 'coin', 'block', 'block', 'coin', 'null'],
+      ['null', 'null', 'null', 'block', 'block', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -141,7 +141,7 @@ export default class Game extends Scene {
       // this.program.clear();
       // prog1.clear();
       // prog2.clear(); 
-       
+
       // this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0']) 
       // prog1.addCommands(['arrow-down'])
       // this.codeEditor.createEventsToCommandsForAddedPrograms();
@@ -175,16 +175,19 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      //this.mazeModel.clearObjectNameAt(current.y, current.x)
+      let { x, y } = current.getAheadPosition();
+      if (!this.matrix.getPoint(y, x) || this.mazeModel.getObjectNameAt(y, x) == 'block') {
+        current.tag = 'block'
+      }
+      this.mazeModel.updateBringFront();
     }
 
-    this.dude.onStartMoveCallback = (x: number, y: number, current: DudeMove) => {
-      current.tag = this.mazeModel.getObjectNameAt(current.y, current.x);
-      console.log('TAG', current.tag)
+    this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
+      currentDestine.tag = this.mazeModel.getObjectNameAt(currentDestine.y, currentDestine.x);
       this.mazeModel.putSprite(x, y, undefined);
-      if (current) {
-        if (current.couldExecute) {
-          this.mazeModel.putSprite(current.x, current.y, this.dude.character)
+      if (currentDestine) {
+        if (currentDestine.couldExecute) {
+          this.mazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character)
         }
       }
       this.mazeModel.updateBringFront();
@@ -192,10 +195,13 @@ export default class Game extends Scene {
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
       if (other.spriteName == 'coin') {//coin
-        this.children.remove(other.gameObject);
-        //coin.setGravityY(-200);
-        //coin.setVelocityY(-100)
-        this.sounds.coin();
+        let waitALittleBitBeforeColide = 700
+        setTimeout(() => {
+          this.children.remove(other.gameObject);
+          //coin.setGravityY(-200);
+          //coin.setVelocityY(-100)
+          this.sounds.coin();
+        }, waitALittleBitBeforeColide);
       }
     }
 

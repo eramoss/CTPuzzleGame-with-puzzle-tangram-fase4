@@ -21,7 +21,7 @@ export default class Dude {
   onStartMoveCallback: (x: number, y: number, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
-  isConditionValid: (condition: string, x: number, y: number) => boolean;
+  isConditionValid: (condition: string, dudeMove: DudeMove) => boolean;
   programs: Program[];
   branchMoves: Array<Branch> = new Array();
   functionsRunningByTimeout: number[] = [];
@@ -71,7 +71,7 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.playAnimation();
-    this.scene.physics.moveToObject(this.character, dudeMove.point, 80 * this.grid.scale);
+    this.scene.physics.moveToObject(this.character, dudeMove.point, 40 * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 
@@ -165,6 +165,9 @@ export default class Dude {
     this.character.clearTint();
     this.onCompleteMoveCallback(this.currentStep);
     this.currentStep = move.next
+    if (move.next) {
+      this.currentStep.tag = move.tag;
+    }
     if (!move.next) {
       this.continuePreviousBranchIfExists();
       this.programBeingExecuted.disanimate();

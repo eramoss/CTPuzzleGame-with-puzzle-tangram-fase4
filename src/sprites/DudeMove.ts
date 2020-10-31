@@ -17,6 +17,7 @@ export class DudeMove {
   couldExecute: boolean;
   command: Command;
   branch: Branch;
+  tag: string;
 
   constructor(dude: Dude, command: Command) {
     this.dude = dude;
@@ -141,7 +142,7 @@ export class DudeMove {
     }
 
     if (isCondition) {
-      const isConditionValid = this.dude?.isConditionValid(this.action.action, this.dude.x, this.dude.y);
+      const isConditionValid = this.dude?.isConditionValid(this.action.action, this);
       if (!isConditionValid) {
         this.couldExecute = false
       }

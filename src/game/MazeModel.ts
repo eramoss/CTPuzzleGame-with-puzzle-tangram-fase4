@@ -17,7 +17,6 @@ export default class MazeModel {
   matrix: Matrix;
   scene: Phaser.Scene;
   obstaclesMatrix: string[][];
-  obstaclesMatrixNames: string[][];
   spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
 
@@ -30,13 +29,11 @@ export default class MazeModel {
     this.matrix = matrix;
     this.gameObjects = []
     this.obstaclesMatrix = matrix.matrix;
-    this.obstaclesMatrixNames = matrix.matrix
     this.spriteCreateFunctions = spriteCreateFunctions;
     this.buildObjectsModel();
   }
 
   private buildObjectsModel() {
-    this.obstaclesMatrixNames = this.obstaclesMatrixNames;
     for (let y = 0; y < this.matrix.height; y++) {
       if (!this.gameObjects[y]) {
         this.gameObjects[y] = [];
@@ -105,7 +102,7 @@ export default class MazeModel {
         let c = '-';
         let object = this.getObjectAt(y, x);
         if (object) {
-          c = this.obstaclesMatrixNames[y][x];
+          c = this.obstaclesMatrix[y][x];
           if (!c) {
             c = '-';
           }
@@ -167,15 +164,7 @@ export default class MazeModel {
   }
 
   getObjectNameAt(y: number, x: number): string {
-    const objectName = this.obstaclesMatrixNames[y][x];
-    console.log('MAZE_MODEL [getObjectNameAt]', objectName)
-    return objectName
+    return this.getObjectAt(y, x)?.spriteName
   }
 
-  clearObjectNameAt(y: number, x: number) {
-    console.log('MAZE_MODEL [clearObjectAt]')
-    setTimeout(() => {
-      this.obstaclesMatrixNames[y][x] = 'null';
-    }, 300);
-  }
 }

@@ -91,10 +91,10 @@ export default class Game extends Scene {
     ];
 
     let obstaclesMatrix: string[][] = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'coin'],
+      ['null', 'coin', 'null', 'null', 'null', 'null', 'coin'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
+      ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
@@ -136,10 +136,10 @@ export default class Game extends Scene {
       this.dude.setPosition(0, 3);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
-      this.program.clear();
+      /* this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0'])
+      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0']) */
       //prog1.addCommands(['arrow-down'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
@@ -156,10 +156,10 @@ export default class Game extends Scene {
       return can
     }
 
-    this.dude.isConditionValid = (condition: string, x: number, y: number) => {
+    this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
       let valid = false
       if (condition == 'if_coin') {
-        if (this.mazeModel.getObjectNameAt(y, x) == 'coin') {
+        if (dudeMove.tag == 'coin') {
           valid = true
         }
       }
@@ -167,10 +167,12 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      this.mazeModel.clearObjectNameAt(current.y, current.x)
+      //this.mazeModel.clearObjectNameAt(current.y, current.x)
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, current: DudeMove) => {
+      current.tag = this.mazeModel.getObjectNameAt(current.y, current.x);
+      console.log('TAG', current.tag)
       this.mazeModel.putSprite(x, y, undefined);
       if (current) {
         this.mazeModel.putSprite(current.x, current.y, this.dude.character)
@@ -179,12 +181,12 @@ export default class Game extends Scene {
     }
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      /* if (other.spriteName == 'coin') {//coin
+      if (other.spriteName == 'coin') {//coin
         this.children.remove(other.gameObject);
         //coin.setGravityY(-200);
         //coin.setVelocityY(-100)
         this.sounds.coin();
-      } */
+      }
     }
 
     this.codeEditor.onClickRun(() => {

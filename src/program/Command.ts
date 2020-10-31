@@ -36,9 +36,7 @@ export default class Command {
   }
 
   setCondition(ifCommand: Command) {
-    if (this.condition && this.condition != ifCommand) {
-      this.condition.removeSelf();
-    }
+    this.condition?.removeSelf();
     if (ifCommand.placedOver) {
       ifCommand.placedOver.condition = null;
     }
@@ -126,6 +124,7 @@ export default class Command {
   }
 
   removeSelf(removeFromScene: Boolean = true) {
+    this.condition?.removeSelf();
     console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
     if (this.isConditional && this.placedOver) {
       this.placedOver.condition = null;

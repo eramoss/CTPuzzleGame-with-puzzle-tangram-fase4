@@ -15,8 +15,4 @@ export default class CommandAction {
     isCondition() {
         return this.action.startsWith('if');
     }
-
-    isConditionValid(): boolean {
-        return true;
-    }
 }

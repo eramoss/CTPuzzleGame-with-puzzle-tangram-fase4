@@ -92,10 +92,10 @@ export default class Game extends Scene {
 
     let obstaclesMatrix: string[][] = [
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'coin', 'null', 'null', 'null', 'coin', 'null'],
-      ['null', 'block', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'coin', 'block', 'block', 'coin', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
+      ['null', 'null', 'coin', 'block', 'block', 'coin', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -134,16 +134,17 @@ export default class Game extends Scene {
 
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      this.mazeModel.putSprite(0, 3, this.dude.character)
-      this.dude.setPosition(0, 3);
+      this.mazeModel.putSprite(0, 4, this.dude.character)
+      this.dude.setPosition(0, 4);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
-      /* this.program.clear();
-      prog1.clear();
-      prog2.clear();
-      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0']) */
-      //prog1.addCommands(['arrow-down'])
-      this.codeEditor.createEventsToCommandsForAddedPrograms();
+      // this.program.clear();
+      // prog1.clear();
+      // prog2.clear(); 
+       
+      // this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-up', 'prog_0']) 
+      // prog1.addCommands(['arrow-down'])
+      // this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);
@@ -165,6 +166,11 @@ export default class Game extends Scene {
           valid = true
         }
       }
+      if (condition == 'if_block') {
+        if (dudeMove.tag == 'block') {
+          valid = true
+        }
+      }
       return valid
     }
 
@@ -177,7 +183,9 @@ export default class Game extends Scene {
       console.log('TAG', current.tag)
       this.mazeModel.putSprite(x, y, undefined);
       if (current) {
-        this.mazeModel.putSprite(current.x, current.y, this.dude.character)
+        if (current.couldExecute) {
+          this.mazeModel.putSprite(current.x, current.y, this.dude.character)
+        }
       }
       this.mazeModel.updateBringFront();
     }

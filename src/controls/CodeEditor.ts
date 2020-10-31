@@ -20,6 +20,7 @@ export default class CodeEditor {
   clickTime: number = this.getTime()
   arrowsGrid: FlexFlow;
   grid: AlignGrid;
+  lastEditedProgram: Program;
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -160,8 +161,12 @@ export default class CodeEditor {
           let programToDropInto = this.getProgramByDropzone(dropZone);
           const isAddedToSomeProgram = command.program != null;
 
+          if (programToDropInto) {
+            this.lastEditedProgram = programToDropInto;
+          }
+
           if (clicked && !isAddedToSomeProgram) {
-            let main = this.getMainProgram();
+            let main = this.getLastEditedOrMainProgram();
             command.setProgram(main);
           }
 
@@ -318,7 +323,7 @@ export default class CodeEditor {
     return this.programs.filter(program => program.dropZone === zone)[0]
   }
 
-  getMainProgram(): Program {
-    return this.programs[0]
+  getLastEditedOrMainProgram(): Program {
+    return this.lastEditedProgram || this.programs[0]
   }
 }

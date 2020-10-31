@@ -9,6 +9,7 @@ import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 
 export default class CodeEditor {
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -166,7 +167,7 @@ export default class CodeEditor {
           }
 
           if (clicked && !isAddedToSomeProgram) {
-            let main = this.getLastEditedOrMainProgram();
+            let main = this.getLastEditedOrMainProgramOrFirstNonfull();
             command.setProgram(main);
           }
 
@@ -323,7 +324,19 @@ export default class CodeEditor {
     return this.programs.filter(program => program.dropZone === zone)[0]
   }
 
-  getLastEditedOrMainProgram(): Program {
-    return this.lastEditedProgram || this.programs[0]
+  getLastEditedOrMainProgramOrFirstNonfull(): Program {
+    const mainProgram = this.programs[0];
+    let program = this.lastEditedProgram || mainProgram;
+    if (program.isFull()) {
+      program = this.programs.find(p => !p.isFull())
+    }
+    if (!program) {
+      program = mainProgram;
+    }
+    return program
+  }
+
+  clear() {
+    this.programs.forEach(p => p.clear());
   }
 }

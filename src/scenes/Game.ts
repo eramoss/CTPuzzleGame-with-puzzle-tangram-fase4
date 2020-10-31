@@ -138,12 +138,14 @@ export default class Game extends Scene {
       this.dude.setPosition(0, 4);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
-      this.program.clear();
+      
+      // this.codeEditor.clear();
+      // this.program.clear();
       // prog1.clear();
       // prog2.clear(); 
-
-      this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-left:if_block', 'prog_0'])
+      // this.program.addCommands(['arrow-up', 'arrow-left:if_coin', 'arrow-left:if_block', 'prog_0'])
       // prog1.addCommands(['arrow-down'])
+
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

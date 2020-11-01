@@ -21,7 +21,7 @@ export default class AlignGrid {
         this.cellWidth = this.width / cols;
         this.cellHeight = this.height / rows;
         if (scene.game.config.physics.arcade?.debug) {
-            this.show();
+            this.show(0.3);
         }
     }
 

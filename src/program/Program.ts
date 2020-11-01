@@ -114,7 +114,9 @@ export default class Program {
   }
 
   removeConditional(command: Command) {
+    console.log('Program. Remove Conditional [length before]', this.conditionalCommandsIndexed.size)
     this.conditionalCommandsIndexed.delete(command.index())
+    console.log('Program. Remove Conditional [length after]', this.conditionalCommandsIndexed.size)
   }
 
   organizeInProgramArea(command: Command) {

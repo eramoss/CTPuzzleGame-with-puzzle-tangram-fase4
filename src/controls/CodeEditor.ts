@@ -132,7 +132,7 @@ export default class CodeEditor {
         this.clickTime = this.getTime()
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
-        commandSprite.setScale(this.scale * 1.2)
+        commandSprite.setScale(this.scale * 1.5)
         this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', _ => {

@@ -7,8 +7,6 @@ import Program from './Program';
 
 export default class Command {
 
-
-
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -23,6 +21,7 @@ export default class Command {
   placedOver: Command;
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
+  tag: Program;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -35,8 +34,8 @@ export default class Command {
   index(): number {
     let index = -1;
     if (this.isConditional) {
-      this.program?.conditionalCommandsIndexed.forEach((command, key) => {
-        if (command == command) {
+      this.tag?.conditionalCommandsIndexed.forEach((command, key) => {
+        if (command == this) {
           index = key;
         }
       })
@@ -56,10 +55,11 @@ export default class Command {
         }
       }
       if (ifCommand.placedOver) {
-        ifCommand.placedOver.condition = null;
+        ifCommand.placedOver.removeCondition();
       }
       ifCommand.placedOver = this;
-      ifCommand.program = this.program;
+      ifCommand.tag = this.program;
+      //ifCommand.program = this.program;
       this.condition = ifCommand;
       let { x, y } = this.getConditionalPosition();
       ifCommand.setPosition(x, y);
@@ -73,9 +73,8 @@ export default class Command {
   removeCondition() {
     this.condition.placedOver = null;
     this.condition = null;
-    this.program?.removeConditionalCommandOf(this)
   }
-
+  
   removeSelf(removeFromScene: Boolean = true) {
     console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
     if (this.condition) {
@@ -83,8 +82,9 @@ export default class Command {
       this.condition = null;
     }
     if (this.isConditional) {
+      this.tag?.removeConditional(this);
+      //this.tag?.removeConditionalCommandOf(this)
       this.placedOver?.removeCondition();
-      this.program?.removeConditional(this);
     }
     if (removeFromScene) {
       new Sounds(this.scene).remove()

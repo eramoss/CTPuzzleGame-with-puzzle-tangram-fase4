@@ -75,9 +75,9 @@ export default class Game extends Scene {
     this.sounds = new Sounds(this)
 
     //let prog_if_1 = new Program(this, 'prog_0', this.sounds, this.grid, 7, 12, 12, 1, 'drop-zone');
-    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7, 13, 12, 2.6, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7, 16, 12, 2.6, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.6, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7, 13, 12, 2.2, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7, 16, 12, 2.2, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.2, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, /* prog_if_1, */ prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: string[][] = [

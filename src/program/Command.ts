@@ -103,7 +103,7 @@ export default class Command {
 
   getConditionalPosition(): { x: number, y: number, width: number, height: number } {
     const x = this.sprite.x;
-    const y = this.sprite.y - this.sprite.height * this.program.grid.scale;
+    const y = this.sprite.y - (this.sprite.height * this.program.grid.scale) * 0.8;
     const width = this.sprite.width;
     const height = this.sprite.height;
     return { x, y, width, height };

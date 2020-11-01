@@ -28,7 +28,7 @@ export default class Program {
     this.ordinalCommands = new Array();
     this.conditionalCommandsIndexed = new Map<number, Command>();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
-    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
+    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.6);
     //this.crossOrganizer = new CrossOrganizer();
   }
 
@@ -121,7 +121,7 @@ export default class Program {
     const zone = this.dropZone.zone;
     const index = this.ordinalCommands.indexOf(command);
     const spriteWidth = command.sprite.width * this.grid.scale;
-    const spriteHeight = command.sprite.height * this.grid.scale * 1.4;
+    const spriteHeight = command.sprite.height * this.grid.scale * 1.2;
 
     console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
 
@@ -135,8 +135,8 @@ export default class Program {
     const row = Math.floor(index / cols) * tileHeight;
     let fitInFirstRow = row == 0;
 
-    let x = zone.x + (index % cols * tileWidth) + spriteWidth * 0.5;
-    let y = zone.y + row + spriteHeight * 0.5;
+    let x = zone.x + (index % cols * tileWidth) + spriteWidth / 2;
+    let y = zone.y + row + spriteHeight / 1.8;
 
     //let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);

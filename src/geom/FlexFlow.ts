@@ -1,7 +1,9 @@
 import { GameObjects, Game, Scene } from "phaser";
 import drawRect from "../utils/Utils";
+import AlignGrid from "./AlignGrid";
 
 export default class FlexFlow {
+
 
 
     children: (GameObjects.Sprite | GameObjects.Image)[]
@@ -21,32 +23,32 @@ export default class FlexFlow {
 
     organizeSelf() {
         const countObjs = this.children.length;
-        let { dimension, axis, inverseDimension, inverseAxis } = this.getDimension()
-        const positionEach: number = this[dimension] as number / countObjs;
+        console.log('FLEX_ROW [countObs]', countObjs);
+        const positionEach: number = this.width as number / countObjs;
         this.children.forEach((child, index) => {
             if (child) {
-                child[inverseAxis] = this[inverseAxis] + this[inverseDimension] / 2
-                child[axis] = this[axis] + (index + 0.5) * positionEach
+                child.y = this.y + this.height / 2
+                child.x = this.x + (index + 0.5) * positionEach
             }
         })
         drawRect(this.scene, this.x, this.y, this.width, this.height)
     }
-    getDimension(): { dimension: string; axis: string; inverseDimension: string, inverseAxis: string } {
-        if (this.flow === 'column') {
-            return { dimension: 'height', axis: 'y', inverseDimension: 'width', inverseAxis: 'x' }
-        }
-        if (this.flow === 'row') {
-            return { dimension: 'width', axis: 'x', inverseDimension: 'height', inverseAxis: 'y' }
-        }
-    }
 
-    setChildAt(child: GameObjects.Sprite, index: number) {
-        this.children.splice(index, 1, child);
+    setChildAt(child: GameObjects.Sprite, index: number, splice: number = 1) {
+        this.children.splice(index, splice, child);
         this.organizeSelf();
     }
 
     addChild(child: GameObjects.Sprite | GameObjects.Image) {
         this.children.push(child)
         this.organizeSelf()
+    }
+
+    setPositionByGrid(cellX: number, cellY: number, rowspan: number, colspan: number, grid: AlignGrid) {
+        const cell = grid.getCell(cellX, cellY);
+        this.x = cell.x;
+        this.y = cell.y;
+        this.width = grid.cellWidth * rowspan;
+        this.height = grid.cellHeight * colspan;
     }
 }

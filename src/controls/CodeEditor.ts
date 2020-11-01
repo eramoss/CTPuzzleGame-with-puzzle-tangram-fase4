@@ -4,12 +4,12 @@ import Program from '../program/Program';
 import SpriteDropZone from './SpriteDropZone';
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
-import FlexFlow from '../geom/FlexFlow';
 import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
+import FlexFlow from '../geom/FlexFlow';
+import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 
 export default class CodeEditor {
-
 
   scene: Scene;
   programs: Program[];
@@ -20,9 +20,9 @@ export default class CodeEditor {
   controlsScale: number;
   scale: number
   clickTime: number = this.getTime()
-  arrowsGrid: FlexFlow;
   grid: AlignGrid;
   lastEditedProgram: Program;
+  toolboxRows: ToolboxRowOrganizer[];
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -30,21 +30,23 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
 
-    const controlsImage = grid.addImage(17, 1, 'toolbox', 8.5, 9);
-    /*this.arrowsGrid = new FlexFlow(scene)
-    this.arrowsGrid.flow = 'column'
-
-    this.arrowsGrid.x = controlsImage.x - controlsImage.displayWidth / 2
-    this.arrowsGrid.y = controlsImage.y - controlsImage.displayHeight / 2
-    this.arrowsGrid.width = controlsImage.displayWidth
-    this.arrowsGrid.height = controlsImage.displayHeight */
+    grid.addImage(17, 1, 'toolbox', 8.5, 9);
 
     this.scale = grid.scale
     this.createGlobalDragLogic();
-    //this.createDraggableProgramCommands();
+
 
     this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopButtons();
+
+    this.toolboxRows =
+      [
+        new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-left', 'arrow-right', 'arrow-up', 'arrow-down']),
+        new ToolboxRowOrganizer(this.grid, 18, 4, 6, 2, ['prog_0', 'prog_1', 'prog_2']),
+        new ToolboxRowOrganizer(this.grid, 18, 6, 6, 2, ['if_coin', 'if_block'])
+      ]
+
+    this.createDraggableProgramCommands();
 
   }
 
@@ -63,7 +65,7 @@ export default class CodeEditor {
     });
   }
 
-  private getByTextureName(commands: Command[], textureName: string): Command {
+  private getCommandByTextureName(commands: Command[], textureName: string): Command {
     return commands.filter(c => c.sprite.texture.key === textureName)[0]
   }
 
@@ -81,25 +83,12 @@ export default class CodeEditor {
 
     console.log('COMMAND_NAMES', commandNames);
 
-    let positions = {
-      'arrow-left': 0,
-      'arrow-right': 1,
-      'arrow-up': 2,
-      'arrow-down': 3,
-      'prog_0': 4,
-      'prog_1': 5,
-      'prog_2': 6,
-      'if_block': 7,
-      'if_coin': 8,
-    }
-    Object.getOwnPropertyNames(positions)
-      .forEach(commandName => {
-        let position = positions[commandName]
-        const commandToPutAtPallet = this.getByTextureName(commands, commandName);
-        if (commandToPutAtPallet) {
-          this.arrowsGrid.setChildAt(commandToPutAtPallet.sprite, position)
-        }
-      });
+    commands.forEach(commandToSetPositionAtToobox => {
+      this.toolboxRows
+        .find(toolboxRow => toolboxRow.hasSpaceTo(commandToSetPositionAtToobox))
+        ?.setPositionTo(commandToSetPositionAtToobox)
+    })
+
     this.createEventsToCommands(commands);
   }
 

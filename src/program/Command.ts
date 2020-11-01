@@ -21,7 +21,6 @@ export default class Command {
   placedOver: Command;
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
-  tag: Program;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -34,7 +33,7 @@ export default class Command {
   index(): number {
     let index = -1;
     if (this.isConditional) {
-      this.tag?.conditionalCommandsIndexed.forEach((command, key) => {
+      this.program?.conditionalCommandsIndexed.forEach((command, key) => {
         if (command == this) {
           index = key;
         }
@@ -58,7 +57,7 @@ export default class Command {
         ifCommand.placedOver.removeCondition();
       }
       ifCommand.placedOver = this;
-      ifCommand.tag = this.program;
+      ifCommand.program = this.program;
       //ifCommand.program = this.program;
       this.condition = ifCommand;
       let { x, y } = this.getConditionalPosition();
@@ -82,8 +81,8 @@ export default class Command {
       this.condition = null;
     }
     if (this.isConditional) {
-      this.tag?.removeConditional(this);
-      //this.tag?.removeConditionalCommandOf(this)
+      this.program?.removeConditional(this);
+      //this.program?.removeConditionalCommandOf(this)
       this.placedOver?.removeCondition();
     }
     if (removeFromScene) {

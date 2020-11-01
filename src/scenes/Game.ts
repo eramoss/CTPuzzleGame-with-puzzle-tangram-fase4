@@ -104,22 +104,22 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3.1, this.grid.cellWidth);
+      this.grid.width / 3.2, this.grid.height / 2, this.grid.cellWidth * 1.1);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3.1, this.grid.cellWidth);
+      this.grid.width / 3.2, this.grid.height / 2, this.grid.cellWidth * 1.1);
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {
-      return this.add.image(x, y - 15 * scale, 'block').setScale(scale * (isometric ? 1.2 : 1))
+      return this.add.image(x, y - 30 * scale, 'block').setScale(scale * (isometric ? 1.5 : 1))
     };
     spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.4 : 1))
+      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.5 : 1))
     };
     spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({

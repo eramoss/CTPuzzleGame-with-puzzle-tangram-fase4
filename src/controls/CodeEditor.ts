@@ -30,21 +30,21 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
 
-    const controlsImage = grid.addImage(0.5, 1, 'controls', 3, 19);
+    /* const controlsImage = grid.addImage(0.5, 1, 'controls', 3, 19);
     this.arrowsGrid = new FlexFlow(scene)
     this.arrowsGrid.flow = 'column'
 
     this.arrowsGrid.x = controlsImage.x - controlsImage.displayWidth / 2
     this.arrowsGrid.y = controlsImage.y - controlsImage.displayHeight / 2
     this.arrowsGrid.width = controlsImage.displayWidth
-    this.arrowsGrid.height = controlsImage.displayHeight
+    this.arrowsGrid.height = controlsImage.displayHeight */
 
     this.scale = grid.scale
     this.createGlobalDragLogic();
-    this.createDraggableProgramCommands();
+    //this.createDraggableProgramCommands();
 
     this.dropZones = programs.map(program => program.dropZone)
-    this.createStartStopButtons();
+    //this.createStartStopButtons();
 
   }
 

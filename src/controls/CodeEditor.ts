@@ -9,7 +9,7 @@ import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 
 export default class CodeEditor {
-  
+
 
   scene: Scene;
   programs: Program[];
@@ -48,10 +48,9 @@ export default class CodeEditor {
 
   }
 
-  createEventsToCommandsForAddedPrograms() {
-    this.programs.forEach(p => {
-      this.createEventsToCommands(p.getCommandsWithConditions());
-    })
+  addCommands(program: Program, commands: string[]) {
+    let addedCommands = program.addCommands(commands)
+    this.createEventsToCommands(addedCommands);
   }
 
   private createGlobalDragLogic() {
@@ -137,7 +136,6 @@ export default class CodeEditor {
       })
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
-
 
         let dragged = command.isDragged;
         let clicked = this.getTime() - this.clickTime < 1000 && !dragged;

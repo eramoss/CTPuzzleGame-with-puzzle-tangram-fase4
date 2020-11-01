@@ -48,7 +48,8 @@ export default class Program {
     }
   }
 
-  addCommands(commands: string[]) {
+  addCommands(commands: string[]): Command[] {
+    let addedCommands = new Array<Command>()
     commands.forEach(texture => {
       let textures = texture.split(':');
       let conditionTexture = null;
@@ -59,12 +60,15 @@ export default class Program {
       const commandSprite = this.scene.add.sprite(0, 0, texture).setScale(this.grid.scale);
       let command = new Command(this.scene, commandSprite);
       command.setProgram(this);
+      addedCommands.push(command);
       if (conditionTexture) {
         let conditionSprite = this.scene.add.sprite(0, 0, conditionTexture).setScale(this.grid.scale);
         let conditionCommand = new Command(this.scene, conditionSprite);
         command.setCondition(conditionCommand);
+        addedCommands.push(conditionCommand);
       }
     })
+    return addedCommands;
   }
 
   disanimateCommands() {

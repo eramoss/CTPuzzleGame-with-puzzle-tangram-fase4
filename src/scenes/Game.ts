@@ -76,9 +76,9 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 9, 12.5, 12, 2.3, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 9, 15.75, 12, 2.3, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 9, 19, 12, 2.3, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7.7, 12.5, 12, 2.3, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7.7, 15.75, 12, 2.3, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7.7, 19, 12, 2.3, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: string[][] = [
@@ -145,10 +145,9 @@ export default class Game extends Scene {
       // this.program.clear();
       // prog1.clear();
       // prog2.clear();
-      // this.program.addCommands(['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
-      // prog1.addCommands(['arrow-up'])
-      // prog2.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
-      this.codeEditor.createEventsToCommandsForAddedPrograms();
+      // this.codeEditor.addCommands(this.program, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
+      // this.codeEditor.addCommands(prog1, ['arrow-up'])
+      // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);

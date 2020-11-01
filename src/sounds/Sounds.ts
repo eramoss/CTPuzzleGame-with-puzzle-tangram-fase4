@@ -1,7 +1,8 @@
-
+// Site com sons
+// https://www.zapsplat.com/sound-effect-category/cartoon-impacts/
 
 export default class Sounds {
-  
+
   scene: Phaser.Scene;
   dragSound: Phaser.Sound.BaseSound;
   dropSound: Phaser.Sound.BaseSound;

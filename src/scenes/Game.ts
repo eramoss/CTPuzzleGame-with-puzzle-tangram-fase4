@@ -45,7 +45,7 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 861, frameHeight: 105 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 105 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
     //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
@@ -76,9 +76,9 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7.7, 12.5, 12, 2.3, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7.7, 15.75, 12, 2.3, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7.7, 19, 12, 2.3, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 17.7, 12.5, 8, 2.3, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 17.7, 15.75, 8, 2.3, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 17.7, 19, 8, 2.3, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: string[][] = [

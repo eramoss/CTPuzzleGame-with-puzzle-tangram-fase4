@@ -8,6 +8,7 @@ import Program from './Program';
 export default class Command {
 
 
+
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -200,6 +201,7 @@ export default class Command {
       this.sprite.rotation -= 0.05
       this.sprite.clearTint();
       this.sprite.setScale(this.sprite.scale - 0.1);
+      this.condition?.disanimateSprite();
     }
   }
 
@@ -211,6 +213,10 @@ export default class Command {
     let { x, y } = this.getConditionalPosition();
     this.highlightConditionalImage = this.scene.add.image(x, y, 'if_highlight')
     this.highlightConditionalImage.scale = this.program.grid.scale;
+  }
+
+  highlightTrueState() {
+    this.sprite.setTint(0x00cf00)
   }
 }
 

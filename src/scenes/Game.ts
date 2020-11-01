@@ -91,12 +91,12 @@ export default class Game extends Scene {
     ];
 
     let obstaclesMatrix: string[][] = [
-      ['null', 'null', 'block', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
-      ['null', 'null', 'coin', 'null', 'null', 'block', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['coin', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'block', 'null', 'block', 'null', 'coin', 'null'],
+      ['null', 'block', 'null', 'block', 'null', 'block', 'null'],
+      ['null', 'block', 'null', 'block', 'null', 'null', 'null'],
+      ['null', 'block', 'null', 'block', 'null', 'null', 'null'],
+      ['null', 'null', 'coin', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
 
@@ -134,18 +134,20 @@ export default class Game extends Scene {
 
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      this.mazeModel.putSprite(0, 4, this.dude.character)
+      this.mazeModel.putSprite(0, 4, this.dude.character, 'rope')
       this.dude.setPosition(0, 4);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
+      this.codeEditor.disanimatePrograms();
 
-      // this.codeEditor.clear();
-      // this.program.clear();
-      // prog1.clear();
-      // prog2.clear(); 
-      // this.program.addCommands(['arrow-up:if_coin','arrow-down:if_block'])
-      // prog1.addCommands(['arrow-down'])
-      // this.codeEditor.createEventsToCommandsForAddedPrograms();
+      this.codeEditor.clear();
+      this.program.clear();
+      prog1.clear();
+      prog2.clear();
+      this.program.addCommands(['arrow-left', 'prog_1'])
+      prog1.addCommands(['arrow-up', 'prog_2:if_coin', 'prog_1'])
+      prog2.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
+      this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);
@@ -169,26 +171,30 @@ export default class Game extends Scene {
       if (condition == 'if_block') {
         let { x, y } = dudeMove.getAheadPosition();
         valid = this.mazeModel.getObjectNameAt(y, x) == 'block'
+        if (valid) {
+          (this.mazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xfce94f);
+        }
       }
       return valid
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      this.mazeModel.updateBringFront();
+      //this.mazeModel.updateBringFront();
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.mazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {
-          this.mazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character)
+          //this.dude.character.depth = 0;
+          this.mazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character, 'rope')
         }
       }
       this.mazeModel.updateBringFront();
     }
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteName == 'coin') {//coin
+      if (other.spriteName == 'coin') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
           this.children.remove(other.gameObject);

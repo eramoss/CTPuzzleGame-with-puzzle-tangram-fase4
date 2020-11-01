@@ -115,11 +115,7 @@ export class DudeMove {
     let isCondition = this.action.isCondition();
     this.animate();
     
-    this.command.sprite.setTint(0xffff00);
-    this.dude.setTimeout(() => {
-      this.command.sprite.clearTint();
-      //this.disanimate();
-    }, 80);
+    
     
     if (previousMove == null) {
       this.x = this.dude.x;
@@ -129,12 +125,20 @@ export class DudeMove {
       this.y = previousMove.y;
     }
     
-    let isConditionValid = this.dude?.isConditionValid(this.action.action, this);;
+    let isConditionValid = this.dude?.isConditionValid(this.action.action, this);
 
     let { newX, newY, newFace, animation } = this.prepareMove(this.x, this.y, this.action, this.dude.currentFace);
     console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
+
+    this.command.sprite.setTint(0xffff00);
+    if(isConditionValid){
+      this.command.highlightTrueState();
+    }
+    this.dude.setTimeout(() => {
+      this.command.sprite.clearTint();
+    }, 180);
 
     if (this.couldExecute) {
       this.x = newX;

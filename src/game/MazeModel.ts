@@ -73,19 +73,19 @@ export default class MazeModel {
 
     let diagonalsToPass = (this.matrix.height + this.matrix.width) - 1;
     let itensDiagonalToPass = 1;
-    let depth = 10;
+    let depth = 0;
     for (let diagonalsPassed = 0; diagonalsPassed < diagonalsToPass;) {
       let y = diagonalsPassed;
       let x = 0;
       for (let itensDiagonalPassed = 0; itensDiagonalPassed < itensDiagonalToPass; itensDiagonalPassed++) {
-        x++;
-        y--;
         let object = this.getObjectAt(y, x);
         if (object) {
-          console.log('MAZE_MODEL_ORDERING [y,x]', y, x);
-          (object.gameObject as GameObjects.Sprite).depth = depth
+          console.log('MAZE_MODEL_ORDERING [y,x,object,depth]', y, x, object.spriteName, depth);
+          (object.gameObject as GameObjects.Sprite).setDepth(depth)
           //this.scene.children.bringToTop(object.gameObject);
         }
+        x++;
+        y--;
       }
       depth++;
       diagonalsPassed++;
@@ -99,15 +99,14 @@ export default class MazeModel {
     let logMatrix = '\n';
     for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
-        let c = '-';
+        let c = ' ';
         let object = this.getObjectAt(y, x);
+        let depth: number = 0;
         if (object) {
+          depth = (object.gameObject as GameObjects.Sprite).depth
           c = this.obstaclesMatrix[y][x];
-          if (!c) {
-            c = '-';
-          }
         }
-        logMatrix += c.substring(0, 1) + ' ';
+        logMatrix += `${c.substring(0, 1)}[${depth}] `;
       }
       logMatrix += '\n';
     }
@@ -143,7 +142,6 @@ export default class MazeModel {
       object = new MazeModelObject(sprite, spriteName)
     }
     this.gameObjects[y][x] = object
-    //this.obstaclesMatrixNames[y][x] = object?.spriteName
   }
 
   clearKeepingInModel(keepInModel: GameObjects.GameObject) {

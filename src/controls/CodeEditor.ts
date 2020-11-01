@@ -9,6 +9,7 @@ import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 
 export default class CodeEditor {
+  
 
   scene: Scene;
   programs: Program[];
@@ -355,5 +356,9 @@ export default class CodeEditor {
 
   clear() {
     this.programs.forEach(p => p.clear());
+  }
+
+  disanimatePrograms() {
+    this.programs.forEach(p => p.disanimateCommands());
   }
 }

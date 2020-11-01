@@ -136,6 +136,8 @@ export class DudeMove {
     if (isCondition) {
       if (isConditionValid) {
         this.command.highlightTrueState();
+      }else{
+        this.command.highlightFalseState();
       }
     }
     this.dude.setTimeout(() => {
@@ -152,7 +154,7 @@ export class DudeMove {
     }
 
     if (turnMove) {
-      this.dude.setTimeout(() => { this.onCompleteMove(); }, 600);
+      this.dude.setTimeout(() => { this.onCompleteMove(); }, 800);
       this.dude.playAnimation(animation);
     }
 
@@ -172,7 +174,7 @@ export class DudeMove {
             moveToContinue.y = this.y;
           }
           this.onCompleteMove(moveToContinue);
-        }, 500);
+        }, 800);
       }
     }
   }

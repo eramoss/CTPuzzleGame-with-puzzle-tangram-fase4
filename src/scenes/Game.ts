@@ -54,7 +54,8 @@ export default class Game extends Scene {
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 122 });
 
-    this.load.audio('blocked', 'assets/ct/sounds/blocked.ogg');
+    this.load.audio('blocked', 'assets/ct/sounds/impact.mp3');
+    this.load.audio('error', 'assets/ct/sounds/error.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
     this.load.audio('drop', 'assets/ct/sounds/drop.ogg');
     this.load.audio('hover', 'assets/ct/sounds/hover.ogg');

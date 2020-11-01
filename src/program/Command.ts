@@ -21,6 +21,7 @@ export default class Command {
   placedOver: Command;
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
+  sounds: Sounds
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -28,6 +29,7 @@ export default class Command {
     this.sprite.setDepth(2);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
+    this.sounds = new Sounds(scene)
   }
 
   index(): number {
@@ -64,7 +66,7 @@ export default class Command {
       if (removePreviousCondition) {
         this.program?.setConditionalCommand(this.index(), ifCommand);
       }
-      new Sounds(this.scene).drop()
+      this.sounds.drop()
     }
   }
 
@@ -72,7 +74,7 @@ export default class Command {
     this.condition.placedOver = null;
     this.condition = null;
   }
-  
+
   removeSelf(removeFromScene: Boolean = true) {
     console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
     if (this.condition) {
@@ -85,7 +87,6 @@ export default class Command {
       this.placedOver?.removeCondition();
     }
     if (removeFromScene) {
-      new Sounds(this.scene).remove()
       this.scene.children.remove(this.sprite);
     }
     if (this.program != null) {
@@ -93,6 +94,7 @@ export default class Command {
     }
     if (!this.isIntent) {
       if (removeFromScene) {
+        this.sounds.remove()
         this.tileDropZone?.removeSelf();
         this.tileDropZone = null;
       }
@@ -215,6 +217,10 @@ export default class Command {
 
   highlightTrueState() {
     this.sprite.setTint(0x00cf00)
+  }
+  highlightFalseState() {
+    this.sprite.setTint(0xe44332)
+    this.sounds.error()
   }
 }
 

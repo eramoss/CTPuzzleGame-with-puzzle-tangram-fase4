@@ -91,11 +91,11 @@ export default class Game extends Scene {
     ];
 
     let obstaclesMatrix: string[][] = [
+      ['null', 'null', 'block', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
+      ['null', 'null', 'coin', 'null', 'null', 'block', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['coin', 'null', 'coin', 'null', 'null', 'coin', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'block', 'null'],
-      ['null', 'null', 'null', 'block', 'block', 'coin', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -138,12 +138,12 @@ export default class Game extends Scene {
       this.dude.setPosition(0, 4);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
-      
-      this.codeEditor.clear();
+
+      // this.codeEditor.clear();
       // this.program.clear();
       // prog1.clear();
       // prog2.clear(); 
-      this.program.addCommands(['arrow-up:if_coin','arrow-down:if_block'])
+      // this.program.addCommands(['arrow-up:if_coin','arrow-down:if_block'])
       // prog1.addCommands(['arrow-down'])
 
       this.codeEditor.createEventsToCommandsForAddedPrograms();

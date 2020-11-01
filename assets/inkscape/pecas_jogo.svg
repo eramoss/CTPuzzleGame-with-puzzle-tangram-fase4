@@ -399,7 +399,7 @@
        fx="22.391673"
        fy="172.80137"
        r="13.119"
-       gradientTransform="matrix(0.79458679,0,0,0.69928364,-65.111132,152.40836)"
+       gradientTransform="matrix(0.79458679,0,0,0.69928364,-43.409126,116.10682)"
        gradientUnits="userSpaceOnUse" />
     <radialGradient
        inkscape:collect="always"
@@ -431,9 +431,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3410819"
-     inkscape:cx="887.13667"
-     inkscape:cy="83.409408"
+     inkscape:zoom="0.67054093"
+     inkscape:cx="798.87685"
+     inkscape:cy="75.033761"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -5576,7 +5576,7 @@
     </g>
     <g
        id="g1986"
-       transform="translate(54.356917,38.642546)"
+       transform="translate(57.400711,80.773291)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454">
@@ -13555,8 +13555,8 @@
        id="rect3052"
        width="20.848368"
        height="18.347803"
-       x="-57.743187"
-       y="264.07166"
+       x="-36.04118"
+       y="227.77011"
        transform="scale(-1,1)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tile_drop_zone.png"
        inkscape:export-xdpi="95.999985"
@@ -13646,7 +13646,7 @@
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985"
        style="fill:#ffff00;fill-opacity:1"
-       transform="translate(82.86825,102.89619)">
+       transform="translate(99.289579,149.49112)">
       <g
          inkscape:export-ydpi="95.999985"
          inkscape:export-xdpi="95.999985"
@@ -13732,7 +13732,7 @@
     <g
        id="g3319"
        transform="matrix(0.93270919,0,0,0.93270919,191.84265,-18.942653)"
-       style="opacity:0.47900002;fill:#a8fe5f;fill-opacity:1;stroke:#197a2f;stroke-opacity:1"
+       style="opacity:0.306;fill:#a8fe5f;fill-opacity:1;stroke:#197a2f;stroke-opacity:1"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_highlight.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985">

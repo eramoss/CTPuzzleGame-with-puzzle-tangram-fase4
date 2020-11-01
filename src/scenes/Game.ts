@@ -145,8 +145,7 @@ export default class Game extends Scene {
       // prog2.clear(); 
       // this.program.addCommands(['arrow-up:if_coin','arrow-down:if_block'])
       // prog1.addCommands(['arrow-down'])
-
-      this.codeEditor.createEventsToCommandsForAddedPrograms();
+      // this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);

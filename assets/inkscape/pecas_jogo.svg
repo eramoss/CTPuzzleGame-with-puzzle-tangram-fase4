@@ -132,7 +132,7 @@
        inkscape:collect="always"
        id="linearGradient2435">
       <stop
-         style="stop-color:#4cd031;stop-opacity:1"
+         style="stop-color:#5c7d88;stop-opacity:1"
          offset="0"
          id="stop2431" />
       <stop
@@ -431,9 +431,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.7931523"
-     inkscape:cx="448.70995"
-     inkscape:cy="160.12919"
+     inkscape:zoom="1.3410819"
+     inkscape:cx="887.13667"
+     inkscape:cy="83.409408"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -13749,75 +13749,81 @@
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#a8fe5f;fill-opacity:1;fill-rule:evenodd;stroke:#197a2f;stroke-width:0.96272475;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          r="0" />
     </g>
-    <path
-       id="path3091"
-       d="m 130.36175,247.9216 c -6.42746,0.006 -13.20694,1.39018 -13.56228,3.95748 l 2.12525,9.12082 24.55819,-0.43899 -1.58447,-9.30544 c -0.46812,-2.27254 -5.8654,-3.33951 -11.53669,-3.33389 z"
-       style="fill:#a8fe5f;fill-opacity:1;fill-rule:evenodd;stroke:#197a2f;stroke-width:0.80442792;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccc" />
     <g
-       id="g3115"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_block.png"
        inkscape:export-xdpi="95.683716"
-       inkscape:export-ydpi="95.683716">
+       inkscape:export-ydpi="95.683716"
+       id="g3129">
       <path
-         style="fill:#4cd031;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.24022372px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:fill markers stroke"
-         d="m 117.78169,253.93502 c 11.6899,1.42315 10.2124,-3.00639 14.37732,-4.62285 1.65006,0.21616 8.51385,0.70045 9.03874,5.06002 l 1.82483,5.92875 -23.74843,0.28381 z"
-         id="path3093"
+         sodipodi:nodetypes="ccccccc"
          inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cccccc" />
+         style="fill:#a8fe5f;fill-opacity:1;fill-rule:evenodd;stroke:#197a2f;stroke-width:0.80442792;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 130.36175,247.9216 c -6.42746,0.006 -13.20694,1.39018 -13.56228,3.95748 l 2.12525,9.12082 24.55819,-0.43899 -1.58447,-9.30544 c -0.46812,-2.27254 -5.8654,-3.33951 -11.53669,-3.33389 z"
+         id="path3091" />
       <g
-         transform="matrix(0.88194842,0,0,0.88194842,85.126819,-34.94282)"
-         id="g3286">
+         inkscape:export-ydpi="95.683716"
+         inkscape:export-xdpi="95.683716"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_block.png"
+         id="g3115">
+        <path
+           sodipodi:nodetypes="cccccc"
+           inkscape:connector-curvature="0"
+           id="path3093"
+           d="m 117.78169,253.93502 c 11.6899,1.42315 10.2124,-3.00639 14.37732,-4.62285 1.65006,0.21616 8.51385,0.70045 9.03874,5.06002 l 1.82483,5.92875 -23.74843,0.28381 z"
+           style="fill:#4cd031;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.24022372px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:fill markers stroke" />
         <g
-           inkscape:export-ydpi="95.742599"
-           inkscape:export-xdpi="95.742599"
-           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_ISOMETRIC.png"
-           id="g3173"
-           transform="matrix(0.55967162,0,0,0.55967162,403.1099,83.59401)"
-           style="fill:#197a2f;fill-opacity:1;stroke-width:1.19928539">
-          <path
-             id="path3167"
-             d="m -628.27903,448.96874 -13.22916,-6.61459 v -10.31497 l 13.22916,6.61459 z"
-             inkscape:connector-curvature="0"
-             style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109"
-             sodipodi:nodetypes="ccccc" />
-          <path
-             id="path3169"
-             d="m -641.50819,432.03918 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
-             inkscape:connector-curvature="0"
-             style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109" />
-          <path
-             id="path3171"
-             d="m -615.04986,432.03918 v 10.31497 l -13.22917,6.61459 v -10.31497 z"
-             inkscape:connector-curvature="0"
-             style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109"
-             sodipodi:nodetypes="ccccc" />
-        </g>
-        <g
-           style="stroke:#aa4400;stroke-width:1.02024114;stroke-miterlimit:4;stroke-dasharray:none"
-           transform="matrix(0.51974221,0,0,0.51974221,377.80537,100.60161)"
-           id="g3185"
-           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_ISOMETRIC.png"
-           inkscape:export-xdpi="95.742599"
-           inkscape:export-ydpi="95.742599">
-          <path
-             sodipodi:nodetypes="ccccc"
-             style="fill:#e88e30;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m -628.27903,448.96874 -13.22916,-6.61459 v -10.31497 l 13.22916,6.61459 z"
-             id="path3179" />
-          <path
-             style="fill:#de9d5d;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m -641.50819,432.03918 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
-             id="path3181" />
-          <path
-             sodipodi:nodetypes="ccccc"
-             style="fill:#d67120;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
-             inkscape:connector-curvature="0"
-             d="m -615.04986,432.03918 v 10.31497 l -13.22917,6.61459 v -10.31497 z"
-             id="path3183" />
+           id="g3286"
+           transform="matrix(0.88194842,0,0,0.88194842,85.126819,-34.94282)">
+          <g
+             style="fill:#197a2f;fill-opacity:1;stroke-width:1.19928539"
+             transform="matrix(0.55967162,0,0,0.55967162,403.1099,83.59401)"
+             id="g3173"
+             inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_ISOMETRIC.png"
+             inkscape:export-xdpi="95.742599"
+             inkscape:export-ydpi="95.742599">
+            <path
+               sodipodi:nodetypes="ccccc"
+               style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109"
+               inkscape:connector-curvature="0"
+               d="m -628.27903,448.96874 -13.22916,-6.61459 v -10.31497 l 13.22916,6.61459 z"
+               id="path3167" />
+            <path
+               style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109"
+               inkscape:connector-curvature="0"
+               d="m -641.50819,432.03918 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+               id="path3169" />
+            <path
+               sodipodi:nodetypes="ccccc"
+               style="fill:#197a2f;fill-opacity:1;stroke-width:0.3173109"
+               inkscape:connector-curvature="0"
+               d="m -615.04986,432.03918 v 10.31497 l -13.22917,6.61459 v -10.31497 z"
+               id="path3171" />
+          </g>
+          <g
+             inkscape:export-ydpi="95.742599"
+             inkscape:export-xdpi="95.742599"
+             inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_ISOMETRIC.png"
+             id="g3185"
+             transform="matrix(0.51974221,0,0,0.51974221,377.80537,100.60161)"
+             style="stroke:#aa4400;stroke-width:1.02024114;stroke-miterlimit:4;stroke-dasharray:none">
+            <path
+               id="path3179"
+               d="m -628.27903,448.96874 -13.22916,-6.61459 v -10.31497 l 13.22916,6.61459 z"
+               inkscape:connector-curvature="0"
+               style="fill:#e88e30;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
+               sodipodi:nodetypes="ccccc" />
+            <path
+               id="path3181"
+               d="m -641.50819,432.03918 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+               inkscape:connector-curvature="0"
+               style="fill:#de9d5d;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none" />
+            <path
+               id="path3183"
+               d="m -615.04986,432.03918 v 10.31497 l -13.22917,6.61459 v -10.31497 z"
+               inkscape:connector-curvature="0"
+               style="fill:#d67120;fill-opacity:1;stroke:#aa4400;stroke-width:1.02024114;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none"
+               sodipodi:nodetypes="ccccc" />
+          </g>
         </g>
       </g>
     </g>

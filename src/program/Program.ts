@@ -28,7 +28,7 @@ export default class Program {
     this.ordinalCommands = new Array();
     this.conditionalCommandsIndexed = new Map<number, Command>();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
-    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.6);
+    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.7);
     //this.crossOrganizer = new CrossOrganizer();
   }
 

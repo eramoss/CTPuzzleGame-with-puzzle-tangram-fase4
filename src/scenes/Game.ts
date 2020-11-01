@@ -75,9 +75,9 @@ export default class Game extends Scene {
     this.sounds = new Sounds(this)
 
     //let prog_if_1 = new Program(this, 'prog_0', this.sounds, this.grid, 7, 12, 12, 1, 'drop-zone');
-    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7, 13, 12, 2.2, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7, 16, 12, 2.2, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.2, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 7, 12.5, 12, 2.3, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 7, 15.75, 12, 2.3, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 7, 19, 12, 2.3, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, /* prog_if_1, */ prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: string[][] = [
@@ -103,12 +103,12 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth);
+      this.grid.width / 2, this.grid.height / 3.3, this.grid.cellWidth);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3, this.grid.cellWidth);
+      this.grid.width / 2, this.grid.height / 3.3, this.grid.cellWidth);
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;

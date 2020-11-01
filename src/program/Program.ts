@@ -174,7 +174,6 @@ export default class Program {
       console.log('Associating Conditionals [if][key]', ifCommand.name, key);
     })
     this.ordinalCommands.forEach(command => {
-      //command.condition = null;
       const ordinalComandIndex = command.index();
       const ifCommand = this.conditionalCommandsIndexed.get(ordinalComandIndex);
       if (ifCommand) {
@@ -222,6 +221,10 @@ export default class Program {
 
   isFull(): boolean {
     return this.ordinalCommands.filter(c => !c.isIntent).length == this.maxSupportedCommandsByRow
+  }
+
+  isEmpty(): boolean {
+    return this.ordinalCommands.length == 0;
   }
 
   getCommandsWithConditions(): Command[] {

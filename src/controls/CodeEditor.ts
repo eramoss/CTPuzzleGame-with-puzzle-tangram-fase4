@@ -339,12 +339,16 @@ export default class CodeEditor {
 
   getLastEditedOrMainProgramOrFirstNonfull(): Program {
     const mainProgram = this.programs[0];
-    let program = this.lastEditedProgram || mainProgram;
+    let lastEditedProgram = this.lastEditedProgram;
+    if (lastEditedProgram?.isEmpty()) {
+      lastEditedProgram = null;
+    }
+    let program = lastEditedProgram || mainProgram;
     if (program.isFull()) {
       program = this.programs.find(p => !p.isFull())
-    }
-    if (!program) {
-      program = mainProgram;
+      if (!program) {
+        program = mainProgram;
+      }
     }
     return program
   }

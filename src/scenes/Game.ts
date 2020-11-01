@@ -92,10 +92,10 @@ export default class Game extends Scene {
 
     let obstaclesMatrix: string[][] = [
       ['coin', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'null', 'block', 'null', 'coin', 'null'],
-      ['null', 'block', 'null', 'block', 'null', 'block', 'null'],
-      ['null', 'block', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'block', 'null', 'block', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'coin', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'block', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
       ['null', 'null', 'coin', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -103,12 +103,12 @@ export default class Game extends Scene {
     this.matrix = new Matrix(this,
       this.mode,
       obstaclesMatrix,
-      this.grid.width / 2, this.grid.height / 3.3, this.grid.cellWidth);
+      this.grid.width / 2, this.grid.height / 3.1, this.grid.cellWidth);
 
     const base = new Matrix(this,
       this.mode,
       baseMatrix,
-      this.grid.width / 2, this.grid.height / 3.3, this.grid.cellWidth);
+      this.grid.width / 2, this.grid.height / 3.1, this.grid.cellWidth);
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;
@@ -144,9 +144,9 @@ export default class Game extends Scene {
       this.program.clear();
       prog1.clear();
       prog2.clear();
-      this.program.addCommands(['arrow-left', 'prog_1'])
-      prog1.addCommands(['arrow-up', 'prog_2:if_coin', 'prog_1'])
-      prog2.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
+      this.program.addCommands(['arrow-left:if_block', 'prog_1:if_coin'])
+      prog1.addCommands(['arrow-up'])
+      //prog2.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
       this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 

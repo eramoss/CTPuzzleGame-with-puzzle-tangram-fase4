@@ -59,6 +59,7 @@ export default class Command {
         ifCommand.placedOver.condition = null;
       }
       ifCommand.placedOver = this;
+      ifCommand.program = this.program;
       this.condition = ifCommand;
       let { x, y } = this.getConditionalPosition();
       ifCommand.setPosition(x, y);
@@ -85,13 +86,12 @@ export default class Command {
       this.placedOver?.removeCondition();
       this.program?.removeConditional(this);
     }
+    if (removeFromScene) {
+      new Sounds(this.scene).remove()
+      this.scene.children.remove(this.sprite);
+    }
     if (this.program != null) {
       this.program.removeCommand(this, removeFromScene);
-    } else {
-      if (removeFromScene) {
-        new Sounds(this.scene).remove()
-        this.scene.children.remove(this.sprite);
-      }
     }
     if (!this.isIntent) {
       if (removeFromScene) {

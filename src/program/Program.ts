@@ -8,7 +8,8 @@ import { createDropZone } from '../utils/Utils';
 export default class Program {
 
 
-  commands: Command[];
+  ordinalCommands: Command[]
+  conditionalCommandsIndexed: Map<number, Command>
   scene: Phaser.Scene;
   dropZone: SpriteDropZone;
   sounds: Sounds;
@@ -24,7 +25,8 @@ export default class Program {
     this.name = name;
     this.sounds = sounds;
     this.grid = grid;
-    this.commands = new Array();
+    this.ordinalCommands = new Array();
+    this.conditionalCommandsIndexed = new Map<number, Command>();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
     this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 3);
     //this.crossOrganizer = new CrossOrganizer();
@@ -66,25 +68,26 @@ export default class Program {
   }
 
   disanimateCommands() {
-    this.commands.forEach(c => c.disanimateSprite());
+    this.ordinalCommands.forEach(c => c.disanimateSprite());
   }
 
   addCommand(command: Command, index: number = -1) {
     if (this.isFull()) {
       return;
     }
+
     console.log('ADD_REMOVE_COMMANDS [index]', index)
     command.programDropZone = this.dropZone;
-    if (this.commands.indexOf(command) == -1) {
+    if (this.ordinalCommands.indexOf(command) == -1) {
       if (!command.isIntent)
         this.sounds.drop();
       if (index == -1) {
-        index = this.commands.length;
+        index = this.ordinalCommands.length;
       }
-      this.commands.splice(index, 0, command);
+      this.ordinalCommands.splice(index, 0, command);
     } else {
       let previousIndex = command.index();
-      this.commands.splice(previousIndex, 1, command);
+      this.ordinalCommands.splice(previousIndex, 1, command);
     }
     let fit = this.organizeInProgramArea(command);
     if (!fit) {
@@ -95,12 +98,28 @@ export default class Program {
         command.createTileDropZone();
       }
     }
+    if (command.condition) {
+      this.setConditionalCommand(command.index(), command.condition);
+    }
     this.distributeAllCommands();
+  }
+
+  setConditionalCommand(index: number, ifCommand: Command) {
+    console.log('PROGRAM [setConditionalCommand][index, ifCommand]', index, ifCommand.name)
+    this.conditionalCommandsIndexed.set(index, ifCommand);
+  }
+
+  removeConditionalCommandOf(ordinalCommand: Command) {
+    this.conditionalCommandsIndexed.delete(ordinalCommand.index());
+  }
+
+  removeConditional(command: Command) {
+    this.conditionalCommandsIndexed.delete(command.index())
   }
 
   organizeInProgramArea(command: Command) {
     const zone = this.dropZone.zone;
-    const index = this.commands.indexOf(command);
+    const index = this.ordinalCommands.indexOf(command);
     const spriteWidth = command.sprite.width * this.grid.scale;
     const spriteHeight = command.sprite.height * this.grid.scale * 1.4;
 
@@ -134,7 +153,7 @@ export default class Program {
 
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (command.index() > -1) {
-      this.commands.splice(command.index(), 1);
+      this.ordinalCommands.splice(command.index(), 1);
       command.program = null;
     }
     if (removeSpriteFromScene) {
@@ -147,14 +166,30 @@ export default class Program {
   reorganize() {
     this.distributeAllCommands();
     this.updateCommandsDropZonesPositions();
+    this.associateConditionsCommandsWithOrdinalCommands();
+  }
+
+  associateConditionsCommandsWithOrdinalCommands() {
+    this.conditionalCommandsIndexed.forEach((ifCommand, key) => {
+      console.log('Associating Conditionals [if][key]', ifCommand.name, key);
+    })
+    this.ordinalCommands.forEach(command => {
+      const ordinalComandIndex = command.index();
+      const ifCommand = this.conditionalCommandsIndexed.get(ordinalComandIndex);
+      if (ifCommand) {
+        let removePreviousBlockCondition = false
+        command.setCondition(ifCommand, removePreviousBlockCondition);
+        console.log('Associating Conditionals [if][command][ordinalCommandIndex]', ifCommand.name, command.name, ordinalComandIndex)
+      }
+    })
   }
 
   updateCommandsDropZonesPositions() {
-    this.commands.forEach(c => c.updateTileDropZonePosition())
+    this.ordinalCommands.forEach(c => c.updateTileDropZonePosition())
   }
 
   distributeAllCommands() {
-    this.commands.forEach(c => {
+    this.ordinalCommands.forEach(c => {
       let fit = this.organizeInProgramArea(c);
       if (!fit) {
         c.removeSelf();
@@ -163,31 +198,32 @@ export default class Program {
   }
 
   highlightConditionalAreas(ifCommand: Command): void {
-    this.commands.forEach(c => {
+    this.ordinalCommands.forEach(c => {
       if (c.condition == null || c.condition == ifCommand) {
         c.addHighlightConditionalImage();
       }
     })
-
   }
 
   unhighlightConditionalAreas() {
-    this.commands.forEach(c => {
+    this.ordinalCommands.forEach(c => {
       c.removeHighlightConditionImage();
     })
   }
 
   clear() {
-    let commands = this.commands.splice(0)
+    this.conditionalCommandsIndexed.forEach(c => c.removeSelf());
+    this.conditionalCommandsIndexed = new Map<number, Command>();
+    let commands = this.ordinalCommands.splice(0);
     commands.forEach(c => c.removeSelf());
-    this.commands = []
+    this.ordinalCommands = [];
   }
 
   isFull(): boolean {
-    return this.commands.filter(c => !c.isIntent).length == this.maxSupportedCommandsByRow
+    return this.ordinalCommands.filter(c => !c.isIntent).length == this.maxSupportedCommandsByRow
   }
 
   getCommandsWithConditions(): Command[] {
-    return this.commands.flatMap(c => [c, c.condition]).filter(c => c != undefined);
+    return this.ordinalCommands.flatMap(c => [c, c.condition]).filter(c => c != undefined);
   }
 }

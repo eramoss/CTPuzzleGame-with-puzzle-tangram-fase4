@@ -137,10 +137,16 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
 
+
         let dragged = command.isDragged;
         let clicked = this.getTime() - this.clickTime < 1000 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
+
+        if (dragged && !dropped) {
+          command.removeSelf();
+        }
+
         if (isConditional) {
           if (clicked && !dragged) {
             command.removeSelf();
@@ -209,12 +215,12 @@ export default class CodeEditor {
           .filter(d => d.zone == dropZone)[0];
 
         const commandIntentWhereAreDroppedInPlace: Command = this.programs
-          .flatMap(p => p.commands)
+          .flatMap(p => p.ordinalCommands)
           .filter(c => c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
 
         const ordinalCommandWhereIfArePlacedOver: Command = this.programs
-          .flatMap(p => p.commands)
+          .flatMap(p => p.ordinalCommands)
           .filter(c => !c.isIntent && !c.isConditional)
           .find(c => c.tileDropZone?.zone == dropZone);
 
@@ -244,7 +250,7 @@ export default class CodeEditor {
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "dragleave")
         const commandIntentLeaved: Command = this.programs
-          .flatMap(p => p.commands)
+          .flatMap(p => p.ordinalCommands)
           .filter(c => c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandIntentLeaved) {
@@ -254,7 +260,7 @@ export default class CodeEditor {
 
       commandSprite.on('dragenter', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         const commandHovered: Command = this.programs
-          .flatMap(p => p.commands)
+          .flatMap(p => p.ordinalCommands)
           .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered && !commandHovered.program?.isFull()) {
@@ -271,7 +277,14 @@ export default class CodeEditor {
   }
   private logPrograms(moment: string) {
     this.programs.forEach(p => {
-      console.log('MOVE_EVENT', moment, 'finish => ', p.name, '=> [', p.commands.map(c => c.name).join(', '), ']');
+      console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.ordinalCommands.map(c => c.name).join(', '), ']');
+    });
+    this.programs.forEach(p => {
+      //console.log('program_log_conditional', p.name)
+      console.log('Program Conditionals. Size:', p.name, '=>', p.conditionalCommandsIndexed.size)
+      p.conditionalCommandsIndexed.forEach((command: Command, index: number) => {
+        console.log('Program Conditionals => ', index, command.name, ' over ', command.placedOver?.name)
+      });
     });
   }
 

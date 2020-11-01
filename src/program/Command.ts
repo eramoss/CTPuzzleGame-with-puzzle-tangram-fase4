@@ -32,19 +32,69 @@ export default class Command {
   }
 
   index(): number {
-    return this.program?.commands.indexOf(this)
+    let index = -1;
+    if (this.isConditional) {
+      this.program?.conditionalCommandsIndexed.forEach((command, key) => {
+        if (command == command) {
+          index = key;
+        }
+      })
+    }
+    if (!this.isConditional) {
+      index = this.program?.ordinalCommands.indexOf(this);
+    }
+    return index;
   }
 
-  setCondition(ifCommand: Command) {
-    this.condition?.removeSelf();
-    if (ifCommand.placedOver) {
-      ifCommand.placedOver.condition = null;
+  setCondition(ifCommand: Command, removePreviousCondition: boolean = true) {
+    if (ifCommand != this.condition) {
+      if (this.condition) {
+        this.condition.placedOver = null;
+        if (removePreviousCondition) {
+          this.condition.removeSelf();
+        }
+      }
+      ifCommand.placedOver = this;
+      this.condition = ifCommand;
+      let { x, y } = this.getConditionalPosition();
+      ifCommand.setPosition(x, y);
+      if (removePreviousCondition) {
+        this.program?.setConditionalCommand(this.index(), ifCommand);
+      }
+      new Sounds(this.scene).drop()
     }
-    this.condition = ifCommand;
-    ifCommand.placedOver = this;
-    let { x, y } = this.getConditionalPosition();
-    ifCommand.setPosition(x, y);
-    new Sounds(this.scene).drop()
+  }
+
+  removeCondition() {
+    this.condition.placedOver = null;
+    this.condition = null;
+    this.program?.removeConditionalCommandOf(this)
+  }
+
+  removeSelf(removeFromScene: Boolean = true) {
+    console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
+    if (this.condition) {
+      this.condition.placedOver = null;
+      this.condition = null;
+    }
+    if (this.isConditional) {
+      this.placedOver?.removeCondition();
+      this.program?.removeConditional(this);
+    }
+    if (this.program != null) {
+      this.program.removeCommand(this, removeFromScene);
+    } else {
+      if (removeFromScene) {
+        new Sounds(this.scene).remove()
+        this.scene.children.remove(this.sprite);
+      }
+    }
+    if (!this.isIntent) {
+      if (removeFromScene) {
+        this.tileDropZone?.removeSelf();
+        this.tileDropZone = null;
+      }
+    }
   }
 
   getConditionalPosition(): { x: number, y: number, width: number, height: number } {
@@ -123,28 +173,6 @@ export default class Command {
     }
   }
 
-  removeSelf(removeFromScene: Boolean = true) {
-    this.condition?.removeSelf();
-    console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
-    if (this.isConditional && this.placedOver) {
-      this.placedOver.condition = null;
-    }
-    if (this.program != null) {
-      this.program.removeCommand(this, removeFromScene);
-    } else {
-      if (removeFromScene) {
-        new Sounds(this.scene).remove()
-        this.scene.children.remove(this.sprite);
-      }
-    }
-    if (!this.isIntent) {
-      if (removeFromScene) {
-        this.tileDropZone?.removeSelf();
-        this.tileDropZone = null;
-      }
-    }
-  }
-
   cancelMovement() {
     console.log("CANCEL_MOVEMENT");
     this.sprite.x = this.sprite.input.dragStartX;
@@ -172,7 +200,7 @@ export default class Command {
     }
   }
 
-  
+
 
   removeHighlightConditionImage() {
     this.scene.children.remove(this.highlightConditionalImage)

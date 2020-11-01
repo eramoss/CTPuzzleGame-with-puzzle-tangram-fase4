@@ -55,10 +55,10 @@
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="744"
+     inkscape:window-x="274"
+     inkscape:window-y="1080"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata3294">
@@ -93,7 +93,7 @@
        inkscape:export-ydpi="95"
        inkscape:export-xdpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-128x128.png"
-       transform="matrix(0.31313679,0,0,0.31422278,-125.07075,48.05194)"
+       transform="matrix(0.31313679,0,0,0.31422278,-129.28025,66.092633)"
        id="g3139"
        style="stroke:#000000;stroke-width:0.42174175;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.99607843">
       <path
@@ -270,7 +270,7 @@
     </g>
     <g
        style="stroke:#aa4400;stroke-width:1.02024114;stroke-miterlimit:4;stroke-dasharray:none"
-       transform="matrix(0.3268599,0,0,0.3268599,272.69827,-58.4546)"
+       transform="matrix(0.44433898,0,0,0.44433898,349.45834,-111.05219)"
        id="g3185"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_ISOMETRIC.png"
        inkscape:export-xdpi="95.742599"

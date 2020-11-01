@@ -187,23 +187,35 @@ export default class Command {
     return this.getAction().action.indexOf('prog') > -1
   }
 
-  animateSprite() {
+  animateSprite(success: boolean = true) {
     if (!this.animated) {
       this.animated = true;
       this.sprite.rotation += 0.05
       this.sprite.setScale(this.sprite.scale + 0.1);
-      this.condition?.animateSprite();
+      if (this.condition) {
+        this.condition?.animateSprite();
+      }
+      if (!this.condition) {
+        if (!this.isConditional) {
+          if (success) {
+            this.sounds.start();
+          } else {
+            this.sounds.blocked();
+          }
+        }
+      }
       this.sprite.setTint(0xffff00);
     }
   }
 
   disanimateSprite() {
+    this.removeHighlightConditionImage();
+    this.condition?.disanimateSprite();
     if (this.animated) {
       this.animated = false;
       this.sprite.rotation -= 0.05
       this.sprite.clearTint();
       this.sprite.setScale(this.sprite.scale - 0.1);
-      this.condition?.disanimateSprite();
     }
   }
 
@@ -221,7 +233,7 @@ export default class Command {
     this.sprite.setTint(0x00cf00)
     this.sounds.blink()
   }
-  
+
   highlightFalseState() {
     this.sprite.setTint(0xe44332)
     this.sounds.error()

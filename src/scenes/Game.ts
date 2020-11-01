@@ -173,7 +173,7 @@ export default class Game extends Scene {
         let { x, y } = dudeMove.getAheadPosition();
         valid = this.mazeModel.getObjectNameAt(y, x) == 'block'
         if (valid) {
-          (this.mazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xfce94f);
+          (this.mazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
         }
       }
       return valid

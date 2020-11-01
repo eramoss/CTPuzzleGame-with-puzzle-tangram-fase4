@@ -82,7 +82,7 @@ export class DudeMove {
   }
 
   animate() {
-    this.command.animateSprite();
+    this.command.animateSprite(this.couldExecute);
   }
 
   disanimate() {
@@ -113,9 +113,6 @@ export class DudeMove {
     let branched = this.isProgMove();
     let turnMove = this.action.isTurnMove();
     let isCondition = this.action.isCondition();
-    this.animate();
-
-
 
     if (previousMove == null) {
       this.x = this.dude.x;
@@ -131,8 +128,9 @@ export class DudeMove {
     console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
-
     
+    this.animate();
+
     if (isCondition) {
       if (isConditionValid) {
         this.command.highlightTrueState();
@@ -158,10 +156,8 @@ export class DudeMove {
     if (!branched && !turnMove) {
       console.log('MOVE [x,y]', this.x, this.y);
       if (this.couldExecute) {
-        //this.dude.setTimeout(() => {
           this.point = this.dude.matrix.getPoint(this.y, this.x);
           this.dude.moveTo(this);
-        //}, 500)
       } else {
         if (!isCondition)
           this.dude.warmBlocked();

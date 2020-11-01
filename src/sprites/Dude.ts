@@ -79,7 +79,7 @@ export default class Dude {
 
   warmBlocked() {
     //this.playAnimation(dudeMove.action);
-    this.sounds.blocked();
+    //this.sounds.blocked();
     this.character.setTint(0xff0000);
   }
 
@@ -102,7 +102,6 @@ export default class Dude {
   }
 
   playAnimation(face: string = null) {
-    //this.sounds.start();
     this.setFacedTo(face);
   }
 

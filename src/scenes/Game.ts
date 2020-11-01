@@ -62,6 +62,7 @@ export default class Game extends Scene {
     this.load.audio('remove', 'assets/ct/sounds/remove.ogg');
     this.load.audio('start', 'assets/ct/sounds/start.ogg');
     this.load.audio('coin', 'assets/ct/sounds/mario.wav');
+    this.load.audio('blink', 'assets/ct/sounds/blink.mp3');
   }
 
   create() {
@@ -142,13 +143,13 @@ export default class Game extends Scene {
       this.codeEditor.disanimatePrograms();
 
       // this.codeEditor.clear();
-      // this.program.clear();
+      this.program.clear();
       // prog1.clear();
       // prog2.clear();
-      // this.program.addCommands(['arrow-left:if_block', 'prog_1:if_coin'])
+      this.program.addCommands(['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
       // prog1.addCommands(['arrow-up'])
       // prog2.addCommands(['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
-      // this.codeEditor.createEventsToCommandsForAddedPrograms();
+      this.codeEditor.createEventsToCommandsForAddedPrograms();
     }
 
     this.dude = new Dude(this, this.matrix, this.sounds, this.grid);

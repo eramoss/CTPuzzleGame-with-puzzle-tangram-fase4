@@ -72,6 +72,7 @@ export default class Dude {
   moveTo(dudeMove: DudeMove) {
     this.character.clearTint()
     this.playAnimation();
+    this.currentStep?.animate();
     this.scene.physics.moveToObject(this.character, dudeMove.point, 70 * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
@@ -101,7 +102,7 @@ export default class Dude {
   }
 
   playAnimation(face: string = null) {
-    this.sounds.start();
+    //this.sounds.start();
     this.setFacedTo(face);
   }
 

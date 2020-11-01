@@ -192,6 +192,8 @@ export default class Command {
       this.animated = true;
       this.sprite.rotation += 0.05
       this.sprite.setScale(this.sprite.scale + 0.1);
+      this.condition?.animateSprite();
+      this.sprite.setTint(0xffff00);
     }
   }
 
@@ -217,7 +219,9 @@ export default class Command {
 
   highlightTrueState() {
     this.sprite.setTint(0x00cf00)
+    this.sounds.blink()
   }
+  
   highlightFalseState() {
     this.sprite.setTint(0xe44332)
     this.sounds.error()

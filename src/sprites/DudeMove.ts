@@ -132,17 +132,14 @@ export class DudeMove {
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
 
-    this.command.sprite.setTint(0xffff00);
+    
     if (isCondition) {
       if (isConditionValid) {
         this.command.highlightTrueState();
-      }else{
+      } else {
         this.command.highlightFalseState();
       }
     }
-    this.dude.setTimeout(() => {
-      this.command.sprite.clearTint();
-    }, 180);
 
     if (this.couldExecute) {
       this.x = newX;
@@ -161,8 +158,10 @@ export class DudeMove {
     if (!branched && !turnMove) {
       console.log('MOVE [x,y]', this.x, this.y);
       if (this.couldExecute) {
-        this.point = this.dude.matrix.getPoint(this.y, this.x);
-        this.dude.moveTo(this);
+        //this.dude.setTimeout(() => {
+          this.point = this.dude.matrix.getPoint(this.y, this.x);
+          this.dude.moveTo(this);
+        //}, 500)
       } else {
         if (!isCondition)
           this.dude.warmBlocked();

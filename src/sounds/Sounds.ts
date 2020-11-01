@@ -1,6 +1,7 @@
 
 
 export default class Sounds {
+  
   scene: Phaser.Scene;
   dragSound: Phaser.Sound.BaseSound;
   dropSound: Phaser.Sound.BaseSound;
@@ -10,6 +11,7 @@ export default class Sounds {
   coinSound: Phaser.Sound.BaseSound;
   blockedSound: Phaser.Sound.BaseSound;
   startSound: Phaser.Sound.BaseSound;
+  blinkSound: Phaser.Sound.BaseSound;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -22,6 +24,7 @@ export default class Sounds {
     this.startSound = scene.sound.add('start');
     this.blockedSound = scene.sound.add('blocked');
     this.coinSound = scene.sound.add('coin');
+    this.blinkSound = scene.sound.add('blink');
   }
 
 
@@ -59,6 +62,10 @@ export default class Sounds {
 
   stop() {
     //this.blockedSound.play()
+  }
+
+  blink() {
+    this.blinkSound.play()
   }
 
 

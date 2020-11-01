@@ -32,7 +32,7 @@ export default class Game extends Scene {
     this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('scene', 'assets/ct/programming_scene.png');
     this.load.image('tile', `assets/ct/tile_${this.mode}.png`);
-    this.load.image('controls', 'assets/ct/controls_sand.png');
+    this.load.image('toolbox', 'assets/ct/toolbox.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', `assets/ct/obstacle_orange_${this.mode}.png`);
     this.load.image('prog_0', 'assets/ct/prog_0.png');
@@ -76,9 +76,9 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 17.7, 12.5, 8, 2.3, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 17.7, 15.75, 8, 2.3, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 17.7, 19, 8, 2.3, 'drop-zone');
+    this.program = new Program(this, 'prog_0', this.sounds, this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
+    let prog1 = new Program(this, 'prog_1', this.sounds, this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
+    let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
     let baseMatrix: string[][] = [

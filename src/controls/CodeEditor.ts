@@ -30,8 +30,8 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
 
-    /* const controlsImage = grid.addImage(0.5, 1, 'controls', 3, 19);
-    this.arrowsGrid = new FlexFlow(scene)
+    const controlsImage = grid.addImage(17, 1, 'toolbox', 8.5, 9);
+    /*this.arrowsGrid = new FlexFlow(scene)
     this.arrowsGrid.flow = 'column'
 
     this.arrowsGrid.x = controlsImage.x - controlsImage.displayWidth / 2
@@ -44,7 +44,7 @@ export default class CodeEditor {
     //this.createDraggableProgramCommands();
 
     this.dropZones = programs.map(program => program.dropZone)
-    //this.createStartStopButtons();
+    this.createStartStopButtons();
 
   }
 
@@ -319,8 +319,8 @@ export default class CodeEditor {
       this.sounds.stop();
       this.fnOnClickStop();
     })
-    this.grid.placeAt(22.5, 4.2, btnPlay.sprite, 2.3)
-    this.grid.placeAt(22.5, 8, btnStop.sprite, 2.3)
+    this.grid.placeAt(1, 17, btnPlay.sprite, 2.3)
+    this.grid.placeAt(4, 17, btnStop.sprite, 2.3)
 
   }
 

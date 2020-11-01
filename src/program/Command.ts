@@ -58,7 +58,6 @@ export default class Command {
       }
       ifCommand.placedOver = this;
       ifCommand.program = this.program;
-      //ifCommand.program = this.program;
       this.condition = ifCommand;
       let { x, y } = this.getConditionalPosition();
       ifCommand.setPosition(x, y);

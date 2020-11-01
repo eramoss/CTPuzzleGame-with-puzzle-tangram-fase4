@@ -40,7 +40,7 @@ export default class Game extends Scene {
     this.load.image('prog_2', 'assets/ct/prog_2.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
     this.load.image('if_coin', 'assets/ct/if_coin.png');
-    this.load.image('if_block', 'assets/ct/if_block.png');
+    this.load.image('if_block', 'assets/ct/if_block.svg');
     this.load.image('if_highlight', 'assets/ct/if_highlight.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });

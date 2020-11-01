@@ -6,7 +6,6 @@ import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
-import FlexFlow from '../geom/FlexFlow';
 import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 
 export default class CodeEditor {
@@ -29,25 +28,20 @@ export default class CodeEditor {
     this.programs = programs;
     this.scene = scene;
     this.grid = grid;
-
-    grid.addImage(17, 1, 'toolbox', 8.5, 9);
-
     this.scale = grid.scale
     this.createGlobalDragLogic();
-
-
     this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopButtons();
 
+    grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
       [
         new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-left', 'arrow-right', 'arrow-up', 'arrow-down']),
-        new ToolboxRowOrganizer(this.grid, 18, 4, 6, 2, ['prog_0', 'prog_1', 'prog_2']),
-        new ToolboxRowOrganizer(this.grid, 18, 6, 6, 2, ['if_coin', 'if_block'])
+        new ToolboxRowOrganizer(this.grid, 18, 4.5, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
+        new ToolboxRowOrganizer(this.grid, 18, 7, 6, 2, ['if_coin', 'if_block'], 1.1)
       ]
 
     this.createDraggableProgramCommands();
-
   }
 
   addCommands(program: Program, commands: string[]) {
@@ -65,10 +59,6 @@ export default class CodeEditor {
     });
   }
 
-  private getCommandByTextureName(commands: Command[], textureName: string): Command {
-    return commands.filter(c => c.sprite.texture.key === textureName)[0]
-  }
-
   private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
@@ -84,25 +74,32 @@ export default class CodeEditor {
     console.log('COMMAND_NAMES', commandNames);
 
     commands.forEach(commandToSetPositionAtToobox => {
-      this.toolboxRows
-        .find(toolboxRow => toolboxRow.hasSpaceTo(commandToSetPositionAtToobox))
-        ?.setPositionTo(commandToSetPositionAtToobox)
+      let toolboxRow = this.findToolboxRow(commandToSetPositionAtToobox)
+      if (toolboxRow) {
+        toolboxRow.setPositionTo(commandToSetPositionAtToobox)
+      }
     })
 
     this.createEventsToCommands(commands);
   }
 
+  findToolboxRow(command: Command): ToolboxRowOrganizer {
+    return this.toolboxRows
+      .find(toolboxRow => toolboxRow.hasSpaceTo(command));
+  }
+
   createEventsToCommands(commands: Command[]) {
     commands.forEach((command: Command) => {
+      let toolboxRow = this.findToolboxRow(command);
       let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
-      commandSprite.setScale(this.scale);
+      commandSprite.setScale(toolboxRow.scaleNormal);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
-        commandSprite.setScale(this.scale * 1.2);
+        commandSprite.setScale(toolboxRow.scaleOnPointerOver);
       });
       commandSprite.on('pointerout', _ => {
-        commandSprite.setScale(this.scale);
+        commandSprite.setScale(toolboxRow.scaleNormal);
       });
       commandSprite.on('drag', _ => {
         console.log("MOVE_EVENT", "drag")
@@ -120,7 +117,7 @@ export default class CodeEditor {
         this.clickTime = this.getTime()
         this.sounds.drag();
         this.createDraggableProgramCommands(commandSprite.texture.key);
-        commandSprite.setScale(this.scale * 1.5)
+        commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', _ => {
@@ -181,8 +178,6 @@ export default class CodeEditor {
               }
             }
 
-            //this.logPrograms('dragend begin')
-
             if (!dropped) {
               command.removeSelf();
             }
@@ -191,7 +186,7 @@ export default class CodeEditor {
         }
         command.isDragged = false;
         this.unhighlightDropZones(command);
-        commandSprite.setScale(this.scale);
+        commandSprite.setScale(toolboxRow.scaleNormal);
 
         this.logPrograms('dragend');
       })

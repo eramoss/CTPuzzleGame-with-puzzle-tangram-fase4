@@ -476,7 +476,7 @@
        x2="-180.42409"
        y2="344.57419"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2.3292707,0,0,2.3292707,206.54665,-425.99501)" />
+       gradientTransform="matrix(2.3292707,0,0,2.3292707,206.33739,-425.99501)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -485,9 +485,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.23707202"
-     inkscape:cx="-3065.5468"
-     inkscape:cy="-164.20508"
+     inkscape:zoom="0.33527047"
+     inkscape:cx="-1704.1821"
+     inkscape:cy="66.559766"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -525,7 +525,19 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-520.87146,-211.54457)">
+     transform="translate(-520.87146,-211.54457)"
+     style="opacity:0.95">
+    <rect
+       inkscape:export-ydpi="95"
+       inkscape:export-xdpi="95"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
+       transform="scale(-1,1)"
+       y="33.081818"
+       x="-917.50244"
+       height="31.351097"
+       width="209.69339"
+       id="rect5979"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#de8787;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#c8b7b7;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <rect
        inkscape:export-ydpi="96.18"
        inkscape:export-xdpi="96.18"
@@ -581,7 +593,8 @@
        transform="translate(399.56585,141.54645)"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_stop.png"
        inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18">
+       inkscape:export-ydpi="96.18"
+       style="">
       <rect
          inkscape:export-ydpi="320"
          inkscape:export-xdpi="320"
@@ -684,7 +697,8 @@
        transform="translate(379.1596,155.32172)"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_play.png"
        inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18">
+       inkscape:export-ydpi="96.18"
+       style="">
       <path
          inkscape:export-ydpi="100"
          inkscape:export-xdpi="100"
@@ -764,7 +778,8 @@
        transform="translate(398.97823,140.885)"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_stop.png"
        inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18">
+       inkscape:export-ydpi="96.18"
+       style="">
       <rect
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="rect2884"
@@ -1360,7 +1375,8 @@
     </g>
     <g
        id="g7779"
-       transform="translate(75.672706,349.65853)">
+       transform="translate(75.672706,349.65853)"
+       style="">
       <ellipse
          inkscape:export-ydpi="96.357773"
          inkscape:export-xdpi="96.357773"
@@ -1929,13 +1945,15 @@
        transform="matrix(1.1051503,0,0,1.1051503,738.77991,196.79727)"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_scene.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985">
+       inkscape:export-ydpi="95.999985"
+       style="">
       <g
          inkscape:export-ydpi="96.010002"
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-52.049593,-121.59607)"
-         id="g10766">
+         id="g10766"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -1972,7 +1990,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10780"
-         transform="translate(-65.278753,-114.98149)">
+         transform="translate(-65.278753,-114.98149)"
+         style="">
         <path
            id="path10768"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2009,7 +2028,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10810"
-         transform="translate(-38.820423,-114.98149)">
+         transform="translate(-38.820423,-114.98149)"
+         style="">
         <path
            id="path10798"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2046,7 +2066,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-52.049583,-108.36691)"
-         id="g10824">
+         id="g10824"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2083,7 +2104,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10838"
-         transform="translate(-78.507923,-108.36691)">
+         transform="translate(-78.507923,-108.36691)"
+         style="">
         <path
            id="path10826"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2120,7 +2142,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-91.737083,-101.75233)"
-         id="g10852">
+         id="g10852"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2157,7 +2180,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-65.278753,-101.75233)"
-         id="g10866">
+         id="g10866"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2194,7 +2218,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10880"
-         transform="translate(-78.507913,-95.137747)">
+         transform="translate(-78.507913,-95.137747)"
+         style="">
         <path
            id="path10868"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2231,7 +2256,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10894"
-         transform="translate(-25.591253,-108.36691)">
+         transform="translate(-25.591253,-108.36691)"
+         style="">
         <path
            id="path10882"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2268,7 +2294,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-38.820413,-101.75233)"
-         id="g10908">
+         id="g10908"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2305,7 +2332,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-12.362083,-101.75233)"
-         id="g10922">
+         id="g10922"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2342,7 +2370,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10936"
-         transform="translate(-25.591243,-95.137747)">
+         transform="translate(-25.591243,-95.137747)"
+         style="">
         <path
            id="path10924"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2379,7 +2408,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-52.049583,-95.137747)"
-         id="g10950">
+         id="g10950"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2416,7 +2446,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10964"
-         transform="translate(-65.278743,-88.523167)">
+         transform="translate(-65.278743,-88.523167)"
+         style="">
         <path
            id="path10952"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2453,7 +2484,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g10978"
-         transform="translate(-38.820413,-88.523167)">
+         transform="translate(-38.820413,-88.523167)"
+         style="">
         <path
            id="path10966"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2490,7 +2522,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-52.049573,-81.908587)"
-         id="g10992">
+         id="g10992"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2527,7 +2560,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11006"
-         transform="translate(-104.96624,-95.137747)">
+         transform="translate(-104.96624,-95.137747)"
+         style="">
         <path
            id="path10994"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2564,7 +2598,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-118.1954,-88.523167)"
-         id="g11020">
+         id="g11020"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2601,7 +2636,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-91.737073,-88.523167)"
-         id="g11034">
+         id="g11034"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2638,7 +2674,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11048"
-         transform="translate(-104.96623,-81.908587)">
+         transform="translate(-104.96623,-81.908587)"
+         style="">
         <path
            id="path11036"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2675,7 +2712,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-131.42457,-81.908587)"
-         id="g11062">
+         id="g11062"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2712,7 +2750,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11076"
-         transform="translate(-144.65373,-75.294007)">
+         transform="translate(-144.65373,-75.294007)"
+         style="">
         <path
            id="path11064"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2749,7 +2788,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11090"
-         transform="translate(-118.1954,-75.294007)">
+         transform="translate(-118.1954,-75.294007)"
+         style="">
         <path
            id="path11078"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2786,7 +2826,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-131.42456,-68.679427)"
-         id="g11104">
+         id="g11104"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2823,7 +2864,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-78.507903,-81.908587)"
-         id="g11118">
+         id="g11118"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2860,7 +2902,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11132"
-         transform="translate(-91.737063,-75.294007)">
+         transform="translate(-91.737063,-75.294007)"
+         style="">
         <path
            id="path11120"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2897,7 +2940,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11146"
-         transform="translate(-65.278733,-75.294007)">
+         transform="translate(-65.278733,-75.294007)"
+         style="">
         <path
            id="path11134"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -2934,7 +2978,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-78.507893,-68.679427)"
-         id="g11160">
+         id="g11160"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -2971,7 +3016,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11174"
-         transform="translate(-104.96623,-68.679427)">
+         transform="translate(-104.96623,-68.679427)"
+         style="">
         <path
            id="path11162"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3008,7 +3054,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-118.19539,-62.064847)"
-         id="g11188">
+         id="g11188"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3045,7 +3092,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-91.737063,-62.064847)"
-         id="g11202">
+         id="g11202"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3082,7 +3130,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11216"
-         transform="translate(-104.96622,-55.450267)">
+         transform="translate(-104.96622,-55.450267)"
+         style="">
         <path
            id="path11204"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3119,7 +3168,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(0.85323333,-95.127056)"
-         id="g11230">
+         id="g11230"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3156,7 +3206,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11244"
-         transform="translate(-12.375927,-88.512476)">
+         transform="translate(-12.375927,-88.512476)"
+         style="">
         <path
            id="path11232"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3193,7 +3244,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11258"
-         transform="translate(14.082403,-88.512476)">
+         transform="translate(14.082403,-88.512476)"
+         style="">
         <path
            id="path11246"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3230,7 +3282,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(0.85324333,-81.897896)"
-         id="g11272">
+         id="g11272"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3267,7 +3320,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11286"
-         transform="translate(-25.605094,-81.897896)">
+         transform="translate(-25.605094,-81.897896)"
+         style="">
         <path
            id="path11274"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3304,7 +3358,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-38.834254,-75.283316)"
-         id="g11300">
+         id="g11300"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3341,7 +3396,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-12.375927,-75.283316)"
-         id="g11314">
+         id="g11314"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3378,7 +3434,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11328"
-         transform="translate(-25.605084,-68.668736)">
+         transform="translate(-25.605084,-68.668736)"
+         style="">
         <path
            id="path11316"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3415,7 +3472,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11342"
-         transform="translate(27.311573,-81.897896)">
+         transform="translate(27.311573,-81.897896)"
+         style="">
         <path
            id="path11330"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3452,7 +3510,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(14.082413,-75.283316)"
-         id="g11356">
+         id="g11356"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3489,7 +3548,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(40.540743,-75.283316)"
-         id="g11370">
+         id="g11370"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3531,7 +3591,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11384"
-         transform="translate(27.311583,-68.668736)">
+         transform="translate(27.311583,-68.668736)"
+         style="">
         <path
            id="path11372"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3568,7 +3629,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(0.85324333,-68.668736)"
-         id="g11398">
+         id="g11398"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3605,7 +3667,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11412"
-         transform="translate(-12.375917,-62.054156)">
+         transform="translate(-12.375917,-62.054156)"
+         style="">
         <path
            id="path11400"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3642,7 +3705,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11426"
-         transform="translate(14.082413,-62.054156)">
+         transform="translate(14.082413,-62.054156)"
+         style="">
         <path
            id="path11414"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3679,7 +3743,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(0.85325333,-55.439576)"
-         id="g11440">
+         id="g11440"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3716,7 +3781,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11454"
-         transform="translate(-52.049563,-68.679427)">
+         transform="translate(-52.049563,-68.679427)"
+         style="">
         <path
            id="path11442"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3753,7 +3819,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-65.278723,-62.064847)"
-         id="g11468">
+         id="g11468"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3790,7 +3857,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-38.820393,-62.064847)"
-         id="g11482">
+         id="g11482"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3827,7 +3895,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11496"
-         transform="translate(-52.049553,-55.450267)">
+         transform="translate(-52.049553,-55.450267)"
+         style="">
         <path
            id="path11484"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3864,7 +3933,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-78.50789,-55.450267)"
-         id="g11510">
+         id="g11510"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -3901,7 +3971,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11524"
-         transform="translate(-91.73705,-48.835687)">
+         transform="translate(-91.73705,-48.835687)"
+         style="">
         <path
            id="path11512"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3938,7 +4009,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11538"
-         transform="translate(-65.278723,-48.835687)">
+         transform="translate(-65.278723,-48.835687)"
+         style="">
         <path
            id="path11526"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -3975,7 +4047,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-78.50788,-42.221107)"
-         id="g11552">
+         id="g11552"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -4012,7 +4085,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-25.591223,-55.450267)"
-         id="g11566">
+         id="g11566"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -4049,7 +4123,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11580"
-         transform="translate(-38.820383,-48.835687)">
+         transform="translate(-38.820383,-48.835687)"
+         style="">
         <path
            id="path11568"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -4086,7 +4161,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11594"
-         transform="translate(-12.362053,-48.835687)">
+         transform="translate(-12.362053,-48.835687)"
+         style="">
         <path
            id="path11582"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -4123,7 +4199,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-25.591213,-42.221107)"
-         id="g11608">
+         id="g11608"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -4160,7 +4237,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11622"
-         transform="translate(-52.049553,-42.221107)">
+         transform="translate(-52.049553,-42.221107)"
+         style="">
         <path
            id="path11610"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -4197,7 +4275,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-65.278713,-35.606527)"
-         id="g11636">
+         id="g11636"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -4234,7 +4313,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          transform="translate(-38.820383,-35.606527)"
-         id="g11650">
+         id="g11650"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -4271,7 +4351,8 @@
          inkscape:export-xdpi="96.010002"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          id="g11664"
-         transform="translate(-52.049543,-28.991947)">
+         transform="translate(-52.049543,-28.991947)"
+         style="">
         <path
            id="path11652"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -4334,7 +4415,8 @@
        transform="matrix(3.1945375,0,0,1.5236668,-159.05241,-216.43714)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/controls_sand.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985">
+       inkscape:export-ydpi="95.999985"
+       style="">
       <rect
          inkscape:export-ydpi="320"
          inkscape:export-xdpi="320"
@@ -4408,21 +4490,21 @@
          inkscape:connector-curvature="0"
          id="path2850"
          d="m -24.532437,236.8965 6.041629,-3.49334 -6.041629,-3.47547 z"
-         style="fill:#00cf00;fill-opacity:1;fill-rule:evenodd;stroke:#006400;stroke-width:0.49999997;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="fill:#00cf00;fill-opacity:1;fill-rule:evenodd;stroke:#006400;stroke-width:0.24978823;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
        inkscape:export-ydpi="96.18"
        inkscape:export-xdpi="96.18"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_stop.png"
-       transform="matrix(3.4942349,0,0,3.4942349,500.53982,-707.45163)"
+       transform="matrix(3.5531815,0,0,3.5531815,503.50106,-722.51301)"
        id="g2863">
       <rect
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.49983373;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="rect2858"
          width="5.6506619"
          height="5.5747685"
-         x="-53.195927"
-         y="252.78131"
+         x="-53.084873"
+         y="252.7258"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_stop.png"
          inkscape:export-xdpi="320"
          inkscape:export-ydpi="320" />
@@ -4432,7 +4514,7 @@
          height="5.5747685"
          width="5.6506619"
          id="rect2861"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.49996638;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/btn_stop.png"
          inkscape:export-xdpi="320"
          inkscape:export-ydpi="320" />
@@ -4461,7 +4543,8 @@
        transform="translate(-0.02501962)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/trash.png"
        inkscape:export-xdpi="96.112137"
-       inkscape:export-ydpi="96.112137">
+       inkscape:export-ydpi="96.112137"
+       style="">
       <path
          inkscape:export-ydpi="320.49173"
          inkscape:export-xdpi="320.49173"
@@ -4495,7 +4578,8 @@
        transform="translate(-0.28162037,0.0258655)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/trash.png"
        inkscape:export-xdpi="96.112137"
-       inkscape:export-ydpi="96.112137">
+       inkscape:export-ydpi="96.112137"
+       style="">
       <path
          inkscape:export-ydpi="320.49173"
          inkscape:export-xdpi="320.49173"
@@ -4538,7 +4622,8 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
        inkscape:export-xdpi="94.984886"
        inkscape:export-ydpi="94.984886"
-       transform="rotate(180,22.551463,169.6351)">
+       transform="rotate(180,22.551463,169.6351)"
+       style="">
       <rect
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="rect8824"
@@ -4547,10 +4632,19 @@
          x="9.0533829"
          y="210.18559" />
       <path
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path4076"
+         d="m 13.126514,220.10622 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
+      <path
          inkscape:export-ydpi="95.999985"
          inkscape:export-xdpi="95.999985"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
-         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
          d="m 12.486698,220.49589 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
          id="path2822"
          inkscape:connector-curvature="0"
@@ -4592,7 +4686,8 @@
        transform="matrix(1.1087831,0,0,1.2666195,-47.740705,-40.582369)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/obstacle_orange_normal.png"
        inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599">
+       inkscape:export-ydpi="95.742599"
+       style="">
       <path
          inkscape:export-ydpi="95.742599"
          inkscape:export-xdpi="95.742599"
@@ -4616,7 +4711,8 @@
        id="g1602"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454">
+       inkscape:export-ydpi="95.923454"
+       style="">
       <path
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#4cd031;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="M 4.4506352,259.57901 H 145.75108 c 1.34291,0 2.42402,1.08111 2.42402,2.42402 v 23.02819 c 0,1.3429 -1.08111,2.42401 -2.42402,2.42401 H 4.4686911 Z"
@@ -4625,7 +4721,8 @@
          sodipodi:nodetypes="csssscc" />
       <g
          transform="matrix(0.90935794,0,0,1,-1.3038894,-0.12284691)"
-         id="g6547">
+         id="g6547"
+         style="">
         <path
            style="fill:url(#radialGradient3221);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
            d="m 9.7305976,285.50473 c 0.8359444,-4.7299 -1.4430978,-23.0734 -1.4430978,-23.0734 l 27.9340182,-0.50752 c 2.514025,7.98531 2.609136,15.91485 -0.650869,23.71801 z"
@@ -4649,7 +4746,8 @@
          id="use6551"
          transform="translate(56.135102,-8.0815234e-6)"
          width="100%"
-         height="100%" />
+         height="100%"
+         style="" />
       <use
          height="100%"
          width="100%"
@@ -4657,7 +4755,8 @@
          id="use6553"
          xlink:href="#g6547"
          y="0"
-         x="0" />
+         x="0"
+         style="" />
       <use
          x="0"
          y="0"
@@ -4665,7 +4764,8 @@
          id="use6555"
          transform="translate(112.27021,-1.6151523e-5)"
          width="100%"
-         height="100%" />
+         height="100%"
+         style="" />
       <use
          x="0"
          y="0"
@@ -4673,7 +4773,8 @@
          id="use3068"
          transform="translate(84.202658,-1.2111523e-5)"
          width="100%"
-         height="100%" />
+         height="100%"
+         style="" />
     </g>
     <image
        y="176.172"
@@ -4733,7 +4834,8 @@
        transform="matrix(0.9280703,0,0,1.0113099,46.351797,16.870838)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599">
+       inkscape:export-ydpi="95.742599"
+       style="">
       <ellipse
          ry="4.3350892"
          rx="6.7351923"
@@ -4893,7 +4995,8 @@
        transform="matrix(0.95487593,0,0,0.95487593,11.264131,58.769379)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599">
+       inkscape:export-ydpi="95.742599"
+       style="">
       <use
          height="100%"
          width="100%"
@@ -4901,7 +5004,8 @@
          id="use2718"
          xlink:href="#path2708"
          y="0"
-         x="0" />
+         x="0"
+         style="" />
       <ellipse
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="ellipse8026"
@@ -5106,7 +5210,8 @@
        transform="matrix(1.0703131,0,0,1.0703131,-27.545381,-17.009447)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599">
+       inkscape:export-ydpi="95.742599"
+       style="">
       <ellipse
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="ellipse7941"
@@ -5121,7 +5226,8 @@
          id="use2714"
          xlink:href="#path2708"
          y="0"
-         x="0" />
+         x="0"
+         style="" />
       <ellipse
          ry="0.5435046"
          rx="0.49821258"
@@ -5264,7 +5370,8 @@
        transform="matrix(0.92297587,0,0,1.0057585,41.446391,26.323287)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        inkscape:export-xdpi="95.742599"
-       inkscape:export-ydpi="95.742599">
+       inkscape:export-ydpi="95.742599"
+       style="">
       <use
          x="0"
          y="0"
@@ -5272,10 +5379,12 @@
          id="use2716"
          transform="translate(66.601552,-8.6675238)"
          width="100%"
-         height="100%" />
+         height="100%"
+         style="" />
       <g
          transform="matrix(1,0,0,1.1335286,11.814616,0.29244953)"
-         id="g7969">
+         id="g7969"
+         style="">
         <ellipse
            style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
            id="path7853"
@@ -5445,7 +5554,8 @@
        id="g1610"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <use
        height="100%"
        width="100%"
@@ -5456,7 +5566,8 @@
        x="0"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <use
        x="0"
        y="0"
@@ -5467,7 +5578,8 @@
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <use
        height="100%"
        width="100%"
@@ -5478,7 +5590,8 @@
        x="0"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <use
        x="0"
        y="0"
@@ -5489,18 +5602,21 @@
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <g
        id="g1999"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/prog_1.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985">
+       inkscape:export-ydpi="95.999985"
+       style="">
       <g
          inkscape:export-ydpi="95.999985"
          inkscape:export-xdpi="95.999985"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/prog_1.png"
          transform="matrix(1.4397773,0,0,1.4397773,45.435096,-93.941257)"
-         id="g1909">
+         id="g1909"
+         style="">
         <path
            style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#c60502;fill-opacity:1;fill-rule:evenodd;stroke:#590b00;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
            d="m -23.01879,206.03425 h 14.0409994 l -0.376968,13.40784 -12.8366424,0.37697 z"
@@ -5568,16 +5684,19 @@
        transform="translate(57.400711,80.773291)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454">
+       inkscape:export-ydpi="95.923454"
+       style="">
       <g
          transform="translate(-1.1503112,-1.0608269)"
          inkscape:export-ydpi="95.999985"
          inkscape:export-xdpi="95.999985"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/prog_2.png"
-         id="g1948">
+         id="g1948"
+         style="">
         <g
            transform="matrix(1.4397773,0,0,1.4397773,45.92395,-70.523146)"
-           id="g1929">
+           id="g1929"
+           style="">
           <path
              style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#c60502;fill-opacity:1;fill-rule:evenodd;stroke:#590b00;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
              d="m -23.01879,206.03425 h 14.0409994 l -0.376968,13.40784 -12.8366424,0.37697 z"
@@ -5658,11 +5777,17 @@
          id="rect2043"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
+         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         d="m -8.5329777,178.47379 0.1714296,-7.54295 H -12.47588 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858272,-0.34285 0.162816,15.45814 z"
+         id="path4070"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccc" />
+      <path
          sodipodi:nodetypes="ccccccccccc"
          inkscape:connector-curvature="0"
          id="path2039"
          d="m -8.201102,177.9087 0.1714296,-7.54295 h -4.1143306 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858259,-0.34285 0.162816,15.45814 z"
-         style="fill:#f91505;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+         style="fill:#f91505;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
     </g>
     <g
        inkscape:export-ydpi="95.683716"
@@ -5680,7 +5805,13 @@
          y="-179.64761"
          transform="scale(-1)" />
       <path
-         style="fill:#ccff00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         sodipodi:nodetypes="ccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4072"
+         d="m -7.8692263,178.53652 0.1714296,-7.54295 h -4.1143293 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858246,-0.34285 0.162816,15.45814 z"
+         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+      <path
+         style="fill:#ffb900;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
          d="m -8.201102,177.9087 0.1714296,-7.54295 h -4.1143306 l -0.06061,5.10132 -6.865833,-9.3125 6.926443,-7.61751 v 4.28575 l 10.2858259,-0.34285 0.162816,15.45814 z"
          id="path2054"
          inkscape:connector-curvature="0"
@@ -5691,7 +5822,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tile_ISOMETRIC.png"
        transform="matrix(1.1051503,0,0,1.1051503,1346.8099,-172.03179)"
-       id="g2070">
+       id="g2070"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -5728,7 +5860,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2084"
-       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,136.54581)">
+       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,136.54581)"
+       style="">
       <path
          id="path2072"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -5765,7 +5898,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2098"
-       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,136.54581)">
+       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,136.54581)"
+       style="">
       <path
          id="path2086"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -5802,7 +5936,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1505.9035,143.85592)"
-       id="g2112">
+       id="g2112"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -5839,7 +5974,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2126"
-       transform="matrix(1.1051503,0,0,1.1051503,1476.663,143.85592)">
+       transform="matrix(1.1051503,0,0,1.1051503,1476.663,143.85592)"
+       style="">
       <path
          id="path2114"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -5876,7 +6012,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1462.0428,151.16602)"
-       id="g2140">
+       id="g2140"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -5913,7 +6050,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1491.2833,151.16602)"
-       id="g2154">
+       id="g2154"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -5950,7 +6088,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2168"
-       transform="matrix(1.1051503,0,0,1.1051503,1476.6631,158.47613)">
+       transform="matrix(1.1051503,0,0,1.1051503,1476.6631,158.47613)"
+       style="">
       <path
          id="path2156"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -5987,7 +6126,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2182"
-       transform="matrix(1.1051503,0,0,1.1051503,1535.1439,143.85592)">
+       transform="matrix(1.1051503,0,0,1.1051503,1535.1439,143.85592)"
+       style="">
       <path
          id="path2170"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6024,7 +6164,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1520.5237,151.16602)"
-       id="g2196">
+       id="g2196"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6061,7 +6202,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1549.7641,151.16602)"
-       id="g2210">
+       id="g2210"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6098,7 +6240,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2224"
-       transform="matrix(1.1051503,0,0,1.1051503,1535.1439,158.47613)">
+       transform="matrix(1.1051503,0,0,1.1051503,1535.1439,158.47613)"
+       style="">
       <path
          id="path2212"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6135,7 +6278,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1505.9035,158.47613)"
-       id="g2238">
+       id="g2238"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6172,7 +6316,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2252"
-       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,165.78624)">
+       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,165.78624)"
+       style="">
       <path
          id="path2240"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6209,7 +6354,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2266"
-       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,165.78624)">
+       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,165.78624)"
+       style="">
       <path
          id="path2254"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6246,7 +6392,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1505.9035,173.09634)"
-       id="g2280">
+       id="g2280"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6283,7 +6430,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2294"
-       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,158.47613)">
+       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,158.47613)"
+       style="">
       <path
          id="path2282"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6320,7 +6468,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1432.8024,165.78624)"
-       id="g2308">
+       id="g2308"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6357,7 +6506,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1462.0428,165.78624)"
-       id="g2322">
+       id="g2322"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6394,7 +6544,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2336"
-       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,173.09634)">
+       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,173.09634)"
+       style="">
       <path
          id="path2324"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6431,7 +6582,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1418.1822,173.09634)"
-       id="g2350">
+       id="g2350"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6468,7 +6620,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2364"
-       transform="matrix(1.1051503,0,0,1.1051503,1403.562,180.40645)">
+       transform="matrix(1.1051503,0,0,1.1051503,1403.562,180.40645)"
+       style="">
       <path
          id="path2352"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6505,7 +6658,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2378"
-       transform="matrix(1.1051503,0,0,1.1051503,1432.8024,180.40645)">
+       transform="matrix(1.1051503,0,0,1.1051503,1432.8024,180.40645)"
+       style="">
       <path
          id="path2366"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6542,7 +6696,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1418.1822,187.71655)"
-       id="g2392">
+       id="g2392"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6579,7 +6734,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1476.6631,173.09634)"
-       id="g2406">
+       id="g2406"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6616,7 +6772,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2420"
-       transform="matrix(1.1051503,0,0,1.1051503,1462.0429,180.40645)">
+       transform="matrix(1.1051503,0,0,1.1051503,1462.0429,180.40645)"
+       style="">
       <path
          id="path2408"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6653,7 +6810,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2434"
-       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,180.40645)">
+       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,180.40645)"
+       style="">
       <path
          id="path2422"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6690,7 +6848,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1476.6631,187.71655)"
-       id="g2448">
+       id="g2448"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6727,7 +6886,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2462"
-       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,187.71655)">
+       transform="matrix(1.1051503,0,0,1.1051503,1447.4226,187.71655)"
+       style="">
       <path
          id="path2450"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6764,7 +6924,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1432.8024,195.02666)"
-       id="g2476">
+       id="g2476"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6801,7 +6962,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1462.0429,195.02666)"
-       id="g2490">
+       id="g2490"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6838,7 +7000,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2504"
-       transform="matrix(1.1051503,0,0,1.1051503,1447.4227,202.33676)">
+       transform="matrix(1.1051503,0,0,1.1051503,1447.4227,202.33676)"
+       style="">
       <path
          id="path2492"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6875,7 +7038,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1564.3691,158.48795)"
-       id="g2518">
+       id="g2518"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -6912,7 +7076,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2532"
-       transform="matrix(1.1051503,0,0,1.1051503,1549.7488,165.79805)">
+       transform="matrix(1.1051503,0,0,1.1051503,1549.7488,165.79805)"
+       style="">
       <path
          id="path2520"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6949,7 +7114,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2546"
-       transform="matrix(1.1051503,0,0,1.1051503,1578.9893,165.79805)">
+       transform="matrix(1.1051503,0,0,1.1051503,1578.9893,165.79805)"
+       style="">
       <path
          id="path2534"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -6986,7 +7152,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1564.3691,173.10816)"
-       id="g2560">
+       id="g2560"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7023,7 +7190,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2574"
-       transform="matrix(1.1051503,0,0,1.1051503,1535.1286,173.10816)">
+       transform="matrix(1.1051503,0,0,1.1051503,1535.1286,173.10816)"
+       style="">
       <path
          id="path2562"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7060,7 +7228,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1520.5084,180.41826)"
-       id="g2588">
+       id="g2588"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7097,7 +7266,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1549.7488,180.41826)"
-       id="g2602">
+       id="g2602"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7134,7 +7304,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2616"
-       transform="matrix(1.1051503,0,0,1.1051503,1535.1286,187.72837)">
+       transform="matrix(1.1051503,0,0,1.1051503,1535.1286,187.72837)"
+       style="">
       <path
          id="path2604"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7171,7 +7342,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2630"
-       transform="matrix(1.1051503,0,0,1.1051503,1593.6095,173.10816)">
+       transform="matrix(1.1051503,0,0,1.1051503,1593.6095,173.10816)"
+       style="">
       <path
          id="path2618"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7208,7 +7380,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1578.9893,180.41826)"
-       id="g2644">
+       id="g2644"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7245,7 +7418,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1608.2297,180.41826)"
-       id="g2660">
+       id="g2660"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7287,7 +7461,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2674"
-       transform="matrix(1.1051503,0,0,1.1051503,1593.6095,187.72837)">
+       transform="matrix(1.1051503,0,0,1.1051503,1593.6095,187.72837)"
+       style="">
       <path
          id="path2662"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7324,7 +7499,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1564.3691,187.72837)"
-       id="g2688">
+       id="g2688"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7361,7 +7537,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2702"
-       transform="matrix(1.1051503,0,0,1.1051503,1549.7489,195.03847)">
+       transform="matrix(1.1051503,0,0,1.1051503,1549.7489,195.03847)"
+       style="">
       <path
          id="path2690"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7398,7 +7575,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2717"
-       transform="matrix(1.1051503,0,0,1.1051503,1578.9893,195.03847)">
+       transform="matrix(1.1051503,0,0,1.1051503,1578.9893,195.03847)"
+       style="">
       <path
          id="path2704"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7435,7 +7613,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1564.3691,202.34858)"
-       id="g2731">
+       id="g2731"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7472,7 +7651,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2745"
-       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,187.71655)">
+       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,187.71655)"
+       style="">
       <path
          id="path2733"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7509,7 +7689,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1491.2833,195.02666)"
-       id="g2761">
+       id="g2761"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7546,7 +7727,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1520.5237,195.02666)"
-       id="g2775">
+       id="g2775"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7583,7 +7765,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2789"
-       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,202.33676)">
+       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,202.33676)"
+       style="">
       <path
          id="path2777"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7620,7 +7803,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1476.6631,202.33676)"
-       id="g2805">
+       id="g2805"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7657,7 +7841,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2819"
-       transform="matrix(1.1051503,0,0,1.1051503,1462.0429,209.64687)">
+       transform="matrix(1.1051503,0,0,1.1051503,1462.0429,209.64687)"
+       style="">
       <path
          id="path2807"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7694,7 +7879,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2833"
-       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,209.64687)">
+       transform="matrix(1.1051503,0,0,1.1051503,1491.2833,209.64687)"
+       style="">
       <path
          id="path2821"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7731,7 +7917,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1476.6631,216.95697)"
-       id="g2848">
+       id="g2848"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7768,7 +7955,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1535.144,202.33676)"
-       id="g2864">
+       id="g2864"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7805,7 +7993,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2878"
-       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,209.64687)">
+       transform="matrix(1.1051503,0,0,1.1051503,1520.5237,209.64687)"
+       style="">
       <path
          id="path2866"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7842,7 +8031,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2892"
-       transform="matrix(1.1051503,0,0,1.1051503,1549.7642,209.64687)">
+       transform="matrix(1.1051503,0,0,1.1051503,1549.7642,209.64687)"
+       style="">
       <path
          id="path2880"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7879,7 +8069,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1535.144,216.95697)"
-       id="g2906">
+       id="g2906"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7916,7 +8107,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2920"
-       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,216.95697)">
+       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,216.95697)"
+       style="">
       <path
          id="path2908"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -7953,7 +8145,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1491.2833,224.26708)"
-       id="g2934">
+       id="g2934"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -7990,7 +8183,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        transform="matrix(1.1051503,0,0,1.1051503,1520.5237,224.26708)"
-       id="g2948">
+       id="g2948"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -8027,7 +8221,8 @@
        inkscape:export-xdpi="96.010002"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
        id="g2962"
-       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,231.57718)">
+       transform="matrix(1.1051503,0,0,1.1051503,1505.9035,231.57718)"
+       style="">
       <path
          id="path2950"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8064,13 +8259,15 @@
        inkscape:export-xdpi="95.999985"
        inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ct/programming_scene.png"
        transform="matrix(1.1051503,0,0,1.1051503,1191.9006,160.70919)"
-       id="g4313">
+       id="g4313"
+       style="">
       <g
          id="g3427"
          transform="translate(-52.049593,-121.59607)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3415"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8107,7 +8304,8 @@
          id="g3441"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8144,7 +8342,8 @@
          id="g3455"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8181,7 +8380,8 @@
          transform="translate(-52.049583,-108.36691)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3457"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8218,7 +8418,8 @@
          id="g3483"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8255,7 +8456,8 @@
          transform="translate(-91.737083,-101.75233)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3485"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8292,7 +8494,8 @@
          transform="translate(-65.278753,-101.75233)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3499"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8329,7 +8532,8 @@
          id="g3525"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8366,7 +8570,8 @@
          id="g3539"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8403,7 +8608,8 @@
          transform="translate(-38.820413,-101.75233)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3541"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8440,7 +8646,8 @@
          transform="translate(-12.362083,-101.75233)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3555"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8477,7 +8684,8 @@
          id="g3581"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8514,7 +8722,8 @@
          transform="translate(-52.049583,-95.137747)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3583"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8551,7 +8760,8 @@
          id="g3609"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8588,7 +8798,8 @@
          id="g3623"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8625,7 +8836,8 @@
          transform="translate(-52.049573,-81.908587)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3625"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8662,7 +8874,8 @@
          id="g3651"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8699,7 +8912,8 @@
          transform="translate(-118.1954,-88.523167)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3653"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8736,7 +8950,8 @@
          transform="translate(-91.737073,-88.523167)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3667"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8773,7 +8988,8 @@
          id="g3693"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8810,7 +9026,8 @@
          transform="translate(-131.42457,-81.908587)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3695"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8847,7 +9064,8 @@
          id="g3721"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8884,7 +9102,8 @@
          id="g3735"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -8921,7 +9140,8 @@
          transform="translate(-131.42456,-68.679427)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3737"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8958,7 +9178,8 @@
          transform="translate(-78.507903,-81.908587)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3751"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -8995,7 +9216,8 @@
          id="g3777"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9032,7 +9254,8 @@
          id="g3791"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9069,7 +9292,8 @@
          transform="translate(-78.507893,-68.679427)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3793"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9106,7 +9330,8 @@
          id="g3819"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9143,7 +9368,8 @@
          transform="translate(-118.19539,-62.064847)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3821"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9180,7 +9406,8 @@
          transform="translate(-91.737063,-62.064847)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3835"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9217,7 +9444,8 @@
          id="g3861"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9254,7 +9482,8 @@
          transform="translate(0.85323333,-95.127056)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3863"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9291,7 +9520,8 @@
          id="g3889"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9328,7 +9558,8 @@
          id="g3903"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9365,7 +9596,8 @@
          transform="translate(0.85324333,-81.897896)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3905"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9402,7 +9634,8 @@
          id="g3931"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9439,7 +9672,8 @@
          transform="translate(-38.834254,-75.283316)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3933"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9476,7 +9710,8 @@
          transform="translate(-12.375927,-75.283316)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3947"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9513,7 +9748,8 @@
          id="g3973"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9550,7 +9786,8 @@
          id="g3987"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9587,7 +9824,8 @@
          transform="translate(14.082413,-75.283316)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path3989"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9624,7 +9862,8 @@
          transform="translate(40.540743,-75.283316)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4003"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9666,7 +9905,8 @@
          id="g4031"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9703,7 +9943,8 @@
          transform="translate(0.85324333,-68.668736)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4033"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9740,7 +9981,8 @@
          id="g4059"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9777,7 +10019,8 @@
          id="g4073"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9814,7 +10057,8 @@
          transform="translate(0.85325333,-55.439576)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4075"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9851,7 +10095,8 @@
          id="g4101"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9888,7 +10133,8 @@
          transform="translate(-65.278723,-62.064847)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4103"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9925,7 +10171,8 @@
          transform="translate(-38.820393,-62.064847)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4117"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -9962,7 +10209,8 @@
          id="g4143"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -9999,7 +10247,8 @@
          transform="translate(-78.50789,-55.450267)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4145"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10036,7 +10285,8 @@
          id="g4171"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10073,7 +10323,8 @@
          id="g4185"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10110,7 +10361,8 @@
          transform="translate(-78.50788,-42.221107)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4187"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10147,7 +10399,8 @@
          transform="translate(-25.591223,-55.450267)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4201"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10184,7 +10437,8 @@
          id="g4227"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10221,7 +10475,8 @@
          id="g4241"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10258,7 +10513,8 @@
          transform="translate(-25.591213,-42.221107)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4243"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10295,7 +10551,8 @@
          id="g4269"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10332,7 +10589,8 @@
          transform="translate(-65.278713,-35.606527)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4271"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10369,7 +10627,8 @@
          transform="translate(-38.820383,-35.606527)"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            id="path4285"
            d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -10406,7 +10665,8 @@
          id="g4311"
          inkscape:export-filename="/home/cassiano/Desktop/bunny-jump/assets/ctpuzzle/ground_sand.png"
          inkscape:export-xdpi="96.010002"
-         inkscape:export-ydpi="96.010002">
+         inkscape:export-ydpi="96.010002"
+         style="">
         <path
            style="fill:#9e7758;stroke-width:0.26458332"
            inkscape:connector-curvature="0"
@@ -10444,7 +10704,8 @@
        inkscape:export-xdpi="95.742599"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        transform="matrix(0.92297587,0,0,1.0057585,139.40726,-40.582722)"
-       id="g4353">
+       id="g4353"
+       style="">
       <use
          height="100%"
          width="100%"
@@ -10452,10 +10713,12 @@
          id="use4315"
          xlink:href="#path2708"
          y="0"
-         x="0" />
+         x="0"
+         style="" />
       <g
          id="g4351"
-         transform="matrix(1,0,0,1.1335286,11.814616,0.29244953)">
+         transform="matrix(1,0,0,1.1335286,11.814616,0.29244953)"
+         style="">
         <ellipse
            ry="3.6380208"
            rx="3.8240554"
@@ -10606,7 +10869,8 @@
        inkscape:export-xdpi="95.742599"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk.png"
        transform="matrix(1.0703131,0,0,1.0703131,109.48407,-108.07117)"
-       id="g4391">
+       id="g4391"
+       style="">
       <ellipse
          ry="0.5435046"
          rx="0.49821258"
@@ -10621,7 +10885,8 @@
          id="use4357"
          transform="matrix(0.91297367,0,0,0.91297367,81.353233,38.829615)"
          width="100%"
-         height="100%" />
+         height="100%"
+         style="" />
       <ellipse
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          id="ellipse4359"
@@ -10773,7 +11038,8 @@
        id="use4403"
        transform="matrix(0.97716768,0,0,0.97716768,221.15966,-111.07616)"
        width="100%"
-       height="100%" />
+       height="100%"
+       style="" />
     <ellipse
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:1;fill-rule:evenodd;stroke:#00ffff;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="ellipse4405"
@@ -10907,7 +11173,8 @@
        transform="matrix(1,0,0,0.92997205,94.341048,-11.215919)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          style="fill:#000000;fill-opacity:0.41935485;fill-rule:evenodd;stroke:none;stroke-width:0.29431403px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 720.39476,75.657547 19.84004,-0.0026 -1.31742,-4.840855 -17.38505,0.975488 z"
@@ -11037,7 +11304,8 @@
     </g>
     <g
        id="g5262"
-       transform="matrix(0.95983089,0,0,0.95983089,177.43708,-13.306791)">
+       transform="matrix(0.95983089,0,0,0.95983089,177.43708,-13.306791)"
+       style="">
       <path
          sodipodi:nodetypes="ccccccccc"
          inkscape:connector-curvature="0"
@@ -11184,7 +11452,8 @@
     </g>
     <g
        id="g5351"
-       transform="matrix(0.99912865,0,0,0.99413747,87.433095,-15.90703)">
+       transform="matrix(0.99912865,0,0,0.99413747,87.433095,-15.90703)"
+       style="">
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 795.45473,52.106545 c -0.21818,-0.536368 -0.21977,-0.700669 -0.78962,-0.693912 l -12.96253,0.03694 c -0.35353,0.0664 -0.41744,0.256808 -0.51744,0.431747 l -1.11389,17.002451 c 0.0845,0.667122 0.42686,0.480061 0.68762,0.563399 l 17.39112,0.02105 c 0.45569,-0.02138 0.63871,-0.422434 0.75945,-0.910243 z"
@@ -11357,7 +11626,8 @@
        id="g5617"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          d="m 702.13713,50.338354 c -0.0871,-0.17612 0.14866,-0.44452 -0.34517,-0.50445 l -12.72954,2.87485 c -0.28483,0.19695 -0.31788,0.39391 -0.38231,0.59085 l 1.22718,16.60199 c 0.13859,0.57066 0.40182,0.26889 0.6256,0.24329 l 12.65382,-6.04151 c 0.37379,-0.19577 0.48333,-0.62937 0.53251,-1.11729 z"
@@ -11507,7 +11777,8 @@
        id="g5677"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          sodipodi:nodetypes="ccccccccc"
          inkscape:connector-curvature="0"
@@ -11680,7 +11951,8 @@
        transform="translate(113.45097,-58.484361)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          sodipodi:nodetypes="cccccccc"
          inkscape:connector-curvature="0"
@@ -11854,7 +12126,8 @@
          style="fill:#f6d2af;fill-opacity:1;fill-rule:evenodd;stroke:#bc936c;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
-       id="g5920">
+       id="g5920"
+       style="">
       <path
          inkscape:export-ydpi="95"
          inkscape:export-xdpi="95"
@@ -12120,7 +12393,8 @@
        transform="matrix(1.0117838,0,0,1.0117838,-47.706232,-16.752893)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"
@@ -12184,7 +12458,8 @@
          transform="matrix(0.99999999,0,0,1.2427494,22.216804,-12.495505)"
          style="fill:#fce758;fill-opacity:1">
         <g
-           id="g4819">
+           id="g4819"
+           style="">
           <g
              style="fill:#fc6358;fill-opacity:1"
              transform="matrix(-1,0,0,1,1465.9542,-0.02338649)"
@@ -12269,7 +12544,8 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccc" />
       <g
-         id="g4827">
+         id="g4827"
+         style="">
         <path
            style="fill:#c59d76;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            d="m 750.17711,58.25009 0.58465,-0.04677 0.13229,4.022405 -0.84187,-0.140317 z"
@@ -12285,7 +12561,8 @@
       </g>
       <g
          transform="matrix(-1,0,0,1,1519.1802,0)"
-         id="g4833">
+         id="g4833"
+         style="">
         <path
            sodipodi:nodetypes="ccccc"
            inkscape:connector-curvature="0"
@@ -12432,17 +12709,6 @@
          x="734.88428"
          y="24.224728"
          style="stroke-width:0.26458332px">down</tspan></text>
-    <rect
-       inkscape:export-ydpi="95"
-       inkscape:export-xdpi="95"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/rope_walk_ISOMETRIC.png"
-       transform="scale(-1,1)"
-       y="33.081818"
-       x="-917.50244"
-       height="31.351097"
-       width="209.69339"
-       id="rect5979"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#de8787;fill-opacity:0.00392157;fill-rule:evenodd;stroke:#c8b7b7;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <image
        y="463.15137"
        x="409.5416"
@@ -12503,7 +12769,8 @@
        inkscape:export-xdpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-192x192.png"
        transform="matrix(1.5739621,0,0,1.5739621,-432.04309,-277.61624)"
-       id="g2923">
+       id="g2923"
+       style="">
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 634.24349,93.494146 c -0.0829,-0.167589 0.14147,-0.422997 -0.32845,-0.480025 l -10.19047,3.820408 c -0.27104,0.187413 -0.30249,0.374827 -0.3638,0.56224 l -2.57401,15.143381 c 0.13188,0.54303 0.38237,0.25587 0.59531,0.23151 l 12.7,-8.40052 z"
@@ -12691,7 +12958,8 @@
        transform="matrix(1.0493081,0,0,1.0493081,-32.692479,-208.67595)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-128x128.png"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95">
+       inkscape:export-ydpi="95"
+       style="">
       <path
          sodipodi:nodetypes="cccccccc"
          inkscape:connector-curvature="0"
@@ -12879,7 +13147,8 @@
        transform="matrix(4.1972323,0,0,4.1972323,-2221.0208,-595.21715)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-512x512.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       style="">
       <path
          sodipodi:nodetypes="cccccccc"
          inkscape:connector-curvature="0"
@@ -13067,7 +13336,8 @@
        transform="matrix(3.8555142,0,0,3.8555142,2456.4197,-548.97982)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       style="">
       <path
          id="path3222"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -13104,7 +13374,8 @@
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        transform="matrix(3.626422,0,0,3.626422,-1628.4266,-737.055)"
-       id="g3132">
+       id="g3132"
+       style="">
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 634.24349,93.494146 c -0.0829,-0.167589 0.14147,-0.422997 -0.32845,-0.480025 l -10.19047,3.820408 c -0.27104,0.187413 -0.30249,0.374827 -0.3638,0.56224 l -2.57401,15.143381 c 0.13188,0.54303 0.38237,0.25587 0.59531,0.23151 l 12.7,-8.40052 z"
@@ -13290,7 +13561,8 @@
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
-       id="g3140">
+       id="g3140"
+       style="">
       <rect
          y="210.18559"
          x="9.0533829"
@@ -13313,7 +13585,8 @@
        transform="matrix(2.2825219,0,0,2.2825219,1585.924,-454.40597)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       style="">
       <path
          id="path3166"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -13350,7 +13623,8 @@
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        transform="matrix(1.4794964,0,0,1.4794964,1234.5274,-445.29448)"
-       id="g3192">
+       id="g3192"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -13409,7 +13683,8 @@
        transform="matrix(1.9383681,0,0,1.9383681,1397.714,-464.62585)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96">
+       inkscape:export-ydpi="96"
+       style="">
       <path
          id="path3194"
          d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
@@ -13485,7 +13760,8 @@
        inkscape:export-xdpi="96"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/banner_app.png"
        transform="matrix(2.3857681,0,0,2.3857681,1692.6686,-479.40287)"
-       id="g3220">
+       id="g3220"
+       style="">
       <path
          style="fill:#9e7758;stroke-width:0.26458332"
          inkscape:connector-curvature="0"
@@ -13577,13 +13853,15 @@
        id="g3179"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_coin.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985">
+       inkscape:export-ydpi="95.999985"
+       style="">
       <g
          inkscape:export-ydpi="95.683716"
          inkscape:export-xdpi="95.683716"
          inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_coin.png"
          transform="matrix(0.9379406,0,0,0.9379406,136.32125,-19.801905)"
-         id="g3198">
+         id="g3198"
+         style="">
         <path
            sodipodi:nodetypes="ccccccc"
            inkscape:connector-curvature="0"
@@ -13641,7 +13919,7 @@
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985"
        style="fill:#ffff00;fill-opacity:1"
-       transform="translate(99.289579,149.49112)">
+       transform="translate(-20.177353,-50.058625)">
       <g
          inkscape:export-ydpi="95.999985"
          inkscape:export-xdpi="95.999985"
@@ -13664,7 +13942,16 @@
              style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
         </g>
         <path
-           style="fill:#ff00c5;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           inkscape:export-ydpi="95.999985"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:connector-curvature="0"
+           id="path4074"
+           d="m 14.238624,196.01023 9.77567,-10.18429 9.59571,10.18429 h -4.57679 v 7.71366 h -10.49121 v -7.71366 z"
+           style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+        <path
+           style="fill:#ff00c5;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
            d="m 13.889859,196.3999 9.77567,-10.18429 9.59571,10.18429 h -4.57679 v 7.71366 h -10.49121 v -7.71366 z"
            id="path2801"
            inkscape:connector-curvature="0"
@@ -13684,13 +13971,15 @@
        height="100%"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
+       inkscape:export-ydpi="95.923454"
+       style="" />
     <g
        inkscape:export-ydpi="95.683716"
        inkscape:export-xdpi="95.683716"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/if_coin.png"
        transform="matrix(0.74918878,0,0,0.74918878,691.25905,386.18282)"
-       id="g3311">
+       id="g3311"
+       style="">
       <path
          sodipodi:nodetypes="ccccccc"
          inkscape:connector-curvature="0"
@@ -13745,7 +14034,8 @@
          r="0" />
     </g>
     <g
-       id="g4032">
+       id="g4032"
+       style="">
       <path
          sodipodi:nodetypes="ccccccc"
          inkscape:connector-curvature="0"
@@ -13794,8 +14084,8 @@
        height="164.04167"
        width="294.74582" />
     <path
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.681;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#4d4d4d;fill-opacity:1;fill-rule:evenodd;stroke:#4d4d4d;stroke-width:0.94487602;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m -303.94415,322.41039 c 43.57241,-3.365 92.81114,-1.66594 138.15566,0 5.76052,0.21173 10.40506,4.64065 10.40506,10.40504 V 443.7517 c 0,5.76441 -4.64065,10.40506 -10.40506,10.40506 h -138.15566 c -5.76441,0 -10.40507,-4.64065 -10.40507,-10.40506 V 332.81543 c 0,-5.76439 4.65778,-9.9612 10.40507,-10.40504 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.681;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.77403843;fill-rule:evenodd;stroke:none;stroke-width:0.94487602;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m -303.41498,327.17292 c 43.57241,-3.365 92.81114,-1.66594 138.15566,0 5.76052,0.21173 10.40506,4.64065 10.40506,10.40504 v 110.93627 c 0,5.76441 -4.65983,9.93523 -10.40506,10.40506 -46.81762,3.82865 -92.41047,1.53349 -138.15566,0 -5.76117,-0.19313 -10.40507,-4.64065 -10.40507,-10.40506 V 337.57796 c 0,-5.76439 4.65778,-9.9612 10.40507,-10.40504 z"
        id="rect4039"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sssssssss"
@@ -13813,7 +14103,7 @@
        inkscape:export-ydpi="95.999985" />
     <path
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#radialGradient4047);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.86358327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m -295.69905,334.15415 c 40.6526,-1.90138 81.16829,-2.98116 121.21257,-1.23255 7.37368,0.32197 13.4248,5.94255 13.32257,13.32256 l -1.23258,88.97144 c -0.10226,7.38004 -6.00065,12.39293 -13.32257,13.32259 -40.6126,5.15658 -80.18647,3.04219 -119.97999,2.46516 -7.37992,-0.10692 -13.32259,-5.94188 -13.32259,-13.32259 v -90.20404 c 0,-7.38071 5.94994,-12.97772 13.32259,-13.32257 z"
+       d="m -295.69905,338.09997 c 40.6526,-1.90138 81.16829,-2.98116 121.21257,-1.23255 7.37368,0.32197 13.42955,5.94262 13.32257,13.32256 l -1.23258,85.02562 c -0.10698,7.37997 -6.00065,12.39293 -13.32257,13.32259 -40.6126,5.15658 -80.18647,3.04219 -119.97999,2.46516 -7.37992,-0.10692 -13.32259,-5.94188 -13.32259,-13.32259 v -86.25822 c 0,-7.38071 5.94994,-12.97772 13.32259,-13.32257 z"
        id="rect4037"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="sssssssss"
@@ -13822,20 +14112,50 @@
        inkscape:export-ydpi="95.999985" />
     <path
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient4063);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.90964282;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m -239.55547,324.09371 c -33.03411,-0.10645 -55.87096,1.14868 -62.36774,2.03543 -5.54606,0.75704 -10.1037,4.50616 -10.1037,10.10373 v 85.62285 l 1.13631,-83.51039 c 0.0762,-5.59705 4.5588,-9.34788 10.10494,-10.10491 10.39472,-1.41881 61.70054,-4.69675 130.59487,-0.91844 4.81849,0.26428 8.79649,3.42569 9.83409,7.87813 -0.51647,-5.07478 -4.81209,-8.78358 -10.05195,-9.07097 -25.83538,-1.41687 -49.32638,-1.97154 -69.14682,-2.03543 z"
+       d="m -239.76473,324.09371 c -33.03411,-0.10645 -55.87096,1.14868 -62.36774,2.03543 -5.54606,0.75704 -10.1037,4.50616 -10.1037,10.10373 v 85.62285 l 1.13631,-83.51039 c 0.0762,-5.59705 4.5588,-9.34788 10.10494,-10.10491 10.39472,-1.41881 61.70054,-4.69675 130.59487,-0.91844 4.81849,0.26428 8.79649,3.42569 9.83409,7.87813 -0.51647,-5.07478 -4.81209,-8.78358 -10.05195,-9.07097 -25.83538,-1.41687 -49.32638,-1.97154 -69.14682,-2.03543 z"
        id="path4052"
        inkscape:connector-curvature="0"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
     <path
-       sodipodi:nodetypes="cssssscc"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+       sodipodi:nodetypes="ssssccs"
        inkscape:connector-curvature="0"
-       id="path4066"
-       d="m -174.48648,332.9216 c 7.37368,0.32197 13.4248,5.94255 13.32257,13.32256 l -1.23258,88.97144 c -0.10226,7.38004 -6.00065,12.39293 -13.32257,13.32259 -40.6126,5.15658 -80.18647,3.04219 -119.97999,2.46516 -7.37992,-0.10692 -13.32259,-5.94188 -13.32259,-13.32259 v -34.09859 c 108.99916,20.30155 92.34394,-45.29293 134.53516,-70.66057 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.38399999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#197a31;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.86358327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path4078"
+       d="m -295.69905,338.09997 c 40.6526,-1.90138 81.16829,-2.98116 121.21257,-1.23255 7.37368,0.32197 13.42955,5.94262 13.32257,13.32256 l -1.23258,85.02562 c -0.10698,7.37997 -6.00065,12.39293 -13.32257,13.32259 -3.27957,-77.21608 -52.71109,-101.67179 -133.30258,-97.11565 0,-7.38071 5.94994,-12.97772 13.32259,-13.32257 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.08699999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.86358327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <text
+       transform="scale(0.92594676,1.0799757)"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+       id="text4090"
+       y="310.14737"
+       x="-278.85898"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.36805153px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#163d1c;fill-opacity:1;stroke:#163d1c;stroke-width:0.30450138px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#163d1c;fill-opacity:1;stroke:#163d1c;stroke-width:0.30450138px;stroke-opacity:1"
+         y="310.14737"
+         x="-278.85898"
+         id="tspan4088"
+         sodipodi:role="line">TOOLBOX</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.36805153px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#07310d;stroke-width:0.30450138px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-278.85898"
+       y="309.65656"
+       id="text4082"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
        inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985" />
+       inkscape:export-ydpi="95.999985"
+       transform="scale(0.92594677,1.0799757)"><tspan
+         sodipodi:role="line"
+         id="tspan4080"
+         x="-278.85898"
+         y="309.65656"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ffffff;stroke:#07310d;stroke-width:0.30450138px;stroke-opacity:1">TOOLBOX</tspan></text>
   </g>
 </svg>

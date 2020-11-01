@@ -174,7 +174,7 @@ export default class Program {
       console.log('Associating Conditionals [if][key]', ifCommand.name, key);
     })
     this.ordinalCommands.forEach(command => {
-      command.condition = null;
+      //command.condition = null;
       const ordinalComandIndex = command.index();
       const ifCommand = this.conditionalCommandsIndexed.get(ordinalComandIndex);
       if (ifCommand) {

@@ -54,6 +54,9 @@ export default class Command {
           this.condition.removeSelf();
         }
       }
+      if (ifCommand.placedOver) {
+        ifCommand.placedOver.condition = null;
+      }
       ifCommand.placedOver = this;
       this.condition = ifCommand;
       let { x, y } = this.getConditionalPosition();
@@ -203,7 +206,7 @@ export default class Command {
   removeHighlightConditionImage() {
     this.scene.children.remove(this.highlightConditionalImage)
   }
-  
+
   addHighlightConditionalImage() {
     let { x, y } = this.getConditionalPosition();
     this.highlightConditionalImage = this.scene.add.image(x, y, 'if_highlight')

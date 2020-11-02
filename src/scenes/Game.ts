@@ -194,7 +194,7 @@ export default class Game extends Scene {
     }
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteName == 'coin') {
+    if (other.spriteName == 'coin') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
           this.children.remove(other.gameObject);

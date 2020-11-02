@@ -30,35 +30,35 @@ export default class Sounds {
 
 
   drag() {
-    this.dragSound.play()
+    this.playSound(this.dragSound);
   }
 
   drop() {
-    this.dropSound.play()
+    this.playSound(this.dropSound);
   }
 
   hover() {
-    //this.hoverSound.play()
+    this.playSound(//this.hoverSound);
   }
 
   remove() {
-    this.removeSound.play()
+    this.playSound(this.removeSound);
   }
 
   error() {
-    this.errorSound.play()
+    this.playSound(this.errorSound);
   }
 
   coin() {
-    this.coinSound.play()
+    this.playSound(this.coinSound);
   }
 
   start() {
-    this.startSound.play()
+    this.playSound(this.startSound);
   }
 
   blocked() {
-    this.blockedSound.play()
+    this.playSound(this.blockedSound);
   }
 
   stop() {
@@ -69,5 +69,9 @@ export default class Sounds {
     this.blinkSound.play()
   }
 
-
+  playSound(sound: Phaser.Sound.BaseSound) {
+    if (!sound.isPlaying) {
+      sound.play()
+    }
+  }
 }

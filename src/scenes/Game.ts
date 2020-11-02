@@ -211,9 +211,9 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onInteract = () => {
-      let resetFace = true;
-      this.dude.stop(resetFace);
-      initGame();
+      //let resetFace = true;
+      //this.dude.stop();
+      //initGame();
     }
 
     this.codeEditor.onClickStop = () => {

@@ -63,6 +63,7 @@ export default class Game extends Scene {
     this.load.audio('start', 'assets/ct/sounds/start.ogg');
     this.load.audio('coin', 'assets/ct/sounds/mario.wav');
     this.load.audio('blink', 'assets/ct/sounds/blink.mp3');
+    this.load.audio('success', 'assets/ct/sounds/success.mp3');
   }
 
   create() {
@@ -133,6 +134,13 @@ export default class Game extends Scene {
     new MazeModel(this, base, spriteCreateFunctions)
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
+    this.mazeModel.onChange = () => {
+      if (this.mazeModel.count('coin') == 0) {
+        this.dude.stop()
+        this.dude.playSuccess();
+      }
+    }
+
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
       let x = 0, y = 3;
@@ -180,7 +188,9 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
+      this.mazeModel.onChange();
       //this.mazeModel.updateBringFront();
+
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
@@ -195,7 +205,7 @@ export default class Game extends Scene {
     }
 
     this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-    if (other.spriteName == 'coin') {
+      if (other.spriteName == 'coin') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
           this.children.remove(other.gameObject);

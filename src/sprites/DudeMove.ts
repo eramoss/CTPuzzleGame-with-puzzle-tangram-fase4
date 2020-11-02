@@ -2,7 +2,8 @@ import Matrix from '../geom/Matrix';
 import IsometricPoint from '../geom/IsometricPoint';
 import Command from '../program/Command';
 import CommandAction from '../program/CommandAction';
-import Dude, { Branch } from './Dude';
+import Dude from './Dude';
+import { Branch } from "./Branch";
 
 export class DudeMove {
 

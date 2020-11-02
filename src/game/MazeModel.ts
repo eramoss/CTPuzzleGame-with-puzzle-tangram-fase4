@@ -19,6 +19,7 @@ export default class MazeModel {
   obstaclesMatrix: string[][];
   spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
+  onChange: () => void = () => { };
 
   constructor(
     scene: Phaser.Scene,
@@ -142,6 +143,21 @@ export default class MazeModel {
       object = new MazeModelObject(sprite, spriteName)
     }
     this.gameObjects[y][x] = object
+  }
+
+  count(spriteName: string) {
+    let count = 0;
+    for (let y = 0; y < this.matrix.height; y++) {
+      for (let x = 0; x < this.matrix.width; x++) {
+        let object = this.getObjectAt(y, x);
+        if (object) {
+          if (object.spriteName == spriteName) {
+            count++;
+          }
+        }
+      }
+    }
+    return count
   }
 
   clearKeepingInModel(keepInModel: GameObjects.GameObject) {

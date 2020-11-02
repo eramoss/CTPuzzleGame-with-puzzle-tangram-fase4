@@ -6,9 +6,10 @@ import Sounds from '../sounds/Sounds';
 import Program from '../program/Program';
 import AlignGrid from '../geom/AlignGrid';
 import { DudeMove } from './DudeMove';
+import { Branch } from './Branch';
 
 export default class Dude {
-
+  stopped: boolean = false;
 
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
@@ -36,7 +37,7 @@ export default class Dude {
     this.sounds = sounds;
     this.scene = scene;
     this.matrix = matrix;
-    this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrix.mode}`);
+    this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrix.mode}`)
     this.createAnimations();
   }
 
@@ -124,6 +125,7 @@ export default class Dude {
   }
 
   stop(resetFace: boolean = false) {
+    this.stopped = true;
     this.character.clearTint();
     this.character.body.stop();
     this.currentStep = null;
@@ -165,14 +167,16 @@ export default class Dude {
   onCompleteMove(move: DudeMove) {
     this.character.clearTint();
     this.onCompleteMoveCallback(this.currentStep);
-    this.currentStep = move.next
-    if (!move.next) {
-      this.continuePreviousBranchIfExists();
-      this.programBeingExecuted.disanimate();
+    if (!this.stopped) {
+      this.currentStep = move.next
+      if (!move.next) {
+        this.continuePreviousBranchIfExists();
+        this.programBeingExecuted.disanimate();
+      }
+      if (move.couldExecute)
+        this.resetAt(move);
+      this.currentStep?.execute(move);
     }
-    if (move.couldExecute)
-      this.resetAt(move);
-    this.currentStep?.execute(move);
   }
 
   continuePreviousBranchIfExists() {
@@ -188,6 +192,7 @@ export default class Dude {
 
   execute(programs: Program[]) {
     this.stop();
+    this.stopped = false;
     this.programs = programs;
     this.disanimatePrograms();
     this.executeProgram(programs[0])
@@ -236,15 +241,29 @@ export default class Dude {
     })
     this.currentStep = moves[0]
   }
-}
 
-export class Branch {
-  dudeMove: DudeMove
-  onCompleteBranch: () => void
-  program: Program;
+  playSuccess() {
 
-  constructor(dudeMove: DudeMove, onCompleteBranch: () => void) {
-    this.dudeMove = dudeMove;
-    this.onCompleteBranch = onCompleteBranch;
+    let playAnimation = (color: number, face: string, time: number) => {
+      this.setTimeout(() => {
+        this.playAnimation(face);
+        this.character.setTint(color)
+        if (!color) { this.character.clearTint(); }
+      }, time)
+    }
+    var animations = ['down', 'down-right', 'right', 'right-up', 'up', 'up-left', 'left', 'left-down']
+    let time = 0;
+    let colors = [0xff00c5, 0xffb900, 0x0299f5, 0x00cf00]
+    this.sounds.success();
+    animations.forEach((faceAnimation, index) => {
+      let color = colors[Math.ceil(Math.random() * colors.length)]
+      if (index == animations.length - 1) {
+        color = null;
+      }
+      playAnimation(color, faceAnimation, time)
+      time += 120;
+    })
   }
 }
+
+

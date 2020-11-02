@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+var ZipPlugin = require('zip-webpack-plugin');
 const path = require('path');
 const dist = path.resolve(__dirname, 'dist')
 
@@ -47,5 +48,9 @@ module.exports = {
         { from: 'static', to: dist+'/' },
       ],
     }),
+    new ZipPlugin({
+      path: 'zip',
+      filename: 'myapp.zip'
+    })
   ]
 };

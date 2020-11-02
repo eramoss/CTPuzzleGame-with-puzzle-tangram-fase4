@@ -38,7 +38,7 @@ export default class Sounds {
   }
 
   hover() {
-    this.playSound(//this.hoverSound);
+    this.playSound(this.hoverSound);
   }
 
   remove() {

@@ -13,8 +13,9 @@ export default class CodeEditor {
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
-  fnOnClickRun: () => void;
-  fnOnClickStop: () => void;
+  onClickRun: () => void = () => { };
+  onInteract: () => void = () => { };
+  onClickStop: () => void = () => { };
   sounds: Sounds;
   controlsScale: number;
   scale: number
@@ -94,6 +95,9 @@ export default class CodeEditor {
       let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
       commandSprite.setScale(toolboxRow.scaleNormal);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
+      commandSprite.on('pointerdown', _ => {
+        this.onInteract();
+      })
       commandSprite.on('pointerover', _ => {
         this.sounds.hover();
         commandSprite.setScale(toolboxRow.scaleOnPointerOver);
@@ -297,23 +301,15 @@ export default class CodeEditor {
 
   private createStartStopButtons() {
     const btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
-      this.fnOnClickRun();
+      this.onClickRun();
     })
     const btnStop = new Button(this.scene, this.sounds, 0, 0, 'btn-stop', () => {
       this.sounds.stop();
-      this.fnOnClickStop();
+      this.onClickStop();
     })
     this.grid.placeAt(1, 17, btnPlay.sprite, 2.3)
     this.grid.placeAt(4, 17, btnStop.sprite, 2.3)
 
-  }
-
-  onClickRun(fnOnClickRun: () => void) {
-    this.fnOnClickRun = fnOnClickRun;
-  }
-
-  onClickStop(fnOnClickStop: () => void) {
-    this.fnOnClickStop = fnOnClickStop;
   }
 
   getProgramByDropzone(zone: SpriteDropZone) {

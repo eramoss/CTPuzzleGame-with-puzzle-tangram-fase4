@@ -119,7 +119,7 @@ export default class Game extends Scene {
       return this.add.image(x, y - 30 * scale, 'block').setScale(scale * (isometric ? 1.5 : 1))
     };
     spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.5 : 1))
+      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.6 : 1))
     };
     spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({
@@ -206,17 +206,21 @@ export default class Game extends Scene {
       }
     }
 
-    this.codeEditor.onClickRun(() => {
+    this.codeEditor.onClickRun = () => {
       this.dude.execute([this.program, prog1, prog2]);
-    })
+    }
 
-    this.codeEditor.onClickStop(() => {
-      //console.clear();
+    this.codeEditor.onInteract = () => {
       let resetFace = true;
       this.dude.stop(resetFace);
-      //this.mazeModel.clear();
       initGame();
-    })
+    }
+
+    this.codeEditor.onClickStop = () => {
+      let resetFace = true;
+      this.dude.stop(resetFace);
+      initGame();
+    }
 
     initGame();
   }

@@ -3,6 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 var ZipPlugin = require('zip-webpack-plugin');
 const path = require('path');
 const dist = path.resolve(__dirname, 'dist')
+const generate = require('generate-file-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -44,13 +45,17 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'assets', to: dist+'/assets' },
-        { from: 'static', to: dist+'/' },
+        { from: 'assets', to: dist + '/assets' },
+        { from: 'static', to: dist + '/' },
       ],
     }),
     new ZipPlugin({
       path: 'zip',
       filename: 'myapp.zip'
+    }),
+    generate({
+      file: 'version.txt',
+      content: `${new Date().getTime()}`
     })
   ]
 };

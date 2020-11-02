@@ -198,7 +198,9 @@ export default class Command {
       if (!this.condition) {
         if (!this.isConditional) {
           if (success) {
-            this.sounds.start();
+            if (!this.isProgCommand()) {
+              this.sounds.start();
+            }
           } else {
             this.sounds.blocked();
           }

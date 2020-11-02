@@ -92,12 +92,12 @@ export default class Game extends Scene {
     ];
 
     let obstaclesMatrix: string[][] = [
-      ['coin', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'coin', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'block', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'coin', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'block', 'coin', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
 
@@ -135,8 +135,9 @@ export default class Game extends Scene {
 
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      this.mazeModel.putSprite(0, 4, this.dude.character, 'rope')
-      this.dude.setPosition(0, 4);
+      let x = 0, y = 3;
+      this.mazeModel.putSprite(x, y, this.dude.character, 'rope')
+      this.dude.setPosition(x, y);
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
       this.codeEditor.disanimatePrograms();

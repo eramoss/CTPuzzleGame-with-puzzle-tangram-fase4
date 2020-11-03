@@ -170,7 +170,7 @@ export default class Program {
   }
 
   reorganize() {
-    vibrate(35)
+    vibrate(30)
     this.distributeAllCommands();
     this.updateCommandsDropZonesPositions();
     this.associateConditionsCommandsWithOrdinalCommands();

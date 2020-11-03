@@ -97,7 +97,6 @@ export default class CodeEditor {
       commandSprite.setScale(toolboxRow.scaleNormal);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
       commandSprite.on('pointerdown', _ => {
-        vibrate(40)
         this.onInteract();
       })
       commandSprite.on('pointerover', _ => {
@@ -198,7 +197,7 @@ export default class CodeEditor {
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "drop ", dropZone)
-        vibrate(50)
+        vibrate(30)
 
         let programWhereAreDropped = this.programs
           .flatMap(p => p.dropZone)

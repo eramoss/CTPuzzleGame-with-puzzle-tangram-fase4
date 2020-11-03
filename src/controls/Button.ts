@@ -18,7 +18,7 @@ export default class Button {
       sprite.setFrame(1)
     })
     sprite.on('pointerdown', () => {
-      vibrate(40)
+      vibrate(30)
       sprite.setFrame(2)
       onClickHandler();
     })

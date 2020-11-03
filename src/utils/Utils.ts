@@ -34,6 +34,7 @@ export function androidVibrate(time: number) {
 }
 
 export function androidPlayAudio(sound: string): boolean {
+    console.log(`Calling GameJavascriptInterface.play with param ${sound}`)
     //@ts-ignore
     GameJavascriptInterface.play(sound)
     //@ts-ignore

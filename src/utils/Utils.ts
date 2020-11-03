@@ -21,3 +21,9 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
     grid.placeAt(cellx, celly, dropZone.sprite, colspan, rowspan);
     return dropZone;
 }
+
+
+export function vibrate(time: number) {
+    //@ts-ignore
+    GameJavascriptInterface.vibrate(time)
+}

@@ -7,7 +7,7 @@ import Program from '../program/Program';
 import AlignGrid from '../geom/AlignGrid';
 import { DudeMove } from './DudeMove';
 import { Branch } from './Branch';
-import { vibrate } from '../utils/Utils';
+import { androidVibrate } from '../utils/Utils';
 
 export default class Dude {
   stopped: boolean = false;
@@ -82,7 +82,7 @@ export default class Dude {
   warmBlocked() {
     //this.playAnimation(dudeMove.action);
     //this.sounds.blocked();
-    vibrate(120)
+    androidVibrate(120)
     this.character.setTint(0xff0000);
   }
 

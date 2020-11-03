@@ -3,7 +3,7 @@ import Command from './Command'
 import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import SpriteDropZone from '../controls/SpriteDropZone';
-import { createDropZone, vibrate } from '../utils/Utils';
+import { createDropZone, androidVibrate } from '../utils/Utils';
 
 export default class Program {
 
@@ -170,7 +170,7 @@ export default class Program {
   }
 
   reorganize() {
-    vibrate(30)
+    androidVibrate(30)
     this.distributeAllCommands();
     this.updateCommandsDropZonesPositions();
     this.associateConditionsCommandsWithOrdinalCommands();

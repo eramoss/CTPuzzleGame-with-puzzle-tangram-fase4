@@ -23,7 +23,7 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
 }
 
 
-export function vibrate(time: number) {
+export function androidVibrate(time: number) {
     console.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)
     //@ts-ignore
     if (!GameJavascriptInterface) {
@@ -31,4 +31,11 @@ export function vibrate(time: number) {
     }
     //@ts-ignore
     GameJavascriptInterface.vibrate(time)
+}
+
+export function androidPlayAudio(sound: string): boolean {
+    //@ts-ignore
+    GameJavascriptInterface.play(sound)
+    //@ts-ignore
+    return GameJavascriptInterface != null;
 }

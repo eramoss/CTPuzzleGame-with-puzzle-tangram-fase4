@@ -1,6 +1,8 @@
 // Site com sons
 // https://www.zapsplat.com/sound-effect-category/cartoon-impacts/
 
+import { androidPlayAudio } from "../utils/Utils";
+
 export default class Sounds {
 
   scene: Phaser.Scene;
@@ -68,16 +70,18 @@ export default class Sounds {
   }
 
   blink() {
-    this.blinkSound.play()
+    this.playSound(this.blinkSound)
   }
 
   success() {
-    this.successSound.play()
+    this.playSound(this.successSound)
   }
 
   playSound(sound: Phaser.Sound.BaseSound) {
-    if (!sound.isPlaying) {
-      sound.play()
+    if (!androidPlayAudio(sound.key)) {
+      if (!sound.isPlaying) {
+        sound.play()
+      }
     }
   }
 }

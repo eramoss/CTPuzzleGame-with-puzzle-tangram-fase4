@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
 import Sounds from '../sounds/Sounds';
-import { vibrate } from '../utils/Utils';
+import { androidVibrate } from '../utils/Utils';
 
 export default class Button {
   sprite: Phaser.GameObjects.Sprite;
@@ -18,7 +18,7 @@ export default class Button {
       sprite.setFrame(1)
     })
     sprite.on('pointerdown', () => {
-      vibrate(30)
+      androidVibrate(30)
       sprite.setFrame(2)
       onClickHandler();
     })

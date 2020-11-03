@@ -96,8 +96,8 @@ export default class Game extends Scene {
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'coin', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
     ]
@@ -143,7 +143,7 @@ export default class Game extends Scene {
 
     let initGame = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      let x = 0, y = 3;
+      let x = 1, y = 3;
       this.mazeModel.putSprite(x, y, this.dude.character, 'rope')
       this.dude.setPosition(x, y);
       this.mazeModel.updateBringFront();

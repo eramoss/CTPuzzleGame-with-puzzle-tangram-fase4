@@ -82,7 +82,7 @@ export default class Dude {
   warmBlocked() {
     //this.playAnimation(dudeMove.action);
     //this.sounds.blocked();
-    vibrate(150)
+    vibrate(120)
     this.character.setTint(0xff0000);
   }
 

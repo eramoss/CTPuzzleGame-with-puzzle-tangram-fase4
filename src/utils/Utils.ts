@@ -26,5 +26,9 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
 export function vibrate(time: number) {
     console.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)
     //@ts-ignore
+    if (!GameJavascriptInterface) {
+        console.log("Ambiente web. Não possui GameJavascriptInterface (Somente Android). Ocorrerá um erro a seguir: ")
+    }
+    //@ts-ignore
     GameJavascriptInterface.vibrate(time)
 }

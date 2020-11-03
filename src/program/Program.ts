@@ -151,20 +151,13 @@ export default class Program {
     return fitInFirstRow;
   }
 
-  removeCommandSprite(commandSprite: GameObjects.Sprite, playSound: boolean = true) {
-    this.scene.children.remove(commandSprite);
-    if (playSound)
-      this.sounds.remove();
-  }
-
   removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
     if (command.index() > -1) {
       this.ordinalCommands.splice(command.index(), 1);
       command.program = null;
     }
     if (removeSpriteFromScene) {
-      let playSound = !command.isIntent
-      this.removeCommandSprite(command.sprite, playSound);
+      this.scene.children.remove(command.sprite);
     }
     this.reorganize();
   }

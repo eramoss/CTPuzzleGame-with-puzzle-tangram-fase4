@@ -25,18 +25,29 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
 
 export function androidVibrate(time: number) {
     console.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)
-    //@ts-ignore
-    if (!GameJavascriptInterface) {
-        console.log("Ambiente web. Não possui GameJavascriptInterface (Somente Android). Ocorrerá um erro a seguir: ")
+    try {
+        //@ts-ignore
+        if (GameJavascriptInterface != undefined) {
+            //@ts-ignore
+            GameJavascriptInterface.vibrate(time)
+        }
+    } catch (e) {
+        console.error(e);
     }
-    //@ts-ignore
-    GameJavascriptInterface.vibrate(time)
 }
 
 export function androidPlayAudio(sound: string): boolean {
     console.log(`Calling GameJavascriptInterface.play with param ${sound}`)
-    //@ts-ignore
-    GameJavascriptInterface.play(sound)
-    //@ts-ignore
-    return GameJavascriptInterface != null;
+    let couldPlay = false;
+    try {
+        //@ts-ignore
+        if (GameJavascriptInterface != undefined) {
+            //@ts-ignore
+            GameJavascriptInterface.play(sound)
+            couldPlay = true;
+        }
+    } catch (e) {
+        console.error(e);
+    }
+    return couldPlay;
 }

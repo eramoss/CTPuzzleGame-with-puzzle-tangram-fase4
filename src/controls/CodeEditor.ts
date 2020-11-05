@@ -7,7 +7,7 @@ import AlignGrid from '../geom/AlignGrid';
 import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 import ToolboxRowOrganizer from './ToolboxRowOrganizer';
-import { androidVibrate } from '../utils/Utils';
+import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
 
@@ -200,18 +200,18 @@ export default class CodeEditor {
         androidVibrate(30)
 
         let programWhereAreDropped = this.programs
-          .flatMap(p => p.dropZone)
+          .map(p => p.dropZone)
           .filter(d => d.zone == dropZone)[0];
 
-        const commandIntentWhereAreDroppedInPlace: Command = this.programs
-          .flatMap(p => p.ordinalCommands)
-          .filter(c => c.isIntent)
-          .find(c => c.tileDropZone?.zone == dropZone);
+        const commandIntentWhereAreDroppedInPlace: Command =
+          this.getAllProgramCommands()
+            .filter(c => c.isIntent)
+            .find(c => c.tileDropZone?.zone == dropZone);
 
-        const ordinalCommandWhereIfArePlacedOver: Command = this.programs
-          .flatMap(p => p.ordinalCommands)
-          .filter(c => !c.isIntent && !c.isConditional)
-          .find(c => c.tileDropZone?.zone == dropZone);
+        const ordinalCommandWhereIfArePlacedOver: Command =
+          this.getAllProgramCommands()
+            .filter(c => !c.isIntent && !c.isConditional)
+            .find(c => c.tileDropZone?.zone == dropZone);
 
         if (!programWhereAreDropped) {
           if (commandIntentWhereAreDroppedInPlace) {
@@ -238,18 +238,17 @@ export default class CodeEditor {
 
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "dragleave")
-        const commandIntentLeaved: Command = this.programs
-          .flatMap(p => p.ordinalCommands)
-          .filter(c => c.isIntent)
-          .find(c => c.tileDropZone?.zone == dropZone);
+        const commandIntentLeaved: Command =
+          this.getAllProgramCommands()
+            .filter(c => c.isIntent)
+            .find(c => c.tileDropZone?.zone == dropZone);
         if (commandIntentLeaved) {
           commandIntentLeaved.removeSelf();
         }
       })
 
       commandSprite.on('dragenter', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
-        const commandHovered: Command = this.programs
-          .flatMap(p => p.ordinalCommands)
+        const commandHovered: Command = this.getAllProgramCommands()
           .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered && !commandHovered.program?.isFull()) {
@@ -264,6 +263,11 @@ export default class CodeEditor {
       })
     })
   }
+
+  getAllProgramCommands(): Array<Command> {
+    return joinChilds(this.programs, (program) => program.ordinalCommands)
+  }
+
   private logPrograms(moment: string) {
     this.programs.forEach(p => {
       console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.ordinalCommands.map(c => c.name).join(', '), ']');

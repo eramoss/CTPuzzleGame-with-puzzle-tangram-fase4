@@ -7,7 +7,7 @@ import Program from '../program/Program';
 import AlignGrid from '../geom/AlignGrid';
 import { DudeMove } from './DudeMove';
 import { Branch } from './Branch';
-import { androidVibrate } from '../utils/Utils';
+import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class Dude {
   stopped: boolean = false;
@@ -228,11 +228,7 @@ export default class Dude {
 
   buildPath(commands: Command[]) {
     let moves: Array<DudeMove> =
-      commands
-        .flatMap(command => [
-          command.condition,
-          command
-        ])
+      joinChilds(commands, (c) => [c.condition, c])
         .filter(command => command != undefined)
         .map(command => new DudeMove(this, command))
 

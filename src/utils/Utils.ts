@@ -51,3 +51,17 @@ export function androidPlayAudio(sound: string): boolean {
     }
     return couldPlay;
 }
+
+/**
+ * O flatMap to es2015 não existia nos navegadores mais antigos.
+ * Por isso criei essa função que faz a mesma coisa
+ */
+export function joinChilds<PARENT, CHILD>(parents: Array<PARENT>, fnGetChilds: (p: PARENT) => Array<CHILD>): Array<CHILD> {
+    let allChildren = new Array<CHILD>()
+    parents.forEach(parent=>{
+        fnGetChilds(parent).forEach(child=>{
+            allChildren.push(child);
+        })
+    });
+    return allChildren
+}

@@ -30,7 +30,7 @@ export default class Game extends Scene {
     this.load.image('arrow-down', 'assets/ct/arrow_down.png');
     this.load.image('arrow-right', 'assets/ct/arrow_right.png');
     this.load.image('arrow-left', 'assets/ct/arrow_left.png');
-    this.load.image('scene', 'assets/ct/programming_scene.png');
+    this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.image('tile', `assets/ct/tile_${this.mode}.png`);
     this.load.image('toolbox', 'assets/ct/toolbox.png');
     this.load.image('x', 'assets/ct/x.png');
@@ -74,6 +74,7 @@ export default class Game extends Scene {
       this.game.config.height as number
     );
 
+    this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 

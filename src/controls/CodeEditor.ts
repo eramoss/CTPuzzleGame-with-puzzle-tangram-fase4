@@ -38,7 +38,7 @@ export default class CodeEditor {
     grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
       [
-        new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-left', 'arrow-right', 'arrow-up', 'arrow-down']),
+        new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right']),
         new ToolboxRowOrganizer(this.grid, 18, 4.5, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
         new ToolboxRowOrganizer(this.grid, 18, 7, 6, 2, ['if_coin', 'if_block'], 1.1)
       ]

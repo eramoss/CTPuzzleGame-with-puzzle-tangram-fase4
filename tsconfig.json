@@ -4,10 +4,10 @@
     "noImplicitAny": false,
     "module": "es6",
     "target": "es5",
-    /* "lib": [
-      "ES2015.Collection",
+    "lib": [
+      "ES2019",
       "DOM"
-    ], */
+    ],
     "sourceMap": true,
     "skipLibCheck": true,
     "allowJs": true,

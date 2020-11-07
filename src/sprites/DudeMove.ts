@@ -91,7 +91,6 @@ export class DudeMove {
   }
 
   onCompleteMove(moveToComplete: DudeMove = null) {
-    this.disanimate();
     this.dude.onCompleteMove(moveToComplete || this);
   }
 

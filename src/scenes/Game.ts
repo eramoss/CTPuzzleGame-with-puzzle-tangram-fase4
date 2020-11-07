@@ -45,6 +45,7 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 105 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
     this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
@@ -229,6 +230,10 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       this.dude.execute([this.program, prog1, prog2]);
+    }
+
+    this.codeEditor.onClickStepByStep = () => {
+      this.dude.executeStepByStep([this.program, prog1, prog2]);
     }
 
     this.codeEditor.onInteract = () => {

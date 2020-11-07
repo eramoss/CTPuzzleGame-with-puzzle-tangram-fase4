@@ -10,15 +10,14 @@ import { Branch } from './Branch';
 import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class Dude {
-  stopped: boolean = false;
-
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
   currentStep: DudeMove;
   x: number;
   y: number;
-  walking: boolean;
+  stopped: boolean = true;
+  stepByStep: boolean;
   onCompleteMoveCallback: (current: DudeMove) => void
   onFinishWalking: () => void = () => { };
   onStartMoveCallback: (x: number, y: number, current: DudeMove) => void
@@ -178,7 +177,10 @@ export default class Dude {
       }
       if (move.couldExecute)
         this.resetAt(move);
-      this.currentStep?.execute(move);
+      if (!this.stepByStep) {
+        move.disanimate();
+        this.currentStep?.execute(move);
+      }
       if (!this.currentStep) {
         this.setTimeout(() => {
           this.onFinishWalking()
@@ -198,7 +200,18 @@ export default class Dude {
     this.currentStep?.update();
   }
 
-  execute(programs: Program[]) {
+  executeStepByStep(programs: Program[]) {
+    if (this.stopped) {
+      let stepByStep = true;
+      this.execute(programs, stepByStep);
+    }
+    if (!this.stopped) {
+      this.currentStep.execute();
+    }
+  }
+
+  execute(programs: Program[], stepByStep: boolean = false) {
+    this.stepByStep = stepByStep;
     this.stop();
     this.stopped = false;
     this.programs = programs;

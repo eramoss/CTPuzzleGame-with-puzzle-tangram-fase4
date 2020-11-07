@@ -17,6 +17,7 @@ export default class CodeEditor {
   onClickRun: () => void = () => { };
   onInteract: () => void = () => { };
   onClickStop: () => void = () => { };
+  onClickStepByStep: () => void = () => { };
   sounds: Sounds;
   controlsScale: number;
   scale: number
@@ -33,7 +34,7 @@ export default class CodeEditor {
     this.scale = grid.scale
     this.createGlobalDragLogic();
     this.dropZones = programs.map(program => program.dropZone)
-    this.createStartStopButtons();
+    this.createStartStopStepButtons();
 
     grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
@@ -307,7 +308,7 @@ export default class CodeEditor {
     return new Date().getTime()
   }
 
-  private createStartStopButtons() {
+  private createStartStopStepButtons() {
     const btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
       this.onClickRun();
     })
@@ -315,8 +316,13 @@ export default class CodeEditor {
       this.sounds.stop();
       this.onClickStop();
     })
+    const btnStep = new Button(this.scene, this.sounds, 0, 0, 'btn-step', () => {
+      //this.sounds.stop();
+      this.onClickStepByStep();
+    })
     this.grid.placeAt(1, 17, btnPlay.sprite, 2.3)
-    this.grid.placeAt(4, 17, btnStop.sprite, 2.3)
+    this.grid.placeAt(4, 17, btnStep.sprite, 2.3)
+    this.grid.placeAt(7, 17, btnStop.sprite, 2.3)
 
   }
 

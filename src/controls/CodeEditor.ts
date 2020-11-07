@@ -43,7 +43,7 @@ export default class CodeEditor {
     this.toolboxRows =
       [
         new ToolboxRowOrganizer(this.grid, 20, 2, 2, 2, ['arrow-up',]),
-        new ToolboxRowOrganizer(this.grid, 18, 3, 6, 2, ['arrow-left', 'arrow-right']),
+        new ToolboxRowOrganizer(this.grid, 17, 3, 8, 2, ['arrow-left', 'arrow-right']),
         new ToolboxRowOrganizer(this.grid, 20, 3.7, 2, 2, ['arrow-down']),
         new ToolboxRowOrganizer(this.grid, 18, 5.7, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
         new ToolboxRowOrganizer(this.grid, 18, 7.4, 6, 2, ['if_coin', 'if_block'], 1.1)

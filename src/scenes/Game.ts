@@ -54,6 +54,7 @@ export default class Game extends Scene {
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 94 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 122 });
+    this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
 
     this.load.audio('blocked', 'assets/ct/sounds/impact.mp3');
     this.load.audio('error', 'assets/ct/sounds/error.ogg');
@@ -101,7 +102,7 @@ export default class Game extends Scene {
       ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
       ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null', 'null', 'null', 'null', 'hand'],
     ]
 
     this.matrix = new Matrix(this,
@@ -133,6 +134,15 @@ export default class Game extends Scene {
       })
       return this.physics.add.sprite(x, y - 15, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
+    spriteCreateFunctions['hand'] = (x: integer, y: integer) => {
+      this.anims.create({
+        key: 'hand-tapping',
+        frames: this.anims.generateFrameNumbers('hand-tutorial', { start: 0, end: 7 }),
+        frameRate: 12,
+        repeat: -1
+      })
+      return this.physics.add.sprite(x, y - 15, 'hand-tutorial').play('hand-tapping').setScale(this.grid.scale)
+    }
     new MazeModel(this, base, spriteCreateFunctions)
     this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
 
@@ -140,6 +150,7 @@ export default class Game extends Scene {
       if (this.mazeModel.count('coin') == 0) {
         this.dude.stop()
         this.dude.playSuccess();
+        this.codeEditor.resetHighlightStepByStep();
       }
     }
 

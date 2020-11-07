@@ -21,6 +21,18 @@
      id="defs3442">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient3267">
+      <stop
+         style="stop-color:#009cff;stop-opacity:0.95294118"
+         offset="0"
+         id="stop3263" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop3265" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient4061">
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -606,6 +618,16 @@
        r="260.81705"
        gradientTransform="matrix(1,0,0,0.58000003,0,-98.937255)"
        gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3267"
+       id="linearGradient3261"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.57569108,0,0,0.57569108,36.241692,123.32243)"
+       x1="-86.188019"
+       y1="147.31198"
+       x2="-85.4505"
+       y2="173.58936" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -614,9 +636,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8965762"
-     inkscape:cx="1415.4701"
-     inkscape:cy="1706.095"
+     inkscape:zoom="0.67054093"
+     inkscape:cx="1111.9224"
+     inkscape:cy="1432.4467"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -10748,38 +10770,6 @@
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     </g>
     <g
-       id="g8831"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
-       inkscape:export-xdpi="94.984886"
-       inkscape:export-ydpi="94.984886"
-       transform="rotate(180,103.62263,-148.23306)">
-      <rect
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-         id="rect8824"
-         width="26.238003"
-         height="23.091209"
-         x="9.0533829"
-         y="210.18559" />
-      <path
-         sodipodi:nodetypes="cccccccc"
-         inkscape:connector-curvature="0"
-         id="path4076"
-         d="m 13.126514,220.10622 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
-         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
-         inkscape:export-xdpi="95.999985"
-         inkscape:export-ydpi="95.999985" />
-      <path
-         inkscape:export-ydpi="95.999985"
-         inkscape:export-xdpi="95.999985"
-         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
-         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-         d="m 12.486698,220.49589 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
-         id="path2822"
-         inkscape:connector-curvature="0"
-         sodipodi:nodetypes="cccccccc" />
-    </g>
-    <g
        id="g1481"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_down.png"
        inkscape:export-xdpi="95.999985"
@@ -14392,6 +14382,126 @@
            d="m 273.1437,-510.418 c 11.44544,-8.29706 -6.7997,-21.35963 -6.20548,-8.31473 l 2.54419,0.0609 -6.49154,5.35927 -5.00739,-7.36026 2.8692,0.84218 c 4.53577,-20.66527 29.72005,-0.85047 12.43431,9.70802 z"
            style="fill:#fcb402;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.47752571;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
       </g>
+    </g>
+    <text
+       id="text3233"
+       y="-518.71875"
+       x="211.16348"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.03029728px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:0.10795439px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_down.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#f9f9f9;stroke-width:0.10795439px"
+         y="-518.71875"
+         x="211.16348"
+         id="tspan3231"
+         sodipodi:role="line">BACK</tspan></text>
+    <g
+       id="g8831"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+       inkscape:export-xdpi="94.984886"
+       inkscape:export-ydpi="94.984886"
+       transform="rotate(180,103.46103,-148.09935)">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect8824"
+         width="26.238003"
+         height="23.091209"
+         x="9.0533829"
+         y="210.18559" />
+      <path
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path4076"
+         d="m 13.126514,220.10622 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         d="m 12.486698,220.49589 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         id="path2822"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccc" />
+    </g>
+    <g
+       id="g3290"
+       transform="translate(-29.798686,-3.4332285)">
+      <g
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+         id="g3259"
+         transform="matrix(1.220093,0,0,1.220093,-34.262472,-537.8535)">
+        <rect
+           transform="scale(-1)"
+           y="-29.80983"
+           x="-177.26691"
+           height="23.091209"
+           width="26.238003"
+           id="rect3235"
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/prog_1.png"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-ydpi="95.999985" />
+        <g
+           id="g3253"
+           transform="matrix(1.4397773,0,0,1.4397773,187.18163,-288.30266)"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/prog_1.png"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-ydpi="95.999985">
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path3237"
+             d="m -23.01879,206.03425 h 14.0409994 l -0.376968,13.40784 -12.8366424,0.37697 z"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#0199f5;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#0138eb;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.18000001;stroke-opacity:0.95294118;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+          <path
+             sodipodi:nodetypes="ccccc"
+             inkscape:connector-curvature="0"
+             id="path3239"
+             d="m -22.553159,206.4912 0.418878,7.92056 12.4520184,-0.3808 0.456954,-7.50168 z"
+             style="fill:url(#linearGradient3261);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.15231825px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <g
+             transform="matrix(1.1112019,0,0,1.2994119,84.832903,11.275662)"
+             id="g3249"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.63626814px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#590b00;stroke-width:0.12418576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             aria-label="PROG" />
+          <g
+             transform="matrix(0.68860706,0,0,0.68860706,47.000907,105.30776)"
+             id="g3251"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.65297222px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#590b00;stroke-width:0.36570463px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             aria-label="1" />
+        </g>
+      </g>
+      <text
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+         id="text3229"
+         y="-520.37744"
+         x="155.25916"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.54426193px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f9f9f9;fill-opacity:1;stroke:#033fe3;stroke-width:0.20207843px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.95294118"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#f9f9f9;stroke:#033fe3;stroke-width:0.20207843px;stroke-opacity:0.95294118"
+           y="-520.37744"
+           x="155.25916"
+           id="tspan3227"
+           sodipodi:role="line">FRONT</tspan></text>
+      <path
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path3273"
+         d="m 172.88796,-511.26611 -7.04983,-7.34452 -6.92003,7.34452 h 3.30061 v 5.56278 h 7.56582 v -5.56278 z"
+         style="fill:#f9f9f9;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#0139e1;stroke-width:1.1538564;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.95294118;paint-order:stroke fill markers"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
     </g>
   </g>
 </svg>

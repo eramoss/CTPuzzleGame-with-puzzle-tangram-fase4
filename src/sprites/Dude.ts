@@ -33,21 +33,20 @@ export default class Dude {
   grid: AlignGrid;
   tag: string;
 
-  constructor(scene: Scene, matrix: Matrix, sounds: Sounds, grid: AlignGrid) {
+  constructor(scene: Scene, matrixMode: string, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
     this.sounds = sounds;
     this.scene = scene;
-    this.matrix = matrix;
-    this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrix.mode}`)
-    this.createAnimations();
+    this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrixMode}`)
+    this.createAnimations(matrixMode);
   }
 
   setTimeout(fn: Function, timeout: number) {
     this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
   }
 
-  createAnimations() {
-    let isometric = this.matrix.mode == Matrix.ISOMETRIC;
+  createAnimations(matrixMode:string) {
+    let isometric = matrixMode == Matrix.ISOMETRIC;
     [
       { key: 'down', frames: isometric ? [1] : [2] },
       { key: 'left', frames: isometric ? [3] : [0] },
@@ -64,7 +63,7 @@ export default class Dude {
     ].forEach(anim => {
       this.scene.anims.create({
         key: anim.key,
-        frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${this.matrix.mode}`, anim),
+        frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${matrixMode}`, anim),
         frameRate: 7,
         repeat: 0
       });

@@ -25,7 +25,7 @@ export default class TutorialAction {
     }
 
     execute() {
-        this.blockClickBackgroundImage = this.grid.addImage(0, 0, 'tutorial-block-click-background').setDepth(99);
+        this.blockClickBackgroundImage = this.grid.addImage(0, 0, 'tutorial-block-click-background', this.grid.cols, this.grid.rows).setDepth(99);
         this.spriteDepthBackup = this.sprite.depth
         this.sprite.setDepth(100);
         this.sprite.on('pointerdown', () => {

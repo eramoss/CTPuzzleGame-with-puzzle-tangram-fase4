@@ -7,6 +7,7 @@ import MazePhase from "./MazePhase";
 
 export default class MazeConfigs {
 
+    currentPhase: number = -1
     phases: Array<MazePhase>;
     scene: Scene;
     grid: AlignGrid;
@@ -35,8 +36,13 @@ export default class MazeConfigs {
 
         this.phases = new Array<MazePhase>();
 
-        const phaseArrowUp = this.createPhaseEasyArrowUp();
-        this.phases.push(phaseArrowUp);
+        this.phases.push(this.createPhaseEasyArrowUp());
+        this.phases.push(this.createPhaseEasyArrowUpAndLeft());
+    }
+
+    getNextPhase(): MazePhase {
+        this.currentPhase++
+        return this.phases[this.currentPhase]
     }
 
     startPhases() {
@@ -96,6 +102,8 @@ export default class MazeConfigs {
 
     private createPhaseEasyArrowUpAndLeft() {
         const phaseArrowUp = new MazePhase(this.scene, this.grid);
+        phaseArrowUp.dudeFacedTo = 'right'
+        phaseArrowUp.dudeStartPosition = { col: 1, row: 3 }
 
         let baseMatrix = [
             ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
@@ -133,10 +141,10 @@ export default class MazeConfigs {
 
         const arrowUp = joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
             .find(c => c.texture.key == 'arrow-up');
-        const btnPlay = this.codeEditor.btnPlay.sprite;
+        const btnStep = this.codeEditor.btnStep.sprite;
 
-        phaseArrowUp.addClickTutorialAction(arrowUp);
-        phaseArrowUp.addClickTutorialAction(btnPlay);
+        //phaseArrowUp.addClickTutorialAction(arrowUp);
+        phaseArrowUp.addClickTutorialAction(btnStep);
 
 
         return phaseArrowUp;

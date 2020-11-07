@@ -5,14 +5,15 @@ import Matrix from "../geom/Matrix";
 import TutorialAction from "./TutorialAction";
 
 export default class MazePhase {
-    
+
     obstacles: Matrix;
     ground: Matrix;
     scene: Scene;
     grid: AlignGrid
     firstAction: TutorialAction;
     action: TutorialAction;
-    
+    next: MazePhase
+
     dudeFacedTo: string = 'right'
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
 

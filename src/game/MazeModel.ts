@@ -23,14 +23,15 @@ export default class MazeModel {
 
   constructor(
     scene: Phaser.Scene,
-    matrix: Matrix,
     spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
-
     this.scene = scene;
-    this.matrix = matrix;
     this.gameObjects = []
-    this.obstaclesMatrix = matrix.matrix;
     this.spriteCreateFunctions = spriteCreateFunctions;
+  }
+
+  setMatrixOfObjects(matrix:Matrix){
+    this.obstaclesMatrix = matrix.matrix;
+    this.matrix = matrix;
     this.buildObjectsModel();
   }
 

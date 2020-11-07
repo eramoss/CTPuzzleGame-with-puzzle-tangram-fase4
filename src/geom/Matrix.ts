@@ -66,6 +66,15 @@ export default class Matrix {
     return point;
   }
 
+  getKey(y,x):string{
+    let key = null
+    const row = this.matrix[y];
+    if (row) {
+      key = row[x];
+    }
+    return key;
+  }
+
   getTotalElements():number {
     return this.width * this.height
   }

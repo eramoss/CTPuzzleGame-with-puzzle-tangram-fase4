@@ -1,3 +1,4 @@
+import { GameObjects } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import FlexFlow from "../geom/FlexFlow";
 import Command from "../program/Command";
@@ -34,5 +35,9 @@ export default class ToolboxRowOrganizer {
         }
         command.sprite.setScale(this.scaleNormal);
         this.flow.setChildAt(command.sprite, index, splice);
+    }
+
+    getSprite(key: string): GameObjects.GameObject {
+        return this.flow.children.find(c => c.texture.key == key);
     }
 }

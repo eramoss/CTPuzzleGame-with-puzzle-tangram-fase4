@@ -11,6 +11,7 @@ import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
 
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -357,11 +358,11 @@ export default class CodeEditor {
     this.programs.forEach(p => p.disanimateCommands());
   }
 
-  highlightStepByStep(){
+  highlightStepByStep() {
     this.btnStep.blink();
   }
 
-  resetHighlightStepByStep(){
+  resetHighlightStepByStep() {
     this.btnStep.stopBlink();
   }
 }

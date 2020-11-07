@@ -7,6 +7,8 @@ import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
+import MazeConfigs from '../tutorial/MazeConfigs'
+import MazePhase from '../tutorial/MazePhase'
 
 export default class Game extends Scene {
 
@@ -14,12 +16,13 @@ export default class Game extends Scene {
   program: Program
   currentObject: GameObjects.Image;
   dude: Dude
-  matrix: Matrix
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
   mazeModel: MazeModel
   grid: AlignGrid
   mode: String = Matrix.ISOMETRIC
+  phases: MazeConfigs
+  currentPhase: MazePhase
 
   constructor() {
     super('game')
@@ -42,6 +45,7 @@ export default class Game extends Scene {
     this.load.image('if_coin', 'assets/ct/if_coin.png');
     this.load.image('if_block', 'assets/ct/if_block.svg');
     this.load.image('if_highlight', 'assets/ct/if_highlight.png');
+    this.load.image('tutorial-block-click-background', 'assets/ct/tutorial-block-click-background.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
@@ -85,35 +89,24 @@ export default class Game extends Scene {
     let prog2 = new Program(this, 'prog_2', this.sounds, this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
     this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
 
-    let baseMatrix: string[][] = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2;
+    let gridCellWidth = this.grid.cellWidth * 1.1
 
-    let obstaclesMatrix: string[][] = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'hand'],
-    ]
+    this.phases = new MazeConfigs(
+      this,
+      this.grid,
+      this.codeEditor,
+      Matrix.ISOMETRIC,
+      gridCenterX,
+      gridCenterY,
+      gridCellWidth
+    )
 
-    this.matrix = new Matrix(this,
-      this.mode,
-      obstaclesMatrix,
-      this.grid.width / 3.2, this.grid.height / 2, this.grid.cellWidth * 1.1);
+    this.currentPhase = this.phases.phases.pop();
 
-    const base = new Matrix(this,
-      this.mode,
-      baseMatrix,
-      this.grid.width / 3.2, this.grid.height / 2, this.grid.cellWidth * 1.1);
+    const obstacles = this.currentPhase.obstacles
+    const ground = this.currentPhase.ground
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;
@@ -134,17 +127,8 @@ export default class Game extends Scene {
       })
       return this.physics.add.sprite(x, y - 15, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
-    spriteCreateFunctions['hand'] = (x: integer, y: integer) => {
-      this.anims.create({
-        key: 'hand-tapping',
-        frames: this.anims.generateFrameNumbers('hand-tutorial', { start: 0, end: 7 }),
-        frameRate: 12,
-        repeat: -1
-      })
-      return this.physics.add.sprite(x, y - 15, 'hand-tutorial').play('hand-tapping').setScale(this.grid.scale)
-    }
-    new MazeModel(this, base, spriteCreateFunctions)
-    this.mazeModel = new MazeModel(this, this.matrix, spriteCreateFunctions)
+    new MazeModel(this, ground, spriteCreateFunctions)
+    this.mazeModel = new MazeModel(this, obstacles, spriteCreateFunctions)
 
     this.mazeModel.onChange = () => {
       if (this.mazeModel.count('coin') == 0) {
@@ -154,15 +138,16 @@ export default class Game extends Scene {
       }
     }
 
-    let initGame = () => {
+    let playPhase = () => {
       this.mazeModel.clearKeepingInModel(this.dude.character);
-      let x = 1, y = 3;
-      this.mazeModel.putSprite(x, y, this.dude.character, 'rope')
-      this.dude.setPosition(x, y);
+      let { row, col } = this.currentPhase.dudeStartPosition
+      this.mazeModel.putSprite(col, row, this.dude.character, 'rope')
+      this.dude.setPosition(col, row);
       this.mazeModel.updateBringFront();
-      this.dude.setFacedTo('right');
+      this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
       this.codeEditor.disanimatePrograms();
       this.codeEditor.resetHighlightStepByStep();
+      this.currentPhase.executeTutorialOrStartWithoutTutorial();
 
       // this.codeEditor.clear();
       // this.program.clear();
@@ -173,14 +158,18 @@ export default class Game extends Scene {
       // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
     }
 
-    this.dude = new Dude(this, this.matrix, this.sounds, this.grid);
+    this.dude = new Dude(this, obstacles, this.sounds, this.grid);
     this.dude.character.setScale(this.grid.scale)
     this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 
     this.dude.canMoveTo = (x: number, y: number) => {
-      let point = this.matrix.getPoint(y, x);
+      let can = true;
+      let point = obstacles.getPoint(y, x);
       let object = this.mazeModel.getObjectAt(y, x)
-      const can = point != null && object?.spriteName != 'block'
+      let isNotHole = ground.getKey(y, x) != 'hole';
+      const isNotOutOfBounds = point != null
+      const isNotBlock = object?.spriteName != 'block'
+      can = isNotOutOfBounds && isNotBlock && isNotHole
       console.log('CAN_MOVE_TO [x, y, can]', x, y, can)
       return can
     }
@@ -202,14 +191,14 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      if(this.dude.stepByStep){
+      if (this.dude.stepByStep) {
         this.codeEditor.highlightStepByStep();
       }
       this.mazeModel.onChange();
       //this.mazeModel.updateBringFront();
     }
 
-    
+
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.codeEditor.resetHighlightStepByStep();
@@ -241,7 +230,7 @@ export default class Game extends Scene {
       if (this.mazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
-        initGame();
+        playPhase();
       }
     }
 
@@ -262,10 +251,10 @@ export default class Game extends Scene {
     this.codeEditor.onClickStop = () => {
       let resetFace = true;
       this.dude.stop(resetFace);
-      initGame();
+      playPhase();
     }
 
-    initGame();
+    playPhase();
   }
 
   init() {
@@ -275,22 +264,4 @@ export default class Game extends Scene {
   update() {
     this.dude.update()
   }
-
-  /* updateCurrentObjectPosition() {
-    if (this.currentObject) {
-      if (this.cursors.up?.isDown) {
-        this.currentObject.y--;
-      }
-      if (this.cursors.down?.isDown) {
-        this.currentObject.y++;
-      }
-      if (this.cursors.left?.isDown) {
-        this.currentObject.x--;
-      }
-      if (this.cursors.right?.isDown) {
-        this.currentObject.x++;
-      }
-      console.log(this.currentObject.x, this.currentObject.y);
-    }
-  } */
 }

@@ -25,6 +25,9 @@ export default class CodeEditor {
   grid: AlignGrid;
   lastEditedProgram: Program;
   toolboxRows: ToolboxRowOrganizer[];
+  btnStep: Button;
+  btnStop: Button;
+  btnPlay: Button;
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -309,20 +312,20 @@ export default class CodeEditor {
   }
 
   private createStartStopStepButtons() {
-    const btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
+    this.btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
       this.onClickRun();
     })
-    const btnStop = new Button(this.scene, this.sounds, 0, 0, 'btn-stop', () => {
+    this.btnStop = new Button(this.scene, this.sounds, 0, 0, 'btn-stop', () => {
       this.sounds.stop();
       this.onClickStop();
     })
-    const btnStep = new Button(this.scene, this.sounds, 0, 0, 'btn-step', () => {
+    this.btnStep = new Button(this.scene, this.sounds, 0, 0, 'btn-step', () => {
       //this.sounds.stop();
       this.onClickStepByStep();
     })
-    this.grid.placeAt(1, 17, btnPlay.sprite, 2.3)
-    this.grid.placeAt(4, 17, btnStep.sprite, 2.3)
-    this.grid.placeAt(7, 17, btnStop.sprite, 2.3)
+    this.grid.placeAt(1, 17, this.btnPlay.sprite, 2.3)
+    this.grid.placeAt(4, 17, this.btnStep.sprite, 2.3)
+    this.grid.placeAt(7, 17, this.btnStop.sprite, 2.3)
 
   }
 
@@ -352,5 +355,13 @@ export default class CodeEditor {
 
   disanimatePrograms() {
     this.programs.forEach(p => p.disanimateCommands());
+  }
+
+  highlightStepByStep(){
+    this.btnStep.blink();
+  }
+
+  resetHighlightStepByStep(){
+    this.btnStep.stopBlink();
   }
 }

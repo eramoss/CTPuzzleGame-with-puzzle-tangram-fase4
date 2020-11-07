@@ -190,6 +190,9 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
+      if(this.dude.stepByStep){
+        this.codeEditor.highlightStepByStep();
+      }
       this.mazeModel.onChange();
       //this.mazeModel.updateBringFront();
     }
@@ -221,6 +224,7 @@ export default class Game extends Scene {
     }
 
     this.dude.onFinishWalking = () => {
+      this.codeEditor.resetHighlightStepByStep();
       if (this.mazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();

@@ -206,7 +206,7 @@ export default class Dude {
       this.execute(programs, stepByStep);
     }
     if (!this.stopped) {
-      this.currentStep.execute();
+      this.currentStep?.execute();
     }
   }
 

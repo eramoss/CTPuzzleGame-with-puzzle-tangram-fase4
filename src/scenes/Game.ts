@@ -151,6 +151,7 @@ export default class Game extends Scene {
       this.mazeModel.updateBringFront();
       this.dude.setFacedTo('right');
       this.codeEditor.disanimatePrograms();
+      this.codeEditor.resetHighlightStepByStep();
 
       // this.codeEditor.clear();
       // this.program.clear();

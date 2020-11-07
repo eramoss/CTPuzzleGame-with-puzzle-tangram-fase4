@@ -200,6 +200,7 @@ export default class Game extends Scene {
     
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
+      this.codeEditor.resetHighlightStepByStep();
       this.mazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {

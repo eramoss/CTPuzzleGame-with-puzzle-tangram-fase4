@@ -20,6 +20,7 @@ export default class Dude {
   y: number;
   walking: boolean;
   onCompleteMoveCallback: (current: DudeMove) => void
+  onFinishWalking: () => void = () => { };
   onStartMoveCallback: (x: number, y: number, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
@@ -178,6 +179,11 @@ export default class Dude {
       if (move.couldExecute)
         this.resetAt(move);
       this.currentStep?.execute(move);
+      if (!this.currentStep) {
+        this.setTimeout(() => {
+          this.onFinishWalking()
+        }, 0);
+      }
     }
   }
 
@@ -241,7 +247,6 @@ export default class Dude {
   }
 
   playSuccess() {
-
     let playAnimation = (color: number, face: string, time: number) => {
       this.setTimeout(() => {
         this.playAnimation(face);

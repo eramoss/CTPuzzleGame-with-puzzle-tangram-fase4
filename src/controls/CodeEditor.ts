@@ -38,7 +38,8 @@ export default class CodeEditor {
     grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
       [
-        new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right']),
+        //new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-up', 'arrow-down', 'arrow-left', 'arrow-right']),
+        new ToolboxRowOrganizer(this.grid, 18, 2, 6, 2, ['arrow-up', 'arrow-left', 'arrow-right']),
         new ToolboxRowOrganizer(this.grid, 18, 4.5, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
         new ToolboxRowOrganizer(this.grid, 18, 7, 6, 2, ['if_coin', 'if_block'], 1.1)
       ]
@@ -63,7 +64,7 @@ export default class CodeEditor {
 
   private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.add.group();
-    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }

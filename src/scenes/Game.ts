@@ -191,8 +191,9 @@ export default class Game extends Scene {
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       this.mazeModel.onChange();
       //this.mazeModel.updateBringFront();
-
     }
+
+    
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.mazeModel.putSprite(x, y, undefined);
@@ -215,6 +216,14 @@ export default class Game extends Scene {
           this.sounds.coin();
           this.dude.tag = 'got coin';
         }, waitALittleBitBeforeColide);
+      }
+    }
+
+    this.dude.onFinishWalking = () => {
+      if (this.mazeModel.count('coin') > 0) {
+        this.dude.stop(true);
+        this.sounds.error();
+        initGame();
       }
     }
 

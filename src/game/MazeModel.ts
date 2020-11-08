@@ -2,6 +2,7 @@ import { GameObjects } from "phaser";
 import Matrix from "../geom/Matrix";
 
 export class MazeModelObject {
+  depth:number;
   gameObject: GameObjects.GameObject;
   spriteName: string
 
@@ -20,19 +21,23 @@ export default class MazeModel {
   spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
   onChange: () => void = () => { };
+  depth: number;
 
   constructor(
     scene: Phaser.Scene,
-    spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>) {
+    spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>,
+    depth:number) {
     this.scene = scene;
     this.gameObjects = []
     this.spriteCreateFunctions = spriteCreateFunctions;
+    this.depth = depth;
   }
 
   setMatrixOfObjects(matrix: Matrix) {
     this.obstaclesMatrix = matrix.matrix;
     this.matrix = matrix;
     this.buildObjectsModel();
+    this.updateBringFront();
   }
 
   private buildObjectsModel() {
@@ -75,7 +80,7 @@ export default class MazeModel {
 
     let diagonalsToPass = (this.matrix.height + this.matrix.width) - 1;
     let itensDiagonalToPass = 1;
-    let depth = 0;
+    let depth = this.depth;
     for (let diagonalsPassed = 0; diagonalsPassed < diagonalsToPass;) {
       let y = diagonalsPassed;
       let x = 0;

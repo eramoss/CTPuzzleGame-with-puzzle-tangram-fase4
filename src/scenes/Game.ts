@@ -10,6 +10,8 @@ import AlignGrid from '../geom/AlignGrid'
 import MazeConfigs from '../tutorial/MazeConfigs'
 import MazePhase from '../tutorial/MazePhase'
 
+export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
+
 export default class Game extends Scene {
 
   codeEditor: CodeEditor
@@ -109,10 +111,12 @@ export default class Game extends Scene {
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {
-      return this.add.image(x, y - 30 * scale, 'block').setScale(scale * (isometric ? 1.5 : 1))
+      return this.add.image(x, y - 30 * scale, 'block')
+        .setScale(scale * (isometric ? 1.5 : 1))
     };
     spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
-      return this.add.image(x, y + 10 * scale, 'tile').setScale(scale * (isometric ? 1.6 : 1))
+      return this.add.image(x, y + 10 * scale, 'tile')
+        .setScale(scale * (isometric ? 1.6 : 1))
     };
     spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({
@@ -121,11 +125,13 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.physics.add.sprite(x, y - 15, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
+      return this.physics.add.sprite(x, y - 15, 'coin-gold')
+        .play('gold-spining')
+        .setScale(this.grid.scale)
     }
 
-    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions)
-    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions)
+    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
+    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
 
     let playNextPhase = () => {
       this.codeEditor.clear();
@@ -141,35 +147,44 @@ export default class Game extends Scene {
       this.currentPhase?.clear()
       this.currentPhase = phase
 
-      this.dude.matrix = this.currentPhase.obstacles;
-      const obstacles = this.currentPhase.obstacles
-      const ground = this.currentPhase.ground
 
-      this.groundMazeModel.clear();
-      this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
-      this.groundMazeModel.setMatrixOfObjects(ground)
-      this.obstaclesMazeModel.setMatrixOfObjects(obstacles)
-
-      this.obstaclesMazeModel.onChange = () => {
-        if (this.obstaclesMazeModel.count('coin') == 0) {
-          this.dude.stop()
-          this.dude.playSuccess();
-          this.codeEditor.resetHighlightStepByStep();
-          setTimeout(function () {
-            playNextPhase();
-          }, 2000);
-        }
+      if (!this.currentPhase) {
+        //endGame()
       }
 
-      let { row, col } = this.currentPhase.dudeStartPosition
-      this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
-      this.dude.setPosition(col, row);
-      this.obstaclesMazeModel.updateBringFront();
-      this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
-      this.codeEditor.disanimatePrograms();
-      this.codeEditor.resetHighlightStepByStep();
-      this.currentPhase.executeTutorialOrStartWithoutTutorial();
+      if (this.currentPhase) {
 
+        this.currentPhase?.setupTutorialsAndObjectsPositions()
+        this.dude.matrix = this.currentPhase.obstacles;
+        const obstacles = this.currentPhase.obstacles
+        const ground = this.currentPhase.ground
+
+        this.groundMazeModel.clear();
+        this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
+        this.groundMazeModel.setMatrixOfObjects(ground)
+        this.obstaclesMazeModel.setMatrixOfObjects(obstacles)
+
+        this.obstaclesMazeModel.onChange = () => {
+          if (this.obstaclesMazeModel.count('coin') == 0) {
+            this.dude.stop()
+            this.dude.playSuccess();
+            this.codeEditor.resetHighlightStepByStep();
+            setTimeout(function () {
+              playNextPhase();
+            }, 2000);
+          }
+        }
+
+        let { row, col } = this.currentPhase.dudeStartPosition
+        this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
+        this.dude.setPosition(col, row);
+        this.obstaclesMazeModel.updateBringFront();
+        this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
+        this.codeEditor.disanimatePrograms();
+        this.codeEditor.resetHighlightStepByStep();
+        this.currentPhase.executeTutorialOrStartWithoutTutorial();
+
+      }
 
       // this.program.clear();
       // prog1.clear();

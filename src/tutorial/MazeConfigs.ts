@@ -51,9 +51,9 @@ export default class MazeConfigs {
     }
 
     private createPhaseEasyArrowUp() {
-        const phaseArrowUp = new MazePhase(this.scene, this.grid);
-        phaseArrowUp.dudeFacedTo = 'right'
-        phaseArrowUp.dudeStartPosition = { col: 2, row: 3 }
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'right'
+        phase.dudeStartPosition = { col: 2, row: 3 }
 
         let baseMatrix = [
             ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
@@ -75,35 +75,38 @@ export default class MazeConfigs {
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
         ];
 
-        phaseArrowUp.obstacles = new Matrix(
-            this.scene,
-            this.matrixMode,
-            obstaclesMatrix,
-            this.gridCenterX, this.gridCenterY, this.gridCellWidth
-        );
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
 
-        phaseArrowUp.ground = new Matrix(
-            this.scene,
-            this.matrixMode,
-            baseMatrix,
-            this.gridCenterX, this.gridCenterY, this.gridCellWidth
-        );
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
 
-        const arrowUp = joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == 'arrow-up');
-        const btnPlay = this.codeEditor.btnPlay.sprite;
+            const fnGetArrowUp = () => {
+                return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+                    .find(c => c.texture.key == 'arrow-up')
+            };
+            const fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
 
-        phaseArrowUp.addClickTutorialAction(arrowUp);
-        phaseArrowUp.addClickTutorialAction(btnPlay);
+            phase.addClickTutorialAction(fnGetArrowUp);
+            phase.addClickTutorialAction(fnGetBtnPlay);
+        }
 
-
-        return phaseArrowUp;
+        return phase;
     }
 
     private createPhaseEasyArrowUpAndLeft() {
-        const phaseArrowUp = new MazePhase(this.scene, this.grid);
-        phaseArrowUp.dudeFacedTo = 'right'
-        phaseArrowUp.dudeStartPosition = { col: 1, row: 3 }
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'right'
+        phase.dudeStartPosition = { col: 1, row: 3 }
 
         let baseMatrix = [
             ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
@@ -125,28 +128,33 @@ export default class MazeConfigs {
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
         ];
 
-        phaseArrowUp.obstacles = new Matrix(
-            this.scene,
-            this.matrixMode,
-            obstaclesMatrix,
-            this.gridCenterX, this.gridCenterY, this.gridCellWidth
-        );
+        phase.setupTutorialsAndObjectsPositions = () => {
 
-        phaseArrowUp.ground = new Matrix(
-            this.scene,
-            this.matrixMode,
-            baseMatrix,
-            this.gridCenterX, this.gridCenterY, this.gridCellWidth
-        );
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
 
-        const arrowUp = joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == 'arrow-up');
-        const btnStep = this.codeEditor.btnStep.sprite;
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
 
-        //phaseArrowUp.addClickTutorialAction(arrowUp);
-        phaseArrowUp.addClickTutorialAction(btnStep);
+            const fnGetArrowUp = () => {
+                return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+                    .find(c => c.texture.key == 'arrow-up')
+            };
+            const fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
 
-
-        return phaseArrowUp;
+            phase.addClickTutorialAction(fnGetArrowUp);
+            phase.addClickTutorialAction(fnGetArrowUp);
+            phase.addClickTutorialAction(fnGetBtnPlay);
+        }
+        /* const btnStep = this.codeEditor.btnStep.sprite; */
+        return phase;
     }
 }

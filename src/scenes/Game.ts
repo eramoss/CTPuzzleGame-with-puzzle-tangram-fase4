@@ -134,19 +134,19 @@ export default class Game extends Scene {
     this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
 
     let playNextPhase = () => {
-      this.codeEditor.clear();
-      playPhase(this.phases.getNextPhase());
+      let clearCodeEditor = true;
+      playPhase(this.phases.getNextPhase(), clearCodeEditor);
     }
 
     let replayCurrentPhase = () => {
-      playPhase(this.currentPhase)
+      let clearCodeEditor = this.currentPhase.isTutorialPhase()
+      playPhase(this.currentPhase, clearCodeEditor)
     }
 
-    let playPhase = (phase: MazePhase) => {
+    let playPhase = (phase: MazePhase, clearCodeEditor: boolean = false) => {
 
-      this.currentPhase?.clear()
+      this.currentPhase?.clearTutorials()
       this.currentPhase = phase
-
 
       if (!this.currentPhase) {
         //endGame()
@@ -179,10 +179,15 @@ export default class Game extends Scene {
         this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
         this.dude.setPosition(col, row);
         this.obstaclesMazeModel.updateBringFront();
+        this.dude.currentFace = this.currentPhase.dudeFacedTo
         this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
         this.codeEditor.disanimatePrograms();
         this.codeEditor.resetHighlightStepByStep();
         this.currentPhase.executeTutorialOrStartWithoutTutorial();
+
+        if (clearInterval) {
+          this.codeEditor.clear();
+        }
 
       }
 

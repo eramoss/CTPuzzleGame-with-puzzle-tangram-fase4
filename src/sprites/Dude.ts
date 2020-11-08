@@ -28,7 +28,6 @@ export default class Dude {
   branchMoves: Array<Branch> = new Array();
   functionsRunningByTimeout: number[] = [];
   currentFace: string;
-  initialFace: string;
   programBeingExecuted: Program;
   grid: AlignGrid;
   tag: string;
@@ -45,7 +44,7 @@ export default class Dude {
     this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
   }
 
-  createAnimations(matrixMode:string) {
+  createAnimations(matrixMode: string) {
     let isometric = matrixMode == Matrix.ISOMETRIC;
     [
       { key: 'down', frames: isometric ? [1] : [2] },
@@ -110,9 +109,6 @@ export default class Dude {
   setFacedTo(face: string) {
     if (!this.currentFace) {
       this.currentFace = face;
-      if (!this.initialFace) {
-        this.initialFace = face;
-      }
     }
     this.character.play(face || this.currentFace);
   }
@@ -134,9 +130,12 @@ export default class Dude {
     this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
     this.functionsRunningByTimeout = []
     if (resetFace) {
-      this.currentFace = null;
-      this.setFacedTo(this.initialFace);
+      this.resetFace();
     }
+  }
+
+  private resetFace() {
+    this.currentFace = null;
   }
 
   onBranch(progName: string, branch: Branch) {

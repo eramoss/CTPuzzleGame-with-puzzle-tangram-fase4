@@ -184,7 +184,6 @@ export default class MazeModel {
           }
         }
       }
-      this.buildObjectsModel();
     }
   }
 

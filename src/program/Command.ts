@@ -6,7 +6,6 @@ import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command {
-
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -22,6 +21,7 @@ export default class Command {
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
   sounds: Sounds
+  removeSoundElabled: boolean = true;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -94,7 +94,8 @@ export default class Command {
     }
     if (!this.isIntent) {
       if (removeFromScene) {
-        this.sounds.remove()
+        if (this.removeSoundElabled)
+          this.sounds.remove()
         this.tileDropZone?.removeSelf();
         this.tileDropZone = null;
       }
@@ -239,6 +240,13 @@ export default class Command {
   highlightFalseState() {
     this.sprite.setTint(0xe44332)
     this.sounds.error()
+  }
+
+  unmuteBlockRemovingSound() {
+    this.removeSoundElabled = true;
+  }
+  muteBlockRemovingSound() {
+    this.removeSoundElabled = false;
   }
 }
 

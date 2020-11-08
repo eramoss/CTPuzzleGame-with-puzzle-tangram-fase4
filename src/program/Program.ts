@@ -215,7 +215,11 @@ export default class Program {
     this.conditionalCommandsIndexed.forEach(c => c.removeSelf());
     this.conditionalCommandsIndexed = new Map<number, Command>();
     let commands = this.ordinalCommands.splice(0);
-    commands.forEach(c => c.removeSelf());
+    commands.forEach(c => {
+      c.muteBlockRemovingSound();
+      c.removeSelf();
+      c.unmuteBlockRemovingSound();
+    });
     this.ordinalCommands = [];
   }
 

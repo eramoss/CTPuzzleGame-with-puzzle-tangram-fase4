@@ -166,7 +166,7 @@ export default class Game extends Scene {
 
         this.obstaclesMazeModel.onChange = () => {
           if (this.obstaclesMazeModel.count('coin') == 0) {
-            this.dude.stop()
+            this.dude.stop(true)
             this.dude.playSuccess();
             this.codeEditor.resetHighlightStepByStep();
             setTimeout(function () {

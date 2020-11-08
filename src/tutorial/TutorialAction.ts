@@ -1,48 +1,58 @@
 import { GameObjects, Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
+import TutorialHighlight from "./TutorialHighlight";
 
 export default class TutorialAction {
 
-    spriteDepthBackup: number;
+
     scene: Scene;
     grid: AlignGrid;
-    fnGetSprite: () => GameObjects.Sprite | GameObjects.Image;
+    highlights: Array<TutorialHighlight>;
     next: TutorialAction
-    actionName: string;
-    blockClickBackgroundImage: GameObjects.Image;
+    blockClickBackgroundImage: GameObjects.Sprite;
     handClickSprite: GameObjects.Sprite;
 
-    constructor(scene: Scene, grid: AlignGrid, actionName: string, fnGetSprite: () => GameObjects.Sprite | GameObjects.Image) {
+    constructor(scene: Scene, grid: AlignGrid, highlights: Array<TutorialHighlight>) {
         this.scene = scene;
         this.grid = grid;
-        this.actionName = actionName;
-        this.fnGetSprite = fnGetSprite;
+        this.highlights = highlights;
     }
 
     reset() {
-        this.scene.children.remove(this.blockClickBackgroundImage);
-        this.scene.children.remove(this.handClickSprite);
+        this.removeBackgroundOverlay();
+        this.removeHand();
+        this.scene.children.getAll().forEach(c => c.setInteractive());
+        this.highlights.forEach(highlight => {
+            let sprite = highlight.fnGetSprite()
+            sprite.setDepth(highlight.spriteDepthBackup);
+        })
     }
 
+
     execute() {
-        this.blockClickBackgroundImage = this.grid
-            .addImage(0, 0, 'tutorial-block-click-background', this.grid.cols, this.grid.rows)
+        this.blockClickBackgroundImage = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
             .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
-        const sprite = this.fnGetSprite()
-        this.spriteDepthBackup = sprite.depth
-        sprite.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
-        sprite.on('pointerdown', () => {
-            sprite.setDepth(this.spriteDepthBackup);
-            this.reset();
-            this.next?.execute();
-            if (!this.next) {
-                this.scene.children.remove(this.blockClickBackgroundImage);
+        this.grid.placeAt(0, 0, this.blockClickBackgroundImage, this.grid.cols, this.grid.rows);
+        this.disableAllInteractions();
+        this.highlights.forEach(highlight => {
+            let sprite = highlight.fnGetSprite()
+            sprite.setInteractive();
+            highlight.spriteDepthBackup = sprite.depth;
+            sprite.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
+            let interaction = () => {
+                this.removeBackgroundOverlay();
+                this.removeHand();
+                this.next?.execute();
+                if (!this.next) {
+                    this.scene.children.remove(this.blockClickBackgroundImage);
+                }
+            }
+            sprite.on('pointerdown', interaction)
+            if (highlight.mustClick) {
+                this.useHandAnimationPointing(sprite);
             }
         })
-        if (this.actionName == 'click') {
-            this.useHandAnimationPointing(sprite);
-        }
     }
 
     private useHandAnimationPointing(sprite: GameObjects.Sprite | GameObjects.Image) {
@@ -63,4 +73,18 @@ export default class TutorialAction {
             .setScale(this.grid.scale)
             .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
     }
+
+    private removeHand() {
+        this.scene.children.remove(this.handClickSprite);
+    }
+
+    private removeBackgroundOverlay() {
+        this.scene.children.remove(this.blockClickBackgroundImage);
+    }
+
+    private disableAllInteractions() {
+        this.scene.children.getAll().forEach(c => c.disableInteractive());
+    }
+
+
 }

@@ -2,8 +2,9 @@ import { Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
-import { joinChilds } from "../utils/Utils";
+import { joinChilds, createJoinArraysFn as createJoinFunction } from "../utils/Utils";
 import MazePhase from "./MazePhase";
+import TutorialHighlight from "./TutorialHighlight";
 
 export default class MazeConfigs {
 
@@ -17,19 +18,14 @@ export default class MazeConfigs {
     gridCellWidth: number;
     codeEditor: CodeEditor;
 
-    fnGetArrowUp = () => {
-        return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == 'arrow-up')
-    };
-    fnGetArrowLeft = () => {
-        return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == 'arrow-left')
-    };
-    fnGetArrowRight = () => {
-        return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == 'arrow-right')
-    };
+    fnGetArrowUp = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+        .find(c => c.texture.key == 'arrow-up');
+    fnGetArrowLeft = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+        .find(c => c.texture.key == 'arrow-left');
+    fnGetArrowRight = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+        .find(c => c.texture.key == 'arrow-right');
     fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
+    fnGetProgram = () => this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().sprite
 
     constructor(scene: Scene,
         grid: AlignGrid,
@@ -105,8 +101,11 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-            phase.addClickTutorialAction(this.fnGetArrowUp);
-            phase.addClickTutorialAction(this.fnGetBtnPlay);
+            phase.addTutorialHighlights([
+                new TutorialHighlight(this.fnGetArrowUp),
+                new TutorialHighlight(this.fnGetProgram, false)
+            ])
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetBtnPlay)])
         }
 
         return phase;
@@ -152,16 +151,12 @@ export default class MazeConfigs {
                 baseMatrix,
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
-
-            const fnGetArrowUp = () => {
-                return joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-                    .find(c => c.texture.key == 'arrow-up')
-            };
-            const fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
-
-            phase.addClickTutorialAction(fnGetArrowUp);
-            phase.addClickTutorialAction(fnGetArrowUp);
-            phase.addClickTutorialAction(fnGetBtnPlay);
+            phase.addTutorialHighlights([
+                new TutorialHighlight(this.fnGetArrowUp),
+                new TutorialHighlight(this.fnGetProgram, false),
+            ])
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetArrowUp)])
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetBtnPlay)])
         }
         return phase;
     }
@@ -207,11 +202,11 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-            phase.addClickTutorialAction(this.fnGetArrowUp);
-            phase.addClickTutorialAction(this.fnGetArrowUp);
-            phase.addClickTutorialAction(this.fnGetArrowRight);
-            phase.addClickTutorialAction(this.fnGetArrowUp);
-            phase.addClickTutorialAction(this.fnGetBtnPlay);
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetArrowUp)]);
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetArrowUp)]);
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetArrowRight)]);
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetArrowUp)]);
+            phase.addTutorialHighlights([new TutorialHighlight(this.fnGetBtnPlay)]);
         }
         return phase;
     }

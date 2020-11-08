@@ -58,10 +58,14 @@ export function androidPlayAudio(sound: string): boolean {
  */
 export function joinChilds<PARENT, CHILD>(parents: Array<PARENT>, fnGetChilds: (p: PARENT) => Array<CHILD>): Array<CHILD> {
     let allChildren = new Array<CHILD>()
-    parents.forEach(parent=>{
-        fnGetChilds(parent).forEach(child=>{
+    parents.forEach(parent => {
+        fnGetChilds(parent).forEach(child => {
             allChildren.push(child);
         })
     });
     return allChildren
+}
+
+export function createJoinArraysFn<PARENT>(functions: Array<() => PARENT[]>): () => Array<PARENT> {
+    return () => joinChilds(functions, (fnThatReturnArray) => fnThatReturnArray())
 }

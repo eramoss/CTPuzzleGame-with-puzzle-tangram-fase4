@@ -19,6 +19,7 @@ export default class Program {
   programNameImage: GameObjects.Image;
   animated: boolean;
   maxSupportedCommandsByRow: number;
+  sprite: GameObjects.Sprite;
 
   constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
@@ -28,6 +29,7 @@ export default class Program {
     this.ordinalCommands = new Array();
     this.conditionalCommandsIndexed = new Map<number, Command>();
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
+    this.sprite = this.dropZone.sprite;
     this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.7);
     //this.crossOrganizer = new CrossOrganizer();
   }

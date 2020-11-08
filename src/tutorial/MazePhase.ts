@@ -2,13 +2,11 @@ import { GameObjects, Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import TutorialAction from "./TutorialAction";
+import TutorialHighlight from "./TutorialHighlight";
 
 export default class MazePhase {
-    setupTutorialsAndObjectsPositions: () => void;
-    clear() {
-        this.action?.reset()
-    }
 
+    setupTutorialsAndObjectsPositions: () => void;
     obstacles: Matrix;
     ground: Matrix;
     scene: Scene;
@@ -25,12 +23,8 @@ export default class MazePhase {
         this.grid = grid;
     }
 
-    addClickTutorialAction(fnGetSprite: () => GameObjects.Sprite | GameObjects.Image) {
-        this.addAction('click', fnGetSprite)
-    }
-
-    addAction(actionName: string, fnGetSprite: () => GameObjects.Sprite | GameObjects.Image) {
-        const action = new TutorialAction(this.scene, this.grid, actionName, fnGetSprite);
+    addTutorialHighlights(highlights: Array<TutorialHighlight>) {
+        const action = new TutorialAction(this.scene, this.grid, highlights);
         if (!this.firstAction) {
             this.firstAction = action
         } else {
@@ -41,6 +35,16 @@ export default class MazePhase {
 
     executeTutorialOrStartWithoutTutorial() {
         this.firstAction.execute();
+    }
+
+    clear() {
+        this.firstAction?.reset()
+        this.action?.reset()
+        let action = this.firstAction;
+        while (action != null) {
+            action.reset();
+            action = action.next
+        }
     }
 
 }

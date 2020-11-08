@@ -5,6 +5,9 @@ import Matrix from "../geom/Matrix";
 import TutorialAction from "./TutorialAction";
 
 export default class MazePhase {
+    clear() {
+        this.action?.reset()
+    }
 
     obstacles: Matrix;
     ground: Matrix;

@@ -32,7 +32,7 @@ export function androidVibrate(time: number) {
             GameJavascriptInterface.vibrate(time)
         }
     } catch (e) {
-        console.error(e);
+        console.warn('GameJavascriptInterface is not defined!!');
     }
 }
 
@@ -47,7 +47,7 @@ export function androidPlayAudio(sound: string): boolean {
             couldPlay = true;
         }
     } catch (e) {
-        console.error(e);
+        console.warn('GameJavascriptInterface is not defined!!');
     }
     return couldPlay;
 }

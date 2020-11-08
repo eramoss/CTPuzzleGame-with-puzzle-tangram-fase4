@@ -29,7 +29,7 @@ export default class MazeModel {
     this.spriteCreateFunctions = spriteCreateFunctions;
   }
 
-  setMatrixOfObjects(matrix:Matrix){
+  setMatrixOfObjects(matrix: Matrix) {
     this.obstaclesMatrix = matrix.matrix;
     this.matrix = matrix;
     this.buildObjectsModel();
@@ -161,21 +161,26 @@ export default class MazeModel {
     return count
   }
 
-  clearKeepingInModel(keepInModel: GameObjects.GameObject) {
+  clear() {
+    this.clearKeepingInModel(null)
+  }
 
-    for (let y = 0; y < this.matrix.height; y++) {
-      for (let x = 0; x < this.matrix.width; x++) {
-        let object = this.getObjectAt(y, x);
-        if (object) {
-          if (object.gameObject != keepInModel) {
-            this.scene.children.remove(object.gameObject);
-          } else {
-            this.gameObjects[y][x] = null;
+  clearKeepingInModel(keepInModel: GameObjects.GameObject) {
+    if (this.matrix) {
+      for (let y = 0; y < this.matrix.height; y++) {
+        for (let x = 0; x < this.matrix.width; x++) {
+          let object = this.getObjectAt(y, x);
+          if (object) {
+            if (object.gameObject != keepInModel) {
+              this.scene.children.remove(object.gameObject);
+            } else {
+              this.gameObjects[y][x] = null;
+            }
           }
         }
       }
+      this.buildObjectsModel();
     }
-    this.buildObjectsModel();
   }
 
   getObjectNameAt(y: number, x: number): string {

@@ -18,7 +18,8 @@ export default class Game extends Scene {
   dude: Dude
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
-  mazeModel: MazeModel
+  obstaclesMazeModel: MazeModel
+  groundMazeModel: MazeModel
   grid: AlignGrid
   mode: string = Matrix.ISOMETRIC
   phases: MazeConfigs
@@ -123,7 +124,8 @@ export default class Game extends Scene {
       return this.physics.add.sprite(x, y - 15, 'coin-gold').play('gold-spining').setScale(this.grid.scale)
     }
 
-    this.mazeModel = new MazeModel(this, spriteCreateFunctions)
+    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions)
+    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions)
 
     let playNextPhase = () => {
       this.codeEditor.clear();
@@ -136,37 +138,39 @@ export default class Game extends Scene {
 
     let playPhase = (phase: MazePhase) => {
 
+      this.currentPhase?.clear()
       this.currentPhase = phase
 
       this.dude.matrix = this.currentPhase.obstacles;
       const obstacles = this.currentPhase.obstacles
       const ground = this.currentPhase.ground
 
-      new MazeModel(this, spriteCreateFunctions).setMatrixOfObjects(ground);
-      this.mazeModel.setMatrixOfObjects(obstacles)
+      this.groundMazeModel.clear();
+      this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
+      this.groundMazeModel.setMatrixOfObjects(ground)
+      this.obstaclesMazeModel.setMatrixOfObjects(obstacles)
 
-      this.mazeModel.onChange = () => {
-        if (this.mazeModel.count('coin') == 0) {
+      this.obstaclesMazeModel.onChange = () => {
+        if (this.obstaclesMazeModel.count('coin') == 0) {
           this.dude.stop()
           this.dude.playSuccess();
           this.codeEditor.resetHighlightStepByStep();
           setTimeout(function () {
             playNextPhase();
-          }, 3000);
+          }, 2000);
         }
       }
 
-      this.mazeModel.clearKeepingInModel(this.dude.character);
       let { row, col } = this.currentPhase.dudeStartPosition
-      this.mazeModel.putSprite(col, row, this.dude.character, 'rope')
+      this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
       this.dude.setPosition(col, row);
-      this.mazeModel.updateBringFront();
+      this.obstaclesMazeModel.updateBringFront();
       this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
       this.codeEditor.disanimatePrograms();
       this.codeEditor.resetHighlightStepByStep();
       this.currentPhase.executeTutorialOrStartWithoutTutorial();
 
-      
+
       // this.program.clear();
       // prog1.clear();
       // prog2.clear();
@@ -184,7 +188,7 @@ export default class Game extends Scene {
       let ground = this.currentPhase.ground;
       let can = true;
       let point = obstacles.getPoint(y, x);
-      let object = this.mazeModel.getObjectAt(y, x)
+      let object = this.obstaclesMazeModel.getObjectAt(y, x)
       let isNotHole = ground.getKey(y, x) != 'hole';
       const isNotOutOfBounds = point != null
       const isNotBlock = object?.spriteName != 'block'
@@ -201,9 +205,9 @@ export default class Game extends Scene {
       }
       if (condition == 'if_block') {
         let { x, y } = dudeMove.getAheadPosition();
-        valid = this.mazeModel.getObjectNameAt(y, x) == 'block'
+        valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == 'block'
         if (valid) {
-          (this.mazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
+          (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
         }
       }
       return valid
@@ -213,7 +217,7 @@ export default class Game extends Scene {
       if (this.dude.stepByStep) {
         this.codeEditor.highlightStepByStep();
       }
-      this.mazeModel.onChange();
+      this.obstaclesMazeModel.onChange();
       //this.mazeModel.updateBringFront();
     }
 
@@ -221,17 +225,17 @@ export default class Game extends Scene {
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.codeEditor.resetHighlightStepByStep();
-      this.mazeModel.putSprite(x, y, undefined);
+      this.obstaclesMazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {
           //this.dude.character.depth = 0;
-          this.mazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character, 'rope')
+          this.obstaclesMazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character, 'rope')
         }
       }
-      this.mazeModel.updateBringFront();
+      this.obstaclesMazeModel.updateBringFront();
     }
 
-    this.mazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
+    this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
       if (other.spriteName == 'coin') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
@@ -246,7 +250,7 @@ export default class Game extends Scene {
 
     this.dude.onFinishWalking = () => {
       this.codeEditor.resetHighlightStepByStep();
-      if (this.mazeModel.count('coin') > 0) {
+      if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
         replayCurrentPhase();

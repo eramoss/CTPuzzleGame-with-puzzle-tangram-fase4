@@ -139,7 +139,7 @@ export default class Game extends Scene {
     }
 
     let replayCurrentPhase = () => {
-      let clearCodeEditor = this.currentPhase.isTutorialPhase()
+      let clearCodeEditor = false;
       playPhase(this.currentPhase, clearCodeEditor)
     }
 
@@ -154,7 +154,7 @@ export default class Game extends Scene {
 
       if (this.currentPhase) {
 
-        this.currentPhase?.setupTutorialsAndObjectsPositions()
+        this.currentPhase.setupTutorialsAndObjectsPositions()
         this.dude.matrix = this.currentPhase.obstacles;
         const obstacles = this.currentPhase.obstacles
         const ground = this.currentPhase.ground
@@ -185,7 +185,7 @@ export default class Game extends Scene {
         this.codeEditor.resetHighlightStepByStep();
         this.currentPhase.executeTutorialOrStartWithoutTutorial();
 
-        if (clearInterval) {
+        if (clearCodeEditor) {
           this.codeEditor.clear();
         }
 
@@ -277,10 +277,12 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickRun = () => {
+      this.currentPhase?.removeBackgroundTutorialOverlay()
       this.dude.execute([this.program, prog1, prog2]);
     }
 
     this.codeEditor.onClickStepByStep = () => {
+      this.currentPhase?.removeBackgroundTutorialOverlay()
       this.codeEditor.disableStepButton();
       this.dude.executeStepByStep([this.program, prog1, prog2]);
     }

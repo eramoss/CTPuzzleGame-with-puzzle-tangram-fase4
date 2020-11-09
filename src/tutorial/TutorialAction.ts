@@ -9,7 +9,7 @@ export default class TutorialAction {
     onHighlight: () => void = () => { }
     onAdvance: () => void = () => { }
     fnToCheckIfCanEnableHighlight: () => boolean
-    triggered: any;
+    triggered: boolean = false;
     index: number;
 
     constructor(
@@ -32,6 +32,8 @@ export default class TutorialAction {
     }
 
     highlight() {
+        if (this.triggered) return;
+        this.triggered = true;
         console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
         this.onHighlight();
         this.disableAllInteractions();

@@ -61,16 +61,16 @@ export default class MazeConfigs {
 
         this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUp(false));
-        this.phases.push(this.createPhaseEasyArrowUpAndRight());
-        this.phases.push(this.createPhaseEasyArrowUpAndRight(false));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(false));
+        this.phases.push(this.createPhaseEasyArrowUpAndRight());
+        this.phases.push(this.createPhaseEasyArrowUpAndRight(false));
         this.phases.push(this.createPhaseEasyThreeStepByStep());
         this.phases.push(this.createPhaseEasyThreeStepByStep(false));
-        this.phases.push(this.createPhaseStepByStepWithBlock());
-        this.phases.push(this.createPhaseStepByStepWithBlock(false));
         this.phases.push(this.createPhaseCallRecursiveFunction());
         this.phases.push(this.createPhaseCallRecursiveFunction(false));
+        this.phases.push(this.createPhaseStepByStepWithBlock());
+        this.phases.push(this.createPhaseStepByStepWithBlock(false));
         /* this.phases.push(this.createPhaseIfCoin());
         this.phases.push(this.createPhaseIfBlock()); */
     }
@@ -289,7 +289,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseCallRecursiveFunction(showTutorial: boolean = false) {
+    private createPhaseCallRecursiveFunction(showTutorial: boolean = true) {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 0, row: 3 }

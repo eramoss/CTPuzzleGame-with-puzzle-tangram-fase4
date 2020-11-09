@@ -72,7 +72,7 @@ export default class MazePhase {
     }
 
     clearTutorials() {
-        this.removeBackgroundOverlay();
+        this.removeBackgroundTutorialOverlay();
         let action = this.firstAction;
         while (action != null) {
             action.reset();
@@ -88,7 +88,7 @@ export default class MazePhase {
         }
     }
 
-    removeBackgroundOverlay() {
+    removeBackgroundTutorialOverlay() {
         if (this.backgroundOverlay) {
             this.scene.children.remove(this.backgroundOverlay);
             this.backgroundOverlay = null;

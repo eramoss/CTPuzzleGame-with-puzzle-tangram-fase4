@@ -291,6 +291,12 @@ export default class Game extends Scene {
       this.dude.execute([this.program, prog1, prog2]);
     }
 
+    this.codeEditor.onEditProgram = () => {
+      if (!this.dude.stopped) {
+        replayCurrentPhase()
+      }
+    }
+
     this.codeEditor.onClickStepByStep = () => {
       this.currentPhase?.removeBackgroundTutorialOverlay()
       this.dude.executeStepByStep([this.program, prog1, prog2]);

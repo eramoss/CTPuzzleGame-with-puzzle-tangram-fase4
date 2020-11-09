@@ -39,19 +39,18 @@ export default class Button {
   }
 
   stopBlink() {
+    this.blinked = false;
     clearInterval(this.blinkingInterval);
     this.sprite.setFrame(0)
   }
 
   toggleBlink() {
-    if (!this.hover) {
-      if (!this.blinked) {
-        this.sprite.setFrame(1);
-        this.blinked = true;
-      } else {
-        this.blinked = false;
-        this.sprite.setFrame(0);
-      }
+    if (!this.blinked) {
+      this.sprite.setFrame(1);
+      this.blinked = true;
+    } else {
+      this.blinked = false;
+      this.sprite.setFrame(0);
     }
   }
 

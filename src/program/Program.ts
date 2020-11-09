@@ -20,6 +20,7 @@ export default class Program {
   animated: boolean;
   maxSupportedCommandsByRow: number;
   sprite: GameObjects.Sprite;
+  onEdit: () => void = () => { };
 
   constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
@@ -51,6 +52,7 @@ export default class Program {
   }
 
   addCommands(commands: string[]): Command[] {
+    this.onEdit();
     let addedCommands = new Array<Command>()
     commands.forEach(texture => {
       let textures = texture.split(':');
@@ -71,6 +73,18 @@ export default class Program {
       }
     })
     return addedCommands;
+  }
+
+  removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
+    this.onEdit();
+    if (command.index() > -1) {
+      this.ordinalCommands.splice(command.index(), 1);
+      command.program = null;
+    }
+    if (removeSpriteFromScene) {
+      this.scene.children.remove(command.sprite);
+    }
+    this.reorganize();
   }
 
   disanimateCommands() {
@@ -151,17 +165,6 @@ export default class Program {
     //drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);
 
     return fitInFirstRow;
-  }
-
-  removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
-    if (command.index() > -1) {
-      this.ordinalCommands.splice(command.index(), 1);
-      command.program = null;
-    }
-    if (removeSpriteFromScene) {
-      this.scene.children.remove(command.sprite);
-    }
-    this.reorganize();
   }
 
   reorganize() {

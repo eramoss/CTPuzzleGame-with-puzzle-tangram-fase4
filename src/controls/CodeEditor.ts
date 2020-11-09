@@ -10,13 +10,14 @@ import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
-  
+
 
 
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
   onClickRun: () => void = () => { };
+  onEditProgram: () => void = () => { };
   onInteract: () => void = () => { };
   onClickStop: () => void = () => { };
   onClickStepByStep: () => void = () => { };
@@ -40,7 +41,6 @@ export default class CodeEditor {
     this.createGlobalDragLogic();
     this.dropZones = programs.map(program => program.dropZone)
     this.createStartStopStepButtons();
-
     grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
       [
@@ -52,6 +52,7 @@ export default class CodeEditor {
       ]
 
     this.createDraggableProgramCommands();
+    this.notifyWhenProgramIsEditted()
   }
 
   addCommands(program: Program, commands: string[]) {
@@ -371,7 +372,7 @@ export default class CodeEditor {
     this.btnStep.disable();
   }
 
-  enableStepButton(){
+  enableStepButton() {
     this.btnStep.enable();
   }
 
@@ -379,7 +380,15 @@ export default class CodeEditor {
     this.btnPlay.disable();
   }
 
-  enablePlayButton(){
+  enablePlayButton() {
     this.btnPlay.enable();
+  }
+
+  notifyWhenProgramIsEditted() {
+    this.programs.forEach(p => {
+      p.onEdit = () => {
+        this.onEditProgram()
+      }
+    })
   }
 }

@@ -7,8 +7,10 @@ export default class TutorialAction {
     highlightedAreas: Array<TutorialHighlight>;
     nextTutorialAction: TutorialAction
     onHighlight: () => void = () => { }
+    onAdvance: () => void = () => { }
     fnToCheckIfCanEnableHighlight: () => boolean
     triggered: any;
+    index: number;
 
     constructor(
         scene: Scene,
@@ -30,17 +32,19 @@ export default class TutorialAction {
     }
 
     highlight() {
-        if (this.triggered) return;
-        this.triggered = true;
-        if (this.fnToCheckIfCanEnableHighlight()) {
-            this.onHighlight();
-            this.disableAllInteractions();
-            this.highlightedAreas.forEach(highlight =>
-                highlight.onClickTutorialStep(() => {
-                    this.nextTutorialAction?.highlight();
-                })
-            )
+        console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
+        this.onHighlight();
+        this.disableAllInteractions();
+        const advance = () => {
+            this.onAdvance();
+            if (this.fnToCheckIfCanEnableHighlight()) {
+                this.nextTutorialAction?.highlight();
+            }
         }
+        this.highlightedAreas.forEach(highlight =>
+            highlight.onClickTutorialStep(() => advance())
+        )
+
     }
 
     private disableAllInteractions() {

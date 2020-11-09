@@ -37,17 +37,24 @@ export default class MazePhase {
 
     addTutorialHighlights(
         highlights: Array<TutorialHighlight>,
-        fnToCheckIfCanEnableHighlight: () => boolean = () => true
+        fnToCheckIfCanEnableHighlight: () => boolean
     ) {
         const tutorialAction = new TutorialAction(this.scene, highlights, fnToCheckIfCanEnableHighlight);
         tutorialAction.onHighlight = () => {
             this.addBackgroundOverlay()
         }
+        tutorialAction.onAdvance = () => {
+            this.action = tutorialAction.nextTutorialAction
+            console.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
+        }
+        let index = -1;
         if (!this.firstAction) {
             this.firstAction = tutorialAction
         } else {
+            index = this.action.index + 1;
             this.action.nextTutorialAction = tutorialAction;
         }
+        tutorialAction.index = index;
         this.action = tutorialAction;
     }
 
@@ -56,6 +63,7 @@ export default class MazePhase {
     }
 
     updateTutorial() {
+        console.log('TUTORIAL_UPDATE [this.action.index]', this.action?.index)
         this.action?.highlight();
     }
 

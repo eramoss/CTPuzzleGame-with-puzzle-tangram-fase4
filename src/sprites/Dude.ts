@@ -199,6 +199,7 @@ export default class Dude {
   }
 
   executeStepByStep(programs: Program[]) {
+    if (this.warnIfProgramEmpty(programs[0])) return;
     if (this.stopped) {
       let stepByStep = true;
       this.execute(programs, stepByStep);
@@ -228,11 +229,7 @@ export default class Dude {
     this.programBeingExecuted?.disanimate();
     this.programBeingExecuted = program;
     this.programBeingExecuted.animate();
-    if (!program.ordinalCommands.length) {
-      setTimeout(() => {
-        this.programBeingExecuted?.disanimate();
-      }, 300);
-    }
+    this.warnIfProgramEmpty(program);
     program.disanimateCommands();
     this.setTimeout(() => {
       this.buildPath(program.ordinalCommands);
@@ -241,6 +238,19 @@ export default class Dude {
       }
       this.currentStep?.execute()
     }, 200);
+  }
+
+  private warnIfProgramEmpty(program: Program) {
+    const isEmpty = program.isEmpty();
+    if (isEmpty) {
+      program.animate();
+      this.sounds.error();
+      setTimeout(() => {
+        this.programBeingExecuted?.disanimate();
+        program.disanimate();
+      }, 300);
+    }
+    return isEmpty;
   }
 
   buildPath(commands: Command[]) {

@@ -168,7 +168,7 @@ export default class Game extends Scene {
           if (this.obstaclesMazeModel.count('coin') == 0) {
             this.dude.stop(true)
             this.dude.playSuccess();
-            this.codeEditor.resetHighlightStepByStep();
+            this.codeEditor.unhighlightStepByStep();
             setTimeout(function () {
               playNextPhase();
             }, 2000);
@@ -182,7 +182,8 @@ export default class Game extends Scene {
         this.dude.currentFace = this.currentPhase.dudeFacedTo
         this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
         this.codeEditor.disanimatePrograms();
-        this.codeEditor.resetHighlightStepByStep();
+        this.codeEditor.unhighlightStepByStep();
+        this.codeEditor.enableStepButton();
         this.currentPhase.executeTutorialOrStartWithoutTutorial();
 
         if (clearCodeEditor) {
@@ -235,6 +236,7 @@ export default class Game extends Scene {
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
+        this.codeEditor.enableStepButton();
         this.codeEditor.highlightStepByStep();
         this.currentPhase?.updateTutorial();
       }
@@ -243,7 +245,8 @@ export default class Game extends Scene {
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
-      this.codeEditor.resetHighlightStepByStep();
+      this.codeEditor.disableStepButton();
+      this.codeEditor.unhighlightStepByStep();
       this.obstaclesMazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {
@@ -268,7 +271,7 @@ export default class Game extends Scene {
     }
 
     this.dude.onFinishWalking = () => {
-      this.codeEditor.resetHighlightStepByStep();
+      this.codeEditor.unhighlightStepByStep();
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
@@ -283,7 +286,6 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickStepByStep = () => {
       this.currentPhase?.removeBackgroundTutorialOverlay()
-      this.codeEditor.disableStepButton();
       this.dude.executeStepByStep([this.program, prog1, prog2]);
     }
 

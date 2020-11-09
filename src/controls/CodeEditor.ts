@@ -360,15 +360,18 @@ export default class CodeEditor {
   }
 
   highlightStepByStep() {
-    this.btnStep.enable();
     this.btnStep.blink();
   }
 
-  resetHighlightStepByStep() {
+  unhighlightStepByStep() {
     this.btnStep.stopBlink();
   }
 
   disableStepButton() {
     this.btnStep.disable();
+  }
+
+  enableStepButton(){
+    this.btnStep.enable();
   }
 }

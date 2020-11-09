@@ -71,6 +71,7 @@ export default class MazeConfigs {
         this.phases.push(this.createPhaseCallRecursiveFunction(false));
         this.phases.push(this.createPhaseStepByStepWithBlock());
         this.phases.push(this.createPhaseStepByStepWithBlock(false));
+        this.phases.push(this.createPhaseWithTwoStars());
         /* this.phases.push(this.createPhaseIfCoin());
         this.phases.push(this.createPhaseIfBlock()); */
     }
@@ -503,6 +504,51 @@ export default class MazeConfigs {
             phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
             phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
             phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+        }
+
+        return phase;
+    }
+
+
+    private createPhaseWithTwoStars() {
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'down'
+        phase.dudeStartPosition = { col: 3, row: 0 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
+            ['null', 'block', 'coin', 'null', 'null', 'null', 'null'],
+            ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
+            ['null', 'block', 'coin', 'null', 'null', 'null', 'null'],
+            ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
         }
 
         return phase;

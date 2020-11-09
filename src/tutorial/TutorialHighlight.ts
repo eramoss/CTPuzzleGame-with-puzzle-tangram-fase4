@@ -51,9 +51,9 @@ export default class TutorialHighlight {
                 this.removeHand();
                 this.resetDepth();
                 fnOnClick();
-                sprite.removeListener('pointerdown', this.onClickListener);
+                sprite.removeListener('pointerup', this.onClickListener);
             }
-            sprite.on('pointerdown', this.onClickListener)
+            sprite.on('pointerup', this.onClickListener)
         }
     }
 

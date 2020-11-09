@@ -6,20 +6,22 @@ export default class TutorialAction {
     scene: Scene;
     highlightedAreas: Array<TutorialHighlight>;
     nextTutorialAction: TutorialAction
+    previousTutorialAction: TutorialAction;
     onHighlight: () => void = () => { }
     onAdvance: () => void = () => { }
-    fnToCheckIfCanEnableHighlight: () => boolean
+    canEnableNextHighlight: () => boolean
+    canBeHighlightedWhen: () => boolean = () => true
     triggered: boolean = false;
     index: number;
 
     constructor(
         scene: Scene,
         highlights: Array<TutorialHighlight>,
-        fnToCheckIfCanEnableHighlight: () => boolean = () => true
+        canEnableNextHighlight: () => boolean = () => true
     ) {
         this.scene = scene;
         this.highlightedAreas = highlights;
-        this.fnToCheckIfCanEnableHighlight = fnToCheckIfCanEnableHighlight
+        this.canEnableNextHighlight = canEnableNextHighlight
     }
 
     reset() {
@@ -34,20 +36,27 @@ export default class TutorialAction {
 
     highlight() {
         if (this.triggered) return;
-        this.triggered = true;
-        console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
-        this.onHighlight();
-        this.disableAllInteractions();
-        const advance = () => {
-            this.onAdvance();
-            if (this.fnToCheckIfCanEnableHighlight()) {
-                this.nextTutorialAction?.highlight();
+        if (this.canBeHighlightedWhen()) {
+            this.triggered = true;
+            console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
+            this.onHighlight();
+            this.disableAllInteractions();
+            const advance = () => {
+                this.onAdvance();
+                if (this.canEnableNextHighlight()) {
+                    this.nextTutorialAction?.highlight();
+                }
+            }
+            this.highlightedAreas.forEach(highlight =>
+                highlight.onClickTutorialStep(() => advance())
+            );
+        }
+        if (!this.canBeHighlightedWhen()) {
+            if (this.previousTutorialAction) {
+                this.previousTutorialAction.triggered = false
+                this.previousTutorialAction.highlight();
             }
         }
-        this.highlightedAreas.forEach(highlight =>
-            highlight.onClickTutorialStep(() => advance())
-        )
-
     }
 
     private disableAllInteractions() {

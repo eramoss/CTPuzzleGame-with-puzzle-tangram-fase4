@@ -60,14 +60,14 @@ export default class MazeConfigs {
         this.phases = new Array<MazePhase>();
 
         let showTutorial = false;
-        
+
+        this.phases.push(this.createPhaseEasyThreeStepByStep());
         this.phases.push(this.createPhaseEasyArrowUp());
-        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
+        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpAndRight());
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
-        this.phases.push(this.createPhaseEasyThreeStepByStep());
         this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
         this.phases.push(this.createPhaseCallRecursiveFunction());
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
@@ -129,8 +129,9 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetBtnPlay)
+                let count = 0;
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetBtnPlay).canBeHighlightedWhen = this.hasAddedComands(count++);
             }
         }
 
@@ -178,16 +179,21 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                let count = 0;
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++)
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++)
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
             }
         }
 
         return phase;
+    }
+
+    hasAddedComands(quantity: number): () => boolean {
+        return () => this.codeEditor.countAddedCommands() == quantity
     }
 
     private createPhaseEasyArrowUpTwoTimes(showTutorial: boolean = true) {
@@ -231,9 +237,9 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
             if (showTutorial) {
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetBtnPlay)
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(0)
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(1)
+                phase.addTutorialHighlight(this.fnGetBtnPlay).canBeHighlightedWhen = this.hasAddedComands(2)
             }
         }
         return phase;
@@ -281,12 +287,11 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-
-                phase.addHighlight(this.fnGetArrowUp);
-                phase.addHighlight(this.fnGetArrowUp);
-                phase.addHighlight(this.fnGetArrowRight);
-                phase.addHighlight(this.fnGetArrowUp);
-                phase.addHighlight(this.fnGetBtnPlay);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(0);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(1);
+                phase.addTutorialHighlight(this.fnGetArrowRight).canBeHighlightedWhen = this.hasAddedComands(2);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(3);
+                phase.addTutorialHighlight(this.fnGetBtnPlay).canBeHighlightedWhen = this.hasAddedComands(4);;
             }
         }
         return phase;
@@ -333,10 +338,9 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetProg_0)
-                phase.addHighlight(this.fnGetBtnPlay)
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(0);
+                phase.addTutorialHighlight(this.fnGetProg_0).canBeHighlightedWhen = this.hasAddedComands(1);
+                phase.addTutorialHighlight(this.fnGetBtnPlay).canBeHighlightedWhen = this.hasAddedComands(2);
             }
         }
 
@@ -384,24 +388,25 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addHighlight(this.fnGetArrowLeft)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowRight)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetProg_1)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetArrowRight)
-                phase.addHighlight(this.fnGetArrowUp)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-                phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                let count = 0;
+                phase.addTutorialHighlight(this.fnGetArrowLeft).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowRight).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetProg_1).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowRight).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+                phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
             }
         }
 
@@ -448,12 +453,12 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-
-            phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            let count = 0;
+            phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+            phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
         }
 
         return phase;
@@ -499,13 +504,13 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-
-            phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
-            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            let count = 0;
+            phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+            phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+            phase.addTutorialHighlight(this.fnGetArrowUp).canBeHighlightedWhen = this.hasAddedComands(count++);
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addTutorialHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
         }
 
         return phase;

@@ -11,8 +11,6 @@ import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
 
-
-
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -390,5 +388,11 @@ export default class CodeEditor {
         this.onEditProgram()
       }
     })
+  }
+
+  countAddedCommands(): number {
+    const count = joinChilds(this.programs, (p) => p.ordinalCommands).length;
+    console.log('CODE_EDITOR [countAddedCommands]', count)
+    return count
   }
 }

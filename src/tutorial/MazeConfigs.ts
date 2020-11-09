@@ -4,7 +4,6 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import { joinChilds, createJoinArraysFn as createJoinFunction } from "../utils/Utils";
 import MazePhase from "./MazePhase";
-import TutorialHighlight from "./TutorialHighlight";
 
 export default class MazeConfigs {
 
@@ -24,12 +23,21 @@ export default class MazeConfigs {
         .find(c => c.texture.key == 'arrow-left');
     fnGetArrowRight = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
         .find(c => c.texture.key == 'arrow-right');
+    fnGetIfCoin = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+        .find(c => c.texture.key == 'if_coin');
+    fnGetIfBlock = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+        .find(c => c.texture.key == 'if_block');
     fnGetProg_0 = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
         .find(c => c.texture.key == 'prog_0');
     fnGetProg_1 = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
         .find(c => c.texture.key == 'prog_1');
     fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
     fnGetBtnStep = () => this.codeEditor.btnStep.sprite;
+    fnIsBtnStepStateEnabled = () => {
+        const isBtnStepEnabled = !this.codeEditor.btnStep.disabled;
+        console.log('TUTORIAL [isBtnStepEnabled]', isBtnStepEnabled)
+        return isBtnStepEnabled
+    }
     fnGetProgram = () => this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().sprite
 
     constructor(scene: Scene,
@@ -51,13 +59,15 @@ export default class MazeConfigs {
 
         this.phases = new Array<MazePhase>();
 
-        this.phases.push(this.createPhaseEasyTwoArrowUpStepByStep());
         this.phases.push(this.createPhaseEasyArrowUp());
+        this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
+        this.phases.push(this.createPhaseEasyArrowUpAndRight());
         this.phases.push(this.createPhaseEasyArrowUpWithoutTutorial());
         this.phases.push(this.createPhaseWithBlock());
-        this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
-        this.phases.push(this.createPhaseCallFunction());
-        this.phases.push(this.createPhaseEasyArrowUpAndRight());
+        this.phases.push(this.createPhaseCallRecursiveFunction());
+        this.phases.push(this.createPhaseStepByStep());
+        /* this.phases.push(this.createPhaseIfCoin());
+        this.phases.push(this.createPhaseIfBlock()); */
     }
 
     getNextPhase(): MazePhase {
@@ -117,7 +127,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseEasyTwoArrowUpStepByStep() {
+    private createPhaseStepByStep() {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
@@ -157,12 +167,13 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
+
             phase.addHighlight(this.fnGetArrowUp)
             phase.addHighlight(this.fnGetArrowUp)
             phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
         }
 
         return phase;
@@ -315,7 +326,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseCallFunction() {
+    private createPhaseCallRecursiveFunction() {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 0, row: 3 }
@@ -412,12 +423,115 @@ export default class MazeConfigs {
             phase.addHighlight(this.fnGetArrowUp)
             phase.addHighlight(this.fnGetArrowRight)
             phase.addHighlight(this.fnGetArrowUp)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
-            phase.addHighlight(this.fnGetBtnStep)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+        }
+
+        return phase;
+    }
+
+    private createPhaseIfCoin() {
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'down'
+        phase.dudeStartPosition = { col: 3, row: 1 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'coin', 'coin', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+
+            phase.addHighlight(this.fnGetArrowUp)
+            phase.addHighlight(this.fnGetArrowUp)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+        }
+
+        return phase;
+    }
+
+    private createPhaseIfBlock() {
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'down'
+        phase.dudeStartPosition = { col: 3, row: 1 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+
+            phase.addHighlight(this.fnGetArrowUp)
+            phase.addHighlight(this.fnGetArrowUp)
+            phase.addHighlight(this.fnGetArrowUp)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
+            phase.addHighlight(this.fnGetBtnStep, this.fnIsBtnStepStateEnabled)
         }
 
         return phase;

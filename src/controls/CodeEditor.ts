@@ -10,6 +10,7 @@ import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
+  
 
 
   scene: Scene;
@@ -359,10 +360,15 @@ export default class CodeEditor {
   }
 
   highlightStepByStep() {
+    this.btnStep.enable();
     this.btnStep.blink();
   }
 
   resetHighlightStepByStep() {
     this.btnStep.stopBlink();
+  }
+
+  disableStepButton() {
+    this.btnStep.disable();
   }
 }

@@ -4,7 +4,6 @@ import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
 
 export default class TutorialHighlight {
 
-
     fnGetSprite: () => GameObjects.Sprite | GameObjects.Image
     handClickSprite: GameObjects.Sprite;
     mustClick: boolean = false

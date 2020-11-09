@@ -236,12 +236,11 @@ export default class Game extends Scene {
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
         this.codeEditor.highlightStepByStep();
+        this.currentPhase?.updateTutorial();
       }
       this.obstaclesMazeModel.onChange();
       //this.mazeModel.updateBringFront();
     }
-
-
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.codeEditor.resetHighlightStepByStep();
@@ -282,6 +281,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickStepByStep = () => {
+      this.codeEditor.disableStepButton();
       this.dude.executeStepByStep([this.program, prog1, prog2]);
     }
 

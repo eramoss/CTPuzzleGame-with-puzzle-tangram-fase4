@@ -26,12 +26,20 @@ export default class MazePhase {
         this.grid = grid;
     }
 
-    addHighlight(fnGetSprite: () => GameObjects.Sprite | GameObjects.Image) {
-        this.addTutorialHighlights([new TutorialHighlight(this.scene, this.grid, fnGetSprite)])
+    addHighlight(
+        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image,
+        fnToCheckIfCanEnableHighlight: () => boolean = () => true) {
+        this.addTutorialHighlights(
+            [new TutorialHighlight(this.scene, this.grid, fnGetSprite)],
+            fnToCheckIfCanEnableHighlight
+        )
     }
 
-    addTutorialHighlights(highlights: Array<TutorialHighlight>) {
-        const tutorialAction = new TutorialAction(this.scene, highlights);
+    addTutorialHighlights(
+        highlights: Array<TutorialHighlight>,
+        fnToCheckIfCanEnableHighlight: () => boolean = () => true
+    ) {
+        const tutorialAction = new TutorialAction(this.scene, highlights, fnToCheckIfCanEnableHighlight);
         tutorialAction.onHighlight = () => {
             this.addBackgroundOverlay()
         }
@@ -45,6 +53,10 @@ export default class MazePhase {
 
     executeTutorialOrStartWithoutTutorial() {
         this.firstAction?.highlight();
+    }
+
+    updateTutorial() {
+        this.action?.highlight();
     }
 
     isTutorialPhase() {

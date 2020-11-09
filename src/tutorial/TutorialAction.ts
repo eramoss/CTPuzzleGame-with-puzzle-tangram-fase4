@@ -7,13 +7,21 @@ export default class TutorialAction {
     highlightedAreas: Array<TutorialHighlight>;
     nextTutorialAction: TutorialAction
     onHighlight: () => void = () => { }
+    fnToCheckIfCanEnableHighlight: () => boolean
+    triggered: any;
 
-    constructor(scene: Scene, highlights: Array<TutorialHighlight>) {
+    constructor(
+        scene: Scene,
+        highlights: Array<TutorialHighlight>,
+        fnToCheckIfCanEnableHighlight: () => boolean = () => true
+    ) {
         this.scene = scene;
         this.highlightedAreas = highlights;
+        this.fnToCheckIfCanEnableHighlight = fnToCheckIfCanEnableHighlight
     }
 
     reset() {
+        this.triggered = false;
         this.scene.children.getAll().forEach(c => c.setInteractive());
         this.highlightedAreas.forEach(highlight => {
             highlight.removeHand();
@@ -22,13 +30,17 @@ export default class TutorialAction {
     }
 
     highlight() {
-        this.onHighlight();
-        this.disableAllInteractions();
-        this.highlightedAreas.forEach(highlight =>
-            highlight.onClickTutorialStep(() => {
-                this.nextTutorialAction?.highlight();
-            })
-        )
+        if (this.triggered) return;
+        this.triggered = true;
+        if (this.fnToCheckIfCanEnableHighlight()) {
+            this.onHighlight();
+            this.disableAllInteractions();
+            this.highlightedAreas.forEach(highlight =>
+                highlight.onClickTutorialStep(() => {
+                    this.nextTutorialAction?.highlight();
+                })
+            )
+        }
     }
 
     private disableAllInteractions() {

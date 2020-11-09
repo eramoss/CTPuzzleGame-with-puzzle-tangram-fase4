@@ -252,8 +252,8 @@ export default class Command {
   }
 
   isSpriteDragged(grid: AlignGrid): boolean {
-    let dragHorizontal = this.sprite.input.dragStartX - this.sprite.x > 50 * grid.scale
-    let dragVertical = this.sprite.input.dragStartY - this.sprite.y > 50 * grid.scale
+    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 50 * grid.scale
+    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 50 * grid.scale
     return dragHorizontal || dragVertical;
   }
 }

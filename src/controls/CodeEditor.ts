@@ -135,7 +135,7 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
 
-        let dragged = command.isDragged;
+        let dragged = command.isDragged && command.isSpriteDragged(this.grid);
         let clicked = this.getTime() - this.clickTime < 1000 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;

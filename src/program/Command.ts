@@ -1,11 +1,13 @@
 import { GameObjects, Sound } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
+import AlignGrid from '../geom/AlignGrid';
 import Sounds from '../sounds/Sounds';
 import CommandAction from './CommandAction';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command {
+
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -247,6 +249,12 @@ export default class Command {
   }
   muteBlockRemovingSound() {
     this.removeSoundElabled = false;
+  }
+
+  isSpriteDragged(grid: AlignGrid): boolean {
+    let dragHorizontal = this.sprite.input.dragStartX - this.sprite.x > 100 * grid.scale
+    let dragVertical = this.sprite.input.dragStartY - this.sprite.y > 100 * grid.scale
+    return dragHorizontal || dragVertical;
   }
 }
 

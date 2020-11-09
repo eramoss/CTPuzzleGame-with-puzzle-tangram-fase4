@@ -139,7 +139,7 @@ export default class Game extends Scene {
     }
 
     let replayCurrentPhase = () => {
-      let clearCodeEditor = false;
+      let clearCodeEditor = this.currentPhase?.isTutorialPhase();
       playPhase(this.currentPhase, clearCodeEditor)
     }
 
@@ -154,7 +154,7 @@ export default class Game extends Scene {
 
       if (this.currentPhase) {
 
-        this.currentPhase.setupTutorialsAndObjectsPositions()
+        this.currentPhase.setup()
         this.dude.matrix = this.currentPhase.obstacles;
         const obstacles = this.currentPhase.obstacles
         const ground = this.currentPhase.ground

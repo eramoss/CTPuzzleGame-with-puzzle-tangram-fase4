@@ -26,6 +26,11 @@ export default class MazePhase {
         this.grid = grid;
     }
 
+    setup() {
+        this.clearTutorials();
+        this.setupTutorialsAndObjectsPositions();
+    }
+
     addHighlight(
         fnGetSprite: () => GameObjects.Sprite | GameObjects.Image,
         fnToCheckIfCanEnableHighlight: () => boolean = () => true) {
@@ -78,6 +83,8 @@ export default class MazePhase {
             action.reset();
             action = action.nextTutorialAction
         }
+        this.action = null;
+        this.firstAction = null;
     }
 
     addBackgroundOverlay() {

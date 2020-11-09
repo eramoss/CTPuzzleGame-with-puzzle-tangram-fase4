@@ -188,12 +188,11 @@ export default class Game extends Scene {
         this.codeEditor.unhighlightStepButton();
         this.codeEditor.enableStepButton();
         this.codeEditor.enablePlayButton();
-        this.currentPhase.showTutorialActionsIfExists();
-
         if (clearCodeEditor) {
           this.codeEditor.clear();
         }
 
+        this.currentPhase.showTutorialActionsIfExists();
       }
 
       // this.program.clear();

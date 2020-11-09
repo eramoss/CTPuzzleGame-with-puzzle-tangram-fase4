@@ -29,8 +29,8 @@ export default class TutorialHighlight {
         this.handClickSprite = this.scene
             .add
             .sprite(
-                sprite.x + 20 * this.grid.scale + Math.random() * 50,
-                sprite.y + sprite.height / 3 + Math.random() * 50,
+                sprite.x + 20 * this.grid.scale,
+                sprite.y + sprite.height / 3,
                 'hand-tutorial'
             )
             .play('hand-tapping')

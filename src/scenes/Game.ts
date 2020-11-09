@@ -179,8 +179,10 @@ export default class Game extends Scene {
         this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
         this.dude.setPosition(col, row);
         this.obstaclesMazeModel.updateBringFront();
+        
         this.dude.currentFace = this.currentPhase.dudeFacedTo
         this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
+        
         this.codeEditor.disanimatePrograms();
         this.codeEditor.unhighlightStepByStep();
         this.codeEditor.enableStepButton();

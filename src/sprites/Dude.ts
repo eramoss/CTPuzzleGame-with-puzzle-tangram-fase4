@@ -248,6 +248,7 @@ export default class Dude {
       setTimeout(() => {
         this.programBeingExecuted?.disanimate();
         program.disanimate();
+        this.onFinishWalking();
       }, 300);
     }
     return isEmpty;

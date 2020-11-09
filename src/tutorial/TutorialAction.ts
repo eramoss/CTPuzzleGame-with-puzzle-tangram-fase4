@@ -23,6 +23,7 @@ export default class TutorialAction {
     }
 
     reset() {
+        console.log('TUTORIAL_RESETING_CHILDREN')
         this.triggered = false;
         this.scene.children.getAll().forEach(c => c.setInteractive());
         this.highlightedAreas.forEach(highlight => {

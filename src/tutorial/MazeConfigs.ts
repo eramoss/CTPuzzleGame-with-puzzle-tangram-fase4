@@ -60,8 +60,8 @@ export default class MazeConfigs {
         this.phases = new Array<MazePhase>();
 
         let showTutorial = true;
-        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUp());
+        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));

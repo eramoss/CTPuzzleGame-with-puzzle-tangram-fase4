@@ -135,7 +135,7 @@ export default class CodeEditor {
       commandSprite.on('dragend', _ => {
         console.log("MOVE_EVENT", "dragend");
 
-        let dragged = command.isDragged && command.isSpriteDragged(this.grid);
+        let dragged = command.isDragged && command.isSpriteConsiderableDragged(this.grid);
         let clicked = this.getTime() - this.clickTime < 700 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
@@ -170,8 +170,13 @@ export default class CodeEditor {
           }
 
           if (clicked && !isAddedToSomeProgram) {
-            let main = this.getLastEditedOrMainProgramOrFirstNonfull();
-            command.setProgram(main);
+            let programToAddWhenClicked = this.getLastEditedOrMainProgramOrFirstNonfull();
+            if (programToAddWhenClicked.isFull()) {
+              command.removeSelf();
+            }
+            if (!programToAddWhenClicked.isFull()) {
+              command.setProgram(programToAddWhenClicked);
+            }
           }
 
           if (clicked && isAddedToSomeProgram) {

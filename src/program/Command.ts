@@ -251,7 +251,7 @@ export default class Command {
     this.removeSoundElabled = false;
   }
 
-  isSpriteDragged(grid: AlignGrid): boolean {
+  isSpriteConsiderableDragged(grid: AlignGrid): boolean {
     let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 50 * grid.scale
     let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 50 * grid.scale
     return dragHorizontal || dragVertical;

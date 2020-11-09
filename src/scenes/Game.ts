@@ -133,6 +133,18 @@ export default class Game extends Scene {
     this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
     this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
 
+    this.obstaclesMazeModel.onChange = () => {
+      if (this.obstaclesMazeModel.count('coin') == 0) {
+        this.dude.stop(true)
+        this.dude.playSuccess();
+        this.codeEditor.disableStepButton();
+        this.codeEditor.unhighlightStepButton();
+        setTimeout(function () {
+          playNextPhase();
+        }, 2000);
+      }
+    }
+
     let playNextPhase = () => {
       let clearCodeEditor = true;
       playPhase(this.phases.getNextPhase(), clearCodeEditor);
@@ -154,29 +166,17 @@ export default class Game extends Scene {
 
       if (this.currentPhase) {
 
-        this.currentPhase.setup()
+        this.currentPhase.setupMatrixAndTutorials()
         this.dude.matrix = this.currentPhase.obstacles;
         const obstacles = this.currentPhase.obstacles
         const ground = this.currentPhase.ground
 
         this.groundMazeModel.clear();
         this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
-        this.groundMazeModel.setMatrixOfObjects(ground)
-        this.obstaclesMazeModel.setMatrixOfObjects(obstacles)
+        this.groundMazeModel.setMatrixOfObjects(ground);
+        this.obstaclesMazeModel.setMatrixOfObjects(obstacles);
 
-        this.obstaclesMazeModel.onChange = () => {
-          if (this.obstaclesMazeModel.count('coin') == 0) {
-            this.dude.stop(true)
-            this.dude.playSuccess();
-            this.codeEditor.disableStepButton();
-            this.codeEditor.unhighlightStepButton();
-            setTimeout(function () {
-              playNextPhase();
-            }, 2000);
-          }
-        }
-
-        let { row, col } = this.currentPhase.dudeStartPosition
+        let { row, col } = this.currentPhase.dudeStartPosition;
         this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
         this.dude.setPosition(col, row);
         this.obstaclesMazeModel.updateBringFront();
@@ -188,7 +188,7 @@ export default class Game extends Scene {
         this.codeEditor.unhighlightStepButton();
         this.codeEditor.enableStepButton();
         this.codeEditor.enablePlayButton();
-        this.currentPhase.executeTutorialOrStartWithoutTutorial();
+        this.currentPhase.showTutorialActionsIfExists();
 
         if (clearCodeEditor) {
           this.codeEditor.clear();

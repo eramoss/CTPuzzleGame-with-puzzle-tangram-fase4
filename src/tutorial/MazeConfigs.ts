@@ -59,18 +59,19 @@ export default class MazeConfigs {
 
         this.phases = new Array<MazePhase>();
 
-        this.phases.push(this.createPhaseEasyArrowUp(false));
+        let showTutorial = false;
         this.phases.push(this.createPhaseEasyArrowUp());
+        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
-        this.phases.push(this.createPhaseEasyArrowUpTwoTimes(false));
+        this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpAndRight());
-        this.phases.push(this.createPhaseEasyArrowUpAndRight(false));
+        this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
         this.phases.push(this.createPhaseEasyThreeStepByStep());
-        this.phases.push(this.createPhaseEasyThreeStepByStep(false));
+        this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
         this.phases.push(this.createPhaseCallRecursiveFunction());
-        this.phases.push(this.createPhaseCallRecursiveFunction(false));
+        this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
         this.phases.push(this.createPhaseStepByStepWithBlock());
-        this.phases.push(this.createPhaseStepByStepWithBlock(false));
+        this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
         this.phases.push(this.createPhaseWithTwoStars());
         /* this.phases.push(this.createPhaseIfCoin());
         this.phases.push(this.createPhaseIfBlock()); */

@@ -26,7 +26,7 @@ export default class MazePhase {
         this.grid = grid;
     }
 
-    setup() {
+    setupMatrixAndTutorials() {
         this.clearTutorials();
         this.setupTutorialsAndObjectsPositions();
     }
@@ -63,7 +63,7 @@ export default class MazePhase {
         this.action = tutorialAction;
     }
 
-    executeTutorialOrStartWithoutTutorial() {
+    showTutorialActionsIfExists() {
         this.firstAction?.highlight();
     }
 

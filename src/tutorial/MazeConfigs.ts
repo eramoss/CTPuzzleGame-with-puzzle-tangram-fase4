@@ -60,8 +60,7 @@ export default class MazeConfigs {
         this.phases = new Array<MazePhase>();
 
         let showTutorial = false;
-        this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
-        this.phases.push(this.createPhaseWithTwoStars());
+        
         this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
@@ -73,6 +72,8 @@ export default class MazeConfigs {
         this.phases.push(this.createPhaseCallRecursiveFunction());
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
         this.phases.push(this.createPhaseStepByStepWithBlock());
+        this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
+        this.phases.push(this.createPhaseWithTwoStars());
         /* this.phases.push(this.createPhaseIfCoin());
         this.phases.push(this.createPhaseIfBlock()); */
     }

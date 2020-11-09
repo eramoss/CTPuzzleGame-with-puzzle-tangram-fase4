@@ -59,8 +59,8 @@ export default class MazeConfigs {
 
         this.phases = new Array<MazePhase>();
 
-        this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUp(false));
+        this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(false));
         this.phases.push(this.createPhaseEasyArrowUpAndRight());

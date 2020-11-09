@@ -168,7 +168,8 @@ export default class Game extends Scene {
           if (this.obstaclesMazeModel.count('coin') == 0) {
             this.dude.stop(true)
             this.dude.playSuccess();
-            this.codeEditor.unhighlightStepByStep();
+            this.codeEditor.disableStepButton();
+            this.codeEditor.unhighlightStepButton();
             setTimeout(function () {
               playNextPhase();
             }, 2000);
@@ -179,12 +180,12 @@ export default class Game extends Scene {
         this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
         this.dude.setPosition(col, row);
         this.obstaclesMazeModel.updateBringFront();
-        
+
         this.dude.currentFace = this.currentPhase.dudeFacedTo
         this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
-        
+
         this.codeEditor.disanimatePrograms();
-        this.codeEditor.unhighlightStepByStep();
+        this.codeEditor.unhighlightStepButton();
         this.codeEditor.enableStepButton();
         this.codeEditor.enablePlayButton();
         this.currentPhase.executeTutorialOrStartWithoutTutorial();
@@ -239,9 +240,11 @@ export default class Game extends Scene {
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
-        this.codeEditor.enableStepButton();
-        this.codeEditor.highlightStepByStep();
-        this.currentPhase?.updateTutorial();
+        if (!this.dude.stopped) {
+          this.codeEditor.enableStepButton();
+          this.codeEditor.highlightStepButton();
+          this.currentPhase?.updateTutorial();
+        }
       }
       this.obstaclesMazeModel.onChange();
       //this.mazeModel.updateBringFront();
@@ -250,7 +253,7 @@ export default class Game extends Scene {
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.codeEditor.disableStepButton();
       this.codeEditor.disablePlayButton();
-      this.codeEditor.unhighlightStepByStep();
+      this.codeEditor.unhighlightStepButton();
       this.obstaclesMazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
         if (currentDestine.couldExecute) {
@@ -275,7 +278,7 @@ export default class Game extends Scene {
     }
 
     this.dude.onFinishWalking = () => {
-      this.codeEditor.unhighlightStepByStep();
+      this.codeEditor.unhighlightStepButton();
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();

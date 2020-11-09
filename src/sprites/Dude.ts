@@ -119,12 +119,13 @@ export default class Dude {
     const point: IsometricPoint = this.matrix.points[y][x]
     this.character.x = point.x
     this.character.y = point.y
+    this.stopBody();
   }
 
   stop(resetFace: boolean = false) {
     this.stopped = true;
     this.character.clearTint();
-    this.character.body.stop();
+    this.stopBody();
     this.currentStep = null;
     this.disanimatePrograms();
     this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
@@ -132,6 +133,10 @@ export default class Dude {
     if (resetFace) {
       this.resetFace();
     }
+  }
+
+  private stopBody() {
+    this.character.body.stop();
   }
 
   private resetFace() {
@@ -187,11 +192,12 @@ export default class Dude {
     }
   }
 
-  continuePreviousBranchIfExists() {
+  continuePreviousBranchIfExists():boolean {
     let branchToBackTo = this.getBranchToBackTo()
     if (branchToBackTo) {
       this.currentStep = branchToBackTo.dudeMove
     }
+    return !!branchToBackTo
   }
 
   update() {

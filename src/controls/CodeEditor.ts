@@ -359,11 +359,11 @@ export default class CodeEditor {
     this.programs.forEach(p => p.disanimateCommands());
   }
 
-  highlightStepByStep() {
+  highlightStepButton() {
     this.btnStep.blink();
   }
 
-  unhighlightStepByStep() {
+  unhighlightStepButton() {
     this.btnStep.stopBlink();
   }
 

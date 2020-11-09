@@ -63,14 +63,14 @@ export default class Game extends Scene {
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 104, frameHeight: 122 });
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
 
-    this.load.audio('blocked', 'assets/ct/sounds/impact.mp3');
+    this.load.audio('blocked', 'assets/ct/sounds/blocked.mp3');
     this.load.audio('error', 'assets/ct/sounds/error.ogg');
     this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
     this.load.audio('drop', 'assets/ct/sounds/drop.ogg');
     this.load.audio('hover', 'assets/ct/sounds/hover.ogg');
     this.load.audio('remove', 'assets/ct/sounds/remove.ogg');
     this.load.audio('start', 'assets/ct/sounds/start.ogg');
-    this.load.audio('coin', 'assets/ct/sounds/mario.wav');
+    this.load.audio('coin', 'assets/ct/sounds/coin.wav');
     this.load.audio('blink', 'assets/ct/sounds/blink.mp3');
     this.load.audio('success', 'assets/ct/sounds/success.mp3');
   }

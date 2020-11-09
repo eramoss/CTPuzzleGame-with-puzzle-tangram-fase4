@@ -2,7 +2,7 @@ import { GameObjects } from "phaser";
 import Matrix from "../geom/Matrix";
 
 export class MazeModelObject {
-  depth:number;
+  depth: number;
   gameObject: GameObjects.GameObject;
   spriteName: string
 
@@ -26,7 +26,7 @@ export default class MazeModel {
   constructor(
     scene: Phaser.Scene,
     spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>,
-    depth:number) {
+    depth: number) {
     this.scene = scene;
     this.gameObjects = []
     this.spriteCreateFunctions = spriteCreateFunctions;
@@ -178,9 +178,8 @@ export default class MazeModel {
           if (object) {
             if (object.gameObject != keepInModel) {
               this.scene.children.remove(object.gameObject);
-            } else {
-              this.gameObjects[y][x] = null;
             }
+            this.gameObjects[y][x] = null;
           }
         }
       }

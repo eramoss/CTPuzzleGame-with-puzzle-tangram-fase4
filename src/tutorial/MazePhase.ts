@@ -7,7 +7,6 @@ import TutorialHighlight from "./TutorialHighlight";
 
 export default class MazePhase {
 
-
     setupTutorialsAndObjectsPositions: () => void;
     obstacles: Matrix;
     ground: Matrix;

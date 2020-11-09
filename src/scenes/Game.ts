@@ -186,6 +186,7 @@ export default class Game extends Scene {
         this.codeEditor.disanimatePrograms();
         this.codeEditor.unhighlightStepByStep();
         this.codeEditor.enableStepButton();
+        this.codeEditor.enablePlayButton();
         this.currentPhase.executeTutorialOrStartWithoutTutorial();
 
         if (clearCodeEditor) {
@@ -248,6 +249,7 @@ export default class Game extends Scene {
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
       this.codeEditor.disableStepButton();
+      this.codeEditor.disablePlayButton();
       this.codeEditor.unhighlightStepByStep();
       this.obstaclesMazeModel.putSprite(x, y, undefined);
       if (currentDestine) {

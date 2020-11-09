@@ -374,4 +374,12 @@ export default class CodeEditor {
   enableStepButton(){
     this.btnStep.enable();
   }
+
+  disablePlayButton() {
+    this.btnPlay.disable();
+  }
+
+  enablePlayButton(){
+    this.btnPlay.enable();
+  }
 }

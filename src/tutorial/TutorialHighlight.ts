@@ -30,7 +30,7 @@ export default class TutorialHighlight {
             .add
             .sprite(
                 sprite.x + 20 * this.grid.scale,
-                sprite.y + sprite.height / 3,
+                sprite.y + sprite.height / 3 + 20 * this.grid.scale,
                 'hand-tutorial'
             )
             .play('hand-tapping')

@@ -72,11 +72,11 @@ export default class MazeConfigs {
         //this.phases.push(this.createPhaseEasyThreeStepByStep());
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
         //this.phases.push(this.createPhaseCallRecursiveFunction());
-        this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
+        //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
         //this.phases.push(this.createPhaseStepByStepWithBlock());
-        this.phases.push(this.createPhaseWithTwoStars());
-        /* this.phases.push(this.createPhaseIfCoin());*/
-        this.phases.push(this.createPhaseIfBlock()); 
+        this.phases.push(this.createHardPhaseWithTwoStars());
+        //this.phases.push(this.createPhaseIfCoin());
+        //this.phases.push(this.createPhaseIfBlock()); 
     }
 
     getNextPhase(): MazePhase {
@@ -518,7 +518,7 @@ export default class MazeConfigs {
     }
 
 
-    private createPhaseWithTwoStars() {
+    private createHardPhaseWithTwoStars() {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 0 }

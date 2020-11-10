@@ -224,8 +224,8 @@ export default class Game extends Scene {
     this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
       let valid = true;
       if (condition == 'if_coin') {
-        valid = this.dude.tag == 'got coin';
-        this.dude.tag = null;
+        valid = this.dude.gotCoin;
+        this.dude.gotCoin = null;
       }
       if (condition == 'if_block') {
         let { x, y } = dudeMove.getAheadPosition();
@@ -271,7 +271,7 @@ export default class Game extends Scene {
           //coin.setGravityY(-200);
           //coin.setVelocityY(-100)
           this.sounds.coin();
-          this.dude.tag = 'got coin';
+          this.dude.gotCoin = true;
         }, waitALittleBitBeforeColide);
       }
     }

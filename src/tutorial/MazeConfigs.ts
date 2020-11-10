@@ -60,20 +60,20 @@ export default class MazeConfigs {
         this.phases = new Array<MazePhase>();
 
         let showTutorial = true;
-        /* this.phases.push(this.createPhaseEasyArrowUp());
-        this.phases.push(this.createPhaseEasyThreeStepByStep()); */
+        
         this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
-        //this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
-        //this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
-        //this.phases.push(this.createPhaseEasyArrowUpAndRight());
         this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
-        //this.phases.push(this.createPhaseEasyThreeStepByStep());
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
-        //this.phases.push(this.createPhaseCallRecursiveFunction());
-        //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
-        //this.phases.push(this.createPhaseStepByStepWithBlock());
+        
+        this.phases.push(this.createPhaseEasyArrowUp());
+        this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
+        this.phases.push(this.createPhaseEasyThreeStepByStep());
+        this.phases.push(this.createEasyPhaseWithBlock());
+        this.phases.push(this.createPhaseCallRecursiveFunction());
+        this.phases.push(this.createEasyPhaseWithBlockWithTurn());
+        this.phases.push(this.createPhaseStepByStepWithBlock());
         this.phases.push(this.createHardPhaseWithTwoStars());
         //this.phases.push(this.createPhaseIfCoin());
         //this.phases.push(this.createPhaseIfBlock()); 
@@ -317,7 +317,7 @@ export default class MazeConfigs {
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'coin'],
+            ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
@@ -517,7 +517,6 @@ export default class MazeConfigs {
         return phase;
     }
 
-
     private createHardPhaseWithTwoStars() {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'down'
@@ -540,6 +539,95 @@ export default class MazeConfigs {
             ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
             ['null', 'block', 'coin', 'null', 'null', 'null', 'null'],
             ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+        }
+
+        return phase;
+    }
+
+
+    private createEasyPhaseWithBlock() {
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'down'
+        phase.dudeStartPosition = { col: 3, row: 0 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'coin', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+        }
+
+        return phase;
+    }
+
+    private createEasyPhaseWithBlockWithTurn() {
+        const phase = new MazePhase(this.scene, this.grid);
+        phase.dudeFacedTo = 'down'
+        phase.dudeStartPosition = { col: 3, row: 0 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'block', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
         ];
 

@@ -1,4 +1,4 @@
-import { GameObjects, Types, Scene, Physics } from 'phaser'
+import { GameObjects, Types, Scene } from 'phaser'
 import Matrix from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
@@ -161,11 +161,11 @@ export default class Game extends Scene {
       this.currentPhase = phase
 
       if (!this.currentPhase) {
-        //endGame()
+        this.scene.start('game-win');
       }
 
       if (this.currentPhase) {
-
+        
         this.currentPhase.setupMatrixAndTutorials()
         this.dude.matrix = this.currentPhase.obstacles;
         const obstacles = this.currentPhase.obstacles

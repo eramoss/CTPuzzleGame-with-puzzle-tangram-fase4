@@ -297,6 +297,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickStepByStep = () => {
+      this.codeEditor.disableStepButton();
       this.currentPhase?.removeBackgroundTutorialOverlay()
       this.dude.executeStepByStep([this.program, prog1, prog2]);
     }

@@ -55,17 +55,18 @@ export default class TutorialHighlight {
             sprite.setInteractive();
             this.isDragMoveAnimationCancelled = false;
             const dropZoneSprite = this.fnGetDropSprite();
+            this.originalX = sprite.x;
+            this.originalY = sprite.y;
+            this.useHandAnimationDragging(sprite, dropZoneSprite);
             this.onDragEndListener = () => {
-                //sprite.removeListener('pointerout', this.onDragEndListener);
                 this.cancelDragAnimation();
                 this.backToOriginalPosition();
                 this.removeHand();
                 this.resetDepth();
                 onInteractAdvanceTutorial()
+                sprite.removeListener('pointerout', this.onDragEndListener);
             }
-            this.originalX = sprite.x;
-            this.originalY = sprite.y;
-            this.useHandAnimationDragging(sprite, dropZoneSprite);
+            sprite.on('pointerout', this.onDragEndListener);
         }
     }
 
@@ -130,7 +131,6 @@ export default class TutorialHighlight {
             this.handSprite.on('pointerover', () => {
                 this.cancelDragAnimation();
                 this.backToOriginalPosition();
-                sprite.on('pointerout', this.onDragEndListener);
             })
         }
 
@@ -144,7 +144,6 @@ export default class TutorialHighlight {
 
         const onAchievePositionRepeat = () => {
             console.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]')
-            clearInterval(this.intervalWatchDragMove)
 
             setTimeout(() => {
 
@@ -163,6 +162,8 @@ export default class TutorialHighlight {
         }
         setTimeout(() => {
             if (!this.isDragMoveAnimationCancelled) {
+                this.handSprite.disableInteractive();
+                sprite.disableInteractive();
                 this.moveSpritesTo(
                     [
                         this.handSprite,
@@ -183,12 +184,16 @@ export default class TutorialHighlight {
         sprites.forEach(sprite => {
             this.scene.physics.moveToObject(sprite, destine, 300 * this.grid.scale);
         })
-        this.intervalWatchDragMove = setInterval(() => {
-            let achieved = this.checkIfHandAchievedDestine(destine)
-            if (achieved) {
-                onAchieve()
-            }
-        }, 10);
+        if (!this.intervalWatchDragMove) {
+            this.intervalWatchDragMove = setInterval(() => {
+                let achieved = this.checkIfHandAchievedDestine(destine)
+                if (achieved) {
+                    clearInterval(this.intervalWatchDragMove);
+                    this.intervalWatchDragMove = null;
+                    onAchieve()
+                }
+            }, 10);
+        }
     }
 
     checkIfHandAchievedDestine(dropZoneSprite: Physics.Arcade.Sprite | Physics.Arcade.Image): boolean {

@@ -31,21 +31,18 @@ export default class MazePhase {
     }
 
     addTutorialHighlight(
-        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image,
-        canEnableNextHighlight: () => boolean = () => true
+        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image
     ): TutorialAction {
 
         return this.addTutorialHighlights(
-            [new TutorialHighlight(this.scene, this.grid, fnGetSprite)],
-            canEnableNextHighlight
+            [new TutorialHighlight(this.scene, this.grid, fnGetSprite)]
         )
     }
 
     addTutorialHighlights(
-        highlights: Array<TutorialHighlight>,
-        canEnableNextHighlight: () => boolean
+        highlights: Array<TutorialHighlight>
     ): TutorialAction {
-        const tutorialAction = new TutorialAction(this.scene, highlights, canEnableNextHighlight);
+        const tutorialAction = new TutorialAction(this.scene, highlights);
         tutorialAction.onHighlight = () => {
             this.addBackgroundOverlay()
         }

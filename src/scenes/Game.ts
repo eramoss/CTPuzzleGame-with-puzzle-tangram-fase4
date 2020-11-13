@@ -7,8 +7,8 @@ import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
-import MazeConfigs from '../tutorial/MazeConfigs'
-import MazePhase from '../tutorial/MazePhase'
+import MazeConfigs from '../phases/MazeConfigs'
+import MazePhase from '../phases/MazePhase'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 

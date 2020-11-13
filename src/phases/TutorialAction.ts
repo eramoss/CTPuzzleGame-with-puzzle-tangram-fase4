@@ -4,12 +4,12 @@ import TutorialHighlight from "./TutorialHighlight";
 export default class TutorialAction {
 
     scene: Scene;
-    highlightedAreas: Array<TutorialHighlight>;
+    highlights: Array<TutorialHighlight>;
     nextTutorialAction: TutorialAction
     previousTutorialAction: TutorialAction;
     onHighlight: () => void = () => { }
     onAdvance: () => void = () => { }
-    canBeHighlightedWhen: () => boolean = () => true
+    isCodeStateValidToHighlightThisTutorialAction: () => boolean = () => true
     triggered: boolean = false;
     index: number;
 
@@ -18,14 +18,14 @@ export default class TutorialAction {
         highlights: Array<TutorialHighlight>,
     ) {
         this.scene = scene;
-        this.highlightedAreas = highlights;
+        this.highlights = highlights;
     }
 
     reset() {
         console.log('TUTORIAL_RESETING_CHILDREN')
         this.triggered = false;
         this.scene.children.getAll().forEach(c => c.setInteractive());
-        this.highlightedAreas.forEach(highlight => {
+        this.highlights.forEach(highlight => {
             highlight.removeHand();
             highlight.resetDepth();
         })
@@ -33,20 +33,22 @@ export default class TutorialAction {
 
     highlight() {
         if (this.triggered) return;
-        if (this.canBeHighlightedWhen()) {
+        if (this.isCodeStateValidToHighlightThisTutorialAction()) {
             this.triggered = true;
             console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
             this.disableAllInteractions();
-            const advance = () => {
+            const onInteractAdvanceTutorial = () => {
                 this.onAdvance();
                 this.nextTutorialAction?.highlight();
             }
-            this.highlightedAreas.forEach(highlight =>
-                highlight.onClickTutorialStep(() => advance())
-            );
+            this.highlights.forEach(highlight => {
+                //highlight.continueTutorialOnClick = true;
+                highlight.continueTutorialOnDrag = true;
+                highlight.contrastAndShowHandPointing(() => onInteractAdvanceTutorial())
+            });
         }
-        if (!this.canBeHighlightedWhen()) {
+        if (!this.isCodeStateValidToHighlightThisTutorialAction()) {
             if (this.previousTutorialAction) {
                 this.previousTutorialAction.triggered = false
                 this.previousTutorialAction.highlight();

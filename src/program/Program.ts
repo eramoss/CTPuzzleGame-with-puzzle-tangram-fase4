@@ -61,12 +61,12 @@ export default class Program {
         texture = textures[0]
         conditionTexture = textures[1];
       }
-      const commandSprite = this.scene.add.sprite(0, 0, texture).setScale(this.grid.scale);
+      const commandSprite = this.scene.physics.add.sprite(0, 0, texture).setScale(this.grid.scale);
       let command = new Command(this.scene, commandSprite);
       command.setProgram(this);
       addedCommands.push(command);
       if (conditionTexture) {
-        let conditionSprite = this.scene.add.sprite(0, 0, conditionTexture).setScale(this.grid.scale);
+        let conditionSprite = this.scene.physics.add.sprite(0, 0, conditionTexture).setScale(this.grid.scale);
         let conditionCommand = new Command(this.scene, conditionSprite);
         command.setCondition(conditionCommand);
         addedCommands.push(conditionCommand);

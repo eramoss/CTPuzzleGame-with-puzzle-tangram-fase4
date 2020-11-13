@@ -46,7 +46,7 @@ export default class Dude {
 
   createAnimations(matrixMode: string) {
     let isometric = matrixMode == Matrix.ISOMETRIC;
-    [
+    const animations = [
       { key: 'down', frames: isometric ? [1] : [2] },
       { key: 'left', frames: isometric ? [3] : [0] },
       { key: 'up', frames: isometric ? [5] : [1] },
@@ -59,10 +59,11 @@ export default class Dude {
       { key: 'up-right', frames: [6, 7] },
       { key: 'down-left', frames: [2, 3] },
       { key: 'down-right', frames: [0, 7] },
-    ].forEach(anim => {
+    ];
+    animations.forEach(animation => {
       this.scene.anims.create({
-        key: anim.key,
-        frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${matrixMode}`, anim),
+        key: animation.key,
+        frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${matrixMode}`, animation),
         frameRate: 7,
         repeat: 0
       });
@@ -193,7 +194,7 @@ export default class Dude {
     }
   }
 
-  continuePreviousBranchIfExists():boolean {
+  continuePreviousBranchIfExists(): boolean {
     let branchToBackTo = this.getBranchToBackTo()
     if (branchToBackTo) {
       this.currentStep = branchToBackTo.dudeMove

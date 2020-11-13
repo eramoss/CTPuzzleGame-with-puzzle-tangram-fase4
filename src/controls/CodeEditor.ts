@@ -69,7 +69,7 @@ export default class CodeEditor {
   }
 
   private createDraggableProgramCommands(commandName: string = null) {
-    const commandGroup = this.scene.add.group();
+    const commandGroup = this.scene.physics.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)

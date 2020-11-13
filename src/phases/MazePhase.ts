@@ -31,11 +31,11 @@ export default class MazePhase {
     }
 
     addTutorialHighlight(
-        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image
+        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image,
+        fnGetDropSprite: () => GameObjects.Sprite | GameObjects.Image = null
     ): TutorialAction {
-
         return this.addTutorialHighlights(
-            [new TutorialHighlight(this.scene, this.grid, fnGetSprite)]
+            [new TutorialHighlight(this.scene, this.grid, fnGetSprite, fnGetDropSprite)]
         )
     }
 

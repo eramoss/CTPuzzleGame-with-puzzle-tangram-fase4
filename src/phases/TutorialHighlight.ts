@@ -196,7 +196,7 @@ export default class TutorialHighlight {
     }
 
     private simulateClickToRemove(sprite: Physics.Arcade.Sprite) {
-        sprite.emit('dragstart', { recreateCommandInPosition: false });
+        sprite.emit('dragstart');
         sprite.emit('dragend');
     }
 

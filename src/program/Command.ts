@@ -25,10 +25,10 @@ export default class Command {
   sounds: Sounds
   removeSoundElabled: boolean = true;
 
-  constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
+  constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite, depth: number = 3) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
-    this.sprite.setDepth(2);
+    this.sprite.setDepth(depth);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)

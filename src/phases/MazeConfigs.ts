@@ -1,9 +1,10 @@
-import { Scene } from "phaser";
+import { GameObjects, Physics, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import { joinChilds, createJoinArraysFn as createJoinFunction } from "../utils/Utils";
 import MazePhase from "./MazePhase";
+import TutorialDropLocation from "./TutorialDropLocation";
 
 export default class MazeConfigs {
 
@@ -17,28 +18,32 @@ export default class MazeConfigs {
     gridCellWidth: number;
     codeEditor: CodeEditor;
 
-    fnGetArrowUp = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'arrow-up');
-    fnGetArrowLeft = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'arrow-left');
-    fnGetArrowRight = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'arrow-right');
-    fnGetIfCoin = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'if_coin');
-    fnGetIfBlock = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'if_block');
-    fnGetProg_0 = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'prog_0');
-    fnGetProg_1 = () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-        .find(c => c.texture.key == 'prog_1');
-    fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite;
-    fnGetBtnStep = () => this.codeEditor.btnStep.sprite;
+    fnGetChild(key: string): () => Physics.Arcade.Sprite {
+        return () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
+            .find(c => c.texture.key == key) as Physics.Arcade.Sprite;
+    }
+
+    fnGetArrowUp = this.fnGetChild('arrow-up');
+    fnGetArrowLeft = this.fnGetChild('arrow-left');
+    fnGetArrowRight = this.fnGetChild('arrow-right');
+    fnGetIfCoin = this.fnGetChild('if_coin');
+    fnGetIfBlock = this.fnGetChild('if_block');
+    fnGetProg_0 = this.fnGetChild('prog_0');
+    fnGetProg_1 = this.fnGetChild('prog_1');
+
+    fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite as Physics.Arcade.Sprite;;
+    fnGetBtnStep = () => this.codeEditor.btnStep.sprite as Physics.Arcade.Sprite;;
+
     fnIsBtnStepStateEnabled = () => {
         const isBtnStepEnabled = !this.codeEditor.btnStep.disabled;
         console.log('TUTORIAL [isBtnStepEnabled]', isBtnStepEnabled)
         return isBtnStepEnabled
     }
-    fnGetProgram = () => this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().sprite
+
+    fnGetProgramDropLocation = () => {
+        const program = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull();
+        return new TutorialDropLocation(program);
+    }
 
     constructor(scene: Scene,
         grid: AlignGrid,
@@ -134,8 +139,15 @@ export default class MazeConfigs {
 
             if (showTutorial) {
                 let count = 0;
-                phase.addTutorialHighlight(this.fnGetIfCoin, this.fnGetProgram).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+                phase
+                    .addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation)
+                    .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+                phase
+                    .addTutorialHighlight(this.fnGetIfCoin, this.fnGetProgramDropLocation)
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyCommands() == "arrow-up:if_coin";
+                phase
+                    .addTutorialHighlight(this.fnGetBtnPlay, this.fnGetProgramDropLocation)
+                    .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
             }
         }
 

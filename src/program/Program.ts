@@ -7,7 +7,6 @@ import { createDropZone, androidVibrate } from '../utils/Utils';
 
 export default class Program {
 
-
   ordinalCommands: Command[]
   conditionalCommandsIndexed: Map<number, Command>
   scene: Phaser.Scene;
@@ -140,31 +139,40 @@ export default class Program {
   }
 
   organizeInProgramArea(command: Command) {
-    const zone = this.dropZone.zone;
-    const index = this.ordinalCommands.indexOf(command);
-    const spriteWidth = command.sprite.width * this.grid.scale;
-    const spriteHeight = command.sprite.height * this.grid.scale * 1.2;
-
-    console.log('COMMAND_ALLOCATE_AREA', spriteWidth, spriteHeight)
-
-    this.maxSupportedCommandsByRow = Math.floor(zone.width / spriteWidth);
-    let cols = this.maxSupportedCommandsByRow;
-    const rows: integer = Math.floor(zone.height / spriteHeight);
-
-    const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols
-    const tileHeight = spriteHeight + (zone.height - spriteHeight * rows) / rows
-
-    const row = Math.floor(index / cols) * tileHeight;
-    let fitInFirstRow = row == 0;
-
-    let x = zone.x + (index % cols * tileWidth) + spriteWidth / 2;
-    let y = zone.y + row + spriteHeight / 1.8;
+    let { x, y, fitInFirstRow } = this.calculatePositionToPut(command);
 
     //let y = zone.y + Math.floor(index / cols) * tileHeight + spriteHeight * 0.5;
     command.setPosition(x, y);
     //drawRect(this.scene, x - spriteWidth / 2, y - spriteHeight / 2, spriteWidth, spriteHeight);
 
     return fitInFirstRow;
+  }
+
+  calculatePositionToPut(command: Command, index: number = null) {
+    const zone = this.dropZone.zone;
+    if (index == null) {
+      index = this.ordinalCommands.indexOf(command);
+    }
+    const spriteWidth = command.sprite.width * this.grid.scale;
+    const spriteHeight = command.sprite.height * this.grid.scale * 1.2;
+
+    this.maxSupportedCommandsByRow = Math.floor(zone.width / spriteWidth);
+    let cols = this.maxSupportedCommandsByRow;
+    const rows: integer = Math.floor(zone.height / spriteHeight);
+
+    const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols;
+    const tileHeight = spriteHeight + (zone.height - spriteHeight * rows) / rows;
+
+    console.log('COMMAND_ALLOCATE_AREA [spriteWidth, spriteHeight, tileWidth, tileHeight]', spriteWidth, spriteHeight, tileWidth, tileHeight);
+
+    let row = Math.floor(index / cols) * tileHeight;
+    let fitInFirstRow = row == 0;
+
+    let x = zone.x + (index % cols * tileWidth) + spriteWidth / 2;
+    let y = zone.y + row + spriteHeight / 1.8;
+
+    console.log('COMMAND_ALLOCATE_AREA [x,y]', x, y);
+    return { x, y, fitInFirstRow };
   }
 
   reorganize() {
@@ -238,5 +246,28 @@ export default class Program {
 
   getCommandsWithConditions(): Command[] {
     return this.ordinalCommands.flatMap(c => [c, c.condition]).filter(c => c != undefined);
+  }
+
+  getNextFreePosition(command: Command): { x: number, y: number } {
+    let index = this.ordinalCommands.length
+    let { x, y } = this.calculatePositionToPut(command, index)
+    return { x, y }
+  }
+
+  setDepth(depth:number){
+    this.sprite.setDepth(depth);
+    this.programNameImage.setDepth(depth);
+  }
+
+  stringfyCommands(): string {
+    const stringfiedCommands = this.ordinalCommands.map(command => {
+      let name = command.name;
+      if (command.condition) {
+        name = name + ":" + command.condition.name;
+      }
+      return name;
+    }).join('');
+    console.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
+    return stringfiedCommands;
   }
 }

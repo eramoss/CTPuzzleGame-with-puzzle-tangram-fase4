@@ -68,7 +68,7 @@ export default class CodeEditor {
     });
   }
 
-  private createDraggableProgramCommands(commandName: string = null) {
+  private createDraggableProgramCommands(commandName: string = null, depth: number = 3) {
     const commandGroup = this.scene.physics.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
     if (commandName) {
@@ -77,7 +77,7 @@ export default class CodeEditor {
     const commands: Command[] = commandNames
       .map(commandName => {
         let sprite = commandGroup.get(0, 0, commandName)
-        return new Command(this.scene, sprite)
+        return new Command(this.scene, sprite, depth)
       })
 
     console.log('COMMAND_NAMES', commandNames);
@@ -122,13 +122,20 @@ export default class CodeEditor {
           this.logPrograms('drag')
         }
       })
-      commandSprite.on('dragstart', _ => {
+      commandSprite.on('dragstart', (
+        options:
+          { recreateCommandInPosition: boolean } =
+          { recreateCommandInPosition: true }
+      ) => {
+
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         this.sounds.drag();
-        this.createDraggableProgramCommands(commandSprite.texture.key);
+        if (options.recreateCommandInPosition) {
+          this.createDraggableProgramCommands(commandSprite.texture.key);
+        }
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
       })

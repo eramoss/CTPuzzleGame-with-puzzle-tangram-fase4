@@ -43,8 +43,6 @@ export default class TutorialAction {
                 this.nextTutorialAction?.highlight();
             }
             this.highlights.forEach(highlight => {
-                //highlight.continueTutorialOnClick = true;
-                highlight.continueTutorialOnDrag = true;
                 highlight.contrastAndShowHandPointing(() => onInteractAdvanceTutorial())
             });
         }

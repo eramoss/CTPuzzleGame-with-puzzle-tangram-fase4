@@ -1,8 +1,9 @@
-import { GameObjects, Scene } from "phaser";
+import { GameObjects, Physics, Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
 import TutorialAction from "./TutorialAction";
+import TutorialDropLocation from "./TutorialDropLocation";
 import TutorialHighlight from "./TutorialHighlight";
 
 export default class MazePhase {
@@ -31,11 +32,11 @@ export default class MazePhase {
     }
 
     addTutorialHighlight(
-        fnGetSprite: () => GameObjects.Sprite | GameObjects.Image,
-        fnGetDropSprite: () => GameObjects.Sprite | GameObjects.Image = null
+        fnGetSprite: () => Physics.Arcade.Sprite,
+        fnGetDropLocation: () => TutorialDropLocation = null
     ): TutorialAction {
         return this.addTutorialHighlights(
-            [new TutorialHighlight(this.scene, this.grid, fnGetSprite, fnGetDropSprite)]
+            [new TutorialHighlight(this.scene, this.grid, fnGetSprite, fnGetDropLocation)]
         )
     }
 

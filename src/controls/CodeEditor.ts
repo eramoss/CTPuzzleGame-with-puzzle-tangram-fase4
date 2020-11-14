@@ -122,20 +122,14 @@ export default class CodeEditor {
           this.logPrograms('drag')
         }
       })
-      commandSprite.on('dragstart', (
-        options:
-          { recreateCommandInPosition: boolean } =
-          { recreateCommandInPosition: true }
-      ) => {
+      commandSprite.on('dragstart', () => {
 
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         this.sounds.drag();
-        if (options.recreateCommandInPosition) {
-          this.createDraggableProgramCommands(commandSprite.texture.key);
-        }
+        this.createDraggableProgramCommands(commandSprite.texture.key);
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
       })

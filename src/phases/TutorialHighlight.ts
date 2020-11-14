@@ -151,7 +151,7 @@ export default class TutorialHighlight {
                 sprite.disableInteractive();
 
                 sprite.emit('drag');
-                sprite.emit('dragstart', { recreateCommandInPosition: true });
+                sprite.emit('dragstart');
                 setTimeout(() => {
                     this.bringSpriteToFront(sprite);
                 }, 0);

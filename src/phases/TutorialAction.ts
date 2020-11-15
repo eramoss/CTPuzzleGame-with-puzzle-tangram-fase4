@@ -1,4 +1,4 @@
-import { GameObjects, Scene } from "phaser";
+import { Scene } from "phaser";
 import TutorialHighlight from "./TutorialHighlight";
 
 export default class TutorialAction {
@@ -12,6 +12,7 @@ export default class TutorialAction {
     isCodeStateValidToHighlightThisTutorialAction: () => boolean = () => true
     triggered: boolean = false;
     index: number;
+    onInvalidState: () => void
 
     constructor(
         scene: Scene,
@@ -48,6 +49,8 @@ export default class TutorialAction {
             if (this.previousTutorialAction) {
                 this.previousTutorialAction.triggered = false
                 this.previousTutorialAction.highlight();
+            } else {
+                this.onInvalidState()
             }
         }
     }

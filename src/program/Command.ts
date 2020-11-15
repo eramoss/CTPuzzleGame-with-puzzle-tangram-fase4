@@ -281,8 +281,8 @@ export default class Command implements InterfaceElement {
 
   setInteractive() {
     this.sprite.setInteractive();
-    this.tileDropZone.sprite.setInteractive();
-    this.tileDropZone.zone.setInteractive();
+    this.tileDropZone?.sprite.setInteractive();
+    this.tileDropZone?.zone.setInteractive();
   }
 
   disableInteractive() {

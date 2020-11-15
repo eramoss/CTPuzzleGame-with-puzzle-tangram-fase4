@@ -213,9 +213,6 @@ export default class TutorialHighlight {
         newCommandSprite.setInteractive();
         newCommandSprite.on('pointerdown', () => {
             callbackOnPointerDown();
-            newCommandSprite.on('dragleave', () => {
-                this.removeDropIndicator();
-            });
             newCommandSprite.on('pointerup', () => {
                 this.removeDropIndicator();
                 this.onInteractAdvanceTutorial();

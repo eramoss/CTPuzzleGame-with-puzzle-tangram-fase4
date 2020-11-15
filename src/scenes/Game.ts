@@ -286,6 +286,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickRun = () => {
+      this.codeEditor.setInteractive();
       this.currentPhase?.removeBackgroundTutorialOverlay()
       this.dude.execute([this.program, prog1, prog2]);
     }
@@ -294,6 +295,10 @@ export default class Game extends Scene {
       if (!this.dude.stopped) {
         replayCurrentPhase()
       }
+    }
+
+    this.codeEditor.onReplayCurrentPhase = () => {
+      replayCurrentPhase();
     }
 
     this.codeEditor.onClickStepByStep = () => {

@@ -13,11 +13,14 @@ import InterfaceElement from '../InterfaceElement';
 export default class CodeEditor {
 
 
+
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
   onClickRun: () => void = () => { };
   onEditProgram: () => void = () => { };
+  onReplayCurrentPhase: () => void = () => { };
   onInteract: () => void = () => { };
   onClickStop: () => void = () => { };
   onClickStepByStep: () => void = () => { };
@@ -475,5 +478,24 @@ export default class CodeEditor {
       interfaceElements.push(addedCommand);
     })
     return interfaceElements;
+  }
+
+  disableInteractive() {
+    this.getInteraceElements()
+      .forEach(genericInteraceElement => {
+        genericInteraceElement.disableInteractive();
+      })
+  }
+
+  setInteractive() {
+    this.getInteraceElements()
+      .forEach(genericInteraceElement => {
+        genericInteraceElement.setInteractive();
+      })
+  }
+
+  replay() {
+    this.sounds.error();
+    this.onReplayCurrentPhase();
   }
 }

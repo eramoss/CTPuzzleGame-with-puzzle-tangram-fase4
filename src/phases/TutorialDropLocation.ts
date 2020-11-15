@@ -7,23 +7,38 @@ export default class TutorialDropLocation {
     dropZone: Phaser.GameObjects.Zone;
     program: Program;
     position: { x: number; y: number; } = null;
+    command: Command;
 
     constructor(program: Program, command: Command = null) {
         this.program = program;
-        this.sprite = program.sprite;
-        this.dropZone = program.dropZone.zone;
+        this.command = command;
+        if (program) {
+            this.sprite = program.sprite;
+            this.dropZone = program.dropZone.zone;
+        }
+        if (command) {
+            this.sprite = command.tileDropZone.sprite;
+            this.dropZone = command.tileDropZone.zone;
+        }
     }
 
     getXY(sprite: Phaser.GameObjects.Sprite): { x: number, y: number } {
+        let position = null;
         if (this.position == null) {
-            let fakeCommand = new Command(this.program.scene, sprite)
-            this.position = this.program.getNextFreePosition(fakeCommand)
+            if (this.program) {
+                let fakeCommand = new Command(this.program.scene, sprite)
+                position = this.program.getNextFreePosition(fakeCommand)
+            }
+            if (this.command) {
+                position = this.command.getConditionalPosition()
+            }
+            this.position = position;
         }
         return this.position
     }
 
     setDepth(depth: number) {
-        this.program.setDepth(depth)
+        this.program?.setDepth(depth)
     }
 
 }

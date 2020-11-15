@@ -20,9 +20,9 @@ export default class MazeConfigs {
     codeEditor: CodeEditor;
 
     fnGetChild(key: string): () => InterfaceElement {
-        return () => 
-        this.codeEditor.availableCommands
-        .find(command => command.getSprite().texture.key == key);
+        return () =>
+            this.codeEditor.availableCommands
+                .find(command => command.getSprite().texture.key == key);
     }
 
     fnGetArrowUp = this.fnGetChild('arrow-up');
@@ -145,7 +145,10 @@ export default class MazeConfigs {
                     .addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation)
                     .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
                 phase
-                    .addTutorialHighlight(this.fnGetIfCoin, this.fnGetProgramDropLocation)
+                    .addTutorialHighlight(this.fnGetIfCoin, () => {
+                        const command = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().ordinalCommands[0];
+                        return new TutorialDropLocation(null, command);
+                    })
                     .isCodeStateValidToHighlightThisTutorialAction = () => {
                         const commandsToString = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyCommands();
                         return commandsToString == "arrow-up";

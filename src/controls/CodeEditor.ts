@@ -175,17 +175,13 @@ export default class CodeEditor {
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
       })
-      commandSprite.on('dragend', (options: { playRemoveSound: boolean }) => {
+      commandSprite.on('dragend', () => {
         console.log("MOVE_EVENT", "dragend");
 
         let dragged = command.isDragged && command.isSpriteConsiderableDragged(this.grid);
         let clicked = this.getTime() - this.clickTime < 700 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
-
-        if (options && !options.playRemoveSound) {
-          command.muteBlockRemovingSound()
-        }
 
         if (dragged && !dropped) {
           command.removeSelf();
@@ -332,7 +328,6 @@ export default class CodeEditor {
       console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.stringfyOrdinalCommands(), p.stringfyConditionalCommands(), ']');
     });
     this.programs.forEach(p => {
-      //console.log('program_log_conditional', p.name)
       console.log('Program Conditionals. Size:', p.name, '=>', p.conditionalCommandsIndexed.size)
       p.conditionalCommandsIndexed.forEach((command: Command, index: number) => {
         console.log('Program Conditionals => ', index, command.name, ' over ', command.placedOver?.name)

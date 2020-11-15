@@ -186,9 +186,9 @@ export default class TutorialHighlight {
         }, waitUntilHandCloseToDrag);
     }
 
-
     private onReplaceCommand(newCommand: Command, callbackOnPointerDown: () => void) {
         console.log('TUTORIAL_HIGHLIGHT [createdCommand]', newCommand);
+        newCommand.isRemoveSoundElabled = false;
         const newCommandSprite = newCommand.getSprite();
         this.bringSpriteToFront(newCommandSprite);
         this.bringHandSpriteToFront();

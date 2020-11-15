@@ -23,6 +23,7 @@ export default class MazeConfigs {
             const command = this.codeEditor.availableCommands
                 .find(command => command.getSprite().texture.key == key);
             command.isDropSoundEnabled = false;
+            command.isRemoveSoundElabled = false;
             return command;
         }
     }

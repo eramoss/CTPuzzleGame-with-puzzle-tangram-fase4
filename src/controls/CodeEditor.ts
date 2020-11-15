@@ -143,17 +143,12 @@ export default class CodeEditor {
             dontRecreate: boolean,
             muteDragSound: boolean,
             muteDropSound: boolean,
-            onCreateCommandBelow: (command: Command) => void
-          } =
-          {
-            dontRecreate: false,
-            muteDragSound: false,
-            muteDropSound: false,
-            onCreateCommandBelow: (command: Command) => { }
+            onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => void
           }
       ) => {
 
         console.log("MOVE_EVENT", "dragstart")
+        this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         if (!dragStartOptions.muteDragSound) {
@@ -169,7 +164,7 @@ export default class CodeEditor {
             if (createdCommands.length > 1) {
               console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
             }
-            dragStartOptions.onCreateCommandBelow(createdCommands[0]);
+            dragStartOptions.onCreateCommandBelow(this, createdCommands[0]);
           }
         }
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
@@ -336,6 +331,7 @@ export default class CodeEditor {
   }
 
   highlightDropZones(command: Command) {
+    console.log('CODE_EDITOR [highlightDropZones]')
     if (command.isConditional) {
       this.programs.forEach(p => p.highlightConditionalAreas(command))
     }
@@ -346,13 +342,18 @@ export default class CodeEditor {
     }
   }
 
-  unhighlightDropZones(command: Command) {
+  unhighlightDropZones(command: Command = null) {
+    console.log('CODE_EDITOR [unhighlightDropZones]')
     if (command.isConditional) {
-      this.programs.forEach(p => p.unhighlightConditionalAreas())
+      this.unhighlightConditionalDropZones();
     }
     this.dropZones.forEach(dropZone => {
       dropZone.highlight(false);
     })
+  }
+
+  unhighlightConditionalDropZones() {
+    this.programs.forEach(p => p.unhighlightConditionalAreas());
   }
 
   getTime(): number {

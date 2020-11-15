@@ -21,6 +21,7 @@ export default class MazePhase {
 
     dudeFacedTo: string = 'right'
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
+    actions: TutorialAction[] = [];
 
     constructor(scene: Scene, grid: AlignGrid) {
         this.scene = scene;
@@ -62,6 +63,7 @@ export default class MazePhase {
         }
         tutorialAction.index = index;
         this.action = tutorialAction;
+        this.actions.push(tutorialAction);
         return tutorialAction;
     }
 
@@ -80,13 +82,10 @@ export default class MazePhase {
 
     clearTutorials() {
         this.removeBackgroundTutorialOverlay();
-        let action = this.firstAction;
-        while (action != null) {
-            action.reset();
-            action = action.nextTutorialAction
-        }
         this.action = null;
         this.firstAction = null;
+        this.actions.forEach(a => a.reset())
+        this.actions = [];
     }
 
     addBackgroundOverlay() {

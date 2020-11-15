@@ -50,7 +50,8 @@ export default class TutorialAction {
                 this.previousTutorialAction.triggered = false
                 this.previousTutorialAction.highlight();
             } else {
-                this.onInvalidState()
+                //this.triggered = true;
+                //this.onInvalidState()
             }
         }
     }

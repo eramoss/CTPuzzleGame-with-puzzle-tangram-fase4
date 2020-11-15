@@ -82,12 +82,12 @@ export default class MazeConfigs {
         let showTutorial = true;
 
         //this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
-        
+
+        this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
         this.phases.push(this.createPhaseEasyIfCoin(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
-        this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
 
         this.phases.push(this.createPhaseEasyArrowUp());
@@ -276,10 +276,9 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                let count = 0;
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++)
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++)
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++)
+                phase.addTutorialHighlight(this.fnGetArrowUp)
+                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up")
+                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up, arrow-up")
                 phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled
                 phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled
                 phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled

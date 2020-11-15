@@ -111,7 +111,7 @@ export default class MazeConfigs {
     private createPhaseEasyIfCoin(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.grid);
         phase.dudeFacedTo = 'right'
-        phase.dudeStartPosition = { col: 1, row: 3 }
+        phase.dudeStartPosition = { col: 1, row: 1 }
 
         let baseMatrix = [
             ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
@@ -125,11 +125,11 @@ export default class MazeConfigs {
 
         let obstaclesMatrix = [
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'coin', 'coin', 'coin', 'block', 'null'],
+            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
+            ['null', 'null', 'coin', 'coin', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'block', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
         ];
 
@@ -214,7 +214,7 @@ export default class MazeConfigs {
 
             if (showTutorial) {
                 let count = 0;
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
                 phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
             }
         }

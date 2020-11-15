@@ -30,7 +30,6 @@ export default class Dude {
   currentFace: string;
   programBeingExecuted: Program;
   grid: AlignGrid;
-  gotCoin: boolean;
 
   constructor(scene: Scene, matrixMode: string, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -125,7 +124,6 @@ export default class Dude {
 
   stop(resetFace: boolean = false) {
     this.stopped = true;
-    this.gotCoin = false;
     this.character.clearTint();
     this.stopBody();
     this.currentStep = null;

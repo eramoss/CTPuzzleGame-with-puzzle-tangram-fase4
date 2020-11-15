@@ -166,7 +166,7 @@ export default class Game extends Scene {
       }
 
       if (this.currentPhase) {
-        
+
         this.currentPhase.setupMatrixAndTutorials()
         this.dude.matrix = this.currentPhase.obstacles;
         const obstacles = this.currentPhase.obstacles
@@ -224,16 +224,15 @@ export default class Game extends Scene {
 
     this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
       let valid = true;
-      if (condition == 'if_coin') {
-        valid = this.dude.gotCoin;
-        this.dude.gotCoin = null;
-      }
-      if (condition == 'if_block') {
-        let { x, y } = dudeMove.getAheadPosition();
-        valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == 'block'
-        if (valid) {
-          (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
-        }
+      if (condition.startsWith('if_')) {
+        const command = condition.replace('if_','');
+        //if (command == 'coin' || command == 'block') {
+          let { x, y } = dudeMove.getAheadPosition();
+          valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == command
+          if (valid) {
+            (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
+          }
+        //}
       }
       return valid
     }
@@ -272,7 +271,6 @@ export default class Game extends Scene {
           //coin.setGravityY(-200);
           //coin.setVelocityY(-100)
           this.sounds.coin();
-          this.dude.gotCoin = true;
         }, waitALittleBitBeforeColide);
       }
     }

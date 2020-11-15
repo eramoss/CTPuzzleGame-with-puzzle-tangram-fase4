@@ -25,7 +25,7 @@ export default class TutorialHighlight {
     commandSpriteToEnableOnInterval: Physics.Arcade.Sprite;
     onInteractAdvanceTutorial: () => void;
     removeDraggingElement: () => void;
-    timeouts: number[] = [];
+    functionsRunningByTimeout: number[] = [];
 
     constructor(
         scene: Scene,
@@ -191,14 +191,14 @@ export default class TutorialHighlight {
         });
     }
     waitAndRun(time: number, fn: () => void) {
-        this.timeouts.push(setTimeout(() => { fn(); }, time))
+        this.functionsRunningByTimeout.push(setTimeout(() => { fn(); }, time))
     }
 
     clearTimeouts() {
-        this.timeouts.forEach(timeout => {
+        this.functionsRunningByTimeout.forEach(timeout => {
             clearTimeout(timeout);
         });
-        this.timeouts = [];
+        this.functionsRunningByTimeout = [];
     }
 
     private onReplaceCommand(newCommand: Command, callbackOnPointerDown: () => void) {

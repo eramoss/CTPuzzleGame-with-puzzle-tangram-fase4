@@ -26,8 +26,7 @@ export default class TutorialAction {
         this.triggered = false;
         this.scene.children.getAll().forEach(c => c.setInteractive());
         this.highlights.forEach(highlight => {
-            highlight.removeHand();
-            highlight.resetDepth();
+            highlight.reset();
         })
     }
 

@@ -3,7 +3,6 @@ import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
-import { joinChilds, createJoinArraysFn as createJoinFunction } from "../utils/Utils";
 import MazePhase from "./MazePhase";
 import TutorialDropLocation from "./TutorialDropLocation";
 
@@ -20,9 +19,12 @@ export default class MazeConfigs {
     codeEditor: CodeEditor;
 
     fnGetChild(key: string): () => InterfaceElement {
-        return () =>
-            this.codeEditor.availableCommands
+        return () => {
+            const command = this.codeEditor.availableCommands
                 .find(command => command.getSprite().texture.key == key);
+            command.isDropSoundEnabled = false;
+            return command;
+        }
     }
 
     fnGetArrowUp = this.fnGetChild('arrow-up');
@@ -46,6 +48,12 @@ export default class MazeConfigs {
         const program = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull();
         return new TutorialDropLocation(program);
     }
+
+    isCodeStateLike(codeString: string) {
+        const commandsToString = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyOrdinalCommands();
+        return codeString === commandsToString;
+    }
+
 
     constructor(scene: Scene,
         grid: AlignGrid,
@@ -144,23 +152,24 @@ export default class MazeConfigs {
                 phase
                     .addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation)
                     .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+
                 phase
                     .addTutorialHighlight(this.fnGetIfCoin, () => {
-                        const command = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().ordinalCommands[0];
+                        const command = this.codeEditor.getCommandByName('arrow-up');
                         return new TutorialDropLocation(null, command);
                     })
-                    .isCodeStateValidToHighlightThisTutorialAction = () => {
-                        const commandsToString = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyCommands();
-                        return commandsToString == "arrow-up";
-                    }
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up")
+
                 phase
-                    .addTutorialHighlight(this.fnGetBtnPlay, this.fnGetProgramDropLocation)
-                    .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+                    .addTutorialHighlight(this.fnGetBtnPlay)
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin")
             }
         }
 
         return phase;
     }
+
+
 
     private createPhaseEasyArrowUp(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.grid);

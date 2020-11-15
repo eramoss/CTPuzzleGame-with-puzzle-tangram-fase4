@@ -11,6 +11,7 @@ import { androidVibrate, joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
 
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -46,8 +47,8 @@ export default class CodeEditor {
         new ToolboxRowOrganizer(this.grid, 20, 2, 2, 2, ['arrow-up',]),
         new ToolboxRowOrganizer(this.grid, 17, 3, 8, 2, ['arrow-left', 'arrow-right']),
         new ToolboxRowOrganizer(this.grid, 20, 3.7, 2, 2, ['arrow-down']),
-        new ToolboxRowOrganizer(this.grid, 18, 5.7, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
-        new ToolboxRowOrganizer(this.grid, 18, 7.4, 6, 2, ['if_coin', 'if_block'], 1.1)
+        new ToolboxRowOrganizer(this.grid, 18, 5.4, 6, 2, ['if_coin', 'if_block'], 1.1),
+        new ToolboxRowOrganizer(this.grid, 18, 7.4, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
       ]
 
     this.createDraggableProgramCommands();
@@ -140,22 +141,19 @@ export default class CodeEditor {
         dragStartOptions:
           {
             dontRecreate: boolean,
-            disableInteractive: boolean,
             muteDragSound: boolean,
             muteDropSound: boolean,
-            onCreateCommandsBelow: (commands: Command[]) => void
+            onCreateCommandBelow: (command: Command) => void
           } =
           {
             dontRecreate: false,
-            disableInteractive: false,
             muteDragSound: false,
             muteDropSound: false,
-            onCreateCommandsBelow: (commands: Command[]) => { }
+            onCreateCommandBelow: (command: Command) => { }
           }
       ) => {
 
         console.log("MOVE_EVENT", "dragstart")
-        // Não deixa acabar os comandos
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         if (!dragStartOptions.muteDragSound) {
@@ -165,13 +163,14 @@ export default class CodeEditor {
           const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
           createdCommands
             .forEach(c => {
-              if (dragStartOptions.disableInteractive) {
-                c.sprite.disableInteractive();
-              }
               c.isDropSoundEnabled = !dragStartOptions.muteDropSound
             });
-          if (dragStartOptions.onCreateCommandsBelow)
-            dragStartOptions.onCreateCommandsBelow(createdCommands);
+          if (dragStartOptions.onCreateCommandBelow) {
+            if (createdCommands.length > 1) {
+              console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
+            }
+            dragStartOptions.onCreateCommandBelow(createdCommands[0]);
+          }
         }
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
@@ -330,7 +329,7 @@ export default class CodeEditor {
 
   private logPrograms(moment: string) {
     this.programs.forEach(p => {
-      console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.ordinalCommands.map(c => c.name).join(', '), ']');
+      console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.stringfyOrdinalCommands(), p.stringfyConditionalCommands(), ']');
     });
     this.programs.forEach(p => {
       //console.log('program_log_conditional', p.name)
@@ -447,5 +446,10 @@ export default class CodeEditor {
     const count = joinChilds(this.programs, (p) => p.ordinalCommands).length;
     console.log('CODE_EDITOR [countAddedCommands]', count)
     return count
+  }
+
+  getCommandByName(textureKey: string) {
+    return joinChilds(this.programs, (p) => p.ordinalCommands)
+      .find(command => command.name == textureKey);
   }
 }

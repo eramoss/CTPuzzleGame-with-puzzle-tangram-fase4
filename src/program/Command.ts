@@ -9,7 +9,6 @@ import Program from './Program';
 
 export default class Command implements InterfaceElement {
 
-
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -31,7 +30,7 @@ export default class Command implements InterfaceElement {
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
-    //this.sprite.setDepth(52);
+    this.sprite.setDepth(3);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)
@@ -82,8 +81,10 @@ export default class Command implements InterfaceElement {
   }
 
   removeCondition() {
-    this.condition.placedOver = null;
-    this.condition = null;
+    if (this.condition) {
+      this.condition.placedOver = null;
+      this.condition = null;
+    }
   }
 
   removeSelf(removeFromScene: Boolean = true) {
@@ -238,6 +239,7 @@ export default class Command implements InterfaceElement {
   }
 
   addHighlightConditionalImage() {
+    console.log('COMMAND [addHighlightConditionalImage]')
     let { x, y } = this.getConditionalPosition();
     this.highlightConditionalImage = this.scene.add.image(x, y, 'if_highlight')
     this.highlightConditionalImage.scale = this.program.grid.scale;

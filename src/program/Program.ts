@@ -225,6 +225,7 @@ export default class Program {
   }
 
   clear() {
+    this.unhighlightConditionalAreas();
     this.conditionalCommandsIndexed.forEach(c => c.removeSelf());
     this.conditionalCommandsIndexed = new Map<number, Command>();
     let commands = this.ordinalCommands.splice(0);
@@ -259,7 +260,7 @@ export default class Program {
     this.programNameImage.setDepth(depth);
   }
 
-  stringfyCommands(): string {
+  stringfyOrdinalCommands(): string {
     const stringfiedCommands = this.ordinalCommands.map(command => {
       let name = command.name;
       if (command.condition) {
@@ -269,5 +270,13 @@ export default class Program {
     }).join('');
     console.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
     return stringfiedCommands;
+  }
+
+  stringfyConditionalCommands(){
+    let array = [];
+    this.conditionalCommandsIndexed.forEach((command:Command)=>{
+      array.push(command.name);
+    })
+    return array.join(', ');
   }
 }

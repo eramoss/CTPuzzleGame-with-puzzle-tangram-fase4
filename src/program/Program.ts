@@ -99,7 +99,7 @@ export default class Program {
     command.programDropZone = this.dropZone;
     if (this.ordinalCommands.indexOf(command) == -1) {
       if (!command.isIntent)
-        this.sounds.drop();
+        command.playDrop();
       if (index == -1) {
         index = this.ordinalCommands.length;
       }

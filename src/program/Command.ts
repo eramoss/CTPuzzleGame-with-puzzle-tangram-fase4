@@ -1,12 +1,14 @@
 import { GameObjects, Sound } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
+import InterfaceElement from '../InterfaceElement';
 import Sounds from '../sounds/Sounds';
 import CommandAction from './CommandAction';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
 
-export default class Command {
+export default class Command implements InterfaceElement {
+
 
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
@@ -23,12 +25,13 @@ export default class Command {
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
   sounds: Sounds
-  removeSoundElabled: boolean = true;
+  isRemoveSoundElabled: boolean = true;
+  isDropSoundEnabled: boolean = true;
 
-  constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite, depth: number = 3) {
+  constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
-    this.sprite.setDepth(depth);
+    //this.sprite.setDepth(52);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)
@@ -68,7 +71,13 @@ export default class Command {
       if (removePreviousCondition) {
         this.program?.setConditionalCommand(this.index(), ifCommand);
       }
-      this.sounds.drop()
+      this.playDrop();
+    }
+  }
+
+  playDrop() {
+    if (this.isDropSoundEnabled) {
+      this.sounds.drop();
     }
   }
 
@@ -96,7 +105,7 @@ export default class Command {
     }
     if (!this.isIntent) {
       if (removeFromScene) {
-        if (this.removeSoundElabled)
+        if (this.isRemoveSoundElabled)
           this.sounds.remove()
         this.tileDropZone?.removeSelf();
         this.tileDropZone = null;
@@ -245,16 +254,24 @@ export default class Command {
   }
 
   unmuteBlockRemovingSound() {
-    this.removeSoundElabled = true;
+    this.isRemoveSoundElabled = true;
   }
   muteBlockRemovingSound() {
-    this.removeSoundElabled = false;
+    this.isRemoveSoundElabled = false;
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {
     let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 50 * grid.scale
     let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 50 * grid.scale
     return dragHorizontal || dragVertical;
+  }
+
+  getSprite(): Phaser.Physics.Arcade.Sprite {
+    return this.sprite as Phaser.Physics.Arcade.Sprite
+  }
+
+  isSameTexture(command: Command): boolean {
+    return this.sprite.texture === command.sprite.texture
   }
 }
 

@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { isDebug } from "../utils/Utils";
 
 export default class AlignGrid {
 
@@ -20,7 +21,7 @@ export default class AlignGrid {
         this.height = height;
         this.cellWidth = this.width / cols;
         this.cellHeight = this.height / rows;
-        if (scene.game.config.physics.arcade?.debug) {
+        if (isDebug(scene)) {
             this.show(0.3);
         }
     }

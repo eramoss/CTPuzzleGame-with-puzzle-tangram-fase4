@@ -1,5 +1,6 @@
 import IsometricPoint from './IsometricPoint'
 import { Scene } from 'phaser'
+import { isDebug } from '../utils/Utils';
 
 export default class Matrix {
   
@@ -47,7 +48,7 @@ export default class Matrix {
         point.x += this.x
         point.y += this.y
 
-        if (scene.game.config.physics.arcade?.debug) {
+        if (isDebug(scene)) {
           const pt = new Phaser.Geom.Point(point.x, point.y);
           this.scene.add.text(pt.x, pt.y, `(${pt.y.toFixed(2)})`);
           graphics.fillCircle(pt.x, pt.y, 3);

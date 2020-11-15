@@ -2,6 +2,7 @@ import { GameObjects, Physics, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
+import InterfaceElement from "../InterfaceElement";
 import { joinChilds, createJoinArraysFn as createJoinFunction } from "../utils/Utils";
 import MazePhase from "./MazePhase";
 import TutorialDropLocation from "./TutorialDropLocation";
@@ -18,9 +19,10 @@ export default class MazeConfigs {
     gridCellWidth: number;
     codeEditor: CodeEditor;
 
-    fnGetChild(key: string): () => Physics.Arcade.Sprite {
-        return () => joinChilds(this.codeEditor.toolboxRows, (t) => t.flow.children)
-            .find(c => c.texture.key == key) as Physics.Arcade.Sprite;
+    fnGetChild(key: string): () => InterfaceElement {
+        return () => 
+        this.codeEditor.availableCommands
+        .find(command => command.getSprite().texture.key == key);
     }
 
     fnGetArrowUp = this.fnGetChild('arrow-up');
@@ -31,8 +33,8 @@ export default class MazeConfigs {
     fnGetProg_0 = this.fnGetChild('prog_0');
     fnGetProg_1 = this.fnGetChild('prog_1');
 
-    fnGetBtnPlay = () => this.codeEditor.btnPlay.sprite as Physics.Arcade.Sprite;;
-    fnGetBtnStep = () => this.codeEditor.btnStep.sprite as Physics.Arcade.Sprite;;
+    fnGetBtnPlay = () => this.codeEditor.btnPlay;
+    fnGetBtnStep = () => this.codeEditor.btnStep;
 
     fnIsBtnStepStateEnabled = () => {
         const isBtnStepEnabled = !this.codeEditor.btnStep.disabled;
@@ -144,7 +146,10 @@ export default class MazeConfigs {
                     .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
                 phase
                     .addTutorialHighlight(this.fnGetIfCoin, this.fnGetProgramDropLocation)
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyCommands() == "arrow-up:if_coin";
+                    .isCodeStateValidToHighlightThisTutorialAction = () => {
+                        const commandsToString = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyCommands();
+                        return commandsToString == "arrow-up";
+                    }
                 phase
                     .addTutorialHighlight(this.fnGetBtnPlay, this.fnGetProgramDropLocation)
                     .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);

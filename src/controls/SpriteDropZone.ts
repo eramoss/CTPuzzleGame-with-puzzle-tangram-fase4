@@ -1,7 +1,8 @@
 import { Scene } from 'phaser';
+import { isDebug } from '../utils/Utils';
 
 export default class SpriteDropZone {
-  
+
   sprite: Phaser.GameObjects.Sprite;
   zone: Phaser.GameObjects.Zone;
   scene: Scene;
@@ -17,7 +18,8 @@ export default class SpriteDropZone {
   highlight(enabled: boolean = true) {
     const zone = this.zone;
     this.sprite.setFrame(enabled ? 1 : 0);
-    if (this.scene.game.config.physics.arcade?.debug) {
+    let debug = isDebug(this.scene);
+    if (debug) {
       var graphics = this.scene.add.graphics();
       graphics.lineStyle(2, 0xffff00);
       graphics.strokeRect(

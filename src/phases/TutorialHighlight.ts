@@ -1,11 +1,14 @@
 import { GameObjects, Physics, Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
+import InterfaceElement from "../InterfaceElement";
+import Command from "../program/Command";
 import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
+import { isDebug } from "../utils/Utils";
 import TutorialDropLocation from "./TutorialDropLocation";
 
 export default class TutorialHighlight {
 
-    fnGetSprite: () => Physics.Arcade.Sprite
+    fnGetInterfaceElement: () => InterfaceElement
     handSprite: Physics.Arcade.Sprite;
     spriteDepthBackup: number;
     scene: Phaser.Scene;
@@ -18,21 +21,24 @@ export default class TutorialHighlight {
     originalY: number;
     isDragMoveAnimationCancelled: boolean = false;
     onDragEndListener: () => void;
+    commandSpriteToEnableOnInterval: Physics.Arcade.Sprite;
+    onInteractAdvanceTutorial: () => void;
 
     constructor(
         scene: Scene,
         grid: AlignGrid,
-        fnGetSprite: () => Physics.Arcade.Sprite,
+        fnGetInterfaceElement: () => InterfaceElement,
         fnGetDropLocation: () => TutorialDropLocation
     ) {
         this.scene = scene;
         this.grid = grid;
-        this.fnGetSprite = fnGetSprite;
+        this.fnGetInterfaceElement = fnGetInterfaceElement;
         this.fnGetDropLocation = fnGetDropLocation;
     }
 
     contrastAndShowHandPointing(onInteractAdvanceTutorial: () => void) {
-        const sprite = this.fnGetSprite();
+        this.onInteractAdvanceTutorial = onInteractAdvanceTutorial;
+        const sprite = this.runFnGetSprite();
 
         this.spriteDepthBackup = sprite.depth;
         this.bringSpriteToFront(sprite);
@@ -53,12 +59,11 @@ export default class TutorialHighlight {
         }
 
         if (continueTutorialOnDrag) {
-            sprite.setInteractive();
             this.isDragMoveAnimationCancelled = false;
             this.originalX = sprite.x;
             this.originalY = sprite.y;
             this.useHandAnimationDragging();
-            this.onDragEndListener = () => {
+            /* this.onDragEndListener = () => {
                 this.cancelDragAnimation();
                 this.backToOriginalPosition();
                 this.removeHand();
@@ -66,7 +71,7 @@ export default class TutorialHighlight {
                 onInteractAdvanceTutorial()
                 sprite.removeListener('pointerout', this.onDragEndListener);
             }
-            sprite.on('pointerout', this.onDragEndListener);
+            sprite.on('pointerout', this.onDragEndListener); */
         }
     }
 
@@ -80,6 +85,10 @@ export default class TutorialHighlight {
 
     private bringDropzoneToFront(dropLocation: TutorialDropLocation) {
         dropLocation.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
+    }
+
+    private setDropzoneInteractive(dropLocation: TutorialDropLocation) {
+        dropLocation.sprite.setInteractive();
     }
 
     useHandAnimationPointing(sprite: Physics.Arcade.Sprite) {
@@ -108,7 +117,7 @@ export default class TutorialHighlight {
     useHandAnimationDragging(
         reusingSprites: boolean = false) {
 
-        const sprite = this.fnGetSprite();
+        const sprite = this.runFnGetSprite();
         const dropLocation: TutorialDropLocation = this.fnGetDropLocation();
 
         this.handAnimationKey = 'hand-dragging';
@@ -120,13 +129,13 @@ export default class TutorialHighlight {
                 frameRate: 16,
                 repeat: 0
             });
+
             this.handSprite = this.scene
                 .physics
                 .add
                 .sprite(sprite.x, sprite.y, 'hand-tutorial')
-            this.handSprite.setInteractive();
-            dropLocation.sprite.setInteractive();
-            this.handSprite.on('pointerover', () => {
+
+            sprite.on('pointerdown', () => {
                 this.cancelDragAnimation();
                 this.backToOriginalPosition();
             })
@@ -136,44 +145,66 @@ export default class TutorialHighlight {
             .setScale(this.grid.scale)
             .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
 
-        const waitBeforeRepeat = 3000;
-        const waitBeforeShowHand = 3000;
-        const waitUntilHandCloseToDrag = 2000;
+        const waitBeforeRepeat = 100;
+        const waitBeforeShowHand = 500;
+        const waitUntilHandCloseToDrag = 500;
 
-        sprite.emit('pointerover');
         this.putHandSpriteOver(sprite);
+        this.handSprite.setVisible(true);
         this.bringSpriteToFront(sprite);
         this.bringDropzoneToFront(dropLocation);
 
         setTimeout(() => {
             if (!this.isDragMoveAnimationCancelled) {
-                this.handSprite.disableInteractive();
-                sprite.disableInteractive();
-
                 sprite.emit('drag');
-                sprite.emit('dragstart');
-                setTimeout(() => {
-                    this.bringSpriteToFront(sprite);
-                }, 0);
+                sprite.emit('dragstart', null, {
+                    disableInteractive: true,
+                    dontRecreate: false,
+                    muteDragSound: true,
+                    muteDropSound: true,
+                    onCreateCommandsBelow: (commands: Command[]) => {
+                        console.log('TUTORIAL_HIGHLIGHT [createdCommands]', commands)
+                        if (commands.length == 1) {
+                            this.commandSpriteToEnableOnInterval = commands[0].getSprite()
+                            //this.commandSpriteToEnableOnInterval.setTint(0xff00ff);
+                            this.commandSpriteToEnableOnInterval.setInteractive();
+                            this.commandSpriteToEnableOnInterval.on('pointerdown', () => {
+                                this.cancelDragAnimation();
+                                this.commandSpriteToEnableOnInterval.on('pointerup', () => {
+                                    this.onInteractAdvanceTutorial();
+                                })
+                            })
+                        }
+                    }
+                });
+                sprite.alpha = 0.7
+                this.handSprite.alpha = 0.7
 
                 this.moveSpriteTo(
                     sprite,
                     dropLocation,
                     {
                         onUpdateSpritePosition: () => this.putHandSpriteOver(sprite),
-                        stopCondition: () => this.checkIfHandAchievedDestine(sprite, dropLocation),
+                        stopCondition: () => {
+                            return this.checkIfHandAchievedDestine(sprite, dropLocation)
+                                || this.isDragMoveAnimationCancelled
+                        },
                         onAchieve: () => {
                             sprite.body.stop();
                             this.handSprite.body.stop();
                             this.simulateDrop(sprite, dropLocation);
                             console.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]')
 
+                            this.bringSpriteToFront(this.commandSpriteToEnableOnInterval)
+                            this.setDropzoneInteractive(dropLocation);
+                            this.commandSpriteToEnableOnInterval.setInteractive()
+
                             setTimeout(() => {
+                                this.handSprite.setVisible(false);
                                 this.simulateClickToRemove(sprite);
-                                this.handSprite.setInteractive();
                                 this.backToOriginalPosition();
 
-                                this.bringSpriteToFront(this.fnGetSprite());
+                                this.bringSpriteToFront(this.runFnGetSprite());
                                 this.bringHandSpriteToFront();
 
                                 setTimeout(_ => {
@@ -193,11 +224,16 @@ export default class TutorialHighlight {
     private simulateDrop(sprite: Physics.Arcade.Sprite, dropLocation: TutorialDropLocation) {
         sprite.emit('drop', null, dropLocation.dropZone);
         sprite.emit('dragend');
+        this.putHandSpriteOver(sprite);
     }
 
     private simulateClickToRemove(sprite: Physics.Arcade.Sprite) {
-        sprite.emit('dragstart');
-        sprite.emit('dragend');
+        sprite.emit('dragstart', null, {
+            dontRecreate: true,
+            disableInteractive: true,
+            muteDragSound: true
+        });
+        sprite.emit('dragend', { playRemoveSound: false });
     }
 
     moveSpriteTo(
@@ -210,11 +246,13 @@ export default class TutorialHighlight {
         }) {
         let { x, y } = dropLocation.getXY(sprite);
 
-        var graphics = this.scene.add.graphics();
-        graphics.fillStyle(0xff0000);
-        graphics.fillCircle(x, y, 20)
+        if (isDebug(this.scene)) {
+            var graphics = this.scene.add.graphics();
+            graphics.fillStyle(0xff0000);
+            graphics.fillCircle(x, y, 20 * this.grid.scale)
+        }
 
-        this.scene.physics.moveTo(sprite, x, y, 300 * this.grid.scale);
+        this.scene.physics.moveTo(sprite, x, y, 500 * this.grid.scale);
         if (!this.intervalWatchDragMove) {
             this.intervalWatchDragMove = setInterval(() => {
                 callbacks.onUpdateSpritePosition()
@@ -242,10 +280,8 @@ export default class TutorialHighlight {
     }
 
     backToOriginalPosition() {
-        const sprite = this.fnGetSprite();
-        sprite.body.stop();
-        this.handSprite.body.stop();
-        sprite.body.reset(this.originalX, this.originalY);
+        const sprite = this.runFnGetSprite();
+        sprite.disableInteractive();
         this.putHandSpriteOver(sprite);
     }
 
@@ -269,7 +305,13 @@ export default class TutorialHighlight {
     }
 
     resetDepth() {
-        let sprite = this.fnGetSprite()
-        sprite.setDepth(this.spriteDepthBackup);
+        /* let sprite = this.fnGetInterfaceElement()
+        sprite.setDepth(this.spriteDepthBackup); */
+    }
+
+    runFnGetSprite(): Phaser.Physics.Arcade.Sprite {
+        const interfaceElement = this.fnGetInterfaceElement();
+        if (interfaceElement)
+            return interfaceElement.getSprite()
     }
 }

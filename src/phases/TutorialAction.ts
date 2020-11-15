@@ -37,7 +37,7 @@ export default class TutorialAction {
             this.triggered = true;
             console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
-            this.disableAllInteractions();
+            //this.disableAllInteractions();
             const onInteractAdvanceTutorial = () => {
                 this.onAdvance();
                 this.nextTutorialAction?.highlight();

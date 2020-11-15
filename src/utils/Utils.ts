@@ -3,7 +3,8 @@ import AlignGrid from "../geom/AlignGrid";
 import SpriteDropZone from "../controls/SpriteDropZone";
 
 export default function drawRect(scene: Scene, x: number, y: number, width: number, height: number) {
-    if (scene.game.config.physics.arcade?.debug) {
+    const debug = isDebug(scene);
+    if (debug) {
         var graphics = scene.add.graphics();
         graphics.lineStyle(2, 0xffff00);
         graphics.strokeRect(
@@ -68,4 +69,8 @@ export function joinChilds<PARENT, CHILD>(parents: Array<PARENT>, fnGetChilds: (
 
 export function createJoinArraysFn<PARENT>(functions: Array<() => PARENT[]>): () => Array<PARENT> {
     return () => joinChilds(functions, (fnThatReturnArray) => fnThatReturnArray())
+}
+
+export function isDebug(scene:Phaser.Scene){
+    return scene.game.config.physics.arcade?.debug;
 }

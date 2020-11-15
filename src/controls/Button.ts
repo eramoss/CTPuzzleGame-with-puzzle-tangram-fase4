@@ -1,8 +1,9 @@
 import { Scene } from 'phaser';
+import InterfaceElement from '../InterfaceElement';
 import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
 
-export default class Button {
+export default class Button implements InterfaceElement {
 
   sprite: Phaser.GameObjects.Sprite;
   blinked: boolean = false;
@@ -31,6 +32,10 @@ export default class Button {
       onClickHandler();
     })
     this.sprite = sprite;
+  }
+
+  getSprite(): Phaser.Physics.Arcade.Sprite {
+    return this.sprite as Phaser.Physics.Arcade.Sprite
   }
 
   blink() {

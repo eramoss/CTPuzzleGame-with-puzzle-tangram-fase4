@@ -29,6 +29,7 @@ export default class CodeEditor {
   btnStep: Button;
   btnStop: Button;
   btnPlay: Button;
+  availableCommands: Command[] = [];
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -68,28 +69,40 @@ export default class CodeEditor {
     });
   }
 
-  private createDraggableProgramCommands(commandName: string = null, depth: number = 3) {
+  private createDraggableProgramCommands(commandName: string = null) {
     const commandGroup = this.scene.physics.add.group();
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
     if (commandName) {
       commandNames = commandNames.filter(c => c == commandName)
     }
-    const commands: Command[] = commandNames
+    const createdCommands: Command[] = commandNames
       .map(commandName => {
         let sprite = commandGroup.get(0, 0, commandName)
-        return new Command(this.scene, sprite, depth)
+        return new Command(this.scene, sprite)
       })
 
     console.log('COMMAND_NAMES', commandNames);
 
-    commands.forEach(commandToSetPositionAtToobox => {
+    createdCommands.forEach(commandToSetPositionAtToobox => {
       let toolboxRow = this.findToolboxRow(commandToSetPositionAtToobox)
       if (toolboxRow) {
         toolboxRow.setPositionTo(commandToSetPositionAtToobox)
       }
     })
 
-    this.createEventsToCommands(commands);
+    createdCommands.forEach(command => {
+      const same = this.availableCommands.find(a => a.isSameTexture(command));
+      if (!same) {
+        this.availableCommands.push(command);
+      }
+      else {
+        const index = this.availableCommands.indexOf(same);
+        this.availableCommands.splice(index, 1, command);
+      }
+    })
+
+    this.createEventsToCommands(createdCommands);
+    return createdCommands;
   }
 
   findToolboxRow(command: Command): ToolboxRowOrganizer {
@@ -122,24 +135,58 @@ export default class CodeEditor {
           this.logPrograms('drag')
         }
       })
-      commandSprite.on('dragstart', () => {
+      commandSprite.on('dragstart', (
+        input: Phaser.Input.Pointer,
+        dragStartOptions:
+          {
+            dontRecreate: boolean,
+            disableInteractive: boolean,
+            muteDragSound: boolean,
+            muteDropSound: boolean,
+            onCreateCommandsBelow: (commands: Command[]) => void
+          } =
+          {
+            dontRecreate: false,
+            disableInteractive: false,
+            muteDragSound: false,
+            muteDropSound: false,
+            onCreateCommandsBelow: (commands: Command[]) => { }
+          }
+      ) => {
 
         console.log("MOVE_EVENT", "dragstart")
         // Não deixa acabar os comandos
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
-        this.sounds.drag();
-        this.createDraggableProgramCommands(commandSprite.texture.key);
+        if (!dragStartOptions.muteDragSound) {
+          this.sounds.drag();
+        }
+        if (!dragStartOptions.dontRecreate) {
+          const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
+          createdCommands
+            .forEach(c => {
+              if (dragStartOptions.disableInteractive) {
+                c.sprite.disableInteractive();
+              }
+              c.isDropSoundEnabled = !dragStartOptions.muteDropSound
+            });
+          if (dragStartOptions.onCreateCommandsBelow)
+            dragStartOptions.onCreateCommandsBelow(createdCommands);
+        }
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')
       })
-      commandSprite.on('dragend', _ => {
+      commandSprite.on('dragend', (options: { playRemoveSound: boolean }) => {
         console.log("MOVE_EVENT", "dragend");
 
         let dragged = command.isDragged && command.isSpriteConsiderableDragged(this.grid);
         let clicked = this.getTime() - this.clickTime < 700 && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
+
+        if (options && !options.playRemoveSound) {
+          command.muteBlockRemovingSound()
+        }
 
         if (dragged && !dropped) {
           command.removeSelf();

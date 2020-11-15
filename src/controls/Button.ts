@@ -34,6 +34,7 @@ export default class Button implements InterfaceElement {
     this.sprite = sprite;
   }
 
+
   getSprite(): Phaser.Physics.Arcade.Sprite {
     return this.sprite as Phaser.Physics.Arcade.Sprite
   }
@@ -64,5 +65,12 @@ export default class Button implements InterfaceElement {
   }
   enable() {
     this.disabled = false;
+  }
+
+  disableInteractive() {
+    this.sprite.disableInteractive();
+  }
+  setInteractive() {
+    this.sprite.setInteractive();
   }
 }

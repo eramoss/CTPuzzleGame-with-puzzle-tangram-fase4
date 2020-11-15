@@ -55,6 +55,10 @@ export default class MazeConfigs {
         return codeString === commandsToString;
     }
 
+    createTutorialDropLocation(commandName, index = 0) {
+        const commands = this.codeEditor.getCommandsByName(commandName);
+        return new TutorialDropLocation(null, commands[index]);
+    }
 
     constructor(scene: Scene,
         grid: AlignGrid,
@@ -109,7 +113,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseEasyIfCoin(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 1 }
 
@@ -155,15 +159,24 @@ export default class MazeConfigs {
                     .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
 
                 phase
-                    .addTutorialHighlight(this.fnGetIfCoin, () => {
-                        const command = this.codeEditor.getCommandByName('arrow-up');
-                        return new TutorialDropLocation(null, command);
-                    })
+                    .addTutorialHighlight(this.fnGetIfCoin, () => this.createTutorialDropLocation('arrow-up'))
                     .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up")
 
                 phase
-                    .addTutorialHighlight(this.fnGetBtnPlay)
+                    .addTutorialHighlight(this.fnGetArrowRight, this.fnGetProgramDropLocation)
                     .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin")
+
+                phase
+                    .addTutorialHighlight(this.fnGetIfBlock, () => this.createTutorialDropLocation('arrow-right'))
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right")
+
+                phase
+                    .addTutorialHighlight(this.fnGetProg_0, this.fnGetProgramDropLocation)
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right:if_block")
+
+                phase
+                    .addTutorialHighlight(this.fnGetBtnPlay)
+                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right:if_block, prog_0")
             }
         }
 
@@ -173,7 +186,7 @@ export default class MazeConfigs {
 
 
     private createPhaseEasyArrowUp(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 3 }
 
@@ -223,7 +236,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseEasyThreeStepByStep(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
 
@@ -281,7 +294,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseEasyArrowUpTwoTimes(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 3 }
 
@@ -330,7 +343,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseEasyArrowUpAndRight(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 2 }
 
@@ -382,7 +395,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseCallRecursiveFunction(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 0, row: 3 }
 
@@ -432,7 +445,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseStepByStepWithBlock(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
 
@@ -498,7 +511,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseIfCoin() {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
 
@@ -549,7 +562,7 @@ export default class MazeConfigs {
     }
 
     private createPhaseIfBlock() {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
 
@@ -601,7 +614,7 @@ export default class MazeConfigs {
     }
 
     private createHardPhaseWithTwoStars() {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 0 }
 
@@ -646,7 +659,7 @@ export default class MazeConfigs {
 
 
     private createEasyPhaseWithBlock() {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 0 }
 
@@ -690,7 +703,7 @@ export default class MazeConfigs {
     }
 
     private createEasyPhaseWithBlockWithTurn() {
-        const phase = new MazePhase(this.scene, this.grid);
+        const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 0 }
 

@@ -37,6 +37,7 @@ export default class Command implements InterfaceElement {
     this.sounds = new Sounds(scene)
   }
 
+
   index(): number {
     let index = -1;
     if (this.isConditional) {
@@ -265,8 +266,8 @@ export default class Command implements InterfaceElement {
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {
-    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 50 * grid.scale
-    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 50 * grid.scale
+    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 30 * grid.scale
+    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 30 * grid.scale
     return dragHorizontal || dragVertical;
   }
 
@@ -276,6 +277,18 @@ export default class Command implements InterfaceElement {
 
   isSameTexture(command: Command): boolean {
     return this.sprite.texture === command.sprite.texture
+  }
+
+  setInteractive() {
+    this.sprite.setInteractive();
+    this.tileDropZone.sprite.setInteractive();
+    this.tileDropZone.zone.setInteractive();
+  }
+
+  disableInteractive() {
+    this.sprite.disableInteractive();
+    //this.tileDropZone?.sprite.disableInteractive();
+    //this.tileDropZone?.zone.disableInteractive();
   }
 }
 

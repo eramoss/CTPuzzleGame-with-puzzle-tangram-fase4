@@ -7,6 +7,8 @@ import { createDropZone, androidVibrate } from '../utils/Utils';
 
 export default class Program {
 
+
+
   ordinalCommands: Command[]
   conditionalCommandsIndexed: Map<number, Command>
   scene: Phaser.Scene;
@@ -31,7 +33,6 @@ export default class Program {
     this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
     this.sprite = this.dropZone.sprite;
     this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.7);
-    //this.crossOrganizer = new CrossOrganizer();
   }
 
   animate() {
@@ -255,7 +256,7 @@ export default class Program {
     return { x, y }
   }
 
-  setDepth(depth:number){
+  setDepth(depth: number) {
     this.sprite.setDepth(depth);
     this.programNameImage.setDepth(depth);
   }
@@ -267,16 +268,31 @@ export default class Program {
         name = name + ":" + command.condition.name;
       }
       return name;
-    }).join('');
+    }).join(', ');
     console.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
     return stringfiedCommands;
   }
 
-  stringfyConditionalCommands(){
+  stringfyConditionalCommands() {
     let array = [];
-    this.conditionalCommandsIndexed.forEach((command:Command)=>{
+    this.conditionalCommandsIndexed.forEach((command: Command) => {
       array.push(command.name);
     })
     return array.join(', ');
+  }
+
+  setInteractive() {
+    this.dropZone.zone.setInteractive();
+    this.sprite.setInteractive();
+    this.ordinalCommands.forEach(c => {
+      c.setInteractive();
+    })
+  }
+
+  getAllCommands(): Command[] {
+    const commands = [];
+    this.ordinalCommands.forEach(c => commands.push(c));
+    this.conditionalCommandsIndexed.forEach(c => commands.push(c));
+    return commands;
   }
 }

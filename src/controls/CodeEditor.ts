@@ -8,6 +8,7 @@ import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 import { joinChilds } from '../utils/Utils';
+import InterfaceElement from '../InterfaceElement';
 
 export default class CodeEditor {
 
@@ -173,8 +174,9 @@ export default class CodeEditor {
       commandSprite.on('dragend', () => {
         console.log("MOVE_EVENT", "dragend");
 
-        let dragged = command.isDragged && command.isSpriteConsiderableDragged(this.grid);
-        let clicked = this.getTime() - this.clickTime < 700 && !dragged;
+        const shortClick = this.getTime() - this.clickTime < 700;
+        let dragged = command.isDragged && (command.isSpriteConsiderableDragged(this.grid) || !shortClick);
+        let clicked = shortClick && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
 
@@ -443,8 +445,35 @@ export default class CodeEditor {
     return count
   }
 
-  getCommandByName(textureKey: string) {
-    return joinChilds(this.programs, (p) => p.ordinalCommands)
+  getCommandsByName(textureKey: string): Command[] {
+    return this.getAllOrdinalCommands()
+      .filter(command => command.name == textureKey);
+  }
+
+  /* getCommandByName(textureKey: string): Command {
+    return this.getAllOrdinalCommands()
       .find(command => command.name == textureKey);
+  } */
+
+  private getAllOrdinalCommands() {
+    return joinChilds(this.programs, (p) => p.ordinalCommands);
+  }
+
+  private getAllAddedCommands(): Command[] {
+    return joinChilds(this.programs, (p) => p.getAllCommands());
+  }
+
+  getInteraceElements(): InterfaceElement[] {
+    const interfaceElements = [];
+    interfaceElements.push(this.btnPlay)
+    interfaceElements.push(this.btnStep)
+    interfaceElements.push(this.btnStop)
+    this.availableCommands.forEach(availableCommand => {
+      interfaceElements.push(availableCommand);
+    })
+    this.getAllAddedCommands().forEach(addedCommand => {
+      interfaceElements.push(addedCommand);
+    })
+    return interfaceElements;
   }
 }

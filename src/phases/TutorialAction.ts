@@ -36,7 +36,6 @@ export default class TutorialAction {
             this.triggered = true;
             console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
-            //this.disableAllInteractions();
             const onInteractAdvanceTutorial = () => {
                 this.onAdvance();
                 this.nextTutorialAction?.highlight();
@@ -53,7 +52,4 @@ export default class TutorialAction {
         }
     }
 
-    private disableAllInteractions() {
-        this.scene.children.getAll().forEach(c => c.disableInteractive());
-    }
 }

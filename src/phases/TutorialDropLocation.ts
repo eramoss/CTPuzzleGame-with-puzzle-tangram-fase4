@@ -2,6 +2,7 @@ import Command from "../program/Command";
 import Program from "../program/Program";
 
 export default class TutorialDropLocation {
+    
 
     sprite: Phaser.GameObjects.Sprite;
     dropZone: Phaser.GameObjects.Zone;
@@ -40,5 +41,4 @@ export default class TutorialDropLocation {
     setDepth(depth: number) {
         this.program?.setDepth(depth)
     }
-
 }

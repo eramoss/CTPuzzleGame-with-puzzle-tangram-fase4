@@ -1,4 +1,5 @@
 import { GameObjects, Physics, Scene } from "phaser";
+import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
@@ -22,10 +23,12 @@ export default class MazePhase {
     dudeFacedTo: string = 'right'
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
     actions: TutorialAction[] = [];
+    codeEditor: CodeEditor;
 
-    constructor(scene: Scene, grid: AlignGrid) {
+    constructor(scene: Scene, codeEditor: CodeEditor) {
         this.scene = scene;
-        this.grid = grid;
+        this.grid = codeEditor.grid;
+        this.codeEditor = codeEditor;
     }
 
     setupMatrixAndTutorials() {
@@ -47,7 +50,12 @@ export default class MazePhase {
     ): TutorialAction {
         const tutorialAction = new TutorialAction(this.scene, highlights);
         tutorialAction.onHighlight = () => {
-            //this.addBackgroundOverlay()
+            this.addBackgroundOverlay()
+            this.codeEditor
+                .getInteraceElements()
+                .forEach(genericInteraceElement => {
+                    genericInteraceElement.disableInteractive();
+                })
         }
         tutorialAction.onAdvance = () => {
             this.action = tutorialAction.nextTutorialAction

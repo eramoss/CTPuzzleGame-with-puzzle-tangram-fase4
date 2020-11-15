@@ -74,15 +74,13 @@ export default class TutorialHighlight {
     }
 
     private bringSpriteToFront(sprite: Physics.Arcade.Sprite) {
-        sprite?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
+        this.waitAndRun(1, () => {
+            sprite?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
+        })
     }
 
     private bringDropzoneToFront(dropLocation: TutorialDropLocation) {
         dropLocation.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
-    }
-
-    private setDropzoneInteractive(dropLocation: TutorialDropLocation) {
-        dropLocation.sprite.setInteractive();
     }
 
     useHandAnimationPointing(sprite: Physics.Arcade.Sprite) {
@@ -111,11 +109,8 @@ export default class TutorialHighlight {
     useHandAnimationDragging(
         reusingSprites: boolean = false) {
 
-        const sprite = this.runFnGetSprite();
+        const commandSprite = this.runFnGetSprite();
         const dropLocation: TutorialDropLocation = this.fnGetDropLocation();
-
-
-
         this.handAnimationKey = 'hand-dragging';
 
         if (!reusingSprites) {
@@ -129,7 +124,7 @@ export default class TutorialHighlight {
             this.handSprite = this.scene
                 .physics
                 .add
-                .sprite(sprite.x, sprite.y, 'hand-tutorial')
+                .sprite(commandSprite.x, commandSprite.y, 'hand-tutorial')
 
         }
 
@@ -139,49 +134,51 @@ export default class TutorialHighlight {
 
         const timeToCloseHand = 200;
         const timeBeforeRepeat = 200;
-        this.putHandSpriteOver(sprite);
+        this.putHandSpriteOver(commandSprite);
         this.handSprite.setVisible(true);
 
         this.waitAndRun(timeToCloseHand, () => {
             if (!this.isDragMoveAnimationCancelled) {
 
                 this.removeDraggingElement = () => {
-                    sprite.body?.stop()
-                    this.scene.children.remove(sprite);
+                    commandSprite.body?.stop()
+                    this.scene.children.remove(commandSprite);
                 }
 
-                sprite.emit('drag');
-                sprite.emit('dragstart', null, {
-                    disableInteractive: true,
+                commandSprite.emit('drag');
+                commandSprite.emit('dragstart', null, {
                     dontRecreate: false,
                     muteDragSound: true,
                     muteDropSound: true,
                     onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => {
                         const callbackOnPointerDown = () => {
                             this.cancelDragAnimation();
+                            this.bringSpriteToFront(commandSprite);
                         }
                         this.onReplaceCommand(command, callbackOnPointerDown);
                     }
                 });
-                sprite.alpha = 0.7
+                commandSprite.alpha = 0.7
                 this.handSprite.alpha = 0.7
+                this.bringDropzoneToFront(dropLocation);
+                this.bringSpriteToFront(commandSprite);
 
                 this.moveSpriteTo(
-                    sprite,
+                    commandSprite,
                     dropLocation,
                     {
-                        onUpdateSpritePosition: () => this.putHandSpriteOver(sprite),
+                        onUpdateSpritePosition: () => this.putHandSpriteOver(commandSprite),
                         stopCondition: () => {
-                            return this.checkIfHandAchievedDestine(sprite, dropLocation)
+                            return this.checkIfHandAchievedDestine(commandSprite, dropLocation)
                                 || this.isDragMoveAnimationCancelled
                         },
                         onAchieve: () => {
                             console.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]');
-                            this.simulateDrop(sprite, dropLocation);
+                            this.simulateDrop(commandSprite, dropLocation);
                             this.waitAndRun(timeBeforeRepeat,
                                 () => {
                                     this.handSprite.setVisible(false);
-                                    this.simulateClickToRemove(sprite);
+                                    this.simulateClickToRemove(commandSprite);
                                     const reusingSprites = true;
                                     this.useHandAnimationDragging(reusingSprites)
                                 });
@@ -287,7 +284,6 @@ export default class TutorialHighlight {
 
     backToOriginalPosition() {
         const sprite = this.runFnGetSprite();
-        sprite.disableInteractive();
         this.putHandSpriteOver(sprite);
     }
 

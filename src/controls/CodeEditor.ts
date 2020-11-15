@@ -7,7 +7,7 @@ import AlignGrid from '../geom/AlignGrid';
 import Command from '../program/Command';
 import CommandIntent from '../program/CommandIntent';
 import ToolboxRowOrganizer from './ToolboxRowOrganizer';
-import { androidVibrate, joinChilds } from '../utils/Utils';
+import { joinChilds } from '../utils/Utils';
 
 export default class CodeEditor {
 
@@ -247,7 +247,6 @@ export default class CodeEditor {
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
         console.log("MOVE_EVENT", "drop ", dropZone)
-        androidVibrate(30)
 
         let programWhereAreDropped = this.programs
           .map(p => p.dropZone)

@@ -3,6 +3,7 @@ import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
 import InterfaceElement from '../InterfaceElement';
 import Sounds from '../sounds/Sounds';
+import { androidVibrate } from '../utils/Utils';
 import CommandAction from './CommandAction';
 import CommandIntent from './CommandIntent';
 import Program from './Program';
@@ -77,6 +78,7 @@ export default class Command implements InterfaceElement {
   playDrop() {
     if (this.isDropSoundEnabled) {
       this.sounds.drop();
+      androidVibrate(30)
     }
   }
 

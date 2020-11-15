@@ -3,10 +3,10 @@ import { Scene } from 'phaser'
 import { isDebug } from '../utils/Utils';
 
 export default class Matrix {
-  
+
   static ISOMETRIC = "ISOMETRIC"
   static NORMAL = "NORMAL"
-  
+
   scene: Phaser.Scene;
   x: number;
   y: number;
@@ -15,7 +15,7 @@ export default class Matrix {
   height: number;
   matrix: string[][];
   mode: String;
-  
+
   constructor(scene: Scene, mode: String = Matrix.NORMAL, matrix: string[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.mode = mode;
     this.x = x;
@@ -25,8 +25,8 @@ export default class Matrix {
 
     this.points = []
     for (let y = 0; y < matrix.length; y++)
-    this.points[y] = []
-    
+      this.points[y] = []
+
     this.height = matrix.length;
     this.width = matrix[0].length;
 
@@ -35,15 +35,15 @@ export default class Matrix {
     }
     this.y = this.y - (distanceBetweenPoints * this.height) / 2
 
-    
+
     const graphics = scene.add.graphics();
     graphics.fillStyle(0xff0000)
-    
+
     for (let y = 0; y < this.height; y++) {
       for (let x = 0; x < this.width; x++) {
         let point: IsometricPoint = new IsometricPoint(x * distanceBetweenPoints, y * distanceBetweenPoints)
         if (mode == Matrix.NORMAL)
-        point.toCartesian()
+          point.toCartesian()
 
         point.x += this.x
         point.y += this.y
@@ -57,7 +57,7 @@ export default class Matrix {
       }
     }
   }
-  
+
   getPoint(y: number, x: number): IsometricPoint {
     let point = null
     const row = this.points[y];
@@ -67,7 +67,7 @@ export default class Matrix {
     return point;
   }
 
-  getKey(y,x):string{
+  getKey(y: number, x: number): string {
     let key = null
     const row = this.matrix[y];
     if (row) {
@@ -76,7 +76,7 @@ export default class Matrix {
     return key;
   }
 
-  getTotalElements():number {
+  getTotalElements(): number {
     return this.width * this.height
   }
 }

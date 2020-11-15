@@ -290,6 +290,11 @@ export default class Command implements InterfaceElement {
     //this.tileDropZone?.sprite.disableInteractive();
     //this.tileDropZone?.zone.disableInteractive();
   }
+
+  setDepth(depth: number) {
+    this.sprite.setDepth(depth);
+    this.highlightConditionalImage?.setDepth(depth);
+  }
 }
 
 

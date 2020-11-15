@@ -259,6 +259,7 @@ export default class Program {
   setDepth(depth: number) {
     this.sprite.setDepth(depth);
     this.programNameImage.setDepth(depth);
+    this.getAllCommands().forEach(c => c.setDepth(depth));
   }
 
   stringfyOrdinalCommands(): string {

@@ -82,8 +82,8 @@ export default class MazeConfigs {
         let showTutorial = true;
 
         //this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
+        
         this.phases.push(this.createPhaseEasyIfCoin(showTutorial));
-
         this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
@@ -334,8 +334,8 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
             if (showTutorial) {
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(0)
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(1)
+                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(0)
+                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(1)
                 phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(2)
             }
         }

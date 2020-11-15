@@ -26,6 +26,7 @@ export default class TutorialHighlight {
     onInteractAdvanceTutorial: () => void;
     removeDraggingElement: () => void;
     functionsRunningByTimeout: number[] = [];
+    tutorialDropImageIndicator: GameObjects.Image;
 
     constructor(
         scene: Scene,
@@ -75,6 +76,7 @@ export default class TutorialHighlight {
 
     private bringSpriteToFront(sprite: Physics.Arcade.Sprite) {
         this.waitAndRun(1, () => {
+            this.tutorialDropImageIndicator?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
             sprite?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
         })
     }
@@ -154,6 +156,7 @@ export default class TutorialHighlight {
                         const callbackOnPointerDown = () => {
                             this.cancelDragAnimation();
                             this.bringSpriteToFront(commandSprite);
+
                         }
                         this.onReplaceCommand(command, callbackOnPointerDown);
                     }
@@ -187,6 +190,8 @@ export default class TutorialHighlight {
             }
         });
     }
+
+
     waitAndRun(time: number, fn: () => void) {
         this.functionsRunningByTimeout.push(setTimeout(() => { fn(); }, time))
     }
@@ -208,7 +213,13 @@ export default class TutorialHighlight {
         newCommandSprite.setInteractive();
         newCommandSprite.on('pointerdown', () => {
             callbackOnPointerDown();
-            newCommandSprite.on('pointerup', this.onInteractAdvanceTutorial);
+            newCommandSprite.on('dragleave', () => {
+                this.removeDropIndicator();
+            });
+            newCommandSprite.on('pointerup', () => {
+                this.removeDropIndicator();
+                this.onInteractAdvanceTutorial();
+            });
         });
         this.commandSpriteToEnableOnInterval = newCommandSprite;
     }
@@ -242,10 +253,12 @@ export default class TutorialHighlight {
             var graphics = this.scene.add.graphics();
             graphics.fillStyle(0xff0000);
             graphics.fillCircle(x, y, 20 * this.grid.scale)
+        } else {
+            this.addTutorialDropIndicator(x, y);
         }
 
         if (sprite.body) {
-            const speed = 100;
+            const speed = 160;
             this.scene.physics.moveTo(sprite, x, y, speed * this.grid.scale);
         }
         if (!this.intervalWatchDragMove) {
@@ -259,6 +272,13 @@ export default class TutorialHighlight {
                 }
             }, 10);
         }
+    }
+
+    private addTutorialDropIndicator(x: number, y: number) {
+        this.removeDropIndicator();
+        this.tutorialDropImageIndicator =
+            this.scene.add.image(x, y, 'tutorial-drop-indicator')
+                .setScale(this.grid.scale);
     }
 
     private stopMoveLoop() {
@@ -323,5 +343,13 @@ export default class TutorialHighlight {
         this.stopMoveLoop();
         this.removeHand();
         this.resetDepth();
+        this.removeDropIndicator();
+    }
+
+    private removeDropIndicator() {
+        if (this.tutorialDropImageIndicator) {
+            this.scene.children.remove(this.tutorialDropImageIndicator);
+            this.tutorialDropImageIndicator = null;
+        }
     }
 }

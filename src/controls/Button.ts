@@ -35,6 +35,8 @@ export default class Button implements InterfaceElement {
   }
 
 
+
+
   getSprite(): Phaser.Physics.Arcade.Sprite {
     return this.sprite as Phaser.Physics.Arcade.Sprite
   }
@@ -72,5 +74,9 @@ export default class Button implements InterfaceElement {
   }
   setInteractive() {
     this.sprite.setInteractive();
+  }
+
+  setDepth(depth: number): void {
+    this.sprite.setDepth(depth);
   }
 }

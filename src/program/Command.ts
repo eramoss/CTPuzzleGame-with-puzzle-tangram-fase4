@@ -271,10 +271,11 @@ export default class Command implements InterfaceElement {
   }
 
   unmute() {
-    this.isMuted = true;
-  }
-  mute() {
     this.isMuted = false;
+  }
+  
+  mute() {
+    this.isMuted = true;
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {

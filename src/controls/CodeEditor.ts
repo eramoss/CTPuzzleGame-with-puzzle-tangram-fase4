@@ -309,8 +309,15 @@ export default class CodeEditor {
               command.intent = commandIntent;
             }
           }
+        } else {
+          let program = this.programs.find(p => p.dropZone.zone == dropZone);
+          program?.dragover();
         }
       })
+      commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
+        let program = this.programs.find(p => p.dropZone.zone == dropZone);
+        program?.dragout();
+      });
     })
   }
 

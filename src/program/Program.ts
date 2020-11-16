@@ -119,6 +119,7 @@ export default class Program {
       this.setConditionalCommand(command.index(), command.condition);
     }
     this.distributeAllCommands();
+    this.dragout();
   }
 
   setConditionalCommand(index: number, ifCommand: Command) {
@@ -285,5 +286,13 @@ export default class Program {
     this.ordinalCommands.forEach(c => commands.push(c));
     this.conditionalCommandsIndexed.forEach(c => commands.push(c));
     return commands;
+  }
+
+  dragout() {
+    this.dropZone?.dragout();
+  }
+
+  dragover() {
+    this.dropZone?.dragover();
   }
 }

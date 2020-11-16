@@ -6,13 +6,30 @@ export default class SpriteDropZone {
   sprite: Phaser.GameObjects.Sprite;
   zone: Phaser.GameObjects.Zone;
   scene: Scene;
+  draggedOver: boolean;
 
   constructor(scene: Scene, x: integer, y: integer, width: integer, height: integer, texture: string) {
     this.scene = scene;
     this.zone = scene.add.zone(x, y, width, height).setRectangleDropZone(width, height);
     this.zone.setDisplayOrigin(0, 0);
     this.sprite = scene.add.sprite(x, y, texture, 0);
-    //this.highlight();
+    //this.sprite.setInteractive();
+  }
+
+  dragover() {
+    if (!this.draggedOver) {
+      this.sprite.displayHeight = this.sprite.displayHeight + 2;
+      this.sprite.displayWidth = this.sprite.displayWidth + 2;
+      this.draggedOver = true;
+    }
+  }
+
+  dragout() {
+    if (this.draggedOver) {
+      this.sprite.displayHeight = this.sprite.displayHeight - 2;
+      this.sprite.displayWidth = this.sprite.displayWidth - 2;
+      this.draggedOver = false;
+    }
   }
 
   highlight(enabled: boolean = true) {

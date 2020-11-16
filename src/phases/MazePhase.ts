@@ -108,6 +108,7 @@ export default class MazePhase {
     }
 
     clearTutorials() {
+        this.codeEditor.setInteractive();
         this.removeBackgroundTutorialOverlay();
         let action = this.firstAction;
         while (action != null) {

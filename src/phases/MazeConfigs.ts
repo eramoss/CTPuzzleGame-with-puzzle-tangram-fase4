@@ -148,6 +148,7 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
+        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
         this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));

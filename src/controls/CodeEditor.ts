@@ -84,7 +84,9 @@ export default class CodeEditor {
     const createdCommands: Command[] = commandNames
       .map(commandName => {
         let sprite = commandGroup.get(0, 0, commandName)
-        return new Command(this.scene, sprite)
+        const command = new Command(this.scene, sprite);
+        command.setDepth(3);
+        return command
       })
 
     console.log('COMMAND_NAMES', commandNames);

@@ -103,7 +103,9 @@ export class DudeMove {
     const moveToContinueWhenBackToThisBranch = this.next;
     const progToCall = this.action;
     this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
-    this.dude.onBranch(progToCall.action, this.branch);
+    this.dude.setTimeout(_ => {
+      this.dude.onBranch(progToCall.action, this.branch);
+    }, 200)
   }
 
   execute(previousMove: DudeMove = null) {
@@ -128,7 +130,7 @@ export class DudeMove {
     console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
-    
+
     this.animate();
 
     if (isCondition) {
@@ -156,8 +158,8 @@ export class DudeMove {
     if (!branched && !turnMove) {
       console.log('MOVE [x,y]', this.x, this.y);
       if (this.couldExecute) {
-          this.point = this.dude.matrix.getPoint(this.y, this.x);
-          this.dude.moveTo(this);
+        this.point = this.dude.matrix.getPoint(this.y, this.x);
+        this.dude.moveTo(this);
       } else {
         if (!isCondition)
           this.dude.warmBlocked();

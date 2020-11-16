@@ -227,13 +227,13 @@ export default class Game extends Scene {
     this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
       let valid = true;
       if (condition.startsWith('if_')) {
-        const command = condition.replace('if_','');
+        const command = condition.replace('if_', '');
         //if (command == 'coin' || command == 'block') {
-          let { x, y } = dudeMove.getAheadPosition();
-          valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == command
-          if (valid) {
-            (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
-          }
+        let { x, y } = dudeMove.getAheadPosition();
+        valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == command
+        if (valid) {
+          (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
+        }
         //}
       }
       return valid
@@ -287,9 +287,11 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickRun = () => {
-      this.codeEditor.setInteractive();
-      this.currentPhase?.removeBackgroundTutorialOverlay()
-      this.dude.execute([this.program, prog1, prog2]);
+      if (this.dude.stopped) {
+        this.codeEditor.setInteractive();
+        this.currentPhase?.removeBackgroundTutorialOverlay()
+        this.dude.execute([this.program, prog1, prog2]);
+      }
     }
 
     this.codeEditor.onEditProgram = () => {

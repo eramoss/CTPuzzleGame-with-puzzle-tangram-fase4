@@ -72,8 +72,8 @@ export default class TutorialHighlight {
     }
 
     private bringSpriteToFront(sprite: Physics.Arcade.Sprite) {
-        // this.tutorialDropImageIndicator?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
-        // sprite?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
+        this.tutorialDropImageIndicator?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
+        sprite?.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 2);
     }
 
     private bringDropzoneToFront(dropLocation: TutorialDropLocation) {

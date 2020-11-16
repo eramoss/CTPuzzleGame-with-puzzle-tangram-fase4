@@ -499,7 +499,7 @@ export default class MazeConfigs {
                     'click btn-step',
                     'click btn-step',
                     'click btn-step',
-                    //'click btn-step',
+                    'click btn-step',
                 ]);
             }
         }

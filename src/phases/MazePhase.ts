@@ -71,7 +71,7 @@ export default class MazePhase {
         const tutorialAction = new TutorialAction(this.scene, highlights);
         tutorialAction.onHighlight = () => {
             this.addBackgroundOverlay()
-            this.codeEditor.disableInteractive();
+            //this.codeEditor.disableInteractive();
         }
         tutorialAction.onInvalidState = () => {
             this.codeEditor.replay();

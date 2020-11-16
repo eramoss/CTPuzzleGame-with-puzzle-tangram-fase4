@@ -8,11 +8,12 @@ export default class TutorialAction {
     nextTutorialAction: TutorialAction
     previousTutorialAction: TutorialAction;
     onHighlight: () => void = () => { }
-    onAdvance: () => void = () => { }
-    isCodeStateValidToHighlightThisTutorialAction: () => boolean = () => true
+    onCompleteAction: () => void = () => { }
+    isEnvironmentValidToHighlightTutorial: () => boolean = () => true
     triggered: boolean = false;
     index: number;
     onInvalidState: () => void
+    isAllowedToHighlightNextTutorialStep: () => boolean = () => { return true };
 
     constructor(
         scene: Scene,
@@ -23,35 +24,37 @@ export default class TutorialAction {
     }
 
     reset() {
-        console.log('TUTORIAL_RESETING_CHILDREN')
+        console.log('TUTORIAL_RESETING')
         this.triggered = false;
-        this.scene.children.getAll().forEach(c => c.setInteractive());
         this.highlights.forEach(highlight => {
             highlight.reset();
         })
+        this.highlights = []
     }
 
     highlight() {
         if (this.triggered) return;
-        if (this.isCodeStateValidToHighlightThisTutorialAction()) {
+        if (this.isEnvironmentValidToHighlightTutorial()) {
             this.triggered = true;
             console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
             const onInteractAdvanceTutorial = () => {
-                this.onAdvance();
-                this.nextTutorialAction?.highlight();
+                this.onCompleteAction();
+                if (this.isAllowedToHighlightNextTutorialStep()) {
+                    this.nextTutorialAction?.highlight();
+                }
             }
             this.highlights.forEach(highlight => {
-                highlight.contrastAndShowHandPointing(() => onInteractAdvanceTutorial())
+                highlight.onInteractAdvanceTutorial = () => onInteractAdvanceTutorial();
+                highlight.contrastAndShowHandPointing();
             });
         }
-        if (!this.isCodeStateValidToHighlightThisTutorialAction()) {
+        if (!this.isEnvironmentValidToHighlightTutorial()) {
             if (this.previousTutorialAction) {
                 this.previousTutorialAction.triggered = false
                 this.previousTutorialAction.highlight();
             } else {
-                //this.triggered = true;
-                //this.onInvalidState()
+                this.onInvalidState()
             }
         }
     }

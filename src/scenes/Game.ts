@@ -107,6 +107,7 @@ export default class Game extends Scene {
       gridCenterY,
       gridCellWidth
     )
+    //this.phases.test()
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.ISOMETRIC;

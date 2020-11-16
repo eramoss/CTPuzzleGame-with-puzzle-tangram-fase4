@@ -4,9 +4,11 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
 import MazePhase from "./MazePhase";
+import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
 
 export default class MazeConfigs {
+
 
     currentPhase: number = -1
     phases: Array<MazePhase>;
@@ -18,26 +20,17 @@ export default class MazeConfigs {
     gridCellWidth: number;
     codeEditor: CodeEditor;
 
-    fnGetChild(key: string): () => InterfaceElement {
+    fnGetInterfaceElement(key: string): () => InterfaceElement {
         return () => {
-            const command = this.codeEditor.availableCommands
-                .find(command => command.getSprite().texture.key == key);
-            command.isDropSoundEnabled = false;
-            command.isRemoveSoundElabled = false;
-            return command;
+            const getOnlyFixedElements = true
+            const foundElement = this.codeEditor.getInterfaceElements(getOnlyFixedElements)
+                .find(it => it.getSprite().texture.key == key);
+            if (!foundElement) {
+                console.warn('Não foi encontrado o elemento ' + key)
+            }
+            return foundElement;
         }
     }
-
-    fnGetArrowUp = this.fnGetChild('arrow-up');
-    fnGetArrowLeft = this.fnGetChild('arrow-left');
-    fnGetArrowRight = this.fnGetChild('arrow-right');
-    fnGetIfCoin = this.fnGetChild('if_coin');
-    fnGetIfBlock = this.fnGetChild('if_block');
-    fnGetProg_0 = this.fnGetChild('prog_0');
-    fnGetProg_1 = this.fnGetChild('prog_1');
-
-    fnGetBtnPlay = () => this.codeEditor.btnPlay;
-    fnGetBtnStep = () => this.codeEditor.btnStep;
 
     fnIsBtnStepStateEnabled = () => {
         const isBtnStepEnabled = !this.codeEditor.btnStep.disabled;
@@ -51,14 +44,88 @@ export default class MazeConfigs {
     }
 
     isCodeStateLike(codeString: string) {
-        const commandsToString = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull().stringfyOrdinalCommands();
+        const commandsToString = this.codeEditor.stringfyCommands();
+        console.log('CODE_STATE [codeString]\n', codeString)
+        console.log('CODE_STATE [commandsToString]\n', commandsToString)
         return codeString === commandsToString;
     }
 
-    createTutorialDropLocation(commandName, index = 0) {
-        const commands = this.codeEditor.getCommandsByName(commandName);
+    createTutorialDropLocation(commandName: string, index = 0) {
+        const commands = this.codeEditor.getAddedCommandsByName(commandName);
         return new TutorialDropLocation(null, commands[index]);
     }
+
+    buildTutorial(phase: MazePhase, tutorialsActionsWrittenAsPhrases: string[]): string {
+
+        const tutorialActionsMap = new Map<string, (
+            fnGetInterfaceElement: () => InterfaceElement,
+            fnGetDropLocation: () => TutorialDropLocation) => TutorialAction>();
+
+        tutorialActionsMap.set('drag', phase.addTutorialHighlightDrag);
+        tutorialActionsMap.set('click', phase.addTutorialHighlightClick);
+
+        let codeStates: string[] = []
+        let expectedCodeStateDuringTutorialAction: string = '';
+        let code = [];
+        tutorialsActionsWrittenAsPhrases
+            .forEach((tutorialActionAsString, actionIndex) => {
+                // Example: "drop          arrow-up      to program"
+                //           [actionName]  [elementName]
+
+                let commands = tutorialActionAsString.split(' ');
+                let actionName = commands[0];
+                let elementName = commands[1];
+
+                let instruction = elementName;
+                const isConditional = elementName.startsWith('if_');
+                const isButton = elementName.startsWith('btn');
+                let lastInstruction = "";
+                if (!isButton) {
+                    if (isConditional) {
+                        let index = code.length - 1;
+                        lastInstruction = code[index];
+                        instruction = lastInstruction + ":" + elementName
+                        code[index] = instruction;
+                    } else {
+                        code.push(instruction);
+                    }
+                }
+
+                let fnGetDropLocation = null;
+                if (actionName == 'drag') {
+                    fnGetDropLocation = this.fnGetProgramDropLocation;
+                    if (isConditional) {
+                        fnGetDropLocation = () => this.createTutorialDropLocation(lastInstruction)
+                    }
+                }
+                if (actionName == 'click') {
+
+                }
+
+                let tutorialActionCreator = tutorialActionsMap.get(actionName)
+                let fnGetInterfaceElement = this.fnGetInterfaceElement(elementName)
+
+                codeStates[actionIndex] = expectedCodeStateDuringTutorialAction;
+
+                const tutorialAction: TutorialAction = tutorialActionCreator
+                    .call(phase, fnGetInterfaceElement, fnGetDropLocation);
+
+                tutorialAction.isEnvironmentValidToHighlightTutorial =
+                    () => this.isCodeStateLike(codeStates[actionIndex])
+
+                if (elementName == 'btn-step') {
+                    tutorialAction.isAllowedToHighlightNextTutorialStep = () => {
+                        const btnStepEnabled = !this.codeEditor.btnStep.disabled;
+                        return btnStepEnabled
+                    }
+                }
+
+                //console.log('BUILD_CODE', expectedCodeStateDuringTutorialAction)
+                expectedCodeStateDuringTutorialAction = code.join(', ');
+            })
+        return expectedCodeStateDuringTutorialAction;
+    }
+
 
     constructor(scene: Scene,
         grid: AlignGrid,
@@ -81,14 +148,14 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
-        //this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
+        //this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
+        //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
 
-        this.phases.push(this.createPhaseEasyThreeStepByStep(showTutorial));
-        this.phases.push(this.createPhaseEasyIfCoin(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
         this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
+        this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
 
         this.phases.push(this.createPhaseEasyArrowUp());
         this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
@@ -98,8 +165,8 @@ export default class MazeConfigs {
         this.phases.push(this.createEasyPhaseWithBlockWithTurn());
         this.phases.push(this.createPhaseStepByStepWithBlock());
         this.phases.push(this.createHardPhaseWithTwoStars());
-        //this.phases.push(this.createPhaseIfCoin());
-        //this.phases.push(this.createPhaseIfBlock()); 
+        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
+        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
     }
 
     getNextPhase(): MazePhase {
@@ -107,12 +174,7 @@ export default class MazeConfigs {
         return this.phases[this.currentPhase]
     }
 
-    startPhases() {
-        let firstPhase = this.phases[0];
-        firstPhase?.firstAction?.highlight();
-    }
-
-    private createPhaseEasyIfCoin(showTutorial: boolean = false) {
+    private createPhaseHardIfCoinAndIfBlock(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 1 }
@@ -153,35 +215,21 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                let count = 0;
-                phase
-                    .addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation)
-                    .isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-
-                phase
-                    .addTutorialHighlight(this.fnGetIfCoin, () => this.createTutorialDropLocation('arrow-up'))
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up")
-
-                phase
-                    .addTutorialHighlight(this.fnGetArrowRight, this.fnGetProgramDropLocation)
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin")
-
-                phase
-                    .addTutorialHighlight(this.fnGetIfBlock, () => this.createTutorialDropLocation('arrow-right'))
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right")
-
-                phase
-                    .addTutorialHighlight(this.fnGetProg_0, this.fnGetProgramDropLocation)
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right:if_block")
-
-                phase
-                    .addTutorialHighlight(this.fnGetBtnPlay)
-                    .isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up:if_coin, arrow-right:if_block, prog_0")
+                let tutorial = [
+                    "drag arrow-up",
+                    "drag if_coin",
+                    "drag arrow-right",
+                    "drag if_block",
+                    "drag prog_0",
+                    "click btn-play",
+                ]
+                this.buildTutorial(phase, tutorial)
             }
         }
 
         return phase;
     }
+
 
 
 
@@ -226,9 +274,12 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                let count = 0;
-                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
+                this.buildTutorial(phase,
+                    [
+                        'drag arrow-up',
+                        'click btn-play'
+                    ]
+                )
             }
         }
 
@@ -276,12 +327,14 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addTutorialHighlight(this.fnGetArrowUp)
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up")
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = () => this.isCodeStateLike("arrow-up, arrow-up")
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled
+                this.buildTutorial(phase, [
+                    'click arrow-up',
+                    'click arrow-up',
+                    'click arrow-up',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                ])
             }
         }
 
@@ -333,9 +386,12 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
             if (showTutorial) {
-                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(0)
-                phase.addTutorialHighlight(this.fnGetArrowUp, this.fnGetProgramDropLocation).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(1)
-                phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(2)
+                this.buildTutorial(phase, [
+                    'drag arrow-up',
+                    'drag arrow-up',
+                    'click btn-step',
+                    'click btn-step'
+                ])
             }
         }
         return phase;
@@ -383,11 +439,13 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(0);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(1);
-                phase.addTutorialHighlight(this.fnGetArrowRight).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(2);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(3);
-                phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(4);;
+                this.buildTutorial(phase, [
+                    'drag arrow-up',
+                    'drag arrow-up',
+                    'drag arrow-right',
+                    'drag arrow-up',
+                    'click btn-play',
+                ])
             }
         }
         return phase;
@@ -434,9 +492,15 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(0);
-                phase.addTutorialHighlight(this.fnGetProg_0).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(1);
-                phase.addTutorialHighlight(this.fnGetBtnPlay).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(2);
+                this.buildTutorial(phase, [
+                    'drag arrow-up',
+                    'drag prog_0',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    //'click btn-step',
+                ]);
             }
         }
 
@@ -484,25 +548,26 @@ export default class MazeConfigs {
             );
 
             if (showTutorial) {
-                let count = 0;
-                phase.addTutorialHighlight(this.fnGetArrowLeft).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowRight).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetProg_1).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowRight).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-                phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
+                this.buildTutorial(phase, [
+                    'drag arrow-left',
+                    'drag arrow-up',
+                    'drag arrow-right',
+                    'drag arrow-up',
+                    'drag prog_1',
+                    'drag arrow-up',
+                    'drag arrow-up',
+                    'drag arrow-right',
+                    'drag arrow-up',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                    'click btn-step',
+                ])
             }
         }
 
@@ -549,12 +614,13 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-            let count = 0;
-            phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-            phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
+            this.buildTutorial(phase, [
+                'drag arrow-up',
+                'drag arrow-up',
+                'click btn-step',
+                'click btn-step',
+                'click btn-step',
+            ])
         }
 
         return phase;
@@ -600,15 +666,15 @@ export default class MazeConfigs {
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
 
-            let count = 0;
-            phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-            phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-            phase.addTutorialHighlight(this.fnGetArrowUp).isCodeStateValidToHighlightThisTutorialAction = this.hasAddedComands(count++);
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
-            phase.addTutorialHighlight(this.fnGetBtnStep).isCodeStateValidToHighlightThisTutorialAction = this.fnIsBtnStepStateEnabled;
+            this.buildTutorial(phase, [
+                'drag arrow-up',
+                'drag arrow-up',
+                'drag arrow-up',
+                'click btn-step',
+                'click btn-step',
+                'click btn-step',
+            ])
         }
-
         return phase;
     }
 
@@ -743,5 +809,48 @@ export default class MazeConfigs {
         }
 
         return phase;
+    }
+
+    test() {
+        const phase = new MazePhase(this.scene, this.codeEditor);
+        let testCount = 0;
+        let code = this.buildTutorial(phase, [
+            "drag arrow-up to program",
+            "drag arrow-up to program"]
+        )
+        console.log('TEST', testCount++, code == 'arrow-up, arrow-up', code);
+
+        code = this.buildTutorial(phase, [
+            "drag arrow-up to program",
+            "drag if_coin to arrow-up"]
+        )
+        console.log('TEST', testCount++, code == 'arrow-up:if_coin', code);
+
+        code = this.buildTutorial(phase, [
+            "drag arrow-up to program",
+            "drag if_coin to arrow-up",
+            "drag arrow-up to program"
+        ]
+        )
+        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up', code);
+
+        code = this.buildTutorial(phase, [
+            "drag arrow-up to program",
+            "drag if_coin to arrow-up",
+            "drag arrow-up to program",
+            "drag if_coin to arrow-up"
+        ]
+        )
+        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up:if_coin', code);
+
+        code = this.buildTutorial(phase, [
+            "drag arrow-up to program",
+            "drag if_coin to arrow-up",
+            "drag arrow-right to program",
+            "drag if_block to arrow-right",
+        ]
+        )
+        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-right:if_block', code);
+
     }
 }

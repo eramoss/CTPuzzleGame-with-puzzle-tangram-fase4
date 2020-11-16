@@ -15,14 +15,16 @@ export default class MazePhase {
     ground: Matrix;
     scene: Scene;
     grid: AlignGrid
+
     firstAction: TutorialAction;
     action: TutorialAction;
+    //actions: TutorialAction[] = [];
+
     next: MazePhase
     backgroundOverlay: GameObjects.Sprite;
 
     dudeFacedTo: string = 'right'
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
-    actions: TutorialAction[] = [];
     codeEditor: CodeEditor;
 
     constructor(scene: Scene, codeEditor: CodeEditor) {
@@ -32,11 +34,30 @@ export default class MazePhase {
     }
 
     setupMatrixAndTutorials() {
+        this.codeEditor.programs.forEach(p => p.setDepth(0));
         this.clearTutorials();
         this.setupTutorialsAndObjectsPositions();
     }
 
-    addTutorialHighlight(
+    addTutorialHighlightDrag(
+        fnGetInterfaceElement: () => InterfaceElement,
+        fnGetDropLocation: () => TutorialDropLocation
+    ): TutorialAction {
+        const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
+        action.highlights.forEach(highlight => highlight.continueTutorialOnDrag = true)
+        return action
+    }
+
+    addTutorialHighlightClick(
+        fnGetInterfaceElement: () => InterfaceElement,
+        fnGetDropLocation: () => TutorialDropLocation = null
+    ): TutorialAction {
+        const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
+        action.highlights.forEach(highlight => highlight.continueTutorialOnClick = true)
+        return action
+    }
+
+    private addTutorialHighlight(
         fnGetInterfaceElement: () => InterfaceElement,
         fnGetDropLocation: () => TutorialDropLocation = null
     ): TutorialAction {
@@ -56,11 +77,11 @@ export default class MazePhase {
         tutorialAction.onInvalidState = () => {
             this.codeEditor.replay();
         }
-        tutorialAction.onAdvance = () => {
+        tutorialAction.onCompleteAction = () => {
             this.action = tutorialAction.nextTutorialAction
             console.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
         }
-        let index = -1;
+        let index = 0;
         if (!this.firstAction) {
             this.firstAction = tutorialAction
         } else {
@@ -70,7 +91,6 @@ export default class MazePhase {
         }
         tutorialAction.index = index;
         this.action = tutorialAction;
-        this.actions.push(tutorialAction);
         return tutorialAction;
     }
 
@@ -89,24 +109,27 @@ export default class MazePhase {
 
     clearTutorials() {
         this.removeBackgroundTutorialOverlay();
+        let action = this.firstAction;
+        while (action != null) {
+            action.reset();
+            action = action.nextTutorialAction
+        }
         this.action = null;
         this.firstAction = null;
-        this.actions.forEach(a => a.reset())
-        this.actions = [];
     }
 
     addBackgroundOverlay() {
-        if (!this.backgroundOverlay) {
-            this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
-                .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
-            this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
-        }
+        // if (!this.backgroundOverlay) {
+        //     this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
+        //         .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
+        //     this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
+        // }
     }
 
     removeBackgroundTutorialOverlay() {
-        if (this.backgroundOverlay) {
-            this.scene.children.remove(this.backgroundOverlay);
-            this.backgroundOverlay = null;
-        }
+        // if (this.backgroundOverlay) {
+        //     this.scene.children.remove(this.backgroundOverlay);
+        //     this.backgroundOverlay = null;
+        // }
     }
 }

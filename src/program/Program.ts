@@ -257,19 +257,16 @@ export default class Program {
   }
 
   setDepth(depth: number) {
+    if (!this.originalDepth) {
+      this.originalDepth = this.sprite.depth;
+    }
     this.sprite.setDepth(depth);
     this.programNameImage.setDepth(depth);
     this.getAllCommands().forEach(c => c.setDepth(depth));
   }
 
   stringfyOrdinalCommands(): string {
-    const stringfiedCommands = this.ordinalCommands.map(command => {
-      let name = command.name;
-      if (command.condition) {
-        name = name + ":" + command.condition.name;
-      }
-      return name;
-    }).join(', ');
+    const stringfiedCommands = this.ordinalCommands.map(command => command.stringfy()).join(', ');
     console.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
     return stringfiedCommands;
   }

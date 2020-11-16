@@ -15,6 +15,7 @@ export default class CodeEditor {
 
 
 
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -448,8 +449,13 @@ export default class CodeEditor {
     return count
   }
 
-  getCommandsByName(textureKey: string): Command[] {
+  getAddedCommandsByName(textureKey: string): Command[] {
     return this.getAllOrdinalCommands()
+      .filter(command => command.name == textureKey);
+  }
+
+  getAvailableCommandsByName(textureKey: string): Command[] {
+    return this.availableCommands
       .filter(command => command.name == textureKey);
   }
 
@@ -466,7 +472,7 @@ export default class CodeEditor {
     return joinChilds(this.programs, (p) => p.getAllCommands());
   }
 
-  getInteraceElements(): InterfaceElement[] {
+  getInterfaceElements(onlyFixedElements: boolean = false): InterfaceElement[] {
     const interfaceElements = [];
     interfaceElements.push(this.btnPlay)
     interfaceElements.push(this.btnStep)
@@ -474,21 +480,23 @@ export default class CodeEditor {
     this.availableCommands.forEach(availableCommand => {
       interfaceElements.push(availableCommand);
     })
-    this.getAllAddedCommands().forEach(addedCommand => {
-      interfaceElements.push(addedCommand);
-    })
+    if (!onlyFixedElements) {
+      this.getAllAddedCommands().forEach(addedCommand => {
+        interfaceElements.push(addedCommand);
+      })
+    }
     return interfaceElements;
   }
 
   disableInteractive() {
-    this.getInteraceElements()
+    this.getInterfaceElements()
       .forEach(genericInteraceElement => {
         genericInteraceElement.disableInteractive();
       })
   }
 
   setInteractive() {
-    this.getInteraceElements()
+    this.getInterfaceElements()
       .forEach(genericInteraceElement => {
         genericInteraceElement.setInteractive();
       })
@@ -497,5 +505,9 @@ export default class CodeEditor {
   replay() {
     this.sounds.error();
     this.onReplayCurrentPhase();
+  }
+
+  stringfyCommands(): string {
+    return this.getAllOrdinalCommands().map(c => c.stringfy()).join(', ');
   }
 }

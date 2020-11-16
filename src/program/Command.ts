@@ -10,6 +10,7 @@ import Program from './Program';
 
 export default class Command implements InterfaceElement {
 
+
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -294,6 +295,14 @@ export default class Command implements InterfaceElement {
   setDepth(depth: number) {
     this.sprite.setDepth(depth);
     this.highlightConditionalImage?.setDepth(depth);
+  }
+
+  stringfy(): string {
+    let stringfiedCommand = this.name;
+    if (this.condition) {
+      stringfiedCommand = stringfiedCommand + ":" + this.condition.name;
+    }
+    return stringfiedCommand;
   }
 }
 

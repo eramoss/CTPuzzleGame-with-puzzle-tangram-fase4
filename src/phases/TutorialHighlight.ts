@@ -21,7 +21,6 @@ export default class TutorialHighlight {
     originalX: number;
     originalY: number;
     isDragMoveAnimationCancelled: boolean = false;
-    commandSpriteToEnableOnInterval: Physics.Arcade.Sprite;
     onInteractAdvanceTutorial: () => void;
     removeDraggingElement: () => void;
     functionsRunningByTimeout: number[] = [];
@@ -150,27 +149,29 @@ export default class TutorialHighlight {
 
                 commandSprite.emit('drag');
                 commandSprite.emit('dragstart', null, {
-                    dontRecreate: false,
-                    muteDragSound: true,
-                    muteDropSound: true,
                     onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => {
-                        const callbackOnPointerDown = () => {
+                        const newCommandSprite = command.getSprite();
+                        newCommandSprite.setInteractive();
+                        newCommandSprite.on('pointerdown', () => {
                             this.cancelDragAnimation();
-                            this.bringSpriteToFront(commandSprite);
-                        }
-                        this.onReplaceCommand(command, callbackOnPointerDown);
+                        });
+                        newCommandSprite.on('pointerup', () => {
+                            this.removeDropIndicator();
+                            this.onInteractAdvanceTutorial();
+                        });
                     }
                 });
-                commandSprite.alpha = 0.7
-                this.handSprite.alpha = 0.7
-                this.bringDropzoneToFront(dropLocation);
+                commandSprite.alpha = 0.5
+                this.handSprite.alpha = 0.5
                 this.bringSpriteToFront(commandSprite);
 
                 this.moveSpriteTo(
                     commandSprite,
                     dropLocation,
                     {
-                        onUpdateSpritePosition: () => this.putHandSpriteOver(commandSprite),
+                        onUpdateSpritePosition: () => {
+                            this.putHandSpriteOver(commandSprite)
+                        },
                         stopCondition: () => {
                             return this.checkIfHandAchievedDestine(commandSprite, dropLocation)
                                 || this.isDragMoveAnimationCancelled
@@ -178,6 +179,7 @@ export default class TutorialHighlight {
                         onAchieve: () => {
                             console.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]');
                             this.simulateDrop(commandSprite, dropLocation);
+                            this.putHandSpriteOver(commandSprite);
                             this.waitAndRun(timeBeforeRepeat,
                                 () => {
                                     this.handSprite.setVisible(false);
@@ -203,25 +205,6 @@ export default class TutorialHighlight {
         this.functionsRunningByTimeout = [];
     }
 
-    private onReplaceCommand(
-        newCommand: Command, callbackOnPointerDown: () => void) {
-        console.log('TUTORIAL_HIGHLIGHT [createdCommand]', newCommand);
-        newCommand.isRemoveSoundElabled = false;
-        const newCommandSprite = newCommand.getSprite();
-        this.bringSpriteToFront(newCommandSprite);
-        this.bringHandSpriteToFront();
-        //newCommandSprite.setTint(0xff00ff);
-        newCommandSprite.setInteractive();
-        newCommandSprite.on('pointerdown', () => {
-            callbackOnPointerDown();
-        });
-        newCommandSprite.on('pointerup', () => {
-            this.removeDropIndicator();
-            this.onInteractAdvanceTutorial();
-        });
-        this.commandSpriteToEnableOnInterval = newCommandSprite;
-    }
-
     private simulateDrop(sprite: Physics.Arcade.Sprite, dropLocation: TutorialDropLocation) {
         sprite.body.stop();
         sprite.emit('drop', null, dropLocation.dropZone);
@@ -230,11 +213,7 @@ export default class TutorialHighlight {
     }
 
     private simulateClickToRemove(sprite: Physics.Arcade.Sprite) {
-        sprite.emit('dragstart', null, {
-            dontRecreate: true,
-            muteDragSound: true
-        });
-        sprite.emit('dragend', { playRemoveSound: false });
+        sprite.emit('delete');
     }
 
     moveSpriteTo(
@@ -293,7 +272,6 @@ export default class TutorialHighlight {
 
     cancelDragAnimation() {
         this.isDragMoveAnimationCancelled = true;
-        this.commandSpriteToEnableOnInterval.body.stop()
         this.removeDraggingElement();
         this.stopMoveLoop();
         this.intervalWatchDragMove = null;

@@ -141,36 +141,28 @@ export default class CodeEditor {
           this.logPrograms('drag')
         }
       })
+      commandSprite.on('delete', () => {
+        command.isRemoveSoundElabled = false;
+        command.removeSelf();
+      });
       commandSprite.on('dragstart', (
         input: Phaser.Input.Pointer,
-        dragStartOptions:
-          {
-            dontRecreate: boolean,
-            muteDragSound: boolean,
-            muteDropSound: boolean,
-            onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => void
-          }
+        dragStartOptions: {
+          onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => void
+        }
       ) => {
 
         console.log("MOVE_EVENT", "dragstart")
         this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
-        if (!dragStartOptions.muteDragSound) {
-          this.sounds.drag();
-        }
-        if (!dragStartOptions.dontRecreate) {
-          const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
-          createdCommands
-            .forEach(c => {
-              c.isDropSoundEnabled = !dragStartOptions.muteDropSound
-            });
-          if (dragStartOptions.onCreateCommandBelow) {
-            if (createdCommands.length > 1) {
-              console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
-            }
-            dragStartOptions.onCreateCommandBelow(this, createdCommands[0]);
+        this.sounds.drag();
+        const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
+        if (dragStartOptions.onCreateCommandBelow) {
+          if (createdCommands.length > 1) {
+            console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
           }
+          dragStartOptions.onCreateCommandBelow(this, createdCommands[0]);
         }
         commandSprite.setScale(toolboxRow.scaleOnDragStart)
         this.logPrograms('dragstart')

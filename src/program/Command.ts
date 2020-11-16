@@ -32,7 +32,7 @@ export default class Command implements InterfaceElement {
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
     this.sprite = sprite;
-    this.sprite.setDepth(3);
+    //this.sprite.setDepth(3);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)

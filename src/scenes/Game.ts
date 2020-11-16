@@ -288,6 +288,9 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
+        if (this.currentPhase?.isTutorialPhase()) {
+          this.codeEditor.disableInteractive();
+        }
         this.dude.execute([this.program, prog1, prog2]);
       }
     }

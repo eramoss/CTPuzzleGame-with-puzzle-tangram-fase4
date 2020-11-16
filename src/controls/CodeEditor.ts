@@ -480,7 +480,7 @@ export default class CodeEditor {
     const interfaceElements = [];
     interfaceElements.push(this.btnPlay)
     interfaceElements.push(this.btnStep)
-    interfaceElements.push(this.btnStop)
+    //interfaceElements.push(this.btnStop)
     this.availableCommands.forEach(availableCommand => {
       interfaceElements.push(availableCommand);
     })

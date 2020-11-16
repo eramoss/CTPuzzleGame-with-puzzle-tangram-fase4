@@ -412,7 +412,7 @@ export default class CodeEditor {
   }
 
   disanimatePrograms() {
-    this.programs.forEach(p => p.disanimateCommands());
+    this.programs.forEach(p => p.disanimate());
   }
 
   highlightStepButton() {

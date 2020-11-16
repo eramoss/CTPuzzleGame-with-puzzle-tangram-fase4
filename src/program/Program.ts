@@ -1,6 +1,5 @@
 import { GameObjects } from 'phaser'
 import Command from './Command'
-import Sounds from '../sounds/Sounds';
 import AlignGrid from '../geom/AlignGrid';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import { createDropZone, androidVibrate } from '../utils/Utils';
@@ -13,7 +12,6 @@ export default class Program {
   conditionalCommandsIndexed: Map<number, Command>
   scene: Phaser.Scene;
   dropZone: SpriteDropZone;
-  sounds: Sounds;
   grid: AlignGrid;
   name: string;
   parent: Program;
@@ -23,10 +21,9 @@ export default class Program {
   sprite: GameObjects.Sprite;
   onEdit: () => void = () => { };
 
-  constructor(scene: Phaser.Scene, name: string, sounds: Sounds, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
+  constructor(scene: Phaser.Scene, name: string, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
     this.scene = scene;
     this.name = name;
-    this.sounds = sounds;
     this.grid = grid;
     this.ordinalCommands = new Array();
     this.conditionalCommandsIndexed = new Map<number, Command>();
@@ -231,9 +228,8 @@ export default class Program {
     this.conditionalCommandsIndexed = new Map<number, Command>();
     let commands = this.ordinalCommands.splice(0);
     commands.forEach(c => {
-      c.muteBlockRemovingSound();
+      c.mute();
       c.removeSelf();
-      c.unmuteBlockRemovingSound();
     });
     this.ordinalCommands = [];
   }

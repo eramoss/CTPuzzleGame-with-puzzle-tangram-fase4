@@ -147,6 +147,7 @@ export default class TutorialHighlight {
                     this.scene.children.remove(commandSprite);
                 }
 
+                commandSprite.emit('mute');
                 commandSprite.emit('drag');
                 commandSprite.emit('dragstart', null, {
                     onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => {
@@ -159,6 +160,9 @@ export default class TutorialHighlight {
                             this.removeDropIndicator();
                             this.onInteractAdvanceTutorial();
                         });
+                        newCommandSprite.on('outofbounds', ()=>{
+                            this.onInteractAdvanceTutorial();
+                        })
                     }
                 });
                 commandSprite.alpha = 0.5
@@ -213,6 +217,7 @@ export default class TutorialHighlight {
     }
 
     private simulateClickToRemove(sprite: Physics.Arcade.Sprite) {
+        sprite.emit('mute');
         sprite.emit('delete');
     }
 

@@ -26,8 +26,7 @@ export default class Command implements InterfaceElement {
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
   sounds: Sounds
-  isRemoveSoundElabled: boolean = true;
-  isDropSoundEnabled: boolean = true;
+  isMuted: boolean = false;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -37,7 +36,6 @@ export default class Command implements InterfaceElement {
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)
   }
-
 
   index(): number {
     let index = -1;
@@ -77,11 +75,23 @@ export default class Command implements InterfaceElement {
     }
   }
 
+  playDrag() {
+    if (!this.isMuted) {
+      this.sounds.drag();
+      androidVibrate(30)
+    }
+  }
+
   playDrop() {
-    if (this.isDropSoundEnabled) {
+    if (!this.isMuted) {
       this.sounds.drop();
       androidVibrate(30)
     }
+  }
+
+  playRemove() {
+    if (!this.isMuted)
+      this.sounds.remove();
   }
 
   removeCondition() {
@@ -110,13 +120,14 @@ export default class Command implements InterfaceElement {
     }
     if (!this.isIntent) {
       if (removeFromScene) {
-        if (this.isRemoveSoundElabled)
-          this.sounds.remove()
+        this.playRemove();
         this.tileDropZone?.removeSelf();
         this.tileDropZone = null;
       }
     }
   }
+
+  
 
   getConditionalPosition(): { x: number, y: number, width: number, height: number } {
     const x = this.sprite.x;
@@ -259,11 +270,11 @@ export default class Command implements InterfaceElement {
     this.sounds.error()
   }
 
-  unmuteBlockRemovingSound() {
-    this.isRemoveSoundElabled = true;
+  unmute() {
+    this.isMuted = true;
   }
-  muteBlockRemovingSound() {
-    this.isRemoveSoundElabled = false;
+  mute() {
+    this.isMuted = false;
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {

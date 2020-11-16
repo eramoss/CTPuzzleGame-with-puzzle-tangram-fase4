@@ -141,8 +141,10 @@ export default class CodeEditor {
           this.logPrograms('drag')
         }
       })
+      commandSprite.on('mute', () => {
+        command.isMuted = true;
+      });
       commandSprite.on('delete', () => {
-        command.isRemoveSoundElabled = false;
         command.removeSelf();
       });
       commandSprite.on('dragstart', (
@@ -156,7 +158,7 @@ export default class CodeEditor {
         this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
-        this.sounds.drag();
+        command.playDrag()
         const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
         if (dragStartOptions.onCreateCommandBelow) {
           if (createdCommands.length > 1) {
@@ -178,6 +180,7 @@ export default class CodeEditor {
 
         if (dragged && !dropped) {
           command.removeSelf();
+          commandSprite.emit('outofbounds');
         }
 
         if (isConditional) {

@@ -257,9 +257,6 @@ export default class Program {
   }
 
   setDepth(depth: number) {
-    if (!this.originalDepth) {
-      this.originalDepth = this.sprite.depth;
-    }
     this.sprite.setDepth(depth);
     this.programNameImage.setDepth(depth);
     this.getAllCommands().forEach(c => c.setDepth(depth));

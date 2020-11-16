@@ -156,13 +156,16 @@ export default class TutorialHighlight {
                         newCommandSprite.on('pointerdown', () => {
                             this.cancelDragAnimation();
                         });
-                        newCommandSprite.on('pointerup', () => {
-                            this.removeDropIndicator();
-                            this.onInteractAdvanceTutorial();
-                        });
-                        newCommandSprite.on('outofbounds', ()=>{
+                        let interactionTriggered = false;
+                        newCommandSprite.on('outofbounds', () => {
+                            interactionTriggered = true;
                             this.onInteractAdvanceTutorial();
                         })
+                        newCommandSprite.on('pointerup', () => {
+                            this.removeDropIndicator();
+                            if (!interactionTriggered)
+                                this.onInteractAdvanceTutorial();
+                        });
                     }
                 });
                 commandSprite.alpha = 0.5

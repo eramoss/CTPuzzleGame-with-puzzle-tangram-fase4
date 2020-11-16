@@ -288,8 +288,6 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.codeEditor.setInteractive();
-        this.currentPhase?.removeBackgroundTutorialOverlay()
         this.dude.execute([this.program, prog1, prog2]);
       }
     }

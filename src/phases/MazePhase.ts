@@ -34,7 +34,6 @@ export default class MazePhase {
     }
 
     setupMatrixAndTutorials() {
-        this.codeEditor.programs.forEach(p => p.setDepth(0));
         this.clearTutorials();
         this.setupTutorialsAndObjectsPositions();
     }

@@ -148,28 +148,31 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
-        this.phases.push(this.createPhaseCallRecursiveFunction());
-        this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
-        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
+        //this.phases.push(this.createPhaseCallRecursiveFunction());
+        //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
+        //this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
         //this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
         //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
 
-        this.phases.push(this.createPhaseEasyArrowUp(showTutorial));
-        this.phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
-        this.phases.push(this.createPhaseEasyArrowUpAndRight(showTutorial));
-        this.phases.push(this.createPhaseCallRecursiveFunction(showTutorial));
-        this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
+        //Easy
+        this.phases.push(this.createEasyPhaseArrowUp(showTutorial));
+        this.phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
+        this.phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
 
-        this.phases.push(this.createPhaseEasyArrowUp());
-        this.phases.push(this.createPhaseEasyArrowUpTwoTimes());
-        this.phases.push(this.createPhaseEasyThreeStepByStep());
+        this.phases.push(this.createEasyPhaseCallRecursiveFunction(showTutorial));
+        this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
+        
+        this.phases.push(this.createEasyPhaseArrowUp());
+        this.phases.push(this.createEasyPhaseArrowUpTwoTimes());
+        this.phases.push(this.createEasyPhaseEasyThreeStepByStep());
         this.phases.push(this.createEasyPhaseWithBlock());
-        this.phases.push(this.createPhaseCallRecursiveFunction());
-        this.phases.push(this.createEasyPhaseWithBlockWithTurn());
-        this.phases.push(this.createPhaseStepByStepWithBlock());
+        this.phases.push(this.createEasyPhaseCallRecursiveFunction());
+
+        this.phases.push(this.createMediumPhaseWithBlockWithTurn());
+        
+        this.phases.push(this.createHardPhaseStepByStepWithBlock());
         this.phases.push(this.createHardPhaseWithTwoStars());
-        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
-        this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
+        this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
     }
 
     getNextPhase(): MazePhase {
@@ -177,7 +180,7 @@ export default class MazeConfigs {
         return this.phases[this.currentPhase]
     }
 
-    private createPhaseHardIfCoinAndIfBlock(showTutorial: boolean = false) {
+    private createHardPhaseIfCoinAndIfBlock(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 1 }
@@ -236,7 +239,7 @@ export default class MazeConfigs {
 
 
 
-    private createPhaseEasyArrowUp(showTutorial: boolean = false) {
+    private createEasyPhaseArrowUp(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 3 }
@@ -289,7 +292,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseEasyThreeStepByStep(showTutorial: boolean = false) {
+    private createEasyPhaseEasyThreeStepByStep(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
@@ -348,7 +351,7 @@ export default class MazeConfigs {
         return () => this.codeEditor.countAddedCommands() == quantity
     }
 
-    private createPhaseEasyArrowUpTwoTimes(showTutorial: boolean = false) {
+    private createEasyPhaseArrowUpTwoTimes(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 3 }
@@ -400,7 +403,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseEasyArrowUpAndRight(showTutorial: boolean = false) {
+    private createEasyPhaseArrowUpAndRight(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 1, row: 2 }
@@ -454,7 +457,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseCallRecursiveFunction(showTutorial: boolean = false) {
+    private createEasyPhaseCallRecursiveFunction(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
         phase.dudeStartPosition = { col: 0, row: 3 }
@@ -510,7 +513,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createPhaseStepByStepWithBlock(showTutorial: boolean = false) {
+    private createHardPhaseStepByStepWithBlock(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 1 }
@@ -770,7 +773,7 @@ export default class MazeConfigs {
         return phase;
     }
 
-    private createEasyPhaseWithBlockWithTurn() {
+    private createMediumPhaseWithBlockWithTurn() {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'down'
         phase.dudeStartPosition = { col: 3, row: 0 }

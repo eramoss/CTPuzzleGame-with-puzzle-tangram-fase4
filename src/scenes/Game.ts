@@ -288,10 +288,6 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        if (this.currentPhase?.isTutorialPhase()) {
-          this.currentPhase?.clearTutorials();
-          this.codeEditor.disableInteractive();
-        }
         this.dude.execute([this.program, prog1, prog2]);
       }
     }
@@ -308,7 +304,6 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickStepByStep = () => {
       this.codeEditor.disableStepButton();
-      this.currentPhase?.removeBackgroundTutorialOverlay()
       this.dude.executeStepByStep([this.program, prog1, prog2]);
     }
 

@@ -119,17 +119,17 @@ export default class MazePhase {
     }
 
     addBackgroundOverlay() {
-        // if (!this.backgroundOverlay) {
-        //     this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
-        //         .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
-        //     this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
-        // }
+        if (!this.backgroundOverlay) {
+            this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
+                .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
+            this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
+        }
     }
 
     removeBackgroundTutorialOverlay() {
-        // if (this.backgroundOverlay) {
-        //     this.scene.children.remove(this.backgroundOverlay);
-        //     this.backgroundOverlay = null;
-        // }
+        if (this.backgroundOverlay) {
+            this.scene.children.remove(this.backgroundOverlay);
+            this.backgroundOverlay = null;
+        }
     }
 }

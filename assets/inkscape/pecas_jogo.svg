@@ -95,7 +95,7 @@
          offset="0.74579656"
          style="stop-color:#b97a51;stop-opacity:0" />
       <stop
-         style="stop-color:#d5d5d5;stop-opacity:1"
+         style="stop-color:#005151;stop-opacity:0.375"
          offset="1"
          id="stop4109" />
     </linearGradient>
@@ -874,7 +874,7 @@
        fx="117.61286"
        fy="327.20663"
        r="192.98146"
-       gradientTransform="matrix(1.8052888,0.00521629,-0.00197153,0.68233042,344.04298,18.996466)"
+       gradientTransform="matrix(1.8402921,0.00521629,-0.00200976,0.68233042,336.11623,18.996466)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -931,9 +931,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="2620.1147"
-     inkscape:cy="-1002.8412"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="2552.4368"
+     inkscape:cy="-771.34097"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -16077,7 +16077,7 @@
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient3991);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <path
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#radialGradient4115);fill-opacity:1;fill-rule:nonzero;stroke:#4f5f6e;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="M 366.90148,134.70134 H 752.8644 V 360.82225 H 366.90148 v -69.43971 z"
+       d="M 359.41793,134.70134 H 752.8644 V 360.82225 H 359.41793 v -69.43971 z"
        id="rect4066"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccc"

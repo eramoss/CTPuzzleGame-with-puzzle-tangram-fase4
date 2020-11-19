@@ -157,6 +157,7 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
+        this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseCallRecursiveFunction());
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
@@ -164,7 +165,7 @@ export default class MazeConfigs {
         //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
 
         //Easy
-        this.phases.push(this.createEasyPhaseArrowUp());
+        this.phases.push(this.createEasyPhaseArrowUp(showTutorial));
         this.phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
 
@@ -188,65 +189,6 @@ export default class MazeConfigs {
         this.currentPhase++
         return this.phases[this.currentPhase]
     }
-
-    private createHardPhaseIfCoinAndIfBlock(showTutorial: boolean = false) {
-        const phase = new MazePhase(this.scene, this.codeEditor);
-        phase.dudeFacedTo = 'right'
-        phase.dudeStartPosition = { col: 1, row: 1 }
-
-        let baseMatrix = [
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-        ];
-
-        let obstaclesMatrix = [
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'coin', 'coin', 'coin', 'block', 'null'],
-            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
-            ['null', 'null', 'coin', 'coin', 'coin', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'block', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-        ];
-
-        phase.setupTutorialsAndObjectsPositions = () => {
-            phase.obstacles = new Matrix(
-                this.scene,
-                this.matrixMode,
-                obstaclesMatrix,
-                this.gridCenterX, this.gridCenterY, this.gridCellWidth
-            );
-
-            phase.ground = new Matrix(
-                this.scene,
-                this.matrixMode,
-                baseMatrix,
-                this.gridCenterX, this.gridCenterY, this.gridCellWidth
-            );
-
-            if (showTutorial) {
-                let tutorial = [
-                    "drag arrow-up say drag-up",
-                    "drag if_coin say drag-if_coin",
-                    "drag arrow-right say drag-right",
-                    "drag if_block say drag-if_block",
-                    "drag prog_0 say drag-prog_0",
-                    "click btn-play say click-play",
-                ]
-                this.buildTutorial(phase, tutorial)
-            }
-        }
-
-        return phase;
-    }
-
-
-
 
     private createEasyPhaseArrowUp(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
@@ -291,8 +233,8 @@ export default class MazeConfigs {
             if (showTutorial) {
                 this.buildTutorial(phase,
                     [
-                        'drag arrow-up say drag-up',
-                        'click btn-play say click-play'
+                        'drag arrow-up say drag-up-to-program',
+                        'click btn-play say click-get-coin'
                     ]
                 )
             }
@@ -404,8 +346,8 @@ export default class MazeConfigs {
                 this.buildTutorial(phase, [
                     'drag arrow-up say drag-up',
                     'drag arrow-up say drag-up',
-                    'click btn-step say click-step',
-                    'click btn-step say click-step'
+                    'click btn-step say click-here-i-go-step',
+                    'click btn-step say again-i-get-coin'
                 ])
             }
         }
@@ -821,6 +763,62 @@ export default class MazeConfigs {
                 baseMatrix,
                 this.gridCenterX, this.gridCenterY, this.gridCellWidth
             );
+        }
+
+        return phase;
+    }
+
+    private createHardPhaseIfCoinAndIfBlock(showTutorial: boolean = false) {
+        const phase = new MazePhase(this.scene, this.codeEditor);
+        phase.dudeFacedTo = 'right'
+        phase.dudeStartPosition = { col: 1, row: 1 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+        let obstaclesMatrix = [
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+            ['null', 'null', 'coin', 'coin', 'coin', 'block', 'null'],
+            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
+            ['null', 'null', 'coin', 'coin', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'block', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            if (showTutorial) {
+                let tutorial = [
+                    "drag arrow-up say drag-up",
+                    "drag if_coin say drag-if_coin",
+                    "drag arrow-right say drag-right",
+                    "drag if_block say drag-if_block",
+                    "drag prog_0 say drag-prog_0",
+                    "click btn-play say click-play",
+                ]
+                this.buildTutorial(phase, tutorial)
+            }
         }
 
         return phase;

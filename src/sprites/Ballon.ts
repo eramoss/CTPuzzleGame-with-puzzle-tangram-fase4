@@ -11,7 +11,7 @@ export default class Ballon {
         this.scene = scene;
         this.scale = scale;
         this.ballon = scene.add.image(0, 0, 'ballon')
-            .setScale(scale)
+            .setScale(scale*1.2)
             .setDepth(1000);
 
         this.phrase = scene.add.text(0, 0, '', {

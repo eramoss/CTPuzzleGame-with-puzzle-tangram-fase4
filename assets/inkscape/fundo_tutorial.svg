@@ -21,6 +21,18 @@
      id="defs3570">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient4190">
+      <stop
+         style="stop-color:#0b4e19;stop-opacity:1;"
+         offset="0"
+         id="stop4186" />
+      <stop
+         style="stop-color:#0b4e19;stop-opacity:0;"
+         offset="1"
+         id="stop4188" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        xlink:href="#linearGradient4507"
        id="linearGradient3514"
        gradientUnits="userSpaceOnUse"
@@ -72,6 +84,73 @@
          offset="1"
          id="stop4109" />
     </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4045"
+       id="radialGradient4047"
+       cx="-202.49536"
+       cy="361.55359"
+       fx="-202.49536"
+       fy="361.55359"
+       r="31.659849"
+       gradientTransform="matrix(3.2579232,-0.07347973,0.05327594,2.3621348,375.33233,-457.35147)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4045">
+      <stop
+         style="stop-color:#197b31;stop-opacity:1"
+         offset="0"
+         id="stop4041" />
+      <stop
+         style="stop-color:#002b07;stop-opacity:1"
+         offset="1"
+         id="stop4043" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4061"
+       id="linearGradient4063"
+       x1="-255.03693"
+       y1="348.89886"
+       x2="-180.42409"
+       y2="344.57419"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.3292707,0,0,2.3292707,206.33739,-425.99501)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4061">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4057" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop4059" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4190"
+       id="radialGradient4192"
+       cx="-44.28257"
+       cy="46.456962"
+       fx="-44.28257"
+       fy="46.456962"
+       r="66.753901"
+       gradientTransform="matrix(1,0,0,0.65675189,0,15.946265)"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4190"
+       id="radialGradient4207"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.65675189,0,15.946265)"
+       cx="-44.28257"
+       cy="46.456962"
+       fx="-44.28257"
+       fy="46.456962"
+       r="66.753901" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -80,9 +159,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="108.24363"
-     inkscape:cy="643.48452"
+     inkscape:zoom="1.5927808"
+     inkscape:cx="-354.62609"
+     inkscape:cy="1481.1776"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -116,12 +195,124 @@
        inkscape:export-xdpi="95"
        inkscape:export-ydpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tutorial-block-click-background.png" />
+    <path
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       d="m -23.980786,117.42749 1.569552,-4.75971 c -14.05331,-1.90706 -14.28802,-21.070606 -7.64379,-28.648415 6.64422,-7.577808 57.172321,-8.125372 63.645621,2.368943 5.51031,8.933156 0.49845,25.663252 -11.05508,26.848022 -11.55352,1.18478 -40.08252,0.0948 -40.08252,0.0948 z"
+       id="path4213"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cczszcc"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.56567764px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:0.2026521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4049)"
+       x="1.6156077"
+       y="138.99074"
+       id="text3518"
+       inkscape:export-xdpi="95"
+       inkscape:export-ydpi="95"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png"><tspan
+         sodipodi:role="line"
+         id="tspan3516"
+         x="1.6156086"
+         y="138.99074"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px">Siga as instruções</tspan><tspan
+         sodipodi:role="line"
+         x="2.5687063"
+         y="147.0071"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
+         id="tspan4209">para aprender os </tspan><tspan
+         sodipodi:role="line"
+         x="1.6156068"
+         y="155.02347"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
+         id="tspan4211">movimentos</tspan></text>
+    <g
+       id="g4102"
+       transform="translate(86.163386,-493.33415)"
+       style="opacity:1;filter:url(#filter4049)">
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         sodipodi:nodetypes="sssssssss"
+         inkscape:connector-curvature="0"
+         id="rect4039"
+         d="m -303.41498,327.17292 c 43.57241,-3.365 92.81114,-1.66594 138.15566,0 5.76052,0.21173 10.40506,4.64065 10.40506,10.40504 v 110.93627 c 0,5.76441 -4.65983,9.93523 -10.40506,10.40506 -46.81762,3.82865 -92.41047,1.53349 -138.15566,0 -5.76117,-0.19313 -10.40507,-4.64065 -10.40507,-10.40506 V 337.57796 c 0,-5.76439 4.65778,-9.9612 10.40507,-10.40504 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.681;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.77403846;fill-rule:evenodd;stroke:none;stroke-width:0.94487602;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         sodipodi:nodetypes="sssssssss"
+         inkscape:connector-curvature="0"
+         id="rect4035"
+         d="m -302.58377,324.87557 c 10.70459,-1.4611 64.48714,-3.89093 135.43489,0 5.75575,0.31567 10.40504,4.64066 10.40504,10.40504 v 110.93627 c 0,5.76441 -4.65791,9.95924 -10.40504,10.40507 -44.00703,3.41382 -107.28728,1.32437 -135.43489,0 -5.75802,-0.27092 -10.40504,-4.64066 -10.40504,-10.40507 V 335.28061 c 0,-5.76438 4.69362,-9.62545 10.40504,-10.40504 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#197a31;fill-opacity:1;fill-rule:evenodd;stroke:#07310d;stroke-width:0.93675506;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         sodipodi:nodetypes="sssssssss"
+         inkscape:connector-curvature="0"
+         id="rect4037"
+         d="m -295.69905,338.09997 c 40.6526,-1.90138 81.16829,-2.98116 121.21257,-1.23255 7.37368,0.32197 13.42955,5.94262 13.32257,13.32256 l -1.23258,85.02562 c -0.10698,7.37997 -6.00065,12.39293 -13.32257,13.32259 -40.6126,5.15658 -80.18647,3.04219 -119.97999,2.46516 -7.37992,-0.10692 -13.32259,-5.94188 -13.32259,-13.32259 v -86.25822 c 0,-7.38071 5.94994,-12.97772 13.32259,-13.32257 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#radialGradient4047);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.86358327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         inkscape:connector-curvature="0"
+         id="path4052"
+         d="m -239.76473,324.09371 c -33.03411,-0.10645 -55.87096,1.14868 -62.36774,2.03543 -5.54606,0.75704 -10.1037,4.50616 -10.1037,10.10373 v 85.62285 l 1.13631,-83.51039 c 0.0762,-5.59705 4.5588,-9.34788 10.10494,-10.10491 10.39472,-1.41881 61.70054,-4.69675 130.59487,-0.91844 4.81849,0.26428 8.79649,3.42569 9.83409,7.87813 -0.51647,-5.07478 -4.81209,-8.78358 -10.05195,-9.07097 -25.83538,-1.41687 -49.32638,-1.97154 -69.14682,-2.03543 z"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient4063);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.90964282;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.08699999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.86358327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m -295.69905,338.09997 c 40.6526,-1.90138 81.16829,-2.98116 121.21257,-1.23255 7.37368,0.32197 13.42955,5.94262 13.32257,13.32256 l -1.23258,85.02562 c -0.10698,7.37997 -6.00065,12.39293 -13.32257,13.32259 -3.27957,-77.21608 -52.71109,-101.67179 -133.30258,-97.11565 0,-7.38071 5.94994,-12.97772 13.32259,-13.32257 z"
+         id="path4078"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ssssccs"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.36805153px;line-height:100%;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#163d1c;fill-opacity:1;stroke:#163d1c;stroke-width:0.30450138px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="-278.85898"
+         y="310.14737"
+         id="text4090"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985"
+         transform="scale(0.92594676,1.0799757)"><tspan
+           sodipodi:role="line"
+           id="tspan4088"
+           x="-278.85898"
+           y="310.14737"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#163d1c;fill-opacity:1;stroke:#163d1c;stroke-width:0.30450138px;stroke-opacity:1">TOOLBOX</tspan></text>
+      <text
+         transform="scale(0.92594677,1.0799757)"
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/toolbox.png"
+         id="text4082"
+         y="309.65656"
+         x="-278.85898"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.36805153px;line-height:100%;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#07310d;stroke-width:0.30450138px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ffffff;stroke:#07310d;stroke-width:0.30450138px;stroke-opacity:1"
+           y="309.65656"
+           x="-278.85898"
+           id="tspan4080"
+           sodipodi:role="line">TOOLBOX</tspan></text>
+    </g>
     <g
        style="opacity:1;filter:url(#filter4049)"
        inkscape:export-ydpi="95"
        inkscape:export-xdpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/static/icon-128x128.png"
-       transform="matrix(-1.0493081,0,0,1.0493081,622.26829,15.17426)"
+       transform="matrix(-1.0493081,0,0,1.0493081,480.994,-201.01054)"
        id="g3512">
       <path
          style="fill:#9e7758;fill-opacity:1;fill-rule:evenodd;stroke:#9e7758;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -295,38 +486,63 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccc" />
     </g>
-    <path
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       d="m -23.980786,117.42749 1.569552,-4.75971 c -14.05331,-1.90706 -14.28802,-21.070606 -7.64379,-28.648415 6.64422,-7.577808 57.172321,-8.125372 63.645621,2.368943 5.51031,8.933156 0.49845,25.663252 -11.05508,26.848022 -11.55352,1.18478 -40.08252,0.0948 -40.08252,0.0948 z"
-       id="path4213"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cczszcc"
+    <g
+       id="g4197"
+       transform="matrix(1.2687532,0,0,1.2687532,-93.659743,-164.36892)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/trash.png"
        inkscape:export-xdpi="95"
        inkscape:export-ydpi="95"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.56567764px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:0.2026521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4049)"
-       x="1.6156077"
-       y="138.99074"
-       id="text3518"
-       inkscape:export-xdpi="95"
+       style="stroke:none">
+      <rect
+         ry="2.2680542"
+         y="2.7700613"
+         x="-110.88262"
+         height="87.373802"
+         width="133.2001"
+         id="rect4118"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#radialGradient4192);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.30769894;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="ccccccccccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4112"
+         d="m -54.424625,38.842023 3.555815,20.889245 14.787829,0.494213 2.496644,-21.004019 -3.456895,-0.494213 -1.383361,17.681383 -2.649682,-0.170315 0.380239,-17.619723 -3.456895,-0.247106 0.768199,17.643254 -2.133847,0.07238 -1.827436,-17.240121 -2.651748,-0.144753 1.584586,17.404153 -1.391026,-0.0049 -2.453557,-17.506551 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path4116"
+         d="m -55.351209,36.37494 22.694826,0.817569 0.06963,-1.811605 -9.088655,-0.839811 -0.95029,-3.238014 -2.058936,-0.19025 -1.005214,3.057322 -9.741685,0.865 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         inkscape:transform-center-x="11.813414"
+         inkscape:transform-center-y="-2.0253042" />
+    </g>
+    <g
        inkscape:export-ydpi="95"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png"><tspan
-         sodipodi:role="line"
-         id="tspan3516"
-         x="1.6156086"
-         y="138.99074"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px">Siga as instruções</tspan><tspan
-         sodipodi:role="line"
-         x="2.5687063"
-         y="147.0071"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
-         id="tspan4209">para aprender os </tspan><tspan
-         sodipodi:role="line"
-         x="1.6156068"
-         y="155.02347"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
-         id="tspan4211">movimentos</tspan></text>
+       inkscape:export-xdpi="95"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/trash.png"
+       transform="matrix(1.2687532,0,0,1.2687532,75.338315,-164.36892)"
+       id="g4205"
+       style="stroke:none">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#radialGradient4207);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.30769894;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect4199"
+         width="133.2001"
+         height="87.373802"
+         x="-110.88262"
+         y="2.7700613"
+         ry="2.2680542" />
+      <path
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -54.424625,38.842023 3.555815,20.889245 14.787829,0.494213 2.496644,-21.004019 -3.456895,-0.494213 -1.383361,17.681383 -2.649682,-0.170315 0.380239,-17.619723 -3.456895,-0.247106 0.768199,17.643254 -2.133847,0.07238 -1.827436,-17.240121 -2.651748,-0.144753 1.584586,17.404153 -1.391026,-0.0049 -2.453557,-17.506551 z"
+         id="path4201"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccccccccc" />
+      <path
+         style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m -54.91456,31.478427 21.85939,6.155534 0.495609,-1.743885 -8.633044,-2.963017 -0.158493,-3.370856 -1.955723,-0.671239 -1.698982,2.733337 -9.670313,-1.460719 z"
+         id="path4203"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
   </g>
 </svg>

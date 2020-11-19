@@ -140,30 +140,40 @@ export default class TutorialHighlight {
         this.putHandSpriteOver(commandSprite);
         this.handSprite.setVisible(true);
 
+        this.removeDraggingElement = () => {
+            commandSprite.body?.stop()
+            setTimeout(() => {
+                Logger.warn('remove_dragging_element')
+                this.scene.children.remove(commandSprite);    
+            }, 10);
+        }
+
+        commandSprite.disableInteractive();
         this.waitAndRun(timeToCloseHand, () => {
             if (!this.isDragMoveAnimationCancelled) {
-
-                this.removeDraggingElement = () => {
-                    commandSprite.body?.stop()
-                    this.scene.children.remove(commandSprite);
-                }
 
                 commandSprite.emit('mute');
                 commandSprite.emit('drag');
                 commandSprite.emit('dragstart', null, {
                     onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => {
+
+                        let interactionTriggered = false;
+                        let animationCancelled = false;
+
                         const newCommandSprite = command.getSprite();
                         newCommandSprite.setInteractive();
                         newCommandSprite.on('pointerdown', () => {
                             this.cancelDragAnimation();
+                            animationCancelled = true;
                         });
-                        let interactionTriggered = false;
                         newCommandSprite.on('outofbounds', () => {
                             interactionTriggered = true;
                             this.onInteractAdvanceTutorial();
                         })
                         newCommandSprite.on('pointerup', () => {
                             this.removeDropIndicator();
+                            if (!animationCancelled)
+                                this.cancelDragAnimation();
                             if (!interactionTriggered)
                                 this.onInteractAdvanceTutorial();
                         });
@@ -244,7 +254,8 @@ export default class TutorialHighlight {
         }
 
         if (sprite.body) {
-            const speed = 160;
+            //const speed = 160;
+            const speed = 100;
             this.scene.physics.moveTo(sprite, x, y, speed * this.grid.scale);
         }
         if (!this.intervalWatchDragMove) {
@@ -284,7 +295,7 @@ export default class TutorialHighlight {
         this.removeDraggingElement();
         this.stopMoveLoop();
         this.intervalWatchDragMove = null;
-        this.scene.children.remove(this.handSprite);
+        this.removeHand();
     }
 
     backToOriginalPosition() {

@@ -159,9 +159,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5927808"
-     inkscape:cx="-354.62609"
-     inkscape:cy="1481.1776"
+     inkscape:zoom="0.7963904"
+     inkscape:cx="133.17135"
+     inkscape:cy="641.92631"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -196,8 +196,8 @@
        inkscape:export-ydpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tutorial-block-click-background.png" />
     <path
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       d="m -23.980786,117.42749 1.569552,-4.75971 c -14.05331,-1.90706 -14.28802,-21.070606 -7.64379,-28.648415 6.64422,-7.577808 57.172321,-8.125372 63.645621,2.368943 5.51031,8.933156 0.49845,25.663252 -11.05508,26.848022 -11.55352,1.18478 -40.08252,0.0948 -40.08252,0.0948 z"
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#00a7a7;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.95294118;paint-order:normal"
+       d="m -38.931054,156.29819 1.569552,-4.75971 c -14.05331,-1.90706 -14.28802,-21.07061 -7.64379,-28.64842 6.64422,-7.57781 57.172321,-8.12537 63.645621,2.36895 5.51031,8.93315 0.49845,25.66325 -11.0550801,26.84802 -11.55352,1.18478 -40.0825199,0.0948 -40.0825199,0.0948 z"
        id="path4213"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cczszcc"
@@ -206,27 +206,27 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.56567764px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:0.2026521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4049)"
-       x="1.6156077"
-       y="138.99074"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.56567764px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#00a7a7;fill-opacity:0.95294118;stroke:none;stroke-width:0.2026521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4049)"
+       x="0.286695"
+       y="91.814339"
        id="text3518"
        inkscape:export-xdpi="95"
        inkscape:export-ydpi="95"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png"><tspan
          sodipodi:role="line"
          id="tspan3516"
-         x="1.6156086"
-         y="138.99074"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px">Siga as instruções</tspan><tspan
+         x="0.28669584"
+         y="91.814339"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#00a7a7;fill-opacity:0.95294118;stroke-width:0.2026521px">Siga as instruções</tspan><tspan
          sodipodi:role="line"
-         x="2.5687063"
-         y="147.0071"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
+         x="1.2397935"
+         y="99.830711"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#00a7a7;fill-opacity:0.95294118;stroke-width:0.2026521px"
          id="tspan4209">para aprender os </tspan><tspan
          sodipodi:role="line"
-         x="1.6156068"
-         y="155.02347"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
+         x="0.28669393"
+         y="107.84707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#00a7a7;fill-opacity:0.95294118;stroke-width:0.2026521px"
          id="tspan4211">movimentos</tspan></text>
     <g
        id="g4102"

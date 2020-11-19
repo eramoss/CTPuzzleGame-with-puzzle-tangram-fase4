@@ -180,6 +180,7 @@ export default class CodeEditor {
       commandSprite.on('dragend', () => {
         Logger.log("MOVE_EVENT", "dragend");
 
+        this.trash.close();
         const shortClick = this.getTime() - this.clickTime < 700;
         let dragged = command.isDragged && (command.isSpriteConsiderableDragged(this.grid) || !shortClick);
         let clicked = shortClick && !dragged;
@@ -188,7 +189,6 @@ export default class CodeEditor {
 
         let removeCommand = ()=>{
           command.removeSelf();
-          this.trash.close();
         }
 
         if (dragged && !dropped) {

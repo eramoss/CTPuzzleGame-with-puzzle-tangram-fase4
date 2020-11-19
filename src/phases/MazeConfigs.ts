@@ -157,7 +157,7 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
-        //this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
+        // this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
         //this.phases.push(this.createPhaseCallRecursiveFunction());
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock());

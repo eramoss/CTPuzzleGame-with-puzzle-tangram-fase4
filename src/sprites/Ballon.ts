@@ -15,7 +15,7 @@ export default class Ballon {
             .setDepth(1000);
 
         this.phrase = scene.add.text(0, 0, '', {
-            fontFamily: 'arial',
+            fontFamily: 'Dyuthi, arial',
         })
             .setScale(scale)
             .setFontStyle('bold')
@@ -25,7 +25,7 @@ export default class Ballon {
 
     }
 
-    setText(text: string, fontSize: number = 30): Ballon {
+    setText(text: string, fontSize: number = 32): Ballon {
         this.setVisible();
         this.phrase.setText(text);
         this.phrase.setFontSize(fontSize);

@@ -254,8 +254,8 @@ export default class TutorialHighlight {
         }
 
         if (sprite.body) {
-            //const speed = 160;
-            const speed = 100;
+            const speed = 160;
+            //const speed = 100;
             this.scene.physics.moveTo(sprite, x, y, speed * this.grid.scale);
         }
         if (!this.intervalWatchDragMove) {

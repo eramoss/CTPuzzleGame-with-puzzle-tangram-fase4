@@ -21,7 +21,7 @@ export default class Ballon {
             .setFontStyle('bold')
             .setAlign('center')
             .setDepth(1001)
-            .setTint(0x810101);
+            .setTint(0x00a7a7);
 
     }
 

@@ -9,6 +9,7 @@ import { DudeMove } from './DudeMove';
 import { Branch } from './Branch';
 import { androidVibrate, joinChilds } from '../utils/Utils';
 import { Logger } from '../main';
+import Ballon from './Ballon';
 
 export default class Dude {
   character: Physics.Arcade.Sprite;
@@ -31,6 +32,7 @@ export default class Dude {
   currentFace: string;
   programBeingExecuted: Program;
   grid: AlignGrid;
+  ballon: Ballon;
 
   constructor(scene: Scene, matrixMode: string, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -38,6 +40,8 @@ export default class Dude {
     this.scene = scene;
     this.character = scene.physics.add.sprite(485, 485, `sprite-rope-${matrixMode}`)
     this.createAnimations(matrixMode);
+    this.ballon = new Ballon(this.scene, this.grid.scale);
+    this.ballon.setVisible(false);
   }
 
   setTimeout(fn: Function, timeout: number) {
@@ -132,6 +136,7 @@ export default class Dude {
     this.disanimatePrograms();
     this.functionsRunningByTimeout.forEach(timeout => clearTimeout(timeout));
     this.functionsRunningByTimeout = []
+    this.hideBallon();
     if (resetFace) {
       this.resetFace();
     }
@@ -296,6 +301,16 @@ export default class Dude {
       playAnimation(color, faceAnimation, time)
       time += 120;
     })
+  }
+
+  setBallonText(text: string) {
+    this.ballon
+      .setText(text)
+      .ajustBallonPosition(this.character.x, this.character.y)
+  }
+
+  hideBallon(){
+    this.ballon.setVisible(false);
   }
 }
 

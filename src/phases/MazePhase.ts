@@ -41,7 +41,7 @@ export default class MazePhase {
 
     addTutorialHighlightDrag(
         fnGetInterfaceElement: () => InterfaceElement,
-        fnGetDropLocation: () => TutorialDropLocation
+        fnGetDropLocation: () => TutorialDropLocation,
     ): TutorialAction {
         const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
         action.highlights.forEach(highlight => highlight.continueTutorialOnDrag = true)
@@ -74,12 +74,16 @@ export default class MazePhase {
             this.addBackgroundOverlay()
             this.codeEditor.disableInteractive();
         }
+        tutorialAction.askToShowInstruction = (instruction:string) => {
+            this.codeEditor.onShowInstruction(instruction);
+        }
         tutorialAction.onInvalidState = () => {
             this.codeEditor.replay();
         }
         tutorialAction.onCompleteAction = () => {
             this.action = tutorialAction.nextTutorialAction
             Logger.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
+            this.codeEditor.onHideLastInstruction();
         }
         let index = 0;
         if (!this.firstAction) {

@@ -17,6 +17,8 @@ export default class CodeEditor {
 
 
 
+
+
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -37,6 +39,8 @@ export default class CodeEditor {
   btnStop: Button;
   btnPlay: Button;
   availableCommands: Command[] = [];
+  onShowInstruction: (instruction: string) => void = () => { };
+  onHideLastInstruction: () => void = () => { };
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;

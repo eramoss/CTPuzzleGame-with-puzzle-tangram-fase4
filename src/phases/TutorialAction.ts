@@ -9,12 +9,14 @@ export default class TutorialAction {
     nextTutorialAction: TutorialAction
     previousTutorialAction: TutorialAction;
     onHighlight: () => void = () => { }
+    askToShowInstruction: (instruction:string) => void = () => { }
     onCompleteAction: () => void = () => { }
     isEnvironmentValidToHighlightTutorial: () => boolean = () => true
     triggered: boolean = false;
     index: number;
     onInvalidState: () => void
     isAllowedToHighlightNextTutorialStep: () => boolean = () => { return true };
+    ballonInstruction:string;
 
     constructor(
         scene: Scene,
@@ -39,6 +41,9 @@ export default class TutorialAction {
             this.triggered = true;
             Logger.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
+            if(this.ballonInstruction){
+                this.askToShowInstruction(this.ballonInstruction);
+            }
             const onInteractAdvanceTutorial = () => {
                 this.onCompleteAction();
                 if (this.isAllowedToHighlightNextTutorialStep()) {

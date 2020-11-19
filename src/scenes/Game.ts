@@ -328,8 +328,15 @@ export default class Game extends Scene {
       replayCurrentPhase();
     }
 
+    this.codeEditor.onShowInstruction = (instruction: string) => {
+      this.dude.setBallonText(instruction);
+    }
+
+    this.codeEditor.onHideLastInstruction = () => {
+      this.dude.hideBallon();
+    }
+
     playNextPhase();
-    new Ballon(this, 'Arraste a seta\nazul para o\nprograma', this.dude.character.x, this.dude.character.y, this.grid.scale, 30);
   }
 
   init() {

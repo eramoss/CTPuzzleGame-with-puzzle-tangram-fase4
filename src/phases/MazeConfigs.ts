@@ -4,6 +4,7 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
 import { Logger } from "../main";
+import { phrases } from "../utils/phrases";
 import MazePhase from "./MazePhase";
 import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
@@ -70,12 +71,17 @@ export default class MazeConfigs {
         let code = [];
         tutorialsActionsWrittenAsPhrases
             .forEach((tutorialActionAsString, actionIndex) => {
-                // Example: "drop          arrow-up      to program"
-                //           [actionName]  [elementName]
+                // Example: "drop          arrow-up      say drag-arrow-up-1"
+                //           [actionName]  [elementName]     [tutorial-phrase-key]
 
                 let commands = tutorialActionAsString.split(' ');
                 let actionName = commands[0];
                 let elementName = commands[1];
+                let ballonInstruction = null;
+                if (tutorialActionAsString.indexOf('say') > -1) {
+                    ballonInstruction = commands[commands.length - 1];
+                    ballonInstruction = phrases[ballonInstruction]
+                }
 
                 let instruction = elementName;
                 const isConditional = elementName.startsWith('if_');
@@ -110,6 +116,8 @@ export default class MazeConfigs {
 
                 const tutorialAction: TutorialAction = tutorialActionCreator
                     .call(phase, fnGetInterfaceElement, fnGetDropLocation);
+
+                tutorialAction.ballonInstruction = ballonInstruction
 
                 tutorialAction.isEnvironmentValidToHighlightTutorial =
                     () => this.isCodeStateLike(codeStates[actionIndex])
@@ -162,7 +170,7 @@ export default class MazeConfigs {
 
         this.phases.push(this.createEasyPhaseCallRecursiveFunction(showTutorial));
         this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
-        
+
         this.phases.push(this.createEasyPhaseArrowUp());
         this.phases.push(this.createEasyPhaseArrowUpTwoTimes());
         this.phases.push(this.createEasyPhaseEasyThreeStepByStep());
@@ -170,7 +178,7 @@ export default class MazeConfigs {
         this.phases.push(this.createEasyPhaseCallRecursiveFunction());
 
         this.phases.push(this.createMediumPhaseWithBlockWithTurn());
-        
+
         this.phases.push(this.createHardPhaseStepByStepWithBlock());
         this.phases.push(this.createHardPhaseWithTwoStars());
         this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
@@ -223,12 +231,12 @@ export default class MazeConfigs {
 
             if (showTutorial) {
                 let tutorial = [
-                    "drag arrow-up",
-                    "drag if_coin",
-                    "drag arrow-right",
-                    "drag if_block",
-                    "drag prog_0",
-                    "click btn-play",
+                    "drag arrow-up say drag-up",
+                    "drag if_coin say drag-if_coin",
+                    "drag arrow-right say drag-right",
+                    "drag if_block say drag-if_block",
+                    "drag prog_0 say drag-prog_0",
+                    "click btn-play say click-play",
                 ]
                 this.buildTutorial(phase, tutorial)
             }
@@ -283,8 +291,8 @@ export default class MazeConfigs {
             if (showTutorial) {
                 this.buildTutorial(phase,
                     [
-                        'drag arrow-up',
-                        'click btn-play'
+                        'drag arrow-up say drag-up',
+                        'click btn-play say click-play'
                     ]
                 )
             }
@@ -394,10 +402,10 @@ export default class MazeConfigs {
             );
             if (showTutorial) {
                 this.buildTutorial(phase, [
-                    'drag arrow-up',
-                    'drag arrow-up',
-                    'click btn-step',
-                    'click btn-step'
+                    'drag arrow-up say drag-up',
+                    'drag arrow-up say drag-up',
+                    'click btn-step say click-step',
+                    'click btn-step say click-step'
                 ])
             }
         }
@@ -447,11 +455,11 @@ export default class MazeConfigs {
 
             if (showTutorial) {
                 this.buildTutorial(phase, [
-                    'drag arrow-up',
-                    'drag arrow-up',
-                    'drag arrow-right',
-                    'drag arrow-up',
-                    'click btn-play',
+                    'drag arrow-up say drag-up',
+                    'drag arrow-up say drag-up',
+                    'drag arrow-right say drag-right',
+                    'drag arrow-up say drag-up',
+                    'click btn-play say click-play',
                 ])
             }
         }
@@ -500,13 +508,13 @@ export default class MazeConfigs {
 
             if (showTutorial) {
                 this.buildTutorial(phase, [
-                    'drag arrow-up',
-                    'drag prog_0',
-                    'click btn-step',
-                    'click btn-step',
-                    'click btn-step',
-                    'click btn-step',
-                    'click btn-step',
+                    'drag arrow-up say drag-up',
+                    'drag prog_0 say drag-prog_0',
+                    'click btn-step say click-step',
+                    'click btn-step say click-step',
+                    'click btn-step say click-step',
+                    'click btn-step say click-step',
+                    'click btn-step say click-step',
                 ]);
             }
         }

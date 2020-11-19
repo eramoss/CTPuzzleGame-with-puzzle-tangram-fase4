@@ -10,14 +10,9 @@ import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 import { joinChilds } from '../utils/Utils';
 import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
+import Trash from './Trash';
 
 export default class CodeEditor {
-
-
-
-
-
-
 
   scene: Scene;
   programs: Program[];
@@ -41,6 +36,7 @@ export default class CodeEditor {
   availableCommands: Command[] = [];
   onShowInstruction: (instruction: string) => void = () => { };
   onHideLastInstruction: () => void = () => { };
+  trash: Trash;
 
   constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -63,6 +59,7 @@ export default class CodeEditor {
 
     this.createDraggableProgramCommands();
     this.notifyWhenProgramIsEditted()
+    this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
   }
 
   addCommands(program: Program, commands: string[]) {
@@ -162,6 +159,10 @@ export default class CodeEditor {
       ) => {
 
         Logger.log("MOVE_EVENT", "dragstart")
+        if (command.program != null){
+          command.setDepth(301);
+          this.trash.show();
+        }
         this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
@@ -185,23 +186,28 @@ export default class CodeEditor {
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
 
-        if (dragged && !dropped) {
+        let removeCommand = ()=>{
           command.removeSelf();
+          this.trash.close();
+        }
+
+        if (dragged && !dropped) {
+          removeCommand()
           commandSprite.emit('outofbounds');
         }
 
         if (isConditional) {
           if (clicked && !dragged) {
-            command.removeSelf();
+            removeCommand()
           }
           if (dropped) {
             if (!command.placedOver) {
-              command.removeSelf();
+              removeCommand()
             }
           }
           if (!dropped) {
             if (dragged) {
-              command.removeSelf();
+              removeCommand()
             }
           }
         }
@@ -218,7 +224,7 @@ export default class CodeEditor {
           if (clicked && !isAddedToSomeProgram) {
             let programToAddWhenClicked = this.getLastEditedOrMainProgramOrFirstNonfull();
             if (programToAddWhenClicked.isFull()) {
-              command.removeSelf();
+              removeCommand()
             }
             if (!programToAddWhenClicked.isFull()) {
               command.setProgram(programToAddWhenClicked);
@@ -227,7 +233,7 @@ export default class CodeEditor {
 
           if (clicked && isAddedToSomeProgram) {
             if (!(dropped && programToDropInto != command.program)) {
-              command.removeSelf();
+              removeCommand()
             } else {
               command.cancelMovement();
             }
@@ -242,7 +248,7 @@ export default class CodeEditor {
             }
 
             if (!dropped) {
-              command.removeSelf();
+              removeCommand()
             }
           }
           command.program?.reorganize();

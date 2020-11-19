@@ -61,11 +61,11 @@
          id="stop4107" />
       <stop
          id="stop4117"
-         offset="0.57170409"
+         offset="0.6625635"
          style="stop-color:#b97a51;stop-opacity:0" />
       <stop
          style="stop-color:#b97a51;stop-opacity:0.19215686;"
-         offset="0.73579776"
+         offset="0.74407029"
          id="stop867" />
       <stop
          style="stop-color:#b97a51;stop-opacity:1"
@@ -80,9 +80,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="955.1613"
-     inkscape:cy="294.392"
+     inkscape:zoom="1.979899"
+     inkscape:cx="108.24363"
+     inkscape:cy="643.48452"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -297,7 +297,7 @@
     </g>
     <path
        style="fill:#ffffff;fill-rule:evenodd;stroke:#800000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       d="m -25.317134,120.50109 2.9059,-7.83331 c -14.05331,-1.90706 -14.28802,-21.070606 -7.64379,-28.648415 6.64422,-7.577808 57.172321,-8.125372 63.645621,2.368943 5.51031,8.933156 0.49845,25.663252 -11.05508,26.848022 -11.55352,1.18478 -40.08252,0.0948 -40.08252,0.0948 z"
+       d="m -23.980786,117.42749 1.569552,-4.75971 c -14.05331,-1.90706 -14.28802,-21.070606 -7.64379,-28.648415 6.64422,-7.577808 57.172321,-8.125372 63.645621,2.368943 5.51031,8.933156 0.49845,25.663252 -11.05508,26.848022 -11.55352,1.18478 -40.08252,0.0948 -40.08252,0.0948 z"
        id="path4213"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cczszcc"
@@ -307,24 +307,25 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.56567764px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:0.2026521px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4049)"
-       x="0.68016446"
-       y="91.416756"
+       x="1.6156077"
+       y="138.99074"
        id="text3518"
        inkscape:export-xdpi="95"
-       inkscape:export-ydpi="95"><tspan
+       inkscape:export-ydpi="95"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/ballon.png"><tspan
          sodipodi:role="line"
          id="tspan3516"
-         x="0.68016446"
-         y="91.416756"
+         x="1.6156086"
+         y="138.99074"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px">Siga as instruções</tspan><tspan
          sodipodi:role="line"
-         x="1.6332666"
-         y="99.433121"
+         x="2.5687063"
+         y="147.0071"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
          id="tspan4209">para aprender os </tspan><tspan
          sodipodi:role="line"
-         x="0.68016446"
-         y="107.44949"
+         x="1.6156068"
+         y="155.02347"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#800000;fill-opacity:1;stroke-width:0.2026521px"
          id="tspan4211">movimentos</tspan></text>
   </g>

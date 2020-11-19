@@ -164,7 +164,7 @@ export default class MazeConfigs {
         //this.phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
 
         //Easy
-        this.phases.push(this.createEasyPhaseArrowUp(showTutorial));
+        this.phases.push(this.createEasyPhaseArrowUp());
         this.phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
         this.phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
 

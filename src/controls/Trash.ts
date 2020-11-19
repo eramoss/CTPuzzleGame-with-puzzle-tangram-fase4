@@ -11,6 +11,7 @@ export default class Trash {
         this.scene = scene;
 
         this.dropzone = createDropZone(grid, cellx, celly, colspan, rowspan, 'trash');
+        this.dropzone.sprite.setDepth(300);
         this.zone = this.dropzone.zone;
 
         let openTrash = (pointer: Phaser.Input.Pointer, obj: GameObjects.GameObject, zone: GameObjects.Zone) => {
@@ -25,9 +26,15 @@ export default class Trash {
             }
         }
 
+        scene.input.on('drop', closeTrash)
         scene.input.on('dragenter', openTrash)
         scene.input.on('dragleave', closeTrash)
-        scene.input.on('drop', closeTrash)
+        this.close();
+        //this.dropzone.sprite.setVisible(false);
+    }
+
+    show() {
+        this.dropzone.sprite.setVisible(true);
     }
 
     open() {
@@ -36,6 +43,7 @@ export default class Trash {
 
     close() {
         this.dropzone.highlight(false);
+        this.dropzone.sprite.setVisible(false);
     }
 
     spriteIsHover(obj: GameObjects.Sprite): boolean {

@@ -24,9 +24,9 @@ export default new Phaser.Game({
   height: height,
   fps: {
     smoothStep: true,
-    min: 10,
+    min: 25,
     forceSetTimeOut: true,
-    target: 13
+    target: 30
   },
   scene: [Game, GameWin],
   render: {

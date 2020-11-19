@@ -25,7 +25,7 @@ export default class Ballon {
 
     }
 
-    setText(text: string, fontSize: number = 32): Ballon {
+    setText(text: string, fontSize: number = 35): Ballon {
         this.setVisible();
         this.phrase.setText(text);
         this.phrase.setFontSize(fontSize);

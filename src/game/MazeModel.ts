@@ -1,5 +1,6 @@
 import { GameObjects } from "phaser";
 import Matrix from "../geom/Matrix";
+import { Logger } from "../main";
 
 export class MazeModelObject {
   depth: number;
@@ -87,7 +88,7 @@ export default class MazeModel {
       for (let itensDiagonalPassed = 0; itensDiagonalPassed < itensDiagonalToPass; itensDiagonalPassed++) {
         let object = this.getObjectAt(y, x);
         if (object) {
-          console.log('MAZE_MODEL_ORDERING [y,x,object,depth]', y, x, object.spriteName, depth);
+          Logger.log('MAZE_MODEL_ORDERING [y,x,object,depth]', y, x, object.spriteName, depth);
           (object.gameObject as GameObjects.Sprite).setDepth(depth)
           //this.scene.children.bringToTop(object.gameObject);
         }
@@ -117,7 +118,7 @@ export default class MazeModel {
       }
       logMatrix += '\n';
     }
-    console.log('GAME_OBJECTS', logMatrix)
+    Logger.log('GAME_OBJECTS', logMatrix)
   }
 
   private updateByZIndex() {
@@ -134,7 +135,7 @@ export default class MazeModel {
       }
       logMatrix += '\n';
     }
-    console.log('GAME_OBJECTS', logMatrix) */
+    Logger.log('GAME_OBJECTS', logMatrix) */
   }
 
   putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteName: string = null) {

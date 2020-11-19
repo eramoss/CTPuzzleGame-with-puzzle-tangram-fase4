@@ -3,6 +3,7 @@ import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
+import { Logger } from "../main";
 import MazePhase from "./MazePhase";
 import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
@@ -34,7 +35,7 @@ export default class MazeConfigs {
 
     fnIsBtnStepStateEnabled = () => {
         const isBtnStepEnabled = !this.codeEditor.btnStep.disabled;
-        console.log('TUTORIAL [isBtnStepEnabled]', isBtnStepEnabled)
+        Logger.log('TUTORIAL [isBtnStepEnabled]', isBtnStepEnabled)
         return isBtnStepEnabled
     }
 
@@ -45,8 +46,8 @@ export default class MazeConfigs {
 
     isCodeStateLike(codeString: string) {
         const commandsToString = this.codeEditor.stringfyCommands();
-        console.log('CODE_STATE [codeString]\n', codeString)
-        console.log('CODE_STATE [commandsToString]\n', commandsToString)
+        Logger.log('CODE_STATE [codeString]\n', codeString)
+        Logger.log('CODE_STATE [commandsToString]\n', commandsToString)
         return codeString === commandsToString;
     }
 
@@ -120,7 +121,7 @@ export default class MazeConfigs {
                     }
                 }
 
-                //console.log('BUILD_CODE', expectedCodeStateDuringTutorialAction)
+                //Logger.log('BUILD_CODE', expectedCodeStateDuringTutorialAction)
                 expectedCodeStateDuringTutorialAction = code.join(', ');
             })
         return expectedCodeStateDuringTutorialAction;
@@ -824,13 +825,13 @@ export default class MazeConfigs {
             "drag arrow-up to program",
             "drag arrow-up to program"]
         )
-        console.log('TEST', testCount++, code == 'arrow-up, arrow-up', code);
+        Logger.log('TEST', testCount++, code == 'arrow-up, arrow-up', code);
 
         code = this.buildTutorial(phase, [
             "drag arrow-up to program",
             "drag if_coin to arrow-up"]
         )
-        console.log('TEST', testCount++, code == 'arrow-up:if_coin', code);
+        Logger.log('TEST', testCount++, code == 'arrow-up:if_coin', code);
 
         code = this.buildTutorial(phase, [
             "drag arrow-up to program",
@@ -838,7 +839,7 @@ export default class MazeConfigs {
             "drag arrow-up to program"
         ]
         )
-        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up', code);
+        Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up', code);
 
         code = this.buildTutorial(phase, [
             "drag arrow-up to program",
@@ -847,7 +848,7 @@ export default class MazeConfigs {
             "drag if_coin to arrow-up"
         ]
         )
-        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up:if_coin', code);
+        Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up:if_coin', code);
 
         code = this.buildTutorial(phase, [
             "drag arrow-up to program",
@@ -856,7 +857,7 @@ export default class MazeConfigs {
             "drag if_block to arrow-right",
         ]
         )
-        console.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-right:if_block', code);
+        Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-right:if_block', code);
 
     }
 }

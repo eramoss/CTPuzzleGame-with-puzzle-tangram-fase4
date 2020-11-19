@@ -3,6 +3,7 @@ import Command from './Command'
 import AlignGrid from '../geom/AlignGrid';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import { createDropZone, androidVibrate } from '../utils/Utils';
+import { Logger } from '../main';
 
 export default class Program {
 
@@ -93,7 +94,7 @@ export default class Program {
       return;
     }
 
-    console.log('ADD_REMOVE_COMMANDS [index]', index)
+    Logger.log('ADD_REMOVE_COMMANDS [index]', index)
     command.programDropZone = this.dropZone;
     if (this.ordinalCommands.indexOf(command) == -1) {
       if (!command.isIntent)
@@ -123,7 +124,7 @@ export default class Program {
   }
 
   setConditionalCommand(index: number, ifCommand: Command) {
-    console.log('PROGRAM [setConditionalCommand][index, ifCommand]', index, ifCommand.name)
+    Logger.log('PROGRAM [setConditionalCommand][index, ifCommand]', index, ifCommand.name)
     this.conditionalCommandsIndexed.set(index, ifCommand);
   }
 
@@ -132,9 +133,9 @@ export default class Program {
   }
 
   removeConditional(command: Command) {
-    console.log('Program. Remove Conditional [length before]', this.conditionalCommandsIndexed.size)
+    Logger.log('Program. Remove Conditional [length before]', this.conditionalCommandsIndexed.size)
     this.conditionalCommandsIndexed.delete(command.index())
-    console.log('Program. Remove Conditional [length after]', this.conditionalCommandsIndexed.size)
+    Logger.log('Program. Remove Conditional [length after]', this.conditionalCommandsIndexed.size)
   }
 
   organizeInProgramArea(command: Command) {
@@ -162,7 +163,7 @@ export default class Program {
     const tileWidth = spriteWidth + (zone.width - spriteWidth * cols) / cols;
     const tileHeight = spriteHeight + (zone.height - spriteHeight * rows) / rows;
 
-    console.log('COMMAND_ALLOCATE_AREA [spriteWidth, spriteHeight, tileWidth, tileHeight]', spriteWidth, spriteHeight, tileWidth, tileHeight);
+    Logger.log('COMMAND_ALLOCATE_AREA [spriteWidth, spriteHeight, tileWidth, tileHeight]', spriteWidth, spriteHeight, tileWidth, tileHeight);
 
     let row = Math.floor(index / cols) * tileHeight;
     let fitInFirstRow = row == 0;
@@ -170,7 +171,7 @@ export default class Program {
     let x = zone.x + (index % cols * tileWidth) + spriteWidth / 2;
     let y = zone.y + row + spriteHeight / 1.8;
 
-    console.log('COMMAND_ALLOCATE_AREA [x,y]', x, y);
+    Logger.log('COMMAND_ALLOCATE_AREA [x,y]', x, y);
     return { x, y, fitInFirstRow };
   }
 
@@ -183,7 +184,7 @@ export default class Program {
 
   associateConditionsCommandsWithOrdinalCommands() {
     this.conditionalCommandsIndexed.forEach((ifCommand, key) => {
-      console.log('Associating Conditionals [if][key]', ifCommand.name, key);
+      Logger.log('Associating Conditionals [if][key]', ifCommand.name, key);
     })
     this.ordinalCommands.forEach(command => {
       const ordinalComandIndex = command.index();
@@ -191,7 +192,7 @@ export default class Program {
       if (ifCommand) {
         let removePreviousBlockCondition = false
         command.setCondition(ifCommand, removePreviousBlockCondition);
-        console.log('Associating Conditionals [if][command][ordinalCommandIndex]', ifCommand.name, command.name, ordinalComandIndex)
+        Logger.log('Associating Conditionals [if][command][ordinalCommandIndex]', ifCommand.name, command.name, ordinalComandIndex)
       }
     })
   }
@@ -260,7 +261,7 @@ export default class Program {
 
   stringfyOrdinalCommands(): string {
     const stringfiedCommands = this.ordinalCommands.map(command => command.stringfy()).join(', ');
-    console.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
+    Logger.log('STRINGFIED_COMMANDS [stringfiedCommands]', stringfiedCommands)
     return stringfiedCommands;
   }
 

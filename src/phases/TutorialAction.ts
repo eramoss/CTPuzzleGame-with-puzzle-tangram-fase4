@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { Logger } from "../main";
 import TutorialHighlight from "./TutorialHighlight";
 
 export default class TutorialAction {
@@ -24,7 +25,7 @@ export default class TutorialAction {
     }
 
     reset() {
-        console.log('TUTORIAL_RESETING')
+        Logger.log('TUTORIAL_RESETING')
         this.triggered = false;
         this.highlights.forEach(highlight => {
             highlight.reset();
@@ -36,7 +37,7 @@ export default class TutorialAction {
         if (this.triggered) return;
         if (this.isEnvironmentValidToHighlightTutorial()) {
             this.triggered = true;
-            console.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
+            Logger.log('TUTORIAL_ACTION_INDEX highlight [index]', this.index)
             this.onHighlight();
             const onInteractAdvanceTutorial = () => {
                 this.onCompleteAction();

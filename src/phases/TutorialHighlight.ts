@@ -2,6 +2,7 @@ import { GameObjects, Physics, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import InterfaceElement from "../InterfaceElement";
+import { Logger } from "../main";
 import Command from "../program/Command";
 import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
 import { isDebug } from "../utils/Utils";
@@ -88,7 +89,7 @@ export default class TutorialHighlight {
             repeat: -1
         });
         if (sprite.texture.key == 'btn-step') {
-            console.log(this.handSprite)
+            Logger.log(this.handSprite)
             //debugger
         }
         this.setHandSprite(this.scene
@@ -184,7 +185,7 @@ export default class TutorialHighlight {
                                 || this.isDragMoveAnimationCancelled
                         },
                         onAchieve: () => {
-                            console.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]');
+                            Logger.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]');
                             this.simulateDrop(commandSprite, dropLocation);
                             this.putHandSpriteOver(commandSprite);
                             this.waitAndRun(timeBeforeRepeat,
@@ -292,7 +293,7 @@ export default class TutorialHighlight {
     }
 
     removeHand() {
-        console.log('TUTORIAL_HIGHLIGHT_REMOVING_HAND', this.handSprite)
+        Logger.log('TUTORIAL_HIGHLIGHT_REMOVING_HAND', this.handSprite)
         //this.handSprite?.setTint(0xff00ff);
         //this.handSprite?.destroy();
         this.scene.children.remove(this.handSprite);

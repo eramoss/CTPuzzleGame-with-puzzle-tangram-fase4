@@ -16,15 +16,17 @@ if (height > window.innerHeight) {
   width = height * proportionHeightByWidth * 3
 }
 
+export const Logger = console
+
 export default new Phaser.Game({
   type: Phaser.AUTO,
   width: width,
   height: height,
   fps: {
     smoothStep: true,
-    min: 25,
+    min: 10,
     forceSetTimeOut: true,
-    target: 30
+    target: 13
   },
   scene: [Game, GameWin],
   render: {

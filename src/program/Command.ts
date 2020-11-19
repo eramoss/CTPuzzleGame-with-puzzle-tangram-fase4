@@ -2,6 +2,7 @@ import { GameObjects, Sound } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
 import InterfaceElement from '../InterfaceElement';
+import { Logger } from '../main';
 import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
 import CommandAction from './CommandAction';
@@ -102,7 +103,7 @@ export default class Command implements InterfaceElement {
   }
 
   removeSelf(removeFromScene: Boolean = true) {
-    console.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
+    Logger.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
     if (this.condition) {
       this.condition.placedOver = null;
       this.condition = null;
@@ -206,7 +207,7 @@ export default class Command implements InterfaceElement {
   }
 
   cancelMovement() {
-    console.log("CANCEL_MOVEMENT");
+    Logger.log("CANCEL_MOVEMENT");
     this.sprite.x = this.sprite.input.dragStartX;
     this.sprite.y = this.sprite.input.dragStartY;
   }
@@ -254,7 +255,7 @@ export default class Command implements InterfaceElement {
   }
 
   addHighlightConditionalImage() {
-    console.log('COMMAND [addHighlightConditionalImage]')
+    Logger.log('COMMAND [addHighlightConditionalImage]')
     let { x, y } = this.getConditionalPosition();
     this.highlightConditionalImage = this.scene.add.image(x, y, 'if_highlight')
     this.highlightConditionalImage.scale = this.program.grid.scale;

@@ -4,6 +4,7 @@ import Command from '../program/Command';
 import CommandAction from '../program/CommandAction';
 import Dude from './Dude';
 import { Branch } from "./Branch";
+import { Logger } from '../main';
 
 export class DudeMove {
 
@@ -75,7 +76,7 @@ export class DudeMove {
     if (this.executing) {
       if (this.point) {
         if (this.dude.achieved(this.point)) {
-          console.log("MOVE_ACHIEVED [x,y,couldExecute,name]", this.x, this.y, this.couldExecute, this.command.name);
+          Logger.log("MOVE_ACHIEVED [x,y,couldExecute,name]", this.x, this.y, this.couldExecute, this.command.name);
           this.onCompleteMove();
         }
       }
@@ -97,7 +98,7 @@ export class DudeMove {
   onBranchMove() {
     let onCompleteBranch = () => {
       let branch = this.branch;
-      console.log('BRANCH_ON_COMPLETE [prog.name]', branch.program.name);
+      Logger.log('BRANCH_ON_COMPLETE [prog.name]', branch.program.name);
       this.disanimate();
     };
     const moveToContinueWhenBackToThisBranch = this.next;
@@ -109,7 +110,7 @@ export class DudeMove {
   }
 
   execute(previousMove: DudeMove = null) {
-    console.log("DUDE_MOVE", this.action);
+    Logger.log("DUDE_MOVE", this.action);
 
     this.executing = true;
     let branched = this.isProgMove();
@@ -127,7 +128,7 @@ export class DudeMove {
     let isConditionValid = this.dude?.isConditionValid(this.action.action, this);
 
     let { newX, newY, newFace, animation } = this.prepareMove(this.x, this.y, this.action, this.dude.currentFace);
-    console.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
+    Logger.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
     this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
 
@@ -156,7 +157,7 @@ export class DudeMove {
     }
 
     if (!branched && !turnMove) {
-      console.log('MOVE [x,y]', this.x, this.y);
+      Logger.log('MOVE [x,y]', this.x, this.y);
       if (this.couldExecute) {
         this.point = this.dude.matrix.getPoint(this.y, this.x);
         this.dude.moveTo(this);

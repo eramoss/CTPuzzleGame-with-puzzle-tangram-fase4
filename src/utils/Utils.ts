@@ -1,11 +1,12 @@
 import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import SpriteDropZone from "../controls/SpriteDropZone";
+import { Logger } from "../main";
 
 export default function drawRect(scene: Scene, x: number, y: number, width: number, height: number) {
     const debug = isDebug(scene);
     if (debug) {
-        var graphics = scene.add.graphics();
+        var graphics = scene.add.graphics().setDepth(5000);
         graphics.lineStyle(2, 0xffff00);
         graphics.strokeRect(
             x,
@@ -25,7 +26,7 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
 
 
 export function androidVibrate(time: number) {
-    console.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)
+    Logger.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)
     try {
         //@ts-ignore
         if (GameJavascriptInterface != undefined) {
@@ -38,7 +39,7 @@ export function androidVibrate(time: number) {
 }
 
 export function androidPlayAudio(sound: string): boolean {
-    console.log(`Calling GameJavascriptInterface.play with param ${sound}`)
+    Logger.log(`Calling GameJavascriptInterface.play with param ${sound}`)
     let couldPlay = false;
     try {
         //@ts-ignore

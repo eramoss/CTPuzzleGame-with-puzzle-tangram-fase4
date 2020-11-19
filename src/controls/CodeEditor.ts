@@ -9,6 +9,7 @@ import CommandIntent from '../program/CommandIntent';
 import ToolboxRowOrganizer from './ToolboxRowOrganizer';
 import { joinChilds } from '../utils/Utils';
 import InterfaceElement from '../InterfaceElement';
+import { Logger } from '../main';
 
 export default class CodeEditor {
 
@@ -89,7 +90,7 @@ export default class CodeEditor {
         return command
       })
 
-    console.log('COMMAND_NAMES', commandNames);
+    Logger.log('COMMAND_NAMES', commandNames);
 
     createdCommands.forEach(commandToSetPositionAtToobox => {
       let toolboxRow = this.findToolboxRow(commandToSetPositionAtToobox)
@@ -135,7 +136,7 @@ export default class CodeEditor {
         commandSprite.setScale(toolboxRow.scaleNormal);
       });
       commandSprite.on('drag', _ => {
-        console.log("MOVE_EVENT", "drag")
+        Logger.log("MOVE_EVENT", "drag")
         command.isDragged = true;
         if (command.programDropZone) {
           command.removeSelf(false);
@@ -156,7 +157,7 @@ export default class CodeEditor {
         }
       ) => {
 
-        console.log("MOVE_EVENT", "dragstart")
+        Logger.log("MOVE_EVENT", "dragstart")
         this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
@@ -172,7 +173,7 @@ export default class CodeEditor {
         this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', () => {
-        console.log("MOVE_EVENT", "dragend");
+        Logger.log("MOVE_EVENT", "dragend");
 
         const shortClick = this.getTime() - this.clickTime < 700;
         let dragged = command.isDragged && (command.isSpriteConsiderableDragged(this.grid) || !shortClick);
@@ -249,7 +250,7 @@ export default class CodeEditor {
         this.logPrograms('dragend');
       })
       commandSprite.on('drop', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
-        console.log("MOVE_EVENT", "drop ", dropZone)
+        Logger.log("MOVE_EVENT", "drop ", dropZone)
 
         let programWhereAreDropped = this.programs
           .map(p => p.dropZone)
@@ -289,7 +290,7 @@ export default class CodeEditor {
       })
 
       commandSprite.on('dragleave', (pointer: Phaser.Input.Pointer, dropZone: Phaser.GameObjects.Zone) => {
-        console.log("MOVE_EVENT", "dragleave")
+        Logger.log("MOVE_EVENT", "dragleave")
         const commandIntentLeaved: Command =
           this.getAllProgramCommands()
             .filter(c => c.isIntent)
@@ -304,7 +305,7 @@ export default class CodeEditor {
           .filter(c => !c.isIntent)
           .find(c => c.tileDropZone?.zone == dropZone);
         if (commandHovered && !commandHovered.program?.isFull()) {
-          console.log("MOVE_EVENT", 'dragenter [commandHovered]', commandHovered);
+          Logger.log("MOVE_EVENT", 'dragenter [commandHovered]', commandHovered);
           if (dropZone != command?.tileDropZone?.zone) {
             if (!command.isConditional) {
               const commandIntent = new CommandIntent(this.scene, commandHovered);
@@ -329,18 +330,18 @@ export default class CodeEditor {
 
   private logPrograms(moment: string) {
     this.programs.forEach(p => {
-      console.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.stringfyOrdinalCommands(), p.stringfyConditionalCommands(), ']');
+      Logger.log('MOVE_EVENT', moment, 'Program Commands => ', p.name, '=> [', p.stringfyOrdinalCommands(), p.stringfyConditionalCommands(), ']');
     });
     this.programs.forEach(p => {
-      console.log('Program Conditionals. Size:', p.name, '=>', p.conditionalCommandsIndexed.size)
+      Logger.log('Program Conditionals. Size:', p.name, '=>', p.conditionalCommandsIndexed.size)
       p.conditionalCommandsIndexed.forEach((command: Command, index: number) => {
-        console.log('Program Conditionals => ', index, command.name, ' over ', command.placedOver?.name)
+        Logger.log('Program Conditionals => ', index, command.name, ' over ', command.placedOver?.name)
       });
     });
   }
 
   highlightDropZones(command: Command) {
-    console.log('CODE_EDITOR [highlightDropZones]')
+    Logger.log('CODE_EDITOR [highlightDropZones]')
     if (command.isConditional) {
       this.programs.forEach(p => p.highlightConditionalAreas(command))
     }
@@ -352,7 +353,7 @@ export default class CodeEditor {
   }
 
   unhighlightDropZones(command: Command = null) {
-    console.log('CODE_EDITOR [unhighlightDropZones]')
+    Logger.log('CODE_EDITOR [unhighlightDropZones]')
     if (command.isConditional) {
       this.unhighlightConditionalDropZones();
     }
@@ -449,7 +450,7 @@ export default class CodeEditor {
 
   countAddedCommands(): number {
     const count = joinChilds(this.programs, (p) => p.ordinalCommands).length;
-    console.log('CODE_EDITOR [countAddedCommands]', count)
+    Logger.log('CODE_EDITOR [countAddedCommands]', count)
     return count
   }
 

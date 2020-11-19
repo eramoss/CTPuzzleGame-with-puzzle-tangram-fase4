@@ -9,6 +9,8 @@ import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
 import MazeConfigs from '../phases/MazeConfigs'
 import MazePhase from '../phases/MazePhase'
+import { Logger } from '../main'
+import Ballon from '../sprites/Ballon'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -48,6 +50,7 @@ export default class Game extends Scene {
     this.load.image('if_coin', 'assets/ct/if_coin.png');
     this.load.image('if_block', 'assets/ct/if_block.svg');
     this.load.image('if_highlight', 'assets/ct/if_highlight.png');
+    this.load.image('ballon', 'assets/ct/ballon.png');
     this.load.image('tutorial-block-click-background', 'assets/ct/tutorial-block-click-background.png');
     this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
 
@@ -75,15 +78,19 @@ export default class Game extends Scene {
     this.load.audio('coin', 'assets/ct/sounds/coin.wav');
     this.load.audio('blink', 'assets/ct/sounds/blink.mp3');
     this.load.audio('success', 'assets/ct/sounds/success.mp3');
+
   }
 
   create() {
+
 
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
       this.game.config.height as number
     );
+
+
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
@@ -210,6 +217,8 @@ export default class Game extends Scene {
     this.dude.character.setScale(this.grid.scale)
     this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 
+
+
     this.dude.canMoveTo = (x: number, y: number) => {
       let obstacles = this.currentPhase.obstacles;
       let ground = this.currentPhase.ground;
@@ -220,7 +229,7 @@ export default class Game extends Scene {
       const isNotOutOfBounds = point != null
       const isNotBlock = object?.spriteName != 'block'
       can = isNotOutOfBounds && isNotBlock && isNotHole
-      console.log('CAN_MOVE_TO [x, y, can]', x, y, can)
+      Logger.log('CAN_MOVE_TO [x, y, can]', x, y, can)
       return can
     }
 
@@ -320,6 +329,7 @@ export default class Game extends Scene {
     }
 
     playNextPhase();
+    new Ballon(this, 'Arraste a seta\nazul para o\nprograma', this.dude.character.x, this.dude.character.y, this.grid.scale, 30);
   }
 
   init() {

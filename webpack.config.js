@@ -12,6 +12,9 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     port: 9000,
   },
+  watchOptions: {
+    ignored: ['/node_modules/**','/assets']
+  },
   module: {
     rules: [
       {

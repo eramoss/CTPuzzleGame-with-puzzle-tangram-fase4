@@ -8,6 +8,7 @@ import AlignGrid from '../geom/AlignGrid';
 import { DudeMove } from './DudeMove';
 import { Branch } from './Branch';
 import { androidVibrate, joinChilds } from '../utils/Utils';
+import { Logger } from '../main';
 
 export default class Dude {
   character: Physics.Arcade.Sprite;
@@ -73,7 +74,7 @@ export default class Dude {
     this.character.clearTint()
     this.playAnimation();
     this.currentStep?.animate();
-    const speed = 80;
+    const speed = 100;
     this.scene.physics.moveToObject(this.character, dudeMove.point, speed * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
@@ -95,7 +96,7 @@ export default class Dude {
   }
 
   resetAt(dudeMove: DudeMove) {
-    console.log("MOVE_RESET_AT [x,y]", dudeMove.x, dudeMove.y)
+    Logger.log("MOVE_RESET_AT [x,y]", dudeMove.x, dudeMove.y)
     this.setPosition(dudeMove.x, dudeMove.y)
     let point = dudeMove.point;
     if (point) {

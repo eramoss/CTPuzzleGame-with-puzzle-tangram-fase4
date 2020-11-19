@@ -3,6 +3,7 @@ import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
+import { Logger } from "../main";
 import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
 import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
@@ -78,7 +79,7 @@ export default class MazePhase {
         }
         tutorialAction.onCompleteAction = () => {
             this.action = tutorialAction.nextTutorialAction
-            console.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
+            Logger.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
         }
         let index = 0;
         if (!this.firstAction) {
@@ -98,7 +99,7 @@ export default class MazePhase {
     }
 
     updateTutorial() {
-        console.log('TUTORIAL_UPDATE [this.action.index]', this.action?.index)
+        Logger.log('TUTORIAL_UPDATE [this.action.index]', this.action?.index)
         this.action?.highlight();
     }
 

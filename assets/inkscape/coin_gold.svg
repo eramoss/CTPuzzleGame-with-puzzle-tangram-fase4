@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="550.4204"
-     inkscape:cy="283.3398"
+     inkscape:zoom="1.979899"
+     inkscape:cx="406.12125"
+     inkscape:cy="375.47579"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -73,15 +73,6 @@
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351"
        transform="scale(-1,1)" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="path3462"
-       cx="49.427731"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
     <rect
        transform="scale(-1,1)"
        inkscape:export-ydpi="95.638351"
@@ -142,50 +133,15 @@
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351" />
     <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="use4086"
-       cx="73.804283"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="use4088"
-       cx="98.180801"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.49933654;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="use4090"
        cx="122.55731"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
+       cy="187.70609"
+       rx="2.7376695"
+       ry="1.4727961"
        inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="use4092"
-       cx="146.93382"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <ellipse
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#888888;fill-opacity:0.52884614;fill-rule:nonzero;stroke:none;stroke-width:1.16595912;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       id="use4094"
-       cx="171.31035"
-       cy="186.39664"
-       rx="8.2166948"
-       ry="2.6755087"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png" />
     <image
        y="160.81516"
        x="-60.54023"
@@ -262,5 +218,55 @@
        id="image3480"
        x="162.5791"
        y="160.81516" />
+    <ellipse
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png"
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       ry="1.4727961"
+       rx="2.7376695"
+       cy="187.70609"
+       cx="98.180801"
+       id="ellipse4134"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.49933654;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <ellipse
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.59906232;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ellipse4136"
+       cx="73.804283"
+       cy="187.70609"
+       rx="3.9403822"
+       ry="1.4727961"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png" />
+    <ellipse
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png"
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       ry="1.4727961"
+       rx="4.7421908"
+       cy="187.70609"
+       cx="49.427731"
+       id="ellipse4138"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.65719211;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <ellipse
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.55694866;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ellipse4140"
+       cx="146.93382"
+       cy="187.70609"
+       rx="3.4058433"
+       ry="1.4727961"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png" />
+    <ellipse
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/coin_gold.png"
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       ry="1.4727961"
+       rx="4.074017"
+       cy="187.70609"
+       cx="171.31035"
+       id="ellipse4142"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.73900003;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.26442339;fill-rule:nonzero;stroke:none;stroke-width:0.60913599;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.95294118;paint-order:normal;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
   </g>
 </svg>

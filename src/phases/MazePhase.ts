@@ -4,7 +4,6 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
 import { Logger } from "../main";
-import { DEPTH_OVERLAY_PANEL_TUTORIAL } from "../scenes/Game";
 import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
 import TutorialHighlight from "./TutorialHighlight";
@@ -124,17 +123,17 @@ export default class MazePhase {
     }
 
     addBackgroundOverlay() {
-        if (!this.backgroundOverlay) {
+        /* if (!this.backgroundOverlay) {
             this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
                 .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
             this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
-        }
+        } */
     }
 
     removeBackgroundTutorialOverlay() {
-        if (this.backgroundOverlay) {
+        /* if (this.backgroundOverlay) {
             this.scene.children.remove(this.backgroundOverlay);
             this.backgroundOverlay = null;
-        }
+        } */
     }
 }

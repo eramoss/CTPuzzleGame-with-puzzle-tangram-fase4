@@ -157,6 +157,7 @@ export default class TutorialHighlight {
                 commandSprite.emit('dragstart', null, {
                     onCreateCommandBelow: (codeEditor: CodeEditor, command: Command) => {
 
+                        command.isMuted = true;
                         let interactionTriggered = false;
                         let animationCancelled = false;
 

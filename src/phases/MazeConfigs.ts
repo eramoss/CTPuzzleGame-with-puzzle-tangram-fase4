@@ -157,7 +157,7 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
-        // this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
+        //this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseCallRecursiveFunction());
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock());
@@ -182,7 +182,7 @@ export default class MazeConfigs {
 
         this.phases.push(this.createHardPhaseStepByStepWithBlock());
         this.phases.push(this.createHardPhaseWithTwoStars());
-        this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
+        //this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
     }
 
     getNextPhase(): MazePhase {
@@ -771,7 +771,7 @@ export default class MazeConfigs {
     private createHardPhaseIfCoinAndIfBlock(showTutorial: boolean = false) {
         const phase = new MazePhase(this.scene, this.codeEditor);
         phase.dudeFacedTo = 'right'
-        phase.dudeStartPosition = { col: 1, row: 1 }
+        phase.dudeStartPosition = { col: 2, row: 1 }
 
         let baseMatrix = [
             ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
@@ -785,11 +785,11 @@ export default class MazeConfigs {
 
         let obstaclesMatrix = [
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-            ['null', 'null', 'coin', 'coin', 'coin', 'block', 'null'],
+            ['null', 'null', 'null', 'coin', 'coin', 'block', 'null'],
             ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
-            ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
-            ['null', 'null', 'coin', 'coin', 'coin', 'null', 'null'],
+            ['null', 'null', 'null', 'coin', 'coin', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'block', 'null', 'null'],
+            ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
             ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
         ];
 
@@ -815,7 +815,15 @@ export default class MazeConfigs {
                     "drag arrow-right say drag-right",
                     "drag if_block say drag-if_block",
                     "drag prog_0 say drag-prog_0",
-                    "click btn-play say click-play",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
+                    "click btn-step say click-step",
                 ]
                 this.buildTutorial(phase, tutorial)
             }

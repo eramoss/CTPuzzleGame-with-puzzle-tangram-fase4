@@ -146,9 +146,11 @@ export default class CodeEditor {
         }
       })
       commandSprite.on('mute', () => {
+        console.log('CODE_EDITOR [mute]')
         command.isMuted = true;
       });
       commandSprite.on('delete', () => {
+        console.log('CODE_EDITOR [delete]')
         command.removeSelf();
       });
       commandSprite.on('dragstart', (

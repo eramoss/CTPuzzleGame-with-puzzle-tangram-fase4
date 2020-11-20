@@ -28,6 +28,7 @@ export default class Command implements InterfaceElement {
   highlightConditionalImage: GameObjects.Image;
   sounds: Sounds
   isMuted: boolean = false;
+  hash: string;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;
@@ -36,6 +37,7 @@ export default class Command implements InterfaceElement {
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.sounds = new Sounds(scene)
+    this.hash = new Date().getTime().toString();
   }
 
   index(): number {
@@ -128,7 +130,7 @@ export default class Command implements InterfaceElement {
     }
   }
 
-  
+
 
   getConditionalPosition(): { x: number, y: number, width: number, height: number } {
     const x = this.sprite.x;
@@ -274,7 +276,7 @@ export default class Command implements InterfaceElement {
   unmute() {
     this.isMuted = false;
   }
-  
+
   mute() {
     this.isMuted = true;
   }

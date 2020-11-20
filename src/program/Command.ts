@@ -74,7 +74,7 @@ export default class Command implements InterfaceElement {
       if (removePreviousCondition) {
         this.program?.setConditionalCommand(this.index(), ifCommand);
       }
-      this.playDrop();
+      ifCommand.playDrop();
     }
   }
 

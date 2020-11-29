@@ -10,14 +10,12 @@ import AlignGrid from '../geom/AlignGrid'
 import MazeConfigs from '../phases/MazeConfigs'
 import MazePhase from '../phases/MazePhase'
 import { Logger } from '../main'
-import Ballon from '../sprites/Ballon'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
 export default class Game extends Scene {
 
   codeEditor: CodeEditor
-  program: Program
   currentObject: GameObjects.Image;
   dude: Dude
   sounds: Sounds
@@ -83,23 +81,20 @@ export default class Game extends Scene {
 
   create() {
 
-
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
       this.game.config.height as number
     );
 
-
-
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
     this.sounds = new Sounds(this)
 
-    this.program = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
+    let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
     let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
     let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
-    this.codeEditor = new CodeEditor(this, [this.program, prog1, prog2], this.sounds, this.grid);
+    this.codeEditor = new CodeEditor(this, [prog0, prog1, prog2], this.sounds, this.grid);
 
     let gridCenterX = this.grid.width / 3.2;
     let gridCenterY = this.grid.height / 2;
@@ -205,10 +200,10 @@ export default class Game extends Scene {
         this.currentPhase.showTutorialActionsIfExists();
       }
 
-      // this.program.clear();
+      // prog0.clear();
       // prog1.clear();
       // prog2.clear();
-      // this.codeEditor.addCommands(this.program, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
+      // this.codeEditor.addCommands(prog0, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
       // this.codeEditor.addCommands(prog1, ['arrow-up'])
       // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
     }
@@ -297,7 +292,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.dude.execute([this.program, prog1, prog2]);
+        this.dude.execute([prog0, prog1, prog2]);
       }
     }
 
@@ -313,7 +308,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickStepByStep = () => {
       this.codeEditor.disableStepButton();
-      this.dude.executeStepByStep([this.program, prog1, prog2]);
+      this.dude.executeStepByStep([prog0, prog1, prog2]);
     }
 
     this.codeEditor.onInteract = () => {

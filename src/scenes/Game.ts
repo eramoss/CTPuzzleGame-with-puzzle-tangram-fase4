@@ -215,13 +215,12 @@ export default class Game extends Scene {
 
 
     this.dude.canMoveTo = (x: number, y: number) => {
-      let obstacles = this.currentPhase.obstacles;
       let ground = this.currentPhase.ground;
       let can = true;
-      let point = obstacles.getPoint(y, x);
+      let point = ground.getPoint(y, x);
       let object = this.obstaclesMazeModel.getObjectAt(y, x)
-      let isNotHole = ground.getKey(y, x) != 'hole';
-      const isNotOutOfBounds = point != null
+      let isNotHole = ground.getKey(y, x) != 'null';
+      const isNotOutOfBounds = point != null && point
       const isNotBlock = object?.spriteName != 'block'
       can = isNotOutOfBounds && isNotBlock && isNotHole
       Logger.log('CAN_MOVE_TO [x, y, can]', x, y, can)

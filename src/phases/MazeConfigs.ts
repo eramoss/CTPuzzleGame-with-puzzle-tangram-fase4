@@ -157,6 +157,8 @@ export default class MazeConfigs {
 
         let showTutorial = true;
 
+        this.phases.push(this.createDemoPhase());
+        
         //this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseCallRecursiveFunction());
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
@@ -188,6 +190,60 @@ export default class MazeConfigs {
     getNextPhase(): MazePhase {
         this.currentPhase++
         return this.phases[this.currentPhase]
+    }
+
+    private createDemoPhase(showTutorial: boolean = false) {
+        const phase = new MazePhase(this.scene, this.codeEditor);
+        phase.dudeFacedTo = 'right'
+        phase.dudeStartPosition = { col: 1, row: 3 }
+
+        let baseMatrix = [
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+            ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+        ];
+
+
+        let obstaclesMatrix = [
+            ['block', 'block', 'block', 'block', 'block', 'block', 'block'],
+            ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
+            ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
+            ['block', 'null', 'null', 'null', 'null', 'coin', 'block'],
+            ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
+            ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
+            ['block', 'block', 'block', 'block', 'block', 'block', 'block'],
+        ];
+
+        phase.setupTutorialsAndObjectsPositions = () => {
+            phase.obstacles = new Matrix(
+                this.scene,
+                this.matrixMode,
+                obstaclesMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            phase.ground = new Matrix(
+                this.scene,
+                this.matrixMode,
+                baseMatrix,
+                this.gridCenterX, this.gridCenterY, this.gridCellWidth
+            );
+
+            if (showTutorial) {
+                this.buildTutorial(phase,
+                    [
+                        'drag arrow-up say drag-up-to-program',
+                        'click btn-play say click-get-coin'
+                    ]
+                )
+            }
+        }
+
+        return phase;
     }
 
     private createEasyPhaseArrowUp(showTutorial: boolean = false) {

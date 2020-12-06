@@ -202,8 +202,7 @@ export default class TutorialHighlight {
                                 () => {
                                     this.handSprite.setVisible(false);
                                     this.simulateClickToRemove(commandSprite);
-                                    const reusingSprites = true;
-                                    this.useHandAnimationDragging(reusingSprites)
+                                    this.useHandAnimationDragging(true)
                                 });
                         }
                     });

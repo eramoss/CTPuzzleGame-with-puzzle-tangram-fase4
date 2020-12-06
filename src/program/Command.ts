@@ -1,4 +1,4 @@
-import { GameObjects, Sound } from 'phaser';
+import { GameObjects } from 'phaser';
 import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
 import InterfaceElement from '../InterfaceElement';
@@ -104,7 +104,7 @@ export default class Command implements InterfaceElement {
     }
   }
 
-  removeSelf(removeFromScene: Boolean = true) {
+  removeSelf(removeFromScene: boolean = true) {
     Logger.log("COMMAND_REMOVE_SELF [command][removeFromScene][index]", this.name, removeFromScene, this.index());
     if (this.condition) {
       this.condition.placedOver = null;

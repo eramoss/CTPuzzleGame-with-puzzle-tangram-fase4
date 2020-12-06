@@ -4,8 +4,8 @@ import { isDebug } from '../utils/Utils';
 
 export default class Matrix {
 
-  static ISOMETRIC = "ISOMETRIC"
-  static NORMAL = "NORMAL"
+  static MODE_ISOMETRIC = "ISOMETRIC"
+  static MODE_NORMAL = "NORMAL"
 
   scene: Phaser.Scene;
   x: number;
@@ -14,9 +14,9 @@ export default class Matrix {
   width: number;
   height: number;
   matrix: string[][];
-  mode: String;
+  mode: string = Matrix.MODE_NORMAL;
 
-  constructor(scene: Scene, mode: String = Matrix.NORMAL, matrix: string[][], x: integer, y: integer, distanceBetweenPoints: integer) {
+  constructor(scene: Scene, mode: string, matrix: string[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.mode = mode;
     this.x = x;
     this.y = y;
@@ -30,7 +30,7 @@ export default class Matrix {
     this.height = matrix.length;
     this.width = matrix[0].length;
 
-    if (mode == Matrix.NORMAL) {
+    if (mode == Matrix.MODE_NORMAL) {
       this.x = this.x - (distanceBetweenPoints * this.width) / 2
     }
     this.y = this.y - (distanceBetweenPoints * this.height) / 2
@@ -39,10 +39,10 @@ export default class Matrix {
     const graphics = scene.add.graphics();
     graphics.fillStyle(0xff0000)
 
-    for (let y = 0; y < this.height; y++) {
-      for (let x = 0; x < this.width; x++) {
-        let point: IsometricPoint = new IsometricPoint(x * distanceBetweenPoints, y * distanceBetweenPoints)
-        if (mode == Matrix.NORMAL)
+    for (let row = 0; row < this.height; row++) {
+      for (let col = 0; col < this.width; col++) {
+        let point: IsometricPoint = new IsometricPoint(col * distanceBetweenPoints, row * distanceBetweenPoints)
+        if (mode == Matrix.MODE_NORMAL)
           point.toCartesian()
 
         point.x += this.x
@@ -53,7 +53,7 @@ export default class Matrix {
           this.scene.add.text(pt.x, pt.y, `(${pt.y.toFixed(2)})`);
           graphics.fillCircle(pt.x, pt.y, 3);
         }
-        this.points[y][x] = point
+        this.points[row][col] = point
       }
     }
   }

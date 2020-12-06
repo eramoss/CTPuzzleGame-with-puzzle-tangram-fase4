@@ -37,17 +37,17 @@ export class DudeMove {
     let move = commandAction.action;
 
     if (move == 'down') {
-      if (currentFace == 'up') { newX; newY++; }
-      if (currentFace == 'down') { newX; newY--; }
-      if (currentFace == 'left') { newX++; newY; }
-      if (currentFace == 'right') { newX--; newY; }
+      if (currentFace == 'up') { newY++; }
+      if (currentFace == 'down') { newY--; }
+      if (currentFace == 'left') { newX++; }
+      if (currentFace == 'right') { newX--; }
     }
 
     if (move == 'up') {
-      if (currentFace == 'up') { newX; newY--; }
-      if (currentFace == 'down') { newX; newY++; }
-      if (currentFace == 'left') { newX--; newY; }
-      if (currentFace == 'right') { newX++; newY; }
+      if (currentFace == 'up') { newY--; }
+      if (currentFace == 'down') { newY++; }
+      if (currentFace == 'left') { newX--; }
+      if (currentFace == 'right') { newX++; }
     }
 
     if (move == 'right') {
@@ -64,7 +64,7 @@ export class DudeMove {
       if (currentFace == 'right') { newFace = 'up'; }
     }
     let animation = newFace;
-    if (this.dude.matrix.mode == Matrix.ISOMETRIC) {
+    if (this.dude.matrix.mode == Matrix.MODE_ISOMETRIC) {
       animation = currentFace + "-" + newFace;
     }
 

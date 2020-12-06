@@ -49,7 +49,7 @@ export default class Dude {
   }
 
   createAnimations(matrixMode: string) {
-    let isometric = matrixMode == Matrix.ISOMETRIC;
+    let isometric = matrixMode == Matrix.MODE_ISOMETRIC;
     const animations = [
       { key: 'down', frames: isometric ? [1] : [2] },
       { key: 'left', frames: isometric ? [3] : [0] },
@@ -290,7 +290,7 @@ export default class Dude {
       }, time)
     }
     var animations = ['down', 'down-right', 'right', 'right-up', 'up', 'up-left', 'left', 'left-down']
-    let time = 0;
+    let timeToPlayNextColor = 0;
     let colors = [0xff00c5, 0xffb900, 0x0299f5, 0x00cf00]
     this.sounds.success();
     animations.forEach((faceAnimation, index) => {
@@ -298,8 +298,8 @@ export default class Dude {
       if (index == animations.length - 1) {
         color = null;
       }
-      playAnimation(color, faceAnimation, time)
-      time += 120;
+      playAnimation(color, faceAnimation, timeToPlayNextColor)
+      timeToPlayNextColor += 120;
     })
   }
 

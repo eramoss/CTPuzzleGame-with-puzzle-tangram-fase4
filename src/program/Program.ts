@@ -73,7 +73,7 @@ export default class Program {
     return addedCommands;
   }
 
-  removeCommand(command: Command, removeSpriteFromScene: Boolean = false) {
+  removeCommand(command: Command, removeSpriteFromScene: boolean = false) {
     this.onEdit();
     if (command.index() > -1) {
       this.ordinalCommands.splice(command.index(), 1);

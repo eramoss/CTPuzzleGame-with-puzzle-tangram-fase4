@@ -1,5 +1,3 @@
-import Dude from "../sprites/Dude";
-
 export default class CommandAction {
     
     action: string;

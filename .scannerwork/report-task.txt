@@ -1,0 +1,6 @@
+projectKey=CTPuzzleTest
+serverUrl=http://localhost:9009
+serverVersion=8.5.1.38104
+dashboardUrl=http://localhost:9009/dashboard?id=CTPuzzleTest
+ceTaskId=AXYl1Az9URRmyyWiE8Pf
+ceTaskUrl=http://localhost:9009/api/ce/task?id=AXYl1Az9URRmyyWiE8Pf

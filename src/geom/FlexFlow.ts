@@ -1,4 +1,4 @@
-import { GameObjects, Game, Scene } from "phaser";
+import { GameObjects, Scene } from "phaser";
 import { Logger } from "../main";
 import drawRect from "../utils/Utils";
 import AlignGrid from "./AlignGrid";
@@ -25,7 +25,7 @@ export default class FlexFlow {
     organizeSelf() {
         const countObjs = this.children.length;
         Logger.log('FLEX_ROW [countObs]', countObjs);
-        const positionEach: number = this.width as number / countObjs;
+        const positionEach: number = this.width / countObjs;
         this.children.forEach((child, index) => {
             if (child) {
                 child.y = this.y + this.height / 2

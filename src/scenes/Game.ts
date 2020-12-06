@@ -23,7 +23,7 @@ export default class Game extends Scene {
   obstaclesMazeModel: MazeModel
   groundMazeModel: MazeModel
   grid: AlignGrid
-  mode: string = Matrix.ISOMETRIC
+  mode: string = Matrix.MODE_ISOMETRIC
   phases: MazeConfigs
   currentPhase: MazePhase
 
@@ -104,7 +104,7 @@ export default class Game extends Scene {
       this,
       this.grid,
       this.codeEditor,
-      Matrix.ISOMETRIC,
+      Matrix.MODE_ISOMETRIC,
       gridCenterX,
       gridCenterY,
       gridCellWidth
@@ -112,7 +112,7 @@ export default class Game extends Scene {
     //this.phases.test()
 
     const scale = this.grid.scale
-    let isometric = this.mode == Matrix.ISOMETRIC;
+    let isometric = this.mode == Matrix.MODE_ISOMETRIC;
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {

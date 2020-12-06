@@ -69,10 +69,10 @@ export default class MazeModel {
   }
 
   updateBringFront() {
-    if (this.matrix.mode == Matrix.ISOMETRIC) {
+    if (this.matrix.mode == Matrix.MODE_ISOMETRIC) {
       this.updateIsometric()
     }
-    if (this.matrix.mode == Matrix.NORMAL) {
+    if (this.matrix.mode == Matrix.MODE_NORMAL) {
       this.updateByZIndex()
     }
   }

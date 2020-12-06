@@ -13,7 +13,7 @@ export default class AlignGrid {
     height: number = 600;
     scale: number;
 
-    constructor(scene: Scene, cols: number = 3, rows: number = 3, width: number, height: number) {
+    constructor(scene: Scene, cols: number, rows: number, width: number, height: number) {
         this.scene = scene;
         this.cols = cols;
         this.rows = rows;

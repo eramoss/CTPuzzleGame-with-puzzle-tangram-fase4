@@ -1,4 +1,4 @@
-import { GameObjects, Physics, Scene } from "phaser";
+import { GameObjects, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";

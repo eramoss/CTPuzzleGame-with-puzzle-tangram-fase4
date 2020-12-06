@@ -1,4 +1,4 @@
-import { GameObjects, Physics, Scene } from "phaser";
+import { Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
@@ -67,31 +67,33 @@ export default class MazeConfigs {
         tutorialActionsMap.set('click', phase.addTutorialHighlightClick);
 
         let codeStates: string[] = []
-        let expectedCodeStateDuringTutorialAction: string = '';
+        let expectedCodeState: string = '';
         let code = [];
         tutorialsActionsWrittenAsPhrases
-            .forEach((tutorialActionAsString, actionIndex) => {
+            .forEach((tutorialPhrase, actionIndex) => {
                 // Example: "drop          arrow-up      say drag-arrow-up-1"
                 //           [actionName]  [elementName]     [tutorial-phrase-key]
 
-                let commands = tutorialActionAsString.split(' ');
-                let actionName = commands[0];
-                let elementName = commands[1];
-                let ballonInstruction = null;
-                if (tutorialActionAsString.indexOf('say') > -1) {
-                    ballonInstruction = commands[commands.length - 1];
-                    ballonInstruction = phrases[ballonInstruction]
+                let words = tutorialPhrase.split(' ');
+                let action = words[0];
+                let command = words[1];
+                let ballon = null;
+
+                if (tutorialPhrase.indexOf('say') > -1) {
+                    ballon = words[words.length - 1];
+                    ballon = phrases[ballon]
                 }
 
-                let instruction = elementName;
-                const isConditional = elementName.startsWith('if_');
-                const isButton = elementName.startsWith('btn');
+                let instruction = command;
+                const isConditional = command.startsWith('if_');
+                const isButton = command.startsWith('btn');
                 let lastInstruction = "";
+
                 if (!isButton) {
                     if (isConditional) {
                         let index = code.length - 1;
                         lastInstruction = code[index];
-                        instruction = lastInstruction + ":" + elementName
+                        instruction = lastInstruction + ":" + command
                         code[index] = instruction;
                     } else {
                         code.push(instruction);
@@ -99,30 +101,32 @@ export default class MazeConfigs {
                 }
 
                 let fnGetDropLocation = null;
-                if (actionName == 'drag') {
+                if (action == 'drag') {
                     fnGetDropLocation = this.fnGetProgramDropLocation;
                     if (isConditional) {
                         fnGetDropLocation = () => this.createTutorialDropLocation(lastInstruction)
                     }
                 }
-                if (actionName == 'click') {
 
-                }
+                let fnCreateTutorialAction = tutorialActionsMap.get(action)
+                let fnGetInterfaceElement = this.fnGetInterfaceElement(command)
 
-                let tutorialActionCreator = tutorialActionsMap.get(actionName)
-                let fnGetInterfaceElement = this.fnGetInterfaceElement(elementName)
+                codeStates[actionIndex] = expectedCodeState;
 
-                codeStates[actionIndex] = expectedCodeStateDuringTutorialAction;
+                const tutorialAction: TutorialAction =
+                    fnCreateTutorialAction
+                        .call(
+                            phase,
+                            fnGetInterfaceElement,
+                            fnGetDropLocation
+                        );
 
-                const tutorialAction: TutorialAction = tutorialActionCreator
-                    .call(phase, fnGetInterfaceElement, fnGetDropLocation);
-
-                tutorialAction.ballonInstruction = ballonInstruction
+                tutorialAction.ballonInstruction = ballon
 
                 tutorialAction.isEnvironmentValidToHighlightTutorial =
                     () => this.isCodeStateLike(codeStates[actionIndex])
 
-                if (elementName == 'btn-step') {
+                if (command == 'btn-step') {
                     tutorialAction.isAllowedToHighlightNextTutorialStep = () => {
                         const btnStepEnabled = !this.codeEditor.btnStep.disabled;
                         return btnStepEnabled
@@ -130,9 +134,9 @@ export default class MazeConfigs {
                 }
 
                 //Logger.log('BUILD_CODE', expectedCodeStateDuringTutorialAction)
-                expectedCodeStateDuringTutorialAction = code.join(', ');
+                expectedCodeState = code.join(', ');
             })
-        return expectedCodeStateDuringTutorialAction;
+        return expectedCodeState;
     }
 
 
@@ -158,7 +162,7 @@ export default class MazeConfigs {
         let showTutorial = true;
 
         this.phases.push(this.createDemoPhase());
-        
+
         //this.phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
         //this.phases.push(this.createPhaseCallRecursiveFunction());
         //this.phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
@@ -927,7 +931,7 @@ export default class MazeConfigs {
             "drag if_block to arrow-right",
         ]
         )
-        Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-right:if_block', code);
+        Logger.log('TEST', testCount, code == 'arrow-up:if_coin, arrow-right:if_block', code);
 
     }
 }

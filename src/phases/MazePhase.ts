@@ -1,5 +1,6 @@
 import { GameObjects, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
+import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
@@ -26,6 +27,7 @@ export default class MazePhase {
     dudeFacedTo: string = 'right'
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
     codeEditor: CodeEditor;
+    mecanicaRope: MecanicaRope;
 
     constructor(scene: Scene, codeEditor: CodeEditor) {
         this.scene = scene;

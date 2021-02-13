@@ -23,13 +23,14 @@ export default class Button implements InterfaceElement {
       sprite.setFrame(0)
     })
     sprite.on('pointerup', () => {
+      if (this.disabled) return;
       sprite.setFrame(1)
+      androidVibrate(30)
+      onClickHandler();
     })
     sprite.on('pointerdown', () => {
       if (this.disabled) return;
-      androidVibrate(30)
       sprite.setFrame(2)
-      onClickHandler();
     })
     this.sprite = sprite;
   }

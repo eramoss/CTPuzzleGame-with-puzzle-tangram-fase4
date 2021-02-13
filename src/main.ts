@@ -5,6 +5,7 @@
 
 import Phaser from 'phaser'
 import Game from './scenes/Game'
+import PreGame from './scenes/PreGame'
 import GameWin from './scenes/GameWin'
 
 let proportionHeightByWidth = 0.58
@@ -28,7 +29,7 @@ export default new Phaser.Game({
     //forceSetTimeOut: true,
     target: 15
   },
-  scene: [Game, GameWin],
+  scene: [PreGame, Game, GameWin],
   render: {
     transparent: true,
   },

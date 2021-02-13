@@ -29,6 +29,7 @@ export default class Game extends Scene {
 
   constructor() {
     super('game')
+    this.sounds = new Sounds()
   }
 
   preload() {
@@ -66,21 +67,12 @@ export default class Game extends Scene {
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
 
-    this.load.audio('blocked', 'assets/ct/sounds/blocked.mp3');
-    this.load.audio('error', 'assets/ct/sounds/error.ogg');
-    this.load.audio('drag', 'assets/ct/sounds/drag.ogg');
-    this.load.audio('drop', 'assets/ct/sounds/drop.ogg');
-    this.load.audio('hover', 'assets/ct/sounds/hover.ogg');
-    this.load.audio('remove', 'assets/ct/sounds/remove.ogg');
-    this.load.audio('start', 'assets/ct/sounds/start.ogg');
-    this.load.audio('coin', 'assets/ct/sounds/coin.wav');
-    this.load.audio('blink', 'assets/ct/sounds/blink.mp3');
-    this.load.audio('success', 'assets/ct/sounds/success.mp3');
-
+    this.sounds.preloadAudios(this);
   }
 
-  create() {
+  async create() {
 
+    this.sounds.initializeAudios();
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
@@ -89,7 +81,7 @@ export default class Game extends Scene {
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
-    this.sounds = new Sounds(this)
+
 
     let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
     let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
@@ -100,7 +92,7 @@ export default class Game extends Scene {
     let gridCenterY = this.grid.height / 2;
     let gridCellWidth = this.grid.cellWidth * 1.1
 
-    this.phases = new MazeConfigs(
+    let phases = new MazeConfigs(
       this,
       this.grid,
       this.codeEditor,
@@ -109,6 +101,14 @@ export default class Game extends Scene {
       gridCenterY,
       gridCellWidth
     )
+    try {
+      phases = (await phases.loadTestFromServer('http://localhost:3001/tests/byId/2'));
+    } catch (e) {
+      phases = phases.createHardCodedPhases();
+    }
+    this.phases = phases;
+
+    //.createHardCodedPhases();
     //this.phases.test()
 
     const scale = this.grid.scale
@@ -338,6 +338,6 @@ export default class Game extends Scene {
   }
 
   update() {
-    this.dude.update()
+    this.dude?.update()
   }
 }

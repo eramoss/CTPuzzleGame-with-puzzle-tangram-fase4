@@ -3,6 +3,8 @@ import Button from '../controls/Button';
 import AlignGrid from '../geom/AlignGrid';
 import Sounds from '../sounds/Sounds';
 
+let globalSounds: Sounds
+
 export default class PreGame extends Phaser.Scene {
 
   sounds: Sounds
@@ -22,6 +24,7 @@ export default class PreGame extends Phaser.Scene {
 
   create() {
     this.sounds.initializeAudios();
+    globalSounds = this.sounds;
     let grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
@@ -29,10 +32,16 @@ export default class PreGame extends Phaser.Scene {
     );
     grid.addImage(0, 0, 'background', grid.cols, grid.rows);
 
-    this.playBtn = new Button(this, this.sounds, 13, 0, 'play-btn', () => {
+    grid.addImage(9,4,'test-box', 8);
+
+    this.playBtn = new Button(this, this.sounds, 0, 0, 'play-btn', () => {
       this.sounds.click();
       this.scene.start('game')
     })
-    grid.placeAt(10, 10, this.playBtn.sprite, 6);
+    grid.placeAt(10, 11, this.playBtn.sprite, 6);
+
+
   }
 }
+
+export { globalSounds }

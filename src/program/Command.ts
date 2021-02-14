@@ -3,6 +3,7 @@ import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
 import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
+import { globalSounds } from '../scenes/PreGame';
 import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
 import CommandAction from './CommandAction';
@@ -10,7 +11,6 @@ import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command implements InterfaceElement {
-
 
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
@@ -26,7 +26,7 @@ export default class Command implements InterfaceElement {
   placedOver: Command;
   isDragged: boolean = false;
   highlightConditionalImage: GameObjects.Image;
-  sounds: Sounds
+  sounds: Sounds = globalSounds
   isMuted: boolean = false;
   hash: string;
 
@@ -36,7 +36,6 @@ export default class Command implements InterfaceElement {
     //this.sprite.setDepth(3);
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
-    this.sounds = new Sounds(scene)
     this.hash = new Date().getTime().toString();
   }
 

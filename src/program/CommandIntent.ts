@@ -10,7 +10,7 @@ export default class CommandIntent {
             scene,
             scene.add.sprite(commandHovered.sprite.x,
                 commandHovered.sprite.y,
-                'intention_comamnd')
+                'intention_comamnd'),
         );
         this.commandIntent.sprite.scale = scale;
         this.commandIntent.isIntent = true;

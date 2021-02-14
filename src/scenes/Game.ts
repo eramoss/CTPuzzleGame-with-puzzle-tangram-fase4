@@ -10,6 +10,7 @@ import AlignGrid from '../geom/AlignGrid'
 import MazeConfigs from '../phases/MazeConfigs'
 import MazePhase from '../phases/MazePhase'
 import { Logger } from '../main'
+import { globalSounds } from './PreGame'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -18,7 +19,7 @@ export default class Game extends Scene {
   codeEditor: CodeEditor
   currentObject: GameObjects.Image;
   dude: Dude
-  sounds: Sounds
+  sounds: Sounds = globalSounds
   cursors: Types.Input.Keyboard.CursorKeys
   obstaclesMazeModel: MazeModel
   groundMazeModel: MazeModel
@@ -67,12 +68,9 @@ export default class Game extends Scene {
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
 
-    this.sounds.preloadAudios(this);
   }
 
   async create() {
-
-    this.sounds.initializeAudios();
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,

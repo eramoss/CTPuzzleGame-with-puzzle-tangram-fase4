@@ -9,6 +9,7 @@ export default class PreGame extends Phaser.Scene {
 
   sounds: Sounds
   playBtn: Button
+  testNumberObject: Phaser.GameObjects.Text
 
   constructor() {
     super('pre-game');
@@ -30,15 +31,32 @@ export default class PreGame extends Phaser.Scene {
       this.game.config.width as number,
       this.game.config.height as number
     );
+
     grid.addImage(0, 0, 'background', grid.cols, grid.rows);
 
-    grid.addImage(9,4,'test-box', 8);
+    const cell = grid.getCell(10, 6);
+    this.testNumberObject = this.add.text(cell.x, cell.y, '', {
+      fontFamily: 'Dyuthi, arial',
+    })
+      .setScale(grid.scale)
+      .setFontStyle('bold')
+      .setFontSize(100)
+      .setAlign('center')
+      .setDepth(1001)
+      .setTint(0xffffff);
+    ;
+
+    let testBox = grid.addImage(9, 4, 'test-box', 8).setInteractive();
+    testBox.on('pointerup', () => {
+      let testNumber = window.prompt('Informe o número do teste');
+      this.testNumberObject.setText(testNumber.substring(0,5));
+    })
 
     this.playBtn = new Button(this, this.sounds, 0, 0, 'play-btn', () => {
       this.sounds.click();
       this.scene.start('game')
     })
-    grid.placeAt(10, 11, this.playBtn.sprite, 6);
+    grid.placeAt(10, 10.7, this.playBtn.sprite, 6);
 
 
   }

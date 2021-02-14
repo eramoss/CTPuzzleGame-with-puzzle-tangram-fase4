@@ -19,7 +19,7 @@ export default class Game extends Scene {
   codeEditor: CodeEditor
   currentObject: GameObjects.Image;
   dude: Dude
-  sounds: Sounds = globalSounds
+  sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
   obstaclesMazeModel: MazeModel
   groundMazeModel: MazeModel
@@ -30,7 +30,6 @@ export default class Game extends Scene {
 
   constructor() {
     super('game')
-    this.sounds = new Sounds()
   }
 
   preload() {
@@ -71,6 +70,7 @@ export default class Game extends Scene {
   }
 
   async create() {
+    this.sounds = globalSounds
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,

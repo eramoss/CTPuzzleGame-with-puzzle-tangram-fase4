@@ -22,6 +22,7 @@ export default class PreGame extends Phaser.Scene {
 
   preload() {
     this.load.image('test-box', 'assets/ct/pregame/test-game-box.png');
+    this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
     this.sounds.preload(this);
@@ -40,8 +41,6 @@ export default class PreGame extends Phaser.Scene {
 
     grid.addImage(0, 0, 'background', grid.cols, grid.rows);
 
-
-
     const cell = grid.getCell(10, 6);
     this.testNumberObject = this.add.text(cell.x, cell.y, '', {
       fontFamily: 'Dyuthi, arial',
@@ -53,14 +52,26 @@ export default class PreGame extends Phaser.Scene {
       .setDepth(1001)
       .setTint(0xffffff);
 
+    let testBox = grid.addImage(9, 4, 'test-box', 8).setInteractive();
+    let testBoxClear = grid.addImage(15.5, 6, 'test-box-clear', 1).setInteractive();
+    testBoxClear.setVisible(false);
+
     this.keyboard.create();
     this.keyboard.hide();
     this.keyboard.onClick = (value: string) => {
-      this.testNumberValue += value;
-      this.testNumberObject.setText(this.testNumberValue);
+      if (this.testNumberValue.length <= 5) {
+        testBoxClear.setVisible(true);
+        this.testNumberValue += value;
+        this.testNumberObject.setText(this.testNumberValue);
+      }
     }
 
-    let testBox = grid.addImage(9, 4, 'test-box', 8).setInteractive();
+    testBoxClear.on('pointerup', () => {
+      this.testNumberValue = '';
+      this.testNumberObject.setText('');
+      testBoxClear.setVisible(false);
+    })
+
     testBox.on('pointerup', () => {
       this.keyboard.show()
       //let testNumber = window.prompt('Informe o número do teste');
@@ -72,8 +83,6 @@ export default class PreGame extends Phaser.Scene {
       this.scene.start('game')
     })
     grid.placeAt(10, 10.7, this.playBtn.sprite, 6);
-
-
   }
 }
 

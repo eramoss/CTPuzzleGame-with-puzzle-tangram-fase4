@@ -6,7 +6,6 @@ import { androidPlayAudio } from "../utils/Utils";
 
 export default class Sounds {
 
-
   scene: Phaser.Scene;
   dragSound: Phaser.Sound.BaseSound;
   dropSound: Phaser.Sound.BaseSound;
@@ -20,7 +19,7 @@ export default class Sounds {
   successSound: Phaser.Sound.BaseSound;
   clickSound: Phaser.Sound.BaseSound;
 
-  initializeAudios(){
+  create(){
     this.dragSound = this.scene.sound.add('drag');
     this.dropSound = this.scene.sound.add('drop');
     this.hoverSound = this.scene.sound.add('hover');
@@ -34,7 +33,7 @@ export default class Sounds {
     this.clickSound = this.scene.sound.add('click');
   }
 
-  preloadAudios(scene: Phaser.Scene) {
+  preload(scene: Phaser.Scene) {
     this.scene = scene;
     this.scene.load.audio('blocked', 'assets/ct/sounds/blocked.mp3');
     this.scene.load.audio('error', 'assets/ct/sounds/error.ogg');

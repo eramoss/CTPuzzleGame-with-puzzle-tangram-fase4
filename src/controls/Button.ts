@@ -10,8 +10,11 @@ export default class Button implements InterfaceElement {
   blinkingInterval: number;
   hover: boolean;
   disabled: boolean = false
+  scene: Scene
+  text: Phaser.GameObjects.Text;
 
   constructor(scene: Scene, sounds: Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
+    this.scene = scene;
     const sprite = scene.add.sprite(x, y, spriteKey, 0).setInteractive({ cursor: 'pointer' });
     sprite.on('pointerover', () => {
       this.hover = true;
@@ -34,9 +37,6 @@ export default class Button implements InterfaceElement {
     })
     this.sprite = sprite;
   }
-
-
-
 
   getSprite(): Phaser.Physics.Arcade.Sprite {
     return this.sprite as Phaser.Physics.Arcade.Sprite
@@ -79,5 +79,28 @@ export default class Button implements InterfaceElement {
 
   setDepth(depth: number): void {
     this.sprite.setDepth(depth);
+  }
+
+  setText(value: string, cell: { x: number, y: number } = { x: this.sprite.x, y: this.sprite.y }) {
+    let text = this.scene.add.text(cell.x, cell.y, '', {
+      fontFamily: 'Dyuthi, arial',
+    })
+      .setFontStyle('bold')
+      .setFontSize(100)
+      .setAlign('center')
+      .setDepth(1001)
+      .setTint(0xffffff);
+    text.setText(value);
+    this.text = text;
+  }
+
+  setScale(scale: number) {
+    this.text?.setScale(scale);
+    this.sprite?.setScale(scale);
+  }
+
+  setVisible(visible: boolean) {
+    this.sprite.setVisible(visible);
+    this.text.setVisible(visible);
   }
 }

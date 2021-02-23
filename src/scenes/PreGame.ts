@@ -83,6 +83,10 @@ export default class PreGame extends Phaser.Scene {
       this.scene.start('game')
     })
     grid.placeAt(10, 10.7, this.playBtn.sprite, 6);
+
+    const params = new URLSearchParams(window.location.search);
+    this.testNumberValue = params.get('test');
+    this.testNumberObject.setText(this.testNumberValue);
   }
 }
 

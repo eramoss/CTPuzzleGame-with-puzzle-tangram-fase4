@@ -66,24 +66,19 @@ export default class Game extends Scene {
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 632, frameHeight: 415 });
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
-
   }
 
   async create() {
     this.sounds = globalSounds
-    this.grid = new AlignGrid(
-      this, 26, 22,
-      this.game.config.width as number,
-      this.game.config.height as number
-    );
+    this.createGrid(26, 22)
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
 
-
     let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
     let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
     let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
+
     this.codeEditor = new CodeEditor(this, [prog0, prog1, prog2], this.sounds, this.grid);
 
     let gridCenterX = this.grid.width / 3.2;
@@ -210,8 +205,6 @@ export default class Game extends Scene {
     this.dude.character.setScale(this.grid.scale)
     this.dude.character.displayOriginY = this.dude.character.height * 0.65;
 
-
-
     this.dude.canMoveTo = (x: number, y: number) => {
       let ground = this.currentPhase.ground;
       let can = true;
@@ -329,6 +322,14 @@ export default class Game extends Scene {
     }
 
     playNextPhase();
+  }
+
+  private createGrid(cols: number, rows:number) {
+    this.grid = new AlignGrid(
+      this, cols, rows,
+      this.game.config.width as number,
+      this.game.config.height as number
+    )
   }
 
   init() {

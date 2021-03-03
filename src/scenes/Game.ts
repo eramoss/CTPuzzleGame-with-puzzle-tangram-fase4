@@ -7,10 +7,11 @@ import CodeEditor from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
-import MazeConfigs from '../phases/MazeConfigs'
+import MazePhasesLoader from '../phases/MazePhasesLoader'
 import MazePhase from '../phases/MazePhase'
 import { Logger } from '../main'
 import { globalSounds } from './PreGame'
+import GameParams from '../settings/GameParams'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -25,8 +26,9 @@ export default class Game extends Scene {
   groundMazeModel: MazeModel
   grid: AlignGrid
   mode: string = Matrix.MODE_ISOMETRIC
-  phases: MazeConfigs
+  phases: MazePhasesLoader
   currentPhase: MazePhase
+  gameParams: GameParams
 
   constructor() {
     super('game')
@@ -68,6 +70,10 @@ export default class Game extends Scene {
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
   }
 
+  init(data: GameParams) {
+    this.gameParams = data
+  }
+
   async create() {
     this.sounds = globalSounds
     this.createGrid(26, 22)
@@ -85,7 +91,7 @@ export default class Game extends Scene {
     let gridCenterY = this.grid.height / 2;
     let gridCellWidth = this.grid.cellWidth * 1.1
 
-    let phases = new MazeConfigs(
+    this.phases = (await new MazePhasesLoader(
       this,
       this.grid,
       this.codeEditor,
@@ -93,16 +99,8 @@ export default class Game extends Scene {
       gridCenterX,
       gridCenterY,
       gridCellWidth
-    )
-    try {
-      phases = (await phases.loadTestFromServer('http://localhost:3001/tests/byId/2'));
-    } catch (e) {
-      phases = phases.createHardCodedPhases();
-    }
-    this.phases = phases;
+    ).load(this.gameParams));
 
-    //.createHardCodedPhases();
-    //this.phases.test()
 
     const scale = this.grid.scale
     let isometric = this.mode == Matrix.MODE_ISOMETRIC;
@@ -324,7 +322,7 @@ export default class Game extends Scene {
     playNextPhase();
   }
 
-  private createGrid(cols: number, rows:number) {
+  private createGrid(cols: number, rows: number) {
     this.grid = new AlignGrid(
       this, cols, rows,
       this.game.config.width as number,
@@ -332,9 +330,7 @@ export default class Game extends Scene {
     )
   }
 
-  init() {
 
-  }
 
   update() {
     this.dude?.update()

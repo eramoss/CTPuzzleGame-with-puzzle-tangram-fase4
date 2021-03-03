@@ -3,6 +3,7 @@ import Button from '../controls/Button';
 import AlignGrid from '../geom/AlignGrid';
 import Sounds from '../sounds/Sounds';
 import Keyboard from '../controls/Keyboard';
+import GameParams from '../settings/GameParams';
 
 let globalSounds: Sounds
 
@@ -85,8 +86,18 @@ export default class PreGame extends Phaser.Scene {
     grid.placeAt(10, 10.7, this.playBtn.sprite, 6);
 
     const params = new URLSearchParams(window.location.search);
-    this.testNumberValue = params.get('test');
+    this.testNumberValue = params.get('test') || '';
     this.testNumberObject.setText(this.testNumberValue);
+
+    let gameParams = new GameParams();
+    gameParams.operation = params.get('op');
+    gameParams.baseUrl = params.get('baseUrl')
+    gameParams.applicationHash = params.get('hash')
+    gameParams.testItemNumber = params.get('testItemNumber');
+
+    //if (gameParams.isPlaygroundTest()) {
+    this.scene.start('game', gameParams)
+    //}
   }
 }
 

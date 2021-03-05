@@ -1,5 +1,5 @@
 import { Physics, Scene } from 'phaser';
-import Matrix from '../geom/Matrix'
+import Matrix, { MatrixMode } from '../geom/Matrix'
 import IsometricPoint from '../geom/IsometricPoint'
 import Command from '../program/Command';
 import Sounds from '../sounds/Sounds';
@@ -34,7 +34,7 @@ export default class Dude {
   grid: AlignGrid;
   ballon: Ballon;
 
-  constructor(scene: Scene, matrixMode: string, sounds: Sounds, grid: AlignGrid) {
+  constructor(scene: Scene, matrixMode: MatrixMode, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
     this.sounds = sounds;
     this.scene = scene;
@@ -48,8 +48,8 @@ export default class Dude {
     this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
   }
 
-  createAnimations(matrixMode: string) {
-    let isometric = matrixMode == Matrix.MODE_ISOMETRIC;
+  createAnimations(matrixMode: MatrixMode) {
+    let isometric = matrixMode == MatrixMode.ISOMETRIC;
     const animations = [
       { key: 'down', frames: isometric ? [1] : [2] },
       { key: 'left', frames: isometric ? [3] : [0] },

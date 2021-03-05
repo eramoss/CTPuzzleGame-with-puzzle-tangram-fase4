@@ -1,5 +1,5 @@
 import { GameObjects, Types, Scene } from 'phaser'
-import Matrix from '../geom/Matrix'
+import Matrix, { MatrixMode } from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
@@ -25,7 +25,7 @@ export default class Game extends Scene {
   obstaclesMazeModel: MazeModel
   groundMazeModel: MazeModel
   grid: AlignGrid
-  mode: string = Matrix.MODE_ISOMETRIC
+  mode: MatrixMode = MatrixMode.ISOMETRIC
   phases: MazePhasesLoader
   currentPhase: MazePhase
   gameParams: GameParams
@@ -95,7 +95,7 @@ export default class Game extends Scene {
       this,
       this.grid,
       this.codeEditor,
-      Matrix.MODE_ISOMETRIC,
+      MatrixMode.ISOMETRIC,
       gridCenterX,
       gridCenterY,
       gridCellWidth
@@ -103,7 +103,7 @@ export default class Game extends Scene {
 
 
     const scale = this.grid.scale
-    let isometric = this.mode == Matrix.MODE_ISOMETRIC;
+    let isometric = this.mode == MatrixMode.ISOMETRIC;
 
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {

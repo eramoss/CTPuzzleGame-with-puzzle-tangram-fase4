@@ -1,4 +1,4 @@
-import Matrix from '../geom/Matrix';
+import Matrix, { MatrixMode } from '../geom/Matrix';
 import IsometricPoint from '../geom/IsometricPoint';
 import Command from '../program/Command';
 import CommandAction from '../program/CommandAction';
@@ -64,7 +64,7 @@ export class DudeMove {
       if (currentFace == 'right') { newFace = 'up'; }
     }
     let animation = newFace;
-    if (this.dude.matrix.mode == Matrix.MODE_ISOMETRIC) {
+    if (this.dude.matrix.mode == MatrixMode.ISOMETRIC) {
       animation = currentFace + "-" + newFace;
     }
 

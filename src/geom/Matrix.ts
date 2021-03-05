@@ -2,6 +2,8 @@ import IsometricPoint from './IsometricPoint'
 import { Scene } from 'phaser'
 import { isDebug } from '../utils/Utils';
 
+export enum MatrixMode { ISOMETRIC = "ISOMETRIC", NORMAL = "NORMAL" }
+
 export default class Matrix {
 
   static MODE_ISOMETRIC = "ISOMETRIC"
@@ -14,9 +16,9 @@ export default class Matrix {
   width: number;
   height: number;
   matrix: string[][];
-  mode: string = Matrix.MODE_NORMAL;
+  mode: MatrixMode
 
-  constructor(scene: Scene, mode: string, matrix: string[][], x: integer, y: integer, distanceBetweenPoints: integer) {
+  constructor(scene: Scene, mode: MatrixMode, matrix: string[][], x: integer, y: integer, distanceBetweenPoints: integer) {
     this.mode = mode;
     this.x = x;
     this.y = y;
@@ -30,7 +32,7 @@ export default class Matrix {
     this.height = matrix.length;
     this.width = matrix[0].length;
 
-    if (mode == Matrix.MODE_NORMAL) {
+    if (mode == MatrixMode.NORMAL) {
       this.x = this.x - (distanceBetweenPoints * this.width) / 2
     }
     this.y = this.y - (distanceBetweenPoints * this.height) / 2
@@ -42,7 +44,7 @@ export default class Matrix {
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
         let point: IsometricPoint = new IsometricPoint(col * distanceBetweenPoints, row * distanceBetweenPoints)
-        if (mode == Matrix.MODE_NORMAL)
+        if (mode == MatrixMode.NORMAL)
           point.toCartesian()
 
         point.x += this.x

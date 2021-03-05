@@ -91,6 +91,17 @@ export default class Game extends Scene {
     let gridCenterY = this.grid.height / 2;
     let gridCellWidth = this.grid.cellWidth * 1.1
 
+
+    let loadingText = this.add.text(
+      gridCenterX,
+      gridCenterY,
+      'Loading...', {
+      fontSize: '30pt'
+    })
+      .setScale(this.grid.scale);
+
+    loadingText.setX(loadingText.x - loadingText.width / 2)
+
     this.phases = (await new MazePhasesLoader(
       this,
       this.grid,
@@ -100,6 +111,8 @@ export default class Game extends Scene {
       gridCenterY,
       gridCellWidth
     ).load(this.gameParams));
+
+    this.children.remove(loadingText)
 
 
     const scale = this.grid.scale

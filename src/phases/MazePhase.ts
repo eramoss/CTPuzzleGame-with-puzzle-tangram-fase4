@@ -16,6 +16,7 @@ export default class MazePhase {
     ground: Matrix;
     scene: Scene;
     grid: AlignGrid
+    itemId: number
 
     firstAction: TutorialAction;
     action: TutorialAction;

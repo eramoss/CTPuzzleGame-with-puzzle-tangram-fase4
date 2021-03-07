@@ -12,6 +12,7 @@ import MazePhase from '../phases/MazePhase'
 import { Logger } from '../main'
 import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
+import TestApplicationService from '../test-application/TestApplicationService'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -29,6 +30,7 @@ export default class Game extends Scene {
   phases: MazePhasesLoader
   currentPhase: MazePhase
   gameParams: GameParams
+  testApplicationService: TestApplicationService
 
   constructor() {
     super('game')
@@ -72,6 +74,7 @@ export default class Game extends Scene {
 
   init(data: GameParams) {
     this.gameParams = data
+    this.testApplicationService = new TestApplicationService(this.gameParams)
   }
 
   async create() {
@@ -169,8 +172,12 @@ export default class Game extends Scene {
       this.currentPhase?.clearTutorials()
       this.currentPhase = phase
 
+      if (this.currentPhase) {
+        this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
+      }
       if (!this.currentPhase) {
         this.scene.start('game-win');
+        this.testApplicationService.saveFinishedDate();
       }
 
       if (this.currentPhase) {
@@ -342,8 +349,6 @@ export default class Game extends Scene {
       this.game.config.height as number
     )
   }
-
-
 
   update() {
     this.dude?.update()

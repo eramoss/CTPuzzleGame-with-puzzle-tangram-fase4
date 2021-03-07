@@ -7,6 +7,8 @@ import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 import MazePhase from "./MazePhase";
 import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
+import TestApplicationService from "../test-application/TestApplicationService";
+import { TestItem } from "../test-application/TestApplication";
 
 export default class MazePhasesLoader {
 
@@ -19,6 +21,7 @@ export default class MazePhasesLoader {
   gridCenterY: number;
   gridCellWidth: number;
   codeEditor: CodeEditor;
+  testApplicationService: TestApplicationService;
 
   constructor(scene: Scene,
     grid: AlignGrid,
@@ -40,13 +43,14 @@ export default class MazePhasesLoader {
   }
 
   async load(gameParams: GameParams): Promise<MazePhasesLoader> {
+    this.testApplicationService = new TestApplicationService(gameParams)
     let phases: MazePhasesLoader;
     try {
       if (gameParams.isPlaygroundTest()) {
-        phases = await this.loadPlaygroundTestItem(gameParams);
+        phases = await this.loadPlaygroundTestItem(gameParams.testItemNumber);
       }
       if (gameParams.isTestApplication()) {
-        phases = await this.loadTestApplication(gameParams)
+        phases = await this.loadTestApplication()
       }
       if (phases == null) {
         throw new Error('empty phases');
@@ -58,28 +62,25 @@ export default class MazePhasesLoader {
     return phases
   }
 
-  private async loadPlaygroundTestItem(gameParams: GameParams): Promise<MazePhasesLoader> {
-    const baseUrl = gameParams.baseUrl;
-    const itemNumber = gameParams.testItemNumber;
-    let phase = await this.instantiateItem(baseUrl, itemNumber)
+  private async loadPlaygroundTestItem(itemNumber: number): Promise<MazePhasesLoader> {
+    let phase = await this.instantiateItem(itemNumber)
     this.phases = [phase]
     return this
   }
 
-  private async loadTestApplication(gameParams: GameParams): Promise<MazePhasesLoader> {
-    const response: Response = await fetch(gameParams.baseUrl + '/test-applications/byHash/' + gameParams.applicationHash)
-    let testApplication = await response.json()
-    let ids = testApplication.test.items.map((testItem: any) => testItem.item.id)
-    this.phases = await Promise.all(ids.map(async (id: string) => await this.instantiateItem(gameParams.baseUrl, id)));
+  private async loadTestApplication(): Promise<MazePhasesLoader> {
+    let testApplication = await this.testApplicationService.getTestApplication()
+    let ids = testApplication.test.items.map((testItem: TestItem) => testItem.item.id)
+    this.phases = await Promise.all(ids.map(async (id: string) => await this.instantiateItem(id)));
     return this;
   }
 
-  private async instantiateItem(baseUrl: string, itemNumber: any): Promise<MazePhase> {
-    const response = await fetch(baseUrl + '/items/instantiate/' + itemNumber);
-    let item = await response.json();
-    return this.convertMecanicaRopeToPhase(item as MecanicaRope);
+  private async instantiateItem(itemNumber: any): Promise<MazePhase> {
+    let item = await this.testApplicationService.instantiateItem<MecanicaRope>(itemNumber);
+    const mazePhase = this.convertMecanicaRopeToPhase(item);
+    mazePhase.itemId = itemNumber;
+    return mazePhase;
   }
-
 
   private convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);

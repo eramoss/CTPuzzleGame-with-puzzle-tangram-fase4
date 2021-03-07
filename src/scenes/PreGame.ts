@@ -4,6 +4,9 @@ import AlignGrid from '../geom/AlignGrid';
 import Sounds from '../sounds/Sounds';
 import Keyboard from '../controls/Keyboard';
 import GameParams from '../settings/GameParams';
+import UserRepository from '../user/UserRepository';
+import User from '../user/User';
+import TestApplicationService from '../test-application/TestApplicationService';
 
 let globalSounds: Sounds
 
@@ -14,11 +17,19 @@ export default class PreGame extends Phaser.Scene {
   testNumberObject: Phaser.GameObjects.Text
   testNumberValue: string = ''
   keyboard: Keyboard
+  userRepository: UserRepository
+  gameParams: GameParams;
+  testApplicationService: TestApplicationService;
 
   constructor() {
     super('pre-game');
     this.sounds = new Sounds();
     this.keyboard = new Keyboard();
+
+    const params = new URLSearchParams(window.location.search);
+    this.gameParams = new GameParams(params);
+    this.testApplicationService = new TestApplicationService(this.gameParams)
+    this.userRepository = new UserRepository()
   }
 
   preload() {
@@ -75,8 +86,6 @@ export default class PreGame extends Phaser.Scene {
 
     testBox.on('pointerup', () => {
       this.keyboard.show()
-      //let testNumber = window.prompt('Informe o número do teste');
-      //this.testNumberObject.setText(testNumber.substring(0,5));
     })
 
     this.playBtn = new Button(this, this.sounds, 0, 0, 'play-btn', () => {
@@ -85,18 +94,15 @@ export default class PreGame extends Phaser.Scene {
     })
     grid.placeAt(10, 10.7, this.playBtn.sprite, 6);
 
-    const params = new URLSearchParams(window.location.search);
-    this.testNumberValue = params.get('test') || '';
-    this.testNumberObject.setText(this.testNumberValue);
+    this.testNumberObject.setText((this.gameParams.testItemNumber || '') + '');
 
-    let gameParams = new GameParams();
-    gameParams.operation = params.get('op');
-    gameParams.baseUrl = params.get('baseUrl')
-    gameParams.applicationHash = params.get('hash')
-    gameParams.testItemNumber = params.get('testItemNumber');
+    if (this.gameParams.isTestApplication()) {
+      let user: User = this.userRepository.getOrCreateGuestUser();
+      this.testApplicationService.participateInTheTest(user);
+    }
 
-    //if (gameParams.isPlaygroundTest()) {
-    this.scene.start('game', gameParams)
+    //if (this.gameParams.isPlaygroundTest()) {
+      this.scene.start('game', this.gameParams)
     //}
   }
 }

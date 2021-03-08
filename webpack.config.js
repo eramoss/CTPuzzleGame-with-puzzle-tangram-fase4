@@ -47,7 +47,6 @@ module.exports = {
       patterns: [
         { from: 'assets', to: dist + '/assets' },
         { from: 'static', to: dist + '/' },
-        { from: '.well-known', to: dist + '/.well-known' },
       ],
     }),
     new ZipPlugin({

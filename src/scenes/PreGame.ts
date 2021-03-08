@@ -7,6 +7,8 @@ import GameParams from '../settings/GameParams';
 import UserRepository from '../user/UserRepository';
 import User from '../user/User';
 import TestApplicationService from '../test-application/TestApplicationService';
+import { isAndroidAmbient } from '../utils/Utils';
+import { Logger } from '../main';
 
 let globalSounds: Sounds
 
@@ -26,7 +28,14 @@ export default class PreGame extends Phaser.Scene {
     this.sounds = new Sounds();
     this.keyboard = new Keyboard();
 
-    const params = new URLSearchParams(window.location.search);
+    let queryParams = window.location.search
+    if (isAndroidAmbient()) {
+      //@ts-ignore
+      queryParams = window.search
+    }
+    Logger.info('Loaded params = ' + queryParams)
+
+    const params = new URLSearchParams(queryParams);
     this.gameParams = new GameParams(params);
     this.testApplicationService = new TestApplicationService(this.gameParams)
     this.userRepository = new UserRepository()
@@ -102,7 +111,7 @@ export default class PreGame extends Phaser.Scene {
     }
 
     //if (this.gameParams.isPlaygroundTest()) {
-      this.scene.start('game', this.gameParams)
+    this.scene.start('game', this.gameParams)
     //}
   }
 }

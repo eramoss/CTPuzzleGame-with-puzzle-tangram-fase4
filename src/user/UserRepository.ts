@@ -1,6 +1,7 @@
 import User from "./User";
 //@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
+import { getItem, setItem } from "../utils/storage";
 
 export default class UserRepository {
   getOrCreateGuestUser(): User {
@@ -17,16 +18,15 @@ export default class UserRepository {
   }
 
   setUser(user: User) {
-    localStorage.setItem("user", JSON.stringify(user))
+    setItem("user", user)
   }
 
   getUser(): User {
     let user: User = null
     try {
-      let userJson = localStorage.getItem("user");
-      user = JSON.parse(userJson)
+      user = getItem<User>("user");
     } catch (e) {
-      console.error('Não foi possível obter o usuário do localstorage')
+      console.error('Não foi possível obter o usuário da base')
     }
     return user
   }

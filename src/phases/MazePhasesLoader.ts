@@ -69,9 +69,12 @@ export default class MazePhasesLoader {
   }
 
   private async loadTestApplication(): Promise<MazePhasesLoader> {
-    let testApplication = await this.testApplicationService.getTestApplication()
-    let ids = testApplication.test.items.map((testItem: TestItem) => testItem.item.id)
-    this.phases = await Promise.all(ids.map(async (id: string) => await this.instantiateItem(id)));
+    let test = await this.testApplicationService.getTest()
+    this.phases = test.items.map((item: any) => {
+      const mazePhase = this.convertMecanicaRopeToPhase(item.item as MecanicaRope)
+      mazePhase.itemId = item.item_id;
+      return mazePhase
+    })
     return this;
   }
 

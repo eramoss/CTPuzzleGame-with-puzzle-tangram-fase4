@@ -107,7 +107,7 @@ export default class PreGame extends Phaser.Scene {
 
     if (this.gameParams.isTestApplication()) {
       let user: User = this.userRepository.getOrCreateGuestUser();
-      await this.testApplicationService.participateInTheTest(user);
+      await this.testApplicationService.getApplicationData(user);
     }
 
     //if (this.gameParams.isTestApplication()) {

@@ -11,8 +11,10 @@ import { joinChilds } from '../utils/Utils';
 import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
 import Trash from './Trash';
+import { RespostaItemProgramacao } from '../ct-platform-classes/RespostaItemProgramacao';
 
 export default class CodeEditor {
+
 
   scene: Scene;
   programs: Program[];
@@ -526,5 +528,12 @@ export default class CodeEditor {
 
   stringfyCommands(): string {
     return this.getAllOrdinalCommands().map(c => c.stringfy()).join(', ');
+  }
+
+  getItemResponse(): RespostaItemProgramacao {
+    let resposta = new RespostaItemProgramacao();
+    resposta.caminhoPercorrido = [{x:0,y:0}]
+    //...
+    return resposta;
   }
 }

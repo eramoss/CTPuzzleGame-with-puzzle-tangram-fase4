@@ -177,7 +177,7 @@ export default class Game extends Scene {
       }
       if (!this.currentPhase) {
         this.scene.start('game-win');
-        this.testApplicationService.saveFinishedDate();
+        //this.testApplicationService.saveFinishedDate();
       }
 
       if (this.currentPhase) {
@@ -300,6 +300,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
+        this.testApplicationService.sendResponse(this.currentPhase.itemId, this.codeEditor.getItemResponse());
         this.dude.execute([prog0, prog1, prog2]);
       }
     }

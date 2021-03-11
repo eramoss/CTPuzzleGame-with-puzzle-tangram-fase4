@@ -1,9 +1,10 @@
+import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 import User from "../user/User";
-import { GET, POST, PUT } from "../utils/internet";
+import { GET, POST } from "../utils/internet";
 import { getItem, setItem } from "../utils/storage";
-import TestApplication, { Participation } from "./TestApplication";
+import { PreparedParticipation } from "./TestApplication";
 
 export default class TestApplicationService {
 
@@ -15,46 +16,33 @@ export default class TestApplicationService {
   async saveCurrentPlayingPhase(id: number) {
     if (this.gameParams.isTestApplication()) {
       setItem('currentPlayingPhase', id + '');
-      let participation = this.getParticipation()
+      /* let participation = this.getParticipation()
       participation.lastVisitedItemId = id;
-      PUT(this.gameParams.baseUrl + '/participations/public/save-progress', participation)
+      PUT(this.gameParams.baseUrl + '/participations/public/save-progress', participation) */
     }
   }
 
-  async getTestApplication(): Promise<TestApplication> {
-    const participation = this.getParticipation();
-    return participation.application
-  }
-
-  async participateInTheTest(user: User) {
+  async getApplicationData(user: User) {
     try {
-      let response = await POST(
-        this.gameParams.baseUrl + '/test-applications/public/participate-in-the-test/' + this.gameParams.applicationHash,
-        user
-      )
-      let participation = (await response.json()) as Participation
-      this.saveParticipation(participation)
+      let response = await GET(this.gameParams.dataUrl.replace('<user_uuid>', user.hash))
+      let participation = (await response.json()) as PreparedParticipation
+      setItem('test_as_json', participation.testAsJson);
+      setItem('url_to_send_responses', participation.urlToSendResponses);
     } catch (e) {
       Logger.error(e);
     }
   }
 
-  async saveFinishedDate() {
-    let participation = this.getParticipation();
-    let response = await POST(this.gameParams.baseUrl + '/participations/public/finish/' + participation.id)
+  async getTest(): Promise<any> {
+    return getItem<any>('test_as_json');
   }
 
-  saveParticipation(participation: Participation) {
-    setItem("participation", participation)
+  async sendResponse(itemId: number, itemResponse: RespostaItemProgramacao) {
+    let url = getItem<any>('url_to_send_responses').url;
+    url = url.replace('<item_id>', itemId);
+    let response = await POST(url, itemResponse);
   }
 
-  getParticipation(): Participation {
-    let participation = getItem<Participation>("participation")
-    if (!participation) {
-      participation = new Participation()
-    }
-    return participation;
-  }
 
   async instantiateItem<T>(itemNumber: any): Promise<T> {
     const response = await GET(this.gameParams.baseUrl + '/items/public/instantiate/' + itemNumber);

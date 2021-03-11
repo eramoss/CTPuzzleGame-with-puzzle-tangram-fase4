@@ -1,8 +1,11 @@
 import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
+import FlexFlow from "../geom/FlexFlow";
 import { globalSounds } from "../scenes/PreGame";
 import { androidVibrate } from "../utils/Utils";
 import Button from "./Button";
+
+export enum KeyboardType { QWERT, NUMBERS }
 
 export default class Keyboard {
   scene: Scene;
@@ -18,28 +21,37 @@ export default class Keyboard {
     this.scene = scene;
     this.scene.load.spritesheet('blue-btn', 'assets/ct/pregame/blue-button.png', { frameWidth: 165, frameHeight: 152 });
 
-
-    this.grid = new AlignGrid(scene, 14, 10,
+    this.grid = new AlignGrid(scene, 24, 18,
       scene.game.config.width as number,
       scene.game.config.height as number
     )
   }
 
-  create() {
-    ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-      .forEach((value: string, index: number) => {
+  create(keyboardType: KeyboardType = KeyboardType.QWERT) {
+    let keysRows = [];
+    if (keyboardType == KeyboardType.NUMBERS) {
+      keysRows = ['0123456789']
+    }
+    if (keyboardType == KeyboardType.QWERT) {
+      keysRows = ['qwertyuiop', 'asdfghjklç', 'zxcvbnm', '-']
+    }
+    keysRows.forEach((keysRow: string, keysRowIndex: number) => {
+
+      let keys = keysRow.split('');
+      let flexFlow = new FlexFlow(this.scene);
+      flexFlow.setPositionByGrid(0, keysRowIndex, 21, 2, this.grid);
+
+      keys.forEach((value: string, index: number) => {
         let btn = new Button(this.scene, globalSounds, 0, 0, 'blue-btn', () => {
           androidVibrate(30)
           this.onClick(value)
         })
-        let col = index + 2;
-        let row = 7;
-        this.grid.placeAt(col, row, btn.sprite, 1);
-        let cell = this.grid.getCell(col + 0.3, row + 0.2);
+        let cell = flexFlow.addChild(btn.sprite)
         btn.setText(value, cell)
         this.buttons.push(btn);
         btn.setScale(this.grid.scale);
       })
+    })
   }
 
   show() {

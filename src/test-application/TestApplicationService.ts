@@ -17,7 +17,7 @@ export default class TestApplicationService {
       setItem('currentPlayingPhase', id + '');
       let participation = this.getParticipation()
       participation.lastVisitedItemId = id;
-      PUT(this.gameParams.baseUrl + '/participations/save-progress', participation)
+      PUT(this.gameParams.baseUrl + '/participations/public/save-progress', participation)
     }
   }
 
@@ -29,7 +29,7 @@ export default class TestApplicationService {
   async participateInTheTest(user: User) {
     try {
       let response = await POST(
-        this.gameParams.baseUrl + '/test-applications/participate-in-the-test/' + this.gameParams.applicationHash,
+        this.gameParams.baseUrl + '/test-applications/public/participate-in-the-test/' + this.gameParams.applicationHash,
         user
       )
       let participation = (await response.json()) as Participation
@@ -41,7 +41,7 @@ export default class TestApplicationService {
 
   async saveFinishedDate() {
     let participation = this.getParticipation();
-    let response = await POST(this.gameParams.baseUrl + '/participations/finish/' + participation.id)
+    let response = await POST(this.gameParams.baseUrl + '/participations/public/finish/' + participation.id)
   }
 
   saveParticipation(participation: Participation) {
@@ -57,7 +57,7 @@ export default class TestApplicationService {
   }
 
   async instantiateItem<T>(itemNumber: any): Promise<T> {
-    const response = await GET(this.gameParams.baseUrl + '/items/instantiate/' + itemNumber);
+    const response = await GET(this.gameParams.baseUrl + '/items/public/instantiate/' + itemNumber);
     let item = await response.json();
     return item as T;
   }

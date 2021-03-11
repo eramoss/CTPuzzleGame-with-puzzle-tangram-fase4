@@ -21,6 +21,15 @@
           "cwd": "${workspaceFolder}"
         },
         "command": "npm run dev"
+      },
+      {
+        "label": "Build and run locally",
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "command": "npm run build && http-server dist",
+        "problemMatcher": []
       }
     ]
   },

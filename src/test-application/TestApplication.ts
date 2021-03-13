@@ -1,9 +1,9 @@
 export class TestItem {
-  item_id: number
+  id: number
   item: any
 }
 
-export class TestAsJson {
+export class Test {
   name: string
   items: TestItem[]
 }
@@ -25,7 +25,7 @@ export class PreparedParticipation {
 
   participationId: number
   lastVisitedItemId: number
-  testAsJson: TestAsJson
+  test: Test
   urlToSendResponses: UrlToSendResponses
   urlToSendProgress: UrlToSendProgress
 

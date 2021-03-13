@@ -4,7 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, setItem } from "../utils/storage";
-import { PreparedParticipation, TestAsJson, TestItem, UrlToSendProgress } from "./TestApplication";
+import { PreparedParticipation, Test, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
 
@@ -44,9 +44,9 @@ export default class TestApplicationService {
 
   getNonCompletedTestItems(): TestItem[] {
     const participation = this.getParticipation()
-    const items = participation.testAsJson.items;
+    const items = participation.test.items;
     const lastVisitedItemId = participation.lastVisitedItemId;
-    const lastVisitedItem = items.find((testItem) => testItem.item_id == lastVisitedItemId);
+    const lastVisitedItem = items.find((testItem) => testItem.id == lastVisitedItemId);
     const lastVisitedItemIndex = items.indexOf(lastVisitedItem);
     return items.slice(lastVisitedItemIndex);
   }

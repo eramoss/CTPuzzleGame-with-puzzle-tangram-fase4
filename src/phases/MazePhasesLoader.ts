@@ -72,7 +72,7 @@ export default class MazePhasesLoader {
     let items = this.testApplicationService.getNonCompletedTestItems()
     this.phases = items.map((item: TestItem) => {
       const mazePhase = this.convertMecanicaRopeToPhase(item.item as MecanicaRope)
-      mazePhase.itemId = item.item_id;
+      mazePhase.itemId = item.id;
       return mazePhase
     })
     return this;

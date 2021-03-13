@@ -5,9 +5,11 @@ export default class GameParams {
     this.baseUrl = params.get('baseUrl')
     this.dataUrl = params.get('dataUrl')
     this.applicationHash = params.get('hash')
+    this.urlToInstantiateItem = params.get('urlToInstantiateItem');
     this.testItemNumber = parseInt(params.get('testItemNumber'));
   }
 
+  urlToInstantiateItem: string;
   operation: string
   testItemNumber: number
   baseUrl: string

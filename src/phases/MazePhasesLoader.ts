@@ -50,7 +50,7 @@ export default class MazePhasesLoader {
         phases = await this.loadPlaygroundTestItem(gameParams.testItemNumber);
       }
       if (gameParams.isTestApplication()) {
-        phases = await this.loadTestApplication()
+        phases = this.loadTestApplication();
       }
       if (phases == null) {
         throw new Error('empty phases');
@@ -68,9 +68,9 @@ export default class MazePhasesLoader {
     return this
   }
 
-  private async loadTestApplication(): Promise<MazePhasesLoader> {
-    let test = await this.testApplicationService.getTest()
-    this.phases = test.items.map((item: any) => {
+  private loadTestApplication(): MazePhasesLoader {
+    let items = this.testApplicationService.getNonCompletedTestItems()
+    this.phases = items.map((item: TestItem) => {
       const mazePhase = this.convertMecanicaRopeToPhase(item.item as MecanicaRope)
       mazePhase.itemId = item.item_id;
       return mazePhase

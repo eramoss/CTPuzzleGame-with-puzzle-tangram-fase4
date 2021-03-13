@@ -1,36 +1,32 @@
-export class Participation {
-  id: number
-  lastVisitedItemId: number
-  application: TestApplication
-  testAsJson: string
-}
-
-export class Item {
-  id: string
-}
-
 export class TestItem {
-  item: Item
+  item_id: number
+  item: any
 }
 
-export class Test {
+export class TestAsJson {
+  name: string
   items: TestItem[]
 }
 
-export class UrlToSendResponseHelper {
+export class UrlToSendResponses {
   method: string
   url: string
   help: string
   responseClass: string
 }
 
-export class PreparedParticipation {
-
-  testAsJson: string
-  urlToSendResponses: UrlToSendResponseHelper
-
+export class UrlToSendProgress {
+  method: string
+  url: string
+  help: string
 }
 
-export default class TestApplication {
-  test: Test
+export class PreparedParticipation {
+
+  participationId: number
+  lastVisitedItemId: number
+  testAsJson: TestAsJson
+  urlToSendResponses: UrlToSendResponses
+  urlToSendProgress: UrlToSendProgress
+
 }

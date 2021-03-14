@@ -10,16 +10,28 @@ export function setItem(key: string, value: any) {
   }
 }
 
+export function getTypedItem(Class: any, key: string) {
+  let item = getItem(key) || {}
+  return Object.assign(new Class(), item)
+}
+
 export function getItem<T>(key: string): T {
-  let itemString = null;
-  if (!isAndroidAmbient()) {
-    itemString = localStorage.getItem(key);
-  } else {
-    itemString = getAndroidPref(key)
-  }
-  Logger.info("storage.getItem", itemString)
-  if (itemString) {
-    return JSON.parse(itemString) as T;
+  try {
+    let itemString = null;
+    if (!isAndroidAmbient()) {
+      itemString = localStorage.getItem(key);
+    } else {
+      itemString = getAndroidPref(key)
+    }
+    Logger.info("storage.getItem", itemString)
+    if (itemString) {
+      let json = JSON.parse(itemString) as T;
+      return json;
+
+    }
+  } catch (e) {
+    Logger.error(e);
+    return null
   }
   return
 }

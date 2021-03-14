@@ -1,10 +1,11 @@
 import { Logger } from "../main"
 
 async function sendRequest(url: string, json: any = null, method: string = 'GET'): Promise<Response> {
+  Logger.info('Calling ' + method, url)
   let response = null
   try {
     let params = null
-    if(method == 'POST' || method == 'PUT'){
+    if (method == 'POST' || method == 'PUT') {
       params = {
         method,
         headers: {

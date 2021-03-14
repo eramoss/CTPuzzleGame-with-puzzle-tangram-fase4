@@ -7,8 +7,6 @@ import { Logger } from '../main';
 
 export default class Program {
 
-
-
   ordinalCommands: Command[]
   conditionalCommandsIndexed: Map<number, Command>
   scene: Phaser.Scene;

@@ -55,10 +55,10 @@ export default class TestApplicationService {
     return nonCompletedItems;
   }
 
-  async sendResponse(itemId: number, itemResponse: RespostaItemProgramacao) {
+  async sendResponse(responseToSend: {itemId: number, response: RespostaItemProgramacao}) {
     let url = this.getParticipation().urlToSendResponses.url;
-    url = url.replace('<item_id>', itemId + '');
-    let response = await POST(url, itemResponse);
+    url = url.replace('<item_id>', responseToSend.itemId + '');
+    let response = await POST(url, responseToSend.response);
   }
 
 

@@ -163,7 +163,7 @@ export default class CodeEditor {
       ) => {
 
         Logger.log("MOVE_EVENT", "dragstart")
-        if (command.program != null){
+        if (command.program != null) {
           command.setDepth(301);
           this.trash.show();
         }
@@ -191,7 +191,7 @@ export default class CodeEditor {
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
 
-        let removeCommand = ()=>{
+        let removeCommand = () => {
           command.removeSelf();
         }
 
@@ -422,8 +422,8 @@ export default class CodeEditor {
     return program
   }
 
-  prepare(options: CodeEditorOptions){
-    if(options.clear){
+  prepare(options: CodeEditorOptions) {
+    if (options.clear) {
       this.clear();
     }
   }
@@ -535,15 +535,8 @@ export default class CodeEditor {
   stringfyCommands(): string {
     return this.getAllOrdinalCommands().map(c => c.stringfy()).join(', ');
   }
-
-  getItemResponse(): RespostaItemProgramacao {
-    let resposta = new RespostaItemProgramacao();
-    resposta.caminhoPercorrido = [{x:0,y:0}]
-    //...
-    return resposta;
-  }
 }
 
 export class CodeEditorOptions {
-  clear:true
+  clear: true
 }

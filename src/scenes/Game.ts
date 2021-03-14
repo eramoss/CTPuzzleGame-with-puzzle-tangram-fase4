@@ -13,6 +13,8 @@ import { Logger } from '../main'
 import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
 import TestApplicationService from '../test-application/TestApplicationService'
+import GameState from './GameState'
+import { debug } from 'webpack'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -31,6 +33,7 @@ export default class Game extends Scene {
   currentPhase: MazePhase
   gameParams: GameParams
   testApplicationService: TestApplicationService
+  gameState: GameState
 
   constructor() {
     super('game')
@@ -75,6 +78,7 @@ export default class Game extends Scene {
   init(data: GameParams) {
     this.gameParams = data
     this.testApplicationService = new TestApplicationService(this.gameParams)
+    this.gameState = new GameState()
   }
 
   async create() {
@@ -117,7 +121,6 @@ export default class Game extends Scene {
 
     this.children.remove(loadingText)
 
-
     const scale = this.grid.scale
     let isometric = this.mode == MatrixMode.ISOMETRIC;
 
@@ -158,16 +161,23 @@ export default class Game extends Scene {
     }
 
     let playNextPhase = () => {
-      playPhase(this.phases.getNextPhase(), { clear: true });
+      const phase = this.phases.getNextPhase();
+      playPhase(phase, { clear: true });
     }
 
     let replayCurrentPhase = () => {
       let clearCodeEditor = this.currentPhase?.isTutorialPhase();
-
       playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
     }
 
     let playPhase = (phase: MazePhase, codeEditorOptions: CodeEditorOptions) => {
+
+      if (phase != this.currentPhase) {
+        if (this.currentPhase) {
+          this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
+        }
+        this.gameState.initializeResponse(phase.itemId);
+      }
 
       this.currentPhase?.clearTutorials()
       this.currentPhase = phase
@@ -298,7 +308,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.testApplicationService.sendResponse(this.currentPhase.itemId, this.codeEditor.getItemResponse());
+        this.gameState.registerCodingState(this.codeEditor.stringfyCommands())
         this.dude.execute([prog0, prog1, prog2]);
       }
     }

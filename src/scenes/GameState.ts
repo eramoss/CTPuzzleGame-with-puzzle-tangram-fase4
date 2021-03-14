@@ -4,13 +4,12 @@ import { getItem, getTypedItem, setItem } from "../utils/storage"
 
 export default class GameState {
 
-  playingTimerInSeconds: number = 0
-  swapBlocksCount: number = 0
-
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
+    let response = this.getResponse();
+    response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
     return {
       itemId: this.getItemNumber(),
-      response: this.getResponse()
+      response
     }
   }
 
@@ -24,15 +23,9 @@ export default class GameState {
   initializeResponse(itemNumber: number) {
     this.log('initialize')
     this.setItemNumber(itemNumber);
-    this.setResponse(new RespostaItemProgramacao())
-  }
-
-  onStartPhase() {
-    this.playingTimerInSeconds = this.getTimeInSeconds()
-  }
-
-  onCompletePhase() {
-    this.playingTimerInSeconds = this.getTimeInSeconds() - this.playingTimerInSeconds
+    let resposta = new RespostaItemProgramacao()
+    resposta.tempoEmSegundos = this.getTimeInSeconds()
+    this.setResponse(resposta);
   }
 
   getTimeInSeconds(): number {

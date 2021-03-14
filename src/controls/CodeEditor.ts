@@ -422,6 +422,12 @@ export default class CodeEditor {
     return program
   }
 
+  prepare(options: CodeEditorOptions){
+    if(options.clear){
+      this.clear();
+    }
+  }
+
   clear() {
     this.programs.forEach(p => p.clear());
   }
@@ -536,4 +542,8 @@ export default class CodeEditor {
     //...
     return resposta;
   }
+}
+
+export class CodeEditorOptions {
+  clear:true
 }

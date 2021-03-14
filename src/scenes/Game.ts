@@ -3,7 +3,7 @@ import Matrix, { MatrixMode } from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
-import CodeEditor from '../controls/CodeEditor'
+import CodeEditor, { CodeEditorOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
@@ -158,16 +158,16 @@ export default class Game extends Scene {
     }
 
     let playNextPhase = () => {
-      let clearCodeEditor = true;
-      playPhase(this.phases.getNextPhase(), clearCodeEditor);
+      playPhase(this.phases.getNextPhase(), { clear: true });
     }
 
     let replayCurrentPhase = () => {
       let clearCodeEditor = this.currentPhase?.isTutorialPhase();
-      playPhase(this.currentPhase, clearCodeEditor)
+
+      playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
     }
 
-    let playPhase = (phase: MazePhase, clearCodeEditor: boolean = false) => {
+    let playPhase = (phase: MazePhase, codeEditorOptions: CodeEditorOptions) => {
 
       this.currentPhase?.clearTutorials()
       this.currentPhase = phase
@@ -204,9 +204,7 @@ export default class Game extends Scene {
         this.codeEditor.unhighlightStepButton();
         this.codeEditor.enableStepButton();
         this.codeEditor.enablePlayButton();
-        if (clearCodeEditor) {
-          this.codeEditor.clear();
-        }
+        this.codeEditor.prepare(codeEditorOptions);
 
         this.currentPhase.showTutorialActionsIfExists();
       }

@@ -48,7 +48,11 @@ export default class TestApplicationService {
     const lastVisitedItemId = participation.lastVisitedItemId;
     const lastVisitedItem = items.find((testItem) => testItem.id == lastVisitedItemId);
     const lastVisitedItemIndex = items.indexOf(lastVisitedItem);
-    return items.slice(lastVisitedItemIndex);
+    let nonCompletedItems = items
+    if (lastVisitedItemIndex != -1) {
+      nonCompletedItems = items.slice(lastVisitedItemIndex)
+    }
+    return nonCompletedItems;
   }
 
   async sendResponse(itemId: number, itemResponse: RespostaItemProgramacao) {

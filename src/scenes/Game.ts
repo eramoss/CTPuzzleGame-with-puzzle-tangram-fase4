@@ -155,78 +155,9 @@ export default class Game extends Scene {
         this.codeEditor.disableStepButton();
         this.codeEditor.unhighlightStepButton();
         setTimeout(function () {
-          playNextPhase();
+          this.playNextPhase();
         }, 2000);
       }
-    }
-
-    let playNextPhase = () => {
-      const phase = this.phases.getNextPhase();
-      playPhase(phase, { clear: true });
-    }
-
-    let replayCurrentPhase = () => {
-      let clearCodeEditor = this.currentPhase?.isTutorialPhase();
-      playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
-    }
-
-    let playPhase = (phase: MazePhase, codeEditorOptions: CodeEditorOptions) => {
-
-      if (phase != this.currentPhase) {
-        if (this.currentPhase) {
-          this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
-        }
-        if (phase) {
-          this.gameState.initializeResponse(phase.itemId);
-        }
-      }
-
-      this.currentPhase?.clearTutorials()
-      this.currentPhase = phase
-
-      if (this.currentPhase) {
-        this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
-      }
-      if (!this.currentPhase) {
-        this.scene.start('game-win');
-        //this.testApplicationService.saveFinishedDate();
-      }
-
-      if (this.currentPhase) {
-
-        this.currentPhase.setupMatrixAndTutorials()
-        this.dude.matrix = this.currentPhase.obstacles;
-        const obstacles = this.currentPhase.obstacles
-        const ground = this.currentPhase.ground
-
-        this.groundMazeModel.clear();
-        this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
-        this.groundMazeModel.setMatrixOfObjects(ground);
-        this.obstaclesMazeModel.setMatrixOfObjects(obstacles);
-
-        let { row, col } = this.currentPhase.dudeStartPosition;
-        this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
-        this.dude.setPosition(col, row);
-        this.obstaclesMazeModel.updateBringFront();
-
-        this.dude.currentFace = this.currentPhase.dudeFacedTo
-        this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
-
-        this.codeEditor.disanimatePrograms();
-        this.codeEditor.unhighlightStepButton();
-        this.codeEditor.enableStepButton();
-        this.codeEditor.enablePlayButton();
-        this.codeEditor.prepare(codeEditorOptions);
-
-        this.currentPhase.showTutorialActionsIfExists();
-      }
-
-      // prog0.clear();
-      // prog1.clear();
-      // prog2.clear();
-      // this.codeEditor.addCommands(prog0, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
-      // this.codeEditor.addCommands(prog1, ['arrow-up'])
-      // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
     }
 
     this.dude = new Dude(this, this.mode, this.sounds, this.grid);
@@ -304,7 +235,7 @@ export default class Game extends Scene {
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
-        replayCurrentPhase();
+        this.replayCurrentPhase();
       }
     }
 
@@ -315,14 +246,20 @@ export default class Game extends Scene {
       }
     }
 
-    this.codeEditor.onEditProgram = () => {
+    /* this.codeEditor.onEditProgram = () => {
       if (!this.dude.stopped) {
-        replayCurrentPhase()
+        this.replayCurrentPhase()
+      }
+    } */
+
+    this.codeEditor.onInteract = () => {
+      if (!this.dude.stopped) {
+        this.replayCurrentPhase()
       }
     }
 
     this.codeEditor.onReplayCurrentPhase = () => {
-      replayCurrentPhase();
+      this.replayCurrentPhase();
     }
 
     this.codeEditor.onClickStepByStep = () => {
@@ -330,16 +267,12 @@ export default class Game extends Scene {
       this.dude.executeStepByStep([prog0, prog1, prog2]);
     }
 
-    this.codeEditor.onInteract = () => {
-      //let resetFace = true;
-      //this.dude.stop();
-      //initGame();
-    }
+
 
     this.codeEditor.onClickStop = () => {
       let resetFace = true;
       this.dude.stop(resetFace);
-      replayCurrentPhase();
+      this.replayCurrentPhase();
     }
 
     this.codeEditor.onShowInstruction = (instruction: string) => {
@@ -350,7 +283,7 @@ export default class Game extends Scene {
       this.dude.hideBallon();
     }
 
-    playNextPhase();
+    this.playNextPhase();
   }
 
   private createGrid(cols: number, rows: number) {
@@ -363,5 +296,70 @@ export default class Game extends Scene {
 
   update() {
     this.dude?.update()
+  }
+
+  playNextPhase() {
+    const phase = this.phases.getNextPhase();
+    this.playPhase(phase, { clear: true });
+  }
+
+  replayCurrentPhase() {
+    let clearCodeEditor = this.currentPhase?.isTutorialPhase();
+    this.dude.stop(true);
+    this.playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
+  }
+
+
+  playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
+    if (phase != this.currentPhase) {
+      if (this.currentPhase) {
+        this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
+      }
+      if (phase) {
+        this.gameState.initializeResponse(phase.itemId);
+      }
+    }
+
+    this.currentPhase?.clearTutorials()
+    this.currentPhase = phase
+
+    if (this.currentPhase) {
+      this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
+    }
+    if (!this.currentPhase) {
+      this.scene.start('game-win');
+      //this.testApplicationService.saveFinishedDate();
+    }
+
+    if (this.currentPhase) {
+
+      this.currentPhase.setupMatrixAndTutorials()
+      this.dude.matrix = this.currentPhase.obstacles;
+      const obstacles = this.currentPhase.obstacles
+      const ground = this.currentPhase.ground
+
+      this.groundMazeModel.clear();
+      this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
+      this.groundMazeModel.setMatrixOfObjects(ground);
+      this.obstaclesMazeModel.setMatrixOfObjects(obstacles);
+
+      let { row, col } = this.currentPhase.dudeStartPosition;
+      this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
+      this.dude.setPosition(col, row);
+      this.obstaclesMazeModel.updateBringFront();
+
+      this.dude.currentFace = this.currentPhase.dudeFacedTo
+      this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
+
+      this.codeEditor.prepare(codeEditorOptions);
+      this.currentPhase.showTutorialActionsIfExists();
+    }
+
+    // prog0.clear();
+    // prog1.clear();
+    // prog2.clear();
+    // this.codeEditor.addCommands(prog0, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
+    // this.codeEditor.addCommands(prog1, ['arrow-up'])
+    // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 }

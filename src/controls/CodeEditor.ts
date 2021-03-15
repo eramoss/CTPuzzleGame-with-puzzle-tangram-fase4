@@ -426,6 +426,10 @@ export default class CodeEditor {
     if (options.clear) {
       this.clear();
     }
+    this.disanimatePrograms();
+    this.unhighlightStepButton();
+    this.enableStepButton();
+    this.enablePlayButton();
   }
 
   clear() {
@@ -433,7 +437,9 @@ export default class CodeEditor {
   }
 
   disanimatePrograms() {
-    this.programs.forEach(p => p.disanimate());
+    this.programs.forEach(p => {
+      p.disanimate()
+    });
   }
 
   highlightStepButton() {

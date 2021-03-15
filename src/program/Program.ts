@@ -228,6 +228,7 @@ export default class Program {
     this.conditionalCommandsIndexed = new Map<number, Command>();
     let commands = this.ordinalCommands.splice(0);
     commands.forEach(c => {
+      c.disanimateSprite();
       c.mute();
       c.removeSelf();
     });

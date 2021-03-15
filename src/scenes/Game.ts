@@ -176,7 +176,9 @@ export default class Game extends Scene {
         if (this.currentPhase) {
           this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
         }
-        this.gameState.initializeResponse(phase.itemId);
+        if (phase) {
+          this.gameState.initializeResponse(phase.itemId);
+        }
       }
 
       this.currentPhase?.clearTutorials()

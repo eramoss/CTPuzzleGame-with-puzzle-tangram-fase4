@@ -16,7 +16,11 @@ export default class GameState {
   registerAddedCommands(addedCommands: string[]) {
     this.log('GAME_STATE register coding', addedCommands);
     let response = this.getResponse();
-    response.adicionarTentativa(addedCommands);
+    response.adicionarTentativa(addedCommands.map(it => {
+      it = it.replace('arrow-', '');
+      it = it.toUpperCase();
+      return it.toUpperCase()
+    }));
     this.setResponse(response);
   }
 

@@ -13,10 +13,10 @@ export default class GameState {
     }
   }
 
-  registerCodingState(codeState: string) {
-    this.log('GAME_STATE register coding', codeState);
+  registerAddedCommands(addedCommands: string[]) {
+    this.log('GAME_STATE register coding', addedCommands);
     let response = this.getResponse();
-    response.adicionarTentativa(codeState);
+    response.adicionarTentativa(addedCommands);
     this.setResponse(response);
   }
 

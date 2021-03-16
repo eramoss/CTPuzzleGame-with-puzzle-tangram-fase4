@@ -154,7 +154,7 @@ export default class Game extends Scene {
         this.dude.playSuccess();
         this.codeEditor.disableStepButton();
         this.codeEditor.unhighlightStepButton();
-        setTimeout(function () {
+        setTimeout(() => {
           this.playNextPhase();
         }, 2000);
       }
@@ -241,7 +241,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.gameState.registerCodingState(this.codeEditor.stringfyCommands())
+        this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
         this.dude.execute([prog0, prog1, prog2]);
       }
     }
@@ -310,13 +310,19 @@ export default class Game extends Scene {
   }
 
 
-  playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
+  async playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
     if (phase != this.currentPhase) {
-      if (this.currentPhase) {
-        this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
-      }
-      if (phase) {
-        this.gameState.initializeResponse(phase.itemId);
+      try {
+        if (this.currentPhase) {
+          await this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
+        }
+        if (phase) {
+          this.gameState.initializeResponse(phase.itemId);
+        }
+      } catch (e) {
+        Logger.error(e);
+        this.replayCurrentPhase()
+        return;
       }
     }
 

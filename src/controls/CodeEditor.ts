@@ -539,7 +539,11 @@ export default class CodeEditor {
   }
 
   stringfyCommands(): string {
-    return this.getAllOrdinalCommands().map(c => c.stringfy()).join(', ');
+    return this.getCommandsAsString().join(', ');
+  }
+
+  getCommandsAsString(): string[] {
+    return this.getAllOrdinalCommands().map(c => c.stringfy())
   }
 }
 

@@ -58,7 +58,7 @@ export default class Sounds {
     this.scene.load.audio('blink', 'assets/ct/sounds/blink.mp3');
     this.scene.load.audio('success', 'assets/ct/sounds/success.mp3');
     this.scene.load.audio('click', 'assets/ct/sounds/click.mp3');
-    this.scene.load.audio('noise', 'assets/ct/sounds/robot.wav');
+    this.scene.load.audio('noise', 'assets/ct/sounds/robot.mp3');
     this.scene.load.audio('robot', 'assets/ct/sounds/seat_lower.mp3');
   }
 

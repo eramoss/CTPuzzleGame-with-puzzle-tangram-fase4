@@ -71,8 +71,7 @@ export function androidPlayAudio(sound: string): boolean {
     //@ts-ignore
     if (isAndroidAmbient()) {
       //@ts-ignore
-      GameJavascriptInterface.play(sound)
-      couldPlay = true;
+      couldPlay = GameJavascriptInterface.play(sound)
     }
   } catch (e) {
     console.warn('GameJavascriptInterface is not defined!!');

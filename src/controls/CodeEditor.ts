@@ -40,16 +40,21 @@ export default class CodeEditor {
   onHideLastInstruction: () => void = () => { };
   trash: Trash;
 
-  constructor(scene: Scene, programs: Program[], sounds: Sounds, grid: AlignGrid) {
+  constructor(scene: Scene, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
-    this.programs = programs;
     this.scene = scene;
     this.grid = grid;
     this.scale = grid.scale
     this.createGlobalDragLogic();
-    this.dropZones = programs.map(program => program.dropZone)
+
     this.createStartStopStepButtons();
-    grid.addImage(17, 1, 'toolbox', 8.5, 9);
+    this.createToolbox();
+    this.createDraggableProgramCommands();
+    this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
+  }
+
+  createToolbox() {
+    this.grid.addImage(17, 1, 'toolbox', 8.5, 9);
     this.toolboxRows =
       [
         new ToolboxRowOrganizer(this.grid, 20, 2, 2, 2, ['arrow-up',]),
@@ -59,9 +64,12 @@ export default class CodeEditor {
         new ToolboxRowOrganizer(this.grid, 18, 7.4, 6, 2, ['if_coin', 'if_block'], 1.1),
       ]
 
-    this.createDraggableProgramCommands();
+  }
+
+  setPrograms(programs: Program[]) {
+    this.programs = programs;
+    this.dropZones = programs.map(program => program.dropZone)
     this.notifyWhenProgramIsEditted()
-    this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
   }
 
   addCommands(program: Program, commands: string[]) {
@@ -99,6 +107,8 @@ export default class CodeEditor {
       let toolboxRow = this.findToolboxRow(commandToSetPositionAtToobox)
       if (toolboxRow) {
         toolboxRow.setPositionTo(commandToSetPositionAtToobox)
+      } else {
+        this.scene.children.remove(commandToSetPositionAtToobox.sprite);
       }
     })
 
@@ -125,6 +135,7 @@ export default class CodeEditor {
   createEventsToCommands(commands: Command[]) {
     commands.forEach((command: Command) => {
       let toolboxRow = this.findToolboxRow(command);
+      if (!toolboxRow) return;
       let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
       commandSprite.setScale(toolboxRow.scaleNormal);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));

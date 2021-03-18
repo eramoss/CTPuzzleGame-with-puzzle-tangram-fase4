@@ -20,15 +20,16 @@ export default class Program {
   sprite: GameObjects.Sprite;
   onEdit: () => void = () => { };
 
-  constructor(scene: Phaser.Scene, name: string, grid: AlignGrid, x: number, y: number, width: number, height: number, sprite: string) {
+  constructor(scene: Phaser.Scene, name: string, grid: AlignGrid, x: number, y: number, width: number, height: number, spriteKey: string) {
     this.scene = scene;
     this.name = name;
     this.grid = grid;
     this.ordinalCommands = new Array();
     this.conditionalCommandsIndexed = new Map<number, Command>();
-    this.dropZone = createDropZone(this.grid, x, y, width, height, sprite);
+    this.dropZone = createDropZone(this.grid, x, y, width, height, spriteKey);
     this.sprite = this.dropZone.sprite;
-    this.programNameImage = this.grid.addImage(x - 1.75, y - 0.15, name, 2, 2.7);
+    let imgWidth = width / 3.6;
+    this.programNameImage = this.grid.addImage(x - imgWidth * 0.9, y - 0.15, name, imgWidth);
   }
 
   animate() {

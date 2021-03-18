@@ -229,7 +229,7 @@ export default class Command implements InterfaceElement {
         if (!this.isConditional) {
           if (success) {
             if (!this.isProgCommand()) {
-              this.sounds.start();
+              this.sounds.playRobotSound(this.name);
             }
           } else {
             this.sounds.blocked();

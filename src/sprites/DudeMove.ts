@@ -6,6 +6,8 @@ import Dude from './Dude';
 import { Branch } from "./Branch";
 import { Logger } from '../main';
 
+const TIME_CALL_BRANCH = 200
+
 export class DudeMove {
 
   name: string;
@@ -106,7 +108,7 @@ export class DudeMove {
     this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
     this.dude.setTimeout(_ => {
       this.dude.onBranch(progToCall.action, this.branch);
-    }, 200)
+    }, TIME_CALL_BRANCH)
   }
 
   execute(previousMove: DudeMove = null) {

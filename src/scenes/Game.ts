@@ -1,5 +1,5 @@
 import { GameObjects, Types, Scene } from 'phaser'
-import Matrix, { MatrixMode } from '../geom/Matrix'
+import { MatrixMode } from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
@@ -34,6 +34,7 @@ export default class Game extends Scene {
   gameParams: GameParams
   testApplicationService: TestApplicationService
   gameState: GameState
+  loadingText: GameObjects.Text
 
   constructor() {
     super('game')
@@ -87,27 +88,15 @@ export default class Game extends Scene {
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
+    this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
 
-    let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
-    let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
-    let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
 
-    this.codeEditor = new CodeEditor(this, [prog0, prog1, prog2], this.sounds, this.grid);
 
     let gridCenterX = this.grid.width / 3.2;
     let gridCenterY = this.grid.height / 2;
     let gridCellWidth = this.grid.cellWidth * 1.1
 
-
-    let loadingText = this.add.text(
-      gridCenterX,
-      gridCenterY,
-      'Loading...', {
-      fontSize: '30pt'
-    })
-      .setScale(this.grid.scale);
-
-    loadingText.setX(loadingText.x - loadingText.width / 2)
+    this.showLoading(gridCenterX, gridCenterY);
 
     this.phases = (await new MazePhasesLoader(
       this,
@@ -119,19 +108,17 @@ export default class Game extends Scene {
       gridCellWidth
     ).load(this.gameParams));
 
-    this.children.remove(loadingText)
+    this.hideLoading();
 
     const scale = this.grid.scale
-    let isometric = this.mode == MatrixMode.ISOMETRIC;
-
     let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
     spriteCreateFunctions['block'] = (x: integer, y: integer) => {
-      return this.add.image(x, y - 30 * scale, 'block')
-        .setScale(scale * (isometric ? 1.5 : 1))
+      return this.add.image(x, y - 35 * scale, 'block')
+        .setScale(scale * 1.6)
     };
     spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
       return this.add.image(x, y + 10 * scale, 'tile')
-        .setScale(scale * (isometric ? 1.6 : 1))
+        .setScale(scale * 1.6)
     };
     spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
       this.anims.create({
@@ -140,9 +127,9 @@ export default class Game extends Scene {
         frameRate: 7,
         repeat: -1
       })
-      return this.physics.add.sprite(x, y - 35 * this.grid.scale, 'coin-gold')
+      return this.physics.add.sprite(x, y - 35 * scale, 'coin-gold')
         .play('gold-spining')
-        .setScale(this.grid.scale)
+        .setScale(scale)
     }
 
     this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
@@ -157,6 +144,18 @@ export default class Game extends Scene {
         setTimeout(() => {
           this.playNextPhase();
         }, 2000);
+      }
+    }
+
+    this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
+      if (other.spriteName == 'coin') {
+        let waitALittleBitBeforeColide = 700
+        setTimeout(() => {
+          this.children.remove(other.gameObject);
+          //coin.setGravityY(-200);
+          //coin.setVelocityY(-100)
+          this.sounds.coin();
+        }, waitALittleBitBeforeColide);
       }
     }
 
@@ -218,17 +217,6 @@ export default class Game extends Scene {
       this.obstaclesMazeModel.updateBringFront();
     }
 
-    this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteName == 'coin') {
-        let waitALittleBitBeforeColide = 700
-        setTimeout(() => {
-          this.children.remove(other.gameObject);
-          //coin.setGravityY(-200);
-          //coin.setVelocityY(-100)
-          this.sounds.coin();
-        }, waitALittleBitBeforeColide);
-      }
-    }
 
     this.dude.onFinishWalking = () => {
       this.codeEditor.unhighlightStepButton();
@@ -242,7 +230,7 @@ export default class Game extends Scene {
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
         this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
-        this.dude.execute([prog0, prog1, prog2]);
+        this.dude.execute(this.codeEditor.programs);
       }
     }
 
@@ -264,10 +252,8 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickStepByStep = () => {
       this.codeEditor.disableStepButton();
-      this.dude.executeStepByStep([prog0, prog1, prog2]);
+      this.dude.executeStepByStep(this.codeEditor.programs);
     }
-
-
 
     this.codeEditor.onClickStop = () => {
       let resetFace = true;
@@ -284,6 +270,23 @@ export default class Game extends Scene {
     }
 
     this.playNextPhase();
+  }
+
+
+  private showLoading(gridCenterX: number, gridCenterY: number) {
+    let loadingText = this.add.text(
+      gridCenterX,
+      gridCenterY,
+      'Loading...', {
+      fontSize: '30pt'
+    })
+      .setScale(this.grid.scale);
+    loadingText.setX(loadingText.x - loadingText.width / 2)
+    this.loadingText = loadingText;
+  }
+
+  private hideLoading() {
+    this.children.remove(this.loadingText)
   }
 
   private createGrid(cols: number, rows: number) {
@@ -309,9 +312,21 @@ export default class Game extends Scene {
     this.playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
   }
 
-
   async playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
+
     if (phase != this.currentPhase) {
+
+      if (!this.codeEditor.programs) {
+        let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
+        let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
+        let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
+        this.codeEditor.setPrograms([
+          prog0,
+          prog1,
+          prog2
+        ])
+      }
+
       try {
         if (this.currentPhase) {
           await this.testApplicationService.sendResponse(this.gameState.getResponseToSend());

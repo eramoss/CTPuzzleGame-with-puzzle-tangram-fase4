@@ -11,6 +11,10 @@ import { androidVibrate, joinChilds } from '../utils/Utils';
 import { Logger } from '../main';
 import Ballon from './Ballon';
 
+const DUDE_SPEED = 80
+const TURN_FRAME_RATE = (DUDE_SPEED * 0.1) * 0.7
+const WARN_TIME = 300
+
 export default class Dude {
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
@@ -68,7 +72,7 @@ export default class Dude {
       this.scene.anims.create({
         key: animation.key,
         frames: this.scene.anims.generateFrameNumbers(`sprite-rope-${matrixMode}`, animation),
-        frameRate: 7,
+        frameRate: TURN_FRAME_RATE,
         repeat: 0
       });
     })
@@ -78,7 +82,7 @@ export default class Dude {
     this.character.clearTint()
     this.playAnimation();
     this.currentStep?.animate();
-    const speed = 100;
+    const speed = DUDE_SPEED;
     this.scene.physics.moveToObject(this.character, dudeMove.point, speed * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
@@ -189,7 +193,9 @@ export default class Dude {
         this.resetAt(move);
       if (!this.stepByStep) {
         move.disanimate();
-        this.currentStep?.execute(move);
+        this.setTimeout(() => {
+          this.currentStep?.execute(move);
+        }, 300)
       }
       if (!this.currentStep) {
         this.setTimeout(() => {
@@ -262,7 +268,7 @@ export default class Dude {
         this.programBeingExecuted?.disanimate();
         program.disanimate();
         this.onFinishWalking();
-      }, 300);
+      }, WARN_TIME);
     }
     return isEmpty;
   }
@@ -309,7 +315,7 @@ export default class Dude {
       .ajustBallonPosition(this.character.x, this.character.y)
   }
 
-  hideBallon(){
+  hideBallon() {
     this.ballon.setVisible(false);
   }
 }

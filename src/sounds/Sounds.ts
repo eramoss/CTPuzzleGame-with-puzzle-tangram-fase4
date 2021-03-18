@@ -6,6 +6,14 @@ import { androidPlayAudio } from "../utils/Utils";
 
 export default class Sounds {
 
+  playRobotSound(name: string) {
+    if (name == 'arrow-up' || name == 'arrow-down') {
+      this.robotWalk()
+    } else {
+      this.robotTurn()
+    }
+  }
+
   scene: Phaser.Scene;
   dragSound: Phaser.Sound.BaseSound;
   dropSound: Phaser.Sound.BaseSound;
@@ -18,8 +26,10 @@ export default class Sounds {
   blinkSound: Phaser.Sound.BaseSound;
   successSound: Phaser.Sound.BaseSound;
   clickSound: Phaser.Sound.BaseSound;
+  robotTurnSound: Phaser.Sound.BaseSound;
+  robotWalkSound: Phaser.Sound.BaseSound;
 
-  create(){
+  create() {
     this.dragSound = this.scene.sound.add('drag');
     this.dropSound = this.scene.sound.add('drop');
     this.hoverSound = this.scene.sound.add('hover');
@@ -31,6 +41,8 @@ export default class Sounds {
     this.blinkSound = this.scene.sound.add('blink');
     this.successSound = this.scene.sound.add('success');
     this.clickSound = this.scene.sound.add('click');
+    this.robotWalkSound = this.scene.sound.add('robot');
+    this.robotTurnSound = this.scene.sound.add('noise');
   }
 
   preload(scene: Phaser.Scene) {
@@ -46,6 +58,8 @@ export default class Sounds {
     this.scene.load.audio('blink', 'assets/ct/sounds/blink.mp3');
     this.scene.load.audio('success', 'assets/ct/sounds/success.mp3');
     this.scene.load.audio('click', 'assets/ct/sounds/click.mp3');
+    this.scene.load.audio('noise', 'assets/ct/sounds/robot.wav');
+    this.scene.load.audio('robot', 'assets/ct/sounds/seat_lower.mp3');
   }
 
 
@@ -71,6 +85,14 @@ export default class Sounds {
 
   coin() {
     this.playSound(this.coinSound);
+  }
+
+  robotTurn() {
+    this.playSound(this.robotTurnSound)
+  }
+
+  robotWalk() {
+    this.playSound(this.robotWalkSound)
   }
 
   start() {

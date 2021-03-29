@@ -37,7 +37,6 @@ export default class TestApplicationService {
     }
   }
 
-
   getParticipation(): PreparedParticipation {
     return getItem<PreparedParticipation>("participation")
   }

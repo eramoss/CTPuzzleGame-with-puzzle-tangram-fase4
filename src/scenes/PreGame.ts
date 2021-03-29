@@ -22,6 +22,7 @@ export default class PreGame extends Phaser.Scene {
   userRepository: UserRepository
   gameParams: GameParams;
   testApplicationService: TestApplicationService;
+  grid: AlignGrid;
 
   constructor() {
     super('pre-game');
@@ -54,27 +55,40 @@ export default class PreGame extends Phaser.Scene {
     this.sounds.create();
     globalSounds = this.sounds;
 
-    let grid = new AlignGrid(
+    this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
       this.game.config.height as number
     );
+    this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
 
-    grid.addImage(0, 0, 'background', grid.cols, grid.rows);
+    if (!this.gameParams.isTestApplication)
+      this.createPlayButtonArea();
 
-    const cell = grid.getCell(10, 5);
+    if (this.gameParams.isTestApplication()) {
+      let user: User = this.userRepository.getOrCreateGuestUser();
+      await this.testApplicationService.getApplicationData(user);
+    }
+
+    //if (this.gameParams.isTestApplication()) {
+    this.startGame()
+    //}
+  }
+
+  createPlayButtonArea() {
+    const cell = this.grid.getCell(10, 5);
     this.inputObject = this.add.text(cell.x, cell.y, '', {
       fontFamily: 'Dyuthi, arial',
     })
-      .setScale(grid.scale)
+      .setScale(this.grid.scale)
       .setFontStyle('bold')
       .setFontSize(100)
       .setAlign('center')
       .setDepth(1001)
       .setTint(0xffffff);
 
-    let testBox = grid.addImage(9, 3, 'test-box', 8).setInteractive();
-    let testBoxClear = grid.addImage(15.5, 5, 'test-box-clear', 1).setInteractive();
+    let testBox = this.grid.addImage(9, 3, 'test-box', 8).setInteractive();
+    let testBoxClear = this.grid.addImage(15.5, 5, 'test-box-clear', 1).setInteractive();
     testBoxClear.setVisible(false);
 
     this.keyboard.create();
@@ -101,18 +115,10 @@ export default class PreGame extends Phaser.Scene {
       this.sounds.click();
       this.startGame();
     })
-    grid.placeAt(10, 9.7, this.playBtn.sprite, 6);
+    this.grid.placeAt(10, 9.7, this.playBtn.sprite, 6);
 
     this.inputObject.setText((this.gameParams.testItemNumber || '') + '');
 
-    if (this.gameParams.isTestApplication()) {
-      let user: User = this.userRepository.getOrCreateGuestUser();
-      await this.testApplicationService.getApplicationData(user);
-    }
-
-    //if (this.gameParams.isTestApplication()) {
-      this.startGame()
-    //}
   }
 
   startGame() {

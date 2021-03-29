@@ -15,6 +15,7 @@ import GameParams from '../settings/GameParams'
 import TestApplicationService from '../test-application/TestApplicationService'
 import GameState from './GameState'
 import { debug } from 'webpack'
+import PreparedParticipation from '../test-application/TestApplication'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -349,6 +350,8 @@ export default class Game extends Scene {
     }
     if (!this.currentPhase) {
       this.scene.start('game-win');
+      let preparedParticipation: PreparedParticipation = this.testApplicationService.getParticipation()
+      window.open(preparedParticipation.urlToEndOfTestQuiz.url, '_blank')
       //this.testApplicationService.saveFinishedDate();
     }
 

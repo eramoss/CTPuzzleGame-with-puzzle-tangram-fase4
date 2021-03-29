@@ -1,11 +1,7 @@
-export class TestItem {
-  id: number
-  item: any
-}
-
-export class Test {
-  name: string
-  items: TestItem[]
+export class UrlToSendProgress {
+  method: string
+  url: string
+  help: string
 }
 
 export class UrlToSendResponses {
@@ -15,18 +11,25 @@ export class UrlToSendResponses {
   responseClass: string
 }
 
-export class UrlToSendProgress {
+export class UrlToSendUserData {
   method: string
   url: string
   help: string
 }
 
-export class PreparedParticipation {
+export class UrlToEndOfTestQuiz {
+  url: string
+  help: 'Open in a browser'
+}
 
-  participationId: number
-  lastVisitedItemId: number
-  test: Test
+export default class PreparedParticipation {
+
+  lastVisitedItemId:number
+  participationId:number
+  test: string
   urlToSendResponses: UrlToSendResponses
   urlToSendProgress: UrlToSendProgress
+  urlToSendUserData: UrlToSendUserData
+  urlToEndOfTestQuiz: UrlToEndOfTestQuiz
 
 }

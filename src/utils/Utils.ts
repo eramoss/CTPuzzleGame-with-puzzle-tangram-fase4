@@ -58,7 +58,10 @@ export function androidOpenUrl(url: string) {
       //@ts-ignore
       GameJavascriptInterface.openUrl(url)
     } else {
-      window.open(url, '_blank')
+      let link = document.createElement('a');
+      link.href = url
+      link.target = "_blank"
+      link.click()
     }
   } catch (e) {
     console.warn('GameJavascriptInterface is not defined!!');

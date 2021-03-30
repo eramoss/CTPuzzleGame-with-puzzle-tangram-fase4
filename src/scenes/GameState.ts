@@ -7,10 +7,12 @@ export default class GameState {
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
     let response = this.getResponse();
     response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
-    return {
+    const responseToSend = {
       itemId: this.getItemNumber(),
       response
     }
+    Logger.info('ResponseToSend', JSON.stringify(responseToSend));
+    return responseToSend
   }
 
   registerAddedCommands(addedCommands: string[]) {

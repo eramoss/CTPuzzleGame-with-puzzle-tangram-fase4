@@ -330,12 +330,14 @@ export default class Game extends Scene {
 
       try {
         if (this.currentPhase) {
-          await this.testApplicationService.sendResponse(this.gameState.getResponseToSend());
+          const response = this.gameState.getResponseToSend()
+          await this.testApplicationService.sendResponse(response);
         }
         if (phase) {
           this.gameState.initializeResponse(phase.itemId);
         }
       } catch (e) {
+        Logger.log('ErrorSendingResponse', e)
         Logger.error(e);
         this.replayCurrentPhase()
         return;
@@ -349,10 +351,7 @@ export default class Game extends Scene {
       this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
     }
     if (!this.currentPhase) {
-      this.scene.start('game-win');
-      let preparedParticipation: PreparedParticipation = this.testApplicationService.getParticipation()
-      window.open(preparedParticipation.urlToEndOfTestQuiz.url, '_blank')
-      //this.testApplicationService.saveFinishedDate();
+      this.scene.start('game-win', this.testApplicationService);
     }
 
     if (this.currentPhase) {

@@ -22,7 +22,7 @@ export function saveAndroidPref(key: string, value: any) {
   }
 }
 
-export function getAndroidPref(key: string):string {
+export function getAndroidPref(key: string): string {
   if (isAndroidAmbient()) {
     //@ts-ignore
     return GameJavascriptInterface.getItem(key);
@@ -50,6 +50,20 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
   return dropZone;
 }
 
+export function androidOpenUrl(url: string) {
+  console.log('Opening url: ', url);
+  try {
+    //@ts-ignore
+    if (isAndroidAmbient()) {
+      //@ts-ignore
+      GameJavascriptInterface.openUrl(url)
+    } else {
+      window.open(url, '_blank')
+    }
+  } catch (e) {
+    console.warn('GameJavascriptInterface is not defined!!');
+  }
+}
 
 export function androidVibrate(time: number) {
   Logger.log(`Calling GameJavascriptInterface.vibrate with param ${time}ms`)

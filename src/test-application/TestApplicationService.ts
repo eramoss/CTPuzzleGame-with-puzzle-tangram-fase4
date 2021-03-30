@@ -56,7 +56,10 @@ export default class TestApplicationService {
 
   async sendResponse(responseToSend: { itemId: number, response: RespostaItemProgramacao }) {
     let url = this.getParticipation().urlToSendResponses.url;
+    Logger.info('sendResponse: url', url)
     url = url.replace('<item_id>', responseToSend.itemId + '');
+    Logger.info('sendResponse: url', url)
+    Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
     await POST(url, responseToSend.response);
   }
 

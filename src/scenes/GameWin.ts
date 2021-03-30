@@ -1,10 +1,22 @@
 import Phaser from 'phaser';
 import AlignGrid from '../geom/AlignGrid';
+import PreparedParticipation from '../test-application/TestApplication';
+import TestApplicationService from '../test-application/TestApplicationService';
+import { androidOpenUrl } from '../utils/Utils';
 
 export default class GameWin extends Phaser.Scene {
 
   constructor() {
     super('game-win');
+  }
+
+  init(testApplicationService: TestApplicationService) {
+    console.log('GAME_WIN')
+    let participation = testApplicationService.getParticipation();
+    let url = participation?.urlToEndOfTestQuiz?.url;
+    if (url) {
+      androidOpenUrl(url)
+    }
   }
 
   preload() {

@@ -7,6 +7,7 @@ import Program from '../program/Program';
 import AlignGrid from '../geom/AlignGrid';
 import { DudeMove } from './DudeMove';
 import { Branch } from './Branch';
+import { DudeBattery } from './DudeBattery'
 import { androidVibrate, joinChilds } from '../utils/Utils';
 import { Logger } from '../main';
 import Ballon from './Ballon';
@@ -37,6 +38,7 @@ export default class Dude {
   programBeingExecuted: Program;
   grid: AlignGrid;
   ballon: Ballon;
+  battery: any;
 
   constructor(scene: Scene, matrixMode: MatrixMode, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -46,6 +48,7 @@ export default class Dude {
     this.createAnimations(matrixMode);
     this.ballon = new Ballon(this.scene, this.grid.scale);
     this.ballon.setVisible(false);
+    this.battery = new DudeBattery(scene, grid);
   }
 
   setTimeout(fn: Function, timeout: number) {

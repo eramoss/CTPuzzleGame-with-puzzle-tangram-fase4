@@ -117,7 +117,6 @@ export default class PreGame extends Phaser.Scene {
     })
     this.grid.placeAt(10, 9.7, this.playBtn.sprite, 6);
 
-    this.inputObject.setText((this.gameParams.testItemNumber || '') + '');
 
   }
 

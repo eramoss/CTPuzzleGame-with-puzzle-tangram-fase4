@@ -372,8 +372,9 @@ export default class Game extends Scene {
       this.dude.setPosition(col, row);
       this.obstaclesMazeModel.updateBringFront();
 
-      this.dude.currentFace = this.currentPhase.dudeFacedTo
       this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
+      this.dude.setBatteryLevel(this.currentPhase.batteryLevel);
+      this.dude.setBatteryCostOnMove(this.currentPhase.batteryDecreaseOnEachMove);
 
       this.codeEditor.prepare(codeEditorOptions);
       this.currentPhase.showTutorialActionsIfExists();

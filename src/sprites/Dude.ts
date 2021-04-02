@@ -13,10 +13,12 @@ import { Logger } from '../main';
 import Ballon from './Ballon';
 
 const DUDE_SPEED = 80
+const MAX_BATTERY_LEVEL = 10
 const TURN_FRAME_RATE = (DUDE_SPEED * 0.1) * 0.7
 const WARN_TIME = 300
 
 export default class Dude {
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -38,7 +40,8 @@ export default class Dude {
   programBeingExecuted: Program;
   grid: AlignGrid;
   ballon: Ballon;
-  battery: any;
+  battery: DudeBattery;
+  batteryCostOnMove: number;
 
   constructor(scene: Scene, matrixMode: MatrixMode, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -53,6 +56,14 @@ export default class Dude {
 
   setTimeout(fn: Function, timeout: number) {
     this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
+  }
+
+  setBatteryLevel(level: number) {
+    this.battery.setLevel(level, MAX_BATTERY_LEVEL)
+  }
+
+  setBatteryCostOnMove(batteryDecreaseOnEachMove: number) {
+    this.batteryCostOnMove = batteryDecreaseOnEachMove;
   }
 
   createAnimations(matrixMode: MatrixMode) {
@@ -87,6 +98,7 @@ export default class Dude {
     this.currentStep?.animate();
     const speed = DUDE_SPEED;
     this.scene.physics.moveToObject(this.character, dudeMove.point, speed * this.grid.scale);
+    this.battery.decrease(this.batteryCostOnMove)
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 

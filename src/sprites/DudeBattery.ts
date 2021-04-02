@@ -2,21 +2,29 @@ import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 
 export class DudeBattery {
+
   scene: Scene;
   grid: AlignGrid;
   batteryImage: Phaser.GameObjects.Image;
   graphics: Phaser.GameObjects.Graphics;
-  maxCells: number;
+  maxCells: number = 10;
+  level: number;
+  text: Phaser.GameObjects.Text;
 
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
     this.grid = grid;
     this.batteryImage = this.grid.addImage(0.5, 1, 'battery', 4, 2);
     this.graphics = scene.add.graphics()
-    this.setLevel(8, 10, 0);
   }
 
-  setLevel(level: number, maxCells = 10, cellMargin: number = 2) {
+  decrease(batteryCost: number) {
+    this.setLevel(this.level - batteryCost);
+  }
+
+  setLevel(level: number, maxCells = this.maxCells, cellMargin: number = 0) {
+    this.graphics.clear();
+    this.level = level;
     cellMargin = cellMargin * this.grid.scale;
     this.maxCells = maxCells;
     this.setColorByLevel(level / maxCells);
@@ -49,7 +57,10 @@ export class DudeBattery {
 
   }
   setText(x: number, y: number, text: string) {
-    this.scene.add.text(x, y, text, {})
+    if (!this.text) {
+      this.text = this.scene.add.text(x, y, text, {})
+    }
+    this.text.setText(text)
       .setScale(this.grid.scale)
       .setFontFamily('arial')
       .setFontStyle('bold')

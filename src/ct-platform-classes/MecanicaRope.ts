@@ -9,5 +9,7 @@ export class MecanicaRope {
   x: number;
   y: number;
   showTutorial: boolean;
+  nivelBateria: number;
+  custoBateriaEmCadaMovimento: number;
 
 }

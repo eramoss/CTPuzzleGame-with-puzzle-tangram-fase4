@@ -16,6 +16,7 @@ import TestApplicationService from '../test-application/TestApplicationService'
 import GameState from './GameState'
 import { debug } from 'webpack'
 import PreparedParticipation from '../test-application/TestApplication'
+import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -73,6 +74,7 @@ export default class Game extends Scene {
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 124 });
+    this.load.spritesheet('battery-sprite', 'assets/ct/battery_sprite.png', { frameWidth: 92, frameHeight: 148 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 632, frameHeight: 415 });
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
@@ -113,16 +115,28 @@ export default class Game extends Scene {
     this.hideLoading();
 
     const scale = this.grid.scale
-    let spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject> = new Array();
-    spriteCreateFunctions['block'] = (x: integer, y: integer) => {
+    let spriteCreateFunctions: Map<Obstaculo|Mapa,  (x: integer, y: integer) => GameObjects.GameObject> = new Map();
+
+    spriteCreateFunctions.set('block', (x: integer, y: integer) => {
       return this.add.image(x, y - 35 * scale, 'block')
         .setScale(scale * 1.6)
-    };
-    spriteCreateFunctions['tile'] = (x: integer, y: integer) => {
+    });
+    spriteCreateFunctions.set('tile', (x: integer, y: integer) => {
       return this.add.image(x, y + 10 * scale, 'tile')
         .setScale(scale * 1.6)
-    };
-    spriteCreateFunctions['coin'] = (x: integer, y: integer) => {
+    });
+    spriteCreateFunctions.set('battery', (x: integer, y: integer) => {
+        this.anims.create({
+          key: 'battery-sprite',
+          frames: this.anims.generateFrameNumbers('battery-sprite', { start: 0, end: 5 }),
+          frameRate: 7,
+          repeat: -1
+        })
+        return this.physics.add.sprite(x, y - 35 * scale, 'battery-sprite')
+          .play('battery-sprite')
+          .setScale(scale)
+    })
+    spriteCreateFunctions.set('coin', (x: integer, y: integer) => {
       this.anims.create({
         key: 'gold-spining',
         frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
@@ -132,7 +146,7 @@ export default class Game extends Scene {
       return this.physics.add.sprite(x, y - 35 * scale, 'coin-gold')
         .play('gold-spining')
         .setScale(scale)
-    }
+    })
 
     this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
     this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
@@ -150,9 +164,10 @@ export default class Game extends Scene {
     }
 
     this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteName == 'coin') {
+      if (other.spriteName == 'battery') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
+          this.dude.increaseBatteryLevel();
           this.children.remove(other.gameObject);
           //coin.setGravityY(-200);
           //coin.setVelocityY(-100)
@@ -193,6 +208,8 @@ export default class Game extends Scene {
       return valid
     }
 
+
+
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
         if (!this.dude.stopped) {
@@ -203,6 +220,16 @@ export default class Game extends Scene {
       }
       this.obstaclesMazeModel.onChange();
       //this.mazeModel.updateBringFront();
+    }
+
+    this.dude.onRunOutOfEnergyCallback = () => {
+      this.replayCurrentPhase();
+    }
+
+    this.dude.onTryStartCheckIfHasEnergy = () => {
+      let hasEnergy = this.dude.getBatteryLevel() > 0;
+      this.dude.decreaseBatteryLevel();
+      return hasEnergy;
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {

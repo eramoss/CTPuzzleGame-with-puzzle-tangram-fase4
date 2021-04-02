@@ -1,15 +1,18 @@
-// Exemplo de classe de mecânica
-export class MecanicaRope {
 
-  mapa: string[][];
-  obstaculos: string[][];
-  solucaoEsperada: Array<{x:number, y:number}>;
-  comandosEsperados: Array<string>;
-  face: string;
-  x: number;
-  y: number;
-  showTutorial: boolean;
-  nivelBateria: number;
-  custoBateriaEmCadaMovimento: number;
+export type Obstaculo = "coin" | "block" | "null" | "battery" | 'rope'
+export type Mapa = "tile" | "null"
+export type Face = "up" | "down" | "right" | "left"
+export type Comando = "UP" | "DOWN" | "RIGHT" | "LEFT"
 
+class MecanicaRope {
+  mapa!: Mapa[][];
+  obstaculos!: Obstaculo[][];
+  face!: Face;
+  x: number = 0;
+  y: number = 0;
+  comandosEsperados!: Comando[];
+  tempoEsperado!: number
+  tentativasEsperadas!: number
+  nivelBateria: number = 10
+  custoBateriaEmCadaMovimento: number = 1
 }

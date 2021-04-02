@@ -21,6 +21,7 @@ export class DudeMove {
   couldExecute: boolean;
   command: Command;
   branch: Branch;
+  onTryExecuteConsumeEnergy: () => boolean = () => true;
 
   constructor(dude: Dude, command: Command) {
     this.dude = dude;
@@ -112,12 +113,14 @@ export class DudeMove {
   }
 
   execute(previousMove: DudeMove = null) {
+
     Logger.log("DUDE_MOVE", this.action);
 
     this.executing = true;
     let branched = this.isProgMove();
     let turnMove = this.action.isTurnMove();
     let isCondition = this.action.isCondition();
+    let hasEnergy = isCondition || branched || this.onTryExecuteConsumeEnergy();
 
     if (previousMove == null) {
       this.x = this.dude.x;
@@ -132,7 +135,7 @@ export class DudeMove {
     let { newX, newY, newFace, animation } = this.prepareMove(this.x, this.y, this.action, this.dude.currentFace);
     Logger.log("PREPARE_MOVE [prev xy] [next xy]", this.x, this.y, newX, newY);
     this.dude.currentFace = newFace;
-    this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid;
+    this.couldExecute = this.dude.canMoveTo(newX, newY) && isConditionValid && hasEnergy;
 
     this.animate();
 
@@ -155,7 +158,8 @@ export class DudeMove {
 
     if (turnMove) {
       this.dude.setTimeout(() => { this.onCompleteMove(); }, 800);
-      this.dude.playAnimation(animation);
+      if (this.couldExecute)
+        this.dude.playAnimation(animation);
     }
 
     if (!branched && !turnMove) {

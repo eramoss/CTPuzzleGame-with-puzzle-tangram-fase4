@@ -1,6 +1,13 @@
 import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 
+export class RunOutOfEnergyError extends Error {
+  constructor(m: string) {
+    super(m);
+    Object.setPrototypeOf(this, RunOutOfEnergyError.prototype);
+  }
+}
+
 export class DudeBattery {
 
   scene: Scene;
@@ -18,11 +25,28 @@ export class DudeBattery {
     this.graphics = scene.add.graphics()
   }
 
+  animateRunOutEnergy() {
+    this.batteryImage.setTint(0xff0000);
+  }
+
+  increase(energy: number = 1) {
+    let newLevel = this.level + energy;
+    if (newLevel > this.maxCells) {
+      newLevel = this.maxCells;
+    }
+    this.setLevel(newLevel)
+  }
+
   decrease(batteryCost: number) {
-    this.setLevel(this.level - batteryCost);
+    let newLevel = this.level - batteryCost
+    if (newLevel < 0) {
+      throw new RunOutOfEnergyError('Acabou a energia')
+    }
+    this.setLevel(newLevel);
   }
 
   setLevel(level: number, maxCells = this.maxCells, cellMargin: number = 0) {
+    this.batteryImage.clearTint();
     this.graphics.clear();
     this.level = level;
     cellMargin = cellMargin * this.grid.scale;

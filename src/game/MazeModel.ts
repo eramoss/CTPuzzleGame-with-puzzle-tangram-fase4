@@ -1,13 +1,14 @@
 import { GameObjects } from "phaser";
+import { Mapa, Obstaculo } from "../ct-platform-classes/MecanicaRope";
 import Matrix from "../geom/Matrix";
 import { Logger } from "../main";
 
 export class MazeModelObject {
   depth: number;
   gameObject: GameObjects.GameObject;
-  spriteName: string
+  spriteName:Obstaculo
 
-  constructor(gameObject: GameObjects.GameObject, spriteName: string) {
+  constructor(gameObject: GameObjects.GameObject, spriteName:  Obstaculo) {
     this.gameObject = gameObject;
     this.spriteName = spriteName;
   }
@@ -18,15 +19,15 @@ export default class MazeModel {
   gameObjects: MazeModelObject[][]
   matrix: Matrix;
   scene: Phaser.Scene;
-  obstaclesMatrix: string[][];
-  spriteCreateFunctions: ((x: integer, y: integer) => GameObjects.GameObject)[];
+  obstaclesMatrix: Obstaculo[][];
+  spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => GameObjects.GameObject>;
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
   onChange: () => void = () => { };
   depth: number;
 
   constructor(
     scene: Phaser.Scene,
-    spriteCreateFunctions: Array<(x: integer, y: integer) => GameObjects.GameObject>,
+    spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => GameObjects.GameObject>,
     depth: number) {
     this.scene = scene;
     this.gameObjects = []
@@ -35,7 +36,7 @@ export default class MazeModel {
   }
 
   setMatrixOfObjects(matrix: Matrix) {
-    this.obstaclesMatrix = matrix.matrix;
+    this.obstaclesMatrix = matrix.matrix as Obstaculo[][];
     this.matrix = matrix;
     this.buildObjectsModel();
     this.updateBringFront();
@@ -48,7 +49,7 @@ export default class MazeModel {
       }
       for (let x = 0; x < this.matrix.width; x++) {
         const spriteNumber = this.obstaclesMatrix[y][x];
-        let spriteCreateFn = this.spriteCreateFunctions[spriteNumber];
+        let spriteCreateFn = this.spriteCreateFunctions.get(spriteNumber);
         if (spriteCreateFn) {
           // Cria os objeto e adiciona no ponto
           const point = this.matrix.points[y][x];
@@ -138,7 +139,7 @@ export default class MazeModel {
     Logger.log('GAME_OBJECTS', logMatrix) */
   }
 
-  putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteName: string = null) {
+  putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteName: Obstaculo = null) {
     const existentObjectOnPosition = this.getObjectAt(y, x);
     if (sprite) {
       if (existentObjectOnPosition) {

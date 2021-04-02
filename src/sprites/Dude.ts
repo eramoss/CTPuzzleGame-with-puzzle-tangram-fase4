@@ -19,6 +19,7 @@ const WARN_TIME = 300
 
 export default class Dude {
 
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -28,7 +29,9 @@ export default class Dude {
   stopped: boolean = true;
   stepByStep: boolean;
   onCompleteMoveCallback: (current: DudeMove) => void
+  onTryStartCheckIfHasEnergy: () => boolean = () => true
   onFinishWalking: () => void = () => { };
+  onRunOutOfEnergyCallback: () => void = () => { }
   onStartMoveCallback: (x: number, y: number, current: DudeMove) => void
   sounds: Sounds;
   canMoveTo: (x: number, y: number) => boolean;
@@ -60,6 +63,10 @@ export default class Dude {
 
   setBatteryLevel(level: number) {
     this.battery.setLevel(level, MAX_BATTERY_LEVEL)
+  }
+
+  getBatteryLevel(): number {
+    return this.battery.level
   }
 
   setBatteryCostOnMove(batteryDecreaseOnEachMove: number) {
@@ -98,9 +105,24 @@ export default class Dude {
     this.currentStep?.animate();
     const speed = DUDE_SPEED;
     this.scene.physics.moveToObject(this.character, dudeMove.point, speed * this.grid.scale);
-    this.battery.decrease(this.batteryCostOnMove)
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
+
+  increaseBatteryLevel(energy: number = 1) {
+    this.battery.increase(energy);
+  }
+
+  decreaseBatteryLevel() {
+    try {
+      this.battery.decrease(this.batteryCostOnMove)
+    } catch (e) {
+      this.battery.animateRunOutEnergy()
+      this.setTimeout(() => {
+        this.onRunOutOfEnergyCallback();
+      }, 2000)
+    }
+  }
+
 
   warmBlocked() {
     //this.playAnimation(dudeMove.action);
@@ -292,7 +314,13 @@ export default class Dude {
     let moves: Array<DudeMove> =
       joinChilds(commands, (c) => [c.condition, c])
         .filter(command => command != undefined)
-        .map(command => new DudeMove(this, command))
+        .map(command => {
+          let move = new DudeMove(this, command);
+          move.onTryExecuteConsumeEnergy = () => {
+            return this.onTryStartCheckIfHasEnergy();
+          }
+          return move;
+        })
 
     moves.forEach((move, index) => {
       if (index > 0) {
@@ -301,6 +329,7 @@ export default class Dude {
     })
     this.currentStep = moves[0]
   }
+
 
   playSuccess() {
     let playAnimation = (color: number, face: string, time: number) => {

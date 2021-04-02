@@ -17,6 +17,9 @@ import GameState from './GameState'
 import { debug } from 'webpack'
 import PreparedParticipation from '../test-application/TestApplication'
 import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
+import { MyGameObject } from './MyGameObject'
+import { Block } from './Block'
+import { Battery } from './Battery'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -69,12 +72,11 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 105 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
-    this.load.spritesheet('sprite-girl', 'assets/ct/sprite_girl.png', { frameWidth: 30, frameHeight: 77 });
-    //this.load.spritesheet('sprite-boy', 'assets/ct/sprite_boy.png', { frameWidth: 57, frameHeight: 110 });
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 124 });
     this.load.spritesheet('battery-sprite', 'assets/ct/battery_sprite.png', { frameWidth: 92, frameHeight: 148 });
+    this.load.spritesheet('block-sprite', 'assets/ct/block_sprite.png', { frameWidth: 92, frameHeight: 81 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 632, frameHeight: 415 });
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
     this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
@@ -94,62 +96,11 @@ export default class Game extends Scene {
     this.input.setDefaultCursor('pointer');
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
 
-
-
-    let gridCenterX = this.grid.width / 3.2;
-    let gridCenterY = this.grid.height / 2;
-    let gridCellWidth = this.grid.cellWidth * 1.1
-
-    this.showLoading(gridCenterX, gridCenterY);
-
-    this.phases = (await new MazePhasesLoader(
-      this,
-      this.grid,
-      this.codeEditor,
-      MatrixMode.ISOMETRIC,
-      gridCenterX,
-      gridCenterY,
-      gridCellWidth
-    ).load(this.gameParams));
-
+    this.showLoading();
+    this.phases = await this.loadPhases();
     this.hideLoading();
 
-    const scale = this.grid.scale
-    let spriteCreateFunctions: Map<Obstaculo|Mapa,  (x: integer, y: integer) => GameObjects.GameObject> = new Map();
-
-    spriteCreateFunctions.set('block', (x: integer, y: integer) => {
-      return this.add.image(x, y - 35 * scale, 'block')
-        .setScale(scale * 1.6)
-    });
-    spriteCreateFunctions.set('tile', (x: integer, y: integer) => {
-      return this.add.image(x, y + 10 * scale, 'tile')
-        .setScale(scale * 1.6)
-    });
-    spriteCreateFunctions.set('battery', (x: integer, y: integer) => {
-        this.anims.create({
-          key: 'battery-sprite',
-          frames: this.anims.generateFrameNumbers('battery-sprite', { start: 0, end: 5 }),
-          frameRate: 7,
-          repeat: -1
-        })
-        return this.physics.add.sprite(x, y - 35 * scale, 'battery-sprite')
-          .play('battery-sprite')
-          .setScale(scale)
-    })
-    spriteCreateFunctions.set('coin', (x: integer, y: integer) => {
-      this.anims.create({
-        key: 'gold-spining',
-        frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-        frameRate: 7,
-        repeat: -1
-      })
-      return this.physics.add.sprite(x, y - 35 * scale, 'coin-gold')
-        .play('gold-spining')
-        .setScale(scale)
-    })
-
-    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
-    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
+    this.createAnimationsAndDefineSpritesByKeys();
 
     this.obstaclesMazeModel.onChange = () => {
       if (this.obstaclesMazeModel.count('coin') == 0) {
@@ -164,11 +115,11 @@ export default class Game extends Scene {
     }
 
     this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      if (other.spriteName == 'battery') {
+      if (other.obstacleName == 'battery') {
         let waitALittleBitBeforeColide = 700
         setTimeout(() => {
           this.dude.increaseBatteryLevel();
-          this.children.remove(other.gameObject);
+          this.children.remove(other.myGameObject.gameObject);
           //coin.setGravityY(-200);
           //coin.setVelocityY(-100)
           this.sounds.coin();
@@ -184,12 +135,19 @@ export default class Game extends Scene {
       let ground = this.currentPhase.ground;
       let can = true;
       let point = ground.getPoint(y, x);
-      let object = this.obstaclesMazeModel.getObjectAt(y, x)
+      let modelObject = this.obstaclesMazeModel.getObjectAt(y, x)
       let isNotHole = ground.getKey(y, x) != 'null';
       const isNotOutOfBounds = point != null && point
-      const isNotBlock = object?.spriteName != 'block'
+      const isNotBlock = modelObject?.obstacleName != 'block'
       can = isNotOutOfBounds && isNotBlock && isNotHole
       Logger.log('CAN_MOVE_TO [x, y, can]', x, y, can)
+      if (!isNotBlock) {
+        const block = modelObject.myGameObject as Block
+        block.breakMore()
+        if (block.isBroken()) {
+          this.obstaclesMazeModel.remove(modelObject);
+        }
+      }
       return can
     }
 
@@ -201,14 +159,12 @@ export default class Game extends Scene {
         let { x, y } = dudeMove.getAheadPosition();
         valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == command
         if (valid) {
-          (this.obstaclesMazeModel.getObjectAt(y, x).gameObject as GameObjects.Image).setTint(0xccff00);
+          (this.obstaclesMazeModel.getObjectAt(y, x).myGameObject).setTint(0xccff00);
         }
         //}
       }
       return valid
     }
-
-
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
@@ -301,8 +257,83 @@ export default class Game extends Scene {
     this.playNextPhase();
   }
 
+  async loadPhases(): Promise<MazePhasesLoader> {
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2;
+    let gridCellWidth = this.grid.cellWidth * 1.1
 
-  private showLoading(gridCenterX: number, gridCenterY: number) {
+    return (await new MazePhasesLoader(
+      this,
+      this.grid,
+      this.codeEditor,
+      MatrixMode.ISOMETRIC,
+      gridCenterX,
+      gridCenterY,
+      gridCellWidth
+    ).load(this.gameParams));
+  }
+
+  createAnimationsAndDefineSpritesByKeys() {
+    this.createAnimations()
+    const spriteCreateFunctions = this.createSpriteCreationFunctions();
+    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
+    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
+  }
+
+  private createSpriteCreationFunctions() {
+    let scale = this.grid.scale;
+    let spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => MyGameObject> = new Map();
+
+    spriteCreateFunctions.set('block', (x: integer, y: integer) => {
+      return new Block(x, y, scale, this)
+    })
+
+    spriteCreateFunctions.set('tile', (x: integer, y: integer) => {
+      const tileImage = this.add
+        .image(x, y + 10 * scale, 'tile')
+        .setScale(scale * 1.6)
+      return new MyGameObject(tileImage)
+    })
+
+    spriteCreateFunctions.set('battery', (x: integer, y: integer) => {
+      return new Battery(x, y, this, scale);
+    })
+
+    spriteCreateFunctions.set('coin', (x: integer, y: integer) => {
+      const goldSpinningSprite = this.physics.add
+        .sprite(x, y - 35 * scale, 'coin-gold')
+        .play('gold-spining')
+        .setScale(scale)
+      return new MyGameObject(goldSpinningSprite)
+    })
+
+    return spriteCreateFunctions;
+  }
+
+  private createAnimations() {
+    this.anims.create({
+      key: 'block-sprite',
+      frames: this.anims.generateFrameNumbers('block-sprite', { start: 0, end: 4 }),
+      frameRate: 0,
+      repeat: 0
+    })
+    this.anims.create({
+      key: 'battery-sprite',
+      frames: this.anims.generateFrameNumbers('battery-sprite', { start: 0, end: 5 }),
+      frameRate: 7,
+      repeat: -1
+    })
+    this.anims.create({
+      key: 'gold-spining',
+      frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
+      frameRate: 7,
+      repeat: -1
+    })
+  }
+
+  private showLoading() {
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2;
     let loadingText = this.add.text(
       gridCenterX,
       gridCenterY,

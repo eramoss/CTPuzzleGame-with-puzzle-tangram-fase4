@@ -2,32 +2,35 @@ import { GameObjects } from "phaser";
 import { Mapa, Obstaculo } from "../ct-platform-classes/MecanicaRope";
 import Matrix from "../geom/Matrix";
 import { Logger } from "../main";
+import { Block } from "../scenes/Block";
+import { MyGameObject } from "../scenes/MyGameObject";
 
 export class MazeModelObject {
   depth: number;
-  gameObject: GameObjects.GameObject;
-  spriteName:Obstaculo
+  myGameObject: MyGameObject;
+  obstacleName: Obstaculo
 
-  constructor(gameObject: GameObjects.GameObject, spriteName:  Obstaculo) {
-    this.gameObject = gameObject;
-    this.spriteName = spriteName;
+  constructor(gameObject: MyGameObject, spriteName: Obstaculo) {
+    this.myGameObject = gameObject;
+    this.obstacleName = spriteName;
   }
 }
 
 export default class MazeModel {
 
+
   gameObjects: MazeModelObject[][]
   matrix: Matrix;
   scene: Phaser.Scene;
   obstaclesMatrix: Obstaculo[][];
-  spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => GameObjects.GameObject>;
+  spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => MyGameObject>;
   onOverlap: (x: number, y: number, other: MazeModelObject) => void;
   onChange: () => void = () => { };
   depth: number;
 
   constructor(
     scene: Phaser.Scene,
-    spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => GameObjects.GameObject>,
+    spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => MyGameObject>,
     depth: number) {
     this.scene = scene;
     this.gameObjects = []
@@ -89,8 +92,8 @@ export default class MazeModel {
       for (let itensDiagonalPassed = 0; itensDiagonalPassed < itensDiagonalToPass; itensDiagonalPassed++) {
         let object = this.getObjectAt(y, x);
         if (object) {
-          Logger.log('MAZE_MODEL_ORDERING [y,x,object,depth]', y, x, object.spriteName, depth);
-          (object.gameObject as GameObjects.Sprite).setDepth(depth)
+          Logger.log('MAZE_MODEL_ORDERING [y,x,object,depth]', y, x, object.obstacleName, depth);
+          (object.myGameObject).setDepth(depth)
           //this.scene.children.bringToTop(object.gameObject);
         }
         x++;
@@ -112,7 +115,7 @@ export default class MazeModel {
         let object = this.getObjectAt(y, x);
         let depth: number = 0;
         if (object) {
-          depth = (object.gameObject as GameObjects.Sprite).depth
+          depth = (object.myGameObject).getDepth()
           c = this.obstaclesMatrix[y][x];
         }
         logMatrix += `${c.substring(0, 1)}[${depth}] `;
@@ -148,18 +151,18 @@ export default class MazeModel {
     }
     let object: MazeModelObject = null;
     if (sprite) {
-      object = new MazeModelObject(sprite, spriteName)
+      object = new MazeModelObject(new MyGameObject(sprite), spriteName)
     }
     this.gameObjects[y][x] = object
   }
 
-  count(spriteName: string) {
+  count(spriteName: Obstaculo) {
     let count = 0;
     for (let y = 0; y < this.matrix.height; y++) {
       for (let x = 0; x < this.matrix.width; x++) {
         let object = this.getObjectAt(y, x);
         if (object) {
-          if (object.spriteName == spriteName) {
+          if (object.obstacleName == spriteName) {
             count++;
           }
         }
@@ -178,8 +181,8 @@ export default class MazeModel {
         for (let x = 0; x < this.matrix.width; x++) {
           let object = this.getObjectAt(y, x);
           if (object) {
-            if (object.gameObject != keepInModel) {
-              this.scene.children.remove(object.gameObject);
+            if (object.myGameObject.gameObject != keepInModel) {
+              this.scene.children.remove(object.myGameObject.gameObject);
             }
             this.gameObjects[y][x] = null;
           }
@@ -189,7 +192,25 @@ export default class MazeModel {
   }
 
   getObjectNameAt(y: number, x: number): string {
-    return this.getObjectAt(y, x)?.spriteName
+    return this.getObjectAt(y, x)?.obstacleName
   }
+
+  remove(modelObject: MazeModelObject) {
+    if (this.matrix) {
+      for (let y = 0; y < this.matrix.height; y++) {
+        for (let x = 0; x < this.matrix.width; x++) {
+          let object = this.getObjectAt(y, x);
+          if (object) {
+            if (object == modelObject) {
+              this.scene.children.remove(object.myGameObject.gameObject);
+              this.gameObjects[y][x] = null;
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
 
 }

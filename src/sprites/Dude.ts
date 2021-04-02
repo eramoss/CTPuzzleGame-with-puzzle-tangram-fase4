@@ -55,6 +55,9 @@ export default class Dude {
     this.ballon = new Ballon(this.scene, this.grid.scale);
     this.ballon.setVisible(false);
     this.battery = new DudeBattery(scene, grid);
+    this.battery.onAlmostRunOut = () => {
+      this.character.setTint(0xff0000);
+    }
   }
 
   setTimeout(fn: Function, timeout: number) {

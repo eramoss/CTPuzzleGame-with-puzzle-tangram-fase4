@@ -17,6 +17,7 @@ export class DudeBattery {
   maxCells: number = 10;
   level: number;
   text: Phaser.GameObjects.Text;
+  onAlmostRunOut: () => void = () => {};
 
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
@@ -106,6 +107,7 @@ export class DudeBattery {
       this.graphics.fillStyle(0xd67120, 1);
     } */
     if (percentLevel < 0.3) {
+      this.onAlmostRunOut();
       this.graphics.fillStyle(0xfe2222, 1);
       this.graphics.setDepth(2)
       this.batteryImage.setDepth(1);

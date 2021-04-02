@@ -202,8 +202,7 @@ export default class MazeModel {
           let object = this.getObjectAt(y, x);
           if (object) {
             if (object == modelObject) {
-              this.scene.children.remove(object.myGameObject.gameObject);
-              this.gameObjects[y][x] = null;
+              this.removeAt(y, x, object)
               return;
             }
           }
@@ -212,5 +211,9 @@ export default class MazeModel {
     }
   }
 
+  removeAt(y: number, x: number, modelObject: MazeModelObject) {
+    this.scene.children.remove(modelObject.myGameObject.gameObject);
+    this.gameObjects[y][x] = null;
+  }
 
 }

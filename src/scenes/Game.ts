@@ -20,6 +20,8 @@ import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
 import { MyGameObject } from './MyGameObject'
 import { Block } from './Block'
 import { Battery } from './Battery'
+import { Coin } from './Coin'
+import { Tile } from './Tile'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -115,13 +117,20 @@ export default class Game extends Scene {
     }
 
     this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
+      let waitALittleBitBeforeColide = 700
+      let obj = this.obstaclesMazeModel.getObjectAt(y, x);
       if (other.obstacleName == 'battery') {
-        let waitALittleBitBeforeColide = 700
         setTimeout(() => {
           this.dude.increaseBatteryLevel();
-          this.children.remove(other.myGameObject.gameObject);
-          //coin.setGravityY(-200);
-          //coin.setVelocityY(-100)
+          this.obstaclesMazeModel.removeAt(y, x, obj);
+          this.sounds.coin();
+        }, waitALittleBitBeforeColide);
+      }
+      if (other.obstacleName == 'coin') {
+        setTimeout(() => {
+          this.obstaclesMazeModel.removeAt(y, x, obj);
+          /* other.setGravityY(-200);
+          other.setVelocityY(-100) */
           this.sounds.coin();
         }, waitALittleBitBeforeColide);
       }
@@ -289,10 +298,7 @@ export default class Game extends Scene {
     })
 
     spriteCreateFunctions.set('tile', (x: integer, y: integer) => {
-      const tileImage = this.add
-        .image(x, y + 10 * scale, 'tile')
-        .setScale(scale * 1.6)
-      return new MyGameObject(tileImage)
+      return new Tile(x, y, this, scale)
     })
 
     spriteCreateFunctions.set('battery', (x: integer, y: integer) => {
@@ -300,11 +306,7 @@ export default class Game extends Scene {
     })
 
     spriteCreateFunctions.set('coin', (x: integer, y: integer) => {
-      const goldSpinningSprite = this.physics.add
-        .sprite(x, y - 35 * scale, 'coin-gold')
-        .play('gold-spining')
-        .setScale(scale)
-      return new MyGameObject(goldSpinningSprite)
+      return new Coin(x, y, this, scale);
     })
 
     return spriteCreateFunctions;

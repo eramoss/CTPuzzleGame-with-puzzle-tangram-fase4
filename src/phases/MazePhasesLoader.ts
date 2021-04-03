@@ -47,7 +47,7 @@ export default class MazePhasesLoader {
     let phases: MazePhasesLoader;
     try {
       if (gameParams.isPlaygroundTest()) {
-        phases = await this.loadPlaygroundTestItem(gameParams.testItemNumber);
+        phases = await this.loadPlaygroundTestItem();
       }
       if (gameParams.isTestApplication()) {
         phases = this.loadTestApplication();
@@ -62,9 +62,10 @@ export default class MazePhasesLoader {
     return phases
   }
 
-  private async loadPlaygroundTestItem(itemNumber: number): Promise<MazePhasesLoader> {
-    let phase = await this.instantiateItem(itemNumber)
-    this.phases = [phase]
+  private async loadPlaygroundTestItem(): Promise<MazePhasesLoader> {
+    let item = await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
+    const mazePhase = this.convertMecanicaRopeToPhase(item);
+    this.phases = [mazePhase]
     return this
   }
 
@@ -78,12 +79,6 @@ export default class MazePhasesLoader {
     return this;
   }
 
-  private async instantiateItem(itemNumber: any): Promise<MazePhase> {
-    let item = await this.testApplicationService.instantiateItem<MecanicaRope>(itemNumber);
-    const mazePhase = this.convertMecanicaRopeToPhase(item);
-    mazePhase.itemId = itemNumber;
-    return mazePhase;
-  }
 
   private convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);
@@ -108,6 +103,7 @@ export default class MazePhasesLoader {
       phase.dudeFacedTo = mecanicaRope.face
       phase.batteryLevel = mecanicaRope.nivelBateria
       phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
+      phase.batteryGainOnCapture = mecanicaRope.custoBateriaEmCadaMovimento
 
       /* if (phase.mecanicaRope.showTutorial) {
         buildTutorial(phase,

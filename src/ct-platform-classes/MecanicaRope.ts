@@ -4,7 +4,7 @@ export type Mapa = "tile" | "null"
 export type Face = "up" | "down" | "right" | "left"
 export type Comando = "UP" | "DOWN" | "RIGHT" | "LEFT"
 
-class MecanicaRope {
+export class MecanicaRope {
   mapa!: Mapa[][];
   obstaculos!: Obstaculo[][];
   face!: Face;
@@ -15,4 +15,5 @@ class MecanicaRope {
   tentativasEsperadas!: number
   nivelBateria: number = 10
   custoBateriaEmCadaMovimento: number = 1
+  ganhoBateriaAoCapturarPilha: number = 1
 }

@@ -1,3 +1,5 @@
+import { MecanicaRope } from "../ct-platform-classes/MecanicaRope"
+
 export class UrlToSendProgress {
   method: string
   url: string
@@ -22,14 +24,23 @@ export class UrlToEndOfTestQuiz {
   help: 'Open in a browser'
 }
 
-export default class PreparedParticipation {
+export class PreparedParticipation {
 
-  lastVisitedItemId:number
-  participationId:number
-  test: string
+  lastVisitedItemId: number
+  participationId: number
+  test: Test
   urlToSendResponses: UrlToSendResponses
   urlToSendProgress: UrlToSendProgress
   urlToSendUserData: UrlToSendUserData
   urlToEndOfTestQuiz: UrlToEndOfTestQuiz
 
+}
+
+export class Test {
+  items: TestItem[]
+}
+
+export class TestItem {
+  id: number
+  item: MecanicaRope
 }

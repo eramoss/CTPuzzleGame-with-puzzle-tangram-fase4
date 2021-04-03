@@ -1,14 +1,14 @@
 export default class GameParams {
 
+  urlToInstantiateItem: string;
+  operation: string
+  dataUrl: string
+
   constructor(params: URLSearchParams) {
     this.operation = params.get('op');
     this.dataUrl = params.get('dataUrl')
     this.urlToInstantiateItem = params.get('urlToInstantiateItem');
   }
-
-  urlToInstantiateItem: string;
-  operation: string
-  dataUrl: string
 
   isPlaygroundTest(): boolean {
     return this.operation == 'playground'

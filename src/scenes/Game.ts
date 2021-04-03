@@ -14,8 +14,6 @@ import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
 import TestApplicationService from '../test-application/TestApplicationService'
 import GameState from './GameState'
-import { debug } from 'webpack'
-import PreparedParticipation from '../test-application/TestApplication'
 import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
 import { MyGameObject } from './MyGameObject'
 import { Block } from './Block'
@@ -377,7 +375,6 @@ export default class Game extends Scene {
   async playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
 
     if (phase != this.currentPhase) {
-
       if (!this.codeEditor.programs) {
         let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
         let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
@@ -388,21 +385,7 @@ export default class Game extends Scene {
           prog2
         ])
       }
-
-      try {
-        if (this.currentPhase) {
-          const response = this.gameState.getResponseToSend()
-          await this.testApplicationService.sendResponse(response);
-        }
-        if (phase) {
-          this.gameState.initializeResponse(phase.itemId);
-        }
-      } catch (e) {
-        Logger.log('ErrorSendingResponse', e)
-        Logger.error(e);
-        this.replayCurrentPhase()
-        return;
-      }
+      this.sendResponse(phase);
     }
 
     this.currentPhase?.clearTutorials()
@@ -432,9 +415,12 @@ export default class Game extends Scene {
       this.dude.setPosition(col, row);
       this.obstaclesMazeModel.updateBringFront();
 
+      this.dude.currentFace = this.currentPhase.dudeFacedTo
       this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
+
       this.dude.setBatteryLevel(this.currentPhase.batteryLevel);
       this.dude.setBatteryCostOnMove(this.currentPhase.batteryDecreaseOnEachMove);
+      this.dude.setBatteryGainOnCharge(this.currentPhase.batteryGainOnCapture);
 
       this.codeEditor.prepare(codeEditorOptions);
       this.currentPhase.showTutorialActionsIfExists();
@@ -446,5 +432,24 @@ export default class Game extends Scene {
     // this.codeEditor.addCommands(prog0, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
     // this.codeEditor.addCommands(prog1, ['arrow-up'])
     // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
+  }
+
+  async sendResponse(phase: MazePhase) {
+    if (this.gameParams.isTestApplication()) {
+      try {
+        if (this.currentPhase) {
+          const response = this.gameState.getResponseToSend()
+          await this.testApplicationService.sendResponse(response);
+        }
+        if (phase) {
+          this.gameState.initializeResponse(phase.itemId);
+        }
+      } catch (e) {
+        Logger.log('ErrorSendingResponse', e)
+        Logger.error(e);
+        this.replayCurrentPhase()
+        return;
+      }
+    }
   }
 }

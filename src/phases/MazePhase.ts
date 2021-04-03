@@ -29,8 +29,9 @@ export default class MazePhase {
     dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
     codeEditor: CodeEditor;
     mecanicaRope: MecanicaRope;
-    batteryLevel: number = 0;
+    batteryLevel: number = 10;
     batteryDecreaseOnEachMove: number = 1
+    batteryGainOnCapture: number = 1;
 
     constructor(scene: Scene, codeEditor: CodeEditor) {
         this.scene = scene;

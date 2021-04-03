@@ -4,7 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, setItem } from "../utils/storage";
-import { PreparedParticipation, Test, TestItem, UrlToSendProgress } from "./TestApplication";
+import { PreparedParticipation, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
 
@@ -64,7 +64,7 @@ export default class TestApplicationService {
   }
 
 
-  async instantiateItem<T>(itemNumber: any): Promise<T> {
+  async instantiatePlaygroundItem<T>(): Promise<T> {
     const response = await GET(this.gameParams.urlToInstantiateItem);
     let item = await response.json();
     return item as T;

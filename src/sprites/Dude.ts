@@ -44,7 +44,8 @@ export default class Dude {
   grid: AlignGrid;
   ballon: Ballon;
   battery: DudeBattery;
-  batteryCostOnMove: number;
+  batteryCostOnMove: number = 1;
+  batteryGainOnCharge: number = 1;
 
   constructor(scene: Scene, matrixMode: MatrixMode, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -74,6 +75,10 @@ export default class Dude {
 
   setBatteryCostOnMove(batteryDecreaseOnEachMove: number) {
     this.batteryCostOnMove = batteryDecreaseOnEachMove;
+  }
+
+  setBatteryGainOnCharge(batteryGainOnCharge: number) {
+    this.batteryGainOnCharge = batteryGainOnCharge
   }
 
   createAnimations(matrixMode: MatrixMode) {
@@ -111,13 +116,13 @@ export default class Dude {
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
 
-  increaseBatteryLevel(energy: number = 1) {
-    this.battery.increase(energy);
+  increaseBatteryLevel(gain: number = this.batteryGainOnCharge) {
+    this.battery.increase(gain);
   }
 
-  decreaseBatteryLevel() {
+  decreaseBatteryLevel(cost: number = this.batteryCostOnMove) {
     try {
-      this.battery.decrease(this.batteryCostOnMove)
+      this.battery.decrease(cost)
     } catch (e) {
       this.battery.animateRunOutEnergy()
       this.setTimeout(() => {

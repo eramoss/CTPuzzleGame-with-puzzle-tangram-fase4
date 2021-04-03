@@ -193,14 +193,17 @@ export default class CodeEditor {
         this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', () => {
-        Logger.log("MOVE_EVENT", "dragend");
 
+        Logger.log("MOVE_EVENT", "dragend");
         this.trash.close();
         const shortClick = this.getTime() - this.clickTime < 700;
         let dragged = command.isDragged && (command.isSpriteConsiderableDragged(this.grid) || !shortClick);
         let clicked = shortClick && !dragged;
         let dropped = command.programDropZone != null;
         let isConditional = command.isConditional;
+
+        Logger.warn('DRAGEND_DEBUG dragged', dragged)
+        Logger.warn('DRAGEND_DEBUG clicked', clicked)
 
         let removeCommand = () => {
           command.removeSelf();

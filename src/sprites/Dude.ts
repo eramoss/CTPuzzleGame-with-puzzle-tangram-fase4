@@ -227,11 +227,9 @@ export default class Dude {
   }
 
   clearTintOrPaintBatteryLow() {
+    this.character.clearTint();
     if (this.battery.isRunningOut()) {
       this.character.setTint(0xff0000);
-    }
-    if (!this.battery.isRunningOut()) {
-      this.character.clearTint();
     }
   }
 

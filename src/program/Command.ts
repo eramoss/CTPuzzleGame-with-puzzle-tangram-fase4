@@ -281,8 +281,8 @@ export default class Command implements InterfaceElement {
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {
-    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 30 * grid.scale
-    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 30 * grid.scale
+    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 5 * grid.scale
+    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 5 * grid.scale
     return dragHorizontal || dragVertical;
   }
 

@@ -3,6 +3,7 @@ import SpriteDropZone from '../controls/SpriteDropZone';
 import AlignGrid from '../geom/AlignGrid';
 import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
+import { CommandName } from '../phases/MazePhase';
 import { globalSounds } from '../scenes/PreGame';
 import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
@@ -15,7 +16,7 @@ export default class Command implements InterfaceElement {
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
-  name: string;
+  name: CommandName;
   programDropZone: SpriteDropZone;
   tileDropZone: SpriteDropZone;
   animated: boolean;
@@ -31,7 +32,7 @@ export default class Command implements InterfaceElement {
   hash: string;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
-    this.name = sprite.texture.key;
+    this.name = sprite.texture.key as CommandName;
     this.sprite = sprite;
     //this.sprite.setDepth(3);
     this.scene = scene;
@@ -281,8 +282,8 @@ export default class Command implements InterfaceElement {
   }
 
   isSpriteConsiderableDragged(grid: AlignGrid): boolean {
-    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 5 * grid.scale
-    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 5 * grid.scale
+    let dragHorizontal = Math.abs(this.sprite.input.dragStartX - this.sprite.x) > 1 * grid.scale
+    let dragVertical = Math.abs(this.sprite.input.dragStartY - this.sprite.y) > 1 * grid.scale
     return dragHorizontal || dragVertical;
   }
 
@@ -312,7 +313,7 @@ export default class Command implements InterfaceElement {
   }
 
   stringfy(): string {
-    let stringfiedCommand = this.name;
+    let stringfiedCommand = this.name.toString();
     if (this.condition) {
       stringfiedCommand = stringfiedCommand + ":" + this.condition.name;
     }

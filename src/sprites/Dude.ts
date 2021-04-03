@@ -19,7 +19,6 @@ const WARN_TIME = 300
 
 export default class Dude {
 
-
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;

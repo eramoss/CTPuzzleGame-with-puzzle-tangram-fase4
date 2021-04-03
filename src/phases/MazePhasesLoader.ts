@@ -60,7 +60,7 @@ export default class MazePhasesLoader {
       }
     } catch (e) {
       Logger.error(e);
-      phases = this.createHardCodedPhases();
+      phases = this.createHardCodedPhases(gameParams.isAutomaticTesting());
     }
     return phases
   }
@@ -120,14 +120,14 @@ export default class MazePhasesLoader {
     return phase
   }
 
-  private createHardCodedPhases(): MazePhasesLoader {
+  private createHardCodedPhases(testing:boolean): MazePhasesLoader {
     this.phases = new HardcodedPhasesCreator(
       this.scene,
       this.codeEditor,
       this.gridCenterX,
       this.gridCenterY,
       this.gridCellWidth)
-      .createHardCodedPhases()
+      .createHardCodedPhases(testing)
     return this;
   }
 

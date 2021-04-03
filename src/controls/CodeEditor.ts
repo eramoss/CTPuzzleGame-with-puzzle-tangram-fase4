@@ -12,6 +12,7 @@ import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
 import Trash from './Trash';
 import { RespostaItemProgramacao } from '../ct-platform-classes/RespostaItemProgramacao';
+import { CommandName } from '../phases/MazePhase';
 
 export default class CodeEditor {
 
@@ -72,7 +73,7 @@ export default class CodeEditor {
     this.notifyWhenProgramIsEditted()
   }
 
-  addCommands(program: Program, commands: string[]) {
+  addCommands(program: Program, commands: CommandName[]) {
     let addedCommands = program.addCommands(commands)
     this.createEventsToCommands(addedCommands);
   }
@@ -87,9 +88,9 @@ export default class CodeEditor {
     });
   }
 
-  private createDraggableProgramCommands(commandToRecreate: string = null) {
+  private createDraggableProgramCommands(commandToRecreate: CommandName = null) {
     const commandGroup = this.scene.physics.add.group();
-    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block']
+    let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block'] as CommandName[]
     if (commandToRecreate) {
       commandNames = commandNames.filter(c => c == commandToRecreate)
     }
@@ -136,6 +137,7 @@ export default class CodeEditor {
     commands.forEach((command: Command) => {
       let toolboxRow = this.findToolboxRow(command);
       if (!toolboxRow) return;
+      let commandName = command.name
       let commandSprite: Phaser.GameObjects.Sprite = command.sprite;
       commandSprite.setScale(toolboxRow.scaleNormal);
       this.scene.input.setDraggable(commandSprite.setInteractive({ cursor: 'grab' }));
@@ -182,7 +184,7 @@ export default class CodeEditor {
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         command.playDrag()
-        const createdCommands = this.createDraggableProgramCommands(commandSprite.texture.key);
+        const createdCommands = this.createDraggableProgramCommands(commandName);
         if (dragStartOptions.onCreateCommandBelow) {
           if (createdCommands.length > 1) {
             console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')

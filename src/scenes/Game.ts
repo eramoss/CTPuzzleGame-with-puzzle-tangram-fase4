@@ -8,7 +8,7 @@ import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
 import MazePhasesLoader from '../phases/MazePhasesLoader'
-import MazePhase from '../phases/MazePhase'
+import MazePhase, { CommandName } from '../phases/MazePhase'
 import { Logger } from '../main'
 import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
@@ -402,9 +402,7 @@ export default class Game extends Scene {
       this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
     }
     if (!this.currentPhase) {
-      if (this.testApplicationService.isTestApplication()) {
-        this.scene.start('game-win', this.testApplicationService);
-      }
+      this.scene.start('game-win', this.testApplicationService);
     }
 
     if (this.currentPhase) {
@@ -433,21 +431,33 @@ export default class Game extends Scene {
 
       this.codeEditor.prepare(codeEditorOptions);
       this.currentPhase.showTutorialActionsIfExists();
+      this.addTestCommands(this.currentPhase)
+
+      if (this.gameParams.isAutomaticTesting()) {
+        this.codeEditor.onClickRun()
+      }
     }
 
-    //this.addTestCommands()
   }
 
-  private addTestCommands() {
-    let prog0 = this.codeEditor.programs[0];
-    let prog1 = this.codeEditor.programs[1];
-    let prog2 = this.codeEditor.programs[2];
-    prog0.clear()
-    prog1.clear()
-    prog2.clear()
-    this.codeEditor.addCommands(prog0, ['prog_1', 'prog_0', 'arrow-right'])
-    //this.codeEditor.addCommands(prog1, ['arrow-up'])
-    //this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
+  private addTestCommands(phase: MazePhase) {
+    if (phase) {
+      if (phase.commands) {
+        phase.commands.forEach((commandsRow: CommandName[], index: number) => {
+          let prog = this.codeEditor.programs[index];
+          this.codeEditor.addCommands(prog, commandsRow);
+        })
+      }
+    }
+    // let prog0 = this.codeEditor.programs[0];
+    // let prog1 = this.codeEditor.programs[1];
+    // let prog2 = this.codeEditor.programs[2];
+    // prog0.clear()
+    // prog1.clear()
+    // prog2.clear()
+    // this.codeEditor.addCommands(prog0, ['prog_1', 'prog_0', 'arrow-right'])
+    // this.codeEditor.addCommands(prog1, ['arrow-up'])
+    // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 
   async sendResponse(phase: MazePhase) {

@@ -23,39 +23,66 @@ export default class HardcodedPhasesCreator {
     this.tutorial = new TutorialHelper(scene, codeEditor)
   }
 
-  createHardCodedPhases(): Array<MazePhase> {
+  createHardCodedPhases(isTesting: boolean): Array<MazePhase> {
     let phases = new Array<MazePhase>();
 
-    let showTutorial = true;
+    if (isTesting) {
+      let phase = this.createEasyPhaseArrowUp()
+      phase.commands = [
+        ['arrow-up']
+      ]
+      phases.push(phase);
 
-    //phases.push(this.createDemoPhase());
+      phase = this.createEasyPhaseArrowUpAndRightIf()
+      phase.commands = [
+        ['arrow-up', 'prog_1:if_block', 'prog_0'],
+        ['arrow-right', 'arrow-up']
+      ]
+      phases.push(phase);
 
-    //phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
-    //phases.push(this.createPhaseCallRecursiveFunction());
-    //phases.push(this.createPhaseHardIfCoinAndIfBlock(showTutorial));
-    //phases.push(this.createPhaseHardIfCoinAndIfBlock());
-    //phases.push(this.createPhaseEasyArrowUpTwoTimes(showTutorial));
-    //phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
+      phase = this.createEasyPhaseArrowUp()
+      phase.commands = [
+        ['arrow-down', 'prog_1', 'arrow-up', 'arrow-up']
+      ]
+      phases.push(phase);
 
-    //Easy
-    //phases.push(this.createEasyPhaseArrowUp(showTutorial));
-    //phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
-    phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
+      phase = this.createEasyPhaseCallRecursiveFunction();
+      phase.commands = [
+        ['arrow-up', 'prog_0']
+      ]
+      phases.push(phase);
 
-    phases.push(this.createEasyPhaseCallRecursiveFunction(showTutorial));
-    phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
+      phase = this.createDemoPhase();
+      phase.commands = [
+        ['arrow-right', 'prog_1'],
+        ['arrow-up', 'prog_1']
+      ]
+      phases.push(phase);
 
-    phases.push(this.createEasyPhaseArrowUp());
-    phases.push(this.createEasyPhaseArrowUpTwoTimes());
-    phases.push(this.createEasyPhaseEasyThreeStepByStep());
-    phases.push(this.createEasyPhaseWithBlock());
-    phases.push(this.createEasyPhaseCallRecursiveFunction());
+      phase = this.createEasyPhaseArrowUpTwoTimes()
+      phase.commands = [
+        ['arrow-up', 'arrow-up']
+      ]
+      phases.push(phase);
 
-    phases.push(this.createMediumPhaseWithBlockWithTurn());
+      phase = this.createEasyPhaseArrowUpAndRight()
+      phase.commands = [
+        ['arrow-up', 'arrow-up', 'arrow-right', 'arrow-up']
+      ]
+      phases.push(phase);
+    }
 
-    phases.push(this.createHardPhaseStepByStepWithBlock());
-    phases.push(this.createHardPhaseWithTwoStars());
-    //this.phases.push(this.createHardPhaseIfCoinAndIfBlock());
+    if (!isTesting) {
+      let showTutorial = true;
+      phases.push(this.createEasyPhaseArrowUp(showTutorial));
+      phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
+      phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
+      phases.push(this.createEasyPhaseCallRecursiveFunction(showTutorial));
+      phases.push(this.createEasyPhaseArrowUp());
+      phases.push(this.createEasyPhaseArrowUpTwoTimes());
+      phases.push(this.createEasyPhaseCallRecursiveFunction());
+      phases.push(this.createDemoPhase());
+    }
 
     return phases;
   }
@@ -155,60 +182,6 @@ export default class HardcodedPhasesCreator {
     return phase;
   }
 
-  private createEasyPhaseEasyThreeStepByStep(showTutorial: boolean = false) {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 1 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      if (showTutorial) {
-        this.tutorial.buildTutorial(phase, [
-          'click arrow-up',
-          'click arrow-up',
-          'click arrow-up',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-        ])
-      }
-    }
-
-    return phase;
-  }
 
   private createEasyPhaseArrowUpTwoTimes(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
@@ -298,29 +271,52 @@ export default class HardcodedPhasesCreator {
     return phase;
   }
 
+  private createEasyPhaseArrowUpAndRightIf() {
+    const phase = new MazePhase(this.scene, this.codeEditor);
+    phase.dudeFacedTo = 'right'
+    phase.dudeStartPosition = { col: 0, row: 0 }
+
+    let baseMatrix = [
+      ['tile', 'tile', 'tile', 'tile'],
+      ['null', 'null', 'tile', 'null'],
+    ];
+
+    let obstaclesMatrix = [
+      ['null', 'null', 'null', 'block'],
+      ['null', 'null', 'coin', 'null'],
+    ];
+
+    phase.setupTutorialsAndObjectsPositions = () => {
+
+      phase.obstacles = new Matrix(
+        this.scene,
+        this.matrixMode,
+        obstaclesMatrix,
+        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+      );
+
+      phase.ground = new Matrix(
+        this.scene,
+        this.matrixMode,
+        baseMatrix,
+        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+      );
+
+    }
+    return phase;
+  }
+
   private createEasyPhaseCallRecursiveFunction(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
     phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 0, row: 3 }
+    phase.dudeStartPosition = { col: 0, row: 0 }
 
     let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
       ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
     ];
 
     let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'coin', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'battery', 'null', 'battery', 'null', 'battery', 'coin'],
     ];
 
     phase.setupTutorialsAndObjectsPositions = () => {
@@ -354,72 +350,6 @@ export default class HardcodedPhasesCreator {
     return phase;
   }
 
-  private createHardPhaseStepByStepWithBlock(showTutorial: boolean = false) {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 1 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      if (showTutorial) {
-        this.tutorial.buildTutorial(phase, [
-          'drag arrow-left',
-          'drag arrow-up',
-          'drag arrow-right',
-          'drag arrow-up',
-          'drag prog_1',
-          'drag arrow-up',
-          'drag arrow-up',
-          'drag arrow-right',
-          'drag arrow-up',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-          'click btn-step',
-        ])
-      }
-    }
-
-    return phase;
-  }
 
   private createPhaseIfCoin() {
     const phase = new MazePhase(this.scene, this.codeEditor);
@@ -468,255 +398,6 @@ export default class HardcodedPhasesCreator {
         'click btn-step',
         'click btn-step',
       ])
-    }
-
-    return phase;
-  }
-
-  private createPhaseIfBlock() {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 1 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      this.tutorial.buildTutorial(phase, [
-        'drag arrow-up',
-        'drag arrow-up',
-        'drag arrow-up',
-        'click btn-step',
-        'click btn-step',
-        'click btn-step',
-      ])
-    }
-    return phase;
-  }
-
-  private createHardPhaseWithTwoStars() {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 0 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'coin', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'coin', 'null', 'null', 'null', 'null'],
-      ['null', 'block', 'block', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-    }
-
-    return phase;
-  }
-
-
-  private createEasyPhaseWithBlock() {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 0 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'coin', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-    }
-
-    return phase;
-  }
-
-  private createMediumPhaseWithBlockWithTurn() {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'down'
-    phase.dudeStartPosition = { col: 3, row: 0 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'block', 'coin', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-    }
-
-    return phase;
-  }
-
-  private createHardPhaseIfCoinAndIfBlock(showTutorial: boolean = false) {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 2, row: 1 }
-
-    let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-    ];
-
-    let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'coin', 'block', 'null'],
-      ['null', 'null', 'null', 'null', 'coin', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'coin', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'block', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-    ];
-
-    phase.setupTutorialsAndObjectsPositions = () => {
-      phase.obstacles = new Matrix(
-        this.scene,
-        this.matrixMode,
-        obstaclesMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        this.matrixMode,
-        baseMatrix,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
-
-      if (showTutorial) {
-        let tutorial = [
-          "drag arrow-up say drag-up",
-          "drag if_coin say drag-if_coin",
-          "drag arrow-right say drag-right",
-          "drag if_block say drag-if_block",
-          "drag prog_0 say drag-prog_0",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-          "click btn-step say click-step",
-        ]
-        this.tutorial.buildTutorial(phase, tutorial)
-      }
     }
 
     return phase;

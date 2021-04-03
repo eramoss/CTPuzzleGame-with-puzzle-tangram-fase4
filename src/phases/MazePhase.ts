@@ -9,137 +9,143 @@ import TutorialAction from "./TutorialAction";
 import TutorialDropLocation from "./TutorialDropLocation";
 import TutorialHighlight from "./TutorialHighlight";
 
+export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-left" | "prog_1" | "prog_0" | "prog_2" | "if_coin" | "if_block"
+| "arrow-up:if_block" | "arrow-down:if_block" | "arrow-right:if_block" | "arrow-left:if_block" | "prog_1:if_block" | "prog_0:if_block" | "prog_2:if_block"
+| "arrow-up:if_coin" | "arrow-down:if_coin" | "arrow-right:if_coin" | "arrow-left:if_coin" | "prog_1:if_coin" | "prog_0:if_coin" | "prog_2:if_coin"
+
 export default class MazePhase {
 
-    setupTutorialsAndObjectsPositions: () => void;
-    obstacles: Matrix;
-    ground: Matrix;
-    scene: Scene;
-    grid: AlignGrid
-    itemId: number
 
-    firstAction: TutorialAction;
-    action: TutorialAction;
-    //actions: TutorialAction[] = [];
+  setupTutorialsAndObjectsPositions: () => void;
+  obstacles: Matrix;
+  ground: Matrix;
+  scene: Scene;
+  grid: AlignGrid
+  itemId: number
 
-    next: MazePhase
-    backgroundOverlay: GameObjects.Sprite;
+  firstAction: TutorialAction;
+  action: TutorialAction;
+  //actions: TutorialAction[] = [];
 
-    dudeFacedTo: string = 'right'
-    dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
-    codeEditor: CodeEditor;
-    mecanicaRope: MecanicaRope;
-    batteryLevel: number = 10;
-    batteryDecreaseOnEachMove: number = 1
-    batteryGainOnCapture: number = 1;
+  next: MazePhase
+  backgroundOverlay: GameObjects.Sprite;
 
-    constructor(scene: Scene, codeEditor: CodeEditor) {
-        this.scene = scene;
-        this.grid = codeEditor.grid;
-        this.codeEditor = codeEditor;
+  dudeFacedTo: string = 'right'
+  dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
+  codeEditor: CodeEditor;
+  mecanicaRope: MecanicaRope;
+  batteryLevel: number = 10;
+  batteryDecreaseOnEachMove: number = 1
+  batteryGainOnCapture: number = 1;
+  commands: Array<CommandName[]> = [];
+
+  constructor(scene: Scene, codeEditor: CodeEditor) {
+    this.scene = scene;
+    this.grid = codeEditor.grid;
+    this.codeEditor = codeEditor;
+  }
+
+  setupMatrixAndTutorials() {
+    this.clearTutorials();
+    this.setupTutorialsAndObjectsPositions();
+  }
+
+  addTutorialHighlightDrag(
+    fnGetInterfaceElement: () => InterfaceElement,
+    fnGetDropLocation: () => TutorialDropLocation,
+  ): TutorialAction {
+    const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
+    action.highlights.forEach(highlight => highlight.continueTutorialOnDrag = true)
+    return action
+  }
+
+  addTutorialHighlightClick(
+    fnGetInterfaceElement: () => InterfaceElement,
+    fnGetDropLocation: () => TutorialDropLocation = null
+  ): TutorialAction {
+    const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
+    action.highlights.forEach(highlight => highlight.continueTutorialOnClick = true)
+    return action
+  }
+
+  private addTutorialHighlight(
+    fnGetInterfaceElement: () => InterfaceElement,
+    fnGetDropLocation: () => TutorialDropLocation = null
+  ): TutorialAction {
+    return this.addTutorialHighlights(
+      [new TutorialHighlight(this.scene, this.grid, fnGetInterfaceElement, fnGetDropLocation)]
+    )
+  }
+
+  addTutorialHighlights(
+    highlights: Array<TutorialHighlight>
+  ): TutorialAction {
+    const tutorialAction = new TutorialAction(this.scene, highlights);
+    tutorialAction.onHighlight = () => {
+      this.addBackgroundOverlay()
+      this.codeEditor.disableInteractive();
     }
-
-    setupMatrixAndTutorials() {
-        this.clearTutorials();
-        this.setupTutorialsAndObjectsPositions();
+    tutorialAction.askToShowInstruction = (instruction: string) => {
+      this.codeEditor.onShowInstruction(instruction);
     }
-
-    addTutorialHighlightDrag(
-        fnGetInterfaceElement: () => InterfaceElement,
-        fnGetDropLocation: () => TutorialDropLocation,
-    ): TutorialAction {
-        const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
-        action.highlights.forEach(highlight => highlight.continueTutorialOnDrag = true)
-        return action
+    tutorialAction.onInvalidState = () => {
+      this.codeEditor.replay();
     }
-
-    addTutorialHighlightClick(
-        fnGetInterfaceElement: () => InterfaceElement,
-        fnGetDropLocation: () => TutorialDropLocation = null
-    ): TutorialAction {
-        const action = this.addTutorialHighlight(fnGetInterfaceElement, fnGetDropLocation);
-        action.highlights.forEach(highlight => highlight.continueTutorialOnClick = true)
-        return action
+    tutorialAction.onCompleteAction = () => {
+      this.action = tutorialAction.nextTutorialAction
+      Logger.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
+      this.codeEditor.onHideLastInstruction();
     }
-
-    private addTutorialHighlight(
-        fnGetInterfaceElement: () => InterfaceElement,
-        fnGetDropLocation: () => TutorialDropLocation = null
-    ): TutorialAction {
-        return this.addTutorialHighlights(
-            [new TutorialHighlight(this.scene, this.grid, fnGetInterfaceElement, fnGetDropLocation)]
-        )
+    let index = 0;
+    if (!this.firstAction) {
+      this.firstAction = tutorialAction
+    } else {
+      index = this.action.index + 1;
+      tutorialAction.previousTutorialAction = this.action
+      this.action.nextTutorialAction = tutorialAction;
     }
+    tutorialAction.index = index;
+    this.action = tutorialAction;
+    return tutorialAction;
+  }
 
-    addTutorialHighlights(
-        highlights: Array<TutorialHighlight>
-    ): TutorialAction {
-        const tutorialAction = new TutorialAction(this.scene, highlights);
-        tutorialAction.onHighlight = () => {
-            this.addBackgroundOverlay()
-            this.codeEditor.disableInteractive();
-        }
-        tutorialAction.askToShowInstruction = (instruction:string) => {
-            this.codeEditor.onShowInstruction(instruction);
-        }
-        tutorialAction.onInvalidState = () => {
-            this.codeEditor.replay();
-        }
-        tutorialAction.onCompleteAction = () => {
-            this.action = tutorialAction.nextTutorialAction
-            Logger.log('TUTORIAL_ADVANCE [this.action.index]', this.action?.index)
-            this.codeEditor.onHideLastInstruction();
-        }
-        let index = 0;
-        if (!this.firstAction) {
-            this.firstAction = tutorialAction
-        } else {
-            index = this.action.index + 1;
-            tutorialAction.previousTutorialAction = this.action
-            this.action.nextTutorialAction = tutorialAction;
-        }
-        tutorialAction.index = index;
-        this.action = tutorialAction;
-        return tutorialAction;
-    }
+  showTutorialActionsIfExists() {
+    this.firstAction?.highlight();
+  }
 
-    showTutorialActionsIfExists() {
-        this.firstAction?.highlight();
-    }
+  updateTutorial() {
+    Logger.log('TUTORIAL_UPDATE [this.action.index]', this.action?.index)
+    this.action?.highlight();
+  }
 
-    updateTutorial() {
-        Logger.log('TUTORIAL_UPDATE [this.action.index]', this.action?.index)
-        this.action?.highlight();
-    }
+  isTutorialPhase() {
+    return this.firstAction != null
+  }
 
-    isTutorialPhase() {
-        return this.firstAction != null
+  clearTutorials() {
+    this.codeEditor.setInteractive();
+    this.removeBackgroundTutorialOverlay();
+    let action = this.firstAction;
+    while (action != null) {
+      action.reset();
+      action = action.nextTutorialAction
     }
+    this.action = null;
+    this.firstAction = null;
+  }
 
-    clearTutorials() {
-        this.codeEditor.setInteractive();
-        this.removeBackgroundTutorialOverlay();
-        let action = this.firstAction;
-        while (action != null) {
-            action.reset();
-            action = action.nextTutorialAction
-        }
-        this.action = null;
-        this.firstAction = null;
-    }
+  addBackgroundOverlay() {
+    /* if (!this.backgroundOverlay) {
+        this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
+            .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
+        this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
+    } */
+  }
 
-    addBackgroundOverlay() {
-        /* if (!this.backgroundOverlay) {
-            this.backgroundOverlay = this.scene.add.sprite(0, 0, 'tutorial-block-click-background')
-                .setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL);
-            this.grid.placeAt(0, 0, this.backgroundOverlay, this.grid.cols, this.grid.rows);
-        } */
-    }
-
-    removeBackgroundTutorialOverlay() {
-        /* if (this.backgroundOverlay) {
-            this.scene.children.remove(this.backgroundOverlay);
-            this.backgroundOverlay = null;
-        } */
-    }
+  removeBackgroundTutorialOverlay() {
+    /* if (this.backgroundOverlay) {
+        this.scene.children.remove(this.backgroundOverlay);
+        this.backgroundOverlay = null;
+    } */
+  }
 }

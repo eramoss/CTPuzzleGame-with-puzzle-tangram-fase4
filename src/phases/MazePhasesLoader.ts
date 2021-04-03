@@ -103,7 +103,7 @@ export default class MazePhasesLoader {
       phase.dudeFacedTo = mecanicaRope.face
       phase.batteryLevel = mecanicaRope.nivelBateria
       phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
-      phase.batteryGainOnCapture = mecanicaRope.custoBateriaEmCadaMovimento
+      phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
 
       /* if (phase.mecanicaRope.showTutorial) {
         buildTutorial(phase,

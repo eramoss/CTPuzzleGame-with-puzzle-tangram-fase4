@@ -10,6 +10,7 @@ export class RunOutOfEnergyError extends Error {
 
 export class DudeBattery {
 
+
   scene: Scene;
   grid: AlignGrid;
   batteryImage: Phaser.GameObjects.Image;
@@ -17,7 +18,7 @@ export class DudeBattery {
   maxCells: number = 10;
   level: number;
   text: Phaser.GameObjects.Text;
-  onAlmostRunOut: () => void = () => {};
+  onChangeBatteryLevel: () => void = () => { };
 
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
@@ -95,6 +96,11 @@ export class DudeBattery {
       .setTint(0xffffff)
   }
 
+  isRunningOut() {
+    let percentLevel = this.level / this.maxCells;
+    return percentLevel <= 0.1
+  }
+
   setColorByLevel(percentLevel: number) {
 
     this.graphics.setDepth(1)
@@ -106,8 +112,8 @@ export class DudeBattery {
     if (percentLevel < 0.4) {
       this.graphics.fillStyle(0xd67120, 1);
     } */
-    if (percentLevel < 0.3) {
-      this.onAlmostRunOut();
+    this.onChangeBatteryLevel();
+    if (this.isRunningOut()) {
       this.graphics.fillStyle(0xfe2222, 1);
       this.graphics.setDepth(2)
       this.batteryImage.setDepth(1);

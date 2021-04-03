@@ -56,8 +56,9 @@ export default class Dude {
     this.ballon = new Ballon(this.scene, this.grid.scale);
     this.ballon.setVisible(false);
     this.battery = new DudeBattery(scene, grid);
-    this.battery.onAlmostRunOut = () => {
-      this.character.setTint(0xff0000);
+    this.battery.onChangeBatteryLevel = () => {
+      this.clearTintOrPaintBatteryLow()
+
     }
   }
 
@@ -108,7 +109,7 @@ export default class Dude {
   }
 
   moveTo(dudeMove: DudeMove) {
-    this.character.clearTint()
+    this.clearTintOrPaintBatteryLow();
     this.playAnimation();
     this.currentStep?.animate();
     const speed = DUDE_SPEED;
@@ -225,8 +226,17 @@ export default class Dude {
     return branchToBack
   }
 
+  clearTintOrPaintBatteryLow() {
+    if (this.battery.isRunningOut()) {
+      this.character.setTint(0xff0000);
+    }
+    if (!this.battery.isRunningOut()) {
+      this.character.clearTint();
+    }
+  }
+
   onCompleteMove(move: DudeMove) {
-    this.character.clearTint();
+    this.clearTintOrPaintBatteryLow()
     this.onCompleteMoveCallback(this.currentStep);
     if (!this.stopped) {
       this.currentStep = move.next

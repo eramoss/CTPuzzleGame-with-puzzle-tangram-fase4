@@ -109,7 +109,11 @@ export default class MazePhasesLoader {
       phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
 
       let tutorialSteps = mecanicaRope.acoesTutorial.map(acao => {
-        return `${acao.acao} ${acao.elemento} say ${acao.frase}`
+        let affect = '';
+        if (acao.arrasterAte) {
+          affect = `to ${acao.arrasterAte}`
+        }
+        return `${acao.acao} ${acao.elemento} ${affect} say ${acao.frase}`
       })
       this.tutorial.buildTutorial(phase, tutorialSteps)
     }

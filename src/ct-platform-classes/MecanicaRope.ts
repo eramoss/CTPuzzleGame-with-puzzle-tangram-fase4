@@ -24,5 +24,6 @@ type Elemento = "btn-step"
 class AcaoTutorial {
     acao!:Acao
     elemento!:Elemento
+    arrasterAte!:Elemento
     frase!:string
 }

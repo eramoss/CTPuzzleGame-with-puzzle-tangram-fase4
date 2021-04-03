@@ -37,7 +37,7 @@ export default class Dude {
   canMoveTo: (x: number, y: number) => boolean;
   isConditionValid: (condition: string, dudeMove: DudeMove) => boolean;
   programs: Program[];
-  branchMoves: Array<Branch> = new Array();
+  branchStack: Array<Branch> = new Array();
   functionsRunningByTimeout: number[] = [];
   currentFace: string;
   programBeingExecuted: Program;
@@ -202,7 +202,7 @@ export default class Dude {
 
   onBranch(progName: string, branch: Branch, addBranchToStack: boolean) {
     if (addBranchToStack) {
-      this.branchMoves.push(branch);
+      this.branchStack.push(branch);
     }
     let progs = this.programs.filter(p => p.name == progName)
     if (progs.length) {
@@ -214,8 +214,8 @@ export default class Dude {
 
   getBranchToBackTo(): Branch {
     let branchToBack: Branch = null
-    if (this.branchMoves.length) {
-      let branchMove = this.branchMoves.pop();
+    if (this.branchStack.length) {
+      let branchMove = this.branchStack.pop();
       if (branchMove) {
         branchMove.onCompleteBranch();
         if (branchMove.dudeMove) {
@@ -303,7 +303,9 @@ export default class Dude {
     this.programBeingExecuted?.disanimate();
     this.programBeingExecuted = program;
     this.programBeingExecuted.animate();
+
     this.warnIfProgramEmpty(program);
+
     program.disanimateCommands();
     this.setTimeout(() => {
       this.buildPath(program.ordinalCommands);
@@ -322,7 +324,7 @@ export default class Dude {
       setTimeout(() => {
         this.programBeingExecuted?.disanimate();
         program.disanimate();
-        this.onFinishWalking();
+        //this.onFinishWalking();
       }, WARN_TIME);
     }
     return isEmpty;

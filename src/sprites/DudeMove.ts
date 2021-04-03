@@ -100,23 +100,23 @@ export class DudeMove {
 
   onBranchMove() {
     let onCompleteBranch = () => {
-      this.branch.dudeMove.command.waitingBranchTerminate = false
       Logger.log('BRANCH_ON_COMPLETE [prog.name]', this.branch.program.name);
       this.disanimate();
     };
     const moveToContinueWhenBackToThisBranch = this.next;
-    const command = moveToContinueWhenBackToThisBranch.command
-    let addBranchToStack = !command.waitingBranchTerminate
-    command.waitingBranchTerminate = true
     const progToCall = this.action;
     this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
-    this.dude.setTimeout(_ => {
-      this.dude.onBranch(progToCall.action, this.branch, addBranchToStack);
+    this.dude.setTimeout(() => {
+      this.dude.onBranch(progToCall.action, this.branch, true);
     }, TIME_CALL_BRANCH)
 
   }
 
   execute(previousMove: DudeMove = null) {
+
+    this.dude.branchStack = this.dude.branchStack.filter(branch => {
+      return branch?.dudeMove?.command != this.command
+    })
 
     Logger.log("DUDE_MOVE", this.action);
 
@@ -172,8 +172,9 @@ export class DudeMove {
         this.point = this.dude.matrix.getPoint(this.y, this.x);
         this.dude.moveTo(this);
       } else {
-        if (!isCondition)
+        if (!isCondition) {
           this.dude.warmBlocked();
+        }
         this.dude.setTimeout(() => {
           let moveToContinue: DudeMove = this;
           if (isCondition) {

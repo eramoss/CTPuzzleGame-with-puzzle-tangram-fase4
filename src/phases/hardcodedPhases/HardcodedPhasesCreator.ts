@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import CodeEditor from "../../controls/CodeEditor";
+import { Obstaculo } from "../../ct-platform-classes/MecanicaRope";
 import Matrix, { MatrixMode } from "../../geom/Matrix";
 import MazePhase from "../MazePhase";
 import TutorialHelper from "../tutorial/TutorialHelper";
@@ -27,7 +28,7 @@ export default class HardcodedPhasesCreator {
 
     let showTutorial = true;
 
-    phases.push(this.createDemoPhase());
+    //phases.push(this.createDemoPhase());
 
     //phases.push(this.createHardPhaseIfCoinAndIfBlock(showTutorial));
     //phases.push(this.createPhaseCallRecursiveFunction());
@@ -37,8 +38,8 @@ export default class HardcodedPhasesCreator {
     //phases.push(this.createPhaseStepByStepWithBlock(showTutorial));
 
     //Easy
-    phases.push(this.createEasyPhaseArrowUp(showTutorial));
-    phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
+    //phases.push(this.createEasyPhaseArrowUp(showTutorial));
+    //phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
     phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
 
     phases.push(this.createEasyPhaseCallRecursiveFunction(showTutorial));
@@ -62,27 +63,23 @@ export default class HardcodedPhasesCreator {
   private createDemoPhase(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
     phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 1, row: 3 }
+    phase.dudeStartPosition = { col: 1, row: 1 }
 
     let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
     ];
 
 
     let obstaclesMatrix = [
-      ['block', 'block', 'block', 'block', 'block', 'block', 'block'],
-      ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
-      ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
-      ['block', 'null', 'null', 'null', 'null', 'coin', 'block'],
-      ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
-      ['block', 'null', 'null', 'null', 'null', 'null', 'block'],
-      ['block', 'block', 'block', 'block', 'block', 'block', 'block'],
+      ['block', 'block', 'block'],
+      ['block', 'null', 'blocknull'],
+      ['block', 'block', 'block'],
+      ['null', 'battery', 'null'],
+      ['null', 'coin', 'null'],
     ];
 
     phase.setupTutorialsAndObjectsPositions = () => {
@@ -115,27 +112,19 @@ export default class HardcodedPhasesCreator {
 
   private createEasyPhaseArrowUp(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
-    phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 1, row: 3 }
+    phase.dudeFacedTo = 'down'
+    phase.dudeStartPosition = { col: 1, row: 0 }
 
     let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
     ];
 
     let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'coin', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null'],
+      ['null', 'coin', 'null'],
+      ['null', 'null', 'null'],
     ];
 
     phase.setupTutorialsAndObjectsPositions = () => {
@@ -224,26 +213,18 @@ export default class HardcodedPhasesCreator {
   private createEasyPhaseArrowUpTwoTimes(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
     phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 1, row: 3 }
+    phase.dudeStartPosition = { col: 0, row: 1 }
 
     let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
     ];
 
     let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null'],
+      ['null', 'null', 'coin'],
+      ['null', 'null', 'null'],
     ];
 
     phase.setupTutorialsAndObjectsPositions = () => {
@@ -276,26 +257,16 @@ export default class HardcodedPhasesCreator {
   private createEasyPhaseArrowUpAndRight(showTutorial: boolean = false) {
     const phase = new MazePhase(this.scene, this.codeEditor);
     phase.dudeFacedTo = 'right'
-    phase.dudeStartPosition = { col: 1, row: 2 }
+    phase.dudeStartPosition = { col: 0, row: 0 }
 
     let baseMatrix = [
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
-      ['tile', 'tile', 'tile', 'tile', 'tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['null', 'null', 'tile'],
     ];
 
     let obstaclesMatrix = [
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'coin', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
-      ['null', 'null', 'null', 'null', 'null', 'null', 'null'],
+      ['null', 'null', 'null'],
+      ['null', 'null', 'coin'],
     ];
 
     phase.setupTutorialsAndObjectsPositions = () => {

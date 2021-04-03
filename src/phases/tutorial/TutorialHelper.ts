@@ -39,9 +39,13 @@ export default class TutorialHelper {
         let command = words[1];
         let ballon = null;
 
-        if (tutorialPhrase.indexOf('say') > -1) {
+        let indexOfWordSay = tutorialPhrase.indexOf('say')
+        if (indexOfWordSay > -1) {
           ballon = words[words.length - 1];
           ballon = phrases[ballon]
+          if (!ballon) {
+            ballon = tutorialPhrase.substring(indexOfWordSay + 'say '.length)
+          }
         }
 
         let instruction = command;

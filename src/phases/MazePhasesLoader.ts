@@ -9,6 +9,7 @@ import MazePhase from "./MazePhase";
 import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
 import TestApplicationService from "../test-application/TestApplicationService";
 import { TestItem } from "../test-application/TestApplication";
+import TutorialHelper from "./tutorial/TutorialHelper";
 
 export default class MazePhasesLoader {
 
@@ -22,6 +23,7 @@ export default class MazePhasesLoader {
   gridCellWidth: number;
   codeEditor: CodeEditor;
   testApplicationService: TestApplicationService;
+  tutorial: TutorialHelper
 
   constructor(scene: Scene,
     grid: AlignGrid,
@@ -40,6 +42,7 @@ export default class MazePhasesLoader {
     this.scene = scene;
     this.grid = grid;
 
+    this.tutorial = new TutorialHelper(scene, codeEditor);
   }
 
   async load(gameParams: GameParams): Promise<MazePhasesLoader> {
@@ -105,14 +108,10 @@ export default class MazePhasesLoader {
       phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
       phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
 
-      /* if (phase.mecanicaRope.showTutorial) {
-        buildTutorial(phase,
-          [
-            'drag arrow-up say drag-up-to-program',
-            'click btn-play say click-get-coin'
-          ]
-        )
-      } */
+      let tutorialSteps = mecanicaRope.acoesTutorial.map(acao => {
+        return `${acao.acao} ${acao.elemento} say ${acao.frase}`
+      })
+      this.tutorial.buildTutorial(phase, tutorialSteps)
     }
     return phase
   }

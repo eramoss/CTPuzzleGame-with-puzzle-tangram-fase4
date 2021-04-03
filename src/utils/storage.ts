@@ -27,7 +27,6 @@ export function getItem<T>(key: string): T {
     if (itemString) {
       let json = JSON.parse(itemString) as T;
       return json;
-
     }
   } catch (e) {
     Logger.error(e);

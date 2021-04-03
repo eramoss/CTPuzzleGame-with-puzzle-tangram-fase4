@@ -374,6 +374,13 @@ export default class Game extends Scene {
 
   async playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
 
+    if (!phase) {
+      if (this.testApplicationService.isPlayground()) {
+        this.replayCurrentPhase();
+        return;
+      }
+    }
+
     if (phase != this.currentPhase) {
       if (!this.codeEditor.programs) {
         let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
@@ -395,7 +402,9 @@ export default class Game extends Scene {
       this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
     }
     if (!this.currentPhase) {
-      this.scene.start('game-win', this.testApplicationService);
+      if (this.testApplicationService.isTestApplication()) {
+        this.scene.start('game-win', this.testApplicationService);
+      }
     }
 
     if (this.currentPhase) {
@@ -426,12 +435,19 @@ export default class Game extends Scene {
       this.currentPhase.showTutorialActionsIfExists();
     }
 
-    // prog0.clear();
-    // prog1.clear();
-    // prog2.clear();
-    // this.codeEditor.addCommands(prog0, ['arrow-up', 'arrow-up:if_block', 'arrow-up', 'prog_0'])
-    // this.codeEditor.addCommands(prog1, ['arrow-up'])
-    // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
+    this.addTestCommands()
+  }
+
+  private addTestCommands() {
+    let prog0 = this.codeEditor.programs[0];
+    let prog1 = this.codeEditor.programs[1];
+    let prog2 = this.codeEditor.programs[2];
+    prog0.clear()
+    prog1.clear()
+    prog2.clear()
+    this.codeEditor.addCommands(prog0, ['arrow-up', 'prog_0:if_block', 'arrow-right'])
+    //this.codeEditor.addCommands(prog1, ['arrow-up'])
+    //this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 
   async sendResponse(phase: MazePhase) {

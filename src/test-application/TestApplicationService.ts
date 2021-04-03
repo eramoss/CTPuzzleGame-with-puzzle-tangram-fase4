@@ -3,14 +3,26 @@ import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
-import { getItem, setItem } from "../utils/storage";
+import { getItem, getTypedItem, setItem } from "../utils/storage";
 import { PreparedParticipation, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
 
+  isTestApplication() {
+    return this.getGameParams()?.isTestApplication()
+  }
+
+  isPlayground() {
+    return this.getGameParams()?.isPlaygroundTest()
+  }
+
   constructor(private gameParams: GameParams) {
     Logger.info('LOADED GAME PARAMS', gameParams)
     setItem("gameParams", gameParams)
+  }
+
+  getGameParams(): GameParams {
+    return getTypedItem(GameParams, 'gameParams');
   }
 
   async saveCurrentPlayingPhase(itemId: number) {

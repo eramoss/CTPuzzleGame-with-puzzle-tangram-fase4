@@ -100,16 +100,20 @@ export class DudeMove {
 
   onBranchMove() {
     let onCompleteBranch = () => {
-      let branch = this.branch;
-      Logger.log('BRANCH_ON_COMPLETE [prog.name]', branch.program.name);
+      this.branch.dudeMove.command.waitingBranchTerminate = false
+      Logger.log('BRANCH_ON_COMPLETE [prog.name]', this.branch.program.name);
       this.disanimate();
     };
     const moveToContinueWhenBackToThisBranch = this.next;
+    const command = moveToContinueWhenBackToThisBranch.command
+    let addBranchToStack = !command.waitingBranchTerminate
+    command.waitingBranchTerminate = true
     const progToCall = this.action;
     this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
     this.dude.setTimeout(_ => {
-      this.dude.onBranch(progToCall.action, this.branch);
+      this.dude.onBranch(progToCall.action, this.branch, addBranchToStack);
     }, TIME_CALL_BRANCH)
+
   }
 
   execute(previousMove: DudeMove = null) {

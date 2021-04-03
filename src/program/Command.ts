@@ -29,6 +29,7 @@ export default class Command implements InterfaceElement {
   sounds: Sounds = globalSounds
   isMuted: boolean = false;
   hash: string;
+  waitingBranchTerminate: boolean;
 
   constructor(scene: Phaser.Scene, sprite: GameObjects.Sprite) {
     this.name = sprite.texture.key;

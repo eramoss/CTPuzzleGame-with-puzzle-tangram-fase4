@@ -200,8 +200,10 @@ export default class Dude {
     this.currentFace = null;
   }
 
-  onBranch(progName: string, branch: Branch) {
-    this.branchMoves.push(branch);
+  onBranch(progName: string, branch: Branch, addBranchToStack: boolean) {
+    if (addBranchToStack) {
+      this.branchMoves.push(branch);
+    }
     let progs = this.programs.filter(p => p.name == progName)
     if (progs.length) {
       let progToExecute = progs[0]

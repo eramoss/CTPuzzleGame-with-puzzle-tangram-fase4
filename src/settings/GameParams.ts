@@ -5,9 +5,11 @@ export default class GameParams {
   dataUrl: string
 
   constructor(params: URLSearchParams) {
-    this.operation = params.get('op');
-    this.dataUrl = params.get('dataUrl')
-    this.urlToInstantiateItem = params.get('urlToInstantiateItem');
+    if (params) {
+      this.operation = params.get('op');
+      this.dataUrl = params.get('dataUrl')
+      this.urlToInstantiateItem = params.get('urlToInstantiateItem');
+    }
   }
 
   isPlaygroundTest(): boolean {

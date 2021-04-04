@@ -266,7 +266,7 @@ export default class Game extends Scene {
 
   async loadPhases(): Promise<MazePhasesLoader> {
     let gridCenterX = this.grid.width / 3.2;
-    let gridCenterY = this.grid.height / 2;
+    let gridCenterY = this.grid.height / 2.4;
     let gridCellWidth = this.grid.cellWidth * 1.1
 
     return (await new MazePhasesLoader(

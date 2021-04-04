@@ -7,6 +7,8 @@ export enum MatrixMode { ISOMETRIC = "ISOMETRIC", NORMAL = "NORMAL" }
 export default class Matrix {
 
   static MODE_ISOMETRIC = "ISOMETRIC"
+
+  // Depreciado
   static MODE_NORMAL = "NORMAL"
 
   scene: Phaser.Scene;
@@ -22,31 +24,32 @@ export default class Matrix {
     this.mode = mode;
     this.x = x;
     this.y = y;
+
+    const graphics = scene.add.graphics();
+    graphics.fillStyle(0xff0000)
+    graphics.setDepth(100)
+
     this.scene = scene;
     this.matrix = matrix;
 
+    if (isDebug(scene)) {
+      graphics.fillCircle(x, y, 30);
+    }
+
     this.points = []
-    for (let y = 0; y < matrix.length; y++)
+    for (let y = 0; y < matrix.length; y++) {
       this.points[y] = []
+    }
 
     this.height = matrix.length;
     this.width = matrix[0].length;
 
-    if (mode == MatrixMode.NORMAL) {
-      this.x = this.x - (distanceBetweenPoints * this.width) / 2
-    }
-    this.y = this.y - (distanceBetweenPoints * this.height) / 2
-
-
-    const graphics = scene.add.graphics();
-    graphics.fillStyle(0xff0000)
+    this.x = this.x - (this.width - this.height) * distanceBetweenPoints / 2
+    this.y = this.y - (this.height * distanceBetweenPoints / 2) / 2
 
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
         let point: IsometricPoint = new IsometricPoint(col * distanceBetweenPoints, row * distanceBetweenPoints)
-        if (mode == MatrixMode.NORMAL)
-          point.toCartesian()
-
         point.x += this.x
         point.y += this.y
 

@@ -3,7 +3,7 @@ import { MatrixMode } from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
-import CodeEditor, { CodeEditorOptions } from '../controls/CodeEditor'
+import CodeEditor, { CodeEditorOptions as PlayPhaseOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
@@ -100,7 +100,10 @@ export default class Game extends Scene {
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
-    this.messageBox = new MessageBox(this,this.grid)
+    this.messageBox = new MessageBox(this, this.grid)
+    this.messageBox.onFinishTalk = () => {
+      this.playPhase(this.currentPhase, { muteInstructions: true })
+    }
 
     this.showLoading();
     this.phases = await this.loadPhases();
@@ -379,10 +382,10 @@ export default class Game extends Scene {
   replayCurrentPhase() {
     let clearCodeEditor = this.currentPhase?.isTutorialPhase();
     this.dude.stop(true);
-    this.playPhase(this.currentPhase, { clear: clearCodeEditor } as CodeEditorOptions)
+    this.playPhase(this.currentPhase, { clear: clearCodeEditor } as PlayPhaseOptions)
   }
 
-  async playPhase(phase: MazePhase, codeEditorOptions: CodeEditorOptions) {
+  async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
 
     if (!phase) {
       if (this.testApplicationService.isPlayground()) {
@@ -441,11 +444,13 @@ export default class Game extends Scene {
       this.dude.setBatteryCostOnMove(this.currentPhase.batteryDecreaseOnEachMove);
       this.dude.setBatteryGainOnCharge(this.currentPhase.batteryGainOnCapture);
 
-      this.codeEditor.prepare(codeEditorOptions);
+      this.codeEditor.prepare(playPhaseOptions);
       this.currentPhase.showTutorialActionsIfExists();
       this.addTestCommands(this.currentPhase)
 
-      this.messageBox.setMessages(this.currentPhase.messagesBeforeStartPlay);
+      if (!playPhaseOptions.muteInstructions) {
+        this.messageBox.setMessages(this.currentPhase.messagesBeforeStartPlay);
+      }
       if (this.gameParams.isAutomaticTesting()) {
         this.codeEditor.onClickRun()
       }

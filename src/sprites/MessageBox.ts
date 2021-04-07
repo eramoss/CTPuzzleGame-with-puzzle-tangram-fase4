@@ -14,6 +14,7 @@ export default class MessageBox {
   currentMessageIndex: number;
   okButton: Button;
   closeButton: Button;
+  onFinishTalk: () => void = () => { };
 
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
@@ -59,6 +60,7 @@ export default class MessageBox {
     }
     if (!message) {
       this.close();
+      this.onFinishTalk();
     }
   }
 

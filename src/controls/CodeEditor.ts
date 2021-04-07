@@ -564,5 +564,6 @@ export default class CodeEditor {
 }
 
 export class CodeEditorOptions {
-  clear: true
+  clear?:boolean = true
+  muteInstructions?:boolean = true
 }

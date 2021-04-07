@@ -4,6 +4,10 @@ import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
 
 export default class Button implements InterfaceElement {
+  ajustTextPosition(xDiff: number = 0, yDiff: number = 0): void {
+    this.text.x = this.sprite.x + xDiff - this.sprite.displayWidth / 2
+    this.text.y = this.sprite.y + yDiff - this.sprite.displayHeight / 2
+  }
 
   sprite: Phaser.GameObjects.Sprite;
   blinked: boolean = false;

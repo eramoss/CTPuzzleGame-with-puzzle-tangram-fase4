@@ -2,7 +2,7 @@ import { GameObjects } from 'phaser'
 import Command from './Command'
 import AlignGrid from '../geom/AlignGrid';
 import SpriteDropZone from '../controls/SpriteDropZone';
-import { createDropZone, androidVibrate } from '../utils/Utils';
+import { createDropZone, androidVibrate, joinChilds } from '../utils/Utils';
 import { Logger } from '../main';
 
 export default class Program {
@@ -245,7 +245,7 @@ export default class Program {
   }
 
   getCommandsWithConditions(): Command[] {
-    return this.ordinalCommands.flatMap(c => [c, c.condition]).filter(c => c != undefined);
+    return joinChilds(this.ordinalCommands, c => [c, c.condition]).filter(c => c != undefined);
   }
 
   getNextFreePosition(command: Command): { x: number, y: number } {

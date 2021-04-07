@@ -4,7 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, getTypedItem, setItem } from "../utils/storage";
-import { PreparedParticipation, TestItem, UrlToSendProgress } from "./TestApplication";
+import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
 
@@ -14,6 +14,32 @@ export default class TestApplicationService {
 
   isPlayground() {
     return this.getGameParams()?.isPlaygroundTest()
+  }
+
+  getPublicTestApplications(): TestApplication[] {
+    return getItem('public-test-applications') as TestApplication[]
+  }
+
+  async loadPublicApplications(): Promise<boolean> {
+    let found = false;
+    let puzzleUrl = this.getGameParams().puzzleUrl
+    let possibleBaseUrls = ['puzzleUrl', 'http://localhost:3110', 'https://ctplatform.playerweb.com.br']
+    for (let url of possibleBaseUrls) {
+      try {
+        let name = 'Programação%20Rope'
+        let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
+        let publicTestApplications: TestApplication[] = await response.json()
+        Logger.info('publicTestApplications.length', publicTestApplications.length)
+        if (publicTestApplications.length) {
+          setItem('public-test-applications', publicTestApplications);
+          found = true
+          break
+        }
+      } catch (e) {
+        Logger.error('Did not succeded on load public test applications from ', url)
+      }
+    }
+    return found
   }
 
   constructor(private gameParams: GameParams) {

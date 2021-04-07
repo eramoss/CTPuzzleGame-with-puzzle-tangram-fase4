@@ -1,5 +1,9 @@
 import { MecanicaRope } from "../ct-platform-classes/MecanicaRope"
 
+export class TestApplication {
+  name: string
+}
+
 export class UrlToSendProgress {
   method: string
   url: string

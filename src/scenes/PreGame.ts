@@ -9,6 +9,7 @@ import User from '../user/User';
 import TestApplicationService from '../test-application/TestApplicationService';
 import { isAndroidAmbient } from '../utils/Utils';
 import { Logger } from '../main';
+import PhasesGrid from '../controls/PhasesGrid';
 
 let globalSounds: Sounds
 
@@ -23,6 +24,7 @@ export default class PreGame extends Phaser.Scene {
   gameParams: GameParams;
   testApplicationService: TestApplicationService;
   grid: AlignGrid;
+  phasesGrid: PhasesGrid
 
   constructor() {
     super('pre-game');
@@ -37,6 +39,7 @@ export default class PreGame extends Phaser.Scene {
     Logger.info('Loaded params = ' + queryParams)
 
     const params = new URLSearchParams(queryParams);
+
     this.gameParams = new GameParams(params);
     this.testApplicationService = new TestApplicationService(this.gameParams)
     this.userRepository = new UserRepository()
@@ -47,6 +50,7 @@ export default class PreGame extends Phaser.Scene {
     this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
+    this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 559, frameHeight: 99 });
     this.sounds.preload(this);
     this.keyboard.preload(this);
   }
@@ -62,17 +66,25 @@ export default class PreGame extends Phaser.Scene {
     );
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
 
-    if (!this.gameParams.isTestApplication)
-      this.createPlayButtonArea();
+    this.phasesGrid = new PhasesGrid(this, this.grid);
+
+    let foundPublicApplications = false;
+    if (!this.gameParams.isTestApplication()) {
+      foundPublicApplications = await this.testApplicationService.loadPublicApplications();
+      if (foundPublicApplications) {
+        this.phasesGrid.setApplications(this.testApplicationService.getPublicTestApplications());
+      }
+      //this.createPlayButtonArea();
+    }
 
     if (this.gameParams.isTestApplication()) {
       let user: User = this.userRepository.getOrCreateGuestUser();
       await this.testApplicationService.getApplicationData(user);
     }
 
-    //if (this.gameParams.isTestApplication()) {
-    this.startGame()
-    //}
+    if (!foundPublicApplications) {
+      this.startGame()
+    }
   }
 
   createPlayButtonArea() {

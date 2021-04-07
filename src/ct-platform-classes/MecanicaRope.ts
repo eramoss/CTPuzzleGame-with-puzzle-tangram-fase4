@@ -17,6 +17,7 @@ export class MecanicaRope {
   custoBateriaEmCadaMovimento: number = 1
   ganhoBateriaAoCapturarPilha: number = 1
   acoesTutorial:AcaoTutorial[] = []
+  falasAntesDeIniciar: string[] = [];
 }
 
 type Acao = "click" | "drag"

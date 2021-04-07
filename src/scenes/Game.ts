@@ -20,6 +20,7 @@ import { Block } from './Block'
 import { Battery } from './Battery'
 import { Coin } from './Coin'
 import { Tile } from './Tile'
+import MessageBox from '../sprites/MessageBox'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -40,6 +41,7 @@ export default class Game extends Scene {
   testApplicationService: TestApplicationService
   gameState: GameState
   loadingText: GameObjects.Text
+  messageBox: MessageBox
 
   constructor() {
     super('game')
@@ -59,6 +61,7 @@ export default class Game extends Scene {
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
     this.load.image('battery', 'assets/ct/battery.png');
+    this.load.image('message_box', 'assets/ct/message.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
     this.load.image('if_coin', 'assets/ct/if_coin.png');
     this.load.image('if_block', 'assets/ct/if_block.svg');
@@ -68,6 +71,8 @@ export default class Game extends Scene {
     this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
+    this.load.spritesheet('btn-close-message', 'assets/ct/yellow_close_btn.png', { frameWidth: 68, frameHeight: 69 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 105 });
@@ -95,10 +100,13 @@ export default class Game extends Scene {
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
+    this.messageBox = new MessageBox(this,this.grid)
 
     this.showLoading();
     this.phases = await this.loadPhases();
     this.hideLoading();
+
+
 
     this.createAnimationsAndDefineSpritesByKeys();
 
@@ -262,6 +270,8 @@ export default class Game extends Scene {
     }
 
     this.playNextPhase();
+
+
   }
 
   async loadPhases(): Promise<MazePhasesLoader> {
@@ -395,6 +405,8 @@ export default class Game extends Scene {
       this.sendResponse(phase);
     }
 
+
+
     this.currentPhase?.clearTutorials()
     this.currentPhase = phase
 
@@ -433,6 +445,8 @@ export default class Game extends Scene {
       this.currentPhase.showTutorialActionsIfExists();
       this.addTestCommands(this.currentPhase)
 
+      debugger
+      this.messageBox.setMessages(this.currentPhase.messagesBeforeStartPlay);
       if (this.gameParams.isAutomaticTesting()) {
         this.codeEditor.onClickRun()
       }

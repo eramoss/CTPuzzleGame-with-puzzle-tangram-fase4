@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-import drawRect from "../utils/Utils";
+import drawRect, { writeText } from "../utils/Utils";
 
 export default class Ballon {
 
@@ -14,7 +14,7 @@ export default class Ballon {
     this.scale = scale;
     this.ballon = scene.add.image(0, 0, 'ballon')
       .setScale(scale * 1.2)
-      .setDepth(1000);
+      .setDepth(200);
 
     this.phrase = scene.add.text(0, 0, '', {
       fontFamily: 'Dyuthi, arial',
@@ -22,7 +22,7 @@ export default class Ballon {
       .setScale(scale)
       .setFontStyle('bold')
       .setAlign('center')
-      .setDepth(1001)
+      .setDepth(201)
       .setTint(0x00a7a7);
 
   }
@@ -35,14 +35,7 @@ export default class Ballon {
   }
 
   setBallonText(text: string, ballonText: string = '') {
-    if (ballonText.length < text.length) {
-      ballonText = text.substring(0, ballonText.length + 1);
-      this.phrase.setText(ballonText);
-      setTimeout(() => {
-        this.setBallonText(text, ballonText);
-        this.ajustPosition()
-      }, 20)
-    }
+    writeText(text, ballonText, this.phrase, () => { this.ajustPosition() })
   }
 
   setVisible(visible: boolean = true) {

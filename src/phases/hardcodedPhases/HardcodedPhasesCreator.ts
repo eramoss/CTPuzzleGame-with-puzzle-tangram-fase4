@@ -70,6 +70,12 @@ export default class HardcodedPhasesCreator {
         ['arrow-up', 'arrow-up', 'arrow-right', 'arrow-up']
       ]
       phases.push(phase);
+
+      phase = this.createEasyPhaseWithMessages()
+      phase.commands = [
+        ['arrow-up', 'arrow-up', 'arrow-right', 'arrow-up']
+      ]
+      phases.push(phase);
     }
 
     if (!isTesting) {
@@ -267,6 +273,43 @@ export default class HardcodedPhasesCreator {
           'click btn-play say click-play',
         ])
       }
+    }
+    return phase;
+  }
+
+  private createEasyPhaseWithMessages() {
+    const phase = new MazePhase(this.scene, this.codeEditor);
+    phase.dudeFacedTo = 'right'
+    phase.dudeStartPosition = { col: 0, row: 0 }
+
+    let baseMatrix = [
+      ['tile', 'tile', 'tile'],
+      ['null', 'null', 'tile'],
+    ];
+
+    let obstaclesMatrix = [
+      ['null', 'null', 'null'],
+      ['null', 'null', 'coin'],
+    ];
+
+    phase.setupTutorialsAndObjectsPositions = () => {
+
+      phase.obstacles = new Matrix(
+        this.scene,
+        this.matrixMode,
+        obstaclesMatrix,
+        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+      );
+
+      phase.ground = new Matrix(
+        this.scene,
+        this.matrixMode,
+        baseMatrix,
+        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+      );
+
+      phase.messagesBeforeStartPlay = ['Testando mensagens','Teste 1','Teste 2']
+
     }
     return phase;
   }

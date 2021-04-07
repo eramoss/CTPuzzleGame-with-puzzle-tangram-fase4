@@ -14,9 +14,8 @@ export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-lef
 | "arrow-up:if_coin" | "arrow-down:if_coin" | "arrow-right:if_coin" | "arrow-left:if_coin" | "prog_1:if_coin" | "prog_0:if_coin" | "prog_2:if_coin"
 
 export default class MazePhase {
-
-
   setupTutorialsAndObjectsPositions: () => void;
+  messagesBeforeStartPlay:string[] = []
   obstacles: Matrix;
   ground: Matrix;
   scene: Scene;

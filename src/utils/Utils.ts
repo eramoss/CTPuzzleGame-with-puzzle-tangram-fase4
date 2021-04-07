@@ -117,3 +117,14 @@ export function createJoinArraysFn<PARENT>(functions: Array<() => PARENT[]>): ()
 export function isDebug(scene: Phaser.Scene) {
   return scene.game.config.physics.arcade?.debug;
 }
+
+export function writeText(newText: string, existentText: string, textObject: Phaser.GameObjects.Text, onWrite: () => void) {
+  if (existentText.length < newText.length) {
+    existentText = newText.substring(0, existentText.length + 1);
+    textObject.setText(existentText);
+    setTimeout(() => {
+      writeText(newText, existentText, textObject, onWrite)
+      onWrite()
+    }, 20)
+  }
+}

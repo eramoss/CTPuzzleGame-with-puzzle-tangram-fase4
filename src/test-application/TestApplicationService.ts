@@ -63,6 +63,9 @@ export default class TestApplicationService {
     if (lastVisitedItemIndex != -1) {
       nonCompletedItems = items.slice(lastVisitedItemIndex)
     }
+    if (lastVisitedItemId == -1) {
+      nonCompletedItems = []
+    }
     return nonCompletedItems;
   }
 

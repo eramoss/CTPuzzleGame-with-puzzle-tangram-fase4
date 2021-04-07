@@ -101,6 +101,6 @@ export default class Button implements InterfaceElement {
 
   setVisible(visible: boolean) {
     this.sprite.setVisible(visible);
-    this.text.setVisible(visible);
+    this.text?.setVisible(visible);
   }
 }

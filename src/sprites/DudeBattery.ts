@@ -92,7 +92,7 @@ export class DudeBattery {
       .setFontStyle('bold')
       .setFontSize(40)
       .setAlign('center')
-      .setDepth(1001)
+      .setDepth(101)
       .setTint(0xffffff)
   }
 

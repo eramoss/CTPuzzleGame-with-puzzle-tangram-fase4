@@ -107,6 +107,7 @@ export default class MazePhasesLoader {
       phase.batteryLevel = mecanicaRope.nivelBateria
       phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
       phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
+      phase.messagesBeforeStartPlay = mecanicaRope.falasAntesDeIniciar
 
       let tutorialSteps = mecanicaRope.acoesTutorial.map(acao => {
         let affect = '';

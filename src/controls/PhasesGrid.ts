@@ -26,6 +26,7 @@ export default class PhasesGrid {
       userUuid
     );
     this.onRequestPlay(gameUrl)
+    globalSounds.drag()
   }
 
   setApplications(testApplications: TestApplication[]) {

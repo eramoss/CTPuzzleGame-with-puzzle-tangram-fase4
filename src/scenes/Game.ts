@@ -286,6 +286,7 @@ export default class Game extends Scene {
   }
   destroy() {
     this.currentPhase = null
+    globalSounds.stopPlayBackgroundMusic()
   }
 
   async loadPhases(): Promise<MazePhasesLoader> {
@@ -397,7 +398,7 @@ export default class Game extends Scene {
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
-
+    globalSounds.playBackgroundMusic()
     if (!phase) {
       if (this.testApplicationService.isPlayground()) {
         this.replayCurrentPhase();
@@ -417,7 +418,7 @@ export default class Game extends Scene {
         ])
       }
 
-      //this.sendResponse(phase);
+      this.sendResponse(phase);
 
     }
 
@@ -490,20 +491,22 @@ export default class Game extends Scene {
   }
 
   async sendResponse(phase: MazePhase) {
-    if (this.gameParams.isTestApplication()) {
-      try {
-        if (this.currentPhase) {
-          const response = this.gameState.getResponseToSend()
-          await this.testApplicationService.sendResponse(response);
+    if (phase) {
+      if (this.gameParams.isTestApplication()) {
+        try {
+          if (this.currentPhase) {
+            const response = this.gameState.getResponseToSend()
+            await this.testApplicationService.sendResponse(response);
+          }
+          if (phase) {
+            this.gameState.initializeResponse(phase.itemId);
+          }
+        } catch (e) {
+          Logger.log('ErrorSendingResponse', e)
+          Logger.error(e);
+          this.replayCurrentPhase()
+          return;
         }
-        if (phase) {
-          this.gameState.initializeResponse(phase.itemId);
-        }
-      } catch (e) {
-        Logger.log('ErrorSendingResponse', e)
-        Logger.error(e);
-        this.replayCurrentPhase()
-        return;
       }
     }
   }

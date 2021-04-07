@@ -5,6 +5,7 @@ import { androidPlayAudio } from "../utils/Utils";
 
 export default class Sounds {
 
+
   playRobotSound(name: string) {
     if (name == 'arrow-up' || name == 'arrow-down') {
       this.robotWalk()
@@ -27,6 +28,7 @@ export default class Sounds {
   clickSound: Phaser.Sound.BaseSound;
   robotTurnSound: Phaser.Sound.BaseSound;
   robotWalkSound: Phaser.Sound.BaseSound;
+  backMusic: Phaser.Sound.BaseSound;
 
   create() {
     this.dragSound = this.scene.sound.add('drag');
@@ -42,6 +44,7 @@ export default class Sounds {
     this.clickSound = this.scene.sound.add('click');
     this.robotWalkSound = this.scene.sound.add('robot');
     this.robotTurnSound = this.scene.sound.add('noise');
+    this.backMusic = this.scene.sound.add('back-music');
   }
 
   preload(scene: Phaser.Scene) {
@@ -50,7 +53,7 @@ export default class Sounds {
     this.scene.load.audio('error', 'assets/ct/sounds/error.ogg');
     this.scene.load.audio('drag', 'assets/ct/sounds/drag.ogg');
     this.scene.load.audio('drop', 'assets/ct/sounds/drop.ogg');
-    this.scene.load.audio('hover', 'assets/ct/sounds/hover.ogg');
+    this.scene.load.audio('hover', 'assets/ct/sounds/hover.mp3');
     this.scene.load.audio('remove', 'assets/ct/sounds/remove.ogg');
     this.scene.load.audio('start', 'assets/ct/sounds/start.ogg');
     this.scene.load.audio('coin', 'assets/ct/sounds/coin.wav');
@@ -59,6 +62,15 @@ export default class Sounds {
     this.scene.load.audio('click', 'assets/ct/sounds/click.mp3');
     this.scene.load.audio('noise', 'assets/ct/sounds/robot.wav');
     this.scene.load.audio('robot', 'assets/ct/sounds/seat_lower.mp3');
+    this.scene.load.audio('back-music', 'assets/ct/sounds/back_music.wav');
+  }
+
+  playBackgroundMusic() {
+    this.playSound(this.backMusic, { loop: true })
+  }
+
+  stopPlayBackgroundMusic() {
+    this.stopSound(this.backMusic)
   }
 
 
@@ -71,7 +83,7 @@ export default class Sounds {
   }
 
   hover() {
-    //this.playSound(this.hoverSound);
+    this.playSound(this.hoverSound);
   }
 
   remove() {
@@ -118,10 +130,16 @@ export default class Sounds {
     this.playSound(this.clickSound)
   }
 
-  playSound(sound: Phaser.Sound.BaseSound) {
+  stopSound(sound: Phaser.Sound.BaseSound) {
+    //if (!androidPlayAudio(sound.key)) {
+    sound.stop()
+    //}
+  }
+
+  playSound(sound: Phaser.Sound.BaseSound, config: { loop: boolean } = { loop: false }) {
     if (!androidPlayAudio(sound.key)) {
       if (!sound.isPlaying) {
-        sound.play()
+        sound.play({ loop: config.loop })
       }
     }
   }

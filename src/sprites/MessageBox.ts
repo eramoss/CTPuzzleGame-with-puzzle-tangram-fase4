@@ -67,11 +67,11 @@ export default class MessageBox {
   }
 
   setVisible(visible: boolean) {
-    this.phrase.setVisible(visible);
-    this.okButton.setVisible(visible);
-    this.closeButton.setVisible(visible);
-    this.graphicsBackShadow.setVisible(visible);
-    this.messageBoxImage.setVisible(visible);
+    this.phrase?.setVisible(visible);
+    this.okButton?.setVisible(visible);
+    this.closeButton?.setVisible(visible);
+    this.graphicsBackShadow?.setVisible(visible);
+    this.messageBoxImage?.setVisible(visible);
   }
 
   showNextMessage() {
@@ -100,8 +100,8 @@ export default class MessageBox {
   private createBackShadow() {
     this.graphicsBackShadow = this.scene.add.graphics();
     this.graphicsBackShadow.depth = 300;
-    this.graphicsBackShadow.fillStyle(0x000000);
-    this.graphicsBackShadow.alpha = 0.7;
+    this.graphicsBackShadow.fillStyle(0xb97a51);
+    this.graphicsBackShadow.alpha = 0.6;
     this.graphicsBackShadow.fillRect(0, 0, window.innerWidth, window.innerHeight);
   }
 

@@ -445,7 +445,6 @@ export default class Game extends Scene {
       this.currentPhase.showTutorialActionsIfExists();
       this.addTestCommands(this.currentPhase)
 
-      debugger
       this.messageBox.setMessages(this.currentPhase.messagesBeforeStartPlay);
       if (this.gameParams.isAutomaticTesting()) {
         this.codeEditor.onClickRun()

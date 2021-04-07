@@ -23,10 +23,10 @@ export default class TestApplicationService {
   async loadPublicApplications(): Promise<boolean> {
     let found = false;
     let puzzleUrl = this.getGameParams().puzzleUrl
-    let possibleBaseUrls = [puzzleUrl, 'http://localhost:3110', 'https://api.ctplatform.playerweb.com.br']
+    let possibleBaseUrls = [puzzleUrl, 'https://api.ctplatform.playerweb.com.br', 'http://localhost:3110' ]
     for (let url of possibleBaseUrls) {
       try {
-        let name = 'Programação%20Rope'
+        let name = 'PROGRAMAÇÃO ROPE'
         let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
         let publicTestApplications: TestApplication[] = await response.json()
         Logger.info('publicTestApplications.length', publicTestApplications.length)

@@ -82,7 +82,8 @@ export default class Button implements InterfaceElement {
   }
 
   setDepth(depth: number): void {
-    this.sprite.setDepth(depth);
+    this.sprite?.setDepth(depth);
+    this.text?.setDepth(depth+1);
   }
 
   setText(value: string, cell: { x: number, y: number } = { x: this.sprite.x, y: this.sprite.y }) {
@@ -92,7 +93,6 @@ export default class Button implements InterfaceElement {
       .setFontStyle('bold')
       .setFontSize(100)
       .setAlign('center')
-      .setDepth(1001)
       .setTint(0xffffff);
     text.setText(value);
     this.text = text;

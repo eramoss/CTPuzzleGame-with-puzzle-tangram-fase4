@@ -23,7 +23,8 @@ export default class TestApplicationService {
   async loadPublicApplications(): Promise<boolean> {
     let found = false;
     let puzzleUrl = this.getGameParams().puzzleUrl
-    let possibleBaseUrls = [puzzleUrl, 'https://api.ctplatform.playerweb.com.br', 'http://localhost:3110' ]
+    let possibleBaseUrls = [puzzleUrl, 'http://localhost:3110', 'https://api.ctplatform.playerweb.com.br']
+    loop_over_urls:
     for (let url of possibleBaseUrls) {
       try {
         let name = 'PROGRAMAÇÃO ROPE'
@@ -33,7 +34,7 @@ export default class TestApplicationService {
         if (publicTestApplications.length) {
           setItem('public-test-applications', publicTestApplications);
           found = true
-          break
+          break loop_over_urls
         }
       } catch (e) {
         Logger.error('Did not succeded on load public test applications from ', url)

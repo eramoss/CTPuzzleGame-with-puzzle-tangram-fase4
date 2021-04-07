@@ -19,7 +19,7 @@ export default class Button implements InterfaceElement {
 
   constructor(scene: Scene, sounds: Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
     this.scene = scene;
-    const sprite = scene.add.sprite(x, y, spriteKey, 0).setInteractive({ cursor: 'pointer' });
+    const sprite = scene.add.sprite(x, y, spriteKey, 0)?.setInteractive({ cursor: 'pointer' });
     sprite.on('pointerover', () => {
       this.hover = true;
       sprite.setFrame(1)
@@ -75,10 +75,10 @@ export default class Button implements InterfaceElement {
   }
 
   disableInteractive() {
-    this.sprite.disableInteractive();
+    this.sprite?.disableInteractive();
   }
   setInteractive() {
-    this.sprite.setInteractive();
+    this.sprite?.setInteractive();
   }
 
   setDepth(depth: number): void {

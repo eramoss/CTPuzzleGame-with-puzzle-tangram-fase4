@@ -30,6 +30,10 @@ export default class PreGame extends Phaser.Scene {
 
   constructor() {
     super('pre-game');
+
+  }
+
+  init() {
     this.sounds = new Sounds();
     this.keyboard = new Keyboard();
     this.userRepository = new UserRepository()
@@ -63,7 +67,6 @@ export default class PreGame extends Phaser.Scene {
   async create() {
     this.sounds.create();
     globalSounds = this.sounds;
-
 
     this.grid = new AlignGrid(
       this, 26, 22,

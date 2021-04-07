@@ -412,6 +412,7 @@ export default class CodeEditor {
       //this.sounds.stop();
       this.onClickStepByStep();
     })
+
     this.grid.placeAt(1, 17, this.btnPlay.sprite, 2.3)
     this.grid.placeAt(4, 17, this.btnStep.sprite, 2.3)
     this.grid.placeAt(7, 17, this.btnStop.sprite, 2.3)
@@ -545,7 +546,7 @@ export default class CodeEditor {
   setInteractive() {
     this.getInterfaceElements()
       .forEach(genericInteraceElement => {
-        genericInteraceElement.setInteractive();
+        genericInteraceElement?.setInteractive();
       })
   }
 
@@ -564,6 +565,6 @@ export default class CodeEditor {
 }
 
 export class CodeEditorOptions {
-  clear?:boolean = true
-  muteInstructions?:boolean = true
+  clear?: boolean = true
+  muteInstructions?: boolean = true
 }

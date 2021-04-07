@@ -3,14 +3,14 @@ import AlignGrid from '../geom/AlignGrid';
 import TestApplicationService from '../test-application/TestApplicationService';
 import { androidOpenUrl } from '../utils/Utils';
 
-export default class GameWin extends Phaser.Scene {
+export default class EndGame extends Phaser.Scene {
 
   constructor() {
-    super('game-win');
+    super('end-game');
   }
 
   init(testApplicationService: TestApplicationService) {
-    console.log('GAME_WIN')
+    console.log('END_GAME')
     let participation = testApplicationService.getParticipation();
 
     let isTestApplication = testApplicationService.isTestApplication()

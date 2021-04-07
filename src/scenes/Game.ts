@@ -21,6 +21,7 @@ import { Battery } from './Battery'
 import { Coin } from './Coin'
 import { Tile } from './Tile'
 import MessageBox from '../sprites/MessageBox'
+import Button from '../controls/Button'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -35,7 +36,7 @@ export default class Game extends Scene {
   groundMazeModel: MazeModel
   grid: AlignGrid
   mode: MatrixMode = MatrixMode.ISOMETRIC
-  phases: MazePhasesLoader
+  phasesLoader: MazePhasesLoader
   currentPhase: MazePhase
   gameParams: GameParams
   testApplicationService: TestApplicationService
@@ -71,6 +72,7 @@ export default class Game extends Scene {
     this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.spritesheet('btn-exit', 'assets/ct/exit_btn.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
     this.load.spritesheet('btn-close-message', 'assets/ct/yellow_close_btn.png', { frameWidth: 68, frameHeight: 69 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
@@ -106,10 +108,8 @@ export default class Game extends Scene {
     }
 
     this.showLoading();
-    this.phases = await this.loadPhases();
+    this.phasesLoader = await this.loadPhases();
     this.hideLoading();
-
-
 
     this.createAnimationsAndDefineSpritesByKeys();
 
@@ -230,6 +230,14 @@ export default class Game extends Scene {
       }
     }
 
+    let btnExit = new Button(this, this.sounds, 0, 0, 'btn-exit', () => {
+      setTimeout(() => {
+        this.destroy()
+        this.scene.start('pre-game')
+      }, 200)
+    })
+    this.grid.placeAt(10, 17, btnExit.sprite, 1.6)
+
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
         this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
@@ -275,6 +283,9 @@ export default class Game extends Scene {
     this.playNextPhase();
 
 
+  }
+  destroy() {
+    this.currentPhase = null
   }
 
   async loadPhases(): Promise<MazePhasesLoader> {
@@ -375,7 +386,7 @@ export default class Game extends Scene {
   }
 
   playNextPhase() {
-    const phase = this.phases.getNextPhase();
+    const phase = this.phasesLoader.getNextPhase();
     this.playPhase(phase, { clear: true });
   }
 
@@ -405,10 +416,10 @@ export default class Game extends Scene {
           prog2
         ])
       }
-      this.sendResponse(phase);
+
+      //this.sendResponse(phase);
+
     }
-
-
 
     this.currentPhase?.clearTutorials()
     this.currentPhase = phase
@@ -417,7 +428,7 @@ export default class Game extends Scene {
       this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
     }
     if (!this.currentPhase) {
-      this.scene.start('game-win', this.testApplicationService);
+      this.scene.start('end-game', this.testApplicationService);
     }
 
     if (this.currentPhase) {
@@ -496,4 +507,6 @@ export default class Game extends Scene {
       }
     }
   }
+
+
 }

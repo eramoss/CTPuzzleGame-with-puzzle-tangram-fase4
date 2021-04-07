@@ -21,10 +21,9 @@ export class Loading {
   }
 
   private styleBar() {
-    this.bar.clear();
-    this.bar.fillStyle(0xffcc00);
-    this.bar.alpha = 1;
-    this.bar.depth = 500;
+    this.bar?.clear();
+    this.bar?.fillStyle(0xffcc00);
+    this.bar?.setDepth(500);
   }
 
   startProgressing(percent: number) {

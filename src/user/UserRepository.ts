@@ -10,6 +10,7 @@ export default class UserRepository {
     }
     return this.getUser();
   }
+
   createGuestUser() {
     let guest = new User()
     guest.hash = uuidv4()

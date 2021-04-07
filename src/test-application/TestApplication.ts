@@ -2,6 +2,7 @@ import { MecanicaRope } from "../ct-platform-classes/MecanicaRope"
 
 export class TestApplication {
   name: string
+  url: string
 }
 
 export class UrlToSendProgress {

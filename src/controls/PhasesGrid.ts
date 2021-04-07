@@ -2,45 +2,50 @@ import { GameObjects, Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import { globalSounds } from "../scenes/PreGame";
 import { TestApplication } from "../test-application/TestApplication";
+import UserRepository from "../user/UserRepository";
 import { joinChilds } from "../utils/Utils";
 import Button from "./Button";
 
 export default class PhasesGrid {
   scene: Scene;
   grid: AlignGrid;
+  userRepository: UserRepository;
 
-  constructor(scene: Scene, grid: AlignGrid) {
+  onRequestPlay: (gameUrl: string) => void
+
+  constructor(scene: Scene, grid: AlignGrid, userRepository: UserRepository) {
     this.scene = scene;
     this.grid = grid;
+    this.userRepository = userRepository;
   }
 
-  setApplications(testApplications: TestApplication[], columns: number = 2) {
+  emitGameUrl(testApplication: TestApplication) {
+    let userUuid = this.userRepository.getOrCreateGuestUser().hash;
+    let gameUrl = testApplication?.url?.replace(
+      "<user_uuid>",
+      userUuid
+    );
+    this.onRequestPlay(gameUrl)
+  }
 
+  setApplications(testApplications: TestApplication[]) {
     let btnPlays: Button[] = []
+    let scale = this.grid.scale;
     testApplications.forEach((testApplication: TestApplication, index: number) => {
-      let btn = new Button(this.scene, globalSounds, 0, 0, 'yellow-btn', () => { })
-      btn.setScale(this.grid.scale)
+      let cell = this.grid.getCell(10, index);
+      let btn = new Button(this.scene, globalSounds,
+        cell.x,
+        this.grid.cellHeight * 4 + cell.y * 3,
+        'yellow-btn',
+        () => { this.emitGameUrl(testApplication) }
+      )
+      btn.setScale(scale)
       btnPlays.push(btn)
       let name = testApplication.name;
       btn.setText(name);
-    })
-
-    let sprites = btnPlays.map(btn => btn.sprite);
-    Phaser.Actions.GridAlign(sprites, {
-      x: this.grid.cellWidth * 4,
-      y: this.grid.cellHeight * 4,
-      cellWidth: this.grid.cellWidth * 10,
-      cellHeight: this.grid.cellHeight * 3,
-      width: columns,
-      //position: Phaser.Display.Align.CENTER
-    })
-
-    const scale = this.grid.scale;
-    btnPlays.forEach(btn => {
       btn.text.setScale(scale);
       btn.text.setFontSize(30);
-      btn.ajustTextPosition(20 * scale, 10 * scale)
-    });
-
+      btn.ajustTextPosition(20 * scale, 25 * scale)
+    })
   }
 }

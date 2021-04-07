@@ -30,27 +30,30 @@ export default class PreGame extends Phaser.Scene {
     super('pre-game');
     this.sounds = new Sounds();
     this.keyboard = new Keyboard();
+    this.userRepository = new UserRepository()
 
     let queryParams = window.location.search
     if (isAndroidAmbient()) {
       //@ts-ignore
       queryParams = window.search
     }
-    Logger.info('Loaded params = ' + queryParams)
+    this.initializeGameParams(queryParams);
+  }
 
+  private initializeGameParams(queryParams: string) {
+    Logger.info('Loaded params = ' + queryParams);
     const params = new URLSearchParams(queryParams);
-
     this.gameParams = new GameParams(params);
-    this.testApplicationService = new TestApplicationService(this.gameParams)
-    this.userRepository = new UserRepository()
+    this.testApplicationService = new TestApplicationService(this.gameParams);
   }
 
   preload() {
     this.load.image('test-box', 'assets/ct/pregame/test-game-box.png');
     this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
+    this.load.image('big-rope', 'assets/ct/big_rope.png');
     this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
-    this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 559, frameHeight: 99 });
+    this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 678, frameHeight: 99 });
     this.sounds.preload(this);
     this.keyboard.preload(this);
   }
@@ -65,8 +68,13 @@ export default class PreGame extends Phaser.Scene {
       this.game.config.height as number
     );
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
+    this.grid.addImage(18, 10, 'big-rope', 6);
 
-    this.phasesGrid = new PhasesGrid(this, this.grid);
+    this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
+
+    this.phasesGrid.onRequestPlay = (gameUrl: string) => {
+      this.initializeGameParams(gameUrl.split('?')[1])
+    }
 
     let foundPublicApplications = false;
     if (!this.gameParams.isTestApplication()) {

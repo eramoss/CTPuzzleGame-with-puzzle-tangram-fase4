@@ -54,7 +54,6 @@ export default class PreGame extends Phaser.Scene {
     this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.image('big-rope', 'assets/ct/big_rope.png');
-    this.load.spritesheet('loading', 'assets/ct/loading.png', { frameWidth: 638, frameHeight: 299 });
     this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
     this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 678, frameHeight: 99 });
     this.sounds.preload(this);

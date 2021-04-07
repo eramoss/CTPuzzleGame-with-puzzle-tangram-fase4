@@ -2,33 +2,74 @@ import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 
 export class Loading {
-  image: Phaser.GameObjects.Image;
+  grid: AlignGrid;
+  shadow: Phaser.GameObjects.Graphics;
+  bar: Phaser.GameObjects.Graphics;
+  scene: Scene;
+  timeout: number;
 
   constructor(scene: Scene, grid: AlignGrid) {
-    scene.anims.create({
-      key: 'loading',
-      frames: scene.anims.generateFrameNumbers('loading', { start: 0, end: 4 }),
-      frameRate: 0.5,
-      repeat: -1
-    })
-    let cell = grid.getCell(13,11);
-    this.image = scene.add.sprite(cell.x, cell.y, 'loading', 2)
-      .play('loading')
-    this.image.setScale(grid.scale);
-    this.image.setDepth(500);
+    this.scene = scene;
+    this.grid = grid;
+    this.createShadow()
+    this.createBar();
     this.hide();
+  }
+  private createBar() {
+    this.bar = this.scene.add.graphics();
+    this.styleBar();
+  }
+
+  private styleBar() {
+    this.bar.clear();
+    this.bar.fillStyle(0xffcc00);
+    this.bar.alpha = 1;
+    this.bar.depth = 500;
+  }
+
+  startProgressing(percent: number) {
+    let cell = this.grid.getCell(7, 11);
+    this.timeout = setTimeout(() => {
+      this.bar.fillRoundedRect(cell.x, cell.y,
+        (this.grid.cellWidth * 12) * percent / 100,
+        this.grid.cellHeight * 1, 20 * this.grid.scale);
+
+      if (percent > 100) {
+        percent = 0;
+        this.styleBar();
+      }
+      this.startProgressing(percent + 10);
+    }, Math.random() * 1000)
+  }
+
+  stopProgressing() {
+    clearTimeout(this.timeout);
+  }
+
+  createShadow() {
+    let cell = this.grid.getCell(7, 9);
+    this.shadow = this.scene.add.graphics()
+    this.shadow.fillStyle(0x000000)
+    this.shadow.alpha = 0.5
+    this.shadow.depth = 500
+    this.shadow.fillRoundedRect(cell.x, cell.y,
+      this.grid.cellWidth * 12,
+      this.grid.cellHeight * 5, 20 * this.grid.scale)
   }
 
   show() {
     this.setVisible(true);
+    this.startProgressing(10);
   }
+
 
   hide() {
     this.setVisible(false);
   }
 
-  setVisible(arg0: boolean) {
-    this.image.setFrame(0);
-    this.image.setVisible(arg0);
+  setVisible(visible: boolean) {
+    this.styleBar();
+    this.shadow.setVisible(visible);
+    this.bar.setVisible(visible);
   }
 }

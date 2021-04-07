@@ -10,6 +10,7 @@ import TestApplicationService from '../test-application/TestApplicationService';
 import { isAndroidAmbient } from '../utils/Utils';
 import { Logger } from '../main';
 import PhasesGrid from '../controls/PhasesGrid';
+import { Loading } from '../controls/Loading';
 
 let globalSounds: Sounds
 
@@ -25,6 +26,7 @@ export default class PreGame extends Phaser.Scene {
   testApplicationService: TestApplicationService;
   grid: AlignGrid;
   phasesGrid: PhasesGrid
+  loading: Loading;
 
   constructor() {
     super('pre-game');
@@ -52,6 +54,7 @@ export default class PreGame extends Phaser.Scene {
     this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.image('big-rope', 'assets/ct/big_rope.png');
+    this.load.spritesheet('loading', 'assets/ct/loading.png', { frameWidth: 638, frameHeight: 299 });
     this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
     this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 678, frameHeight: 99 });
     this.sounds.preload(this);
@@ -62,6 +65,7 @@ export default class PreGame extends Phaser.Scene {
     this.sounds.create();
     globalSounds = this.sounds;
 
+
     this.grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
@@ -70,28 +74,42 @@ export default class PreGame extends Phaser.Scene {
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.grid.addImage(18, 10, 'big-rope', 6);
 
+    this.loading = new Loading(this, this.grid);
     this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
 
-    this.phasesGrid.onRequestPlay = (gameUrl: string) => {
+    this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
+      this.loading.show();
       this.initializeGameParams(gameUrl.split('?')[1])
+      await this.loadTestApplication();
+      this.startGame()
     }
 
+    let isTestApplication = this.gameParams.isTestApplication()
     let foundPublicApplications = false;
-    if (!this.gameParams.isTestApplication()) {
-      foundPublicApplications = await this.testApplicationService.loadPublicApplications();
-      if (foundPublicApplications) {
-        this.phasesGrid.setApplications(this.testApplicationService.getPublicTestApplications());
-      }
-      //this.createPlayButtonArea();
+    if (!isTestApplication) {
+      foundPublicApplications = await this.searchPublicApplications();
     }
 
+    this.loadTestApplication()
+
+    if (!foundPublicApplications || this.gameParams.isPlaygroundTest()) {
+      this.startGame()
+    }
+  }
+
+  private async searchPublicApplications(): Promise<boolean> {
+    let foundPublicApplications = false;
+    foundPublicApplications = await this.testApplicationService.loadPublicApplications();
+    if (foundPublicApplications) {
+      this.phasesGrid.setApplications(this.testApplicationService.getPublicTestApplications());
+    }
+    return foundPublicApplications;
+  }
+
+  async loadTestApplication() {
     if (this.gameParams.isTestApplication()) {
       let user: User = this.userRepository.getOrCreateGuestUser();
-      await this.testApplicationService.getApplicationData(user);
-    }
-
-    if (!foundPublicApplications) {
-      this.startGame()
+      await this.testApplicationService.loadApplicationFromDataUrl(user);
     }
   }
 

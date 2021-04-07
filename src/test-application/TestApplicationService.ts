@@ -65,7 +65,7 @@ export default class TestApplicationService {
     }
   }
 
-  async getApplicationData(user: User) {
+  async loadApplicationFromDataUrl(user: User) {
     try {
       let response = await GET(this.gameParams.dataUrl.replace('<user_uuid>', user.hash))
       let participation = (await response.json()) as PreparedParticipation

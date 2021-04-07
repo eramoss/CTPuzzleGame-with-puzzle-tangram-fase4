@@ -37,7 +37,13 @@ export default class PhasesGrid {
         cell.x,
         this.grid.cellHeight * 4 + cell.y * 3,
         'yellow-btn',
-        () => { this.emitGameUrl(testApplication) }
+        () => {
+          this.emitGameUrl(testApplication)
+          btn.disable()
+          setTimeout(() => {
+            btn.enable()
+          }, 4000);
+        }
       )
       btn.setScale(scale)
       btnPlays.push(btn)

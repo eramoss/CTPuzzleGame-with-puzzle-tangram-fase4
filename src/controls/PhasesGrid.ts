@@ -1,9 +1,8 @@
-import { GameObjects, Scene } from "phaser";
+import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import { globalSounds } from "../scenes/PreGame";
 import { TestApplication } from "../test-application/TestApplication";
 import UserRepository from "../user/UserRepository";
-import { joinChilds } from "../utils/Utils";
 import Button from "./Button";
 
 export default class PhasesGrid {
@@ -46,13 +45,12 @@ export default class PhasesGrid {
           }, 4000);
         }
       )
-      btn.setScale(scale)
       btnPlays.push(btn)
       let name = testApplication.name;
+      btn.setFontSize(30);
+      btn.setScale(scale)
       btn.setText(name);
-      btn.text.setScale(scale);
-      btn.text.setFontSize(30);
-      btn.ajustTextPosition(20 * scale, 25 * scale)
+      btn.ajustTextPosition(20, 25)
     })
   }
 }

@@ -18,7 +18,7 @@
         "label": "launch-dev",
         "type": "shell",
         "options": {
-          "cwd": "${workspaceFolder}"
+          "cwd": "${workspaceFolder}",
         },
         "command": "npm run dev"
       },

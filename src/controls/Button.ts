@@ -4,11 +4,8 @@ import Sounds from '../sounds/Sounds';
 import { androidVibrate } from '../utils/Utils';
 
 export default class Button implements InterfaceElement {
-  ajustTextPosition(xDiff: number = 0, yDiff: number = 0): void {
-    this.text.x = this.sprite.x + xDiff - this.sprite.displayWidth / 2
-    this.text.y = this.sprite.y + yDiff - this.sprite.displayHeight / 2
-  }
 
+  fontSize: number = 100;
   sprite: Phaser.GameObjects.Sprite;
   blinked: boolean = false;
   blinkingInterval: number;
@@ -16,6 +13,7 @@ export default class Button implements InterfaceElement {
   disabled: boolean = false
   scene: Scene
   text: Phaser.GameObjects.Text;
+  scale: number = 1;
 
   constructor(scene: Scene, sounds: Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
     this.scene = scene;
@@ -23,7 +21,7 @@ export default class Button implements InterfaceElement {
     sprite.on('pointerover', () => {
       this.hover = true;
       sprite.setFrame(1)
-      sounds.hover();
+      sounds?.hover();
     })
     sprite.on('pointerout', () => {
       this.hover = false;
@@ -67,6 +65,16 @@ export default class Button implements InterfaceElement {
     }
   }
 
+  setFontSize(arg0: number) {
+    this.fontSize = arg0;
+    this.text?.setFontSize(arg0)
+  }
+
+  ajustTextPosition(xDiff: number = 0, yDiff: number = 0): void {
+    this.text.x = this.sprite.x + xDiff * this.scale - this.sprite.displayWidth / 2
+    this.text.y = this.sprite.y + yDiff * this.scale - this.sprite.displayHeight / 2
+  }
+
   disable() {
     this.disabled = true;
   }
@@ -83,7 +91,7 @@ export default class Button implements InterfaceElement {
 
   setDepth(depth: number): void {
     this.sprite?.setDepth(depth);
-    this.text?.setDepth(depth+1);
+    this.text?.setDepth(depth + 1);
   }
 
   setText(value: string, cell: { x: number, y: number } = { x: this.sprite.x, y: this.sprite.y }) {
@@ -91,14 +99,16 @@ export default class Button implements InterfaceElement {
       fontFamily: 'Dyuthi, arial',
     })
       .setFontStyle('bold')
-      .setFontSize(100)
+      .setFontSize(this.fontSize)
       .setAlign('center')
       .setTint(0xffffff);
     text.setText(value);
+    text.setScale(this.scale);
     this.text = text;
   }
 
   setScale(scale: number) {
+    this.scale = scale;
     this.text?.setScale(scale);
     this.sprite?.setScale(scale);
   }

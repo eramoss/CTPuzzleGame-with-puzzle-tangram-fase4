@@ -1,23 +1,29 @@
 import Phaser from 'phaser';
+import Button from '../controls/Button';
 import AlignGrid from '../geom/AlignGrid';
 import TestApplicationService from '../test-application/TestApplicationService';
 import { androidOpenUrl } from '../utils/Utils';
+import { globalSounds } from './PreGame';
 
 export default class EndGame extends Phaser.Scene {
+  grid: AlignGrid;
 
   constructor() {
     super('end-game');
   }
 
   init(testApplicationService: TestApplicationService) {
-    console.log('END_GAME')
-    let participation = testApplicationService.getParticipation();
-
-    let isTestApplication = testApplicationService.isTestApplication()
-    if (isTestApplication) {
-      let url = participation?.urlToEndOfTestQuiz?.url;
-      if (url) {
-        androidOpenUrl(url)
+    if (testApplicationService) {
+      if (testApplicationService.getParticipation) {
+        console.log('END_GAME')
+        let participation = testApplicationService.getParticipation();
+        let isTestApplication = testApplicationService.isTestApplication()
+        if (isTestApplication) {
+          let url = participation?.urlToEndOfTestQuiz?.url;
+          if (url) {
+            androidOpenUrl(url)
+          }
+        }
       }
     }
   }
@@ -25,18 +31,46 @@ export default class EndGame extends Phaser.Scene {
   preload() {
     this.load.image('trofel', 'assets/ct/trofel.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
+    this.load.spritesheet('btn-green', 'assets/ct/btn_green_big.png', { frameWidth: 400, frameHeight: 152 });
   }
 
   create() {
+    this.createGrid();
+    this.addBackground();
+    this.addTrofeu();
+    this.createBackButton()
+  }
+
+  private createGrid() {
     let grid = new AlignGrid(
       this, 26, 22,
       this.game.config.width as number,
       this.game.config.height as number
     );
-    grid.addImage(0, 0, 'background', grid.cols, grid.rows);
-    let centerCell = grid.getCenterCell();
-    let trofelImage = grid.addImage(0, 0, 'trofel', 12);
-    trofelImage.setX(centerCell.x + grid.cellWidth)
-    trofelImage.setY(centerCell.y - grid.cellHeight);
+    //grid.show(0.4);
+    this.grid = grid;
+  }
+
+  addTrofeu() {
+    this.grid.addImage(12, 5, 'trofel', 10);
+  }
+
+  private addBackground() {
+    this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
+  }
+
+  createBackButton() {
+    let btnBack = new Button(this, globalSounds, 0, 0, 'btn-green', () => {
+      this.restart()
+    })
+    btnBack.setText('Voltar')
+    btnBack.setFontSize(120)
+    btnBack.setScale(this.grid.scale)
+    this.grid.placeAt(3, 7, btnBack.sprite, 7)
+    btnBack.ajustTextPosition(80, 30)
+  }
+
+  restart() {
+    this.scene.start('pre-game')
   }
 }

@@ -407,19 +407,8 @@ export default class Game extends Scene {
     }
 
     if (phase != this.currentPhase) {
-      if (!this.codeEditor.programs) {
-        let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone');
-        let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone');
-        let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone');
-        this.codeEditor.setPrograms([
-          prog0,
-          prog1,
-          prog2
-        ])
-      }
-
-      this.sendResponse(phase);
-
+      this.initializeCodeEditorProgrammingAreas()
+      this.sendResponse();
     }
 
     this.currentPhase?.clearTutorials()
@@ -470,6 +459,19 @@ export default class Game extends Scene {
 
   }
 
+  private initializeCodeEditorProgrammingAreas() {
+    if (!this.codeEditor.programs) {
+      let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone')
+      let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone')
+      let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone')
+      this.codeEditor.setPrograms([
+        prog0,
+        prog1,
+        prog2
+      ])
+    }
+  }
+
   private addTestCommands(phase: MazePhase) {
     if (phase) {
       if (phase.commands) {
@@ -490,7 +492,8 @@ export default class Game extends Scene {
     // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 
-  async sendResponse(phase: MazePhase) {
+  async sendResponse() {
+    let phase = this.currentPhase;
     if (phase) {
       if (this.gameParams.isTestApplication()) {
         try {

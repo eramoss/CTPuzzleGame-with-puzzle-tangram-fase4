@@ -808,9 +808,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284272"
-     inkscape:cx="211.18789"
-     inkscape:cy="-512.82189"
+     inkscape:zoom="4.0000001"
+     inkscape:cx="102.22862"
+     inkscape:cy="-732.18059"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -14048,5 +14048,32 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
+    <rect
+       ry="3.2355101"
+       rx="3.2355101"
+       y="90.845299"
+       x="-177.81438"
+       height="24.341667"
+       width="20.411192"
+       id="rect3250"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <text
+       transform="scale(1.0057382,0.99429453)"
+       id="text3260"
+       y="112.85308"
+       x="-173.86826"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.87281275px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:#640000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826926"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke:#640000;stroke-width:0.26458332px;stroke-opacity:0.16826926"
+         y="112.85308"
+         x="-173.86826"
+         id="tspan3258"
+         sodipodi:role="line">MUTE</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -173.1516,100.64612 8.88671,-6.314242 c 0.6576,3.193297 1.47963,6.689892 -0.42095,12.675242 z"
+       id="path3320"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>

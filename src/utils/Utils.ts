@@ -2,6 +2,7 @@ import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
 import SpriteDropZone from "../controls/SpriteDropZone";
 import { Logger } from "../main";
+import GameParams from "../settings/GameParams";
 
 export function isAndroidAmbient() {
   let isAndroidAmbient = true;
@@ -50,6 +51,20 @@ export function createDropZone(grid: AlignGrid, cellx: number, celly: number, co
   return dropZone;
 }
 
+export function getDefaultPlatformApiUrl(gameParams: GameParams) {
+  const defaultOnlineApi = 'https://api.ctplatform.playerweb.com.br';
+  const protocol = window.location.protocol
+  let apiUrl = '';
+  if (protocol == 'https:') {
+    apiUrl = defaultOnlineApi
+  }
+  if (protocol == 'http:') {
+    apiUrl = 'http://localhost:3110'
+  }
+  apiUrl = apiUrl || gameParams.puzzleUrl || defaultOnlineApi
+  return apiUrl
+}
+
 export function androidOpenUrl(url: string) {
   console.log('Opening url: ', url);
   try {
@@ -58,14 +73,18 @@ export function androidOpenUrl(url: string) {
       //@ts-ignore
       GameJavascriptInterface.openUrl(url)
     } else {
-      let link = document.createElement('a');
-      link.href = url
-      link.target = "_blank"
-      link.click()
+      openWebUrl(url)
     }
   } catch (e) {
     console.warn('GameJavascriptInterface is not defined!!');
   }
+}
+
+function openWebUrl(url: string) {
+  let link = document.createElement('a');
+  link.href = url
+  //link.target = "_blank"
+  link.click()
 }
 
 export function androidVibrate(time: number) {

@@ -4,6 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, getTypedItem, setItem } from "../utils/storage";
+import { getDefaultPlatformApiUrl } from "../utils/Utils";
 import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
@@ -22,24 +23,20 @@ export default class TestApplicationService {
 
   async loadPublicApplications(): Promise<boolean> {
     let found = false;
-    let puzzleUrl = this.getGameParams().puzzleUrl
-    let possibleBaseUrls = [puzzleUrl, 'http://localhost:3110', 'https://api.ctplatform.playerweb.com.br']
-    loop_over_urls:
-    for (let url of possibleBaseUrls) {
-      try {
-        let name = 'PROGRAMAÇÃO ROPE'
-        let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
-        let publicTestApplications: TestApplication[] = await response.json()
-        Logger.info('publicTestApplications.length', publicTestApplications.length)
-        if (publicTestApplications.length) {
-          setItem('public-test-applications', publicTestApplications);
-          found = true
-          break loop_over_urls
-        }
-      } catch (e) {
-        Logger.error('Did not succeded on load public test applications from ', url)
+    let url = getDefaultPlatformApiUrl(this.gameParams)
+    try {
+      let name = 'PROGRAMAÇÃO ROPE'
+      let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
+      let publicTestApplications: TestApplication[] = await response.json()
+      Logger.info('publicTestApplications.length', publicTestApplications.length)
+      if (publicTestApplications.length) {
+        setItem('public-test-applications', publicTestApplications);
+        found = true
       }
+    } catch (e) {
+      Logger.error('Did not succeded on load public test applications from ', url)
     }
+
     return found
   }
 

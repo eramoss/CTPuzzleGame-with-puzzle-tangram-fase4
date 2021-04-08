@@ -279,11 +279,9 @@ export default class Game extends Scene {
     this.codeEditor.onHideLastInstruction = () => {
       this.dude.hideBallon();
     }
-
     this.playNextPhase();
-
-
   }
+
   destroy() {
     this.currentPhase = null
     globalSounds.stopPlayBackgroundMusic()
@@ -418,7 +416,8 @@ export default class Game extends Scene {
       this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
     }
     if (!this.currentPhase) {
-      this.scene.start('end-game', this.testApplicationService);
+      this.startEndScene();
+
     }
 
     if (this.currentPhase) {
@@ -457,6 +456,11 @@ export default class Game extends Scene {
       }
     }
 
+  }
+
+  startEndScene() {
+    this.destroy();
+    this.scene.start('end-game', this.testApplicationService);
   }
 
   private initializeCodeEditorProgrammingAreas() {

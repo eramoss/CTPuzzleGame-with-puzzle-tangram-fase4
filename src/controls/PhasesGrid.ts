@@ -30,7 +30,11 @@ export default class PhasesGrid {
     let btnPlays: Button[] = []
     let scale = this.grid.scale;
     testApplications.forEach((testApplication: TestApplication, index: number) => {
-      let cell = this.grid.getCell(10, index);
+      let x = 5;
+      if(index > 5){
+        x = 15
+      }
+      let cell = this.grid.getCell(x, index % 6);
       let btn = new Button(this.scene, globalSounds,
         cell.x,
         this.grid.cellHeight * 4 + cell.y * 3,
@@ -44,8 +48,9 @@ export default class PhasesGrid {
         }
       )
       btnPlays.push(btn)
-      let name = testApplication.name;
-      btn.setFontSize(30);
+      let name = testApplication.name.toUpperCase();
+      name = `${index+1} - ${name}`
+      btn.setFontSize(24);
       btn.setScale(scale)
       btn.setText(name);
       btn.ajustTextPosition(20, 25)

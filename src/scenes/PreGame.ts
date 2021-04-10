@@ -80,8 +80,9 @@ export default class PreGame extends Phaser.Scene {
 
     let foundPublicApplications = await this.foundPublicTestApplications();
     const isPlaygroundTest = this.testApplicationService.isPlayground();
+    const isAutoTesting = this.testApplicationService.isAutoTesting();
 
-    if (!foundPublicApplications || isPlaygroundTest) {
+    if (!foundPublicApplications || isPlaygroundTest || isAutoTesting) {
       await this.loadTestApplication()
       this.startGame()
     }

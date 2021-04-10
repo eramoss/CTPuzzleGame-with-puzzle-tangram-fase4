@@ -18,6 +18,10 @@ export default class TestApplicationService {
     return this.getGameParams()?.isTestApplication()
   }
 
+  isAutoTesting() {
+    return this.getGameParams().isAutomaticTesting()
+  }
+
   isPlayground() {
     return this.getGameParams()?.isPlaygroundTest()
   }
@@ -86,7 +90,6 @@ export default class TestApplicationService {
     try {
       let response = await GET(replaceUserUUIDToken(this.gameParams.dataUrl, user.hash))
       let participation = (await response.json()) as PreparedParticipation
-      debugger
       this.setParticipation(participation)
     } catch (e) {
       Logger.error(e);

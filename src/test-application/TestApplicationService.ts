@@ -4,7 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, getTypedItem, setItem } from "../utils/storage";
-import { getDefaultPlatformApiUrl } from "../utils/Utils";
+import { getDefaultPlatformApiUrl, replaceUserUUIDToken } from "../utils/Utils";
 import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
@@ -84,8 +84,9 @@ export default class TestApplicationService {
 
   async loadApplicationFromDataUrl(user: User) {
     try {
-      let response = await GET(this.gameParams.dataUrl.replace('<user_uuid>', user.hash))
+      let response = await GET(replaceUserUUIDToken(this.gameParams.dataUrl, user.hash))
       let participation = (await response.json()) as PreparedParticipation
+      debugger
       this.setParticipation(participation)
     } catch (e) {
       Logger.error(e);

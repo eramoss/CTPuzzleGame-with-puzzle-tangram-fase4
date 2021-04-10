@@ -80,6 +80,10 @@ export function androidOpenUrl(url: string) {
   }
 }
 
+export function replaceUserUUIDToken(url:string, value:string){
+  return url.replace('<user_uuid>', value)
+}
+
 function openWebUrl(url: string) {
   let link = document.createElement('a');
   link.href = url

@@ -64,6 +64,7 @@ export default class EndGame extends Phaser.Scene {
       this.restart()
     })
     btnBack.setText('Voltar')
+    btnBack.setFontFamily('sans-serif')
     btnBack.setFontSize(120)
     btnBack.setScale(this.grid.scale)
     this.grid.placeAt(3, 7, btnBack.sprite, 7)

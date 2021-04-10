@@ -22,7 +22,6 @@ export default class PreGame extends Phaser.Scene {
   testNumberValue: string = ''
   keyboard: Keyboard
   userRepository: UserRepository
-  gameParams: GameParams;
   testApplicationService: TestApplicationService;
   grid: AlignGrid;
   phasesGrid: PhasesGrid
@@ -49,8 +48,8 @@ export default class PreGame extends Phaser.Scene {
   private initializeGameParams(queryParams: string) {
     Logger.info('Loaded params = ' + queryParams);
     const params = new URLSearchParams(queryParams);
-    this.gameParams = new GameParams(params);
-    this.testApplicationService = new TestApplicationService(this.gameParams);
+    let gameParams = new GameParams(params);
+    this.testApplicationService = new TestApplicationService(gameParams);
   }
 
   preload() {
@@ -76,27 +75,41 @@ export default class PreGame extends Phaser.Scene {
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.grid.addImage(18, 10, 'big-rope', 6);
 
-    this.loading = new Loading(this, this.grid);
-    this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
+    this.createLoader();
+    this.createPhasesMenuGrid();
 
-    this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
-      this.loading.show();
-      this.initializeGameParams(gameUrl.split('?')[1])
-      await this.loadTestApplication();
+    let foundPublicApplications = await this.foundPublicTestApplications();
+    const isPlaygroundTest = this.testApplicationService.isPlayground();
+
+    if (!foundPublicApplications || isPlaygroundTest) {
+      await this.loadTestApplication()
       this.startGame()
     }
+  }
 
-    let isTestApplication = this.gameParams.isTestApplication()
+  private createLoader() {
+    this.loading = new Loading(this, this.grid);
+    this.loading.show()
+  }
+
+  private async foundPublicTestApplications() {
+    let isTestApplication = this.testApplicationService.isTestApplication();
     let foundPublicApplications = false;
     if (!isTestApplication) {
       foundPublicApplications = await this.searchPublicApplications();
     }
+    return foundPublicApplications;
+  }
 
-    this.loadTestApplication()
+  private createPhasesMenuGrid() {
+    this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
 
-    if (!foundPublicApplications || this.gameParams.isPlaygroundTest()) {
-      this.startGame()
-    }
+    this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
+      this.loading.show();
+      this.initializeGameParams(gameUrl.split('?')[1]);
+      await this.loadTestApplication();
+      this.startGame();
+    };
   }
 
   private async searchPublicApplications(): Promise<boolean> {
@@ -105,11 +118,12 @@ export default class PreGame extends Phaser.Scene {
     if (foundPublicApplications) {
       this.phasesGrid.setApplications(this.testApplicationService.getPublicTestApplications());
     }
+    this.loading.hide();
     return foundPublicApplications;
   }
 
   async loadTestApplication() {
-    if (this.gameParams.isTestApplication()) {
+    if (this.testApplicationService.isTestApplication()) {
       let user: User = this.userRepository.getOrCreateGuestUser();
       await this.testApplicationService.loadApplicationFromDataUrl(user);
     }
@@ -161,7 +175,7 @@ export default class PreGame extends Phaser.Scene {
   }
 
   startGame() {
-    this.scene.start('game', this.gameParams)
+    this.scene.start('game', this.testApplicationService.getGameParams())
   }
 }
 

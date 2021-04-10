@@ -5,6 +5,7 @@ import { androidVibrate } from '../utils/Utils';
 
 export default class Button implements InterfaceElement {
 
+  fontFamily: string = 'Dyuthi, sans-serif';
   fontSize: number = 100;
   sprite: Phaser.GameObjects.Sprite;
   blinked: boolean = false;
@@ -70,6 +71,11 @@ export default class Button implements InterfaceElement {
     this.text?.setFontSize(arg0)
   }
 
+  setFontFamily(arg0: string) {
+    this.fontFamily = arg0
+    this.text?.setFontFamily(arg0)
+  }
+
   ajustTextPosition(xDiff: number = 0, yDiff: number = 0): void {
     this.text.x = this.sprite.x + xDiff * this.scale - this.sprite.displayWidth / 2
     this.text.y = this.sprite.y + yDiff * this.scale - this.sprite.displayHeight / 2
@@ -96,7 +102,7 @@ export default class Button implements InterfaceElement {
 
   setText(value: string, cell: { x: number, y: number } = { x: this.sprite.x, y: this.sprite.y }) {
     let text = this.scene.add.text(cell.x, cell.y, '', {
-      fontFamily: 'Dyuthi, arial',
+      fontFamily: this.fontFamily,
     })
       .setFontStyle('bold')
       .setFontSize(this.fontSize)

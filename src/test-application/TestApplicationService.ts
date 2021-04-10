@@ -9,6 +9,11 @@ import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } f
 
 export default class TestApplicationService {
 
+  constructor(private gameParams: GameParams) {
+    Logger.info('LOADED GAME PARAMS', gameParams)
+    setItem("gameParams", gameParams)
+  }
+
   isTestApplication() {
     return this.getGameParams()?.isTestApplication()
   }
@@ -21,60 +26,12 @@ export default class TestApplicationService {
     return getItem('public-test-applications') as TestApplication[]
   }
 
-  async loadPublicApplications(): Promise<boolean> {
-    let found = false;
-    let url = getDefaultPlatformApiUrl(this.gameParams)
-    try {
-      let name = 'PROGRAMAÇÃO ROPE'
-      let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
-      let publicTestApplications: TestApplication[] = await response.json()
-      Logger.info('publicTestApplications.length', publicTestApplications.length)
-      if (publicTestApplications.length) {
-        setItem('public-test-applications', publicTestApplications);
-        found = true
-      }
-    } catch (e) {
-      Logger.error('Did not succeded on load public test applications from ', url)
-    }
-
-    return found
-  }
-
-  constructor(private gameParams: GameParams) {
-    Logger.info('LOADED GAME PARAMS', gameParams)
-    setItem("gameParams", gameParams)
-  }
-
   getGameParams(): GameParams {
     return getTypedItem(GameParams, 'gameParams');
   }
 
-  async saveCurrentPlayingPhase(itemId: number) {
-    let part = this.getParticipation()
-    let participationId = part.participationId
-    let urlToSendProgress: UrlToSendProgress = part.urlToSendProgress
-    if (this.gameParams.isTestApplication()) {
-      setItem('currentPlayingPhase', itemId + '');
-      let participation = {
-        id: participationId,
-        lastVisitedItemId: itemId
-      }
-      PUT(urlToSendProgress.url, participation)
-    }
-  }
-
-  async loadApplicationFromDataUrl(user: User) {
-    try {
-      let response = await GET(this.gameParams.dataUrl.replace('<user_uuid>', user.hash))
-      let participation = (await response.json()) as PreparedParticipation
-      setItem("participation", participation)
-    } catch (e) {
-      Logger.error(e);
-    }
-  }
-
   getParticipation(): PreparedParticipation {
-    return getItem<PreparedParticipation>("participation")
+    return getTypedItem(PreparedParticipation, "participation")
   }
 
   getNonCompletedTestItems(): TestItem[] {
@@ -93,6 +50,52 @@ export default class TestApplicationService {
     return nonCompletedItems;
   }
 
+  async saveCurrentPlayingPhase(itemId: number) {
+    let part = this.getParticipation()
+    let participationId = part.participationId
+    let urlToSendProgress: UrlToSendProgress = part.urlToSendProgress
+    if (this.gameParams.isTestApplication()) {
+      setItem('currentPlayingPhase', itemId + '');
+      let participation = {
+        id: participationId,
+        lastVisitedItemId: itemId
+      }
+      PUT(urlToSendProgress.url, participation)
+    }
+  }
+
+  async loadPublicApplications(): Promise<boolean> {
+    let found = false;
+    let url = getDefaultPlatformApiUrl(this.gameParams)
+    try {
+      let name = 'PROGRAMAÇÃO ROPE'
+      let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
+      let publicTestApplications: TestApplication[] = await response.json()
+      Logger.info('publicTestApplications.length', publicTestApplications.length)
+      if (publicTestApplications.length) {
+        setItem('public-test-applications', publicTestApplications);
+        found = true
+      }
+    } catch (e) {
+      Logger.error('Did not succeded on load public test applications from ', url)
+    }
+    return found
+  }
+
+  async loadApplicationFromDataUrl(user: User) {
+    try {
+      let response = await GET(this.gameParams.dataUrl.replace('<user_uuid>', user.hash))
+      let participation = (await response.json()) as PreparedParticipation
+      this.setParticipation(participation)
+    } catch (e) {
+      Logger.error(e);
+    }
+  }
+
+  setParticipation(participation: PreparedParticipation) {
+    setItem("participation", participation)
+  }
+
   async sendResponse(responseToSend: { itemId: number, response: RespostaItemProgramacao }) {
     let url = this.getParticipation().urlToSendResponses.url;
     Logger.info('sendResponse: url', url)
@@ -101,7 +104,6 @@ export default class TestApplicationService {
     Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
     await POST(url, responseToSend.response);
   }
-
 
   async instantiatePlaygroundItem<T>(): Promise<T> {
     const response = await GET(this.gameParams.urlToInstantiateItem);

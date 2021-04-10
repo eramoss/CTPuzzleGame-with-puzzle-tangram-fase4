@@ -412,15 +412,15 @@ export default class Game extends Scene {
     this.currentPhase?.clearTutorials()
     this.currentPhase = phase
 
-    if (this.currentPhase) {
-      this.testApplicationService.saveCurrentPlayingPhase(this.currentPhase.itemId)
-    }
     if (!this.currentPhase) {
       this.startEndScene();
-
     }
 
     if (this.currentPhase) {
+
+      let itemId = this.currentPhase.itemId
+      this.gameState.initializeResponse(itemId);
+      this.testApplicationService.saveCurrentPlayingPhase(itemId)
 
       this.currentPhase.setupMatrixAndTutorials()
       this.dude.matrix = this.currentPhase.obstacles;
@@ -504,9 +504,6 @@ export default class Game extends Scene {
           if (this.currentPhase) {
             const response = this.gameState.getResponseToSend()
             await this.testApplicationService.sendResponse(response);
-          }
-          if (phase) {
-            this.gameState.initializeResponse(phase.itemId);
           }
         } catch (e) {
           Logger.log('ErrorSendingResponse', e)

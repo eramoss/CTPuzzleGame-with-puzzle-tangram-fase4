@@ -392,7 +392,10 @@ export default class Game extends Scene {
   replayCurrentPhase() {
     let clearCodeEditor = this.currentPhase?.isTutorialPhase();
     this.dude.stop(true);
-    this.playPhase(this.currentPhase, { clear: clearCodeEditor } as PlayPhaseOptions)
+    this.playPhase(this.currentPhase, {
+      clear: clearCodeEditor,
+      muteInstructions: true
+    } as PlayPhaseOptions)
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {

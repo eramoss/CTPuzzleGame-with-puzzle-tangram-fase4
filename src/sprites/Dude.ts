@@ -270,7 +270,10 @@ export default class Dude {
   }
 
   executeStepByStep(programs: Program[]) {
-    if (this.warnIfProgramEmpty(programs[0])) return;
+    if (this.warnIfProgramEmpty(programs[0])) {
+      this.onFinishWalking()
+      return;
+    }
     if (this.stopped) {
       let stepByStep = true;
       this.execute(programs, stepByStep);

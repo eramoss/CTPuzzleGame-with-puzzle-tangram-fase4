@@ -149,6 +149,7 @@ export default class CodeEditor {
         commandSprite.setScale(toolboxRow.scaleOnPointerOver);
       });
       commandSprite.on('pointerout', _ => {
+        this.highlightProgramThatMayReceiveCommand()
         commandSprite.setScale(toolboxRow.scaleNormal);
       });
       commandSprite.on('drag', _ => {
@@ -195,6 +196,7 @@ export default class CodeEditor {
         this.logPrograms('dragstart')
       })
       commandSprite.on('dragend', () => {
+
 
         Logger.log("MOVE_EVENT", "dragend");
         this.trash.close();
@@ -354,6 +356,10 @@ export default class CodeEditor {
     })
   }
 
+  highlightProgramThatMayReceiveCommand() {
+    //this.getLastEditedOrMainProgramOrFirstNonfull()?.dropZone?.highlight(true)
+  }
+
   getAllProgramCommands(): Array<Command> {
     return joinChilds(this.programs, (program) => program.ordinalCommands)
   }
@@ -377,7 +383,9 @@ export default class CodeEditor {
     }
     if (!command.isConditional) {
       this.dropZones.forEach(dropZone => {
-        dropZone.highlight(true);
+        if (!this.getProgramByDropzone(dropZone)?.isFull()) {
+          dropZone.highlight(true);
+        }
       })
     }
   }

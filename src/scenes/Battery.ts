@@ -9,7 +9,7 @@ export class Battery extends MyGameObject {
 
   constructor(x: number, y: number, scene: Scene, scale: number,gainOnHitBattery:number) {
     const batterySprite = scene.physics.add
-      .sprite(x, y - 35 * scale, 'battery-sprite')
+      .sprite(x, y - 55 * scale, 'battery-sprite')
       .play('battery-sprite')
       .setScale(scale)
     super(batterySprite);
@@ -22,7 +22,7 @@ export class Battery extends MyGameObject {
   private createText(x: number, y: number) {
     let scene = this.scene;
     let scale = this.scale;
-    let text = scene.add.text(x - 25 * scale, y - 130 * scale, `+${this.gainOnHitBattery}`);
+    let text = scene.add.text(x - 25 * scale, y - 150 * scale, `+${this.gainOnHitBattery}`);
     text.setFontSize(35);
     text.setTint(0x21fe44);
     text.setFontFamily('Dyuthi, sans-serif')

@@ -808,9 +808,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0000001"
-     inkscape:cx="102.22862"
-     inkscape:cy="-732.18059"
+     inkscape:zoom="3.9710705"
+     inkscape:cx="-678.43241"
+     inkscape:cy="692.41544"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -4592,7 +4592,7 @@
     <g
        inkscape:export-ydpi="96.010002"
        inkscape:export-xdpi="96.010002"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/tile_ISOMETRIC.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/tile_ISOMETRIC.png"
        transform="matrix(1.1051503,0,0,1.1051503,165.85458,-338.33252)"
        id="g2070"
        style="">
@@ -4612,7 +4612,7 @@
          d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
          id="path2062" />
       <path
-         style="fill:#d8d19e;stroke-width:0.26458332"
+         style="fill:#ded7a4;stroke-width:0.26458332;fill-opacity:1"
          inkscape:connector-curvature="0"
          d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
          id="path2064" />

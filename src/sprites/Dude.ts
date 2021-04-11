@@ -199,10 +199,8 @@ export default class Dude {
     this.currentFace = null;
   }
 
-  onBranch(progName: string, branch: Branch, addBranchToStack: boolean) {
-    if (addBranchToStack) {
-      this.branchStack.push(branch);
-    }
+  onBranch(progName: string, branch: Branch) {
+    this.branchStack.push(branch);
     let progs = this.programs.filter(p => p.name == progName)
     if (progs.length) {
       let progToExecute = progs[0]
@@ -309,7 +307,9 @@ export default class Dude {
     this.setTimeout(() => {
       this.buildPath(program.ordinalCommands);
       if (!this.currentStep) {
-        this.continuePreviousBranchIfExists();
+        if(!this.continuePreviousBranchIfExists()){
+          this.onFinishWalking()
+        }
       }
       this.currentStep?.execute()
     }, 200);
@@ -323,7 +323,6 @@ export default class Dude {
       setTimeout(() => {
         this.programBeingExecuted?.disanimate();
         program.disanimate();
-        //this.onFinishWalking();
       }, WARN_TIME);
     }
     return isEmpty;

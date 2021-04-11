@@ -1,6 +1,7 @@
 import { GameObjects } from "phaser";
 
 export class MyGameObject {
+
   gameObject: GameObjects.GameObject
   life:number
 
@@ -8,18 +9,26 @@ export class MyGameObject {
     this.gameObject = gameObject;
   }
 
+  getSprite():GameObjects.Sprite{
+    return (this.gameObject as GameObjects.Sprite)
+  }
+
   setDepth(depth: number) {
-    (this.gameObject as GameObjects.Sprite).setDepth(depth)
+    this.getSprite().setDepth(depth)
   }
   getDepth(): number {
-    return (this.gameObject as GameObjects.Sprite).depth
+    return this.getSprite().depth
   }
   setTint(tint: number) {
-    (this.gameObject as GameObjects.Image).setTint(tint);
+    this.getSprite().setTint(tint);
+  }
+
+  removeSelf(scene: Phaser.Scene) {
+    scene.children.remove(this.gameObject);
   }
 
   advanceFrame() {
-    let sprite = this.gameObject as GameObjects.Sprite
+    let sprite = this.getSprite()
     sprite.anims.nextFrame();
   }
 }

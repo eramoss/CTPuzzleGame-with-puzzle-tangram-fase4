@@ -413,10 +413,24 @@ export default class CodeEditor {
       this.onClickStepByStep();
     })
 
-    this.grid.placeAt(1, 17, this.btnPlay.sprite, 2.3)
-    this.grid.placeAt(4, 17, this.btnStep.sprite, 2.3)
-    this.grid.placeAt(7, 17, this.btnStop.sprite, 2.3)
+    this.grid.placeAt(6.5, 17, this.btnPlay.sprite, 2.1)
+    this.grid.placeAt(9, 17, this.btnStep.sprite, 2)
+    this.grid.placeAt(6.5, 17, this.btnStop.sprite, 2.1)
 
+    this.setModeStopped();
+  }
+
+  setModeStopped() {
+    this.btnPlay.show()
+    this.btnStop.hide();
+    this.unhighlightStepButton();
+    this.enableStepButton();
+    this.enablePlayButton();
+  }
+
+  setModePlaying() {
+    this.btnPlay.hide()
+    this.btnStop.show();
   }
 
   getProgramByDropzone(zone: SpriteDropZone) {
@@ -445,8 +459,7 @@ export default class CodeEditor {
     }
     this.disanimatePrograms();
     this.unhighlightStepButton();
-    this.enableStepButton();
-    this.enablePlayButton();
+    this.setModeStopped();
   }
 
   clear() {

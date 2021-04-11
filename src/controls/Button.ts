@@ -5,6 +5,7 @@ import { androidVibrate } from '../utils/Utils';
 
 export default class Button implements InterfaceElement {
 
+
   fontFamily: string = 'Dyuthi, sans-serif';
   fontSize: number = 100;
   sprite: Phaser.GameObjects.Sprite;
@@ -54,6 +55,13 @@ export default class Button implements InterfaceElement {
     this.blinked = false;
     clearInterval(this.blinkingInterval);
     this.sprite.setFrame(0)
+  }
+
+  hide() {
+    this.setVisible(false)
+  }
+  show() {
+    this.setVisible(true)
   }
 
   toggleBlink() {

@@ -107,7 +107,7 @@ export class DudeMove {
     const progToCall = this.action;
     this.branch = new Branch(moveToContinueWhenBackToThisBranch, onCompleteBranch);
     this.dude.setTimeout(() => {
-      this.dude.onBranch(progToCall.action, this.branch, true);
+      this.dude.onBranch(progToCall.action, this.branch);
     }, TIME_CALL_BRANCH)
 
   }

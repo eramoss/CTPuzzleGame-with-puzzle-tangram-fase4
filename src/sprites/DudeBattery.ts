@@ -88,7 +88,7 @@ export class DudeBattery {
     }
     this.text.setText(text)
       .setScale(this.grid.scale)
-      .setFontFamily('arial')
+      .setFontFamily('Dyuthi, sans-serif')
       .setFontStyle('bold')
       .setFontSize(40)
       .setAlign('center')

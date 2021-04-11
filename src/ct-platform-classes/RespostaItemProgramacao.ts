@@ -1,12 +1,14 @@
+import { Comando } from "./MecanicaRope"
+
 export class RespostaItemProgramacao {
 
   caminhoPercorrido: Array<{ x: number, y: number }>
   comandosUtilizados: string[] = []
   tempoEmSegundos: number
-  tentativas: number = 0
+  tentativas: Comando[][] = []
 
-  adicionarTentativa(comandosUtilizados: string[]) {
+  adicionarTentativa(comandosUtilizados: Comando[]) {
     this.comandosUtilizados = comandosUtilizados
-    this.tentativas++
+    this.tentativas.push(comandosUtilizados)
   }
 }

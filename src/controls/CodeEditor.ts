@@ -11,7 +11,6 @@ import { joinChilds } from '../utils/Utils';
 import InterfaceElement from '../InterfaceElement';
 import { Logger } from '../main';
 import Trash from './Trash';
-import { RespostaItemProgramacao } from '../ct-platform-classes/RespostaItemProgramacao';
 import { CommandName } from '../phases/MazePhase';
 
 export default class CodeEditor {

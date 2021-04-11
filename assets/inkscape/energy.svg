@@ -338,9 +338,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="178.77452"
-     inkscape:cy="87.348936"
+     inkscape:zoom="1.4"
+     inkscape:cx="-629.02787"
+     inkscape:cy="-152.63014"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -673,39 +673,19 @@
          aria-label="-"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g1372">
-        <path
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           id="path1370"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccccccccccccc" />
-      </g>
+         id="g1372" />
       <path
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1374"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="csscccsscccccc" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         x="424.34738"
-         y="-451.95657"
-         id="text1378"
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"><tspan
-           sodipodi:role="line"
-           id="tspan1376"
-           x="424.34738"
-           y="-451.95657"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">-</tspan></text>
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1380"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
          style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 447.67157,225.90013 c -0.0454,-0.4762 -0.2051,-1.12993 0.0122,-1.50009 0.30619,0.63638 1.70883,0.61565 2.57496,0.53153 -1.01972,0.40333 -2.25289,0.30692 -2.49228,-0.0473 z"
@@ -806,35 +786,15 @@
          id="g1442"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
-         aria-label="-">
-        <path
-           sodipodi:nodetypes="ccccccccccccc"
-           inkscape:connector-curvature="0"
-           id="path1440"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      </g>
+         aria-label="-" />
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1444"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      <text
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"
-         id="text1448"
-         y="-451.95657"
-         x="424.34738"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           y="-451.95657"
-           x="424.34738"
-           id="tspan1446"
-           sodipodi:role="line">-</tspan></text>
       <path
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1450"
          inkscape:connector-curvature="0"
@@ -863,6 +823,15 @@
        id="path1827"
        d="m 96.780349,201.63622 a 5.295538,2.6674225 0 0 0 -5.29529,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13985,0.61134 5.3334501,3.1668614 0 0 0 3.603911,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.295791,-2.66754 z"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1841"
+       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       transform="matrix(1.1628289,0,0,1.1628289,-71.71824,-35.526705)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351" />
@@ -927,39 +896,19 @@
          aria-label="-"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g1482">
-        <path
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           id="path1480"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccccccccccccc" />
-      </g>
+         id="g1482" />
       <path
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1484"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="csscccsscccccc" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         x="424.34738"
-         y="-451.95657"
-         id="text1488"
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"><tspan
-           sodipodi:role="line"
-           id="tspan1486"
-           x="424.34738"
-           y="-451.95657"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">-</tspan></text>
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1490"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
          style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 447.67157,225.90013 c -0.0454,-0.4762 -0.2051,-1.12993 0.0122,-1.50009 0.30619,0.63638 1.70883,0.61565 2.57496,0.53153 -1.01972,0.40333 -2.25289,0.30692 -2.49228,-0.0473 z"
@@ -979,6 +928,15 @@
          d="m 454.58242,227.55921 v 0 l 0.20735,16.68394 c -0.2262,0.24171 -0.587,0.91908 -1.56315,1.09829 l 0.0314,-16.8802 c 0.56437,-0.25971 0.95796,-0.57634 1.3244,-0.90203 z"
          style="fill:#000000;fill-opacity:0.09615383;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
+    <path
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path1048"
+       d="m 93.368987,215.98065 v 0 l 2.271125,-3.47617 1.622437,1.27403 2.258594,-2.44571 -1.80938,3.63374 -2.050646,-1.5783 z"
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.01000001;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#000000;fill-opacity:0.05479455;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96347034;paint-order:stroke markers fill;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect1504"
@@ -1061,35 +1019,15 @@
          id="g1522"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
-         aria-label="-">
-        <path
-           sodipodi:nodetypes="ccccccccccccc"
-           inkscape:connector-curvature="0"
-           id="path1520"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      </g>
+         aria-label="-" />
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1524"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      <text
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"
-         id="text1528"
-         y="-451.95657"
-         x="424.34738"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           y="-451.95657"
-           x="424.34738"
-           id="tspan1526"
-           sodipodi:role="line">-</tspan></text>
       <path
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1530"
          inkscape:connector-curvature="0"
@@ -1113,6 +1051,15 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccc" />
     </g>
+    <path
+       transform="matrix(1.1628289,0,0,1.1628289,-48.777767,-34.556716)"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
+       id="path1839"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
     <rect
        transform="scale(-1,1)"
        inkscape:export-ydpi="95.638351"
@@ -1195,39 +1142,19 @@
          aria-label="-"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="g1562">
-        <path
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           id="path1560"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccccccccccccc" />
-      </g>
+         id="g1562" />
       <path
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1564"
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="csscccsscccccc" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         x="424.34738"
-         y="-451.95657"
-         id="text1568"
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"><tspan
-           sodipodi:role="line"
-           id="tspan1566"
-           x="424.34738"
-           y="-451.95657"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">-</tspan></text>
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1570"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
       <path
          style="fill:#ffffff;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 447.67157,225.90013 c -0.0454,-0.4762 -0.2051,-1.12993 0.0122,-1.50009 0.30619,0.63638 1.70883,0.61565 2.57496,0.53153 -1.01972,0.40333 -2.25289,0.30692 -2.49228,-0.0473 z"
@@ -1247,6 +1174,15 @@
          d="m 454.58242,227.55921 v 0 l 0.20735,16.68394 c -0.2262,0.24171 -0.587,0.91908 -1.56315,1.09829 l 0.0314,-16.8802 c 0.56437,-0.25971 0.95796,-0.57634 1.3244,-0.90203 z"
          style="fill:#000000;fill-opacity:0.09615383;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
+    <path
+       transform="matrix(1.1628289,0,0,1.1628289,-23.710304,-34.644766)"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.174;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
+       id="path1835"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.01000001;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#000000;fill-opacity:0.05479455;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.96347034;paint-order:stroke markers fill;filter:url(#filter4049);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect1584"
@@ -1329,35 +1265,15 @@
          id="g1602"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.36860999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="matrix(0,0.71899501,-0.71658026,0,130.89915,66.430034)"
-         aria-label="-">
-        <path
-           sodipodi:nodetypes="ccccccccccccc"
-           inkscape:connector-curvature="0"
-           id="path1600"
-           transform="matrix(0,-0.26458333,0.26458333,0,147.2153,-283.8189)"
-           d="m 623.8125,304.76074 v 3.41797 l -3.41797,0.92871 v 2.99024 l 3.41797,-0.92871 v 3.41796 l 2.99023,-0.81248 v -3.41796 l 3.41797,-0.92871 v -2.99024 l -3.41797,0.92871 v -3.41797 z"
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:1.39317167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      </g>
+         aria-label="-" />
       <path
          sodipodi:nodetypes="csscccsscccccc"
          inkscape:connector-curvature="0"
          id="path1604"
          d="m 444.03454,238.73893 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 4.41377 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -4.41377 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#241f1c;fill-opacity:0.99215686;fill-rule:nonzero;stroke:#b4b4b3;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      <text
-         transform="matrix(0,1.0016835,-0.99831933,0.41189738,0,0)"
-         id="text1608"
-         y="-451.95657"
-         x="424.34738"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.09013605px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="fill:#26211e;fill-opacity:1;stroke:#26211e;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           y="-451.95657"
-           x="424.34738"
-           id="tspan1606"
-           sodipodi:role="line">-</tspan></text>
       <path
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#d4ff2a;fill-opacity:0.99215686;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2cff2c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
          d="m 444.03454,239.79727 c -0.0456,0.11448 -0.0715,0.23918 -0.0715,0.37043 v 0.7096 c 0,0.15526 0.038,0.30033 0.10072,0.431 0.44579,1.27372 2.76095,2.20743 5.47419,2.20775 2.69458,-0.001 4.99802,-0.92337 5.46234,-2.18657 0.0694,-0.13603 0.11257,-0.28828 0.11257,-0.45218 v -0.7096 c 0,-0.12834 -0.0251,-0.25023 -0.0689,-0.36263 0.003,0.025 0.004,0.05 0.006,0.0751 -10e-6,1.53328 -2.46763,2.77624 -5.51159,2.77623 -3.04396,1e-5 -5.51158,-1.24295 -5.51159,-2.77623 0.002,-0.0276 0.005,-0.0553 0.008,-0.0829 z"
          id="path1610"
          inkscape:connector-curvature="0"
@@ -1381,6 +1297,15 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccc" />
     </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1837"
+       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       transform="matrix(1.1628289,0,0,1.1628289,0.02263194,-37.298182)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
     <path
        sodipodi:nodetypes="ccccccc"
        inkscape:connector-curvature="0"
@@ -1459,42 +1384,6 @@
        id="path1640"
        d="m 170.43936,200.12832 -1.74188,-2.22311 0.28975,0.93942 -1.18735,-0.31541 1.99751,3.57945 -1.03785,-2.74003 z"
        style="fill:#e5ffd5;fill-opacity:1;fill-rule:evenodd;stroke:#99ff55;stroke-width:0.067935;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <path
-       transform="matrix(1.1628289,0,0,1.1628289,-23.710304,-34.644766)"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.174;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
-       id="path1835"
-       inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path1837"
-       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="matrix(1.1628289,0,0,1.1628289,0.02263194,-37.298182)"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <path
-       transform="matrix(1.1628289,0,0,1.1628289,-48.777767,-34.556716)"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
-       id="path1839"
-       inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path1841"
-       d="m 145.61503,201.8252 a 5.295538,2.6674225 0 0 0 -5.2953,2.66754 5.295538,2.6674225 0 0 0 0.007,0.0744 c -0.0428,0.13582 -0.0682,0.2834 -0.0682,0.43874 v 15.54168 c 0,0.18612 0.0369,0.35961 0.0971,0.51625 a 5.3334501,3.1668614 0 0 0 1.19425,1.52342 v 0.0434 c 0.16338,0.17457 0.41344,0.3295 0.92553,0.4687 a 5.3334501,3.1668614 0 0 0 3.13986,0.61134 5.3334501,3.1668614 0 0 0 3.60391,-0.84078 c 0.89166,-0.18869 1.22926,-0.81471 1.44177,-1.04179 l -0.004,-0.27441 a 5.3334501,3.1668614 0 0 0 0.20619,-0.46405 c 0.0667,-0.16307 0.10801,-0.34561 0.10801,-0.54209 v -15.54168 c 0,-0.15346 -0.0248,-0.2991 -0.0667,-0.43357 a 5.295538,2.6674225 0 0 0 0.006,-0.0796 5.295538,2.6674225 0 0 0 -5.29579,-2.66754 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.17399998;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#55d400;fill-opacity:1;fill-rule:nonzero;stroke:#55d400;stroke-width:0.25421295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;filter:url(#filter1825);color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       transform="matrix(1.1628289,0,0,1.1628289,-71.71824,-35.526705)"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351" />
@@ -1667,5 +1556,50 @@ Cwc86TSN+D8CLLOtWQWv2gAAAABJRU5ErkJggg==
        preserveAspectRatio="none"
        height="22.489584"
        width="38.099998" />
+    <path
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path1044"
+       d="m 44.591156,215.98065 v 0 l 2.271125,-3.47617 1.622437,1.27403 2.258599,-2.44571 -1.809385,3.63374 -2.050646,-1.5783 z"
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+    <path
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 69.02732,215.98065 v 0 l 2.271125,-3.47617 1.622437,1.27403 2.258599,-2.44571 -1.809385,3.63374 -2.050646,-1.5783 z"
+       id="path1046"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
+    <path
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 117.80517,215.98065 v 0 l 2.27113,-3.47617 1.62244,1.27403 2.25859,-2.44571 -1.80938,3.63374 -2.05065,-1.5783 z"
+       id="path1050"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
+    <path
+       inkscape:export-ydpi="95.638351"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path1052"
+       d="m 142.14698,215.98065 v 0 l 2.27113,-3.47617 1.62244,1.27403 2.25859,-2.44571 -1.80938,3.63374 -2.05065,-1.5783 z"
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+    <path
+       style="opacity:0.98999999;fill:#2aff2a;fill-opacity:1;fill-rule:evenodd;stroke:#2aff2a;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 166.48862,215.98065 v 0 l 2.27113,-3.47617 1.62244,1.27403 2.25859,-2.44571 -1.80938,3.63374 -2.05065,-1.5783 z"
+       id="path1054"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery_sprite.png"
+       inkscape:export-xdpi="95.638351"
+       inkscape:export-ydpi="95.638351" />
   </g>
 </svg>

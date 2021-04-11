@@ -65,7 +65,7 @@ export default class Game extends Scene {
     this.load.image('message_box', 'assets/ct/message.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
     this.load.image('if_coin', 'assets/ct/if_coin.png');
-    this.load.image('if_block', 'assets/ct/if_block.svg');
+    this.load.image('if_block', 'assets/ct/if_block.png');
     this.load.image('if_highlight', 'assets/ct/if_highlight.png');
     this.load.image('ballon', 'assets/ct/ballon.png');
     this.load.image('tutorial-block-click-background', 'assets/ct/tutorial-block-click-background.png');

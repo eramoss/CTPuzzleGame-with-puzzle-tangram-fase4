@@ -61,6 +61,9 @@ export default class Game extends Scene {
     this.load.image('prog_0', 'assets/ct/prog_0.png');
     this.load.image('prog_1', 'assets/ct/prog_1.png');
     this.load.image('prog_2', 'assets/ct/prog_2.png');
+    this.load.image('prog_0_fnName', 'assets/ct/prog_0_fnName.png');
+    this.load.image('prog_1_fnName', 'assets/ct/prog_1_fnName.png');
+    this.load.image('prog_2_fnName', 'assets/ct/prog_2_fnName.png');
     this.load.image('battery', 'assets/ct/battery.png');
     this.load.image('message_box', 'assets/ct/message.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');

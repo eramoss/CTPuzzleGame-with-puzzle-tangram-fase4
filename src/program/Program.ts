@@ -29,7 +29,7 @@ export default class Program {
     this.dropZone = createDropZone(this.grid, x, y, width, height, spriteKey);
     this.sprite = this.dropZone.sprite;
     let imgWidth = width / 3.6;
-    this.programNameImage = this.grid.addImage(x - imgWidth * 0.9, y - 0.15, name, imgWidth);
+    this.programNameImage = this.grid.addImage(x - imgWidth * 0.7, y, `${name}_fnName`, imgWidth*.7);
   }
 
   animate() {

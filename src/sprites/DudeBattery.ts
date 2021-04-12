@@ -23,7 +23,7 @@ export class DudeBattery {
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
     this.grid = grid;
-    this.batteryImage = this.grid.addImage(0.5, 1, 'battery', 4, 2);
+    this.batteryImage = this.grid.addImage(7, 0.5, 'battery', 4, 1);
     this.graphics = scene.add.graphics()
   }
 
@@ -48,6 +48,10 @@ export class DudeBattery {
   }
 
   setLevel(level: number, maxCells = this.maxCells, cellMargin: number = 0) {
+    if (level > maxCells) {
+      level = maxCells;
+      console.warn('Cannot set level greater than battery capacity. Ajusted to ', maxCells)
+    }
     this.batteryImage.clearTint();
     this.graphics.clear();
     this.level = level;
@@ -63,7 +67,7 @@ export class DudeBattery {
     let firstX = this.batteryImage.x - width / 2;
     let y = this.batteryImage.y - height / 2;
 
-    this.setText(firstX, y + height, `${level} / ${maxCells}`);
+    this.setText(firstX, y, `${level} / ${maxCells}`);
 
     let countCells = 0;
     for (let x = firstX; countCells < level; x += cellWidth + cellMargin) {
@@ -73,10 +77,10 @@ export class DudeBattery {
         radius.bl = 5;
       }
       this.graphics.fillRoundedRect(
-        x + cellMargin * 2,
-        y + cellMargin * 3,
+        x + height * 0.1,
+        y + height * 0.1,
         cellWidth,
-        height - cellMargin * 6,
+        height * 0.8,
         radius);
       countCells++;
     }
@@ -84,16 +88,17 @@ export class DudeBattery {
   }
   setText(x: number, y: number, text: string) {
     if (!this.text) {
-      this.text = this.scene.add.text(x, y, text, {})
+      let padding = 10 * this.grid.scale
+      this.text = this.scene.add.text(x + padding * 2, y + padding, text, {})
     }
     this.text.setText(text)
       .setScale(this.grid.scale)
       .setFontFamily('Dyuthi, sans-serif')
       .setFontStyle('bold')
-      .setFontSize(40)
+      .setFontSize(35)
       .setAlign('center')
       .setDepth(101)
-      .setTint(0xffffff)
+      .setTint(0x0b360e)
   }
 
   isRunningOut() {

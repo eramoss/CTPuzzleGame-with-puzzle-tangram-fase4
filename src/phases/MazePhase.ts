@@ -14,6 +14,9 @@ export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-lef
 | "arrow-up:if_coin" | "arrow-down:if_coin" | "arrow-right:if_coin" | "arrow-left:if_coin" | "prog_1:if_coin" | "prog_0:if_coin" | "prog_2:if_coin"
 
 export default class MazePhase {
+
+
+  skipPhaseMessage:string = 'Você vai pular essa fase?'
   setupTutorialsAndObjectsPositions: () => void;
   messagesBeforeStartPlay:string[] = []
   obstacles: Matrix;
@@ -34,6 +37,7 @@ export default class MazePhase {
   codeEditor: CodeEditor;
   mecanicaRope: MecanicaRope;
   batteryLevel: number = 10;
+  maxBatteryLevel: number = 10
   batteryDecreaseOnEachMove: number = 1
   batteryGainOnCapture: number = 1;
   commands: Array<CommandName[]> = [];

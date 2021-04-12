@@ -5,6 +5,7 @@ import { getItem, getTypedItem, setItem } from "../utils/storage"
 
 export default class GameState {
 
+
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
     let response = this.getResponse();
     response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
@@ -14,6 +15,12 @@ export default class GameState {
     }
     Logger.info('ResponseToSend', JSON.stringify(responseToSend));
     return responseToSend
+  }
+
+  registerGiveUp() {
+    const response = this.getResponse();
+    response.pulouFase = true
+    this.setResponse(response)
   }
 
   registerAddedCommands(addedCommands: string[]) {

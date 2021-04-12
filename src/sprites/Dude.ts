@@ -65,8 +65,8 @@ export default class Dude {
     this.functionsRunningByTimeout.push(setTimeout(fn, timeout))
   }
 
-  setBatteryLevel(level: number) {
-    this.battery.setLevel(level, MAX_BATTERY_LEVEL)
+  setBatteryLevel(level: number, maxLevel: number = MAX_BATTERY_LEVEL) {
+    this.battery.setLevel(level, maxLevel)
   }
 
   getBatteryLevel(): number {
@@ -310,7 +310,7 @@ export default class Dude {
     this.setTimeout(() => {
       this.buildPath(program.ordinalCommands);
       if (!this.currentStep) {
-        if(!this.continuePreviousBranchIfExists()){
+        if (!this.continuePreviousBranchIfExists()) {
           this.onFinishWalking()
         }
       }

@@ -95,16 +95,19 @@ export default class MazePhasesLoader {
         this.gridCenterX, this.gridCenterY, this.gridCellWidth
       );
 
+
       phase.ground = new Matrix(
         this.scene,
         MatrixMode.ISOMETRIC,
         phase.mecanicaRope.mapa,
         this.gridCenterX, this.gridCenterY, this.gridCellWidth
-      );
+        );
 
+      phase.skipPhaseMessage = mecanicaRope.mensagemAoPularFase
       phase.dudeStartPosition = { row: phase.mecanicaRope.y, col: phase.mecanicaRope.x }
       phase.dudeFacedTo = mecanicaRope.face
       phase.batteryLevel = mecanicaRope.nivelBateria
+      phase.maxBatteryLevel = mecanicaRope.nivelMaximoBateria
       phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
       phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
       phase.messagesBeforeStartPlay = mecanicaRope.falasAntesDeIniciar

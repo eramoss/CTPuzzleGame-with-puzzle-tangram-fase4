@@ -73,11 +73,13 @@ export default class Game extends Scene {
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-exit', 'assets/ct/exit_btn.png', { frameWidth: 81, frameHeight: 96 });
+    this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
-    this.load.spritesheet('btn-close-message', 'assets/ct/yellow_close_btn.png', { frameWidth: 68, frameHeight: 69 });
+    this.load.spritesheet('btn-cancel', 'assets/ct/btn_cancel.png', { frameWidth: 194, frameHeight: 123 });
+    this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 105 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 541, frameHeight: 108 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
@@ -230,13 +232,8 @@ export default class Game extends Scene {
       }
     }
 
-    let btnExit = new Button(this, this.sounds, 0, 0, 'btn-exit', () => {
-      setTimeout(() => {
-        this.destroy()
-        this.scene.start('pre-game')
-      }, 200)
-    })
-    this.grid.placeAt(1, 17, btnExit.sprite, 1.6)
+    this.createBtnExit()
+    this.createBtnJump()
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
@@ -281,6 +278,32 @@ export default class Game extends Scene {
     this.codeEditor.onHideLastInstruction = () => {
       this.dude.hideBallon();
     }
+    this.playNextPhase();
+  }
+
+  private createBtnExit() {
+    let btnExit = new Button(this, this.sounds, 0, 0, 'btn-exit', () => {
+      setTimeout(() => {
+        this.destroy()
+        this.scene.start('pre-game')
+      }, 200)
+    })
+    this.grid.placeAt(0.5, 17.5, btnExit.sprite, 1.6)
+  }
+
+  private createBtnJump() {
+    let btnJump = new Button(this, this.sounds, 0, 0, 'btn-jump', () => {
+      let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
+      messageBox.setText(this.currentPhase.skipPhaseMessage)
+      messageBox.onClickOk = () => {
+        this.giveUp()
+      }
+    })
+    this.grid.placeAt(0.5, 0.5, btnJump.sprite, 1.6)
+  }
+
+  giveUp() {
+    this.gameState.registerGiveUp()
     this.playNextPhase();
   }
 
@@ -445,7 +468,7 @@ export default class Game extends Scene {
       this.dude.currentFace = this.currentPhase.dudeFacedTo
       this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
 
-      this.dude.setBatteryLevel(this.currentPhase.batteryLevel);
+      this.dude.setBatteryLevel(this.currentPhase.batteryLevel, this.currentPhase.maxBatteryLevel);
       this.dude.setBatteryCostOnMove(this.currentPhase.batteryDecreaseOnEachMove);
       this.dude.setBatteryGainOnCharge(this.currentPhase.batteryGainOnCapture);
 

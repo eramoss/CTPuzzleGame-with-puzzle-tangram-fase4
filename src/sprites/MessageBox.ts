@@ -4,6 +4,10 @@ import AlignGrid from "../geom/AlignGrid";
 import { globalSounds } from "../scenes/PreGame";
 import drawRect, { writeText } from "../utils/Utils";
 
+export class MessageBoxOptions {
+  showCancelButton: boolean = false
+}
+
 export default class MessageBox {
   grid: AlignGrid;
   graphicsBackShadow: Phaser.GameObjects.Graphics;
@@ -14,16 +18,25 @@ export default class MessageBox {
   currentMessageIndex: number;
   okButton: Button;
   closeButton: Button;
+  cancelButton: Button
+  onClickCancel: () => void = () => { };
   onFinishTalk: () => void = () => { };
+  onClickOk: () => void = () => { };
+  options: MessageBoxOptions;
 
-  constructor(scene: Scene, grid: AlignGrid) {
+  constructor(scene: Scene, grid: AlignGrid, options: MessageBoxOptions = new MessageBoxOptions()) {
     this.scene = scene;
     this.grid = grid;
+    this.options = options;
     this.createBackShadow();
     this.createMessageBox();
     this.createText()
     this.createOkButton()
     this.createCloseButton()
+
+    if (options.showCancelButton) {
+      this.createCancelButton()
+    }
     this.close();
   }
 
@@ -38,11 +51,25 @@ export default class MessageBox {
   }
 
   createOkButton() {
-    let cell = this.grid.getCell(15, 17)
-    let btn = new Button(this.scene, globalSounds, cell.x, cell.y, 'btn-ok', () => { this.showNextMessage() });
+    let cell = this.options.showCancelButton ? this.grid.getCell(17, 17) : this.grid.getCell(15, 17)
+    let btn = new Button(this.scene, globalSounds, cell.x, cell.y, 'btn-ok', () => {
+      this.onClickOk()
+      this.showNextMessage()
+    });
     btn.setScale(this.grid.scale);
     btn.setDepth(302);
     this.okButton = btn;
+  }
+
+  createCancelButton() {
+    let cell = this.grid.getCell(13, 17)
+    this.onClickCancel = () => {
+      this.close()
+    }
+    let btn = new Button(this.scene, globalSounds, cell.x, cell.y, 'btn-cancel', () => { this.onClickCancel() });
+    btn.setScale(this.grid.scale);
+    btn.setDepth(302);
+    this.cancelButton = btn;
   }
 
   createCloseButton() {
@@ -71,6 +98,7 @@ export default class MessageBox {
   setVisible(visible: boolean) {
     this.phrase?.setVisible(visible);
     this.okButton?.setVisible(visible);
+    this.cancelButton?.setVisible(visible);
     this.closeButton?.setVisible(visible);
     this.graphicsBackShadow?.setVisible(visible);
     this.messageBoxImage?.setVisible(visible);

@@ -338,16 +338,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="-629.02787"
-     inkscape:cy="-152.63014"
+     inkscape:zoom="2.8"
+     inkscape:cx="150.14398"
+     inkscape:cy="-17.498847"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-width="1366"
+     inkscape:window-height="743"
+     inkscape:window-x="370"
+     inkscape:window-y="1080"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata3488">
@@ -419,23 +419,14 @@
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1fff44;fill-opacity:0.25980392;fill-rule:nonzero;stroke:#1fff44;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect4866"
        width="69.885193"
-       height="19.260561"
+       height="7.5432997"
        x="284.02896"
-       y="152.22026"
+       y="158.07889"
        ry="2.3050833"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery.png"
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351"
        rx="2.3050833" />
-    <path
-       style="opacity:0.98999999;fill:#ffffff;fill-opacity:0.31862745;fill-rule:evenodd;stroke:#929c4d;stroke-width:1.1328336;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-       d="m 289.75936,162.26118 v 0 l 35.10796,-6.37226 -2.89644,7.15483 27.38423,-3.18615 -34.40578,7.76971 3.42303,-8.94355 z"
-       id="path4559"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery.png"
-       inkscape:export-xdpi="95.638351"
-       inkscape:export-ydpi="95.638351" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:0.35784314;fill-rule:nonzero;stroke:none;stroke-width:0.50693661;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect4640"
@@ -463,12 +454,12 @@
        width="125.4125" />
     <rect
        ry="0.50865138"
-       y="157.48863"
+       y="160.14223"
        x="353.8306"
-       height="8.4632368"
-       width="5.3091011"
+       height="3.3145833"
+       width="1.7009624"
        id="rect4870"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1fff44;fill-opacity:0.25980392;fill-rule:nonzero;stroke:#20fe44;stroke-width:1.43637288;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.98999999;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1fff44;fill-opacity:0.25980392;fill-rule:nonzero;stroke:#20fe44;stroke-width:0.718;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/battery.png"
        inkscape:export-xdpi="95.638351"
        inkscape:export-ydpi="95.638351"
@@ -1490,68 +1481,7 @@
        y="100.14037"
        x="382.69748"
        id="image1041"
-       xlink:href="data:image/png;base64,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
-Cwc86TSN+D8CLLOtWQWv2gAAAABJRU5ErkJggg==
-"
+       xlink:href="data:image/png;base64,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 Cwc86TSN+D8CLLOtWQWv2gAAAABJRU5ErkJggg== "
        style="image-rendering:optimizeQuality"
        preserveAspectRatio="none"
        height="22.489584"

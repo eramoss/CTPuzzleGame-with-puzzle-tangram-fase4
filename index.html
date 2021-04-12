@@ -34,6 +34,12 @@
       window.location.reload()
     }
   })
+  document.body.addEventListener('touchstart', function (e) {
+    if (e.target.nodeName === 'INPUT') {
+      this.style.pointerEvents = 'none';
+    }
+  });
+  document.body.pointerEvents = 'auto';
 </script>
 
 </html>

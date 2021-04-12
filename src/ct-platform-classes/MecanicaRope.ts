@@ -16,15 +16,17 @@ export class MecanicaRope {
   nivelBateria: number = 10
   custoBateriaEmCadaMovimento: number = 1
   ganhoBateriaAoCapturarPilha: number = 1
-  acoesTutorial:AcaoTutorial[] = []
+  acoesTutorial: AcaoTutorial[] = []
   falasAntesDeIniciar: string[] = [];
+  mensagemAoPularFase: string = 'Você vai pular essa fase?';
+  nivelMaximoBateria: number = 10;
 }
 
 type Acao = "click" | "drag"
 type Elemento = "btn-step"
 class AcaoTutorial {
-    acao!:Acao
-    elemento!:Elemento
-    arrasterAte!:Elemento
-    frase!:string
+  acao!: Acao
+  elemento!: Elemento
+  arrasterAte!: Elemento
+  frase!: string
 }

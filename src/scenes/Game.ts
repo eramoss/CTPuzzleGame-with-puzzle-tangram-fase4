@@ -286,10 +286,12 @@ export default class Game extends Scene {
 
   private createBtnExit() {
     let btnExit = new Button(this, this.sounds, 0, 0, 'btn-exit', () => {
-      setTimeout(() => {
-        this.destroy()
-        this.scene.start('pre-game')
-      }, 200)
+      let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
+      messageBox.setText(this.currentPhase.exitPhaseMessage)
+      messageBox.onClickOk = () => {
+        messageBox.close()
+        this.exit()
+      }
     })
     this.grid.placeAt(0.5, 17.5, btnExit.sprite, 1.6)
   }
@@ -299,10 +301,16 @@ export default class Game extends Scene {
       let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
       messageBox.setText(this.currentPhase.skipPhaseMessage)
       messageBox.onClickOk = () => {
+        messageBox.close()
         this.giveUp()
       }
     })
     this.grid.placeAt(0.5, 0.5, btnJump.sprite, 1.6)
+  }
+
+  exit() {
+    this.destroy()
+    this.scene.start('pre-game')
   }
 
   giveUp() {
@@ -545,6 +553,5 @@ export default class Game extends Scene {
       }
     }
   }
-
 
 }

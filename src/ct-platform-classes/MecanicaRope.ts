@@ -18,7 +18,8 @@ export class MecanicaRope {
   ganhoBateriaAoCapturarPilha: number = 1
   acoesTutorial: AcaoTutorial[] = []
   falasAntesDeIniciar: string[] = [];
-  mensagemAoPularFase: string = 'Você vai pular essa fase?';
+  mensagemAoPularFase: string;
+  mensagemAoSairDoJogo: string;
   nivelMaximoBateria: number = 10;
 }
 

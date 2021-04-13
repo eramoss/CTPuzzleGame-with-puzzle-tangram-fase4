@@ -82,8 +82,7 @@ export default class MazePhasesLoader {
     return this;
   }
 
-
-  private convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
+  convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);
     phase.mecanicaRope = mecanicaRope;
 

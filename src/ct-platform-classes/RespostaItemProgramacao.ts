@@ -2,7 +2,6 @@ import { Comando } from "./MecanicaRope"
 
 export class RespostaItemProgramacao {
 
-  caminhoPercorrido: Array<{ x: number, y: number }>
   comandosUtilizados: string[] = []
   tempoEmSegundos: number
   tentativas: Comando[][] = []

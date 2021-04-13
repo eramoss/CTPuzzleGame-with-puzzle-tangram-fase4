@@ -24,10 +24,10 @@ export class MecanicaRope {
 }
 
 type Acao = "click" | "drag"
-type Elemento = "btn-step"
+type Elemento = "btn-step" | "arrow-up" | "arrow-left" | "arrow-down" | "arrow-right" | "btn-play" | "prog_1" | "prog_2" | "prog_0" | "if_block" | "if_coin"
 class AcaoTutorial {
   acao!: Acao
   elemento!: Elemento
-  arrasterAte!: Elemento
+  arrastarSobre?: Elemento
   frase!: string
 }

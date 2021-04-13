@@ -1,8 +1,9 @@
 import { Scene } from "phaser";
 import CodeEditor from "../../controls/CodeEditor";
-import { Obstaculo } from "../../ct-platform-classes/MecanicaRope";
+import { MecanicaRope, Obstaculo } from "../../ct-platform-classes/MecanicaRope";
 import Matrix, { MatrixMode } from "../../geom/Matrix";
 import MazePhase from "../MazePhase";
+import MazePhasesLoader from "../MazePhasesLoader";
 import TutorialHelper from "../tutorial/TutorialHelper";
 
 export default class HardcodedPhasesCreator {
@@ -80,6 +81,7 @@ export default class HardcodedPhasesCreator {
 
     if (!isTesting) {
       let showTutorial = true;
+      phases.push(this.createPhaseWithIfTutorial())
       phases.push(this.createEasyPhaseArrowUp(showTutorial));
       phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
       phases.push(this.createEasyPhaseArrowUpAndRight(showTutorial));
@@ -184,6 +186,36 @@ export default class HardcodedPhasesCreator {
         )
       }
     }
+
+    return phase;
+  }
+
+  private createPhaseWithIfTutorial(showTutorial: boolean = false) {
+    let item = new MecanicaRope()
+    item.x = 1;
+    item.y = 0;
+    item.face = 'down'
+
+    item.mapa = [
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+      ['tile', 'tile', 'tile'],
+    ];
+
+    item.obstaculos = [
+      ['null', 'null', 'null'],
+      ['null', 'block', 'null'],
+      ['null', 'null', 'null'],
+    ];
+
+    item.acoesTutorial = [
+      { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
+      { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
+      { acao: 'drag', elemento: 'if_block', arrastarSobre: 'if_coin', frase: 'Clique para frente!' }
+    ]
+
+    let phase = new MazePhasesLoader(this.scene, null, this.codeEditor, this.matrixMode, this.gridCenterX, this.gridCenterY, this.gridCellWidth)
+      .convertMecanicaRopeToPhase(item)
 
     return phase;
   }
@@ -308,7 +340,7 @@ export default class HardcodedPhasesCreator {
         this.gridCenterX, this.gridCenterY, this.gridCellWidth
       );
 
-      phase.messagesBeforeStartPlay = ['Testando mensagens','Teste 1','Teste 2']
+      phase.messagesBeforeStartPlay = ['Testando mensagens', 'Teste 1', 'Teste 2']
 
     }
     return phase;

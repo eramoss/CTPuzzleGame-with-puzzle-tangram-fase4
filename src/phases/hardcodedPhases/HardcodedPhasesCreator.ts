@@ -215,6 +215,10 @@ export default class HardcodedPhasesCreator {
       { acao: 'click', elemento: 'btn-play', frase: 'Play!' }
     ]
 
+    item.falasAntesDeIniciar = [
+      "Testando fala enorme\ncom quebra de linha"
+    ]
+
     let phase = this.mecanicaToPhase(item)
     return phase;
   }

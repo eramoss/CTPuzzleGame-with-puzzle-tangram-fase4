@@ -116,7 +116,7 @@ export default class MessageBox {
     })
       .setScale(this.grid.scale)
       .setFontStyle('bold')
-      .setAlign('center')
+      .setAlign('left')
       .setDepth(303)
       .setFontSize(40)
       .setTint(0xffffff);

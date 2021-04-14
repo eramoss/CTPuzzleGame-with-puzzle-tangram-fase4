@@ -211,13 +211,22 @@ export default class HardcodedPhasesCreator {
     item.acoesTutorial = [
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
-      { acao: 'drag', elemento: 'if_block', arrastarSobre: 'if_coin', frase: 'Clique para frente!' }
+      { acao: 'drag', elemento: 'if_block', arrastarSobre: 'if_coin', frase: 'Clique para frente!' },
+      { acao: 'click', elemento: 'btn-play', frase: 'Play!' }
     ]
 
-    let phase = new MazePhasesLoader(this.scene, null, this.codeEditor, this.matrixMode, this.gridCenterX, this.gridCenterY, this.gridCellWidth)
-      .convertMecanicaRopeToPhase(item)
-
+    let phase = this.mecanicaToPhase(item)
     return phase;
+  }
+
+  mecanicaToPhase(item: MecanicaRope) {
+    return new MazePhasesLoader(this.scene,
+      null, this.codeEditor,
+      this.matrixMode,
+      this.gridCenterX,
+      this.gridCenterY,
+      this.gridCellWidth)
+      .convertMecanicaRopeToPhase(item)
   }
 
 

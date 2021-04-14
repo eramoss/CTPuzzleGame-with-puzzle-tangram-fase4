@@ -88,10 +88,6 @@ export default class TutorialHighlight {
       frameRate: 8,
       repeat: -1
     });
-    if (sprite.texture.key == 'btn-step') {
-      Logger.log(this.handSprite)
-      //debugger
-    }
     this.setHandSprite(this.scene
       .physics
       .add

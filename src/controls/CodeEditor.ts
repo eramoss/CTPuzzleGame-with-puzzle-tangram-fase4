@@ -180,7 +180,7 @@ export default class CodeEditor {
           command.setDepth(301);
           this.trash.show();
         }
-        //this.unhighlightConditionalDropZones();
+        this.unhighlightConditionalDropZones();
         this.highlightDropZones(command)
         this.clickTime = this.getTime()
         command.playDrag()

@@ -4,7 +4,13 @@ import { Logger } from "../main"
 import { getItem, getTypedItem, setItem } from "../utils/storage"
 
 export default class GameState {
+  isBackgroundMusicEnabled() {
+    return getItem('isBackgroundMusicEnabled', true)
+  }
 
+  setBackgroundMusicEnabled(enabled: boolean = true) {
+    setItem('isBackgroundMusicEnabled', enabled)
+  }
 
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
     let response = this.getResponse();

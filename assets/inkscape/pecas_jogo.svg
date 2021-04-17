@@ -962,8 +962,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="505.764"
-     inkscape:cy="-591.77742"
+     inkscape:cx="981.54896"
+     inkscape:cy="-738.071"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -13266,55 +13266,45 @@
        height="18.632767"
        x="-102.98633"
        y="25.819059" />
-    <g
-       id="g3174"
-       transform="translate(-4.2094949,3.1571699)"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3157"
+       width="20.411192"
+       height="24.341667"
+       x="-177.81438"
+       y="59.095299"
+       rx="3.2355101"
+       ry="3.2355101"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18"
-       style="stroke:#640000;stroke-opacity:0.16826923">
-      <rect
-         ry="3.2355101"
-         rx="3.2355101"
-         y="55.938129"
-         x="-173.60489"
-         height="24.341667"
-         width="20.411192"
-         id="rect3157"
-         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826923;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
-      <g
-         style="stroke:#640000;stroke-width:1.13645017;stroke-opacity:0.16826923;paint-order:markers fill stroke"
-         transform="matrix(-0.87993299,0,0,0.87993299,-313.90868,37.037189)"
-         id="g3155">
-        <path
-           style="fill:none;fill-rule:evenodd;stroke:#640000;stroke-width:0.30068576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826923;paint-order:markers fill stroke"
-           d="M -177.27956,39.607893 V 25.798196 h 13.19858 v 14.009252 z"
-           id="path3139"
-           inkscape:connector-curvature="0" />
-        <path
-           style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.30068576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826923;paint-order:markers fill stroke"
-           d="m -176.006,26.423005 6.58609,1.882203 v 8.668469 l -6.94069,1.947713 h 11.23763 V 26.571409 Z"
-           id="path3147"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccccccc" />
-      </g>
-      <text
-         id="text3151"
-         y="77.839005"
-         x="-170.15617"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.57773161px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:#640000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826923"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px;stroke:#640000;stroke-opacity:0.16826923"
-           y="77.839005"
-           x="-170.15617"
-           id="tspan3149"
-           sodipodi:role="line">EXIT</tspan></text>
+       inkscape:export-ydpi="96.18" />
+    <g
+       id="g3155"
+       transform="matrix(-0.87993299,0,0,0.87993299,-318.11817,42.311027)"
+       style="stroke:#640000;stroke-width:1.13645017;stroke-opacity:0.16826926;paint-order:markers fill stroke"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18">
       <path
          inkscape:connector-curvature="0"
-         id="path3165"
-         d="m -159.2481,64.305586 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
-         style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826923" />
+         id="path3139"
+         d="M -177.27956,39.607893 V 25.798196 h 13.19858 v 14.009252 z"
+         style="fill:none;fill-rule:evenodd;stroke:#640000;stroke-width:0.30068576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826926;paint-order:markers fill stroke" />
+      <path
+         sodipodi:nodetypes="ccccccc"
+         inkscape:connector-curvature="0"
+         id="path3147"
+         d="m -176.006,26.423005 6.58609,1.882203 v 8.668469 l -6.94069,1.947713 h 11.23763 V 26.571409 Z"
+         style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.30068576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826926;paint-order:markers fill stroke" />
     </g>
+    <path
+       style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.16826926"
+       d="m -163.45759,69.579424 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
+       id="path3165"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
     <rect
        ry="3.2355101"
        rx="3.2355101"
@@ -13323,15 +13313,15 @@
        height="24.341667"
        width="20.411192"
        id="rect3176"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826923;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <g
        style="stroke:#640000;stroke-width:1.13645017;stroke-opacity:1;paint-order:markers fill stroke"
-       transform="matrix(-0.87993299,0,0,0.87993299,-296.64947,40.381447)"
+       transform="matrix(-0.87993299,0,0,0.87993299,-296.64947,42.498115)"
        id="g3187"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18">
       <path
@@ -13346,26 +13336,12 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccc" />
     </g>
-    <text
-       id="text3191"
-       y="81.183266"
-       x="-152.89696"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.57773161px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
-       inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px"
-         y="81.183266"
-         x="-152.89696"
-         id="tspan3189"
-         sodipodi:role="line">EXIT</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path3193"
-       d="m -141.98889,67.649844 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
+       d="m -141.98889,69.766512 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
        style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <rect
@@ -13376,15 +13352,15 @@
        height="24.341667"
        width="20.411192"
        id="rect3197"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826923;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <g
        style="stroke:#640000;stroke-width:1.13645017;stroke-opacity:1;paint-order:markers fill stroke"
-       transform="matrix(-0.87993299,0,0,0.87993299,-275.18952,40.194359)"
+       transform="matrix(-0.87993299,0,0,0.87993299,-275.18952,42.311027)"
        id="g3203"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18">
       <path
@@ -13399,30 +13375,16 @@
          inkscape:connector-curvature="0"
          sodipodi:nodetypes="ccccccc" />
     </g>
-    <text
-       id="text3207"
-       y="80.996178"
-       x="-131.43703"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.57773161px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
-       inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px"
-         y="80.996178"
-         x="-131.43703"
-         id="tspan3205"
-         sodipodi:role="line">EXIT</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path3209"
-       d="m -120.52894,67.462756 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
+       d="m -120.52894,69.579424 -2.91042,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.87734,-0.09922 z"
        style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <rect
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826923;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect3213"
        width="20.411192"
        height="24.341667"
@@ -13430,14 +13392,14 @@
        y="59.095299"
        rx="3.2355101"
        ry="3.2355101"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <g
        id="g3219"
-       transform="matrix(-0.87993299,0,0,0.87993299,-253.72082,40.381447)"
+       transform="matrix(-0.87993299,0,0,0.87993299,-253.72082,42.498115)"
        style="stroke:#640000;stroke-width:1.13645017;stroke-opacity:1;paint-order:markers fill stroke"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18">
       <path
@@ -13452,26 +13414,12 @@
          d="m -176.006,26.423005 6.58609,1.882203 v 8.668469 l -6.94069,1.947713 h 11.23763 V 26.571409 Z"
          style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:#640000;stroke-width:0.30068576px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;paint-order:markers fill stroke" />
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.57773161px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-109.96832"
-       y="81.183266"
-       id="text3223"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
-       inkscape:export-xdpi="96.18"
-       inkscape:export-ydpi="96.18"><tspan
-         sodipodi:role="line"
-         id="tspan3221"
-         x="-109.96832"
-         y="81.183266"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px">EXIT</tspan></text>
     <path
        style="fill:#640000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -99.060247,67.649844 -2.910423,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.877343,-0.09922 z"
+       d="m -99.060247,69.766512 -2.910423,0.892969 -0.0331,-2.315104 -1.91823,3.340364 2.3151,2.513542 -0.16536,-2.248958 2.877343,-0.09922 z"
        id="path3225"
        inkscape:connector-curvature="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/exit_btn.png"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_exit.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <rect
@@ -13482,7 +13430,7 @@
        height="24.341667"
        width="20.411192"
        id="rect7575"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_jump.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
@@ -13670,7 +13618,7 @@
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <rect
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect7976"
        width="20.411192"
        height="24.341667"
@@ -13690,7 +13638,7 @@
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
     <rect
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect7980"
        width="20.411192"
        height="24.341667"
@@ -13717,7 +13665,7 @@
        height="24.341667"
        width="20.411192"
        id="rect7984"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_jump.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
@@ -13733,7 +13681,7 @@
        inkscape:export-ydpi="96.18"
        inkscape:export-xdpi="96.18"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_restart.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect3036"
        width="20.411192"
        height="24.341667"
@@ -13752,7 +13700,7 @@
        height="24.341667"
        width="20.411192"
        id="rect3040"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <rect
        inkscape:export-ydpi="96.18"
        inkscape:export-xdpi="96.18"
@@ -13764,12 +13712,12 @@
        height="24.341667"
        width="20.411192"
        id="rect3044"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
     <rect
        inkscape:export-ydpi="96.18"
        inkscape:export-xdpi="96.18"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_restart.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.16826926;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect3048"
        width="20.411192"
        height="24.341667"
@@ -13807,6 +13755,125 @@
        d="m -7.0229836,90.131841 c -0.872743,-0.0546 -1.617626,-0.261461 -2.4081287,-0.668753 -1.6924517,-0.872008 -2.8959677,-2.46377 -3.2676067,-4.321716 -0.210416,-1.051937 -0.158239,-2.071763 0.157985,-3.088316 0.128594,-0.413391 0.370501,-0.966892 0.520746,-1.191527 0.193502,-0.289315 0.480655,-0.447891 0.812546,-0.448721 0.18454,-4.61e-4 0.274237,0.02059 0.453719,0.106489 0.357561,0.171127 0.580655,0.567079 0.537306,0.953615 -0.01613,0.144125 -0.06929,0.296523 -0.199626,0.572681 -0.297409,0.630141 -0.425874,1.186262 -0.425874,1.843593 0,0.548321 0.0828,1.01396 0.270406,1.52073 0.211083,0.570175 0.502902,1.019835 0.9597797,1.478907 0.4237037,0.425741 0.7664157,0.670598 1.2558137,0.897243 0.340652,0.157753 0.786054,0.295014 1.102393,0.339712 0.22427,0.03168 0.83648,0.05191 1.06262,0.0351 0.178494,-0.01322 0.5038,-0.06656 0.682671,-0.11184 0.749244,-0.189673 1.37212,-0.54936 1.9472687,-1.12451 0.551338,-0.551337 0.915815,-1.166633 1.1093,-1.872673 0.117201,-0.427693 0.147741,-0.668607 0.147547,-1.163714 -1.69e-4,-0.404005 -0.02327,-0.627798 -0.09524,-0.92263 -0.218281,-0.894213 -0.616388,-1.574289 -1.288286,-2.200739 -0.4600827,-0.428962 -1.0222397,-0.750963 -1.6490097,-0.944539 -0.275238,-0.08501 -0.907064,-0.191578 -1.135791,-0.191578 h -0.0903 l 0.29833,0.309577 c 0.542078,0.562517 0.590879,0.638724 0.608822,0.950725 0.01147,0.198226 -0.0099,0.316048 -0.08415,0.466467 -0.109036,0.22078 -0.282937,0.373327 -0.521265,0.457281 -0.11119,0.03916 -0.148441,0.045 -0.291586,0.04564 -0.205213,9.25e-4 -0.343963,-0.03802 -0.479629,-0.134658 -0.126998,-0.09046 -0.811537,-0.757364 -2.038384,-1.985887 l -1.0409924,-1.042416 1.3766804,-1.372926 c 1.37876,-1.375002 1.58171,-1.570687 1.729869,-1.667955 0.32422,-0.21285 0.798816,-0.149297 1.094713,0.146594 0.206034,0.206035 0.287057,0.457051 0.248527,0.769979 -0.03009,0.244385 -0.09736,0.344471 -0.522595,0.777556 l -0.288263,0.293583 0.06449,0.0076 c 0.03546,0.004 0.185279,0.01847 0.332934,0.03173 0.642906,0.05795 1.237447,0.197462 1.820255,0.427144 0.199974,0.07881 0.6481287,0.29798 0.8421737,0.411865 1.197198,0.702652 2.134385,1.787575 2.64498295,3.061935 0.199104,0.496931 0.353611,1.1027 0.416856,1.634354 0.03021,0.253999 0.02535,1.229861 -0.0074,1.465197 -0.234816,1.692364 -1.11013695,3.209153 -2.42512695,4.202355 -0.86005,0.649589 -1.9678047,1.098941 -3.0231977,1.226332 -0.229144,0.02767 -0.920461,0.03969 -1.216359,0.02119 z"
        style="fill:#640000;fill-opacity:1;stroke-width:0.99999994"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_restart.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       style="fill:#640000;stroke-width:0.99999994;fill-opacity:1"
+       d="m 20.04109,89.1152 c -1.096094,-0.09894 -1.961628,-0.667508 -2.273017,-1.493139 -0.02003,-0.0531 -0.051,-0.16319 -0.06881,-0.244622 -0.190325,-0.870083 0.266172,-1.773955 1.190125,-2.356473 0.430318,-0.271298 0.955828,-0.449251 1.52273,-0.515639 0.190979,-0.02236 0.599983,-0.01934 0.796036,0.006 0.149698,0.01926 0.413589,0.07102 0.468852,0.09194 0.02245,0.0085 0.02362,-0.136641 0.02362,-2.939639 0,-3.137374 -0.0019,-3.041993 0.06207,-3.195466 0.09243,-0.221923 0.280389,-0.400318 0.507869,-0.482023 0.04796,-0.01723 0.781768,-0.171143 1.63067,-0.342034 0.848902,-0.170892 1.971499,-0.396873 2.494657,-0.50218 0.523157,-0.105313 1.51584,-0.305415 2.205963,-0.444681 1.147622,-0.23159 1.26629,-0.253228 1.38969,-0.253399 0.397999,-5.65e-4 0.73004,0.241031 0.853485,0.620964 0.02143,0.06595 0.02329,0.340763 0.02717,4.010507 0.0037,3.532163 0.0019,3.962853 -0.01744,4.163542 -0.0404,0.418431 -0.153953,0.735808 -0.380547,1.06364 -0.33109,0.479013 -0.82072,0.850144 -1.441401,1.09256 -0.6897,0.269372 -1.545333,0.314555 -2.225414,0.117516 -0.88803,-0.257291 -1.501111,-0.816671 -1.694048,-1.545663 -0.156727,-0.592178 -0.01347,-1.207494 0.408328,-1.753787 0.470544,-0.609435 1.234188,-1.033592 2.115487,-1.175027 0.24147,-0.03874 0.671811,-0.04807 0.924211,-0.02002 0.159325,0.01771 0.416195,0.06428 0.508172,0.09215 0.02397,0.0074 0.02476,-0.06983 0.02476,-2.388329 v -2.395863 l -0.03036,0.007 c -0.01669,0.0039 -1.278043,0.258038 -2.802993,0.564801 l -2.772632,0.557752 -0.0074,3.577919 c -0.0079,3.759886 -0.0074,3.739071 -0.0684,4.007233 -0.237724,1.047033 -1.319227,1.890388 -2.636019,2.055563 -0.199609,0.02502 -0.563789,0.03441 -0.735321,0.01894 z"
+       id="path3114"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <rect
+       ry="3.2355101"
+       rx="3.2355101"
+       y="70.612473"
+       x="14.059619"
+       height="24.341667"
+       width="20.411192"
+       id="rect3137"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3139"
+       width="20.411192"
+       height="24.341667"
+       x="35.528156"
+       y="70.612473"
+       rx="3.2355101"
+       ry="3.2355101"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3141"
+       width="20.411192"
+       height="24.341667"
+       x="56.997833"
+       y="70.612473"
+       rx="3.2355101"
+       ry="3.2355101"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <rect
+       ry="3.2355101"
+       rx="3.2355101"
+       y="70.612473"
+       x="78.466438"
+       height="24.341667"
+       width="20.411192"
+       id="rect3143"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843138;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3155"
+       d="m 41.509627,89.1152 c -1.096094,-0.09894 -1.961628,-0.667508 -2.273017,-1.493139 -0.02003,-0.0531 -0.051,-0.16319 -0.06881,-0.244622 -0.190325,-0.870083 0.266172,-1.773955 1.190125,-2.356473 0.430318,-0.271298 0.955828,-0.449251 1.52273,-0.515639 0.190979,-0.02236 0.599983,-0.01934 0.796036,0.006 0.149698,0.01926 0.413589,0.07102 0.468852,0.09194 0.02245,0.0085 0.02362,-0.136641 0.02362,-2.939639 0,-3.137374 -0.0019,-3.041993 0.06207,-3.195466 0.09243,-0.221923 0.280389,-0.400318 0.507869,-0.482023 0.04796,-0.01723 0.781768,-0.171143 1.63067,-0.342034 0.848902,-0.170892 1.971499,-0.396873 2.494657,-0.50218 0.523157,-0.105313 1.51584,-0.305415 2.205963,-0.444681 1.147622,-0.23159 1.26629,-0.253228 1.38969,-0.253399 0.397999,-5.65e-4 0.73004,0.241031 0.853485,0.620964 0.02143,0.06595 0.02329,0.340763 0.02717,4.010507 0.0037,3.532163 0.0019,3.962853 -0.01744,4.163542 -0.0404,0.418431 -0.153953,0.735808 -0.380547,1.06364 -0.33109,0.479013 -0.82072,0.850144 -1.441401,1.09256 -0.6897,0.269372 -1.545333,0.314555 -2.225414,0.117516 -0.88803,-0.257291 -1.501111,-0.816671 -1.694048,-1.545663 -0.156727,-0.592178 -0.01347,-1.207494 0.408328,-1.753787 0.470544,-0.609435 1.234188,-1.033592 2.115487,-1.175027 0.24147,-0.03874 0.671811,-0.04807 0.924211,-0.02002 0.159325,0.01771 0.416195,0.06428 0.508172,0.09215 0.02397,0.0074 0.02476,-0.06983 0.02476,-2.388329 v -2.395863 l -0.03036,0.007 c -0.01669,0.0039 -1.278043,0.258038 -2.802993,0.564801 l -2.772632,0.557752 -0.0074,3.577919 c -0.0079,3.759886 -0.0074,3.739071 -0.0684,4.007233 -0.237724,1.047033 -1.319227,1.890388 -2.636019,2.055563 -0.199609,0.02502 -0.563789,0.03441 -0.735321,0.01894 z"
+       style="fill:#640000;stroke-width:0.99999994;fill-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       style="fill:#640000;stroke-width:0.99999994;fill-opacity:1"
+       d="m 62.979304,89.1152 c -1.096094,-0.09894 -1.961628,-0.667508 -2.273017,-1.493139 -0.02003,-0.0531 -0.051,-0.16319 -0.06881,-0.244622 -0.190325,-0.870083 0.266172,-1.773955 1.190125,-2.356473 0.430318,-0.271298 0.955828,-0.449251 1.52273,-0.515639 0.190979,-0.02236 0.599983,-0.01934 0.796036,0.006 0.149698,0.01926 0.413589,0.07102 0.468852,0.09194 0.02245,0.0085 0.02362,-0.136641 0.02362,-2.939639 0,-3.137374 -0.0019,-3.041993 0.06207,-3.195466 0.09243,-0.221923 0.280389,-0.400318 0.507869,-0.482023 0.04796,-0.01723 0.781768,-0.171143 1.63067,-0.342034 0.848902,-0.170892 1.971499,-0.396873 2.494657,-0.50218 0.523157,-0.105313 1.51584,-0.305415 2.205963,-0.444681 1.147622,-0.23159 1.26629,-0.253228 1.38969,-0.253399 0.397999,-5.65e-4 0.73004,0.241031 0.853485,0.620964 0.02143,0.06595 0.02329,0.340763 0.02717,4.010507 0.0037,3.532163 0.0019,3.962853 -0.01744,4.163542 -0.0404,0.418431 -0.153953,0.735808 -0.380547,1.06364 -0.33109,0.479013 -0.82072,0.850144 -1.441401,1.09256 -0.6897,0.269372 -1.545333,0.314555 -2.225414,0.117516 -0.88803,-0.257291 -1.501111,-0.816671 -1.694048,-1.545663 -0.156727,-0.592178 -0.01347,-1.207494 0.408328,-1.753787 0.470544,-0.609435 1.234188,-1.033592 2.115487,-1.175027 0.24147,-0.03874 0.671811,-0.04807 0.924211,-0.02002 0.159325,0.01771 0.416195,0.06428 0.508172,0.09215 0.02397,0.0074 0.02476,-0.06983 0.02476,-2.388329 v -2.395863 l -0.03036,0.007 c -0.01669,0.0039 -1.278043,0.258038 -2.802993,0.564801 l -2.772632,0.557752 -0.0074,3.577919 c -0.0079,3.759886 -0.0074,3.739071 -0.0684,4.007233 -0.237724,1.047033 -1.319227,1.890388 -2.636019,2.055563 -0.199609,0.02502 -0.563789,0.03441 -0.735321,0.01894 z"
+       id="path3157"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3159"
+       d="m 84.447909,89.1152 c -1.096094,-0.09894 -1.961628,-0.667508 -2.273017,-1.493139 -0.02003,-0.0531 -0.051,-0.16319 -0.06881,-0.244622 -0.190325,-0.870083 0.266172,-1.773955 1.190125,-2.356473 0.430318,-0.271298 0.955828,-0.449251 1.52273,-0.515639 0.190979,-0.02236 0.599983,-0.01934 0.796036,0.006 0.149698,0.01926 0.413589,0.07102 0.468852,0.09194 0.02245,0.0085 0.02362,-0.136641 0.02362,-2.939639 0,-3.137374 -0.0019,-3.041993 0.06207,-3.195466 0.09243,-0.221923 0.280389,-0.400318 0.507869,-0.482023 0.04796,-0.01723 0.781768,-0.171143 1.63067,-0.342034 0.848902,-0.170892 1.971499,-0.396873 2.494657,-0.50218 0.523157,-0.105313 1.51584,-0.305415 2.205963,-0.444681 1.147622,-0.23159 1.26629,-0.253228 1.38969,-0.253399 0.397999,-5.65e-4 0.73004,0.241031 0.853485,0.620964 0.02143,0.06595 0.02329,0.340763 0.02717,4.010507 0.0037,3.532163 0.0019,3.962853 -0.01744,4.163542 -0.0404,0.418431 -0.153953,0.735808 -0.380547,1.06364 -0.33109,0.479013 -0.82072,0.850144 -1.441401,1.09256 -0.6897,0.269372 -1.545333,0.314555 -2.225414,0.117516 -0.88803,-0.257291 -1.501111,-0.816671 -1.694048,-1.545663 -0.156727,-0.592178 -0.01347,-1.207494 0.408328,-1.753787 0.470544,-0.609435 1.234188,-1.033592 2.115487,-1.175027 0.24147,-0.03874 0.671811,-0.04807 0.924211,-0.02002 0.159325,0.01771 0.416195,0.06428 0.508172,0.09215 0.02397,0.0074 0.02476,-0.06983 0.02476,-2.388329 v -2.395863 l -0.03036,0.007 c -0.01669,0.0039 -1.278043,0.258038 -2.802993,0.564801 l -2.772632,0.557752 -0.0074,3.577919 c -0.0079,3.759886 -0.0074,3.739071 -0.0684,4.007233 -0.237724,1.047033 -1.319227,1.890388 -2.636019,2.055563 -0.199609,0.02502 -0.563789,0.03441 -0.735321,0.01894 z"
+       style="fill:#640000;stroke-width:0.99999994;fill-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <rect
+       inkscape:export-ydpi="96.18"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3168"
+       width="20.411192"
+       height="24.341667"
+       x="99.938065"
+       y="70.612473"
+       rx="3.2355101"
+       ry="3.2355101" />
+    <path
+       style="fill:#640000;fill-opacity:1;stroke-width:3.77952743"
+       d="M 1131.2559 1750.9902 C 1130.7895 1750.9909 1130.3414 1751.072 1126.0039 1751.9473 C 1123.3955 1752.4736 1119.6433 1753.2309 1117.666 1753.6289 C 1115.6888 1754.0269 1111.4468 1754.8795 1108.2383 1755.5254 C 1105.712 1756.0339 1104.3187 1756.3348 1103.3848 1756.543 C 1103.5635 1756.7635 1103.7394 1756.9909 1103.9023 1757.2344 L 1107.2637 1762.2559 L 1117.1562 1760.2637 C 1118.916 1759.9097 1118.9222 1759.907 1120.3906 1759.6113 L 1121.9824 1757.2344 C 1123.971 1754.2641 1127.2313 1752.9599 1129.293 1754.3105 C 1131.3547 1755.6612 1131.4143 1759.1411 1129.4258 1762.1113 L 1127.8652 1764.4414 L 1127.8652 1767.1582 C 1127.8652 1775.921 1127.8622 1776.2135 1127.7715 1776.1855 C 1127.4238 1776.0802 1126.4537 1775.9048 1125.8516 1775.8379 C 1124.8976 1775.7319 1123.2701 1775.7657 1122.3574 1775.9121 C 1121.4411 1776.0592 1120.5637 1776.2946 1119.7285 1776.5957 L 1118.2969 1778.7344 L 1127.4688 1792.4375 C 1127.5226 1792.4174 1127.5795 1792.4017 1127.6328 1792.3809 C 1129.9787 1791.4646 1131.8287 1790.0604 1133.0801 1788.25 C 1133.9365 1787.0109 1134.3668 1785.8119 1134.5195 1784.2305 C 1134.5929 1783.472 1134.5991 1781.844 1134.584 1768.4941 C 1134.5692 1754.6242 1134.5633 1753.5852 1134.4824 1753.3359 C 1134.0158 1751.9 1132.7601 1750.9881 1131.2559 1750.9902 z M 1099.9297 1767.2949 C 1099.9289 1768.6535 1099.9199 1768.7421 1099.9199 1770.7188 C 1099.9199 1781.3128 1099.9147 1781.8603 1099.8301 1781.8281 C 1099.6212 1781.7491 1098.6244 1781.5533 1098.0586 1781.4805 C 1097.3176 1781.3847 1095.7726 1781.3745 1095.0508 1781.459 C 1092.9082 1781.7099 1090.9213 1782.3809 1089.2949 1783.4062 C 1085.8028 1785.6079 1084.0775 1789.024 1084.7969 1792.3125 C 1084.8642 1792.6203 1084.9811 1793.0376 1085.0566 1793.2383 C 1086.2335 1796.3588 1089.5057 1798.5069 1093.6484 1798.8809 L 1093.6504 1798.8809 C 1093.9914 1798.9116 1094.5269 1798.9146 1095.0742 1798.8984 C 1095.2309 1797.7442 1095.6852 1796.5151 1096.459 1795.3594 L 1106.6328 1780.1621 C 1106.6358 1779.0531 1106.6414 1778.7552 1106.6445 1777.3242 L 1099.9297 1767.2949 z M 1112.9414 1786.7324 L 1112.8086 1786.9316 C 1112.8129 1786.9485 1112.8139 1786.9656 1112.8184 1786.9824 C 1113.2849 1788.745 1114.4087 1790.2408 1116.0312 1791.3477 L 1112.9414 1786.7324 z "
+       transform="matrix(0.26458333,0,0,0.26458333,-183.44148,-386.83881)"
+       id="path3173"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       transform="rotate(-34.398466)"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#640000;fill-opacity:1;fill-rule:nonzero;stroke:#640000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 44.326216,125.0077 c 0.459934,0 0.83187,0.65189 0.830206,1.46163 l -0.02189,10.65728 c -0.0017,0.80975 -0.370272,1.46163 -0.830206,1.46163 -0.459934,0 -0.83187,-0.65188 -0.830206,-1.46163 l 0.02189,-10.65728 c 0.0017,-0.80974 0.370272,-1.46163 0.830206,-1.46163 z"
+       id="rect3183"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssssss"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       sodipodi:nodetypes="sssssss"
+       inkscape:connector-curvature="0"
+       id="path3187"
+       d="m 114.85149,78.105561 c -0.3795,-0.259837 -1.05468,0.06793 -1.51077,0.737012 l -6.00271,8.805994 c -0.45606,0.669108 -0.52022,1.415216 -0.14071,1.675053 0.3795,0.259838 1.05467,-0.06792 1.51076,-0.737012 l 6.00272,-8.805993 c 0.45605,-0.6691 0.52022,-1.415216 0.14071,-1.675054 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#640000;fill-opacity:1;fill-rule:nonzero;stroke:#640000;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
   </g>

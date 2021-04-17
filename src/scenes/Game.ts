@@ -75,9 +75,10 @@ export default class Game extends Scene {
     this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
 
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('btn-exit', 'assets/ct/exit_btn.png', { frameWidth: 81, frameHeight: 96 });
+    this.load.spritesheet('btn-exit', 'assets/ct/btn_exit.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-restart', 'assets/ct/btn_restart.png', { frameWidth: 81, frameHeight: 96 });
+    this.load.spritesheet('btn-music', 'assets/ct/btn_music.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
     this.load.spritesheet('btn-cancel', 'assets/ct/btn_cancel.png', { frameWidth: 194, frameHeight: 123 });
     this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
@@ -236,9 +237,11 @@ export default class Game extends Scene {
       }
     }
 
+    //this.grid.show(0.5)
     this.createBtnExit()
     this.createBtnJump()
     this.createBtnRestart()
+    this.createBtnMusic()
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
@@ -295,7 +298,7 @@ export default class Game extends Scene {
         this.exit()
       }
     })
-    this.grid.placeAt(0.5, 17.5, btnExit.sprite, 1.6)
+    this.grid.placeAt(0.5, 0.5, btnExit.sprite, 1.3)
   }
 
   private createBtnJump() {
@@ -307,7 +310,7 @@ export default class Game extends Scene {
         this.giveUp()
       }
     })
-    this.grid.placeAt(0.5, 0.5, btnJump.sprite, 1.6)
+    this.grid.placeAt(2, 17.5, btnJump.sprite, 1.3)
   }
 
   private createBtnRestart() {
@@ -319,7 +322,16 @@ export default class Game extends Scene {
         this.replayCurrentPhase({ clear: true, muteInstructions: false })
       }
     })
-    this.grid.placeAt(0.5, 4, btnJump.sprite, 1.6)
+    this.grid.placeAt(0.5, 17.5, btnJump.sprite, 1.3)
+  }
+
+  private createBtnMusic() {
+    let btn = new Button(this, this.sounds, 0, 0, 'btn-music', () => {
+      const newState = globalSounds.togglePlayingBackgroundMusic()
+      this.gameState.setBackgroundMusicEnabled(newState)
+    })
+    btn.toggle(!this.gameState.isBackgroundMusicEnabled())
+    this.grid.placeAt(2, 0.5, btn.sprite, 1.3)
   }
 
   exit() {
@@ -449,7 +461,7 @@ export default class Game extends Scene {
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
-    globalSounds.playBackgroundMusic()
+    this.playBackgroundMusic()
     if (!phase) {
       if (this.testApplicationService.isPlayground()) {
         this.replayCurrentPhase();
@@ -509,6 +521,12 @@ export default class Game extends Scene {
       }
     }
 
+  }
+
+  playBackgroundMusic() {
+    if (this.gameState.isBackgroundMusicEnabled()) {
+      globalSounds.playBackgroundMusic()
+    }
   }
 
   startEndScene() {

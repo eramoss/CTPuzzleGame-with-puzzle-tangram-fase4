@@ -16,30 +16,47 @@ export default class Button implements InterfaceElement {
   scene: Scene
   text: Phaser.GameObjects.Text;
   scale: number = 1;
+  toggable = false
+  toggled: boolean = false;
 
   constructor(scene: Scene, sounds: Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
     this.scene = scene;
     const sprite = scene.add.sprite(x, y, spriteKey, 0)?.setInteractive({ cursor: 'pointer' });
-    sprite.on('pointerover', () => {
+    this.sprite = sprite;
+    this.sprite.on('pointerover', () => {
       this.hover = true;
-      sprite.setFrame(1)
+      if (this.toggable) return
+      this.sprite.setFrame(1)
       sounds?.hover();
     })
-    sprite.on('pointerout', () => {
+    this.sprite.on('pointerout', () => {
+      if (this.toggable) return
       this.hover = false;
-      sprite.setFrame(0)
+      this.sprite.setFrame(0)
     })
-    sprite.on('pointerup', () => {
+    this.sprite.on('pointerup', () => {
       if (this.disabled) return;
-      sprite.setFrame(1)
       androidVibrate(30)
       onClickHandler();
+      if (this.toggable) {
+        this.toggle();
+      }
     })
-    sprite.on('pointerdown', () => {
+    this.sprite.on('pointerdown', () => {
       if (this.disabled) return;
-      sprite.setFrame(2)
+      if (this.toggable) return;
+      this.sprite.setFrame(2)
     })
-    this.sprite = sprite;
+  }
+
+  toggle(toggled: boolean = !this.toggled) {
+    this.toggable = true;
+    this.toggled = toggled
+    if (this.toggable) {
+      this.sprite.setFrame(this.toggled ? 4 : 1);
+    } else {
+      this.sprite.setFrame(1);
+    }
   }
 
   getSprite(): Phaser.Physics.Arcade.Sprite {

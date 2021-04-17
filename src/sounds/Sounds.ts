@@ -73,6 +73,16 @@ export default class Sounds {
     this.stopSound(this.backMusic)
   }
 
+  togglePlayingBackgroundMusic(): boolean {
+    let enabled = false;
+    if (this.backMusic.isPlaying) {
+      this.stopPlayBackgroundMusic()
+    } else {
+      this.playBackgroundMusic()
+      enabled = true
+    }
+    return enabled
+  }
 
   drag() {
     this.playSound(this.dragSound);

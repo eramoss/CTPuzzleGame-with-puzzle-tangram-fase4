@@ -29,6 +29,18 @@ export default class GameState {
     this.setResponse(response)
   }
 
+  registerTrashUse() {
+    let response = this.getResponse()
+    response.countTrashUse()
+    this.setResponse(response)
+  }
+
+  registerRestartUse() {
+    let response = this.getResponse()
+    response.countRestartUse()
+    this.setResponse(response)
+  }
+
   registerAddedCommands(addedCommands: string[]) {
     this.log('GAME_STATE register coding', addedCommands);
     let response = this.getResponse();
@@ -45,6 +57,7 @@ export default class GameState {
       this.setItemNumber(itemNumber);
       let resposta = new RespostaItemProgramacao()
       resposta.tempoEmSegundos = this.getTimeInSeconds()
+      resposta.contadorUsoLixeira = 0
       this.setResponse(resposta);
     }
   }

@@ -213,7 +213,7 @@ export default class HardcodedPhasesCreator {
     item.acoesTutorial = [
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
-      { acao: 'drag', elemento: 'if_block', arrastarAte: 'if_coin', frase: 'Clique para frente!' },
+      { acao: 'drag', elemento: 'if_block', arrastarSobre: 'if_coin', frase: 'Clique para frente!' },
       { acao: 'click', elemento: 'btn-play', frase: 'Play!' }
     ]
 

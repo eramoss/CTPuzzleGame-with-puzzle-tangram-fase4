@@ -55,6 +55,10 @@ export default class Command implements InterfaceElement {
     return index;
   }
 
+  isAddedToProgram() {
+    return !!this.programDropZone
+  }
+
   setCondition(ifCommand: Command, removePreviousCondition: boolean = true) {
     if (ifCommand != this.condition) {
       if (this.condition) {

@@ -3,7 +3,7 @@ import { MatrixMode } from '../geom/Matrix'
 import Dude from '../sprites/Dude'
 import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
-import CodeEditor, { CodeEditorOptions as PlayPhaseOptions } from '../controls/CodeEditor'
+import CodeEditor, { PlayPhaseOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
 import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
@@ -22,6 +22,7 @@ import { Coin } from './Coin'
 import { Tile } from './Tile'
 import MessageBox from '../sprites/MessageBox'
 import Button from '../controls/Button'
+import Command from '../program/Command'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
@@ -251,6 +252,10 @@ export default class Game extends Scene {
       }
     }
 
+    this.codeEditor.onRemoveCommand = (command: Command) => {
+      this.gameState.registerTrashUse()
+    }
+
     /* this.codeEditor.onEditProgram = () => {
       if (!this.dude.stopped) {
         this.replayCurrentPhase()
@@ -319,7 +324,12 @@ export default class Game extends Scene {
       messageBox.setText(this.currentPhase.restartPhaseMessage)
       messageBox.onClickOk = () => {
         messageBox.close()
-        this.replayCurrentPhase({ clear: true, muteInstructions: false })
+        this.gameState.registerRestartUse()
+        this.replayCurrentPhase({
+          clearCodeEditor: true,
+          muteInstructions: false,
+          clearResponseState: false
+        })
       }
     })
     this.grid.placeAt(0.5, 17.5, btnJump.sprite, 1.3)
@@ -448,12 +458,12 @@ export default class Game extends Scene {
 
   playNextPhase() {
     const phase = this.phasesLoader.getNextPhase();
-    this.playPhase(phase, { clear: true });
+    this.playPhase(phase, { clearCodeEditor: true, clearResponseState: true });
   }
 
   replayCurrentPhase(options: PlayPhaseOptions =
     {
-      clear: this.currentPhase?.isTutorialPhase(),
+      clearCodeEditor: this.currentPhase?.isTutorialPhase(),
       muteInstructions: true
     }) {
     this.dude.stop(true);
@@ -484,7 +494,9 @@ export default class Game extends Scene {
     if (this.currentPhase) {
 
       let itemId = this.currentPhase.itemId
-      this.gameState.initializeResponse(itemId);
+      if (playPhaseOptions.clearResponseState) {
+        this.gameState.initializeResponse(itemId);
+      }
       this.testApplicationService.saveCurrentPlayingPhase(itemId)
 
       this.currentPhase.setupMatrixAndTutorials()

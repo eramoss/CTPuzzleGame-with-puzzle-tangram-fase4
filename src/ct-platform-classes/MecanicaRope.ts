@@ -29,6 +29,6 @@ type Elemento = "btn-step" | "arrow-up" | "arrow-left" | "arrow-down" | "arrow-r
 class AcaoTutorial {
   acao!: Acao
   elemento!: Elemento
-  arrastarAte?: Elemento
+  arrastarSobre?: Elemento
   frase!: string
 }

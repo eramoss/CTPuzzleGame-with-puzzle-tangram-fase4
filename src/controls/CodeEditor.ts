@@ -15,7 +15,6 @@ import { CommandName } from '../phases/MazePhase';
 
 export default class CodeEditor {
 
-
   scene: Scene;
   programs: Program[];
   dropZones: SpriteDropZone[]
@@ -25,6 +24,7 @@ export default class CodeEditor {
   onInteract: () => void = () => { };
   onClickStop: () => void = () => { };
   onClickStepByStep: () => void = () => { };
+  onRemoveCommand: (command:Command) => void = () => { };
   sounds: Sounds;
   controlsScale: number;
   scale: number
@@ -174,7 +174,8 @@ export default class CodeEditor {
       });
       commandSprite.on('delete', () => {
         console.log('CODE_EDITOR [delete]')
-        command.removeSelf();
+        this.removeCommandAndRegister(command)
+
       });
       commandSprite.on('dragstart', (
         input: Phaser.Input.Pointer,
@@ -204,7 +205,6 @@ export default class CodeEditor {
       })
       commandSprite.on('dragend', () => {
 
-
         Logger.log("MOVE_EVENT", "dragend");
         this.trash.close();
         const shortClick = this.getTime() - this.clickTime < 700;
@@ -217,7 +217,7 @@ export default class CodeEditor {
         Logger.warn('DRAGEND_DEBUG clicked', clicked)
 
         let removeCommand = () => {
-          command.removeSelf();
+          this.removeCommandAndRegister(command)
         }
 
         if (dragged && !dropped) {
@@ -276,9 +276,9 @@ export default class CodeEditor {
               }
             }
 
-            if (!dropped) {
+            /* if (!dropped) {
               removeCommand()
-            }
+            } */
           }
           command.program?.reorganize();
         }
@@ -361,6 +361,11 @@ export default class CodeEditor {
         program?.dragout();
       });
     })
+  }
+
+  removeCommandAndRegister(command: Command) {
+    command.removeSelf();
+    this.onRemoveCommand(command)
   }
 
   highlightProgramThatMayReceiveCommand() {
@@ -468,8 +473,8 @@ export default class CodeEditor {
     return program
   }
 
-  prepare(options: CodeEditorOptions) {
-    if (options.clear) {
+  prepare(options: PlayPhaseOptions) {
+    if (options.clearCodeEditor) {
       this.clear();
     }
     this.disanimatePrograms();
@@ -593,7 +598,8 @@ export default class CodeEditor {
   }
 }
 
-export class CodeEditorOptions {
-  clear?: boolean = true
+export class PlayPhaseOptions {
+  clearCodeEditor?: boolean = true
+  clearResponseState?: boolean = false
   muteInstructions?: boolean = true
 }

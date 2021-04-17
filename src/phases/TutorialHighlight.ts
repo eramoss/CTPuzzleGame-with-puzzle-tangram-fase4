@@ -41,7 +41,7 @@ export default class TutorialHighlight {
     this.fnGetDropLocation = fnGetDropLocation;
   }
 
-  contrastAndShowHandPointing() {
+  showHandPointingToRequestUserClick() {
     const sprite = this.runFnGetSprite();
 
     this.spriteDepthBackup = sprite.depth;
@@ -49,7 +49,7 @@ export default class TutorialHighlight {
 
     if (this.continueTutorialOnClick) {
       sprite.setInteractive();
-      this.useHandAnimationPointing(sprite);
+      this.showHandAnimationPointingSprite(sprite);
       this.onClickListener = () => {
         this.removeHand();
         this.resetDepth();
@@ -80,7 +80,7 @@ export default class TutorialHighlight {
     // dropLocation.setDepth(DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
   }
 
-  useHandAnimationPointing(sprite: Physics.Arcade.Sprite) {
+  showHandAnimationPointingSprite(sprite: Physics.Arcade.Sprite) {
     this.handAnimationKey = 'hand-tapping';
     this.scene.anims.create({
       key: this.handAnimationKey,
@@ -145,6 +145,16 @@ export default class TutorialHighlight {
     }
 
     commandSprite.disableInteractive();
+    this.simulateDragging(timeToCloseHand, commandSprite, dropLocation, timeBeforeRepeat);
+  }
+
+
+  private simulateDragging(
+    timeToCloseHand: number,
+    commandSprite: Physics.Arcade.Sprite,
+    dropLocation: TutorialDropLocation,
+    timeBeforeRepeat: number) {
+
     this.waitAndRun(timeToCloseHand, () => {
       if (!this.isDragMoveAnimationCancelled) {
 
@@ -165,7 +175,7 @@ export default class TutorialHighlight {
             newCommandSprite.on('outofbounds', () => {
               interactionTriggered = true;
               this.onInteractAdvanceTutorial();
-            })
+            });
             newCommandSprite.on('pointerup', () => {
               this.removeDropIndicator();
               if (!animationCancelled)
@@ -175,8 +185,8 @@ export default class TutorialHighlight {
             });
           }
         });
-        commandSprite.alpha = 0.5
-        this.handSprite.alpha = 0.5
+        commandSprite.alpha = 0.5;
+        this.handSprite.alpha = 0.5;
         this.bringSpriteToFront(commandSprite);
 
         this.moveSpriteTo(
@@ -184,11 +194,11 @@ export default class TutorialHighlight {
           dropLocation,
           {
             onUpdateSpritePosition: () => {
-              this.putHandSpriteOver(commandSprite)
+              this.putHandSpriteOver(commandSprite);
             },
             stopCondition: () => {
               return this.checkIfHandAchievedDestine(commandSprite, dropLocation)
-                || this.isDragMoveAnimationCancelled
+                || this.isDragMoveAnimationCancelled;
             },
             onAchieve: () => {
               Logger.log('TUTORIAL_HIGHLIGHT [onAchievePositionRepeat]');
@@ -198,14 +208,13 @@ export default class TutorialHighlight {
                 () => {
                   this.handSprite.setVisible(false);
                   this.simulateClickToRemove(commandSprite);
-                  this.useHandAnimationDragging(true)
+                  this.useHandAnimationDragging(true);
                 });
             }
           });
       }
     });
   }
-
 
   waitAndRun(time: number, fn: () => void) {
     this.functionsRunningByTimeout.push(setTimeout(() => { fn(); }, time))

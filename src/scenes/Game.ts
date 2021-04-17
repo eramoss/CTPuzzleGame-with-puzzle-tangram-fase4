@@ -228,7 +228,7 @@ export default class Game extends Scene {
 
 
     this.dude.onFinishWalking = () => {
-      this.codeEditor.setModeStopped();
+      this.codeEditor.setPlayBtnModeStopped();
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
@@ -242,7 +242,7 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.codeEditor.setModePlaying()
+        this.codeEditor.setPlayBtnModePlaying()
         this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
         this.dude.execute(this.codeEditor.programs);
       }
@@ -265,7 +265,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickStepByStep = () => {
-      this.codeEditor.setModePlaying();
+      this.codeEditor.setPlayBtnModePlaying();
       this.codeEditor.disableStepButton();
       this.dude.executeStepByStep(this.codeEditor.programs);
     }

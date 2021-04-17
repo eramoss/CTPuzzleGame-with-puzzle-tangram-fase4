@@ -39,6 +39,7 @@ export default class CodeEditor {
   onShowInstruction: (instruction: string) => void = () => { };
   onHideLastInstruction: () => void = () => { };
   trash: Trash;
+  toolboxCommandsGroup: Phaser.Physics.Arcade.Group;
 
   constructor(scene: Scene, sounds: Sounds, grid: AlignGrid) {
     this.sounds = sounds;
@@ -87,15 +88,22 @@ export default class CodeEditor {
     });
   }
 
-  private createDraggableProgramCommands(commandToRecreate: CommandName = null) {
-    const commandGroup = this.scene.physics.add.group();
+  createDraggableProgramCommands(commandToRecreate: CommandName = null) {
+    if (this.toolboxCommandsGroup) {
+      if (!commandToRecreate) {
+        this.toolboxCommandsGroup.clear(true, true)
+      }
+    }
+    if (!this.toolboxCommandsGroup) {
+      this.toolboxCommandsGroup = this.scene.physics.add.group();
+    }
     let commandNames = ['arrow-left', 'arrow-up', 'arrow-down', 'arrow-right', 'prog_0', 'prog_1', 'prog_2', 'if_coin', 'if_block'] as CommandName[]
     if (commandToRecreate) {
       commandNames = commandNames.filter(c => c == commandToRecreate)
     }
     const createdCommands: Command[] = commandNames
       .map(commandName => {
-        let sprite = commandGroup.get(0, 0, commandName)
+        let sprite = this.toolboxCommandsGroup.get(0, 0, commandName)
         const command = new Command(this.scene, sprite);
         command.setDepth(3);
         return command
@@ -424,10 +432,10 @@ export default class CodeEditor {
     this.grid.placeAt(9, 17, this.btnStep.sprite, 2)
     this.grid.placeAt(6.5, 17, this.btnStop.sprite, 2.1)
 
-    this.setModeStopped();
+    this.setPlayBtnModeStopped();
   }
 
-  setModeStopped() {
+  setPlayBtnModeStopped() {
     this.btnPlay.show()
     this.btnStop.hide();
     this.unhighlightStepButton();
@@ -435,7 +443,7 @@ export default class CodeEditor {
     this.enablePlayButton();
   }
 
-  setModePlaying() {
+  setPlayBtnModePlaying() {
     this.btnPlay.hide()
     this.btnStop.show();
   }
@@ -466,11 +474,12 @@ export default class CodeEditor {
     }
     this.disanimatePrograms();
     this.unhighlightStepButton();
-    this.setModeStopped();
+    this.setPlayBtnModeStopped();
   }
 
   clear() {
     this.programs.forEach(p => p.clear());
+    this.createDraggableProgramCommands()
   }
 
   disanimatePrograms() {

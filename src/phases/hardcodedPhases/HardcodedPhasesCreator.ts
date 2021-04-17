@@ -228,11 +228,11 @@ export default class HardcodedPhasesCreator {
   private createPhaseToAvoidBarriers(showTutorial: boolean = false) {
     let item = new MecanicaRope()
     item.falasAntesDeIniciar = [
-      'Não sei se você percebeu...',
-      'Mas antes...',
-      '...quase não alcancei a moeda!',
-      'Temos que aprender ir mais longe!',
-      'Se não, não vamos resgatar a próxima moeda',
+      'Fase teste 1',
+      // 'Mas antes...',
+      // '...quase não alcancei a moeda!',
+      // 'Temos que aprender ir mais longe!',
+      // 'Se não, não vamos resgatar a próxima moeda',
   ]
   item.comandosEsperados = ['UP','LEFT','UP','UP','PROG_1','UP','UP']
   item.face = "down"
@@ -243,7 +243,7 @@ export default class HardcodedPhasesCreator {
   ]
   item.obstaculos = [
       ['null','block','null','null','null'],
-      ['null','null','null','null','coin'],
+      ['null','coin','null','null','null'],
       ['block','block','null','null','null']
   ]
   if(showTutorial){
@@ -251,10 +251,10 @@ export default class HardcodedPhasesCreator {
         {acao:'click',elemento:'arrow-up',frase:'Começar!\nClique para\nfrente!'},
         {acao:'click',elemento:'arrow-left',frase:'Agora para\nesquerda!'},
         {acao:'click',elemento:'arrow-up',frase:'Para\nfrente!'},
-        {acao:'click',elemento:'arrow-up',frase:'Mais uma vez!'},
-        {acao:'click',elemento:'prog_1',frase:'USO MAIS\nUM NÍVEL!!!'},
-        {acao:'click',elemento:'arrow-up',frase:'Agora tenho\nespaço!'},
-        {acao:'click',elemento:'arrow-up',frase:'Bem mais espaço!!'},
+        // {acao:'click',elemento:'arrow-up',frase:'Mais uma vez!'},
+        // {acao:'click',elemento:'prog_1',frase:'USO MAIS\nUM NÍVEL!!!'},
+        // {acao:'click',elemento:'arrow-up',frase:'Agora tenho\nespaço!'},
+        // {acao:'click',elemento:'arrow-up',frase:'Bem mais espaço!!'},
         {acao:'click',elemento:'btn-play',frase:'Play!'},
     ]
   }
@@ -268,12 +268,12 @@ export default class HardcodedPhasesCreator {
   private createPhaseToWalkThroughTheEdge() {
     let item = new MecanicaRope()
     item.ganhoBateriaAoCapturarPilha = 10
-    item.falasAntesDeIniciar = [
-        'Minha energia pode acabar.',
-        'Para alcançar a moeda...',
-        '...preciso pegar umas baterias pelo caminho.',
-        'Vamos tentar?',
-    ],
+    // item.falasAntesDeIniciar = [
+    //     'Fase teste 2',
+    //     // 'Para alcançar a moeda...',
+    //     // '...preciso pegar umas baterias pelo caminho.',
+    //     // 'Vamos tentar?',
+    // ],
     item.comandosEsperados = ["UP", "UP", "UP", "UP", "PROG_1", "LEFT", "PROG_0"]
     item.face = "down"
     item.mapa = [

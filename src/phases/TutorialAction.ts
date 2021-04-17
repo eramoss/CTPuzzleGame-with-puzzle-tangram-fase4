@@ -52,7 +52,7 @@ export default class TutorialAction {
             }
             this.highlights.forEach(highlight => {
                 highlight.onInteractAdvanceTutorial = () => onInteractAdvanceTutorial();
-                highlight.contrastAndShowHandPointing();
+                highlight.showHandPointingToRequestUserClick();
             });
         }
         if (!this.isEnvironmentValidToHighlightTutorial()) {

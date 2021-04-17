@@ -60,7 +60,7 @@ export default class GameState {
   }
 
   getItemNumber(): number {
-    return getItem('itemNumber');
+    return getItem('itemNumber', 0);
   }
 
   private log(...arg0: any[]) {

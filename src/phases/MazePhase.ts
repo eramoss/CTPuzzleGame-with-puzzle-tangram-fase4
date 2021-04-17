@@ -15,11 +15,13 @@ export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-lef
 
 export const DEFAULT_SKIP_MESSAGE = 'Você vai pular essa fase?'
 export const DEFAULT_EXIT_MESSAGE = 'Vai sair dessa fase?'
+export const DEFAULT_RESTART_MESSAGE = 'Reiniciar fase?'
 export default class MazePhase {
 
 
   skipPhaseMessage:string = DEFAULT_SKIP_MESSAGE
   exitPhaseMessage:string = DEFAULT_EXIT_MESSAGE
+  restartPhaseMessage:string = DEFAULT_RESTART_MESSAGE
   setupTutorialsAndObjectsPositions: () => void;
   messagesBeforeStartPlay:string[] = []
   obstacles: Matrix;

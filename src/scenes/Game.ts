@@ -77,6 +77,7 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-exit', 'assets/ct/exit_btn.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
+    this.load.spritesheet('btn-restart', 'assets/ct/btn_restart.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
     this.load.spritesheet('btn-cancel', 'assets/ct/btn_cancel.png', { frameWidth: 194, frameHeight: 123 });
     this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
@@ -237,6 +238,7 @@ export default class Game extends Scene {
 
     this.createBtnExit()
     this.createBtnJump()
+    this.createBtnRestart()
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
@@ -306,6 +308,18 @@ export default class Game extends Scene {
       }
     })
     this.grid.placeAt(0.5, 0.5, btnJump.sprite, 1.6)
+  }
+
+  private createBtnRestart() {
+    let btnJump = new Button(this, this.sounds, 0, 0, 'btn-restart', () => {
+      let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
+      messageBox.setText(this.currentPhase.restartPhaseMessage)
+      messageBox.onClickOk = () => {
+        messageBox.close()
+        this.replayCurrentPhase({ clear: true, muteInstructions: false })
+      }
+    })
+    this.grid.placeAt(0.5, 4, btnJump.sprite, 1.6)
   }
 
   exit() {
@@ -425,13 +439,13 @@ export default class Game extends Scene {
     this.playPhase(phase, { clear: true });
   }
 
-  replayCurrentPhase() {
-    let clearCodeEditor = this.currentPhase?.isTutorialPhase();
-    this.dude.stop(true);
-    this.playPhase(this.currentPhase, {
-      clear: clearCodeEditor,
+  replayCurrentPhase(options: PlayPhaseOptions =
+    {
+      clear: this.currentPhase?.isTutorialPhase(),
       muteInstructions: true
-    } as PlayPhaseOptions)
+    }) {
+    this.dude.stop(true);
+    this.playPhase(this.currentPhase, options)
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {

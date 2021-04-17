@@ -81,13 +81,15 @@ export default class MessageBox {
   }
 
   showCurrentMessage() {
-    let message = this.messages[this.currentMessageIndex];
-    if (message) {
-      this.setText(message);
-    }
-    if (!message) {
-      this.close();
-      this.onFinishTalk();
+    if (this.currentMessageIndex >= 0) {
+      let message = this.messages[this.currentMessageIndex];
+      if (message) {
+        this.setText(message);
+      }
+      if (!message) {
+        this.close();
+        this.onFinishTalk();
+      }
     }
   }
 

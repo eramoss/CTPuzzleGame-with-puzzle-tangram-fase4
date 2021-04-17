@@ -81,6 +81,8 @@ export default class HardcodedPhasesCreator {
 
     if (!isTesting) {
       let showTutorial = true;
+      phases.push(this.createPhaseToAvoidBarriers(showTutorial))
+      phases.push(this.createPhaseToWalkThroughTheEdge())
       phases.push(this.createPhaseWithIfTutorial())
       phases.push(this.createEasyPhaseArrowUp(showTutorial));
       phases.push(this.createEasyPhaseArrowUpTwoTimes(showTutorial));
@@ -211,13 +213,85 @@ export default class HardcodedPhasesCreator {
     item.acoesTutorial = [
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
       { acao: 'click', elemento: 'arrow-up', frase: 'Clique para frente!' },
-      { acao: 'drag', elemento: 'if_block', arrastarSobre: 'if_coin', frase: 'Clique para frente!' },
+      { acao: 'drag', elemento: 'if_block', arrastarAte: 'if_coin', frase: 'Clique para frente!' },
       { acao: 'click', elemento: 'btn-play', frase: 'Play!' }
     ]
 
     item.falasAntesDeIniciar = [
       "Testando fala enorme\ncom quebra de linha"
     ]
+
+    let phase = this.mecanicaToPhase(item)
+    return phase;
+  }
+
+  private createPhaseToAvoidBarriers(showTutorial: boolean = false) {
+    let item = new MecanicaRope()
+    item.falasAntesDeIniciar = [
+      'Não sei se você percebeu...',
+      'Mas antes...',
+      '...quase não alcancei a moeda!',
+      'Temos que aprender ir mais longe!',
+      'Se não, não vamos resgatar a próxima moeda',
+  ]
+  item.comandosEsperados = ['UP','LEFT','UP','UP','PROG_1','UP','UP']
+  item.face = "down"
+  item.mapa = [
+      ['tile','tile','null','null','null'],
+      ['tile','tile','tile','tile','tile'],
+      ['tile','tile','null','null','null'],
+  ]
+  item.obstaculos = [
+      ['null','block','null','null','null'],
+      ['null','null','null','null','coin'],
+      ['block','block','null','null','null']
+  ]
+  if(showTutorial){
+    item.acoesTutorial = [
+        {acao:'click',elemento:'arrow-up',frase:'Começar!\nClique para\nfrente!'},
+        {acao:'click',elemento:'arrow-left',frase:'Agora para\nesquerda!'},
+        {acao:'click',elemento:'arrow-up',frase:'Para\nfrente!'},
+        {acao:'click',elemento:'arrow-up',frase:'Mais uma vez!'},
+        {acao:'click',elemento:'prog_1',frase:'USO MAIS\nUM NÍVEL!!!'},
+        {acao:'click',elemento:'arrow-up',frase:'Agora tenho\nespaço!'},
+        {acao:'click',elemento:'arrow-up',frase:'Bem mais espaço!!'},
+        {acao:'click',elemento:'btn-play',frase:'Play!'},
+    ]
+  }
+  item.x = 0
+  item.y = 0
+
+    let phase = this.mecanicaToPhase(item)
+    return phase;
+  }
+
+  private createPhaseToWalkThroughTheEdge() {
+    let item = new MecanicaRope()
+    item.ganhoBateriaAoCapturarPilha = 10
+    item.falasAntesDeIniciar = [
+        'Minha energia pode acabar.',
+        'Para alcançar a moeda...',
+        '...preciso pegar umas baterias pelo caminho.',
+        'Vamos tentar?',
+    ],
+    item.comandosEsperados = ["UP", "UP", "UP", "UP", "PROG_1", "LEFT", "PROG_0"]
+    item.face = "down"
+    item.mapa = [
+        ['tile','null','tile','tile','tile'],
+        ['tile','null','null','null','tile'],
+        ['tile','null','null','null','tile'],
+        ['tile','null','null','null','tile'],
+        ['tile','tile','tile','tile','tile'],
+    ]
+    item.obstaculos = [
+        ['null','null','coin','null','null'],
+        ['null','null','null','null','null'],
+        ['null','null','null','null','null'],
+        ['null','null','null','null','null'],
+        ['null','null','null','null','battery']
+    ]
+    item.x = 0
+    item.y = 0
 
     let phase = this.mecanicaToPhase(item)
     return phase;

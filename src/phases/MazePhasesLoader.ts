@@ -5,7 +5,7 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix, { MatrixMode } from "../geom/Matrix";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
-import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
+import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_RESTART_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
 import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
 import TestApplicationService from "../test-application/TestApplicationService";
 import { TestItem } from "../test-application/TestApplication";
@@ -104,6 +104,7 @@ export default class MazePhasesLoader {
 
       phase.skipPhaseMessage = mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE
       phase.exitPhaseMessage = mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE
+      phase.restartPhaseMessage = mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE
       phase.dudeStartPosition = { row: phase.mecanicaRope.y, col: phase.mecanicaRope.x }
       phase.dudeFacedTo = mecanicaRope.face
       phase.batteryLevel = mecanicaRope.nivelBateria

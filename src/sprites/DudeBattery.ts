@@ -23,7 +23,7 @@ export class DudeBattery {
   constructor(scene: Scene, grid: AlignGrid) {
     this.scene = scene;
     this.grid = grid;
-    this.batteryImage = this.grid.addImage(7, 0.5, 'battery', 4, 1);
+    this.batteryImage = this.grid.addImage(12.5, 0.5, 'battery', 4, 1);
     this.graphics = scene.add.graphics()
   }
 
@@ -67,7 +67,7 @@ export class DudeBattery {
     let firstX = this.batteryImage.x - width / 2;
     let y = this.batteryImage.y - height / 2;
 
-    this.setText(firstX, y, `${level} / ${maxCells}`);
+    this.setText(firstX, y, `${(level / maxCells * 100).toFixed(0)}% `);
 
     let countCells = 0;
     for (let x = firstX; countCells < level; x += cellWidth + cellMargin) {

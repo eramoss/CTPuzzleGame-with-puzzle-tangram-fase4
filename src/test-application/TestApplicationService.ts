@@ -34,6 +34,24 @@ export default class TestApplicationService {
     return getTypedItem(GameParams, 'gameParams');
   }
 
+  getCurrentPhaseString(testItemId: number): string {
+    const participation = this.getParticipation();
+    let phaseString = '';
+    if (participation) {
+      const items = participation?.test?.items;
+      if (items) {
+        let item = items.find(item => item.id == testItemId)
+        if (item) {
+          const currentIndex = items.indexOf(item);
+          if (currentIndex > -1) {
+            phaseString = `Fase ${currentIndex + 1}/${items.length}`;
+          }
+        }
+      }
+    }
+    return phaseString;
+  }
+
   getParticipation(): PreparedParticipation {
     return getTypedItem(PreparedParticipation, "participation")
   }

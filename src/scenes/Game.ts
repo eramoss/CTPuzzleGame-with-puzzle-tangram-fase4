@@ -44,6 +44,7 @@ export default class Game extends Scene {
   gameState: GameState
   loadingText: GameObjects.Text
   messageBox: MessageBox
+  textCurrentPhase: GameObjects.Text
 
   constructor() {
     super('game')
@@ -238,7 +239,8 @@ export default class Game extends Scene {
       }
     }
 
-    //this.grid.show(0.5)
+    //this.grid.show(0.3)
+    this.createTextCurrentPhase();
     this.createBtnExit()
     this.createBtnJump()
     this.createBtnRestart()
@@ -294,6 +296,16 @@ export default class Game extends Scene {
     this.playNextPhase();
   }
 
+  private createTextCurrentPhase() {
+    let cell = this.grid.getCell(0.5, 0.5)
+    this.textCurrentPhase =
+      this.add.text(cell.x, cell.y, '', { fontFamily: 'Dyuthi, sans-serif' })
+        .setScale(this.grid.scale)
+        .setFontStyle('bold')
+        .setTint(0xf6cf55)
+        .setFontSize(35)
+  }
+
   private createBtnExit() {
     let btnExit = new Button(this, this.sounds, 0, 0, 'btn-exit', () => {
       let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
@@ -303,7 +315,7 @@ export default class Game extends Scene {
         this.exit()
       }
     })
-    this.grid.placeAt(0.5, 0.5, btnExit.sprite, 1.3)
+    this.grid.placeAt(0.5, 14.5, btnExit.sprite, 1.3)
   }
 
   private createBtnJump() {
@@ -315,7 +327,7 @@ export default class Game extends Scene {
         this.giveUp()
       }
     })
-    this.grid.placeAt(2, 17.5, btnJump.sprite, 1.3)
+    this.grid.placeAt(0.5, 8.5, btnJump.sprite, 1.3)
   }
 
   private createBtnRestart() {
@@ -341,10 +353,14 @@ export default class Game extends Scene {
       this.gameState.setBackgroundMusicEnabled(newState)
     })
     btn.toggle(!this.gameState.isBackgroundMusicEnabled())
-    this.grid.placeAt(2, 0.5, btn.sprite, 1.3)
+    this.grid.placeAt(0.5, 11.5, btn.sprite, 1.3)
   }
 
   exit() {
+    if (this.testApplicationService.isTestApplication()) {
+      this.startEndScene()
+      return;
+    }
     this.destroy()
     this.scene.start('pre-game')
   }
@@ -498,6 +514,7 @@ export default class Game extends Scene {
         this.gameState.initializeResponse(itemId);
       }
       this.testApplicationService.saveCurrentPlayingPhase(itemId)
+      this.updateLabelCurrentPhase(itemId)
 
       this.currentPhase.setupMatrixAndTutorials()
       this.dude.matrix = this.currentPhase.obstacles;
@@ -531,8 +548,18 @@ export default class Game extends Scene {
       if (this.gameParams.isAutomaticTesting()) {
         this.codeEditor.onClickRun()
       }
+
+
     }
 
+  }
+
+  private updateLabelCurrentPhase(itemId: number) {
+    let label = this.testApplicationService.getCurrentPhaseString(itemId)
+    if (!label) {
+      label = 'Fases restantes: ' + (this.phasesLoader.phases.length - this.phasesLoader.currentPhase)
+    }
+    this.textCurrentPhase.setText(label)
   }
 
   playBackgroundMusic() {

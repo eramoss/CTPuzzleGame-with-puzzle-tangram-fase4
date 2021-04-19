@@ -31,7 +31,7 @@ export default class PhasesGrid {
     let scale = this.grid.scale;
     testApplications.forEach((testApplication: TestApplication, index: number) => {
       let x = 5;
-      if(index > 5){
+      if (index > 5) {
         x = 15
       }
       let cell = this.grid.getCell(x, index % 6);
@@ -49,11 +49,18 @@ export default class PhasesGrid {
       )
       btnPlays.push(btn)
       let name = testApplication.name.toUpperCase();
-      name = `${index+1} - ${name}`
+      name = `${index + 1} - ${name}`
       btn.setFontSize(24);
       btn.setScale(scale)
       btn.setText(name);
       btn.ajustTextPosition(20, 25)
     })
+
+    if (testApplications.length == 1) {
+      const application = testApplications[0];
+      if (application) {
+        this.emitGameUrl(application)
+      }
+    }
   }
 }

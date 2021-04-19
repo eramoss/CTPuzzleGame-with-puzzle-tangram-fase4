@@ -116,10 +116,13 @@ export default class PreGame extends Phaser.Scene {
   private async searchPublicApplications(): Promise<boolean> {
     let foundPublicApplications = false;
     foundPublicApplications = await this.testApplicationService.loadPublicApplications();
+    const testApplications = this.testApplicationService.getPublicTestApplications();
     if (foundPublicApplications) {
-      this.phasesGrid.setApplications(this.testApplicationService.getPublicTestApplications());
+      this.phasesGrid.setApplications(testApplications);
     }
-    this.loading.hide();
+    if (testApplications.length > 1) {
+      this.loading.hide();
+    }
     return foundPublicApplications;
   }
 

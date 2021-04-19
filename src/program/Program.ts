@@ -274,8 +274,8 @@ export default class Program {
   }
 
   setInteractive() {
-    this.dropZone.zone.setInteractive();
-    this.sprite.setInteractive();
+    this.dropZone?.zone?.setInteractive();
+    this.sprite?.setInteractive();
     this.ordinalCommands.forEach(c => {
       c.setInteractive();
     })

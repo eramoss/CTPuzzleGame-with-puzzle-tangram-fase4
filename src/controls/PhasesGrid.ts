@@ -29,6 +29,16 @@ export default class PhasesGrid {
   setApplications(testApplications: TestApplication[]) {
     let btnPlays: Button[] = []
     let scale = this.grid.scale;
+
+
+    if (testApplications.length == 1) {
+      const application = testApplications[0];
+      if (application) {
+        this.emitGameUrl(application)
+      }
+      return
+    }
+
     testApplications.forEach((testApplication: TestApplication, index: number) => {
       let x = 5;
       if (index > 5) {
@@ -56,11 +66,6 @@ export default class PhasesGrid {
       btn.ajustTextPosition(20, 25)
     })
 
-    if (testApplications.length == 1) {
-      const application = testApplications[0];
-      if (application) {
-        this.emitGameUrl(application)
-      }
-    }
+
   }
 }

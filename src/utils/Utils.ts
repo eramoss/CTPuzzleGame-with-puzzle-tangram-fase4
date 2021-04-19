@@ -55,11 +55,11 @@ export function getDefaultPlatformApiUrl(gameParams: GameParams) {
   const defaultOnlineApi = 'https://api.ctplatform.playerweb.com.br';
   const protocol = window.location.protocol
   let apiUrl = '';
-  if (protocol == 'https:') {
-    apiUrl = defaultOnlineApi
-  }
   if (protocol == 'http:') {
     apiUrl = 'http://localhost:3110'
+  }
+  if (protocol == 'https:' || gameParams.operation == "useOnlineApi") {
+    apiUrl = defaultOnlineApi
   }
   apiUrl = apiUrl || gameParams.puzzleUrl || defaultOnlineApi
   return apiUrl
@@ -80,7 +80,7 @@ export function androidOpenUrl(url: string) {
   }
 }
 
-export function replaceUserUUIDToken(url:string, value:string){
+export function replaceUserUUIDToken(url: string, value: string) {
   return url.replace('<user_uuid>', value)
 }
 
@@ -144,7 +144,7 @@ export function isDebug(scene: Phaser.Scene) {
 export function writeText(newText: string, existentText: string, textObject: Phaser.GameObjects.Text, onWrite: () => void) {
   if (existentText.length < newText.length) {
     existentText = newText.substring(0, existentText.length + 1);
-    textObject.setText(existentText);
+    textObject?.setText(existentText);
     setTimeout(() => {
       writeText(newText, existentText, textObject, onWrite)
       onWrite()

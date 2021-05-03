@@ -19,6 +19,7 @@ const WARN_TIME = 300
 
 export default class Dude {
 
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -45,6 +46,7 @@ export default class Dude {
   battery: DudeBattery;
   batteryCostOnMove: number = 1;
   batteryGainOnCharge: number = 1;
+  speedFactor = 1
 
   constructor(scene: Scene, matrixMode: MatrixMode, sounds: Sounds, grid: AlignGrid) {
     this.grid = grid;
@@ -111,7 +113,7 @@ export default class Dude {
     this.clearTintOrPaintBatteryLow();
     this.playAnimation();
     this.currentStep?.animate();
-    const speed = DUDE_SPEED;
+    const speed = DUDE_SPEED * this.speedFactor;
     this.scene.physics.moveToObject(this.character, dudeMove.point, speed * this.grid.scale);
     this.onStartMoveCallback(this.x, this.y, this.currentStep);
   }
@@ -382,6 +384,12 @@ export default class Dude {
 
   hideBallon() {
     this.ballon.setVisible(false);
+  }
+
+  toggleSpeedFactor() {
+    let newSpeedFactor = this.speedFactor == 2 ? 1 : 2
+    this.speedFactor = newSpeedFactor
+    return newSpeedFactor
   }
 }
 

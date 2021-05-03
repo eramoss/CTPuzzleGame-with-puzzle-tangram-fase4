@@ -961,9 +961,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="981.54896"
-     inkscape:cy="-738.071"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="1044.9252"
+     inkscape:cy="-595.47454"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -13876,5 +13876,175 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_music.png"
        inkscape:export-xdpi="96.18"
        inkscape:export-ydpi="96.18" />
+    <rect
+       inkscape:export-ydpi="96.18"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3050"
+       width="20.411192"
+       height="24.341667"
+       x="14.059619"
+       y="43.624969"
+       rx="3.2355101"
+       ry="3.2355101" />
+    <rect
+       inkscape:export-ydpi="96.18"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       ry="3.2355101"
+       rx="3.2355101"
+       y="43.624969"
+       x="35.528156"
+       height="24.341667"
+       width="20.411192"
+       id="rect3052"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       inkscape:export-ydpi="96.18"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       ry="3.2355101"
+       rx="3.2355101"
+       y="43.624969"
+       x="56.997833"
+       height="24.341667"
+       width="20.411192"
+       id="rect3054"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       inkscape:export-ydpi="96.18"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3056"
+       width="20.411192"
+       height="24.341667"
+       x="78.466438"
+       y="43.624969"
+       rx="3.2355101"
+       ry="3.2355101" />
+    <rect
+       ry="3.2355101"
+       rx="3.2355101"
+       y="43.624969"
+       x="99.938065"
+       height="24.341667"
+       width="20.411192"
+       id="rect3064"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:none;fill-opacity:0.98039216;fill-rule:nonzero;stroke:#640000;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.07843137;paint-order:fill markers stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       style="fill:#640000;stroke-width:0.0360175;fill-opacity:1"
+       d="m 105.42066,57.229861 c -0.28684,-0.137247 -0.40623,-0.440771 -0.28679,-0.729125 0.0305,-0.07374 0.65105,-0.6123 1.96288,-1.703667 l 1.91821,-1.59584 0.0191,0.182218 c 0.0262,0.250025 0.1414,0.540772 0.33078,0.835058 0.0876,0.136177 0.148,0.257275 0.13415,0.269108 -0.0138,0.01183 -0.84066,0.634587 -1.83737,1.383902 -1.78959,1.345396 -1.81453,1.36253 -1.99897,1.373583 -0.10273,0.0061 -0.21163,-6.99e-4 -0.24201,-0.01524 z m 3.76882,-0.257723 c -0.32464,-0.214019 -0.32604,-0.721224 -0.002,-0.908487 0.0587,-0.03399 0.5606,-0.192515 1.11527,-0.352274 0.55467,-0.159758 1.03532,-0.302703 1.06811,-0.317654 0.048,-0.02188 -0.0353,-0.129074 -0.42681,-0.549439 -0.85905,-0.922303 -1.20093,-1.448899 -1.22923,-1.893351 -0.0242,-0.380241 5.7e-4,-0.41142 1.26423,-1.589479 0.62042,-0.578408 1.15693,-1.083572 1.19224,-1.122587 0.0624,-0.06891 0.0568,-0.08072 -0.1928,-0.41285 l -0.257,-0.341914 -0.33119,-0.02008 c -0.18215,-0.01106 -0.65272,-0.03286 -1.04571,-0.04849 l -0.71453,-0.02841 -0.10487,-0.117368 c -0.16562,-0.185363 -0.13158,-0.475456 0.0714,-0.608452 0.0796,-0.05215 0.26372,-0.0661 1.26705,-0.09597 0.64566,-0.01922 1.21586,-0.02442 1.26712,-0.01153 0.0906,0.02273 0.55583,0.5437 1.45238,1.626239 0.68696,0.829475 0.68872,0.83233 0.98796,1.5997 l 0.27507,0.70542 0.30355,0.02569 c 0.16695,0.01414 0.56068,0.03905 0.87497,0.05538 l 0.57143,0.02967 0.1039,0.116285 c 0.14641,0.16387 0.14735,0.401385 0.002,0.546582 -0.12059,0.12058 -0.15751,0.125269 -1.42435,0.180901 -1.13115,0.04967 -1.02292,0.103174 -1.4365,-0.710042 l -0.3153,-0.619959 -0.83726,0.61632 c -0.4605,0.338975 -0.8598,0.637019 -0.88734,0.662318 -0.042,0.03854 0.0697,0.208502 0.68849,1.048146 0.40622,0.551181 0.75843,1.063559 0.78269,1.138616 0.0803,0.248531 -0.0471,0.569148 -0.28679,0.72142 -0.10865,0.06903 -3.32087,0.744991 -3.53864,0.744653 -0.0897,-1.49e-4 -0.19603,-0.02866 -0.25719,-0.06898 z m -4.6481,-2.435755 c -1.07977,-0.05078 -1.06446,-0.0464 -1.06446,-0.304396 0,-0.262131 -0.0204,-0.256493 1.11962,-0.30881 1.74859,-0.08023 1.68561,-0.08143 1.78479,0.03386 0.11323,0.131647 0.11845,0.402843 0.0104,0.54022 -0.0732,0.09304 -0.0825,0.09481 -0.47724,0.08983 -0.22142,-0.0028 -0.83932,-0.02561 -1.37311,-0.05072 z m 1.4441,-1.656137 c -1.16351,-0.0502 -1.15626,-0.04828 -1.15626,-0.305065 0,-0.25985 -0.0164,-0.255769 1.24694,-0.309469 0.62071,-0.02639 1.30163,-0.04859 1.51315,-0.04934 0.3733,-0.0014 0.38676,0.0014 0.45922,0.09353 0.12837,0.163197 0.0726,0.541055 -0.089,0.603075 -0.0811,0.0311 -0.75237,0.01996 -1.97401,-0.03273 z m 1.70549,-1.657651 c -0.54476,-0.02483 -1.01843,-0.04671 -1.05259,-0.04862 -0.0798,-0.0045 -0.1837,-0.204118 -0.15849,-0.304494 0.054,-0.214835 0.0224,-0.208268 1.24995,-0.260441 0.62243,-0.02645 1.30476,-0.04872 1.51627,-0.04947 0.3733,-0.0014 0.38677,0.0014 0.45923,0.09353 0.0516,0.06563 0.0746,0.14745 0.0746,0.265274 0,0.117824 -0.023,0.199644 -0.0746,0.265274 -0.0743,0.0945 -0.0766,0.09488 -0.54927,0.0895 -0.26104,-0.0029 -0.92034,-0.02572 -1.4651,-0.05055 z m 7.53728,-0.197042 c -0.33375,-0.06824 -0.58753,-0.252721 -0.74919,-0.544589 -0.0951,-0.171676 -0.10679,-0.226568 -0.10641,-0.499042 4.8e-4,-0.33616 0.0581,-0.491866 0.27238,-0.735915 0.28453,-0.324063 0.82654,-0.423475 1.22964,-0.225531 0.59282,0.291116 0.78381,0.98334 0.42666,1.546492 -0.22297,0.351592 -0.66743,0.541534 -1.07308,0.458585 z"
+       id="path3103"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3105"
+       d="m 83.949035,57.229861 c -0.28684,-0.137247 -0.40623,-0.440771 -0.28679,-0.729125 0.0305,-0.07374 0.651047,-0.6123 1.962877,-1.703667 l 1.91821,-1.59584 0.0191,0.182218 c 0.0262,0.250025 0.1414,0.540772 0.33078,0.835058 0.0876,0.136177 0.148,0.257275 0.13415,0.269108 -0.0138,0.01183 -0.84066,0.634587 -1.83737,1.383902 -1.78959,1.345396 -1.81453,1.36253 -1.998967,1.373583 -0.10273,0.0061 -0.21163,-6.99e-4 -0.24201,-0.01524 z m 3.768817,-0.257723 c -0.32464,-0.214019 -0.32604,-0.721224 -0.002,-0.908487 0.0587,-0.03399 0.5606,-0.192515 1.11527,-0.352274 0.55467,-0.159758 1.035317,-0.302703 1.068107,-0.317654 0.048,-0.02188 -0.0353,-0.129074 -0.426807,-0.549439 -0.85905,-0.922303 -1.20093,-1.448899 -1.22923,-1.893351 -0.0242,-0.380241 5.7e-4,-0.41142 1.26423,-1.589479 0.620417,-0.578408 1.156927,-1.083572 1.192237,-1.122587 0.0624,-0.06891 0.0568,-0.08072 -0.1928,-0.41285 l -0.257,-0.341914 -0.33119,-0.02008 c -0.18215,-0.01106 -0.652717,-0.03286 -1.045707,-0.04849 l -0.71453,-0.02841 -0.10487,-0.117368 c -0.16562,-0.185363 -0.13158,-0.475456 0.0714,-0.608452 0.0796,-0.05215 0.26372,-0.0661 1.26705,-0.09597 0.645657,-0.01922 1.215857,-0.02442 1.267117,-0.01153 0.0906,0.02273 0.55583,0.5437 1.45238,1.626239 0.68696,0.829475 0.68872,0.83233 0.98796,1.5997 l 0.27507,0.70542 0.30355,0.02569 c 0.16695,0.01414 0.56068,0.03905 0.87497,0.05538 l 0.571427,0.02967 0.1039,0.116285 c 0.14641,0.16387 0.14735,0.401385 0.002,0.546582 -0.12059,0.12058 -0.15751,0.125269 -1.424347,0.180901 -1.13115,0.04967 -1.02292,0.103174 -1.4365,-0.710042 l -0.3153,-0.619959 -0.83726,0.61632 c -0.4605,0.338975 -0.8598,0.637019 -0.88734,0.662318 -0.042,0.03854 0.0697,0.208502 0.68849,1.048146 0.40622,0.551181 0.75843,1.063559 0.78269,1.138616 0.0803,0.248531 -0.0471,0.569148 -0.28679,0.72142 -0.10865,0.06903 -3.320867,0.744991 -3.538637,0.744653 -0.0897,-1.49e-4 -0.19603,-0.02866 -0.25719,-0.06898 z m -4.648097,-2.435755 c -1.07977,-0.05078 -1.06446,-0.0464 -1.06446,-0.304396 0,-0.262131 -0.0204,-0.256493 1.11962,-0.30881 1.748587,-0.08023 1.685607,-0.08143 1.784787,0.03386 0.11323,0.131647 0.11845,0.402843 0.0104,0.54022 -0.0732,0.09304 -0.0825,0.09481 -0.47724,0.08983 -0.221417,-0.0028 -0.839317,-0.02561 -1.373107,-0.05072 z m 1.444097,-1.656137 c -1.163507,-0.0502 -1.156257,-0.04828 -1.156257,-0.305065 0,-0.25985 -0.0164,-0.255769 1.246937,-0.309469 0.62071,-0.02639 1.30163,-0.04859 1.51315,-0.04934 0.3733,-0.0014 0.38676,0.0014 0.45922,0.09353 0.12837,0.163197 0.0726,0.541055 -0.089,0.603075 -0.0811,0.0311 -0.75237,0.01996 -1.97401,-0.03273 z m 1.70549,-1.657651 c -0.54476,-0.02483 -1.01843,-0.04671 -1.05259,-0.04862 -0.0798,-0.0045 -0.1837,-0.204118 -0.15849,-0.304494 0.054,-0.214835 0.0224,-0.208268 1.24995,-0.260441 0.62243,-0.02645 1.30476,-0.04872 1.51627,-0.04947 0.3733,-0.0014 0.38677,0.0014 0.45923,0.09353 0.0516,0.06563 0.0746,0.14745 0.0746,0.265274 0,0.117824 -0.023,0.199644 -0.0746,0.265274 -0.0743,0.0945 -0.0766,0.09488 -0.54927,0.0895 -0.26104,-0.0029 -0.92034,-0.02572 -1.4651,-0.05055 z m 7.537277,-0.197042 c -0.33375,-0.06824 -0.58753,-0.252721 -0.74919,-0.544589 -0.0951,-0.171676 -0.10679,-0.226568 -0.10641,-0.499042 4.8e-4,-0.33616 0.0581,-0.491866 0.27238,-0.735915 0.28453,-0.324063 0.82654,-0.423475 1.22964,-0.225531 0.592817,0.291116 0.783807,0.98334 0.42666,1.546492 -0.22297,0.351592 -0.66743,0.541534 -1.07308,0.458585 z"
+       style="fill:#640000;stroke-width:0.0360175;fill-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       style="fill:#640000;stroke-width:0.0360175;fill-opacity:1"
+       d="m 62.48043,57.229861 c -0.28684,-0.137247 -0.40623,-0.440771 -0.28679,-0.729125 0.0305,-0.07374 0.651047,-0.6123 1.962877,-1.703667 l 1.91821,-1.59584 0.0191,0.182218 c 0.0262,0.250025 0.1414,0.540772 0.33078,0.835058 0.0876,0.136177 0.148,0.257275 0.13415,0.269108 -0.0138,0.01183 -0.84066,0.634587 -1.83737,1.383902 -1.78959,1.345396 -1.81453,1.36253 -1.998967,1.373583 -0.10273,0.0061 -0.21163,-6.99e-4 -0.24201,-0.01524 z m 3.768817,-0.257723 c -0.32464,-0.214019 -0.32604,-0.721224 -0.002,-0.908487 0.0587,-0.03399 0.5606,-0.192515 1.11527,-0.352274 0.55467,-0.159758 1.035317,-0.302703 1.068107,-0.317654 0.048,-0.02188 -0.0353,-0.129074 -0.426807,-0.549439 -0.85905,-0.922303 -1.20093,-1.448899 -1.22923,-1.893351 -0.0242,-0.380241 5.7e-4,-0.41142 1.26423,-1.589479 0.620417,-0.578408 1.156927,-1.083572 1.192237,-1.122587 0.0624,-0.06891 0.0568,-0.08072 -0.1928,-0.41285 l -0.257,-0.341914 -0.33119,-0.02008 c -0.18215,-0.01106 -0.652717,-0.03286 -1.045707,-0.04849 l -0.71453,-0.02841 -0.10487,-0.117368 c -0.16562,-0.185363 -0.13158,-0.475456 0.0714,-0.608452 0.0796,-0.05215 0.26372,-0.0661 1.26705,-0.09597 0.645657,-0.01922 1.215857,-0.02442 1.267117,-0.01153 0.0906,0.02273 0.55583,0.5437 1.45238,1.626239 0.68696,0.829475 0.68872,0.83233 0.98796,1.5997 l 0.27507,0.70542 0.30355,0.02569 c 0.16695,0.01414 0.56068,0.03905 0.87497,0.05538 l 0.571427,0.02967 0.1039,0.116285 c 0.14641,0.16387 0.14735,0.401385 0.002,0.546582 -0.12059,0.12058 -0.15751,0.125269 -1.424347,0.180901 -1.13115,0.04967 -1.02292,0.103174 -1.4365,-0.710042 l -0.3153,-0.619959 -0.83726,0.61632 c -0.4605,0.338975 -0.8598,0.637019 -0.88734,0.662318 -0.042,0.03854 0.0697,0.208502 0.68849,1.048146 0.40622,0.551181 0.75843,1.063559 0.78269,1.138616 0.0803,0.248531 -0.0471,0.569148 -0.28679,0.72142 -0.10865,0.06903 -3.320867,0.744991 -3.538637,0.744653 -0.0897,-1.49e-4 -0.19603,-0.02866 -0.25719,-0.06898 z M 61.60115,54.536383 c -1.07977,-0.05078 -1.06446,-0.0464 -1.06446,-0.304396 0,-0.262131 -0.0204,-0.256493 1.11962,-0.30881 1.748587,-0.08023 1.685607,-0.08143 1.784787,0.03386 0.11323,0.131647 0.11845,0.402843 0.0104,0.54022 -0.0732,0.09304 -0.0825,0.09481 -0.47724,0.08983 -0.221417,-0.0028 -0.839317,-0.02561 -1.373107,-0.05072 z m 1.444097,-1.656137 c -1.163507,-0.0502 -1.156257,-0.04828 -1.156257,-0.305065 0,-0.25985 -0.0164,-0.255769 1.246937,-0.309469 0.62071,-0.02639 1.30163,-0.04859 1.51315,-0.04934 0.3733,-0.0014 0.38676,0.0014 0.45922,0.09353 0.12837,0.163197 0.0726,0.541055 -0.089,0.603075 -0.0811,0.0311 -0.75237,0.01996 -1.97401,-0.03273 z m 1.70549,-1.657651 c -0.54476,-0.02483 -1.01843,-0.04671 -1.05259,-0.04862 -0.0798,-0.0045 -0.1837,-0.204118 -0.15849,-0.304494 0.054,-0.214835 0.0224,-0.208268 1.24995,-0.260441 0.62243,-0.02645 1.30476,-0.04872 1.51627,-0.04947 0.3733,-0.0014 0.38677,0.0014 0.45923,0.09353 0.0516,0.06563 0.0746,0.14745 0.0746,0.265274 0,0.117824 -0.023,0.199644 -0.0746,0.265274 -0.0743,0.0945 -0.0766,0.09488 -0.54927,0.0895 -0.26104,-0.0029 -0.92034,-0.02572 -1.4651,-0.05055 z m 7.537277,-0.197042 c -0.33375,-0.06824 -0.58753,-0.252721 -0.74919,-0.544589 -0.0951,-0.171676 -0.10679,-0.226568 -0.10641,-0.499042 4.8e-4,-0.33616 0.0581,-0.491866 0.27238,-0.735915 0.28453,-0.324063 0.82654,-0.423475 1.22964,-0.225531 0.592817,0.291116 0.783807,0.98334 0.42666,1.546492 -0.22297,0.351592 -0.66743,0.541534 -1.07308,0.458585 z"
+       id="path3107"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path3109"
+       d="m 41.010753,57.229861 c -0.28684,-0.137247 -0.40623,-0.440771 -0.28679,-0.729125 0.0305,-0.07374 0.651047,-0.6123 1.962877,-1.703667 l 1.91821,-1.59584 0.0191,0.182218 c 0.0262,0.250025 0.1414,0.540772 0.33078,0.835058 0.0876,0.136177 0.148,0.257275 0.13415,0.269108 -0.0138,0.01183 -0.84066,0.634587 -1.83737,1.383902 -1.78959,1.345396 -1.81453,1.36253 -1.998967,1.373583 -0.10273,0.0061 -0.21163,-6.99e-4 -0.24201,-0.01524 z m 3.768817,-0.257723 c -0.32464,-0.214019 -0.32604,-0.721224 -0.002,-0.908487 0.0587,-0.03399 0.5606,-0.192515 1.11527,-0.352274 0.55467,-0.159758 1.035317,-0.302703 1.068107,-0.317654 0.048,-0.02188 -0.0353,-0.129074 -0.426807,-0.549439 -0.85905,-0.922303 -1.20093,-1.448899 -1.22923,-1.893351 -0.0242,-0.380241 5.7e-4,-0.41142 1.26423,-1.589479 0.620417,-0.578408 1.156927,-1.083572 1.192237,-1.122587 0.0624,-0.06891 0.0568,-0.08072 -0.1928,-0.41285 l -0.257,-0.341914 -0.33119,-0.02008 c -0.18215,-0.01106 -0.652717,-0.03286 -1.045707,-0.04849 l -0.71453,-0.02841 -0.10487,-0.117368 c -0.16562,-0.185363 -0.13158,-0.475456 0.0714,-0.608452 0.0796,-0.05215 0.26372,-0.0661 1.26705,-0.09597 0.645657,-0.01922 1.215857,-0.02442 1.267117,-0.01153 0.0906,0.02273 0.55583,0.5437 1.45238,1.626239 0.68696,0.829475 0.68872,0.83233 0.98796,1.5997 l 0.27507,0.70542 0.30355,0.02569 c 0.16695,0.01414 0.56068,0.03905 0.87497,0.05538 l 0.571427,0.02967 0.1039,0.116285 c 0.14641,0.16387 0.14735,0.401385 0.002,0.546582 -0.12059,0.12058 -0.15751,0.125269 -1.424347,0.180901 -1.13115,0.04967 -1.02292,0.103174 -1.4365,-0.710042 l -0.3153,-0.619959 -0.83726,0.61632 c -0.4605,0.338975 -0.8598,0.637019 -0.88734,0.662318 -0.042,0.03854 0.0697,0.208502 0.68849,1.048146 0.40622,0.551181 0.75843,1.063559 0.78269,1.138616 0.0803,0.248531 -0.0471,0.569148 -0.28679,0.72142 -0.10865,0.06903 -3.320867,0.744991 -3.538637,0.744653 -0.0897,-1.49e-4 -0.19603,-0.02866 -0.25719,-0.06898 z m -4.648097,-2.435755 c -1.07977,-0.05078 -1.06446,-0.0464 -1.06446,-0.304396 0,-0.262131 -0.0204,-0.256493 1.11962,-0.30881 1.748587,-0.08023 1.685607,-0.08143 1.784787,0.03386 0.11323,0.131647 0.11845,0.402843 0.0104,0.54022 -0.0732,0.09304 -0.0825,0.09481 -0.47724,0.08983 -0.221417,-0.0028 -0.839317,-0.02561 -1.373107,-0.05072 z m 1.444097,-1.656137 c -1.163507,-0.0502 -1.156257,-0.04828 -1.156257,-0.305065 0,-0.25985 -0.0164,-0.255769 1.246937,-0.309469 0.62071,-0.02639 1.30163,-0.04859 1.51315,-0.04934 0.3733,-0.0014 0.38676,0.0014 0.45922,0.09353 0.12837,0.163197 0.0726,0.541055 -0.089,0.603075 -0.0811,0.0311 -0.75237,0.01996 -1.97401,-0.03273 z m 1.70549,-1.657651 c -0.54476,-0.02483 -1.01843,-0.04671 -1.05259,-0.04862 -0.0798,-0.0045 -0.1837,-0.204118 -0.15849,-0.304494 0.054,-0.214835 0.0224,-0.208268 1.24995,-0.260441 0.62243,-0.02645 1.30476,-0.04872 1.51627,-0.04947 0.3733,-0.0014 0.38677,0.0014 0.45923,0.09353 0.0516,0.06563 0.0746,0.14745 0.0746,0.265274 0,0.117824 -0.023,0.199644 -0.0746,0.265274 -0.0743,0.0945 -0.0766,0.09488 -0.54927,0.0895 -0.26104,-0.0029 -0.92034,-0.02572 -1.4651,-0.05055 z m 7.537277,-0.197042 c -0.33375,-0.06824 -0.58753,-0.252721 -0.74919,-0.544589 -0.0951,-0.171676 -0.10679,-0.226568 -0.10641,-0.499042 4.8e-4,-0.33616 0.0581,-0.491866 0.27238,-0.735915 0.28453,-0.324063 0.82654,-0.423475 1.22964,-0.225531 0.592817,0.291116 0.783807,0.98334 0.42666,1.546492 -0.22297,0.351592 -0.66743,0.541534 -1.07308,0.458585 z"
+       style="fill:#640000;stroke-width:0.0360175;fill-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <path
+       style="fill:#640000;stroke-width:0.0360175;fill-opacity:1"
+       d="m 19.542215,57.229861 c -0.28684,-0.137247 -0.40623,-0.440771 -0.28679,-0.729125 0.0305,-0.07374 0.651047,-0.6123 1.962877,-1.703667 l 1.91821,-1.59584 0.0191,0.182218 c 0.0262,0.250025 0.1414,0.540772 0.33078,0.835058 0.0876,0.136177 0.148,0.257275 0.13415,0.269108 -0.0138,0.01183 -0.84066,0.634587 -1.83737,1.383902 -1.78959,1.345396 -1.81453,1.36253 -1.998967,1.373583 -0.10273,0.0061 -0.21163,-6.99e-4 -0.24201,-0.01524 z m 3.768817,-0.257723 c -0.32464,-0.214019 -0.32604,-0.721224 -0.002,-0.908487 0.0587,-0.03399 0.5606,-0.192515 1.11527,-0.352274 0.55467,-0.159758 1.035317,-0.302703 1.068107,-0.317654 0.048,-0.02188 -0.0353,-0.129074 -0.426807,-0.549439 -0.85905,-0.922303 -1.20093,-1.448899 -1.22923,-1.893351 -0.0242,-0.380241 5.7e-4,-0.41142 1.26423,-1.589479 0.620417,-0.578408 1.156927,-1.083572 1.192237,-1.122587 0.0624,-0.06891 0.0568,-0.08072 -0.1928,-0.41285 l -0.257,-0.341914 -0.33119,-0.02008 c -0.18215,-0.01106 -0.652717,-0.03286 -1.045707,-0.04849 l -0.71453,-0.02841 -0.10487,-0.117368 c -0.16562,-0.185363 -0.13158,-0.475456 0.0714,-0.608452 0.0796,-0.05215 0.26372,-0.0661 1.26705,-0.09597 0.645657,-0.01922 1.215857,-0.02442 1.267117,-0.01153 0.0906,0.02273 0.55583,0.5437 1.45238,1.626239 0.68696,0.829475 0.68872,0.83233 0.98796,1.5997 l 0.27507,0.70542 0.30355,0.02569 c 0.16695,0.01414 0.56068,0.03905 0.87497,0.05538 l 0.571427,0.02967 0.1039,0.116285 c 0.14641,0.16387 0.14735,0.401385 0.002,0.546582 -0.12059,0.12058 -0.15751,0.125269 -1.424347,0.180901 -1.13115,0.04967 -1.02292,0.103174 -1.4365,-0.710042 l -0.3153,-0.619959 -0.83726,0.61632 c -0.4605,0.338975 -0.8598,0.637019 -0.88734,0.662318 -0.042,0.03854 0.0697,0.208502 0.68849,1.048146 0.40622,0.551181 0.75843,1.063559 0.78269,1.138616 0.0803,0.248531 -0.0471,0.569148 -0.28679,0.72142 -0.10865,0.06903 -3.320867,0.744991 -3.538637,0.744653 -0.0897,-1.49e-4 -0.19603,-0.02866 -0.25719,-0.06898 z m -4.648097,-2.435755 c -1.07977,-0.05078 -1.06446,-0.0464 -1.06446,-0.304396 0,-0.262131 -0.0204,-0.256493 1.11962,-0.30881 1.748587,-0.08023 1.685607,-0.08143 1.784787,0.03386 0.11323,0.131647 0.11845,0.402843 0.0104,0.54022 -0.0732,0.09304 -0.0825,0.09481 -0.47724,0.08983 -0.221417,-0.0028 -0.839317,-0.02561 -1.373107,-0.05072 z m 1.444097,-1.656137 c -1.163507,-0.0502 -1.156257,-0.04828 -1.156257,-0.305065 0,-0.25985 -0.0164,-0.255769 1.246937,-0.309469 0.62071,-0.02639 1.30163,-0.04859 1.51315,-0.04934 0.3733,-0.0014 0.38676,0.0014 0.45922,0.09353 0.12837,0.163197 0.0726,0.541055 -0.089,0.603075 -0.0811,0.0311 -0.75237,0.01996 -1.97401,-0.03273 z m 1.70549,-1.657651 c -0.54476,-0.02483 -1.01843,-0.04671 -1.05259,-0.04862 -0.0798,-0.0045 -0.1837,-0.204118 -0.15849,-0.304494 0.054,-0.214835 0.0224,-0.208268 1.24995,-0.260441 0.62243,-0.02645 1.30476,-0.04872 1.51627,-0.04947 0.3733,-0.0014 0.38677,0.0014 0.45923,0.09353 0.0516,0.06563 0.0746,0.14745 0.0746,0.265274 0,0.117824 -0.023,0.199644 -0.0746,0.265274 -0.0743,0.0945 -0.0766,0.09488 -0.54927,0.0895 -0.26104,-0.0029 -0.92034,-0.02572 -1.4651,-0.05055 z m 7.537277,-0.197042 c -0.33375,-0.06824 -0.58753,-0.252721 -0.74919,-0.544589 -0.0951,-0.171676 -0.10679,-0.226568 -0.10641,-0.499042 4.8e-4,-0.33616 0.0581,-0.491866 0.27238,-0.735915 0.28453,-0.324063 0.82654,-0.423475 1.22964,-0.225531 0.592817,0.291116 0.783807,0.98334 0.42666,1.546492 -0.22297,0.351592 -0.66743,0.541534 -1.07308,0.458585 z"
+       id="path3111"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="20.120354"
+       y="65.192818"
+       id="text3115"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18"><tspan
+         sodipodi:role="line"
+         id="tspan3113"
+         x="20.120354"
+         y="65.192818"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px">1x</tspan></text>
+    <text
+       id="text3119"
+       y="65.192818"
+       x="41.588894"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px"
+         y="65.192818"
+         x="41.588894"
+         id="tspan3117"
+         sodipodi:role="line">1x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="63.058571"
+       y="65.192818"
+       id="text3123"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18"><tspan
+         sodipodi:role="line"
+         id="tspan3121"
+         x="63.058571"
+         y="65.192818"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px">1x</tspan></text>
+    <text
+       id="text3127"
+       y="65.192818"
+       x="84.527176"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px"
+         y="65.192818"
+         x="84.527176"
+         id="tspan3125"
+         sodipodi:role="line">1x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.8777771px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#640000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="105.35159"
+       y="65.192818"
+       id="text3131"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/btn_speed.png"
+       inkscape:export-xdpi="96.18"
+       inkscape:export-ydpi="96.18"><tspan
+         sodipodi:role="line"
+         id="tspan3129"
+         x="105.35159"
+         y="65.192818"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px">2x</tspan></text>
   </g>
 </svg>

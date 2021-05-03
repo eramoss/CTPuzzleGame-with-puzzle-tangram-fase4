@@ -81,6 +81,7 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-restart', 'assets/ct/btn_restart.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-music', 'assets/ct/btn_music.png', { frameWidth: 81, frameHeight: 96 });
+    this.load.spritesheet('btn-speed', 'assets/ct/btn_speed.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-ok', 'assets/ct/btn_ok.png', { frameWidth: 278, frameHeight: 123 });
     this.load.spritesheet('btn-cancel', 'assets/ct/btn_cancel.png', { frameWidth: 194, frameHeight: 123 });
     this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
@@ -245,6 +246,7 @@ export default class Game extends Scene {
     this.createBtnJump()
     this.createBtnRestart()
     this.createBtnMusic()
+    //this.createBtnSpeed()
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
@@ -330,6 +332,7 @@ export default class Game extends Scene {
     this.grid.placeAt(0.5, 8.5, btnJump.sprite, 1.3)
   }
 
+
   private createBtnRestart() {
     let btnJump = new Button(this, this.sounds, 0, 0, 'btn-restart', () => {
       let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
@@ -354,6 +357,15 @@ export default class Game extends Scene {
     })
     btn.toggle(!this.gameState.isBackgroundMusicEnabled())
     this.grid.placeAt(0.5, 11.5, btn.sprite, 1.3)
+  }
+
+  private createBtnSpeed() {
+    let btn = new Button(this, this.sounds, 0, 0, 'btn-speed', () => {
+      let speedFactor = this.dude.toggleSpeedFactor();
+      this.gameState.setSpeedFactor(speedFactor);
+    })
+    btn.toggle(!this.gameState.isBackgroundMusicEnabled())
+    this.grid.placeAt(0.5, 5, btn.sprite, 1.3)
   }
 
   exit() {
@@ -518,6 +530,7 @@ export default class Game extends Scene {
 
       this.currentPhase.setupMatrixAndTutorials()
       this.dude.matrix = this.currentPhase.obstacles;
+      this.dude.speedFactor = this.gameState.getSpeedFactor()
       const obstacles = this.currentPhase.obstacles
       const ground = this.currentPhase.ground
 

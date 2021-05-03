@@ -12,6 +12,14 @@ export default class GameState {
     setItem('isBackgroundMusicEnabled', enabled)
   }
 
+  setSpeedFactor(speed: number) {
+    setItem('speedFactor', speed)
+  }
+
+  getSpeedFactor(): number {
+    return getItem<number>('speedFactor', 1)
+  }
+
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
     let response = this.getResponse();
     response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)

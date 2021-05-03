@@ -11,6 +11,7 @@ import { isAndroidAmbient } from '../utils/Utils';
 import { Logger } from '../main';
 import PhasesGrid from '../controls/PhasesGrid';
 import { Loading } from '../controls/Loading';
+import { TestApplication } from '../test-application/TestApplication';
 
 let globalSounds: Sounds
 
@@ -29,7 +30,6 @@ export default class PreGame extends Phaser.Scene {
 
   constructor() {
     super('pre-game');
-
   }
 
   init() {
@@ -74,18 +74,24 @@ export default class PreGame extends Phaser.Scene {
     );
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.grid.addImage(18, 10, 'big-rope', 6);
-
     this.createLoader();
-    this.createPhasesMenuGrid();
 
-    let foundPublicApplications = await this.foundPublicTestApplications();
     const isPlaygroundTest = this.testApplicationService.isPlayground();
     const isAutoTesting = this.testApplicationService.isAutoTesting();
+    const isTestApplication = this.testApplicationService.isTestApplication()
+    const isDownloadAppFromGooglePlay = !isPlaygroundTest && !isAutoTesting && !isTestApplication
 
-    if (!foundPublicApplications || isPlaygroundTest || isAutoTesting) {
-      await this.loadTestApplication()
-      this.startGame()
+    if (isDownloadAppFromGooglePlay) {
+      let applications = await this.loadPublicApplications();
+      this.createTestApplicationsGrid(applications);
+      return;
     }
+
+    if (isTestApplication) {
+      await this.loadTestApplication();
+    }
+    this.startGame()
+
   }
 
   private createLoader() {
@@ -93,17 +99,9 @@ export default class PreGame extends Phaser.Scene {
     this.loading.show()
   }
 
-  private async foundPublicTestApplications() {
-    let isTestApplication = this.testApplicationService.isTestApplication();
-    let foundPublicApplications = false;
-    if (!isTestApplication) {
-      foundPublicApplications = await this.searchPublicApplications();
-    }
-    return foundPublicApplications;
-  }
-
-  private createPhasesMenuGrid() {
+  private createTestApplicationsGrid(testApplications: TestApplication[]) {
     this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
+    this.phasesGrid.setApplications(testApplications);
 
     this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
       this.loading.show();
@@ -113,24 +111,18 @@ export default class PreGame extends Phaser.Scene {
     };
   }
 
-  private async searchPublicApplications(): Promise<boolean> {
-    let foundPublicApplications = false;
-    foundPublicApplications = await this.testApplicationService.loadPublicApplications();
-    const testApplications = this.testApplicationService.getPublicTestApplications();
-    if (foundPublicApplications) {
-      this.phasesGrid.setApplications(testApplications);
-    }
+  private async loadPublicApplications(): Promise<TestApplication[]> {
+    let testApplications = [];
+    testApplications = await this.testApplicationService.loadPublicApplications();
     if (testApplications.length > 1) {
       this.loading.hide();
     }
-    return foundPublicApplications;
+    return testApplications;
   }
 
   async loadTestApplication() {
-    if (this.testApplicationService.isTestApplication()) {
-      let user: User = this.userRepository.getOrCreateGuestUser();
-      await this.testApplicationService.loadApplicationFromDataUrl(user);
-    }
+    let user: User = this.userRepository.getOrCreateGuestUser();
+    await this.testApplicationService.loadApplicationFromDataUrl(user);
   }
 
   createPlayButtonArea() {

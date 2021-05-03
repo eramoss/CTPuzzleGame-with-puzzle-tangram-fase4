@@ -86,22 +86,21 @@ export default class TestApplicationService {
     }
   }
 
-  async loadPublicApplications(): Promise<boolean> {
-    let found = false;
+  async loadPublicApplications(): Promise<TestApplication[]> {
     let url = getDefaultPlatformApiUrl(this.gameParams)
+    let testApplications = []
     try {
       let name = 'PROGRAMAÇÃO ROPE'
       let response = await GET(`${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`)
-      let publicTestApplications: TestApplication[] = await response.json()
-      Logger.info('publicTestApplications.length', publicTestApplications.length)
-      if (publicTestApplications.length) {
-        setItem('public-test-applications', publicTestApplications);
-        found = true
-      }
+      testApplications = await response.json()
     } catch (e) {
       Logger.error('Did not succeded on load public test applications from ', url)
     }
-    return found
+    return testApplications
+  }
+
+  setTestApplications(testApplications: TestApplication[]) {
+    setItem('public-test-applications', testApplications);
   }
 
   async loadApplicationFromDataUrl(user: User) {

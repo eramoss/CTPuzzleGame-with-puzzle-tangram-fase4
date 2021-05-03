@@ -79,9 +79,9 @@ export default class PreGame extends Phaser.Scene {
     const isPlaygroundTest = this.testApplicationService.isPlayground();
     const isAutoTesting = this.testApplicationService.isAutoTesting();
     const isTestApplication = this.testApplicationService.isTestApplication()
-    const isDownloadAppFromGooglePlay = !isPlaygroundTest && !isAutoTesting && !isTestApplication
+    const isDirectOpen = !isPlaygroundTest && !isAutoTesting && !isTestApplication
 
-    if (isDownloadAppFromGooglePlay) {
+    if (isDirectOpen) {
       let applications = await this.loadPublicApplications();
       this.createTestApplicationsGrid(applications);
       return;
@@ -101,14 +101,13 @@ export default class PreGame extends Phaser.Scene {
 
   private createTestApplicationsGrid(testApplications: TestApplication[]) {
     this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
-    this.phasesGrid.setApplications(testApplications);
-
     this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
       this.loading.show();
       this.initializeGameParams(gameUrl.split('?')[1]);
       await this.loadTestApplication();
       this.startGame();
     };
+    this.phasesGrid.setApplications(testApplications);
   }
 
   private async loadPublicApplications(): Promise<TestApplication[]> {

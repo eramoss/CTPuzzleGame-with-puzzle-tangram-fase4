@@ -20,7 +20,7 @@ export default class Program {
   sprite: GameObjects.Sprite;
   onEdit: () => void = () => { };
 
-  constructor(scene: Phaser.Scene, name: string, grid: AlignGrid, x: number, y: number, width: number, height: number, spriteKey: string) {
+  constructor(scene: Phaser.Scene, name: string, grid: AlignGrid, x: number, y: number, width: number, height: number, spriteKey: string, tint: number = undefined) {
     this.scene = scene;
     this.name = name;
     this.grid = grid;
@@ -29,7 +29,11 @@ export default class Program {
     this.dropZone = createDropZone(this.grid, x, y, width, height, spriteKey);
     this.sprite = this.dropZone.sprite;
     let imgWidth = width / 3.6;
-    this.programNameImage = this.grid.addImage(x - imgWidth * 0.7, y, `${name}_fnName`, imgWidth*.7);
+    this.programNameImage = this.grid.addImage(x - imgWidth * 0.69, y + 0.05 * height, `${name}_fnName`, imgWidth * .7);
+    if (tint) {
+      this.programNameImage.setTint(tint)
+      this.sprite.setTint(tint)
+    }
   }
 
   animate() {

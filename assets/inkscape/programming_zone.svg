@@ -562,16 +562,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="785.58355"
-     inkscape:cy="296.64257"
+     inkscape:zoom="1.979899"
+     inkscape:cx="665.52417"
+     inkscape:cy="373.74237"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="743"
-     inkscape:window-x="370"
-     inkscape:window-y="1080"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata10650">
@@ -610,7 +610,7 @@
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#62ee4b;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        d="m 252.70456,197.45325 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 252.72429 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
        id="path12807"
        inkscape:connector-curvature="0"
@@ -620,14 +620,14 @@
        inkscape:connector-curvature="0"
        id="rect2914"
        d="m 108.97915,197.45325 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 108.99888 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#217b34;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
     <g
        id="g6547"
        transform="matrix(0.90935794,0,0,1,100.74547,-62.282017)"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454">
@@ -636,10 +636,10 @@
          inkscape:connector-curvature="0"
          id="path6531"
          d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
-         style="fill:#0d3d12;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="fill:#4d4d4d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <use
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;stroke:#ffffff;stroke-width:0.5291667;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:#ffffff;stroke-width:0.5291667;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-opacity:1"
        x="0"
        y="0"
        xlink:href="#g6547"
@@ -651,7 +651,7 @@
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
     <use
-       style="opacity:1;fill:#0d3d12;fill-opacity:1"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
        height="100%"
        width="100%"
        transform="translate(56.135102,0.03340069)"
@@ -675,7 +675,7 @@
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
     <use
-       style="opacity:1;fill:#0d3d12;fill-opacity:1"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
        height="100%"
        width="100%"
        transform="translate(112.27021,0.03339269)"
@@ -687,7 +687,7 @@
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
     <use
-       style="opacity:1;fill:#0d3d12;fill-opacity:1"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
        height="100%"
        width="100%"
        transform="translate(84.202658,0.03339669)"
@@ -769,7 +769,7 @@
        transform="translate(171.8235,0.03339869)"
        width="100%"
        height="100%"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <use
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
@@ -781,7 +781,7 @@
        xlink:href="#g6547"
        y="0"
        x="0"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <use
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
@@ -793,7 +793,7 @@
        transform="translate(227.95858,0.03338869)"
        width="100%"
        height="100%"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <use
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
@@ -805,7 +805,7 @@
        xlink:href="#g6547"
        y="0"
        x="0"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <use
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
@@ -817,7 +817,7 @@
        xlink:href="#use1612"
        y="0"
        x="0"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <g
        style="opacity:1;filter:url(#filter3161)"
        transform="translate(108.42874,-77.863695)"

@@ -31,7 +31,7 @@ export default class Program {
     let imgWidth = width / 3.6;
     this.programNameImage = this.grid.addImage(x - imgWidth * 0.69, y + 0.05 * height, `${name}_fnName`, imgWidth * .7);
     if (tint) {
-      this.programNameImage.setTint(tint)
+      //this.programNameImage.setTint(tint)
       this.sprite.setTint(tint)
     }
   }

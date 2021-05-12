@@ -246,11 +246,12 @@ export default class Game extends Scene {
     this.createBtnJump()
     this.createBtnRestart()
     this.createBtnMusic()
-    //this.createBtnSpeed()
+    this.createBtnSpeed()
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.codeEditor.setPlayBtnModePlaying()
+        this.gameState.calculateTimeSpent();
+        this.codeEditor.setPlayBtnModePlaying();
         this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
         this.dude.execute(this.codeEditor.programs);
       }
@@ -364,8 +365,9 @@ export default class Game extends Scene {
       let speedFactor = this.dude.toggleSpeedFactor();
       this.gameState.setSpeedFactor(speedFactor);
     })
-    btn.toggle(!this.gameState.isBackgroundMusicEnabled())
-    this.grid.placeAt(0.5, 5, btn.sprite, 1.3)
+    const set2x = this.gameState.isSpeedFactorActivated()
+    btn.toggle(set2x)
+    this.grid.placeAt(0.5, 5.5, btn.sprite, 1.3)
   }
 
   exit() {

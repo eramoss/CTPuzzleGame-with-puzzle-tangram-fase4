@@ -387,7 +387,7 @@ export default class Dude {
   }
 
   toggleSpeedFactor() {
-    let newSpeedFactor = this.speedFactor == 2 ? 1 : 2
+    let newSpeedFactor = this.speedFactor == 1 ? 2 : 1
     this.speedFactor = newSpeedFactor
     return newSpeedFactor
   }

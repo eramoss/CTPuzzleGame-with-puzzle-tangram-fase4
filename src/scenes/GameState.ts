@@ -20,9 +20,19 @@ export default class GameState {
     return getItem<number>('speedFactor', 1)
   }
 
+  isSpeedFactorActivated(): boolean {
+    return this.getSpeedFactor() == 2
+  }
+
+  calculateTimeSpent() {
+    let response = this.getResponse();
+    if (response) {
+      response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
+    }
+  }
+
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
     let response = this.getResponse();
-    response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
     const responseToSend = {
       itemId: this.getItemNumber(),
       response

@@ -83,8 +83,10 @@ export default class PreGame extends Phaser.Scene {
 
     if (isDirectOpen) {
       let applications = await this.loadPublicApplications();
-      this.createTestApplicationsGrid(applications);
-      return;
+      if (applications.length) {
+        this.createTestApplicationsGrid(applications);
+        return;
+      }
     }
 
     if (isTestApplication) {

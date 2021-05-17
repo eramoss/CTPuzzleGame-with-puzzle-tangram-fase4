@@ -79,9 +79,9 @@ export default class PreGame extends Phaser.Scene {
     const isPlaygroundTest = this.testApplicationService.isPlayground();
     const isAutoTesting = this.testApplicationService.isAutoTesting();
     const isTestApplication = this.testApplicationService.isTestApplication()
-    const isDirectOpen = !isPlaygroundTest && !isAutoTesting && !isTestApplication
+    const isOpenedDirectlty = !isPlaygroundTest && !isAutoTesting && !isTestApplication
 
-    if (isDirectOpen) {
+    if (isOpenedDirectlty) {
       let applications = await this.loadPublicApplications();
       if (applications.length) {
         this.createTestApplicationsGrid(applications);

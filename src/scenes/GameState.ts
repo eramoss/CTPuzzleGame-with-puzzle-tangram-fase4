@@ -4,6 +4,18 @@ import { Logger } from "../main"
 import { getItem, getTypedItem, setItem } from "../utils/storage"
 
 export default class GameState {
+
+  initializeResponse(itemNumber: number) {
+    if (itemNumber != this.getItemNumber()) {
+      this.setItemNumber(itemNumber);
+      let resposta = new RespostaItemProgramacao()
+      resposta.tempoInicio = this.getTimeInSeconds()
+      resposta.tempoEmSegundos = -1
+      resposta.contadorUsoLixeira = 0
+      this.setResponse(resposta);
+    }
+  }
+
   isBackgroundMusicEnabled() {
     return getItem('isBackgroundMusicEnabled', true)
   }
@@ -27,7 +39,8 @@ export default class GameState {
   calculateTimeSpent() {
     let response = this.getResponse();
     if (response) {
-      response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoEmSegundos)
+      response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoInicio)
+      this.setResponse(response)
     }
   }
 
@@ -70,15 +83,7 @@ export default class GameState {
     this.setResponse(response);
   }
 
-  initializeResponse(itemNumber: number) {
-    if (itemNumber != this.getItemNumber()) {
-      this.setItemNumber(itemNumber);
-      let resposta = new RespostaItemProgramacao()
-      resposta.tempoEmSegundos = this.getTimeInSeconds()
-      resposta.contadorUsoLixeira = 0
-      this.setResponse(resposta);
-    }
-  }
+
 
   getTimeInSeconds(): number {
     return new Date().getTime() / 1000

@@ -3,6 +3,7 @@ import { Comando } from "./MecanicaRope"
 export class RespostaItemProgramacao {
 
   comandosUtilizados: string[] = []
+  tempoInicio: number
   tempoEmSegundos: number
   tentativas: Comando[][] = []
   pulouFase: boolean

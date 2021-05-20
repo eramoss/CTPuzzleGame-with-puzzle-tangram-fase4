@@ -9,11 +9,21 @@ export default class GameState {
     if (itemNumber != this.getItemNumber()) {
       this.setItemNumber(itemNumber);
       let resposta = new RespostaItemProgramacao()
-      resposta.tempoInicio = this.getTimeInSeconds()
       resposta.tempoEmSegundos = -1
       resposta.contadorUsoLixeira = 0
       this.setResponse(resposta);
     }
+    this.initializeStartTime()
+  }
+
+  initializeStartTime() {
+    //alert('initialize start time')
+    let resposta = this.getResponse()
+    if (!resposta) {
+      resposta = new RespostaItemProgramacao()
+    }
+    resposta.tempoInicio = this.getTimeInSeconds()
+    this.setResponse(resposta);
   }
 
   isBackgroundMusicEnabled() {

@@ -74,7 +74,10 @@ export default class MessageBox {
 
   createCloseButton() {
     let cell = this.grid.getCell(22.3, 4.2)
-    let btn = new Button(this.scene, globalSounds, cell.x, cell.y, 'btn-close-message', () => { this.close() });
+    let btn = new Button(this.scene, globalSounds, cell.x, cell.y, 'btn-close-message', () => {
+      this.onFinishTalk()
+      this.close()
+    });
     btn.setScale(this.grid.scale);
     btn.setDepth(304);
     this.closeButton = btn;

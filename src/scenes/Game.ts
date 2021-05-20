@@ -527,6 +527,7 @@ export default class Game extends Scene {
       if (playPhaseOptions.clearResponseState) {
         this.gameState.initializeResponse(itemId);
       }
+      this.gameState.initializeStartTime()
       this.testApplicationService.saveCurrentPlayingPhase(itemId)
       this.updateLabelCurrentPhase(itemId)
 

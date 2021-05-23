@@ -84,6 +84,7 @@ export default class HardcodedPhasesCreator {
 
     if (!isTesting) {
       let showTutorial = true;
+      phases.push(this.createPhaseFnsTutorialWithIf(showTutorial))
       phases.push(this.createPhaseFnsTutorial(showTutorial))
       phases.push(this.createPhaseToAvoidBarriers(showTutorial))
       phases.push(this.createPhaseToWalkThroughTheEdge())
@@ -255,6 +256,46 @@ export default class HardcodedPhasesCreator {
     item.x = 0
     item.y = 0
 
+    return this.mecanicaToPhase(item)
+  }
+
+  private createPhaseFnsTutorialWithIf(showTutorial: boolean = false) {
+    let item = new MecanicaRope();
+    item.face = "down"
+    item.mapa = [
+        ['tile','null','null','null'],
+        ['tile','null','null','null'],
+        ['tile','null',"null",'null'],
+        ['tile','null','null','null'],
+        ['tile','null','null','null'],
+        ['tile','null','null','null'],
+        ['tile','null','null','null'],
+        ['tile','null','null','null'],
+        ['tile','tile','tile','tile'],
+        ['tile','null','null','null'],
+    ]
+    item.obstaculos = [
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','null','null','null'],
+        ['null','battery','null','coin'],
+        ['block','null','null','null'],
+    ]
+    item.x = 0
+    item.y = 0
+
+    item.acoesTutorial = [
+        {acao:'click',elemento:'arrow-up',frase:'Vamos pra\nfrente!'},
+        {acao:'click',elemento:'arrow-left',frase:'E para\nESQUERDA...'},
+        {acao:'drag',elemento:'if_block',frase:'...SE ENCONTRAR\n OBSTÁCULO!', arrastarSobre:'arrow-left'},
+        {acao:'click',elemento:'prog_0',frase:'E vamos\nrepetir!'},
+        {acao:'click',elemento:'btn-play',frase:'Play!'}
+    ]
     return this.mecanicaToPhase(item)
   }
 

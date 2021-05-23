@@ -97,7 +97,9 @@ export default class TutorialHelper {
             return this.fnGetProgramDropLocation(programToDragCommand);
           }
           if (isConditional) {
-            fnGetDropLocation = () => this.createTutorialDropLocation(instruction.code)
+            fnGetDropLocation = () => {
+              return this.createTutorialDropLocation(instruction.code)
+            }
           }
         }
 
@@ -171,6 +173,9 @@ export default class TutorialHelper {
   }
 
   createTutorialDropLocation(commandName: string, index = 0) {
+    if (commandName.indexOf(':')) {
+      commandName = commandName.substring(0, commandName.indexOf(':'))
+    }
     const commands = this.codeEditor.getAddedCommandsByName(commandName);
     return new TutorialDropLocation(null, commands[index]);
   }
@@ -264,6 +269,15 @@ export default class TutorialHelper {
         "click arrow-up",
         "click prog_1",
         "click arrow-up",
+      ]
+    );
+
+    test(
+      'If block em seta para cima',
+      'arrow-up:if_block[prog_0]',
+      [
+        "click arrow-up",
+        "drag if_block to arrow-up",
       ]
     );
 

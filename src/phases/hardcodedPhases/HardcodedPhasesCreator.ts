@@ -28,7 +28,10 @@ export default class HardcodedPhasesCreator {
     let phases = new Array<MazePhase>();
 
     if (isTesting) {
-      let phase = this.createEasyPhaseArrowUp()
+      let phase = this.createPhaseOnlyTile()
+      phases.push(phase)
+
+      phase = this.createEasyPhaseArrowUp()
       phase.commands = [
         ['arrow-up']
       ]
@@ -220,6 +223,25 @@ export default class HardcodedPhasesCreator {
     item.falasAntesDeIniciar = [
       "Testando fala enorme\ncom quebra de linha"
     ]
+
+    let phase = this.mecanicaToPhase(item)
+    return phase;
+  }
+
+  private createPhaseOnlyTile(showTutorial: boolean = false) {
+    let item = new MecanicaRope()
+    item.x = 0;
+    item.y = 0;
+    item.face = 'down'
+
+    item.mapa = [
+      ['tile'],
+    ];
+
+    item.obstaculos = [
+      ['coin'],
+    ];
+    item.face = 'down'
 
     let phase = this.mecanicaToPhase(item)
     return phase;

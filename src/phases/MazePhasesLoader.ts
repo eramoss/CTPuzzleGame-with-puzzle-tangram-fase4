@@ -115,8 +115,8 @@ export default class MazePhasesLoader {
 
       let tutorialSteps = mecanicaRope.acoesTutorial.map(acao => {
         let affect = '';
-        if (acao.arrasterAte) {
-          affect = `to ${acao.arrasterAte}`
+        if (acao.arrastarSobre) {
+          affect = `to ${acao.arrastarSobre}`
         }
         return `${acao.acao} ${acao.elemento} ${affect} say ${acao.frase}`
       })

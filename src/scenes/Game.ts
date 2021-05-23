@@ -114,7 +114,7 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
     this.messageBox = new MessageBox(this, this.grid)
     this.messageBox.onFinishTalk = () => {
-      this.playPhase(this.currentPhase, { muteInstructions: true })
+      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState:true })
     }
 
     this.showLoading();
@@ -250,9 +250,10 @@ export default class Game extends Scene {
 
     this.codeEditor.onClickRun = () => {
       if (this.dude.stopped) {
-        this.gameState.calculateTimeSpent();
         this.codeEditor.setPlayBtnModePlaying();
+        this.gameState.calculateTimeSpent();
         this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
+        this.sendResponse();
         this.dude.execute(this.codeEditor.programs);
       }
     }
@@ -511,7 +512,7 @@ export default class Game extends Scene {
 
     if (phase != this.currentPhase) {
       this.initializeCodeEditorProgrammingAreas()
-      this.sendResponse();
+
     }
 
     this.currentPhase?.clearTutorials()
@@ -527,7 +528,6 @@ export default class Game extends Scene {
       if (playPhaseOptions.clearResponseState) {
         this.gameState.initializeResponse(itemId);
       }
-      this.gameState.initializeStartTime()
       this.testApplicationService.saveCurrentPlayingPhase(itemId)
       this.updateLabelCurrentPhase(itemId)
 

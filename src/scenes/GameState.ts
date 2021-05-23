@@ -6,13 +6,11 @@ import { getItem, getTypedItem, setItem } from "../utils/storage"
 export default class GameState {
 
   initializeResponse(itemNumber: number) {
-    if (itemNumber != this.getItemNumber()) {
-      this.setItemNumber(itemNumber);
-      let resposta = new RespostaItemProgramacao()
-      resposta.tempoEmSegundos = -1
-      resposta.contadorUsoLixeira = 0
-      this.setResponse(resposta);
-    }
+    this.setItemNumber(itemNumber);
+    let resposta = new RespostaItemProgramacao()
+    resposta.tempoEmSegundos = -1
+    resposta.contadorUsoLixeira = 0
+    this.setResponse(resposta);
     this.initializeStartTime()
   }
 

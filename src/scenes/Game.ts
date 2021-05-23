@@ -150,7 +150,7 @@ export default class Game extends Scene {
           this.obstaclesMazeModel.removeAt(y, x, obj);
           /* other.setGravityY(-200);
           other.setVelocityY(-100) */
-          this.obstaclesMazeModel.onChange()
+          //this.obstaclesMazeModel.onChange()
           this.sounds.coin();
         }, waitALittleBitBeforeColide);
       }
@@ -341,6 +341,7 @@ export default class Game extends Scene {
       let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
       messageBox.setText(this.currentPhase.restartPhaseMessage)
       messageBox.onClickOk = () => {
+        Logger.clear();
         messageBox.close()
         this.gameState.registerRestartUse()
         this.replayCurrentPhase({

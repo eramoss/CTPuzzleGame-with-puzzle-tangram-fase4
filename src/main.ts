@@ -17,7 +17,23 @@ if (height > window.innerHeight) {
   width = height * proportionHeightByWidth * 3
 }
 
-export const Logger = console
+export const Logger = {
+  log: (...values: any[]) => {
+    console.log(values.join(' '))
+  },
+  info: (...values: any[]) => {
+    console.info(values.join(' '))
+  },
+  warn: (...values: any[]) => {
+    console.warn(values.join(' '))
+  },
+  error: (...values: any[]) => {
+    console.error(values.join(' '))
+  },
+  clear: () => {
+    console.clear()
+  }
+}
 
 export default new Phaser.Game({
   type: Phaser.AUTO,

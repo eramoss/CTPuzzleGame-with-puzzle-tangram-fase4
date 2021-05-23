@@ -28,10 +28,10 @@ export default class HardcodedPhasesCreator {
     let phases = new Array<MazePhase>();
 
     if (isTesting) {
-      let phase = this.createPhaseOnlyTile()
-      phases.push(phase)
+      //let phase = this.createPhaseOnlyTile()
+      //phases.push(phase)
 
-      phase = this.createEasyPhaseArrowUp()
+      let phase = this.createEasyPhaseArrowUp()
       phase.commands = [
         ['arrow-up']
       ]
@@ -253,9 +253,8 @@ export default class HardcodedPhasesCreator {
 
     if (showTutorial) {
       item.acoesTutorial = [
-        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_0' },
-        { acao: 'drag', elemento: 'arrow-up', arrastarSobre: 'prog_1' },
-        { acao: 'drag', elemento: 'arrow-up', arrastarSobre: 'prog_2' },
+        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_1' },
+        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_2' },
         { acao: 'click', elemento: 'btn-play' },
       ]
     }

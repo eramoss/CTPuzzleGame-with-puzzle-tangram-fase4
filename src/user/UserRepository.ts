@@ -2,6 +2,7 @@ import User from "./User";
 //@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { getItem, setItem } from "../utils/storage";
+import { Logger } from "../main";
 
 export default class UserRepository {
   getOrCreateGuestUser(): User {
@@ -27,7 +28,7 @@ export default class UserRepository {
     try {
       user = getItem<User>("user");
     } catch (e) {
-      console.error('Não foi possível obter o usuário da base')
+      Logger.error('Não foi possível obter o usuário da base')
     }
     return user
   }

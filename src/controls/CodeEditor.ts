@@ -169,11 +169,11 @@ export default class CodeEditor {
         }
       })
       commandSprite.on('mute', () => {
-        console.log('CODE_EDITOR [mute]')
+        Logger.log('CODE_EDITOR [mute]')
         command.isMuted = true;
       });
       commandSprite.on('delete', () => {
-        console.log('CODE_EDITOR [delete]')
+        Logger.log('CODE_EDITOR [delete]')
         this.removeCommandAndRegister(command)
 
       });
@@ -196,7 +196,7 @@ export default class CodeEditor {
         const createdCommands = this.createDraggableProgramCommands(commandName);
         if (dragStartOptions.onCreateCommandBelow) {
           if (createdCommands.length > 1) {
-            console.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
+            Logger.warn('Atenção. Há mais de um comando criado para substituir o arrastado!')
           }
           dragStartOptions.onCreateCommandBelow(this, createdCommands[0]);
         }
@@ -589,7 +589,7 @@ export default class CodeEditor {
     this.onReplayCurrentPhase();
   }
 
-  stringfyCommands(): string {
+  getCode(): string {
     return this.getCommandsAsString().join(', ');
   }
 

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Button from '../controls/Button';
 import AlignGrid from '../geom/AlignGrid';
+import { Logger } from '../main';
 import TestApplicationService from '../test-application/TestApplicationService';
 import { androidOpenUrl } from '../utils/Utils';
 import { globalSounds } from './PreGame';
@@ -15,7 +16,7 @@ export default class EndGame extends Phaser.Scene {
   init(testApplicationService: TestApplicationService) {
     if (testApplicationService) {
       if (testApplicationService.getParticipation) {
-        console.log('END_GAME')
+        Logger.log('END_GAME')
         let participation = testApplicationService.getParticipation();
         let isTestApplication = testApplicationService.isTestApplication()
         if (isTestApplication) {

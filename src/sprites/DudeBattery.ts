@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import AlignGrid from "../geom/AlignGrid";
+import { Logger } from "../main";
 
 export class RunOutOfEnergyError extends Error {
   constructor(m: string) {
@@ -50,7 +51,7 @@ export class DudeBattery {
   setLevel(level: number, maxCells = this.maxCells, cellMargin: number = 0) {
     if (level > maxCells) {
       level = maxCells;
-      console.warn('Cannot set level greater than battery capacity. Ajusted to ', maxCells)
+      Logger.warn('Cannot set level greater than battery capacity. Ajusted to ', maxCells)
     }
     this.batteryImage.clearTint();
     this.graphics.clear();

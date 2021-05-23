@@ -321,7 +321,7 @@ export default class Command implements InterfaceElement {
     if (this.condition) {
       stringfiedCommand = stringfiedCommand + ":" + this.condition.name;
     }
-    return stringfiedCommand;
+    return stringfiedCommand+`[${this.program.name}]`;
   }
 }
 

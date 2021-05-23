@@ -10,7 +10,7 @@ export function isAndroidAmbient() {
     // @ts-ignore
     isAndroidAmbient = GameJavascriptInterface != null
   } catch (e) {
-    console.warn('GameJavascriptInterface is not defined!!');
+    Logger.warn('GameJavascriptInterface is not defined!!');
     isAndroidAmbient = false;
   }
   return isAndroidAmbient;
@@ -66,7 +66,7 @@ export function getDefaultPlatformApiUrl(gameParams: GameParams) {
 }
 
 export function androidOpenUrl(url: string) {
-  console.log('Opening url: ', url);
+  Logger.log('Opening url: ', url);
   try {
     //@ts-ignore
     if (isAndroidAmbient()) {
@@ -76,7 +76,7 @@ export function androidOpenUrl(url: string) {
       openWebUrl(url)
     }
   } catch (e) {
-    console.warn('GameJavascriptInterface is not defined!!');
+    Logger.warn('GameJavascriptInterface is not defined!!');
   }
 }
 
@@ -100,7 +100,7 @@ export function androidVibrate(time: number) {
       GameJavascriptInterface.vibrate(time)
     }
   } catch (e) {
-    console.warn('GameJavascriptInterface is not defined!!');
+    Logger.warn('GameJavascriptInterface is not defined!!');
   }
 }
 
@@ -114,7 +114,7 @@ export function androidPlayAudio(sound: string): boolean {
       couldPlay = GameJavascriptInterface.play(sound)
     }
   } catch (e) {
-    console.warn('GameJavascriptInterface is not defined!!');
+    Logger.warn('GameJavascriptInterface is not defined!!');
   }
   return couldPlay;
 }

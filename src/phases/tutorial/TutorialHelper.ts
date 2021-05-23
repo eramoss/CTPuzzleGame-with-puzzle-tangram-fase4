@@ -3,7 +3,7 @@ import CodeEditor from "../../controls/CodeEditor";
 import InterfaceElement from "../../InterfaceElement";
 import { Logger } from "../../main";
 import { phrases } from "../../utils/phrases";
-import MazePhase from "../MazePhase";
+import MazePhase, { CommandName } from "../MazePhase";
 import TutorialAction from "../TutorialAction";
 import TutorialDropLocation from "../TutorialDropLocation";
 
@@ -14,10 +14,10 @@ export default class TutorialHelper {
   constructor(scene: Scene, codeEditor: CodeEditor) {
     this.scene = scene;
     this.codeEditor = codeEditor;
+    this.test()
   }
 
   buildTutorial(phase: MazePhase, tutorialsActionsWrittenAsPhrases: string[]): string {
-
 
     const tutorialActionsMap = new Map<string, (
       fnGetInterfaceElement: () => InterfaceElement,
@@ -27,18 +27,30 @@ export default class TutorialHelper {
     tutorialActionsMap.set('click', phase.addTutorialHighlightClick);
 
     let codeStates: string[] = []
-    let expectedCodeState: string = '';
-    let code = [];
+    let expectedCodeStateOnTutorialStep: string = '';
+
+    class Block {
+      code: string
+      prog: CommandName = 'prog_0'
+
+      createString(): string {
+        return `${this.code}[${this.prog}]`
+      }
+    }
+
+    let code: Block[] = [];
     tutorialsActionsWrittenAsPhrases
       .forEach((tutorialPhrase, actionIndex) => {
         // Example: "drop          arrow-up      say drag-arrow-up-1"
         //           [actionName]  [elementName]     [tutorial-phrase-key]
+        // Example: "drag          arrow-up       to prog_2"
+        //           [actionName]  [elementName]     [programToDragCommand]
 
         let words = tutorialPhrase.split(' ');
         let action = words[0];
         let command = words[1];
         let ballon = null;
-        let programToDragTo = null
+        let programToDragCommand = null
 
         let indexOfWordSay = tutorialPhrase.indexOf('say')
         if (indexOfWordSay > -1) {
@@ -49,21 +61,26 @@ export default class TutorialHelper {
           }
         }
 
+        let instruction = new Block();
+        instruction.code = command
+
         let indexOfWordDragTo = words.indexOf('to')
         if (indexOfWordDragTo) {
-          programToDragTo = words[indexOfWordDragTo + 1]
+          programToDragCommand = words[indexOfWordDragTo + 1]
+          if (programToDragCommand.startsWith('prog')) {
+            instruction.prog = programToDragCommand
+          }
         }
 
-        let instruction = command;
         const isConditional = command.startsWith('if_');
         const isButton = command.startsWith('btn');
-        let lastInstruction = "";
+        let lastInstruction = '';
 
         if (!isButton) {
           if (isConditional) {
             let index = code.length - 1;
-            lastInstruction = code[index];
-            instruction = lastInstruction + ":" + command
+            lastInstruction = code[index].code;
+            instruction.code = `${lastInstruction}:${command}`
             code[index] = instruction;
           } else {
             code.push(instruction);
@@ -73,17 +90,17 @@ export default class TutorialHelper {
         let fnGetDropLocation = null;
         if (action == 'drag') {
           fnGetDropLocation = () => {
-            return this.fnGetProgramDropLocation(programToDragTo);
+            return this.fnGetProgramDropLocation(programToDragCommand);
           }
           if (isConditional) {
-            fnGetDropLocation = () => this.createTutorialDropLocation(lastInstruction)
+            fnGetDropLocation = () => this.createTutorialDropLocation(instruction.code)
           }
         }
 
         let fnCreateTutorialAction = tutorialActionsMap.get(action)
         let fnGetInterfaceElement = this.fnGetInterfaceElement(command)
 
-        codeStates[actionIndex] = expectedCodeState;
+        codeStates[actionIndex] = expectedCodeStateOnTutorialStep;
 
         const tutorialAction: TutorialAction =
           fnCreateTutorialAction
@@ -96,7 +113,10 @@ export default class TutorialHelper {
         tutorialAction.ballonInstruction = ballon
 
         tutorialAction.isEnvironmentValidToHighlightTutorial =
-          () => this.isCodeStateLike(codeStates[actionIndex])
+          () => {
+            let codeState = codeStates[actionIndex]
+            return this.isCodeStateLike(codeState)
+          }
 
         if (command == 'btn-step') {
           tutorialAction.isAllowedToHighlightNextTutorialStep = () => {
@@ -105,10 +125,9 @@ export default class TutorialHelper {
           }
         }
 
-        //Logger.log('BUILD_CODE', expectedCodeStateDuringTutorialAction)
-        expectedCodeState = code.join(', ');
+        expectedCodeStateOnTutorialStep = code.map(c => c.createString()).join(', ');
       })
-    return expectedCodeState;
+    return expectedCodeStateOnTutorialStep;
   }
 
   fnGetInterfaceElement(key: string): () => InterfaceElement {
@@ -117,7 +136,7 @@ export default class TutorialHelper {
       const foundElement = this.codeEditor.getInterfaceElements(getOnlyFixedElements)
         .find(it => it.getSprite().texture.key == key);
       if (!foundElement) {
-        console.warn('Não foi encontrado o elemento ' + key)
+        Logger.warn('Não foi encontrado o elemento ' + key)
       }
       return foundElement;
     }
@@ -141,7 +160,7 @@ export default class TutorialHelper {
   }
 
   isCodeStateLike(codeString: string) {
-    const commandsToString = this.codeEditor.stringfyCommands();
+    const commandsToString = this.codeEditor.getCode();
     Logger.log('CODE_STATE [codeString]\n', codeString)
     Logger.log('CODE_STATE [commandsToString]\n', commandsToString)
     return codeString === commandsToString;
@@ -153,46 +172,85 @@ export default class TutorialHelper {
   }
 
 
-  test(scene: Scene, codeEditor: CodeEditor) {
-    const phase = new MazePhase(this.scene, this.codeEditor);
-    let testCount = 0;
-    let code = this.buildTutorial(phase, [
-      "drag arrow-up to program",
-      "drag arrow-up to program"]
-    )
-    Logger.log('TEST', testCount++, code == 'arrow-up, arrow-up', code);
+  test() {
+    const TEST_TAG = 'TEST_TUTORIAL_HELPER'
+    let total = 0
+    let passed = 0
+    const test = (testDescription: string, expectedCode: string, phrases: string[]) => {
+      const phase = new MazePhase(this.scene, this.codeEditor);
+      let buildTutorialCode = this.buildTutorial(phase, phrases)
+      let testPassed = expectedCode == buildTutorialCode
+      total++
+      if (testPassed) {
+        passed++
+      }
+      Logger.warn(TEST_TAG, total, testDescription + ':', (testPassed ? 'OK' : 'FAILED!!'));
+      if (!testPassed) {
+        Logger.warn(TEST_TAG, 'Expected:', expectedCode)
+        Logger.warn(TEST_TAG, 'Result:', buildTutorialCode)
+      }
+    }
 
-    code = this.buildTutorial(phase, [
-      "drag arrow-up to program",
-      "drag if_coin to arrow-up"]
-    )
-    Logger.log('TEST', testCount++, code == 'arrow-up:if_coin', code);
 
-    code = this.buildTutorial(phase, [
-      "drag arrow-up to program",
-      "drag if_coin to arrow-up",
-      "drag arrow-up to program"
-    ]
-    )
-    Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up', code);
+    test(
+      'Duas setas para frente',
+      'arrow-up[prog_0], arrow-up[prog_0]',
+      [
+        "drag arrow-up to prog_0",
+        "drag arrow-up to prog_0"
+      ]
+    );
 
-    code = this.buildTutorial(phase, [
-      "drag arrow-up to program",
-      "drag if_coin to arrow-up",
-      "drag arrow-up to program",
-      "drag if_coin to arrow-up"
-    ]
-    )
-    Logger.log('TEST', testCount++, code == 'arrow-up:if_coin, arrow-up:if_coin', code);
+    test(
+      'Seta para frente se tem moeda',
+      'arrow-up:if_coin[prog_0]',
+      [
+        "drag arrow-up to prog_0",
+        "drag if_coin to arrow-up"
+      ]
+    );
 
-    code = this.buildTutorial(phase, [
-      "drag arrow-up to program",
-      "drag if_coin to arrow-up",
-      "drag arrow-right to program",
-      "drag if_block to arrow-right",
-    ]
-    )
-    Logger.log('TEST', testCount, code == 'arrow-up:if_coin, arrow-right:if_block', code);
+    test(
+      'Se tem moeda, para cima + moeda',
+      'arrow-up:if_coin[prog_0], arrow-up[prog_0]',
+      [
+        "drag arrow-up to prog_0",
+        "drag if_coin to arrow-up",
+        "drag arrow-up to prog_0"
+      ]
+    );
+
+    test(
+      'Dois ifs com moeda',
+      'arrow-up:if_coin[prog_0], arrow-up:if_coin[prog_0]',
+      [
+        "drag arrow-up to prog_0",
+        "drag if_coin to arrow-up",
+        "drag arrow-up to prog_0",
+        "drag if_coin to arrow-up"
+      ]
+    );
+
+    test(
+      'Ifs com moeda e bloco',
+      'arrow-up:if_coin[prog_0], arrow-right:if_block[prog_0]',
+      [
+        "drag arrow-up to prog_0",
+        "drag if_coin to arrow-up",
+        "drag arrow-right to prog_0",
+        "drag if_block to arrow-right",
+      ]
+    );
+
+    test(
+      'Seta para cima em prog_1',
+      'arrow-up[prog_1]',
+      [
+        "drag arrow-up to prog_1",
+      ]
+    );
+
+    Logger.warn('TESTS', total, 'PASSED', passed)
 
   }
 

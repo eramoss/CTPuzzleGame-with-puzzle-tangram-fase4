@@ -3,7 +3,6 @@ import Program from "../program/Program";
 
 export default class TutorialDropLocation {
 
-
     sprite: Phaser.GameObjects.Sprite;
     dropZone: Phaser.GameObjects.Zone;
     program: Program;
@@ -27,7 +26,7 @@ export default class TutorialDropLocation {
         let position = null;
         if (this.position == null) {
             if (this.program) {
-                let fakeCommand = new Command(this.program.scene, sprite, this.sounds)
+                let fakeCommand = new Command(this.program.scene, sprite)
                 position = this.program.getNextFreePosition(fakeCommand)
             }
             if (this.command) {

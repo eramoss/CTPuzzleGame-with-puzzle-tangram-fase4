@@ -30,5 +30,5 @@ class AcaoTutorial {
   acao!: Acao
   elemento!: Elemento
   arrastarSobre?: Elemento
-  frase!: string
+  frase?: string = ''
 }

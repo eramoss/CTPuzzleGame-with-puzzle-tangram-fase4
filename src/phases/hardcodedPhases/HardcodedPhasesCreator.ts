@@ -84,6 +84,7 @@ export default class HardcodedPhasesCreator {
 
     if (!isTesting) {
       let showTutorial = true;
+      phases.push(this.createPhaseFnsTutorial(showTutorial))
       phases.push(this.createPhaseToAvoidBarriers(showTutorial))
       phases.push(this.createPhaseToWalkThroughTheEdge())
       phases.push(this.createPhaseWithIfTutorial())
@@ -226,6 +227,39 @@ export default class HardcodedPhasesCreator {
 
     let phase = this.mecanicaToPhase(item)
     return phase;
+  }
+
+  private createPhaseFnsTutorial(showTutorial: boolean = false) {
+    let item = new MecanicaRope();
+
+    /* item.falasAntesDeIniciar = [
+      'AGORA VAMOS APRENDER A USAR\n' +
+      'F1, F2 E F3.\n'
+    ] */
+
+    item.face = "down"
+    item.mapa = [
+      ['tile'],
+      ['tile'],
+      ['tile'],
+    ]
+    item.obstaculos = [
+      ['null'],
+      ['null'],
+      ['coin'],
+    ]
+    item.x = 0
+    item.y = 0
+
+    if (showTutorial) {
+      item.acoesTutorial = [
+        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_0' },
+        { acao: 'drag', elemento: 'arrow-up', arrastarSobre: 'prog_1' },
+        { acao: 'drag', elemento: 'arrow-up', arrastarSobre: 'prog_2' },
+        { acao: 'click', elemento: 'btn-play' },
+      ]
+    }
+    return this.mecanicaToPhase(item)
   }
 
   private createPhaseOnlyTile(showTutorial: boolean = false) {

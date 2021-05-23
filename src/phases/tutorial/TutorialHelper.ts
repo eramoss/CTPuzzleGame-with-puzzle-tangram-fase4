@@ -38,6 +38,7 @@ export default class TutorialHelper {
         let action = words[0];
         let command = words[1];
         let ballon = null;
+        let programToDragTo = null
 
         let indexOfWordSay = tutorialPhrase.indexOf('say')
         if (indexOfWordSay > -1) {
@@ -46,6 +47,11 @@ export default class TutorialHelper {
           if (!ballon) {
             ballon = tutorialPhrase.substring(indexOfWordSay + 'say '.length)
           }
+        }
+
+        let indexOfWordDragTo = words.indexOf('to')
+        if (indexOfWordDragTo) {
+          programToDragTo = words[indexOfWordDragTo + 1]
         }
 
         let instruction = command;
@@ -66,7 +72,9 @@ export default class TutorialHelper {
 
         let fnGetDropLocation = null;
         if (action == 'drag') {
-          fnGetDropLocation = this.fnGetProgramDropLocation;
+          fnGetDropLocation = () => {
+            return this.fnGetProgramDropLocation(programToDragTo);
+          }
           if (isConditional) {
             fnGetDropLocation = () => this.createTutorialDropLocation(lastInstruction)
           }
@@ -121,8 +129,14 @@ export default class TutorialHelper {
     return isBtnStepEnabled
   }
 
-  fnGetProgramDropLocation = () => {
-    const program = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull();
+  fnGetProgramDropLocation = (programToDragCommand: string = null) => {
+    let program = this.codeEditor.getLastEditedOrMainProgramOrFirstNonfull();
+    if (programToDragCommand) {
+      let programFilteredByName = this.codeEditor.programs.find(p => p.name == programToDragCommand)
+      if (programFilteredByName) {
+        program = programFilteredByName
+      }
+    }
     return new TutorialDropLocation(program);
   }
 

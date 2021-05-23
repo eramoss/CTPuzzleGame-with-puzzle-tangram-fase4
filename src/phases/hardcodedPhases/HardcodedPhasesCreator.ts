@@ -231,33 +231,30 @@ export default class HardcodedPhasesCreator {
 
   private createPhaseFnsTutorial(showTutorial: boolean = false) {
     let item = new MecanicaRope();
-
-    /* item.falasAntesDeIniciar = [
-      'AGORA VAMOS APRENDER A USAR\n' +
-      'F1, F2 E F3.\n'
-    ] */
-
     item.face = "down"
     item.mapa = [
-      ['tile'],
-      ['tile'],
-      ['tile'],
+        ['tile','tile','null','null','null'],
+        ['tile','tile','tile','tile','tile'],
+        ['tile','tile','null','null','null'],
     ]
     item.obstaculos = [
-      ['null'],
-      ['null'],
-      ['coin'],
+        ['null','block','null','null','null'],
+        ['null','null','null','null','coin'],
+        ['block','block','null','null','null']
+    ]
+    item.acoesTutorial = [
+        {acao:'click',elemento:'arrow-up',frase:'Começar!\nClique para\nfrente!'},
+        {acao:'click',elemento:'arrow-left',frase:'Agora para\nesquerda!'},
+        {acao:'click',elemento:'arrow-up',frase:'Para\nfrente!'},
+        {acao:'click',elemento:'arrow-up',frase:'Mais uma vez!'},
+        {acao:'click',elemento:'prog_1',frase:'USO MAIS\nUM NÍVEL!!!'},
+        {acao:'click',elemento:'arrow-up',frase:'Agora tenho\nespaço!'},
+        {acao:'click',elemento:'arrow-up',frase:'Bem mais espaço!!'},
+        {acao:'click',elemento:'btn-play',frase:'Play!'},
     ]
     item.x = 0
     item.y = 0
 
-    if (showTutorial) {
-      item.acoesTutorial = [
-        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_1' },
-        { acao: 'drag', elemento: 'prog_0', arrastarSobre: 'prog_2' },
-        { acao: 'click', elemento: 'btn-play' },
-      ]
-    }
     return this.mecanicaToPhase(item)
   }
 

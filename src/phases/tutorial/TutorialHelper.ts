@@ -25,6 +25,7 @@ export default class TutorialHelper {
 
     tutorialActionsMap.set('drag', phase.addTutorialHighlightDrag);
     tutorialActionsMap.set('click', phase.addTutorialHighlightClick);
+    let maxBlocksPerProgram = 5
 
     let codeStates: string[] = []
     let expectedCodeStateOnTutorialStep: string = '';
@@ -62,6 +63,9 @@ export default class TutorialHelper {
         }
 
         let instruction = new Block();
+
+        let progNumber = Math.floor(code.length / maxBlocksPerProgram)
+        instruction.prog = 'prog_' + progNumber as CommandName
         instruction.code = command
 
         let indexOfWordDragTo = words.indexOf('to')
@@ -247,6 +251,19 @@ export default class TutorialHelper {
       'arrow-up[prog_1]',
       [
         "drag arrow-up to prog_1",
+      ]
+    );
+
+    test(
+      'Vários comandos',
+      'arrow-up[prog_0], arrow-left[prog_0], arrow-up[prog_0], arrow-up[prog_0], prog_1[prog_0], arrow-up[prog_1]',
+      [
+        "click arrow-up",
+        "click arrow-left",
+        "click arrow-up",
+        "click arrow-up",
+        "click prog_1",
+        "click arrow-up",
       ]
     );
 

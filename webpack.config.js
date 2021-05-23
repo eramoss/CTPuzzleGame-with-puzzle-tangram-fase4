@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-var ZipPlugin = require('zip-webpack-plugin');
+const ZipPlugin = require('zip-webpack-plugin');
 const path = require('path');
 const dist = path.resolve(__dirname, 'dist')
 const generate = require('generate-file-webpack-plugin');

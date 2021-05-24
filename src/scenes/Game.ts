@@ -234,10 +234,13 @@ export default class Game extends Scene {
 
     this.dude.onFinishWalking = () => {
       this.codeEditor.setPlayBtnModeStopped();
+      let waitBeforeRestart = 1500
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         this.sounds.error();
-        this.replayCurrentPhase();
+        setTimeout(()=>{
+          this.replayCurrentPhase();
+        },waitBeforeRestart)
       }
     }
 
@@ -591,7 +594,7 @@ export default class Game extends Scene {
 
   private initializeCodeEditorProgrammingAreas() {
     if (!this.codeEditor.programs) {
-      let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone', 0x197A31)
+      let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone', 0xFBFF94)
       let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone', 0xFBFF94)
       let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone', 0xFBFF94)
       this.codeEditor.setPrograms([

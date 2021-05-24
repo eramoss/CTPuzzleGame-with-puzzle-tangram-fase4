@@ -84,6 +84,7 @@ export default class HardcodedPhasesCreator {
 
     if (!isTesting) {
       let showTutorial = true;
+      phases.push(this.createPhaseWithManyCoins(showTutorial))
       phases.push(this.createPhaseFnsTutorialWithIf(showTutorial))
       phases.push(this.createPhaseFnsTutorial(showTutorial))
       phases.push(this.createPhaseToAvoidBarriers(showTutorial))
@@ -297,6 +298,30 @@ export default class HardcodedPhasesCreator {
         {acao:'click',elemento:'btn-play',frase:'Play!'}
     ]
     return this.mecanicaToPhase(item)
+  }
+
+  private createPhaseWithManyCoins(showTutorial: boolean = false) {
+    let item = new MecanicaRope();
+    item.comandosEsperados = ['UP','RIGHT','UP','LEFT','UP']
+    item.custoBateriaEmCadaMovimento=0.5
+    item.face = "right"
+    item.mapa = [
+        ['tile','tile','tile','tile','tile'],
+        ['tile','tile','tile','tile','tile'],
+        ['tile','tile','tile','tile','tile'],
+        ['tile','tile','tile','tile','tile'],
+    ]
+    item.obstaculos = [
+        ['block','coin','block','coin','block'],
+        ['block','null','block','null','block'],
+        ['block','null','block','null','block'],
+        ['null','null','null','null','coin'],
+    ]
+    item.x = 0
+    item.y = 3
+    let phase = this.mecanicaToPhase(item)
+    //phase.commands = [['arrow-up','arrow-left','arrow-up','arrow-up','arrow-up']]
+    return phase
   }
 
   private createPhaseOnlyTile(showTutorial: boolean = false) {

@@ -305,10 +305,13 @@
          sodipodi:nodetypes="ccccccccc" />
     </g>
     <path
-       style="fill:#a557cf;fill-opacity:1;fill-rule:evenodd;stroke:#a557cf;stroke-width:1.56850386;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 475.26367 179.30273 L 477.47266 187.73047 L 457.7793 187.81445 C 457.7793 188.34557 457.34468 192.20385 457.61719 195.61914 L 477.4082 195.59766 L 475.10938 204.74023 L 496.76367 192.42188 L 475.26367 179.30273 z "
-       transform="scale(0.26458333)"
-       id="path5433" />
+       style="fill:#a557cf;fill-opacity:1;fill-rule:evenodd;stroke:#a557cf;stroke-width:0.41531724;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 125.70619,54.170901 0.0406,-6.730388 5.36965,3.494973 z"
+       id="path5433"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png" />
     <text
        id="text5437"
        y="56.695843"
@@ -351,18 +354,26 @@
        cy="86.917824"
        rx="1.1693041"
        ry="3.3158128" />
+    <path
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:connector-curvature="0"
+       id="path1260"
+       d="m 38.015714,47.556318 0.0406,-6.730388 5.36965,3.494973 z"
+       style="fill:#a557cf;fill-opacity:1;fill-rule:evenodd;stroke:#a557cf;stroke-width:0.41531724;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <text
        inkscape:export-ydpi="95.999985"
        inkscape:export-xdpi="95.999985"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.97465897px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.33359867px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="43.057941"
+       x="44.494244"
        y="49.703285"
        id="text1264"><tspan
          sodipodi:role="line"
          id="tspan1262"
-         x="43.057941"
+         x="44.494244"
          y="49.703285"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.33359867px">P</tspan></text>
     <path
@@ -432,21 +443,23 @@
     </g>
     <path
        style="fill:#a557cf;fill-opacity:1;fill-rule:evenodd;stroke:#a557cf;stroke-width:0.26499999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 45.946829,160.40631 -2.15016,0.48279 0.6171,0.36927 -3.22716,2.47585 c -0.15702,-0.0982 -0.33838,-0.1503 -0.52355,-0.15057 -0.54709,6e-5 -0.99061,0.44372 -0.99068,0.99101 3.3e-4,0.0975 0.015,0.1946 0.0437,0.2879 l -0.92536,0.70976 -1.93983,1.55516 0.12561,0.58352 3.07661,-2.35682 c 0.17401,0.13658 0.38871,0.21108 0.60992,0.21147 0.0277,-1.4e-4 0.0553,-8.6e-4 0.083,-0.004 0.014,0.5737 0.17552,1.33292 0.86502,1.85027 1.10939,0.83235 2.29294,0.37824 2.29294,0.37824 0.0247,0.17895 0.0779,0.24513 0.18983,0.38687 0.34794,0.43952 0.9859,0.51371 1.42513,0.16555 0.43911,-0.34812 0.51346,-0.98632 0.16549,-1.42563 -0.34785,-0.43935 -0.98589,-0.51349 -1.42513,-0.16554 -0.18443,0.14665 -0.32124,0.38681 -0.37027,0.6173 0,0 -0.96072,0.42999 -1.97257,-0.23691 -0.54086,-0.35646 -0.8105,-1.01447 -0.83395,-1.66096 0.34799,-0.16276 0.57058,-0.51204 0.57116,-0.89633 -2.7e-4,-0.15949 -0.039,-0.31656 -0.11285,-0.45785 l 3.10428,-2.45927 0.37747,0.8072 z"
-       id="path1308"
+       d="m 38.970391,172.16682 -1.256855,-2.27594 0.810125,0.25631 -0.336652,-4.78458 c -0.209883,-0.0619 -0.398042,-0.18134 -0.543314,-0.34464 -0.428451,-0.48312 -0.383218,-1.22149 0.101054,-1.64928 0.08653,-0.0759 0.183963,-0.13882 0.289003,-0.18642 l -0.09668,-1.37181 -0.143123,-2.9283 c 0.0084,-0.26261 0.567712,-0.41723 0.631475,-0.0444 l 0.307365,4.25794 c 0.257151,0.0468 0.491249,0.17827 0.664855,0.3733 0.02157,0.0245 0.04256,0.0495 0.06146,0.0764 l 0.183184,0.36805 c 0.128532,0.43449 -0.0063,0.90401 -0.345846,1.20486 -0.141353,0.1244 -0.310687,0.21296 -0.493564,0.25817 l 0.255081,4.66313 1.00998,-0.29755 z"
+       id="path1300"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccccccccccccccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2.png"
-       inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985" />
-    <path
-       id="path1318"
-       d="m 37.347663,41.014918 0.584462,2.22984 -2.75369,0.01041 c 0,0.140525 0.07399,1.173174 0.146098,2.076802 l 2.590538,-0.0057 -0.60823,2.418972 5.729365,-3.25923 z"
-       style="fill:#a557cf;fill-opacity:1;fill-rule:evenodd;stroke:#a557cf;stroke-width:0.41499996;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccc"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
-       inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985" />
+       sodipodi:nodetypes="ccccccccccccccccccc" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#a557cf;fill-opacity:1;fill-rule:nonzero;stroke:#a557cf;stroke-width:0.26502019;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect1302"
+       width="0.63208157"
+       height="5.6674972"
+       x="-127.76616"
+       y="112.9402"
+       transform="matrix(0.47974804,-0.8774063,0.88564944,0.46435447,0,0)" />
+    <circle
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#a557cf;fill-opacity:1;fill-rule:nonzero;stroke:#a557cf;stroke-width:0.26499999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="path1304"
+       cx="43.420017"
+       cy="167.07068"
+       r="1.3465402" />
   </g>
 </svg>

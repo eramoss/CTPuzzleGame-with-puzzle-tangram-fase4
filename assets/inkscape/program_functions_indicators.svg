@@ -27,8 +27,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="218.15313"
-     inkscape:cy="844.90865"
+     inkscape:cx="1250.6934"
+     inkscape:cy="812.04408"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -448,5 +448,395 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.89524984px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="87.478966"
+       y="44.800484"
+       id="text1466"><tspan
+         sodipodi:role="line"
+         id="tspan1464"
+         x="87.478966"
+         y="44.800484"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.26458332px">função</tspan><tspan
+         sodipodi:role="line"
+         x="87.478966"
+         y="49.987347"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.26458332px"
+         id="tspan1468">principal</tspan></text>
+    <rect
+       rx="3.4745038"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       ry="3.4745038"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2b1100;fill-opacity:0.64215686;fill-rule:nonzero;stroke:#2b1100;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect1470"
+       width="22.364338"
+       height="20.44212"
+       x="287.34995"
+       y="82.048416"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <path
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       style="fill:#2b1100;fill-opacity:0.64215686;fill-rule:evenodd;stroke:#2b1100;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 292.83054,218.65115 0.15157,-25.10485 20.0292,13.03652 z"
+       id="path1472"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       rx="3.8754082"
+       ry="3.8754082"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       y="81.519249"
+       x="286.8493"
+       height="20.44212"
+       width="22.364338"
+       id="rect1474"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e31c61;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <path
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:connector-curvature="0"
+       id="path1476"
+       d="m 292.74245,218.08995 0.15157,-25.10485 20.0292,13.03652 z"
+       style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e31c61;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect1478"
+       width="22.364338"
+       height="20.44212"
+       x="329.18262"
+       y="81.519249"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       ry="3.8754082"
+       rx="3.8754082"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 335.17262,217.92222 0.15158,-25.10486 20.02921,13.03651 z"
+       id="path1480"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png" />
+    <ellipse
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       ry="10.478511"
+       rx="11.684348"
+       cy="55.247467"
+       cx="298.5246"
+       id="ellipse1482"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2b1100;fill-opacity:0.64215686;fill-rule:nonzero;stroke:#2b1100;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png" />
+    <ellipse
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1b235f;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ellipse1484"
+       cx="298.03897"
+       cy="54.776993"
+       rx="11.684348"
+       ry="10.478511"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png" />
+    <path
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:connector-curvature="0"
+       id="path1486"
+       d="m 295.05012,60.383504 0.0676,-11.19514 8.93173,5.813439 z"
+       style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.47194803;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#471b5f;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect1610"
+       width="31.973377"
+       height="19.637735"
+       x="331.99857"
+       y="126.88533"
+       ry="2.4054258"
+       rx="2.4054258"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1_fnName.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <g
+       style="fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:1.1905483"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1_fnName.png"
+       transform="matrix(0.83994906,0,0,0.83994906,275.51683,27.989729)"
+       id="g1496">
+      <text
+         id="text1494"
+         y="128.67986"
+         x="85.796875"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.99636459px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.45132107px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.45132107px"
+           y="128.67986"
+           x="85.796875"
+           id="tspan1492"
+           sodipodi:role="line"><tspan
+   style="font-size:13.30302715px;text-align:center;text-anchor:middle;stroke-width:0.45132107px"
+   id="tspan1635">F</tspan>UNÇÃO</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.30302715px;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.45132107px"
+           y="138.53839"
+           x="85.796875"
+           sodipodi:role="line"
+           id="tspan1641">1</tspan></text>
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path1506"
+       d="m 242.62274,174.76797 c 0.2669,-0.11632 0.31331,-0.2157 0.40225,-0.86144 0.046,-0.33404 0.11362,-0.81673 0.15025,-1.07265 l 0.0666,-0.46529 0.53411,-0.18678 c 0.29377,-0.10274 0.76379,-0.30149 1.04449,-0.44167 l 0.51037,-0.25489 0.72702,0.58073 c 0.91099,0.72768 1.0094,0.78318 1.29454,0.73001 0.1901,-0.0354 0.36999,-0.19095 1.32684,-1.14691 0.92854,-0.92768 1.11293,-1.13901 1.14419,-1.31135 0.0514,-0.28325 -0.0404,-0.44865 -0.7264,-1.30863 l -0.57962,-0.72665 0.25224,-0.50763 c 0.13873,-0.2792 0.33319,-0.7491 0.43214,-1.04424 l 0.1799,-0.5366 0.22021,-0.0375 c 0.12112,-0.0206 0.57456,-0.0807 1.00764,-0.13348 0.43309,-0.0528 0.85661,-0.13164 0.94116,-0.17521 0.30569,-0.15754 0.32436,-0.26847 0.32436,-1.92797 0,-1.04109 -0.0207,-1.56425 -0.0659,-1.6634 -0.13897,-0.305 -0.28052,-0.34416 -1.92335,-0.53198 -0.24339,-0.0278 -0.46171,-0.0717 -0.48516,-0.0974 -0.0234,-0.0257 -0.11256,-0.26195 -0.19802,-0.5249 -0.0855,-0.26294 -0.26578,-0.70144 -0.4007,-0.97443 -0.13493,-0.27299 -0.24532,-0.52029 -0.24532,-0.54957 0,-0.0526 0.5517,-0.79278 0.96442,-1.2939 0.26714,-0.32434 0.34669,-0.53038 0.30029,-0.77773 -0.0294,-0.15681 -0.24923,-0.40662 -1.1474,-1.30397 -1.38251,-1.38127 -1.37973,-1.38022 -2.122,-0.79869 -0.85961,0.67347 -1.19266,0.91747 -1.25231,0.91747 -0.0353,0 -0.23544,-0.0862 -0.44465,-0.19156 -0.35408,-0.17832 -1.05568,-0.46055 -1.44324,-0.58057 -0.18484,-0.0572 -0.15762,0.0559 -0.387,-1.60908 -0.0929,-0.67429 -0.1562,-0.79024 -0.4807,-0.88038 -0.29305,-0.0814 -2.96544,-0.0676 -3.20881,0.0166 -0.3013,0.10422 -0.37615,0.29859 -0.48074,1.24828 -0.13843,1.25713 -0.0736,1.13972 -0.7622,1.38018 -0.32329,0.11289 -0.77067,0.29779 -0.99418,0.41089 -0.2235,0.11309 -0.43378,0.20563 -0.46728,0.20563 -0.0545,0 -0.49797,-0.32728 -1.31896,-0.97334 -0.65665,-0.51674 -0.68273,-0.50577 -2.05158,0.86271 -1.4074,1.40702 -1.40374,1.39613 -0.74403,2.21136 0.74683,0.92288 0.85422,1.06522 0.85422,1.13229 0,0.0387 -0.11245,0.30788 -0.24988,0.59817 -0.13743,0.29029 -0.31928,0.74293 -0.40411,1.00588 -0.0848,0.26295 -0.15901,0.48544 -0.16486,0.49443 -0.006,0.009 -0.46017,0.0671 -1.00958,0.12901 -0.54941,0.062 -1.06805,0.14841 -1.15253,0.1921 -0.30955,0.16007 -0.3375,0.32078 -0.3375,1.94046 0,2.0202 -0.0423,1.95172 1.30173,2.10959 1.2991,0.1526 1.1767,0.0961 1.34691,0.62225 0.0807,0.24948 0.26443,0.70206 0.40828,1.00573 0.14384,0.30366 0.26154,0.5843 0.26154,0.62363 0,0.0393 -0.0823,0.17254 -0.1828,0.29602 -0.62045,0.762 -0.95626,1.20336 -1.03375,1.35869 -0.18272,0.36628 -0.11474,0.47007 1.10678,1.6896 1.43185,1.42952 1.35762,1.40611 2.24708,0.70879 0.26294,-0.20614 0.51655,-0.40564 0.56357,-0.44334 0.2713,-0.2175 0.50399,-0.37788 0.54828,-0.37788 0.0279,0 0.23216,0.0883 0.45395,0.19625 0.38061,0.18523 1.07167,0.46126 1.44165,0.57583 0.19825,0.0614 0.20671,0.0926 0.33929,1.25009 0.0512,0.44709 0.13075,0.88569 0.17676,0.97466 0.15243,0.29477 0.31731,0.32185 1.94452,0.31943 1.08967,-0.002 1.5226,-0.0215 1.64699,-0.0757 z m -2.95288,-5.53611 c -1.97725,-0.49714 -3.44522,-1.95933 -4.00597,-3.99022 -0.17196,-0.62278 -0.17343,-1.988 -0.003,-2.60089 0.17693,-0.6355 0.32897,-1.00785 0.58729,-1.43827 0.80399,-1.33964 2.00403,-2.22526 3.50585,-2.58727 0.66731,-0.16086 1.84872,-0.14914 2.53102,0.0251 1.78475,0.45579 3.21679,1.76524 3.82063,3.49355 0.32255,0.92321 0.39093,1.90774 0.19899,2.86517 -0.11551,0.57619 -0.1558,0.6948 -0.45878,1.35033 -0.65817,1.42405 -2.12066,2.56068 -3.76019,2.92238 -0.66003,0.14561 -1.74984,0.12761 -2.41604,-0.0399 z m -13.44347,-6.69403 c 0.12344,-0.12344 0.16829,-0.2339 0.19986,-0.49214 0.0224,-0.18314 0.069,-0.53506 0.10367,-0.78205 l 0.063,-0.44907 0.47809,-0.17336 c 0.26294,-0.0953 0.61296,-0.24272 0.77781,-0.3275 0.1937,-0.0996 0.32303,-0.13595 0.36559,-0.10273 0.0362,0.0283 0.32836,0.2575 0.64918,0.5094 0.44264,0.34755 0.62505,0.458 0.75637,0.458 0.14736,0 0.29296,-0.11899 0.9807,-0.80149 0.4442,-0.44082 0.84577,-0.87294 0.89236,-0.96027 0.12385,-0.2321 0.0597,-0.40653 -0.32425,-0.88175 -0.18745,-0.23201 -0.40293,-0.50202 -0.47885,-0.60001 l -0.13801,-0.17817 0.17409,-0.34487 c 0.0958,-0.18968 0.23903,-0.52712 0.31842,-0.74987 0.0794,-0.22275 0.16064,-0.42246 0.18058,-0.44379 0.0199,-0.0213 0.35264,-0.079 0.73932,-0.12807 0.85112,-0.10807 0.98672,-0.1566 1.06501,-0.38118 0.0823,-0.23596 0.0792,-2.30087 -0.004,-2.48275 -0.035,-0.0767 -0.12986,-0.1649 -0.21092,-0.196 -0.15435,-0.0592 -0.69975,-0.14752 -1.27228,-0.20598 l -0.33747,-0.0345 -0.13427,-0.4037 c -0.0738,-0.22203 -0.22022,-0.57559 -0.32528,-0.78568 -0.10657,-0.21311 -0.17252,-0.41204 -0.14917,-0.44996 0.023,-0.0374 0.24475,-0.32058 0.49274,-0.62931 0.65972,-0.8213 0.67001,-0.77328 -0.3915,-1.82754 -0.49834,-0.49494 -0.90388,-0.85195 -0.99292,-0.87411 -0.19385,-0.0482 -0.31153,0.0162 -0.99874,0.54672 l -0.56144,0.43346 -0.52265,-0.24733 c -0.28746,-0.13604 -0.63913,-0.27839 -0.78149,-0.31635 l -0.25883,-0.069 -0.0927,-0.74721 c -0.10717,-0.86397 -0.15828,-1.00639 -0.39008,-1.0872 -0.23119,-0.0806 -2.29979,-0.0778 -2.4779,0.003 -0.19679,0.0897 -0.24753,0.24151 -0.35003,1.04748 -0.0502,0.39492 -0.1079,0.7329 -0.12817,0.75107 -0.0203,0.0182 -0.26465,0.11661 -0.54306,0.21877 -0.27842,0.10216 -0.61357,0.24777 -0.7448,0.32358 l -0.23859,0.13784 -0.23949,-0.18718 c -0.13172,-0.10295 -0.37596,-0.29718 -0.54275,-0.43163 -0.44024,-0.35486 -0.63387,-0.43694 -0.83461,-0.35379 -0.0889,0.0368 -0.52675,0.43271 -0.97298,0.87974 -1.02842,1.03025 -1.01961,0.98415 -0.34859,1.82399 0.25493,0.31907 0.46243,0.63276 0.46206,0.69851 -4.2e-4,0.0656 -0.0582,0.22059 -0.1286,0.34433 -0.0704,0.12374 -0.20018,0.42746 -0.28848,0.67494 -0.0883,0.24747 -0.17597,0.46629 -0.19481,0.48626 -0.0188,0.02 -0.35882,0.0772 -0.75553,0.12725 -0.73266,0.0924 -1.00888,0.18135 -1.07174,0.34517 -0.064,0.16676 -0.039,2.37377 0.0286,2.52206 0.0867,0.19037 0.24506,0.2421 1.05791,0.34565 0.38479,0.049 0.71818,0.10059 0.74087,0.11461 0.0227,0.014 0.0979,0.19606 0.16723,0.40453 0.0693,0.20848 0.20968,0.55387 0.31198,0.76754 0.17892,0.37369 0.18232,0.39326 0.0893,0.51405 -0.0532,0.0691 -0.26696,0.34317 -0.47508,0.60913 -0.20812,0.26596 -0.39368,0.54444 -0.41236,0.61885 -0.0557,0.22194 0.0911,0.41626 0.95085,1.25824 0.64445,0.63116 0.85064,0.80149 0.97021,0.80149 0.13857,0 0.32103,-0.12403 1.34822,-0.91646 0.12732,-0.0982 0.13875,-0.0968 0.42912,0.0525 0.16408,0.0844 0.51235,0.23113 0.77393,0.32611 0.54547,0.19805 0.49902,0.11195 0.62303,1.15462 0.0619,0.52074 0.0881,0.60671 0.22661,0.74524 l 0.15659,0.1566 h 1.1898 1.1898 z m -2.48416,-4.1062 c -1.08446,-0.3221 -2.03025,-1.11258 -2.53467,-2.11844 -0.1086,-0.21654 -0.25415,-0.62071 -0.32345,-0.89815 -0.38017,-1.52184 0.2403,-3.25604 1.50207,-4.19829 0.16108,-0.12029 0.30716,-0.21871 0.32461,-0.21871 0.0174,0 0.1261,-0.0608 0.24144,-0.13518 0.11535,-0.0744 0.4122,-0.20627 0.65968,-0.29317 0.40897,-0.1436 0.52169,-0.15819 1.23739,-0.16011 0.67705,-0.002 0.84184,0.0161 1.17563,0.12794 1.42574,0.47765 2.35637,1.41706 2.79841,2.82479 0.18959,0.60374 0.1894,1.64266 -4.2e-4,2.24714 -0.49326,1.571 -1.67511,2.61744 -3.32683,2.94567 -0.31181,0.062 -1.38357,-0.0135 -1.75389,-0.12349 z"
+       style="fill:#ebf073;fill-opacity:1;stroke-width:0.05624501" />
+    <g
+       id="g1510"
+       transform="matrix(0.80024077,0,0,0.88000636,250.71639,-108.89462)"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path1508"
+         d="m 10.505282,281.65695 c -0.0041,-5.13782 -0.8983871,-13.65243 -1.359351,-17.70209 -0.019424,-1.87491 1.309796,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.632002,-1.65574 -2.702798,-3.11147 z"
+         style="fill:#800080;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+    </g>
+    <g
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1.png"
+       style="opacity:1;fill:#1b235f;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
+       transform="matrix(0.80024077,0,0,0.88000636,251.88056,-110.39143)"
+       id="g1514">
+      <path
+         style="fill:#471b5f;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         id="path1512"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <g
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2.png"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       transform="matrix(0.80024077,0,0,0.88000636,250.71639,-68.148582)"
+       id="g1518">
+      <path
+         style="fill:#800080;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 10.505282,281.65695 c -0.0041,-5.13782 -0.8983871,-13.65243 -1.359351,-17.70209 -0.019424,-1.87491 1.309796,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.632002,-1.65574 -2.702798,-3.11147 z"
+         id="path1516"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <g
+       id="g1522"
+       transform="matrix(0.80024077,0,0,0.88000636,251.88056,-69.645394)"
+       style="opacity:1;fill:#1b235f;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path1520"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         style="fill:#471b5f;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+    </g>
+    <g
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       transform="matrix(0.80024077,0,0,0.88000636,248.8454,-190.80241)"
+       id="g1526">
+      <path
+         style="fill:#800080;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 10.505282,281.65695 c -0.0041,-5.13782 -0.8983871,-13.65243 -1.359351,-17.70209 -0.019424,-1.87491 1.309796,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.632002,-1.65574 -2.702798,-3.11147 z"
+         id="path1524"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <g
+       id="g1530"
+       transform="matrix(0.80024077,0,0,0.88000636,250.00957,-192.29923)"
+       style="opacity:1;fill:#1b235f;fill-opacity:1;stroke:#ffffff;stroke-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path1528"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         style="fill:#471b5f;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+    </g>
+    <rect
+       y="87.511566"
+       x="294.31091"
+       height="6.3238163"
+       width="2.7403271"
+       id="rect1538"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ebf073;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       y="88.206871"
+       x="297.52182"
+       height="0.33072916"
+       width="1.7717634"
+       id="rect1540"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ebf073;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ebf073;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect1542"
+       width="1.7717634"
+       height="0.33072916"
+       x="297.48843"
+       y="92.709549" />
+    <ellipse
+       ry="3.3158128"
+       rx="1.1693041"
+       cy="90.659599"
+       cx="294.31384"
+       id="ellipse1544"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ebf073;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <text
+       id="text1548"
+       y="52.332291"
+       x="260.75928"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.00909424px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.33359867px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.33359867px"
+         y="52.332291"
+         x="260.75928"
+         sodipodi:role="line"
+         id="tspan1588">Fp</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.96607399px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.37908667px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="262.81226"
+       y="135.44531"
+       id="text1594"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"><tspan
+         sodipodi:role="line"
+         id="tspan1592"
+         x="262.81226"
+         y="135.44531"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.37908667px">F<tspan
+   id="tspan1618"
+   style="font-size:14.11111111px;line-height:69.99999881%;stroke-width:0.37908667px">1</tspan></tspan></text>
+    <rect
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png"
+       rx="2.4054258"
+       ry="2.4054258"
+       y="44.957119"
+       x="335.59918"
+       height="19.633801"
+       width="30.176807"
+       id="rect1614"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#002d0d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <text
+       id="text1576"
+       y="52.879265"
+       x="350.67761"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.620646px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       xml:space="preserve"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"><tspan
+         id="tspan1574"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332px;"
+         y="52.879265"
+         x="350.67761"
+         sodipodi:role="line">FUNÇÃO</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332px;"
+         y="59.894306"
+         x="350.67761"
+         sodipodi:role="line"
+         id="tspan1586">PRINCIPAL</tspan></text>
+    <rect
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2_fnName.png"
+       rx="2.4054258"
+       ry="2.4054258"
+       y="162.72969"
+       x="331.99857"
+       height="19.637735"
+       width="31.973377"
+       id="rect1645"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#471b5f;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <g
+       id="g1584"
+       transform="matrix(0.85196979,0,0,0.85196979,274.79004,62.197187)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2_fnName.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       style="fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:1.17375052">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.99636459px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.44495323px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="85.772911"
+         y="128.67986"
+         id="text1582"><tspan
+           sodipodi:role="line"
+           id="tspan1580"
+           x="86.906242"
+           y="128.67986"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.44495323px"><tspan
+   style="font-size:13.30302715px;text-align:center;text-anchor:middle;stroke-width:0.44495323px"
+   id="tspan1633">F</tspan>UNÇÃO </tspan><tspan
+           sodipodi:role="line"
+           x="85.772911"
+           y="138.53839"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.30302715px;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.44495323px"
+           id="tspan1637">2</tspan></text>
+    </g>
+    <g
+       style="fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:1.25697887"
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2.png"
+       transform="matrix(0.79555829,0,0,0.79555829,203.78984,71.713427)"
+       id="g1604">
+      <text
+         id="text1598"
+         y="131.84627"
+         x="73.350075"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.58297729px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.47650397px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.47650397px"
+           y="131.84627"
+           x="73.350075"
+           id="tspan1596"
+           sodipodi:role="line">F<tspan
+   style="font-size:17.7373692px"
+   id="tspan1625">2</tspan></tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.58297729px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.47650397px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="73.350075"
+         y="131.84627"
+         id="text1602"><tspan
+           sodipodi:role="line"
+           id="tspan1600"
+           x="73.350075"
+           y="149.00404"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.47650397px" /></text>
+    </g>
   </g>
 </svg>

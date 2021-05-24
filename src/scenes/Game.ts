@@ -87,7 +87,7 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 543, frameHeight: 108 });
+    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 649, frameHeight: 108 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
@@ -231,15 +231,14 @@ export default class Game extends Scene {
       this.obstaclesMazeModel.updateBringFront();
     }
 
-
     this.dude.onFinishWalking = () => {
       this.codeEditor.setPlayBtnModeStopped();
       let waitBeforeRestart = 1500
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
-        this.sounds.error();
         setTimeout(()=>{
           this.replayCurrentPhase();
+          this.sounds.error();
         },waitBeforeRestart)
       }
     }
@@ -594,9 +593,9 @@ export default class Game extends Scene {
 
   private initializeCodeEditorProgrammingAreas() {
     if (!this.codeEditor.programs) {
-      let prog0 = new Program(this, 'prog_0', this.grid, 18.4, 11, 7, 2.3, 'drop-zone', 0xFBFF94)
-      let prog1 = new Program(this, 'prog_1', this.grid, 18.4, 14.5, 7, 2.3, 'drop-zone', 0xFBFF94)
-      let prog2 = new Program(this, 'prog_2', this.grid, 18.4, 18, 7, 2.3, 'drop-zone', 0xFBFF94)
+      let prog0 = new Program(this, 'prog_0', this.grid, 17.5, 11, 8, 2.3, 'drop-zone', 0xFBFF94)
+      let prog1 = new Program(this, 'prog_1', this.grid, 17.5, 14.5, 8, 2.3, 'drop-zone', 0xFBFF94)
+      let prog2 = new Program(this, 'prog_2', this.grid, 17.5, 18, 8, 2.3, 'drop-zone', 0xFBFF94)
       this.codeEditor.setPrograms([
         prog0,
         prog1,

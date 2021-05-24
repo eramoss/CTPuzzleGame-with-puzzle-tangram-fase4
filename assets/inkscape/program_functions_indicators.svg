@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="1250.6934"
-     inkscape:cy="812.04408"
+     inkscape:zoom="0.70000001"
+     inkscape:cx="1096.762"
+     inkscape:cy="822.14035"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -505,6 +505,30 @@
        d="m 292.74245,218.08995 0.15157,-25.10485 20.0292,13.03652 z"
        style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
+       inkscape:export-ydpi="95.999985"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_1_fnName.png"
+       rx="2.4054258"
+       ry="2.4054258"
+       y="127.1526"
+       x="332.26584"
+       height="19.637735"
+       width="31.973377"
+       id="rect16543"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect16545"
+       width="30.176807"
+       height="19.633801"
+       x="335.86646"
+       y="45.224392"
+       ry="2.4054258"
+       rx="2.4054258"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
+    <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e31c61;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1.05833328;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect1478"
        width="22.364338"
@@ -552,6 +576,18 @@
        id="path1486"
        d="m 295.05012,60.383504 0.0676,-11.19514 8.93173,5.813439 z"
        style="fill:#00ff00;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.47194803;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect16547"
+       width="31.973377"
+       height="19.637735"
+       x="332.26584"
+       y="162.99696"
+       ry="2.4054258"
+       rx="2.4054258"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_2_fnName.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985" />
     <rect
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#471b5f;fill-opacity:1;fill-rule:nonzero;stroke:#ebf073;stroke-width:0.30000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        id="rect1610"
@@ -753,17 +789,17 @@
        id="text1576"
        y="52.879265"
        x="350.67761"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.620646px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.620646px;line-height:100%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        xml:space="preserve"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/prog_0_fnName.png"
        inkscape:export-xdpi="95.999985"
        inkscape:export-ydpi="95.999985"><tspan
          id="tspan1574"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332px;"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke-width:0.26458332px;"
          y="52.879265"
          x="350.67761"
          sodipodi:role="line">FUNÇÃO</tspan><tspan
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.26458332px;"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi Bold';text-align:center;text-anchor:middle;fill:#ebf073;fill-opacity:1;stroke-width:0.26458332px;"
          y="59.894306"
          x="350.67761"
          sodipodi:role="line"
@@ -837,6 +873,152 @@
            x="73.350075"
            y="149.00404"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#ebf073;fill-opacity:1;stroke:none;stroke-width:0.47650397px" /></text>
+    </g>
+    <g
+       id="g1481"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/arrow_down.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       style="opacity:1;fill:#ffff00;fill-opacity:1;filter:url(#filter3161)"
+       transform="translate(296.7379,-183.09101)">
+      <g
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/g8844.png"
+         transform="rotate(180,22.723883,183.95136)"
+         id="g8844"
+         style="fill:#ffff00;fill-opacity:1">
+        <g
+           id="g8827"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-ydpi="95.999985"
+           style="fill:#ffff00;fill-opacity:1">
+          <rect
+             y="183.619"
+             x="10.456549"
+             height="23.091209"
+             width="26.238003"
+             id="rect8822"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+        </g>
+        <path
+           inkscape:export-ydpi="95.999985"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:connector-curvature="0"
+           id="path4074"
+           d="m 14.238624,196.01023 9.77567,-10.18429 9.59571,10.18429 h -4.57679 v 7.71366 h -10.49121 v -7.71366 z"
+           style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
+        <path
+           style="fill:#ff00c5;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:1.32291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+           d="m 13.889859,196.3999 9.77567,-10.18429 9.59571,10.18429 h -4.57679 v 7.71366 h -10.49121 v -7.71366 z"
+           id="path2801"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccccc"
+           inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"
+           inkscape:export-xdpi="95.999985"
+           inkscape:export-ydpi="95.999985" />
+      </g>
+    </g>
+    <g
+       id="g3215"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/arrow_left.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985"
+       transform="translate(0.70690062,488.34483)"
+       style="opacity:1;filter:url(#filter3161)">
+      <rect
+         transform="scale(-1)"
+         y="501.16068"
+         x="-293.99728"
+         height="23.091209"
+         width="26.238003"
+         id="rect2043"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#384958;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <g
+         transform="translate(12.133394,6.5106018)"
+         id="g3175">
+        <path
+           sodipodi:nodetypes="cccccccc"
+           inkscape:connector-curvature="0"
+           id="path3171"
+           d="m 273.37544,-509.86184 c 11.44543,-8.29705 -6.79971,-21.35962 -6.20548,-8.31473 l 2.54419,0.0609 -6.49155,5.35925 -5.00739,-7.36024 2.8692,0.84217 c 4.53577,-20.66527 29.72005,-0.85047 12.43431,9.70802 z"
+           style="fill:#c87137;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#c87137;stroke-width:2.47752571;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.95294118;paint-order:stroke markers fill" />
+        <path
+           style="fill:#f91505;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:1.32291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           d="m 273.1437,-510.418 c 11.44544,-8.29706 -6.7997,-21.35963 -6.20548,-8.31473 l 2.54419,0.0609 -6.49154,5.35927 -5.00739,-7.36026 2.8692,0.84218 c 4.53577,-20.66527 29.72005,-0.85047 12.43431,9.70802 z"
+           id="path2039"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccccc" />
+      </g>
+    </g>
+    <g
+       id="g3225"
+       transform="matrix(-1,0,0,1,632.78119,487.83252)"
+       style="opacity:1;fill:#fcb402;fill-opacity:0.95294118;filter:url(#filter3161)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/arrow_right.png"
+       inkscape:export-xdpi="95.999985"
+       inkscape:export-ydpi="95.999985">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#fcb402;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#384958;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect3217"
+         width="26.238003"
+         height="23.091209"
+         x="-293.99728"
+         y="501.16068"
+         transform="scale(-1)" />
+      <g
+         id="g3223"
+         transform="translate(12.133394,6.5106018)"
+         style="fill:#fcb402;fill-opacity:0.95294118">
+        <path
+           style="fill:#fcb402;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#c87137;stroke-width:2.47752571;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.95294118;paint-order:stroke markers fill"
+           d="m 273.37544,-509.86184 c 11.44543,-8.29705 -6.79971,-21.35962 -6.20548,-8.31473 l 2.54419,0.0609 -6.49155,5.35925 -5.00739,-7.36024 2.8692,0.84217 c 4.53577,-20.66527 29.72005,-0.85047 12.43431,9.70802 z"
+           id="path3219"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccccccc" />
+        <path
+           sodipodi:nodetypes="cccccccc"
+           inkscape:connector-curvature="0"
+           id="path3221"
+           d="m 273.1437,-510.418 c 11.44544,-8.29706 -6.7997,-21.35963 -6.20548,-8.31473 l 2.54419,0.0609 -6.49154,5.35927 -5.00739,-7.36026 2.8692,0.84218 c 4.53577,-20.66527 29.72005,-0.85047 12.43431,9.70802 z"
+           style="fill:#fcb402;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#ebf073;stroke-width:1.32291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+      </g>
+    </g>
+    <g
+       id="g8831"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/arrow_up.png"
+       inkscape:export-xdpi="94.984886"
+       inkscape:export-ydpi="94.984886"
+       transform="rotate(180,170.42387,93.274195)"
+       style="opacity:1;filter:url(#filter3161)">
+      <rect
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.00100002;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#933b00;fill-opacity:1;fill-rule:evenodd;stroke:#bf4d00;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect8824"
+         width="26.238003"
+         height="23.091209"
+         x="9.0533829"
+         y="210.18559" />
+      <path
+         sodipodi:nodetypes="cccccccc"
+         inkscape:connector-curvature="0"
+         id="path4076"
+         d="m 13.126514,220.10622 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         style="fill:#c87137;fill-opacity:1;fill-rule:evenodd;stroke:#c87137;stroke-width:1.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-ydpi="95.999985" />
+      <path
+         inkscape:export-ydpi="95.999985"
+         inkscape:export-xdpi="95.999985"
+         inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrowDownLeft.png"
+         style="fill:#009cff;fill-opacity:1;fill-rule:evenodd;stroke:#ebf073;stroke-width:1.32291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+         d="m 12.486698,220.49589 9.77567,10.1843 9.5957,-10.1843 h -4.5768 v -7.71365 h -10.49119 v 7.71365 z"
+         id="path2822"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccc" />
     </g>
   </g>
 </svg>

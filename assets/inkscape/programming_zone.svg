@@ -562,9 +562,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="665.52417"
-     inkscape:cy="373.74237"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="1184.0666"
+     inkscape:cy="597.27095"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -589,38 +589,20 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       sodipodi:nodetypes="csssscccc"
-       inkscape:connector-curvature="0"
-       id="path12809"
-       d="m 252.70456,198.09583 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 252.72429 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2b1100;fill-opacity:0.80882353;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454" />
-    <path
        inkscape:export-ydpi="95.923454"
        inkscape:export-xdpi="95.923454"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
        style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2b1100;fill-opacity:0.80882353;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 108.97915,198.09583 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 108.99888 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
+       d="M 80.744329,198.09583 H 246.21294 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 80.764059 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
        id="path12811"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="csssscccc" />
-    <path
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-       d="m 252.70456,197.45325 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 252.72429 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
-       id="path12807"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csssscccc" />
     <path
        sodipodi:nodetypes="csssscccc"
        inkscape:connector-curvature="0"
        id="rect2914"
-       d="m 108.97915,197.45325 h 137.23379 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 108.99888 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
-       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="M 80.744329,197.45325 H 246.21294 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 80.764059 c -1.2081,0.059 -2.43335,-0.87551 -2.48264,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99493,-2.49446 2.47741,-2.69491 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#b3b3b3;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
@@ -698,126 +680,6 @@
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
        inkscape:export-xdpi="95.923454"
        inkscape:export-ydpi="95.923454" />
-    <use
-       height="100%"
-       width="100%"
-       transform="translate(171.8235,0.03339869)"
-       id="use1612"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use1614"
-       transform="translate(199.89103,0.03339869)"
-       width="100%"
-       height="100%"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       height="100%"
-       width="100%"
-       transform="translate(227.95858,0.03338869)"
-       id="use1616"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use1618"
-       transform="translate(256.02614,0.03338869)"
-       width="100%"
-       height="100%"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       x="0"
-       y="0"
-       xlink:href="#use1612"
-       id="use3264"
-       transform="translate(-28.180185)"
-       width="100%"
-       height="100%"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-ydpi="95.923454"
-       style="opacity:1;fill:#0d3d12;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use9884"
-       transform="translate(171.8235,0.03339869)"
-       width="100%"
-       height="100%"
-       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       height="100%"
-       width="100%"
-       transform="translate(199.89103,0.03339869)"
-       id="use9886"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       x="0"
-       y="0"
-       xlink:href="#g6547"
-       id="use9888"
-       transform="translate(227.95858,0.03338869)"
-       width="100%"
-       height="100%"
-       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       height="100%"
-       width="100%"
-       transform="translate(256.02614,0.03338869)"
-       id="use9890"
-       xlink:href="#g6547"
-       y="0"
-       x="0"
-       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
-    <use
-       inkscape:export-ydpi="95.923454"
-       inkscape:export-xdpi="95.923454"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
-       height="100%"
-       width="100%"
-       transform="translate(-28.180185)"
-       id="use9908"
-       xlink:href="#use1612"
-       y="0"
-       x="0"
-       style="opacity:1;fill:#4d4d4d;fill-opacity:1;filter:url(#filter3161)" />
     <g
        style="opacity:1;filter:url(#filter3161)"
        transform="translate(108.42874,-77.863695)"
@@ -926,6 +788,126 @@
            d="m -615.04986,432.03918 v 10.31497 l -13.22917,6.61459 v -10.31497 z"
            id="path9996" />
       </g>
+    </g>
+    <g
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
+       transform="matrix(0.90935794,0,0,1,72.560626,-62.282017)"
+       id="g3712">
+      <path
+         style="fill:#4d4d4d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         id="path3710"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <path
+       sodipodi:nodetypes="csssscccc"
+       inkscape:connector-curvature="0"
+       id="path3714"
+       d="m 252.77069,198.09583 h 165.46862 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 252.79042 c -1.2081,0.059 -2.43336,-0.87551 -2.48265,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99494,-2.49446 2.47742,-2.69491 z"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#2b1100;fill-opacity:0.80882353;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-ydpi="95.923454" />
+    <path
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#e6e6e6;fill-opacity:1;fill-rule:evenodd;stroke:#a8fe5f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 252.77069,197.45325 h 165.46862 c 2.2406,0 4.01152,2.66861 4.01152,4.01152 v 19.85319 c 0,1.3429 -2.66861,4.01151 -4.01152,4.01151 H 252.79042 c -1.2081,0.059 -2.43336,-0.87551 -2.48265,-2.79079 l -0.0145,-22.39052 c -0.002,-2.16574 0.99494,-2.49446 2.47742,-2.69491 z"
+       id="path3716"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csssscccc" />
+    <g
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
+       transform="matrix(0.90935794,0,0,1,272.77184,-62.282017)"
+       id="g3720">
+      <path
+         style="fill:#4d4d4d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         id="path3718"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccc" />
+    </g>
+    <use
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       height="100%"
+       width="100%"
+       transform="translate(200.09388,0.03340469)"
+       id="use3722"
+       xlink:href="#g6547"
+       y="0"
+       x="0"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1;stroke:#ffffff;stroke-width:0.5291667;stroke-miterlimit:4.0999999;stroke-dasharray:none;stroke-opacity:1" />
+    <use
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       x="0"
+       y="0"
+       xlink:href="#g6547"
+       id="use3724"
+       transform="translate(228.16144,0.03340069)"
+       width="100%"
+       height="100%"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1" />
+    <use
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       style="opacity:1;fill:#0d3d12;fill-opacity:1"
+       height="100%"
+       width="100%"
+       transform="translate(256.22902,0.03339669)"
+       id="use3726"
+       xlink:href="#g6547"
+       y="0"
+       x="0" />
+    <use
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       x="0"
+       y="0"
+       xlink:href="#g6547"
+       id="use3728"
+       transform="translate(284.29658,0.03339269)"
+       width="100%"
+       height="100%"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1" />
+    <use
+       inkscape:export-ydpi="95.923454"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       x="0"
+       y="0"
+       xlink:href="#g6547"
+       id="use3730"
+       transform="translate(256.22902,0.03339669)"
+       width="100%"
+       height="100%"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1" />
+    <g
+       id="g3734"
+       transform="matrix(0.90935794,0,0,1,244.58698,-62.282017)"
+       style="opacity:1;fill:#4d4d4d;fill-opacity:1"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/programming_zone.png"
+       inkscape:export-xdpi="95.923454"
+       inkscape:export-ydpi="95.923454">
+      <path
+         sodipodi:nodetypes="ccccccccc"
+         inkscape:connector-curvature="0"
+         id="path3732"
+         d="m 9.9148718,282.40861 c -0.00407,-5.13782 -0.8983869,-13.65243 -1.3593508,-17.70209 -0.019424,-1.87491 1.3097964,-2.33196 2.07788,-2.31781 l 23.383452,-0.42484 c 1.128285,0.0284 2.242481,0.25416 2.64011,1.42996 1.991725,7.17884 2.162127,13.40699 -0.281064,20.43706 -0.240337,0.83163 -1.191729,1.64378 -2.688009,1.63889 l -21.07022,0.0503 c -1.634742,0.0147 -2.6320024,-1.65574 -2.7027982,-3.11147 z"
+         style="fill:#4d4d4d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.79803264;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
   </g>
 </svg>

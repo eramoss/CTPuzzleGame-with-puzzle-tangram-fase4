@@ -814,9 +814,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.25000001"
-     inkscape:cx="815.17808"
-     inkscape:cy="1044.2337"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="1461.2573"
+     inkscape:cy="1502.3652"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -11475,20 +11475,6 @@
            style="fill:#fcb402;fill-opacity:0.95294118;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.47752571;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
       </g>
     </g>
-    <text
-       id="text3233"
-       y="-518.71875"
-       x="211.16348"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.03029728px;line-height:100%;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#f9f9f9;fill-opacity:1;stroke:none;stroke-width:0.10795439px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
-       xml:space="preserve"
-       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_down.png"
-       inkscape:export-xdpi="95.999985"
-       inkscape:export-ydpi="95.999985"><tspan
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#f9f9f9;stroke-width:0.10795439px;"
-         y="-518.71875"
-         x="211.16348"
-         id="tspan3231"
-         sodipodi:role="line">BACK</tspan></text>
     <g
        id="g8831"
        inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ctpuzzle-test-platform/assets/ct/arrow_up.png"

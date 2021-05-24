@@ -566,8 +566,6 @@ export default class Game extends Scene {
       if (this.gameParams.isAutomaticTesting()) {
         this.codeEditor.onClickRun()
       }
-
-
     }
 
   }

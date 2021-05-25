@@ -40,6 +40,7 @@ export default class Program {
     if (!this.animated) {
       this.programNameImage.scale += 0.1
       this.programNameImage.rotation += 0.05
+      this.programNameImage.setTint(0xffff00)
       this.animated = true;
     }
   }
@@ -48,6 +49,7 @@ export default class Program {
     if (this.animated) {
       this.programNameImage.scale -= 0.1
       this.programNameImage.rotation -= 0.05
+      this.programNameImage.clearTint()
       this.animated = false;
     }
   }

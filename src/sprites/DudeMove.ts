@@ -86,8 +86,11 @@ export class DudeMove {
     }
   }
 
-  animate() {
-    this.command.animateSprite(this.couldExecute);
+  animate(playSound: boolean = true) {
+    this.command.animateSprite();
+    if (playSound) {
+      this.command.playSoundOnExecute(this.couldExecute);
+    }
   }
 
   disanimate() {

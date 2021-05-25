@@ -233,7 +233,7 @@ export default class Game extends Scene {
 
     this.dude.onFinishWalking = () => {
       this.codeEditor.setPlayBtnModeStopped();
-      let waitBeforeRestart = 1500
+      let waitBeforeRestart = 1000
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
         setTimeout(()=>{
@@ -252,6 +252,9 @@ export default class Game extends Scene {
     this.createBtnSpeed()
 
     this.codeEditor.onClickRun = () => {
+      if(this.dude.stepByStep){
+        this.dude.continuePlayingWithoutDebug()
+      }
       if (this.dude.stopped) {
         this.codeEditor.setPlayBtnModePlaying();
         this.gameState.calculateTimeSpent();
@@ -281,11 +284,16 @@ export default class Game extends Scene {
       this.replayCurrentPhase();
     }
 
+    this.codeEditor.setOnBlinkBtnStep((blinked) => {
+      this.dude.highlightNextMove(blinked)
+    })
+
     this.codeEditor.onClickStepByStep = () => {
       this.sounds.click()
       this.codeEditor.setPlayBtnModePlaying();
       this.codeEditor.disableStepButton();
       this.dude.executeStepByStep(this.codeEditor.programs);
+      this.codeEditor.setPlayBtnModeDebugStoped()
     }
 
     this.codeEditor.onClickStop = () => {

@@ -18,6 +18,7 @@ export default class Button implements InterfaceElement {
   scale: number = 1;
   toggable = false
   toggled: boolean = false;
+  onBlink: (blinked:boolean) => void = () => { };
 
   constructor(scene: Scene, sounds: Sounds, x: integer, y: integer, spriteKey: string, onClickHandler: () => any) {
     this.scene = scene;
@@ -89,6 +90,7 @@ export default class Button implements InterfaceElement {
       this.blinked = false;
       this.sprite.setFrame(0);
     }
+    this.onBlink(this.blinked)
   }
 
   setFontSize(arg0: number) {

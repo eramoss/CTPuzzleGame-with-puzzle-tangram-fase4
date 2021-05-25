@@ -24,7 +24,8 @@ export default class CodeEditor {
   onInteract: () => void = () => { };
   onClickStop: () => void = () => { };
   onClickStepByStep: () => void = () => { };
-  onRemoveCommand: (command:Command) => void = () => { };
+
+  onRemoveCommand: (command: Command) => void = () => { };
   sounds: Sounds;
   controlsScale: number;
   scale: number
@@ -54,16 +55,20 @@ export default class CodeEditor {
     this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
   }
 
+  setOnBlinkBtnStep(onBlink: (blinked: boolean) => void) {
+    this.btnStep.onBlink = onBlink
+  }
+
   createToolbox() {
     this.grid.addImage(17, 1, 'toolbox', 8.5, 9);
     let marginTopArrows = 0.4
     this.toolboxRows =
       [
-        new ToolboxRowOrganizer(this.grid, 20, 2+marginTopArrows, 2, 2, ['arrow-up',]),
-        new ToolboxRowOrganizer(this.grid, 17, 3+marginTopArrows, 8, 2, ['arrow-left', 'arrow-right']),
-        new ToolboxRowOrganizer(this.grid, 20, 3.7+marginTopArrows, 2, 2, ['arrow-down']),
+        new ToolboxRowOrganizer(this.grid, 20, 2 + marginTopArrows, 2, 2, ['arrow-up',]),
+        new ToolboxRowOrganizer(this.grid, 17, 3 + marginTopArrows, 8, 2, ['arrow-left', 'arrow-right']),
+        new ToolboxRowOrganizer(this.grid, 20, 3.7 + marginTopArrows, 2, 2, ['arrow-down']),
         //new ToolboxRowOrganizer(this.grid, 18, 5.5, 6, 2, ['prog_0', 'prog_1', 'prog_2'], 1.1),
-        new ToolboxRowOrganizer(this.grid, 18, 6.5, 6, 2, ['prog_1', 'prog_2','if_block'], 1.1),
+        new ToolboxRowOrganizer(this.grid, 18, 6.5, 6, 2, ['prog_1', 'prog_2', 'if_block'], 1.1),
         //new ToolboxRowOrganizer(this.grid, 18, 7.4, 6, 2, ['if_coin', 'if_block'], 1.0),
       ]
 
@@ -154,12 +159,11 @@ export default class CodeEditor {
         this.onInteract();
       })
       commandSprite.on('pointerover', _ => {
-        this.sounds.hover();
-        commandSprite.setScale(toolboxRow.scaleOnPointerOver);
+        command.onHover(toolboxRow.scaleOnPointerOver)
       });
       commandSprite.on('pointerout', _ => {
         this.highlightProgramThatMayReceiveCommand()
-        commandSprite.setScale(toolboxRow.scaleNormal);
+        command.onPointerout(toolboxRow.scaleNormal)
       });
       commandSprite.on('drag', _ => {
         Logger.log("MOVE_EVENT", "drag")
@@ -434,15 +438,22 @@ export default class CodeEditor {
       //this.sounds.stop();
       this.onClickStepByStep();
     })
-
-    this.grid.placeAt(6.5, 17, this.btnPlay.sprite, 2.1)
-    this.grid.placeAt(9, 17, this.btnStep.sprite, 2)
-    this.grid.placeAt(6.5, 17, this.btnStop.sprite, 2.1)
-
+    this.resetPositionsStartStopStepButtons();
     this.setPlayBtnModeStopped();
   }
 
+  resetPositionsStartStopStepButtons() {
+    this.grid.placeAt(6.5, 17, this.btnPlay.sprite, 2)
+    this.grid.placeAt(9, 17, this.btnStep.sprite, 2)
+    this.grid.placeAt(6.5, 17, this.btnStop.sprite, 2)
+  }
+
+  showStopBtnAtLeft() {
+    this.grid.placeAt(4, 17, this.btnStop.sprite, 2)
+  }
+
   setPlayBtnModeStopped() {
+    this.resetPositionsStartStopStepButtons()
     this.btnPlay.show()
     this.btnStop.hide();
     this.unhighlightStepButton();
@@ -453,6 +464,11 @@ export default class CodeEditor {
   setPlayBtnModePlaying() {
     this.btnPlay.hide()
     this.btnStop.show();
+  }
+
+  setPlayBtnModeDebugStoped(){
+    this.btnPlay.show()
+    this.showStopBtnAtLeft()
   }
 
   getProgramByDropzone(zone: SpriteDropZone) {
@@ -512,7 +528,7 @@ export default class CodeEditor {
   }
 
   disablePlayButton() {
-    this.btnPlay.disable();
+    //this.btnPlay.disable();
   }
 
   enablePlayButton() {

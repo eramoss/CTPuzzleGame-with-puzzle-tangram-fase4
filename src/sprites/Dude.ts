@@ -20,6 +20,7 @@ const WARN_TIME = 300
 export default class Dude {
 
 
+
   character: Physics.Arcade.Sprite;
   matrix: Matrix;
   scene: Phaser.Scene;
@@ -281,7 +282,7 @@ export default class Dude {
       this.execute(programs, stepByStep);
     }
     if (!this.stopped) {
-       this.stepByStep = true;
+      this.stepByStep = true;
       this.currentStep?.execute();
     }
   }
@@ -392,6 +393,21 @@ export default class Dude {
     this.speedFactor = newSpeedFactor
     return newSpeedFactor
   }
+
+  highlightNextMove(blinked: boolean) {
+    if (blinked) {
+      this.currentStep?.animate(false)
+    }
+    if (!blinked) {
+      this.currentStep?.disanimate()
+    }
+  }
+
+  continuePlayingWithoutDebug() {
+    this.stepByStep = false
+    this.currentStep?.execute()
+  }
 }
+
 
 

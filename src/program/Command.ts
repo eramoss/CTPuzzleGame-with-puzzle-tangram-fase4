@@ -12,7 +12,7 @@ import CommandIntent from './CommandIntent';
 import Program from './Program';
 
 export default class Command implements InterfaceElement {
-
+  hovered: boolean;
   sprite: GameObjects.Sprite;
   scene: Phaser.Scene;
   program: Program;
@@ -38,6 +38,16 @@ export default class Command implements InterfaceElement {
     this.scene = scene;
     this.isConditional = this.name.startsWith('if');
     this.hash = new Date().getTime().toString();
+  }
+
+  onHover(scale: number) {
+    this.sprite.setScale(scale)
+    this.hovered = true
+  }
+
+  onPointerout(scale: number) {
+    this.sprite.setScale(scale)
+    this.hovered = false
   }
 
   index(): number {
@@ -222,24 +232,15 @@ export default class Command implements InterfaceElement {
     return this.getAction().action.indexOf('prog') > -1
   }
 
-  animateSprite(success: boolean = true) {
+  animateSprite() {
     if (!this.animated) {
       this.animated = true;
-      this.sprite.rotation += 0.05
-      this.sprite.setScale(this.sprite.scale + 0.1);
+      this.sprite.rotation += 0.1
+      /* if (!this.hovered) {
+        this.sprite.setScale(this.sprite.scale + 0.1);
+      } */
       if (this.condition) {
         this.condition?.animateSprite();
-      }
-      if (!this.condition) {
-        if (!this.isConditional) {
-          if (success) {
-            if (!this.isProgCommand()) {
-              this.sounds.playRobotSound(this.name);
-            }
-          } else {
-            this.sounds.blocked();
-          }
-        }
       }
       this.sprite.setTint(0xffff00);
     }
@@ -250,11 +251,29 @@ export default class Command implements InterfaceElement {
     this.condition?.disanimateSprite();
     if (this.animated) {
       this.animated = false;
-      this.sprite.rotation -= 0.05
+      this.sprite.rotation -= 0.1
       this.sprite.clearTint();
-      this.sprite.setScale(this.sprite.scale - 0.1);
+      /* if (!this.hovered) {
+        this.sprite.setScale(this.sprite.scale - 0.1);
+      } */
     }
   }
+
+  playSoundOnExecute(couldExecute: boolean) {
+    if (!this.condition) {
+      if (!this.isConditional) {
+        if (couldExecute) {
+          if (!this.isProgCommand()) {
+            this.sounds.playRobotSound(this.name);
+          }
+        } else {
+          this.sounds.blocked();
+        }
+      }
+    }
+  }
+
+
 
   removeHighlightConditionImage() {
     this.scene.children.remove(this.highlightConditionalImage)
@@ -321,7 +340,7 @@ export default class Command implements InterfaceElement {
     if (this.condition) {
       stringfiedCommand = stringfiedCommand + ":" + this.condition.name;
     }
-    return stringfiedCommand+`[${this.program.name}]`;
+    return stringfiedCommand + `[${this.program.name}]`;
   }
 }
 

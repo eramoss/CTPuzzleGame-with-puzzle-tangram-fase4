@@ -127,7 +127,6 @@ export default class Game extends Scene {
       if (this.obstaclesMazeModel.count('coin') == 0) {
         this.dude.stop(true)
         this.dude.playSuccess();
-        this.codeEditor.disableStepButton();
         this.codeEditor.unhighlightStepButton();
         setTimeout(() => {
           this.playNextPhase();
@@ -198,7 +197,6 @@ export default class Game extends Scene {
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
       if (this.dude.stepByStep) {
         if (!this.dude.stopped) {
-          this.codeEditor.enableStepButton();
           this.codeEditor.highlightStepButton();
           this.currentPhase?.updateTutorial();
         }
@@ -218,8 +216,6 @@ export default class Game extends Scene {
     }
 
     this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
-      this.codeEditor.disableStepButton();
-      this.codeEditor.disablePlayButton();
       this.codeEditor.unhighlightStepButton();
       this.obstaclesMazeModel.putSprite(x, y, undefined);
       if (currentDestine) {
@@ -291,7 +287,6 @@ export default class Game extends Scene {
     this.codeEditor.onClickStepByStep = () => {
       this.sounds.click()
       this.codeEditor.setPlayBtnModePlaying();
-      this.codeEditor.disableStepButton();
       this.dude.executeStepByStep(this.codeEditor.programs);
       this.codeEditor.setPlayBtnModeDebugStoped()
     }

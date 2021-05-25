@@ -457,8 +457,6 @@ export default class CodeEditor {
     this.btnPlay.show()
     this.btnStop.hide();
     this.unhighlightStepButton();
-    this.enableStepButton();
-    this.enablePlayButton();
   }
 
   setPlayBtnModePlaying() {
@@ -517,22 +515,6 @@ export default class CodeEditor {
 
   unhighlightStepButton() {
     this.btnStep.stopBlink();
-  }
-
-  disableStepButton() {
-    //this.btnStep.disable();
-  }
-
-  enableStepButton() {
-    this.btnStep.enable();
-  }
-
-  disablePlayButton() {
-    //this.btnPlay.disable();
-  }
-
-  enablePlayButton() {
-    this.btnPlay.enable();
   }
 
   notifyWhenProgramIsEditted() {

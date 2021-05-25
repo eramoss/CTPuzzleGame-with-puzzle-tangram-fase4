@@ -289,9 +289,7 @@ export default class Game extends Scene {
       this.codeEditor.setPlayBtnModePlaying();
       this.dude.executeStepByStep(this.codeEditor.programs);
       this.codeEditor.setPlayBtnModeDebugStoped()
-      if (this.dude.stopped) {
-        this.sendResponse()
-      }
+      this.sendResponse()
     }
 
     this.codeEditor.onClickStop = () => {

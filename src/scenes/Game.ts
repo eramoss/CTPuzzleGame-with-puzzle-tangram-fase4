@@ -114,7 +114,7 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
     this.messageBox = new MessageBox(this, this.grid)
     this.messageBox.onFinishTalk = () => {
-      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState:true })
+      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState: true })
     }
 
     this.showLoading();
@@ -232,10 +232,10 @@ export default class Game extends Scene {
       let waitBeforeRestart = 1000
       if (this.obstaclesMazeModel.count('coin') > 0) {
         this.dude.stop(true);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.replayCurrentPhase();
           this.sounds.error();
-        },waitBeforeRestart)
+        }, waitBeforeRestart)
       }
     }
 
@@ -248,7 +248,7 @@ export default class Game extends Scene {
     this.createBtnSpeed()
 
     this.codeEditor.onClickRun = () => {
-      if(this.dude.stepByStep){
+      if (this.dude.stepByStep) {
         this.dude.continuePlayingWithoutDebug()
       }
       if (this.dude.stopped) {
@@ -289,6 +289,9 @@ export default class Game extends Scene {
       this.codeEditor.setPlayBtnModePlaying();
       this.dude.executeStepByStep(this.codeEditor.programs);
       this.codeEditor.setPlayBtnModeDebugStoped()
+      if (this.dude.stopped) {
+        this.sendResponse()
+      }
     }
 
     this.codeEditor.onClickStop = () => {

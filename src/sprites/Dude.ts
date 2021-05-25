@@ -244,8 +244,9 @@ export default class Dude {
         this.continuePreviousBranchIfExists();
         this.programBeingExecuted.disanimate();
       }
-      if (move.couldExecute)
+      if (move.couldExecute){
         this.resetAt(move);
+      }
       if (!this.stepByStep) {
         move.disanimate();
         this.setTimeout(() => {
@@ -283,7 +284,9 @@ export default class Dude {
     }
     if (!this.stopped) {
       this.stepByStep = true;
-      this.currentStep?.execute();
+      if(!this.currentStep?.executing){
+        this.currentStep?.execute();
+      }
     }
   }
 

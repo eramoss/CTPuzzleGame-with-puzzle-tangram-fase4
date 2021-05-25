@@ -504,7 +504,7 @@ export default class CodeEditor {
   }
 
   disableStepButton() {
-    this.btnStep.disable();
+    //this.btnStep.disable();
   }
 
   enableStepButton() {

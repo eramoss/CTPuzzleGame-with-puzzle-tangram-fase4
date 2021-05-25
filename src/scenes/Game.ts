@@ -282,6 +282,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickStepByStep = () => {
+      this.sounds.click()
       this.codeEditor.setPlayBtnModePlaying();
       this.codeEditor.disableStepButton();
       this.dude.executeStepByStep(this.codeEditor.programs);

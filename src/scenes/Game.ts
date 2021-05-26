@@ -253,8 +253,6 @@ export default class Game extends Scene {
       }
       if (this.dude.stopped) {
         this.codeEditor.setPlayBtnModePlaying();
-        this.gameState.calculateTimeSpent();
-        this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
         this.sendResponse();
         this.dude.execute(this.codeEditor.programs);
       }
@@ -635,6 +633,8 @@ export default class Game extends Scene {
       if (this.gameParams.isTestApplication()) {
         try {
           if (this.currentPhase) {
+            this.gameState.calculateTimeSpent();
+            this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
             const response = this.gameState.getResponseToSend()
             await this.testApplicationService.sendResponse(response);
           }

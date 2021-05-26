@@ -10,6 +10,9 @@ export default class GameState {
     let resposta = new RespostaItemProgramacao()
     resposta.tempoEmSegundos = -1
     resposta.contadorUsoLixeira = 0
+    resposta.contadorUsoDebug = 0
+    resposta.contadorUsoPlay = 0
+    resposta.contadorUsoStop = 0
     this.setResponse(resposta);
     this.initializeStartTime()
   }
@@ -71,6 +74,24 @@ export default class GameState {
   registerTrashUse() {
     let response = this.getResponse()
     response.countTrashUse()
+    this.setResponse(response)
+  }
+
+  registerDebugUse() {
+    let response = this.getResponse()
+    response.countDebug()
+    this.setResponse(response)
+  }
+
+  registerPlayUse() {
+    let response = this.getResponse()
+    response.countPlay()
+    this.setResponse(response)
+  }
+
+  registerStopUse() {
+    let response = this.getResponse()
+    response.countStop()
     this.setResponse(response)
   }
 

@@ -248,6 +248,7 @@ export default class Game extends Scene {
     this.createBtnSpeed()
 
     this.codeEditor.onClickRun = () => {
+      this.gameState.registerPlayUse()
       if (this.dude.stepByStep) {
         this.dude.continuePlayingWithoutDebug()
       }
@@ -283,6 +284,7 @@ export default class Game extends Scene {
     })
 
     this.codeEditor.onClickStepByStep = () => {
+      this.gameState.registerDebugUse()
       this.sounds.click()
       this.codeEditor.setPlayBtnModePlaying();
       this.dude.executeStepByStep(this.codeEditor.programs);
@@ -291,6 +293,7 @@ export default class Game extends Scene {
     }
 
     this.codeEditor.onClickStop = () => {
+      this.gameState.registerStopUse()
       let resetFace = true;
       this.dude.stop(resetFace);
       this.replayCurrentPhase();

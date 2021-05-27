@@ -815,8 +815,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.25000001"
-     inkscape:cx="-450.03213"
-     inkscape:cy="1328.7774"
+     inkscape:cx="261.47556"
+     inkscape:cy="887.26349"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -11979,5 +11979,79 @@
          x="105.35159"
          y="65.192818"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Dyuthi;-inkscape-font-specification:Dyuthi;fill:#640000;fill-opacity:1;stroke-width:0.26458332px">2x</tspan></text>
+    <g
+       id="g2841"
+       transform="matrix(1.1051503,0,0,1.1051503,116.27608,-394.52003)"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/tile_ISOMETRIC.png"
+       inkscape:export-xdpi="96.010002"
+       inkscape:export-ydpi="96.010002">
+      <path
+         id="path2828"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         inkscape:connector-curvature="0"
+         style="fill:#9e7758;stroke-width:0.26458332" />
+      <path
+         id="path2830"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         inkscape:connector-curvature="0"
+         style="fill:#bb8d5d;stroke-width:0.26458332" />
+      <path
+         id="path2832"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;stroke-width:0.26458332" />
+      <path
+         id="path2834"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ded7a4;fill-opacity:1;stroke-width:0.26458332" />
+      <path
+         id="path2837"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         inkscape:connector-curvature="0"
+         style="fill:#c1b868;stroke-width:0.26458332" />
+      <path
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         id="path2839" />
+    </g>
+    <g
+       inkscape:export-ydpi="96.010002"
+       inkscape:export-xdpi="96.010002"
+       inkscape:export-filename="/home/cassiano/projetos/workspace-visualcode/ct-puzzle-game/assets/ct/tile_ISOMETRIC.png"
+       transform="matrix(1.1051503,0,0,1.1051503,116.27608,-394.52003)"
+       id="g2857">
+      <path
+         style="fill:#9e7758;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,59.373565 v 1.98437 l -13.22917,6.61459 v -1.98438 z"
+         id="path2843" />
+      <path
+         style="fill:#bb8d5d;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -463.97278,67.972525 -13.22916,-6.61459 v -1.98437 l 13.22916,6.61458 z"
+         id="path2845" />
+      <path
+         style="fill:#cdc687;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,59.373565 v -1.98438 l 13.22916,6.61459 v 1.98437 z"
+         id="path2847" />
+      <path
+         style="fill:#ded7a4;fill-opacity:1;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -477.20194,57.389185 13.22916,-6.61458 13.22917,6.61458 -13.22917,6.61459 z"
+         id="path2849" />
+      <path
+         style="fill:#c1b868;stroke-width:0.26458332"
+         inkscape:connector-curvature="0"
+         d="m -450.74361,57.389185 v 1.98438 l -13.22917,6.61458 v -1.98437 z"
+         id="path2852" />
+      <path
+         id="path2855"
+         d="m -475.25064,57.389186 11.27786,-5.63893 11.27787,5.63893 -11.27787,5.638938 z"
+         inkscape:connector-curvature="0"
+         style="fill:#cdc687;fill-opacity:1;stroke-width:0.26458332" />
+    </g>
   </g>
 </svg>

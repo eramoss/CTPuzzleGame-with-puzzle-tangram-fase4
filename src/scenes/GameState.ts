@@ -2,6 +2,7 @@ import { Comando } from "../ct-platform-classes/MecanicaRope";
 import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao"
 import { Logger } from "../main"
 import { getItem, getTypedItem, setItem } from "../utils/storage"
+import { isAndroidAmbient } from "../utils/Utils";
 
 export default class GameState {
 
@@ -13,6 +14,7 @@ export default class GameState {
     resposta.contadorUsoDebug = 0
     resposta.contadorUsoPlay = 0
     resposta.contadorUsoStop = 0
+    resposta.ambiente = isAndroidAmbient() ? "celular" : "computador"
     this.setResponse(resposta);
     this.initializeStartTime()
   }

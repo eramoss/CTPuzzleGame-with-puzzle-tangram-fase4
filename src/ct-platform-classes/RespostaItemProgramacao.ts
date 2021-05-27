@@ -1,7 +1,7 @@
 import { Comando } from "./MecanicaRope"
 
+type Ambiente = "celular" | "computador"
 export class RespostaItemProgramacao {
-
 
   comandosUtilizados: string[] = []
   tempoInicio: number
@@ -13,10 +13,13 @@ export class RespostaItemProgramacao {
   contadorUsoPlay: number = 0
   contadorUsoStop: number = 0
   contadorReinicioFase: number = 0
+  contadorTentativas: number = 0
+  ambiente: Ambiente = 'celular'
 
   adicionarTentativa(comandosUtilizados: Comando[]) {
     this.comandosUtilizados = comandosUtilizados
     this.tentativas.push(comandosUtilizados)
+    this.contadorTentativas = this.tentativas.length
   }
 
   countTrashUse() {

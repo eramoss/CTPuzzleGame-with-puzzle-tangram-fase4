@@ -15,6 +15,9 @@ export class RespostaItemProgramacao {
   contadorReinicioFase: number = 0
   contadorTentativas: number = 0
   ambiente: Ambiente = 'celular'
+  caminhoPercorrido: { x: number, y: number }[] = []
+  caminhoPercorridoTexto:string = ""
+  finalizou = false
 
   adicionarTentativa(comandosUtilizados: Comando[]) {
     this.comandosUtilizados = comandosUtilizados

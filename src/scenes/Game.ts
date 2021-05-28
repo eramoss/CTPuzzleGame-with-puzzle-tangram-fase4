@@ -128,6 +128,7 @@ export default class Game extends Scene {
         this.dude.stop(true)
         this.dude.playSuccess();
         this.codeEditor.unhighlightStepButton();
+        this.sendResponse({ setFinished: true })
         setTimeout(() => {
           this.playNextPhase();
         }, 2000);
@@ -195,6 +196,7 @@ export default class Game extends Scene {
     }
 
     this.dude.onCompleteMoveCallback = (current: DudeMove) => {
+      this.gameState.pushMove({ x: current.x, y: current.y })
       if (this.dude.stepByStep) {
         if (!this.dude.stopped) {
           this.codeEditor.highlightStepButton();
@@ -630,13 +632,20 @@ export default class Game extends Scene {
     // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 
-  async sendResponse() {
+  async sendResponse(options:
+    {
+      setFinished: boolean
+    } = {
+      setFinished: false
+    }) {
     let phase = this.currentPhase;
     if (phase) {
       if (this.gameParams.isTestApplication()) {
         try {
           if (this.currentPhase) {
-            this.gameState.calculateTimeSpent();
+            if (options.setFinished) {
+              this.gameState.setFinished();
+            }
             this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
             const response = this.gameState.getResponseToSend()
             await this.testApplicationService.sendResponse(response);

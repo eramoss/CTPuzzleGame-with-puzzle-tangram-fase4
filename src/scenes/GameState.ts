@@ -6,6 +6,7 @@ import { isAndroidAmbient } from "../utils/Utils";
 
 export default class GameState {
 
+
   initializeResponse(itemNumber: number) {
     this.setItemNumber(itemNumber);
     let resposta = new RespostaItemProgramacao()
@@ -14,9 +15,25 @@ export default class GameState {
     resposta.contadorUsoDebug = 0
     resposta.contadorUsoPlay = 0
     resposta.contadorUsoStop = 0
+    resposta.caminhoPercorrido = []
+    resposta.caminhoPercorridoTexto = ""
+    resposta.finalizou = false
     resposta.ambiente = isAndroidAmbient() ? "celular" : "computador"
     this.setResponse(resposta);
     this.initializeStartTime()
+  }
+
+  pushMove(position: { x: number; y: number; }) {
+    let response = this.getResponse()
+    response.caminhoPercorrido.push(position)
+    response.caminhoPercorridoTexto = response.caminhoPercorrido.map(position => `(${position.x},${position.y})`).join('')
+    this.setResponse(response)
+  }
+
+  setFinished() {
+    let response = this.getResponse()
+    response.finalizou = true
+    this.setResponse(response)
   }
 
   initializeStartTime() {
@@ -49,12 +66,15 @@ export default class GameState {
     return this.getSpeedFactor() == 2
   }
 
-  calculateTimeSpent() {
+  private calculateTimeSpent(): number {
     let response = this.getResponse();
+    let tempoEmSegundos = 0
     if (response) {
-      response.tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoInicio)
+      tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoInicio)
+      response.tempoEmSegundos = tempoEmSegundos
       this.setResponse(response)
     }
+    return tempoEmSegundos
   }
 
   getResponseToSend(): { itemId: number, response: RespostaItemProgramacao } {
@@ -117,6 +137,7 @@ export default class GameState {
     })
     if (tentativa.toString() != ultimaTentativa) {
       response.adicionarTentativa(tentativa);
+      response.tempoEmSegundos = this.calculateTimeSpent()
     }
     this.setResponse(response);
   }

@@ -77,7 +77,7 @@ export default class TestApplicationService {
       let part = this.getParticipation()
       PUT(part.urlToSendSource?.url, {
         participationId: part.participationId,
-        source: `${document.referrer} (${isAndroidAmbient() ? "MOBILE" : "COMPUTADOR"})`
+        source: `(${isAndroidAmbient() ? "MOBILE" : (document?.referrer) + " COMPUTADOR"})`
       })
     }
   }

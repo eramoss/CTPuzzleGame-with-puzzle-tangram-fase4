@@ -4,7 +4,7 @@ import GameParams from "../settings/GameParams";
 import User from "../user/User";
 import { GET, POST, PUT } from "../utils/internet";
 import { getItem, getTypedItem, setItem } from "../utils/storage";
-import { getDefaultPlatformApiUrl, replaceUserUUIDToken } from "../utils/Utils";
+import { getDefaultPlatformApiUrl, isAndroidAmbient, replaceUserUUIDToken } from "../utils/Utils";
 import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } from "./TestApplication";
 
 export default class TestApplicationService {
@@ -70,6 +70,16 @@ export default class TestApplicationService {
       nonCompletedItems = []
     }
     return nonCompletedItems;
+  }
+
+  async saveUserSource() {
+    if (this.gameParams.isTestApplication()) {
+      let part = this.getParticipation()
+      PUT(part.urlToSendSource?.url, {
+        participationId: part.participationId,
+        source: `${document.referrer} (${isAndroidAmbient() ? "MOBILE" : "COMPUTADOR"})`
+      })
+    }
   }
 
   async saveCurrentPlayingPhase(itemId: number) {

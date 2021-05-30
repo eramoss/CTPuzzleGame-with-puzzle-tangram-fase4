@@ -123,6 +123,7 @@ export default class PreGame extends Phaser.Scene {
 
   async loadTestApplication() {
     let user: User = this.userRepository.getOrCreateGuestUser();
+    await this.testApplicationService.saveUserSource()
     await this.testApplicationService.loadApplicationFromDataUrl(user);
   }
 

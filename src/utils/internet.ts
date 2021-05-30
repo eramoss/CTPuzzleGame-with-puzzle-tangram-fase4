@@ -2,6 +2,10 @@ import { Logger } from "../main"
 
 async function sendRequest(url: string, json: any = null, method: string = 'GET'): Promise<Response> {
   Logger.info('Calling ' + method, url)
+  if(!url){
+    Logger.error('Aborting call to null url! ' + method, url)
+    return;
+  }
   let response = null
   let params = null
 

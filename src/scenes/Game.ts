@@ -114,7 +114,8 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
     this.messageBox = new MessageBox(this, this.grid)
     this.messageBox.onFinishTalk = () => {
-      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState: true })
+      let isReplaying = this.gameState.isReplayingPhase(this.currentPhase.itemId)
+      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState:!isReplaying })
     }
 
     this.showLoading();
@@ -354,6 +355,7 @@ export default class Game extends Scene {
         Logger.clear();
         messageBox.close()
         this.gameState.registerRestartUse()
+        this.gameState.setReplayingPhase(this.currentPhase.itemId, true)
         this.replayCurrentPhase({
           clearCodeEditor: true,
           muteInstructions: false,
@@ -500,6 +502,9 @@ export default class Game extends Scene {
   }
 
   playNextPhase() {
+    if(this.currentPhase){
+      this.gameState.setReplayingPhase(this.currentPhase.itemId, false)
+    }
     const phase = this.phasesLoader.getNextPhase();
     this.playPhase(phase, { clearCodeEditor: true, clearResponseState: true });
   }

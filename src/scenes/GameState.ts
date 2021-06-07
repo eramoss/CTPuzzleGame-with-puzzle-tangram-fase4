@@ -5,7 +5,13 @@ import { getItem, getTypedItem, setItem } from "../utils/storage"
 import { isAndroidAmbient } from "../utils/Utils";
 
 export default class GameState {
+  setReplayingPhase(itemId:number, replaying: boolean) {
+    setItem('replaying'+itemId, replaying)
+  }
 
+  isReplayingPhase(itemId:number):boolean{
+    return getTypedItem(Boolean, 'replaying'+itemId)
+  }
 
   initializeResponse(itemNumber: number) {
     this.setItemNumber(itemNumber);

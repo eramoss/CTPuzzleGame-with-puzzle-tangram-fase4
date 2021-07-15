@@ -116,7 +116,7 @@ export default class TestApplicationService {
   async loadApplicationFromDataUrl(user: User) {
     try {
       let urlToGetTestApplication = this.gameParams.dataUrl;
-      const urlAlreadyHasUserHash = this.gameParams.dataUrl.indexOf(USER_UUID_TOKEN) == -1;
+      const urlAlreadyHasUserHash = /.*\/data\/[\w-]+\/[\w-]+/.test(this.gameParams.dataUrl);
       if (!urlAlreadyHasUserHash) {
         urlToGetTestApplication = replaceUserUuidTokenByUserHash(this.gameParams.dataUrl, user.hash)
       }

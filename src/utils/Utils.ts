@@ -83,7 +83,10 @@ export function androidOpenUrl(url: string) {
 export const USER_UUID_TOKEN = '<user_uuid>'
 
 export function replaceUserUuidTokenByUserHash(url: string, value: string) {
-  return url?.replace(USER_UUID_TOKEN, value)
+  if (url.indexOf(USER_UUID_TOKEN) > -1) {
+    return url?.replace(USER_UUID_TOKEN, value)
+  }
+  return url + value
 }
 
 function openWebUrl(url: string) {

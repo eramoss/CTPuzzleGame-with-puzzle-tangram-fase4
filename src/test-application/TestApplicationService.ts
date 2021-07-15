@@ -86,13 +86,15 @@ export default class TestApplicationService {
     let part = this.getParticipation()
     let participationId = part.participationId
     let urlToSendProgress: UrlToSendProgress = part.urlToSendProgress
-    if (this.gameParams.isTestApplication()) {
-      setItem('currentPlayingPhase', itemId + '');
-      let participation = {
-        id: participationId,
-        lastVisitedItemId: itemId
+    if (urlToSendProgress) {
+      if (this.gameParams.isTestApplication()) {
+        setItem('currentPlayingPhase', itemId + '');
+        let participation = {
+          id: participationId,
+          lastVisitedItemId: itemId
+        }
+        PUT(urlToSendProgress.url, participation)
       }
-      PUT(urlToSendProgress.url, participation)
     }
   }
 
@@ -133,12 +135,15 @@ export default class TestApplicationService {
   }
 
   async sendResponse(responseToSend: { itemId: number, response: RespostaItemProgramacao }) {
-    let url = this.getParticipation().urlToSendResponses.url;
-    Logger.info('sendResponse: url', url)
-    url = url.replace('<item_id>', responseToSend.itemId + '');
-    Logger.info('sendResponse: url', url)
-    Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
-    await POST(url, responseToSend.response);
+    let urlToSendResponses = this.getParticipation().urlToSendResponses
+    if (urlToSendResponses) {
+      let url = urlToSendResponses.url;
+      Logger.info('sendResponse: url', url)
+      url = url.replace('<item_id>', responseToSend.itemId + '');
+      Logger.info('sendResponse: url', url)
+      Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
+      await POST(url, responseToSend.response);
+    }
   }
 
   async instantiatePlaygroundItem<T>(): Promise<T> {

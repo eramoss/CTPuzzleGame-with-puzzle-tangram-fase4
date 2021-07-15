@@ -3,7 +3,7 @@ import AlignGrid from "../geom/AlignGrid";
 import { globalSounds } from "../scenes/PreGame";
 import { TestApplication } from "../test-application/TestApplication";
 import UserRepository from "../user/UserRepository";
-import { replaceUserUUIDToken } from "../utils/Utils";
+import { replaceUserUuidTokenByUserHash } from "../utils/Utils";
 import Button from "./Button";
 
 export default class PhasesGrid {
@@ -21,7 +21,7 @@ export default class PhasesGrid {
 
   emitGameUrl(testApplication: TestApplication) {
     let userUuid = this.userRepository.getOrCreateGuestUser().hash;
-    const gameUrl = replaceUserUUIDToken(testApplication?.url, userUuid)
+    const gameUrl = replaceUserUuidTokenByUserHash(testApplication?.url, userUuid)
     this.onRequestPlay(gameUrl)
     globalSounds.drag()
   }

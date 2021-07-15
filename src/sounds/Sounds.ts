@@ -62,7 +62,7 @@ export default class Sounds {
     this.scene.load.audio('click', 'assets/ct/sounds/click.mp3');
     this.scene.load.audio('noise', 'assets/ct/sounds/robot.wav');
     this.scene.load.audio('robot', 'assets/ct/sounds/seat_lower.mp3');
-    this.scene.load.audio('back-music', 'assets/ct/sounds/back_music.wav');
+    this.scene.load.audio('back-music', 'assets/ct/sounds/background_music.mp3');
   }
 
   playBackgroundMusic() {

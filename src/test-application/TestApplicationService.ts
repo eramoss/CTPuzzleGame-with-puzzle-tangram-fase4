@@ -9,6 +9,14 @@ import { PreparedParticipation, TestApplication, TestItem, UrlToSendProgress } f
 
 export default class TestApplicationService {
 
+  async disableQuiz() {
+    const participation = this.getParticipation()
+    if (participation) {
+      participation.urlToEndOfTestQuiz.url = null
+      this.setParticipation(participation);
+    }
+  }
+
   constructor(private gameParams: GameParams) {
     Logger.info('LOADED GAME PARAMS', gameParams)
     setItem("gameParams", gameParams)

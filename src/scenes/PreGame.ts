@@ -32,6 +32,16 @@ export default class PreGame extends Phaser.Scene {
     super('pre-game');
   }
 
+  preload() {
+    this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
+    this.load.image('background', 'assets/ct/radial_gradient.png');
+    this.load.image('big-rope', 'assets/ct/big_rope.png');
+    this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
+    this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 678, frameHeight: 99 });
+    this.sounds.preload(this);
+    this.keyboard.preload(this);
+  }
+
   init() {
     this.sounds = new Sounds();
     this.keyboard = new Keyboard();
@@ -50,17 +60,6 @@ export default class PreGame extends Phaser.Scene {
     const params = new URLSearchParams(queryParams);
     let gameParams = new GameParams(params);
     this.testApplicationService = new TestApplicationService(gameParams);
-  }
-
-  preload() {
-    this.load.image('test-box', 'assets/ct/pregame/test-game-box.png');
-    this.load.image('test-box-clear', 'assets/ct/pregame/test-game-box-clear.png');
-    this.load.image('background', 'assets/ct/radial_gradient.png');
-    this.load.image('big-rope', 'assets/ct/big_rope.png');
-    this.load.spritesheet('play-btn', 'assets/ct/pregame/play-button.png', { frameWidth: 400, frameHeight: 152 });
-    this.load.spritesheet('yellow-btn', 'assets/ct/pregame/yellow_btn.png', { frameWidth: 678, frameHeight: 99 });
-    this.sounds.preload(this);
-    this.keyboard.preload(this);
   }
 
   async create() {
@@ -107,9 +106,14 @@ export default class PreGame extends Phaser.Scene {
       this.loading.show();
       this.initializeGameParams(gameUrl.split('?')[1]);
       await this.loadTestApplication();
+      await this.disableQuiz();
       this.startGame();
     };
     this.phasesGrid.setApplications(testApplications);
+  }
+
+  async disableQuiz() {
+    await this.testApplicationService.disableQuiz()
   }
 
   private async loadPublicApplications(): Promise<TestApplication[]> {
@@ -125,51 +129,6 @@ export default class PreGame extends Phaser.Scene {
     let user: User = this.userRepository.getOrCreateGuestUser();
     await this.testApplicationService.saveUserSource()
     await this.testApplicationService.loadApplicationFromDataUrl(user);
-  }
-
-  createPlayButtonArea() {
-    const cell = this.grid.getCell(10, 5);
-    this.inputObject = this.add.text(cell.x, cell.y, '', {
-      fontFamily: 'Dyuthi, arial',
-    })
-      .setScale(this.grid.scale)
-      .setFontStyle('bold')
-      .setFontSize(100)
-      .setAlign('center')
-      .setDepth(1001)
-      .setTint(0xffffff);
-
-    let testBox = this.grid.addImage(9, 3, 'test-box', 8).setInteractive();
-    let testBoxClear = this.grid.addImage(15.5, 5, 'test-box-clear', 1).setInteractive();
-    testBoxClear.setVisible(false);
-
-    this.keyboard.create();
-    this.keyboard.hide();
-    this.keyboard.onClick = (value: string) => {
-      if (this.testNumberValue.length <= 5) {
-        testBoxClear.setVisible(true);
-        this.testNumberValue += value;
-        this.inputObject.setText(this.testNumberValue);
-      }
-    }
-
-    testBoxClear.on('pointerup', () => {
-      this.testNumberValue = '';
-      this.inputObject.setText('');
-      testBoxClear.setVisible(false);
-    })
-
-    testBox.on('pointerup', () => {
-      this.keyboard.show()
-    })
-
-    this.playBtn = new Button(this, this.sounds, 0, 0, 'play-btn', () => {
-      this.sounds.click();
-      this.startGame();
-    })
-    this.grid.placeAt(10, 9.7, this.playBtn.sprite, 6);
-
-
   }
 
   startGame() {

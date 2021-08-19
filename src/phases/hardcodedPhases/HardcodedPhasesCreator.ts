@@ -309,7 +309,7 @@ export default class HardcodedPhasesCreator {
         ['tile','tile','tile','tile','tile'],
         ['tile','tile','tile','tile','tile'],
         ['tile','tile','tile','tile','tile'],
-        ['tile','tile','tile','tile','tile'],
+        ['tile','grass','grass','asfalt','tile'],
     ]
     item.obstaculos = [
         ['block','coin','block','coin','block'],

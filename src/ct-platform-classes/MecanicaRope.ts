@@ -1,6 +1,6 @@
 
 export type Obstaculo = "coin" | "block" | "null" | "battery" | 'rope'
-export type Mapa = "tile" | "null"
+export type Mapa = "tile" | 'grass' | 'asfalt' | "null"
 export type Face = "up" | "down" | "right" | "left"
 export type Comando = "UP" | "DOWN" | "RIGHT" | "LEFT" | 'PROG_0' | "PROG_1" | 'PROG_2' | 'IF_COIN' | 'IF_BLOCK'
 

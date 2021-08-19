@@ -27,7 +27,7 @@ import Command from '../program/Command'
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
 /**
- * IDEIAS
+ * IDEIAS DO PEDRO
  * - mapa aberto
 - grama
 - textura
@@ -81,7 +81,7 @@ export default class Game extends Scene {
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.image('tile', `assets/ct/tile_${this.mode}.png`);
     this.load.image('grass', `assets/ct/grass.png`);
-    this.load.image('asfalt', `assets/ct/asfalt.png`);
+    this.load.image('asphalt', `assets/ct/asphalt.png`);
     this.load.image('toolbox', 'assets/ct/toolbox.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', `assets/ct/obstacle_orange_${this.mode}.png`);
@@ -468,8 +468,8 @@ export default class Game extends Scene {
       return new Tile(x, y, this, scale, 'grass')
     })
 
-    spriteCreateFunctions.set('asfalt', (x: integer, y: integer) => {
-      return new Tile(x, y, this, scale, 'asfalt')
+    spriteCreateFunctions.set('asphalt', (x: integer, y: integer) => {
+      return new Tile(x, y, this, scale, 'asphalt')
     })
 
     spriteCreateFunctions.set('battery', (x: integer, y: integer) => {

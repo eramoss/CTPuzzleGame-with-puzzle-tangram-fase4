@@ -343,7 +343,7 @@ export default class Game extends Scene {
       this.add.text(cell.x, cell.y, '', { fontFamily: 'Dyuthi, sans-serif' })
         .setScale(this.grid.scale)
         .setFontStyle('bold')
-        .setTint(0xf6cf55)
+        .setTint(0x197A31)
         .setFontSize(35)
   }
 

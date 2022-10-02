@@ -147,12 +147,13 @@ export function isDebug(scene: Phaser.Scene) {
 }
 
 export function writeText(newText: string, existentText: string, textObject: Phaser.GameObjects.Text, onWrite: () => void) {
-  if (existentText.length < newText.length) {
-    existentText = newText.substring(0, existentText.length + 1);
-    textObject?.setText(existentText);
-    setTimeout(() => {
-      writeText(newText, existentText, textObject, onWrite)
-      onWrite()
-    }, 20)
-  }
+  textObject?.setText(newText);
+  // if (existentText.length < newText.length) {
+  //   existentText = newText.substring(0, existentText.length + 1);
+  //   textObject?.setText(existentText);
+  //   setTimeout(() => {
+  //     writeText(newText, existentText, textObject, onWrite)
+  //     onWrite()
+  //   }, 20)
+  // }
 }

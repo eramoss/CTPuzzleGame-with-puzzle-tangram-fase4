@@ -19,19 +19,19 @@ if (height > window.innerHeight) {
 
 export const Logger = {
   log: (...values: any[]) => {
-    console.log(values.join(' '))
+    //console.log(values.join(' '))
   },
   info: (...values: any[]) => {
-    console.info(values.join(' '))
+    //console.info(values.join(' '))
   },
   warn: (...values: any[]) => {
-    console.warn(values.join(' '))
+    //console.warn(values.join(' '))
   },
   error: (...values: any[]) => {
     console.error(values.join(' '))
   },
   clear: () => {
-    console.clear()
+    //console.clear()
   }
 }
 

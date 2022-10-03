@@ -2,7 +2,7 @@ FROM node:10-slim
 
 WORKDIR /app
 
-RUN npm install -g http-server
+RUN npm install -g node-static
 
 COPY package.json .
 

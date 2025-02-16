@@ -16,8 +16,14 @@ export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-lef
 export const DEFAULT_SKIP_MESSAGE = 'Você vai pular essa fase?'
 export const DEFAULT_EXIT_MESSAGE = 'Vai sair dessa fase?'
 export const DEFAULT_RESTART_MESSAGE = 'Reiniciar fase?'
-export default class MazePhase {
 
+class Poligonos {
+  pontos: { x: number, y: number }[] = [];
+  posicao: { x: number, y: number }[] = [];
+  cor: string = '';
+}
+
+export default class MazePhase {
 
   skipPhaseMessage:string = DEFAULT_SKIP_MESSAGE
   exitPhaseMessage:string = DEFAULT_EXIT_MESSAGE
@@ -46,6 +52,9 @@ export default class MazePhase {
   batteryDecreaseOnEachMove: number = 1
   batteryGainOnCapture: number = 1;
   commands: Array<CommandName[]> = [];
+  poligonos: Poligonos[] = [];
+  poligonoDestino: { x: number, y: number }[] = [];
+  pontosDestino: { x: number, y: number }[] = [];
 
   constructor(scene: Scene, codeEditor: CodeEditor) {
     this.scene = scene;

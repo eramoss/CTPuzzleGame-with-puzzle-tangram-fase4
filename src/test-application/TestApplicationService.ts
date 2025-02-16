@@ -123,6 +123,7 @@ export default class TestApplicationService {
     setItem('public-test-applications', testApplications);
   }
 
+  //aqui busca os dados do json
   async loadApplicationFromDataUrl(user: User) {
     try {
       let urlToGetTestApplication = this.gameParams.dataUrl;
@@ -142,6 +143,7 @@ export default class TestApplicationService {
     setItem("participation", participation)
   }
 
+  //Aqui faz o envio das respostas
   async sendResponse(responseToSend: { itemId: number, response: RespostaItemProgramacao }) {
     let urlToSendResponses = this.getParticipation().urlToSendResponses
     if (urlToSendResponses) {
@@ -149,6 +151,7 @@ export default class TestApplicationService {
       Logger.info('sendResponse: url', url)
       url = url.replace('<item_id>', responseToSend.itemId + '');
       Logger.info('sendResponse: url', url)
+      console.log('sendResponse: response', JSON.stringify(responseToSend.response))
       Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
       await POST(url, responseToSend.response);
     }

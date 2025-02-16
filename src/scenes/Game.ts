@@ -1,7 +1,8 @@
+import { inputHandler } from './class/InputHandler'
+import { fitShape } from './class/fitShape'
+import { positionValidation } from './class/positionValidation'
 import { GameObjects, Types, Scene } from 'phaser'
 import { MatrixMode } from '../geom/Matrix'
-import Dude from '../sprites/Dude'
-import { DudeMove } from "../sprites/DudeMove"
 import Program from '../program/Program'
 import CodeEditor, { PlayPhaseOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
@@ -17,43 +18,18 @@ import GameState from './GameState'
 import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
 import { MyGameObject } from './MyGameObject'
 import { Block } from './Block'
-import { Battery } from './Battery'
 import { Coin } from './Coin'
-import { Tile } from './Tile'
 import MessageBox from '../sprites/MessageBox'
 import Button from '../controls/Button'
 import Command from '../program/Command'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
-/**
- * IDEIAS DO PEDRO
- * - mapa aberto
-- grama
-- textura
-- sol e céu
-- fantasias no rope
--- social
--- chapéu
-- mudar música
-- trocar moedas por fantasia
-
-- tirar o pezinho
-- inimigos
-- bombas
--- tacar bombinhas
-
-- espada no rope
--- espadas
-- arvores
-- apertar
- */
-
 export default class Game extends Scene {
 
+
   codeEditor: CodeEditor
-  currentObject: GameObjects.Image;
-  dude: Dude
+  poligonoSelecionado: GameObjects.Image;
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
   obstaclesMazeModel: MazeModel
@@ -68,9 +44,14 @@ export default class Game extends Scene {
   loadingText: GameObjects.Text
   messageBox: MessageBox
   textCurrentPhase: GameObjects.Text
+  shapes: Phaser.GameObjects.Polygon[] = [];
+  private positionValidationInstance: positionValidation;
+
+
 
   constructor() {
     super('game')
+    this.positionValidationInstance = new positionValidation(this);
   }
 
   preload() {
@@ -101,6 +82,11 @@ export default class Game extends Scene {
     this.load.image('tutorial-block-click-background', 'assets/ct/tutorial-block-click-background.png');
     this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
 
+    //giro
+    this.load.spritesheet('giroleft', 'assets/ct/giro_left.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.spritesheet('giroright', 'assets/ct/giro_right.png', { frameWidth: 100, frameHeight: 100 });
+    //
+
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-exit', 'assets/ct/btn_exit.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
@@ -117,7 +103,6 @@ export default class Game extends Scene {
     this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
     this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
     this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 124 });
-    this.load.spritesheet('battery-sprite', 'assets/ct/battery_sprite.png', { frameWidth: 92, frameHeight: 148 });
     this.load.spritesheet('block-sprite', 'assets/ct/block_sprite.png', { frameWidth: 92, frameHeight: 81 });
     this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 632, frameHeight: 415 });
     this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
@@ -128,11 +113,22 @@ export default class Game extends Scene {
     this.gameParams = data
     this.testApplicationService = new TestApplicationService(this.gameParams)
     this.gameState = new GameState()
+
   }
 
   async create() {
+
     this.sounds = globalSounds
-    this.createGrid(26, 22)
+    this.createGrid(30, 25)
+
+    this.grid = new AlignGrid(this, 30, 25, this.game.config.width as number, this.game.config.height as number);
+
+    //this.grid.show(0.4);
+
+    //this.grid.showPoints();
+
+    //this.grid.showPointsEvery50PX();
+
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
@@ -140,150 +136,37 @@ export default class Game extends Scene {
     this.messageBox = new MessageBox(this, this.grid)
     this.messageBox.onFinishTalk = () => {
       let isReplaying = this.gameState.isReplayingPhase(this.currentPhase.itemId)
-      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState:!isReplaying })
+      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState: !isReplaying })
     }
 
     this.showLoading();
     this.phasesLoader = await this.loadPhases();
     this.hideLoading();
 
-    this.createAnimationsAndDefineSpritesByKeys();
 
-    this.obstaclesMazeModel.onChange = () => {
-      if (this.obstaclesMazeModel.count('coin') == 0) {
-        this.dude.stop(true)
-        this.dude.playSuccess();
-        this.codeEditor.unhighlightStepButton();
-        this.sendResponse({ setFinished: true })
-        setTimeout(() => {
-          this.playNextPhase();
-        }, 2000);
-      }
-    }
-
-    this.obstaclesMazeModel.onOverlap = (x: number, y: number, other: MazeModelObject) => {
-      let waitALittleBitBeforeColide = 700
-      let obj = this.obstaclesMazeModel.getObjectAt(y, x);
-      if (other.obstacleName == 'battery') {
-        setTimeout(() => {
-          this.dude.increaseBatteryLevel();
-          this.obstaclesMazeModel.removeAt(y, x, obj);
-          this.sounds.coin();
-        }, waitALittleBitBeforeColide);
-      }
-      if (other.obstacleName == 'coin') {
-        setTimeout(() => {
-          this.obstaclesMazeModel.removeAt(y, x, obj);
-          /* other.setGravityY(-200);
-          other.setVelocityY(-100) */
-          //this.obstaclesMazeModel.onChange()
-          this.sounds.coin();
-        }, waitALittleBitBeforeColide);
-      }
-    }
-
-    this.dude = new Dude(this, this.mode, this.sounds, this.grid);
-    this.dude.character.setScale(this.grid.scale)
-    this.dude.character.displayOriginY = this.dude.character.height * 0.65;
-
-    this.dude.canMoveTo = (x: number, y: number) => {
-      let ground = this.currentPhase.ground;
-      let can = true;
-      let point = ground.getPoint(y, x);
-      let modelObject = this.obstaclesMazeModel.getObjectAt(y, x)
-      let isNotHole = ground.getKey(y, x) != 'null';
-      const isNotOutOfBounds = point != null && point
-      const isNotBlock = modelObject?.obstacleName != 'block'
-      can = isNotOutOfBounds && isNotBlock && isNotHole
-      Logger.log('CAN_MOVE_TO [x, y, can]', x, y, can)
-      if (!isNotBlock) {
-        const block = modelObject.myGameObject as Block
-        block.breakMore()
-        if (block.isBroken()) {
-          this.obstaclesMazeModel.remove(modelObject);
-        }
-      }
-      return can
-    }
-
-    this.dude.isConditionValid = (condition: string, dudeMove: DudeMove) => {
-      let valid = true;
-      if (condition.startsWith('if_')) {
-        const command = condition.replace('if_', '');
-        //if (command == 'coin' || command == 'block') {
-        let { x, y } = dudeMove.getAheadPosition();
-        valid = this.obstaclesMazeModel.getObjectNameAt(y, x) == command
-        if (valid) {
-          (this.obstaclesMazeModel.getObjectAt(y, x).myGameObject).setTint(0xccff00);
-        }
-        //}
-      }
-      return valid
-    }
-
-    this.dude.onCompleteMoveCallback = (current: DudeMove) => {
-      this.gameState.pushMove({ x: current.x, y: current.y })
-      if (this.dude.stepByStep) {
-        if (!this.dude.stopped) {
-          this.codeEditor.highlightStepButton();
-          this.currentPhase?.updateTutorial();
-        }
-      }
-      this.obstaclesMazeModel.onChange();
-      //this.mazeModel.updateBringFront();
-    }
-
-    this.dude.onRunOutOfEnergyCallback = () => {
-      this.replayCurrentPhase();
-    }
-
-    this.dude.onTryStartCheckIfHasEnergy = () => {
-      let hasEnergy = this.dude.getBatteryLevel() > 0;
-      this.dude.decreaseBatteryLevel();
-      return hasEnergy;
-    }
-
-    this.dude.onStartMoveCallback = (x: number, y: number, currentDestine: DudeMove) => {
-      this.codeEditor.unhighlightStepButton();
-      this.obstaclesMazeModel.putSprite(x, y, undefined);
-      if (currentDestine) {
-        if (currentDestine.couldExecute) {
-          //this.dude.character.depth = 0;
-          this.obstaclesMazeModel.putSprite(currentDestine.x, currentDestine.y, this.dude.character, 'rope')
-        }
-      }
-      this.obstaclesMazeModel.updateBringFront();
-    }
-
-    this.dude.onFinishWalking = () => {
-      this.codeEditor.setPlayBtnModeStopped();
-      let waitBeforeRestart = 1000
-      if (this.obstaclesMazeModel.count('coin') > 0) {
-        this.dude.stop(true);
-        setTimeout(() => {
-          this.replayCurrentPhase();
-          this.sounds.error();
-        }, waitBeforeRestart)
-      }
-    }
-
-    //this.grid.show(0.3)
     this.createTextCurrentPhase();
     this.createBtnExit()
     this.createBtnJump()
     this.createBtnRestart()
     this.createBtnMusic()
-    this.createBtnSpeed()
 
+    this.codeEditor.onRotateLeft = () => {
+      this.poligonoSelecionado.angle -= 15;
+    }
+
+    this.codeEditor.onRotateRight = () => {
+      this.poligonoSelecionado.angle += 15;
+    }
+
+    //Aqui está a lógica de quando o botão de play é clicado
+    //Trocou de fase sem nenhuma validação. Depois eu devo colocar uma validação
     this.codeEditor.onClickRun = () => {
-      this.gameState.registerPlayUse()
-      if (this.dude.stepByStep) {
-        this.dude.continuePlayingWithoutDebug()
-      }
-      if (this.dude.stopped) {
-        this.codeEditor.setPlayBtnModePlaying();
-        this.sendResponse();
-        this.dude.execute(this.codeEditor.programs);
+      this.positionValidationInstance.logAllShapesPointsPositions();
+      if(this.validateShapes(this.currentPhase)){
+        this.gameState.registerPlayUse()
+        this.showSuccessMessage();
+      }else{
+        this.showErrorMessage()
       }
     }
 
@@ -291,50 +174,35 @@ export default class Game extends Scene {
       this.gameState.registerTrashUse()
     }
 
-    /* this.codeEditor.onEditProgram = () => {
-      if (!this.dude.stopped) {
-        this.replayCurrentPhase()
-      }
-    } */
 
-    this.codeEditor.onInteract = () => {
-      if (!this.dude.stopped) {
-        this.replayCurrentPhase()
-      }
-    }
 
     this.codeEditor.onReplayCurrentPhase = () => {
       this.replayCurrentPhase();
     }
 
-    this.codeEditor.setOnBlinkBtnStep((blinked) => {
-      this.dude.highlightNextMove(blinked)
-    })
 
-    this.codeEditor.onClickStepByStep = () => {
-      this.gameState.registerDebugUse()
-      this.sounds.click()
-      this.codeEditor.setPlayBtnModePlaying();
-      this.dude.executeStepByStep(this.codeEditor.programs);
-      this.codeEditor.setPlayBtnModeDebugStoped()
-      this.sendResponse()
-    }
-
-    this.codeEditor.onClickStop = () => {
-      this.gameState.registerStopUse()
-      let resetFace = true;
-      this.dude.stop(resetFace);
-      this.replayCurrentPhase();
-    }
-
-    this.codeEditor.onShowInstruction = (instruction: string) => {
-      this.dude.setBallonText(instruction);
-    }
-
-    this.codeEditor.onHideLastInstruction = () => {
-      this.dude.hideBallon();
-    }
     this.playNextPhase();
+  }
+
+  private showErrorMessage() {
+    let messageBox = new MessageBox(this, this.grid, { showCancelButton: false });
+    this.sounds.error();
+    messageBox.setText("Erro! As formas não estão montadas corretamente.");
+    messageBox.onClickOk = () => {
+      messageBox.close();
+    };
+  }
+
+  private showSuccessMessage() {
+    let messageBox = new MessageBox(this, this.grid, { showCancelButton: false });
+    this.sounds.success();
+    messageBox.setText("Parabéns! Você completou a fase!");
+    messageBox.onClickOk = () => {
+      this.sendResponse();
+      this.sendResponse({ setFinished: true })
+      messageBox.close();
+      this.playNextPhase();
+    };
   }
 
   private createTextCurrentPhase() {
@@ -342,9 +210,13 @@ export default class Game extends Scene {
     this.textCurrentPhase =
       this.add.text(cell.x, cell.y, '', { fontFamily: 'Dyuthi, sans-serif' })
         .setScale(this.grid.scale)
-        .setFontStyle('bold')
-        .setTint(0xf6cf55)
+        .setTint(0x640000)
         .setFontSize(35)
+  }
+
+  validateShapes(phase: MazePhase) : boolean {
+    const pontosDestino = phase.pontosDestino.map(point => ({ x: point.x, y: point.y }));
+    return this.positionValidationInstance.isShapeInCorrectPosition(pontosDestino);
   }
 
   private createBtnExit() {
@@ -400,15 +272,6 @@ export default class Game extends Scene {
     this.grid.placeAt(0.5, 11.5, btn.sprite, 1.3)
   }
 
-  private createBtnSpeed() {
-    let btn = new Button(this, this.sounds, 0, 0, 'btn-speed', () => {
-      let speedFactor = this.dude.toggleSpeedFactor();
-      this.gameState.setSpeedFactor(speedFactor);
-    })
-    const set2x = this.gameState.isSpeedFactorActivated()
-    btn.toggle(set2x)
-    this.grid.placeAt(0.5, 5.5, btn.sprite, 1.3)
-  }
 
   exit() {
     if (this.testApplicationService.isTestApplication()) {
@@ -430,9 +293,9 @@ export default class Game extends Scene {
   }
 
   async loadPhases(): Promise<MazePhasesLoader> {
-    let gridCenterX = this.grid.width / 3.2;
-    let gridCenterY = this.grid.height / 2.4;
-    let gridCellWidth = this.grid.cellWidth * 1.1
+    let gridCenterX = this.grid.width;
+    let gridCenterY = this.grid.height;
+    let gridCellWidth = this.grid.cellWidth;
 
     return (await new MazePhasesLoader(
       this,
@@ -443,65 +306,6 @@ export default class Game extends Scene {
       gridCenterY,
       gridCellWidth
     ).load(this.gameParams));
-  }
-
-  createAnimationsAndDefineSpritesByKeys() {
-    this.createAnimations()
-    const spriteCreateFunctions = this.createSpriteCreationFunctions();
-    this.groundMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 1);
-    this.obstaclesMazeModel = new MazeModel(this, spriteCreateFunctions, DEPTH_OVERLAY_PANEL_TUTORIAL + 100);
-  }
-
-  private createSpriteCreationFunctions() {
-    let scale = this.grid.scale;
-    let spriteCreateFunctions: Map<Obstaculo | Mapa, (x: integer, y: integer) => MyGameObject> = new Map();
-
-    spriteCreateFunctions.set('block', (x: integer, y: integer) => {
-      return new Block(x, y, scale, this)
-    })
-
-    spriteCreateFunctions.set('tile', (x: integer, y: integer) => {
-      return new Tile(x, y, this, scale, 'tile')
-    })
-
-    spriteCreateFunctions.set('grass', (x: integer, y: integer) => {
-      return new Tile(x, y, this, scale, 'grass')
-    })
-
-    spriteCreateFunctions.set('asphalt', (x: integer, y: integer) => {
-      return new Tile(x, y, this, scale, 'asphalt')
-    })
-
-    spriteCreateFunctions.set('battery', (x: integer, y: integer) => {
-      return new Battery(x, y, this, scale, this.currentPhase.batteryGainOnCapture);
-    })
-
-    spriteCreateFunctions.set('coin', (x: integer, y: integer) => {
-      return new Coin(x, y, this, scale);
-    })
-
-    return spriteCreateFunctions;
-  }
-
-  private createAnimations() {
-    this.anims.create({
-      key: 'block-sprite',
-      frames: this.anims.generateFrameNumbers('block-sprite', { start: 0, end: 4 }),
-      frameRate: 0,
-      repeat: 0
-    })
-    this.anims.create({
-      key: 'battery-sprite',
-      frames: this.anims.generateFrameNumbers('battery-sprite', { start: 0, end: 5 }),
-      frameRate: 7,
-      repeat: -1
-    })
-    this.anims.create({
-      key: 'gold-spining',
-      frames: this.anims.generateFrameNumbers('coin-gold', { start: 0, end: 5 }),
-      frameRate: 7,
-      repeat: -1
-    })
   }
 
   private showLoading() {
@@ -530,12 +334,9 @@ export default class Game extends Scene {
     )
   }
 
-  update() {
-    this.dude?.update()
-  }
 
   playNextPhase() {
-    if(this.currentPhase){
+    if (this.currentPhase) {
       this.gameState.setReplayingPhase(this.currentPhase.itemId, false)
     }
     const phase = this.phasesLoader.getNextPhase();
@@ -547,9 +348,97 @@ export default class Game extends Scene {
       clearCodeEditor: this.currentPhase?.isTutorialPhase(),
       muteInstructions: true
     }) {
-    this.dude.stop(true);
     this.playPhase(this.currentPhase, options)
   }
+
+  drawDashedLine(graphics, x1, y1, x2, y2, dashLength, gapLength) {
+    const totalLength = Phaser.Math.Distance.Between(x1, y1, x2, y2);
+    const dx = (x2 - x1) / totalLength;
+    const dy = (y2 - y1) / totalLength;
+
+    let currentLength = 0;
+    while (currentLength < totalLength) {
+      const nextLength = Math.min(currentLength + dashLength, totalLength);
+      const startX = x1 + dx * currentLength;
+      const startY = y1 + dy * currentLength;
+      const endX = x1 + dx * nextLength;
+      const endY = y1 + dy * nextLength;
+
+      graphics.moveTo(startX, startY);
+      graphics.lineTo(endX, endY);
+      currentLength += dashLength + gapLength;
+    }
+  }
+
+  async desenhaPoligonoDestino(phase: MazePhase) {
+    const graphics = this.add.graphics();
+
+    const pontosPoligonoDestinos = phase.poligonoDestino.map(point => ({ x: point.x, y: point.y }));
+
+    graphics.lineStyle(3, 0x640000); // Define a cor e a espessura do contorno
+
+    const dashLength = 5; // Comprimento do traço
+    const gapLength = 2;   // Comprimento do espaço entre os traços
+
+    graphics.beginPath();
+
+    for (let i = 0; i < pontosPoligonoDestinos.length; i++) {
+      const start = pontosPoligonoDestinos[i];
+      const end = pontosPoligonoDestinos[(i + 1) % pontosPoligonoDestinos.length];
+      this.drawDashedLine(graphics, start.x, start.y, end.x, end.y, dashLength, gapLength);
+    }
+
+    graphics.strokePath();
+
+    const rect = new Phaser.Geom.Polygon(pontosPoligonoDestinos);
+
+    return { graphics, rect };
+  }
+
+  async desenhaPoligonos(phase: MazePhase) {
+    this.currentPhase = phase;
+    if (this.currentPhase) {
+      const polygons = this.currentPhase.poligonos;
+      const InputHandler = new inputHandler(this);
+      const FitShape = new fitShape(this);
+
+      polygons.forEach(polygonData => {
+        const points = polygonData.pontos.map(point => ({ x: point.x, y: point.y }));
+        const positions = polygonData.posicao;
+        const color = polygonData.cor || 0xB0E0E6; // Default color if not specified
+
+        if (points.length > 0) {
+          const centerX = points.reduce((sum, point) => sum + point.x, 0) / points.length;
+          const centerY = points.reduce((sum, point) => sum + point.y, 0) / points.length;
+
+          positions.forEach(position => {
+            const polygon = this.add.polygon(position.x + centerX, position.y + centerY, points, color).setOrigin(0.5, 0.5);
+
+            InputHandler.enableDrag(polygon);
+            FitShape.enablePartialFit(polygon, this.currentPhase.poligonoDestino);
+
+            polygon.on('pointerdown', () => {
+              this.poligonoSelecionado = polygon;
+              console.log('Polígono selecionado:', this.poligonoSelecionado);
+            });
+
+            this.positionValidationInstance.addShape(polygon);
+          });
+        }
+      });
+    }
+  }
+
+
+  private removePoligonos() {
+    const polygons = this.children.list.filter(child =>
+      child instanceof Phaser.GameObjects.Polygon || child instanceof Phaser.GameObjects.Graphics
+    );
+    polygons.forEach(polygon => polygon.destroy());
+  }
+
+
+
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
     this.playBackgroundMusic()
@@ -561,8 +450,7 @@ export default class Game extends Scene {
     }
 
     if (phase != this.currentPhase) {
-      this.initializeCodeEditorProgrammingAreas()
-
+      //this.initializeCodeEditorProgrammingAreas()
     }
 
     this.currentPhase?.clearTutorials()
@@ -573,49 +461,25 @@ export default class Game extends Scene {
     }
 
     if (this.currentPhase) {
-
+      debugger
       let itemId = this.currentPhase.itemId
+      //Aqui faz a limpeza do response no console
       if (playPhaseOptions.clearResponseState) {
         this.gameState.initializeResponse(itemId);
       }
       this.testApplicationService.saveCurrentPlayingPhase(itemId)
       this.updateLabelCurrentPhase(itemId)
+      const MatrixAndTutorials = this.currentPhase.setupMatrixAndTutorials()
 
-      this.currentPhase.setupMatrixAndTutorials()
-      this.dude.matrix = this.currentPhase.obstacles;
-      this.dude.speedFactor = this.gameState.getSpeedFactor()
-      const obstacles = this.currentPhase.obstacles
-      const ground = this.currentPhase.ground
+      //remove os poligonos
+      this.removePoligonos();
 
-      this.groundMazeModel.clear();
-      this.obstaclesMazeModel.clearKeepingInModel(this.dude.character);
-      this.groundMazeModel.setMatrixOfObjects(ground);
-      this.obstaclesMazeModel.setMatrixOfObjects(obstacles);
+      //desenha o novo poligono
+      this.desenhaPoligonoDestino(this.currentPhase);
 
-      let { row, col } = this.currentPhase.dudeStartPosition;
-      this.obstaclesMazeModel.putSprite(col, row, this.dude.character, 'rope')
-      this.dude.setPosition(col, row);
-      this.obstaclesMazeModel.updateBringFront();
-
-      this.dude.currentFace = this.currentPhase.dudeFacedTo
-      this.dude.setFacedTo(this.currentPhase.dudeFacedTo);
-
-      this.dude.setBatteryLevel(this.currentPhase.batteryLevel, this.currentPhase.maxBatteryLevel);
-      this.dude.setBatteryCostOnMove(this.currentPhase.batteryDecreaseOnEachMove);
-      this.dude.setBatteryGainOnCharge(this.currentPhase.batteryGainOnCapture);
-
-      this.codeEditor.prepare(playPhaseOptions);
-      this.currentPhase.showTutorialActionsIfExists();
-      this.addTestCommands(this.currentPhase)
-
-      if (!playPhaseOptions.muteInstructions) {
-        this.messageBox.setMessages(this.currentPhase.messagesBeforeStartPlay);
-      }
-      if (this.gameParams.isAutomaticTesting()) {
-        this.codeEditor.onClickRun()
-      }
+      //desenha os poligonos
+      this.desenhaPoligonos(this.currentPhase);
     }
-
   }
 
   private updateLabelCurrentPhase(itemId: number) {
@@ -648,26 +512,6 @@ export default class Game extends Scene {
         prog2
       ])
     }
-  }
-
-  private addTestCommands(phase: MazePhase) {
-    if (phase) {
-      if (phase.commands) {
-        phase.commands.forEach((commandsRow: CommandName[], index: number) => {
-          let prog = this.codeEditor.programs[index];
-          this.codeEditor.addCommands(prog, commandsRow);
-        })
-      }
-    }
-    // let prog0 = this.codeEditor.programs[0];
-    // let prog1 = this.codeEditor.programs[1];
-    // let prog2 = this.codeEditor.programs[2];
-    // prog0.clear()
-    // prog1.clear()
-    // prog2.clear()
-    // this.codeEditor.addCommands(prog0, ['prog_1', 'prog_0', 'arrow-right'])
-    // this.codeEditor.addCommands(prog1, ['arrow-up'])
-    // this.codeEditor.addCommands(prog2, ['arrow-right', 'arrow-up', 'arrow-up', 'arrow-right', 'prog_1'])
   }
 
   async sendResponse(options:

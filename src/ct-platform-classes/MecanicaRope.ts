@@ -22,7 +22,6 @@ export class MecanicaRope {
   nivelBateria: number = 10
   custoBateriaEmCadaMovimento: number = 1
   ganhoBateriaAoCapturarPilha: number = 1
-  acoesTutorial: AcaoTutorial[] = []
   falasAntesDeIniciar: string[] = [];
   mensagemAoPularFase: string;
   mensagemAoSairDoJogo: string;
@@ -33,11 +32,3 @@ export class MecanicaRope {
   pontosDestino: { x: number, y: number }[] = [];
 }
 
-type Acao = "click" | "drag"
-type Elemento = "btn-step" | "arrow-up" | "arrow-left" | "arrow-down" | "arrow-right" | "btn-play" | "prog_1" | "prog_2" | "prog_0" | "if_block" | "if_coin"
-class AcaoTutorial {
-  acao!: Acao
-  elemento!: Elemento
-  arrastarSobre?: Elemento
-  frase?: string = ''
-}

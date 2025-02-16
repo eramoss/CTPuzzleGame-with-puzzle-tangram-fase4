@@ -36,13 +36,15 @@ export default class Matrix {
       graphics.fillCircle(x, y, 30);
     }
 
+    
     this.points = []
-    for (let y = 0; y < matrix.length; y++) {
+    for (let y = 0; y < 10; y++) {
       this.points[y] = []
     }
-
-    this.height = matrix.length;
-    this.width = matrix[0].length;
+    
+    
+    this.height = 10;
+    this.width = 10;
 
     this.x = this.x - (this.width - this.height) * distanceBetweenPoints / 2
     this.y = this.y - (this.height * distanceBetweenPoints / 2) / 2

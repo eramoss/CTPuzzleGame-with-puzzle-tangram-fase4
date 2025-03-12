@@ -32,6 +32,8 @@ async function sendRequest(url: string, json: any = null, method: string = 'GET'
 }
 
 export function POST(url: string, json: any = null): Promise<Response> {
+  console.log('POST url', url)
+  console.log('POST json', json)
   return sendRequest(url, json, 'POST')
 }
 

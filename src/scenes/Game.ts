@@ -152,10 +152,12 @@ export default class Game extends Scene {
 
     this.codeEditor.onRotateLeft = () => {
       this.poligonoSelecionado.angle -= 15;
+      this.gameState.registerRotationUse()
     }
 
     this.codeEditor.onRotateRight = () => {
       this.poligonoSelecionado.angle += 15;
+      this.gameState.registerRotationUse()
     }
 
     //Aqui está a lógica de quando o botão de play é clicado
@@ -174,12 +176,9 @@ export default class Game extends Scene {
       this.gameState.registerTrashUse()
     }
 
-
-
     this.codeEditor.onReplayCurrentPhase = () => {
       this.replayCurrentPhase();
     }
-
 
     this.playNextPhase();
   }
@@ -198,7 +197,6 @@ export default class Game extends Scene {
     this.sounds.success();
     messageBox.setText("Parabéns! Você completou a fase!");
     messageBox.onClickOk = () => {
-      this.sendResponse();
       this.sendResponse({ setFinished: true })
       messageBox.close();
       this.playNextPhase();
@@ -249,7 +247,7 @@ export default class Game extends Scene {
       let messageBox = new MessageBox(this, this.grid, { showCancelButton: true })
       messageBox.setText(this.currentPhase.restartPhaseMessage)
       messageBox.onClickOk = () => {
-        Logger.clear();
+        //Logger.clear();
         messageBox.close()
         this.gameState.registerRestartUse()
         this.gameState.setReplayingPhase(this.currentPhase.itemId, true)
@@ -420,6 +418,10 @@ export default class Game extends Scene {
             polygon.on('pointerdown', () => {
               this.poligonoSelecionado = polygon;
               console.log('Polígono selecionado:', this.poligonoSelecionado);
+
+              if(this.poligonoSelecionado){
+                this.gameState.registerClickUse()
+              }
             });
 
             this.positionValidationInstance.addShape(polygon);
@@ -429,16 +431,12 @@ export default class Game extends Scene {
     }
   }
 
-
   private removePoligonos() {
     const polygons = this.children.list.filter(child =>
       child instanceof Phaser.GameObjects.Polygon || child instanceof Phaser.GameObjects.Graphics
     );
     polygons.forEach(polygon => polygon.destroy());
   }
-
-
-
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
     this.playBackgroundMusic()
@@ -461,7 +459,7 @@ export default class Game extends Scene {
     }
 
     if (this.currentPhase) {
-      debugger
+      //debugger
       let itemId = this.currentPhase.itemId
       //Aqui faz a limpeza do response no console
       if (playPhaseOptions.clearResponseState) {
@@ -522,13 +520,15 @@ export default class Game extends Scene {
     }) {
     let phase = this.currentPhase;
     if (phase) {
+      //debugger
       if (this.gameParams.isTestApplication()) {
         try {
           if (this.currentPhase) {
             if (options.setFinished) {
               this.gameState.setFinished();
             }
-            this.gameState.registerAddedCommands(this.codeEditor.getCommandsAsString())
+            //debugger
+            this.gameState.registerTimeSpent()
             const response = this.gameState.getResponseToSend()
             await this.testApplicationService.sendResponse(response);
           }

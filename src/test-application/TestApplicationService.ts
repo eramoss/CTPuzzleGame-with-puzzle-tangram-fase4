@@ -152,7 +152,7 @@ export default class TestApplicationService {
       url = url.replace('<item_id>', responseToSend.itemId + '');
       Logger.info('sendResponse: url', url)
       console.log('sendResponse: response', JSON.stringify(responseToSend.response))
-      Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))
+      Logger.info('sendResponse: response', JSON.stringify(responseToSend.response))    
       await POST(url, responseToSend.response);
     }
   }

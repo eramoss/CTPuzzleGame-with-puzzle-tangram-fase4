@@ -2,7 +2,7 @@ import { Comando } from "../ct-platform-classes/MecanicaRope";
 import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao"
 import { Logger } from "../main"
 import { getItem, getTypedItem, setItem } from "../utils/storage"
-import { isAndroidAmbient } from "../utils/Utils";
+
 
 export default class GameState {
   setReplayingPhase(itemId:number, replaying: boolean) {
@@ -16,15 +16,10 @@ export default class GameState {
   initializeResponse(itemNumber: number) {
     this.setItemNumber(itemNumber);
     let resposta = new RespostaItemProgramacao()
-    resposta.tempoEmSegundos = -1
-    //resposta.contadorUsoLixeira = 0
-    //resposta.contadorUsoDebug = 0
-    resposta.contadorUsoPlay = 0
-    //resposta.contadorUsoStop = 0
-    //resposta.caminhoPercorrido = []
-    //resposta.caminhoPercorridoTexto = ""
+    resposta.tempoEmSegundos = 0
+    resposta.contadorCliques = 0
+    resposta.contadorGiros = 0
     resposta.finalizou = false
-    resposta.ambiente = isAndroidAmbient() ? "celular" : "computador"
     this.setResponse(resposta);
     this.initializeStartTime()
   }
@@ -32,8 +27,6 @@ export default class GameState {
   
   pushMove(position: { x: number; y: number; }) {
     let response = this.getResponse()
-    //response.caminhoPercorrido.push(position)
-    //response.caminhoPercorridoTexto = response.caminhoPercorrido.map(position => `(${position.x},${position.y})`).join('')
     this.setResponse(response)
   }
     
@@ -82,6 +75,7 @@ export default class GameState {
       response.tempoEmSegundos = tempoEmSegundos
       this.setResponse(response)
     }
+    console.log('Tempo em segundos', tempoEmSegundos)
     return tempoEmSegundos
   }
 
@@ -119,6 +113,18 @@ export default class GameState {
     this.setResponse(response)
   }
 
+  registerClickUse() {
+    let response = this.getResponse()
+    response.countCliques()
+    this.setResponse(response)
+  }
+
+  registerRotationUse() {
+    let response = this.getResponse()
+    response.countGiros()
+    this.setResponse(response)
+  }
+
   registerStopUse() {
     let response = this.getResponse()
     response.countStop()
@@ -131,6 +137,7 @@ export default class GameState {
     this.setResponse(response)
   }
 
+  /*
   registerAddedCommands(addedCommands: string[]) {
     this.log('GAME_STATE register coding', addedCommands);
     let response = this.getResponse();
@@ -149,11 +156,22 @@ export default class GameState {
     }
     this.setResponse(response);
   }
+  */
 
-
+  registerTimeSpent() {
+    let response = this.getResponse();
+    if (response) {
+      response.tempoEmSegundos = this.calculateTimeSpent();
+      this.setResponse(response);
+    }
+  }
 
   getTimeInSeconds(): number {
-    return new Date().getTime() / 1000
+    return new Date().getTime() / 1000 
+  }
+
+  getTimeInMinutes(): number {
+    return new Date().getTime() / 1000 / 60
   }
 
   setResponse(respostaItemProgramacao: RespostaItemProgramacao) {

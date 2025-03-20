@@ -12,15 +12,9 @@ export class UrlHelper {
 }
 
 export class PreparedParticipation {
-  lastVisitedItemId: number;
-  participationId: number;
   test: Test;
-  urlToSendResponses: UrlHelper;
-  urlToSendProgress: UrlHelper;
-  urlToSendSource: UrlHelper;
-  urlToSendUserData: UrlHelper;
   urlToEndOfTestQuiz: UrlHelper;
-  urlToInstantiateItem: UrlHelper;
+  urlToSendResponses: UrlHelper;
 }
 
 export class Test {

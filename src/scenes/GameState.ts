@@ -1,17 +1,16 @@
 import { Comando } from "../ct-platform-classes/MecanicaRope";
 import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao";
 import { Logger } from "../main";
-import { getItem, getTypedItem, setItem } from "../utils/storage";
+import { getItem, getTypedItem, removeItem, setItem } from "../utils/storage";
 import { isAndroidAmbient } from "../utils/Utils";
 
 export default class GameState {
-
-  setReplayingPhase(itemId: number, replaying: boolean) {
-    setItem("replaying" + itemId, replaying);
+  setReplayingPhase(replaying: boolean) {
+    setItem("replaying", replaying);
   }
 
-  isReplayingPhase(itemId: number): boolean {
-    return getTypedItem(Boolean, "replaying" + itemId);
+  isReplayingPhase(): boolean {
+    return getTypedItem(Boolean, "replaying");
   }
 
   initializeResponse() {
@@ -27,6 +26,7 @@ export default class GameState {
     resposta.ambiente = isAndroidAmbient() ? "celular" : "computador";
     this.setResponse(resposta);
     this.initializeStartTime();
+    removeItem("replaying");
   }
 
   pushMove(position: { x: number; y: number }) {

@@ -82,9 +82,9 @@ export default class MazePhasesLoader {
   }
 
   private loadTestApplication(): MazePhasesLoader {
-    let items = this.testApplicationService.getNonCompletedTestItems();
-    if (items.length) {
-      location.href = items[0].url;
+    let item = this.testApplicationService.getFirstItem();
+    if (item) {
+      location.href = item.url;
     }
     return this;
   }

@@ -14,18 +14,9 @@ import {
   TestApplication,
   TestItem,
   UrlHelper,
-  UrlToSendProgress,
 } from "./TestApplication";
 
 export default class TestApplicationService {
-  async disableQuiz() {
-    const participation = this.participation;
-    if (participation) {
-      participation.urlToEndOfTestQuiz.url = null;
-      this.setParticipation(participation);
-    }
-  }
-
   constructor(private gameParams: GameParams) {
     Logger.info("LOADED GAME PARAMS", gameParams);
     setItem("gameParams", gameParams);
@@ -33,6 +24,10 @@ export default class TestApplicationService {
 
   isTestApplication() {
     return this.getGameParams()?.isTestApplication();
+  }
+
+  isItemToPlay() {
+    return this.getGameParams()?.isItemToPlay();
   }
 
   isAutoTesting() {
@@ -51,42 +46,16 @@ export default class TestApplicationService {
     return getTypedItem(GameParams, "gameParams");
   }
 
-  getCurrentPhaseString(testItemId: number): string {
-    const participation = this.participation;
-    let phaseString = "";
-    if (participation) {
-      const items = participation?.test?.items;
-      if (items) {
-        let item = items.find((item) => item.id == testItemId);
-        if (item) {
-          const currentIndex = items.indexOf(item);
-          if (currentIndex > -1) {
-            phaseString = `Fase ${currentIndex + 1}/${items.length}`;
-          }
-        }
-      }
-    }
-    return phaseString;
+  getCurrentPhaseString(): string {
+    return getItem("progress");
   }
 
   get participation(): PreparedParticipation {
     return getTypedItem(PreparedParticipation, "participation");
   }
 
-  getNonCompletedTestItems(): TestItem[] {
-    return this.participation.test.items.filter((i) => !i.hasResponse);
-  }
-
-  async saveUserSource() {
-    if (this.gameParams.isTestApplication()) {
-      let part = this.participation;
-      PUT(part.urlToSendSource?.url, {
-        participationId: part.participationId,
-        source: `(${
-          isAndroidAmbient() ? "MOBILE" : document?.referrer + " COMPUTADOR"
-        })`,
-      });
-    }
+  getFirstItem(): TestItem {
+    return this.participation.test.items[0];
   }
 
   async loadPublicApplications(): Promise<TestApplication[]> {
@@ -136,27 +105,19 @@ export default class TestApplicationService {
   }
 
   async sendResponse(
-    itemId: number,
     response: RespostaItemProgramacao
   ): Promise<{ next: string }> {
-    const url = this.addItemId(this.participation.urlToSendResponses, itemId);
-    return (await POST(url, response)).json();
+    return (await POST(this.participation.urlToSendResponses.url, response)).json();
   }
 
   async instantiatePlaygroundItem<T>(): Promise<T> {
     let url = this.gameParams.urlToInstantiateItem;
-    if (!url) {
-      url = this.addItemId(
-        this.participation.urlToInstantiateItem,
-        this.gameParams.testItemId
-      );
-    }
     const response = await GET(url);
     let res = await response.json();
+    if (res.participation) {
+      this.setParticipation(res.participation);
+      setItem("progress", res.progress);
+    }
     return res.json as T;
-  }
-
-  private addItemId(url: UrlHelper, itemId: number) {
-    return url.url.replace("{item_id}", itemId.toString());
   }
 }

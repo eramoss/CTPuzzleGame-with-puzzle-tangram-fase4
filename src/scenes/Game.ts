@@ -211,9 +211,7 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
     this.messageBox = new MessageBox(this, this.grid);
     this.messageBox.onFinishTalk = () => {
-      let isReplaying = this.gameState.isReplayingPhase(
-        this.currentPhase.itemId
-      );
+      let isReplaying = this.gameState.isReplayingPhase();
       this.playPhase(this.currentPhase, {
         muteInstructions: true,
         clearResponseState: !isReplaying,
@@ -481,7 +479,7 @@ export default class Game extends Scene {
         Logger.clear();
         messageBox.close();
         this.gameState.registerRestartUse();
-        this.gameState.setReplayingPhase(this.currentPhase.itemId, true);
+        this.gameState.setReplayingPhase(true);
         this.replayCurrentPhase({
           clearCodeEditor: true,
           muteInstructions: false,
@@ -663,7 +661,7 @@ export default class Game extends Scene {
 
   playNextPhase() {
     if (this.currentPhase) {
-      this.gameState.setReplayingPhase(this.currentPhase.itemId, false);
+      this.gameState.setReplayingPhase(false);
     }
     const phase = this.phasesLoader.getNextPhase();
     this.playPhase(phase, { clearCodeEditor: true, clearResponseState: true });
@@ -682,7 +680,7 @@ export default class Game extends Scene {
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
     this.playBackgroundMusic();
     if (!phase) {
-      if (this.testApplicationService.isPlayground()) {
+      if (this.gameParams.isPlaygroundTest()) {
         this.replayCurrentPhase();
         return;
       }
@@ -700,11 +698,10 @@ export default class Game extends Scene {
     }
 
     if (this.currentPhase) {
-      const itemId = this.gameParams.testItemId;
       if (playPhaseOptions.clearResponseState) {
         this.gameState.initializeResponse();
       }
-      this.updateLabelCurrentPhase(itemId);
+      this.updateLabelCurrentPhase();
 
       this.currentPhase.setupMatrixAndTutorials();
       this.dude.matrix = this.currentPhase.obstacles;
@@ -747,8 +744,8 @@ export default class Game extends Scene {
     }
   }
 
-  private updateLabelCurrentPhase(itemId: number) {
-    let label = this.testApplicationService.getCurrentPhaseString(itemId);
+  private updateLabelCurrentPhase() {
+    let label = this.testApplicationService.getCurrentPhaseString();
     if (!label) {
       label =
         "Fases restantes: " +
@@ -846,10 +843,7 @@ export default class Game extends Scene {
               this.codeEditor.getCommandsAsString()
             );
             const response = this.gameState.getResponse();
-            const res = await this.testApplicationService.sendResponse(
-              this.gameParams.testItemId,
-              response
-            );
+            const res = await this.testApplicationService.sendResponse(response);
             if (options.setFinished) {
               return res.next;
             }

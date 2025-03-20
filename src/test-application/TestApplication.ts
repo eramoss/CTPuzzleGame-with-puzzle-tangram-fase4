@@ -1,58 +1,35 @@
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope"
+import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
 
 export class TestApplication {
-  name: string
-  url: string
+  name: string;
+  url: string;
 }
 
-export class UrlToSendProgress {
-  method: string
-  url: string
-  help: string
-}
-
-export class UrlToSendResponses {
-  method: string
-  url: string
-  help: string
-  responseClass: string
-}
-
-export class UrlToSendUserData {
-  method: string
-  url: string
-  help: string
-}
-
-export class UrlToSendSource {
-  method: string
-  url: string
-  help: string
-}
-
-export class UrlToEndOfTestQuiz {
-  url: string
-  help: 'Open in a browser'
+export class UrlHelper {
+  method: string;
+  url: string;
+  help: string;
 }
 
 export class PreparedParticipation {
-
-  lastVisitedItemId: number
-  participationId: number
-  test: Test
-  urlToSendResponses: UrlToSendResponses
-  urlToSendProgress: UrlToSendProgress
-  urlToSendSource: UrlToSendSource
-  urlToSendUserData: UrlToSendUserData
-  urlToEndOfTestQuiz: UrlToEndOfTestQuiz
-
+  lastVisitedItemId: number;
+  participationId: number;
+  test: Test;
+  urlToSendResponses: UrlHelper;
+  urlToSendProgress: UrlHelper;
+  urlToSendSource: UrlHelper;
+  urlToSendUserData: UrlHelper;
+  urlToEndOfTestQuiz: UrlHelper;
+  urlToInstantiateItem: UrlHelper;
 }
 
 export class Test {
-  items: TestItem[]
+  items: TestItem[];
 }
 
 export class TestItem {
-  id: number
-  item: MecanicaRope
+  id: number;
+  url: string;
+  item: MecanicaRope;
+  hasResponse: boolean;
 }

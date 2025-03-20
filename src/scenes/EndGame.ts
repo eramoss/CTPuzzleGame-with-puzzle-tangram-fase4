@@ -15,9 +15,9 @@ export default class EndGame extends Phaser.Scene {
 
   init(testApplicationService: TestApplicationService) {
     if (testApplicationService) {
-      if (testApplicationService.getParticipation) {
+      if (testApplicationService.participation) {
         Logger.log('END_GAME')
-        let participation = testApplicationService.getParticipation();
+        let participation = testApplicationService.participation;
         let isTestApplication = testApplicationService.isTestApplication()
         if (isTestApplication) {
           let url = participation?.urlToEndOfTestQuiz?.url;

@@ -28,6 +28,7 @@ export default class EndGame extends Phaser.Scene {
   create() {
     this.createGrid();
     this.addBackground();
+    this.showMessage("Você venceu!");
   }
 
   private createGrid() {
@@ -40,6 +41,17 @@ export default class EndGame extends Phaser.Scene {
     );
     //grid.show(0.4);
     this.grid = grid;
+  }
+
+  private showMessage(message: string) {
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2;
+    let messageText = this.add
+      .text(gridCenterX, gridCenterY, message, {
+        fontSize: "30pt",
+      })
+      .setScale(this.grid.scale);
+    messageText.setX(messageText.x - messageText.width / 2);
   }
 
   private addBackground() {

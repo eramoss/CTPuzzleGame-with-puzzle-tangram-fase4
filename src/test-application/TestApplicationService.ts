@@ -22,7 +22,7 @@ export default class TestApplicationService {
     setItem("gameParams", gameParams);
   }
 
-  isTestApplication() {
+  mustLoadFirstItem() {
     return this.getGameParams()?.isTestApplication();
   }
 

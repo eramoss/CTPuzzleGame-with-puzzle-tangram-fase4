@@ -81,13 +81,10 @@ export default class PreGame extends Phaser.Scene {
       this.game.config.width as number,
       this.game.config.height as number
     );
-    //this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
-    //this.grid.addImage(18, 10, 'big-rope', 6);
-    //this.createLoader();
-
+   
     const isPlaygroundTest = this.testApplicationService.isPlayground();
     const isAutoTesting = this.testApplicationService.isAutoTesting();
-    const isTestApplication = this.testApplicationService.isTestApplication();
+    const isTestApplication = this.testApplicationService.mustLoadFirstItem();
     const isOpenedDirectlty =
       !isPlaygroundTest && !isAutoTesting && !isTestApplication;
 
@@ -103,11 +100,6 @@ export default class PreGame extends Phaser.Scene {
       await this.loadTestApplication();
     }
     this.startGame();
-  }
-
-  private createLoader() {
-    this.loading = new Loading(this, this.grid);
-    this.loading.show();
   }
 
   private createTestApplicationsGrid(testApplications: TestApplication[]) {

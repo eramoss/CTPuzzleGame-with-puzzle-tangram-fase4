@@ -219,7 +219,11 @@ export default class Game extends Scene {
     };
 
     this.showLoading();
-    this.phasesLoader = await this.getPhasesLoader();
+    this.phasesLoader = this.getPhasesLoader();
+    await this.phasesLoader.load(this.gameParams);
+    if (this.testApplicationService.mustLoadFirstItem()) {
+      return;
+    }
     this.hideLoading();
 
     this.createAnimationsAndDefineSpritesByKeys();
@@ -514,7 +518,7 @@ export default class Game extends Scene {
   }
 
   exit() {
-    if (this.testApplicationService.isTestApplication()) {
+    if (this.testApplicationService.mustLoadFirstItem()) {
       this.startEndScene();
       return;
     }
@@ -532,12 +536,12 @@ export default class Game extends Scene {
     globalSounds.stopPlayBackgroundMusic();
   }
 
-  async getPhasesLoader(): Promise<MazePhasesLoader> {
+  getPhasesLoader(): MazePhasesLoader {
     let gridCenterX = this.grid.width / 3.2;
     let gridCenterY = this.grid.height / 2.4;
     let gridCellWidth = this.grid.cellWidth * 1.1;
 
-    return await new MazePhasesLoader(
+    return new MazePhasesLoader(
       this,
       this.grid,
       this.codeEditor,
@@ -545,7 +549,7 @@ export default class Game extends Scene {
       gridCenterX,
       gridCenterY,
       gridCellWidth
-    ).load(this.gameParams);
+    );
   }
 
   createAnimationsAndDefineSpritesByKeys() {

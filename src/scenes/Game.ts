@@ -229,14 +229,7 @@ export default class Game extends Scene {
         this.dude.stop(true);
         this.dude.playSuccess();
         this.codeEditor.unhighlightStepButton();
-        const nextItemUrl = await this.sendResponse({ setFinished: true });
-        setTimeout(() => {
-          if (nextItemUrl) {
-            location.href = nextItemUrl;
-            return;
-          }
-          this.playNextPhase();
-        }, 2000);
+        await this.respondAndAdvance();
       }
     };
 
@@ -431,6 +424,17 @@ export default class Game extends Scene {
     this.playNextPhase();
   }
 
+  private async respondAndAdvance() {
+    const nextItemUrl = await this.sendResponse({ setFinished: true });
+    setTimeout(() => {
+      if (nextItemUrl) {
+        location.href = nextItemUrl;
+        return;
+      }
+      this.playNextPhase();
+    }, 1000);
+  }
+
   private createTextCurrentPhase() {
     let cell = this.grid.getCell(0.5, 0.5);
     this.textCurrentPhase = this.add
@@ -520,7 +524,7 @@ export default class Game extends Scene {
 
   giveUp() {
     this.gameState.registerGiveUp();
-    this.playNextPhase();
+    this.respondAndAdvance();
   }
 
   destroy() {
@@ -843,7 +847,9 @@ export default class Game extends Scene {
               this.codeEditor.getCommandsAsString()
             );
             const response = this.gameState.getResponse();
-            const res = await this.testApplicationService.sendResponse(response);
+            const res = await this.testApplicationService.sendResponse(
+              response
+            );
             if (options.setFinished) {
               return res.next;
             }

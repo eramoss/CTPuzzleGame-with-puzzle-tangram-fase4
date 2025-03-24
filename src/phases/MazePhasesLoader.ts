@@ -8,7 +8,6 @@ import GameParams from "../settings/GameParams";
 import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_RESTART_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
 import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
 import TestApplicationService from "../test-application/TestApplicationService";
-import { TestItem } from "../test-application/TestApplication";
 import TutorialHelper from "./tutorial/TutorialHelper";
 
 export default class MazePhasesLoader {
@@ -47,56 +46,60 @@ export default class MazePhasesLoader {
 
   //Aqui é carregado, se vier da plataforma, prioriza este, se não, carrega o hardcoded
   async load(gameParams: GameParams): Promise<MazePhasesLoader> {
-    this.testApplicationService = new TestApplicationService(gameParams)
-    let phases: MazePhasesLoader;
+    this.testApplicationService = new TestApplicationService(gameParams);
+    let phasesLoader: MazePhasesLoader;
     try {
       if (gameParams.isPlaygroundTest()) {
-        phases = await this.loadPlaygroundTestItem();
+        phasesLoader = await this.loadTestItem();
       }
       if (gameParams.isTestApplication()) {
-        phases = this.loadTestApplication();
+        phasesLoader = this.loadTestApplication();
       }
-      if (phases == null) {
-        throw new Error('empty phases');
+      if (gameParams.isItemToPlay()) {
+        phasesLoader = await this.loadTestItem();
+      }
+      if (phasesLoader == null) {
+        throw new Error("empty phases");
       }
     } catch (e) {
       Logger.error(e);
-      phases = this.createHardCodedPhases(gameParams.isAutomaticTesting());
+      phasesLoader = this.createHardCodedPhases(
+        gameParams.isAutomaticTesting()
+      );
     }
-    console.log('phases', phases)
-    return phases
+    return phasesLoader;
   }
 
   //as fases estão em um array
-  private async loadPlaygroundTestItem(): Promise<MazePhasesLoader> {
-    let item = await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
+  private async loadTestItem(): Promise<MazePhasesLoader> {
+    let item =
+      await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
     const mazePhase = this.convertMecanicaRopeToPhase(item);
-    this.phases = [mazePhase]
-    return this
+    this.phases = [mazePhase];
+    return this;
   }
 
   //aqui é aonde busca do json
   private loadTestApplication(): MazePhasesLoader {
-    let items = this.testApplicationService.getNonCompletedTestItems()
-    this.phases = items.map((item: TestItem) => {
-      const mazePhase = this.convertMecanicaRopeToPhase(item.item as MecanicaRope)
-      mazePhase.itemId = item.id;
-      return mazePhase
-    })
+    let item = this.testApplicationService.getFirstItem();
+    if (item) {
+      location.href = item.url;
+    }
     return this;
   }
 
   convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);
     phase.mecanicaRope = mecanicaRope;
+
     phase.setupTutorialsAndObjectsPositions = () => {
 
       // Conversão dos polígonos
       phase.poligonos = mecanicaRope.poligonos.map(polygon => {
         return {
-          pontos: polygon.pontos.map(point => ({ x: point.x, y: point.y })),
-          posicao: polygon.posicao.map(position => ({ x: position.x, y: position.y })),
-          cor: polygon.cor
+        pontos: polygon.pontos.map(point => ({ x: point.x, y: point.y })),
+        posicao: polygon.posicao.map(position => ({ x: position.x, y: position.y })),
+        cor: polygon.cor
         };
       });
 
@@ -107,37 +110,36 @@ export default class MazePhasesLoader {
       phase.pontosDestino = phase.mecanicaRope.pontosDestino.map(p => {
         return { x: p.x, y: p.y }
       })
+      //aqui termina o poligono
 
       phase.obstacles = new Matrix(
         this.scene,
         MatrixMode.ISOMETRIC,
         phase.mecanicaRope.obstaculos,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+        this.gridCenterX,
+        this.gridCenterY,
+        this.gridCellWidth
       );
-
 
       phase.ground = new Matrix(
         this.scene,
         MatrixMode.ISOMETRIC,
         phase.mecanicaRope.mapa,
-        this.gridCenterX, this.gridCenterY, this.gridCellWidth
+        this.gridCenterX,
+        this.gridCenterY,
+        this.gridCellWidth
       );
 
-      phase.skipPhaseMessage = mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE
-      phase.exitPhaseMessage = mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE
-      phase.restartPhaseMessage = mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE
-      phase.dudeStartPosition = { row: phase.mecanicaRope.y, col: phase.mecanicaRope.x }
-      phase.dudeFacedTo = mecanicaRope.face
-      phase.batteryLevel = mecanicaRope.nivelBateria
-      phase.maxBatteryLevel = mecanicaRope.nivelMaximoBateria
-      phase.batteryDecreaseOnEachMove = mecanicaRope.custoBateriaEmCadaMovimento
-      phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha
-      phase.messagesBeforeStartPlay = mecanicaRope.falasAntesDeIniciar
+      phase.skipPhaseMessage =
+        mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
+      phase.exitPhaseMessage =
+        mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
+      phase.restartPhaseMessage =
+        mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
 
 
-    }
-
-    return phase
+    };
+    return phase;
   }
 
   private createHardCodedPhases(testing: boolean): MazePhasesLoader {
@@ -152,8 +154,7 @@ export default class MazePhasesLoader {
   }
 
   getNextPhase(): MazePhase {
-    this.currentPhase++
-    console.log('Fase Atual', this.phases[this.currentPhase])
-    return this.phases[this.currentPhase]
+    this.currentPhase++;
+    return this.phases[this.currentPhase];
   }
 }

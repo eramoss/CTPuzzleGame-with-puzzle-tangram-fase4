@@ -135,12 +135,19 @@ export default class Game extends Scene {
     this.codeEditor = new CodeEditor(this, this.sounds, this.grid);
     this.messageBox = new MessageBox(this, this.grid)
     this.messageBox.onFinishTalk = () => {
-      let isReplaying = this.gameState.isReplayingPhase(this.currentPhase.itemId)
-      this.playPhase(this.currentPhase, { muteInstructions: true, clearResponseState: !isReplaying })
-    }
+      let isReplaying = this.gameState.isReplayingPhase();
+      this.playPhase(this.currentPhase, {
+        muteInstructions: true,
+        clearResponseState: !isReplaying,
+      });
+    };
 
     this.showLoading();
-    this.phasesLoader = await this.loadPhases();
+    this.phasesLoader = this.getPhasesLoader();
+    await this.phasesLoader.load(this.gameParams);
+    if (this.testApplicationService.mustLoadFirstItem()) {
+      return;
+    }
     this.hideLoading();
 
 
@@ -160,12 +167,13 @@ export default class Game extends Scene {
       this.gameState.registerRotationUse()
     }
 
+
     //Aqui está a lógica de quando o botão de play é clicado
     //Trocou de fase sem nenhuma validação. Depois eu devo colocar uma validação
     this.codeEditor.onClickRun = () => {
       this.positionValidationInstance.logAllShapesPointsPositions();
       if(this.validateShapes(this.currentPhase)){
-        this.gameState.registerPlayUse()
+        this.gameState.registerPlayUse();
         this.showSuccessMessage();
       }else{
         this.showErrorMessage()
@@ -183,6 +191,7 @@ export default class Game extends Scene {
     this.playNextPhase();
   }
 
+
   private showErrorMessage() {
     let messageBox = new MessageBox(this, this.grid, { showCancelButton: false });
     this.sounds.error();
@@ -192,14 +201,26 @@ export default class Game extends Scene {
     };
   }
 
+  private async respondAndAdvance() {
+    debugger
+    const nextItemUrl = await this.sendResponse({ setFinished: true });
+    console.log('nextItemUrl:', nextItemUrl);
+    setTimeout(() => {
+      if (nextItemUrl) {
+        location.href = nextItemUrl;
+        return;
+      }
+      this.playNextPhase();
+    }, 1000);
+  }
+
   private showSuccessMessage() {
     let messageBox = new MessageBox(this, this.grid, { showCancelButton: false });
     this.sounds.success();
     messageBox.setText("Parabéns! Você completou a fase!");
-    messageBox.onClickOk = () => {
-      this.sendResponse({ setFinished: true })
+    messageBox.onClickOk = async () => {
       messageBox.close();
-      this.playNextPhase();
+      await this.respondAndAdvance();  
     };
   }
 
@@ -250,7 +271,7 @@ export default class Game extends Scene {
         //Logger.clear();
         messageBox.close()
         this.gameState.registerRestartUse()
-        this.gameState.setReplayingPhase(this.currentPhase.itemId, true)
+        this.gameState.setReplayingPhase(true);
         this.replayCurrentPhase({
           clearCodeEditor: true,
           muteInstructions: false,
@@ -272,17 +293,17 @@ export default class Game extends Scene {
 
 
   exit() {
-    if (this.testApplicationService.isTestApplication()) {
-      this.startEndScene()
+    if (this.testApplicationService.mustLoadFirstItem()) {
+      this.startEndScene();
       return;
     }
-    this.destroy()
-    this.scene.start('pre-game')
+    this.destroy();
+    this.scene.start("pre-game");
   }
 
   giveUp() {
     this.gameState.registerGiveUp()
-    this.playNextPhase();
+    this.respondAndAdvance();
   }
 
   destroy() {
@@ -290,12 +311,12 @@ export default class Game extends Scene {
     globalSounds.stopPlayBackgroundMusic()
   }
 
-  async loadPhases(): Promise<MazePhasesLoader> {
-    let gridCenterX = this.grid.width;
-    let gridCenterY = this.grid.height;
-    let gridCellWidth = this.grid.cellWidth;
+  getPhasesLoader(): MazePhasesLoader {
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2.4;
+    let gridCellWidth = this.grid.cellWidth * 1.1;
 
-    return (await new MazePhasesLoader(
+    return new MazePhasesLoader(
       this,
       this.grid,
       this.codeEditor,
@@ -303,7 +324,7 @@ export default class Game extends Scene {
       gridCenterX,
       gridCenterY,
       gridCellWidth
-    ).load(this.gameParams));
+    );
   }
 
   private showLoading() {
@@ -335,9 +356,10 @@ export default class Game extends Scene {
 
   playNextPhase() {
     if (this.currentPhase) {
-      this.gameState.setReplayingPhase(this.currentPhase.itemId, false)
+      this.gameState.setReplayingPhase(false);
     }
     const phase = this.phasesLoader.getNextPhase();
+    
     this.playPhase(phase, { clearCodeEditor: true, clearResponseState: true });
   }
 
@@ -439,9 +461,9 @@ export default class Game extends Scene {
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
-    this.playBackgroundMusic()
+    this.playBackgroundMusic();
     if (!phase) {
-      if (this.testApplicationService.isPlayground()) {
+      if (this.gameParams.isPlaygroundTest()) {
         this.replayCurrentPhase();
         return;
       }
@@ -454,19 +476,17 @@ export default class Game extends Scene {
     this.currentPhase?.clearTutorials()
     this.currentPhase = phase
 
+    console.log('Fase atual:', this.currentPhase);
     if (!this.currentPhase) {
       this.startEndScene();
     }
 
     if (this.currentPhase) {
-      //debugger
-      let itemId = this.currentPhase.itemId
-      //Aqui faz a limpeza do response no console
       if (playPhaseOptions.clearResponseState) {
-        this.gameState.initializeResponse(itemId);
+        this.gameState.initializeResponse();
       }
-      this.testApplicationService.saveCurrentPlayingPhase(itemId)
-      this.updateLabelCurrentPhase(itemId)
+      this.updateLabelCurrentPhase();
+
       const MatrixAndTutorials = this.currentPhase.setupMatrixAndTutorials()
 
       //remove os poligonos
@@ -480,12 +500,14 @@ export default class Game extends Scene {
     }
   }
 
-  private updateLabelCurrentPhase(itemId: number) {
-    let label = this.testApplicationService.getCurrentPhaseString(itemId)
+  private updateLabelCurrentPhase() {
+    let label = this.testApplicationService.getCurrentPhaseString();
     if (!label) {
-      label = 'Fases restantes: ' + (this.phasesLoader.phases.length - this.phasesLoader.currentPhase)
+      label =
+        "Fases restantes: " +
+        (this.phasesLoader.phases.length - this.phasesLoader.currentPhase);
     }
-    this.textCurrentPhase.setText(label)
+    this.textCurrentPhase.setText(label);
   }
 
   playBackgroundMusic() {
@@ -512,34 +534,38 @@ export default class Game extends Scene {
     }
   }
 
-  async sendResponse(options:
-    {
-      setFinished: boolean
+  async sendResponse(
+    options: {
+      setFinished: boolean;
     } = {
-      setFinished: false
-    }) {
+      setFinished: false,
+    }
+  ): Promise<string> {
     let phase = this.currentPhase;
     if (phase) {
-      //debugger
-      if (this.gameParams.isTestApplication()) {
+      if (this.gameParams.isItemToPlay()) {
         try {
           if (this.currentPhase) {
             if (options.setFinished) {
               this.gameState.setFinished();
             }
-            //debugger
             this.gameState.registerTimeSpent()
-            const response = this.gameState.getResponseToSend()
-            await this.testApplicationService.sendResponse(response);
+            const response = this.gameState.getResponse();
+            const res = await this.testApplicationService.sendResponse(
+              response
+            );
+            if (options.setFinished) {
+              return res.next;
+            }
           }
         } catch (e) {
-          Logger.log('ErrorSendingResponse', e)
+          Logger.log("ErrorSendingResponse", e);
           Logger.error(e);
-          this.replayCurrentPhase()
+          this.replayCurrentPhase();
           return;
         }
       }
     }
   }
-
 }
+

@@ -7,7 +7,7 @@ const generate = require('generate-file-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
-  //devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 9010,

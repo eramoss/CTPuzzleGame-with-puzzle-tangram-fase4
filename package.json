@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env webpack-dev-server --mode=development --progress --color --hot --open --config webpack.config.js",
+    "devx": "cross-env NODE_OPTIONS='--inspect-brk' webpack-dev-server --mode=development --progress --color --hot --open --config webpack.config.js",
     "build": "cross-env webpack --mode=production --progress --color --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

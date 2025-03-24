@@ -1,45 +1,34 @@
-import Phaser from 'phaser';
-import Button from '../controls/Button';
-import AlignGrid from '../geom/AlignGrid';
-import { Logger } from '../main';
-import TestApplicationService from '../test-application/TestApplicationService';
-import { androidOpenUrl } from '../utils/Utils';
-import { globalSounds } from './PreGame';
+import Phaser from "phaser";
+import AlignGrid from "../geom/AlignGrid";
+import { Logger } from "../main";
+import TestApplicationService from "../test-application/TestApplicationService";
+import { androidOpenUrl } from "../utils/Utils";
 
 export default class EndGame extends Phaser.Scene {
   grid: AlignGrid;
 
   constructor() {
-    super('end-game');
+    super("end-game");
   }
 
   init(testApplicationService: TestApplicationService) {
-    if (testApplicationService) {
-      if (testApplicationService.getParticipation) {
-        Logger.log('END_GAME')
-        let participation = testApplicationService.getParticipation();
-        let isTestApplication = testApplicationService.isTestApplication()
-        if (isTestApplication) {
-          let url = participation?.urlToEndOfTestQuiz?.url;
-          if (url) {
-            androidOpenUrl(url)
-          }
-        }
+    Logger.log("END_GAME");
+    let participation = testApplicationService?.participation;
+    if (participation) {
+      if (testApplicationService.isItemToPlay()) {
+        androidOpenUrl(participation?.urlToEndOfTestQuiz?.url);
       }
     }
   }
 
   preload() {
-    this.load.image('trofel', 'assets/ct/trofel.png');
-    this.load.image('background', 'assets/ct/radial_gradient.png');
-    this.load.spritesheet('btn-green', 'assets/ct/btn_green_big.png', { frameWidth: 400, frameHeight: 152 });
+    this.load.image("background", "assets/ct/radial_gradient.png");
   }
 
   create() {
     this.createGrid();
     this.addBackground();
-    this.addTrofeu();
-    this.createBackButton()
+    this.showMessage("Você venceu!");
   }
 
   private createGrid() {
@@ -52,27 +41,18 @@ export default class EndGame extends Phaser.Scene {
     this.grid = grid;
   }
 
-  addTrofeu() {
-    this.grid.addImage(12, 5, 'trofel', 10);
+  private showMessage(message: string) {
+    let gridCenterX = this.grid.width / 3.2;
+    let gridCenterY = this.grid.height / 2;
+    let messageText = this.add
+      .text(gridCenterX, gridCenterY, message, {
+        fontSize: "30pt",
+      })
+      .setScale(this.grid.scale);
+    messageText.setX(messageText.x - messageText.width / 2);
   }
 
   private addBackground() {
-    this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
-  }
-
-  createBackButton() {
-    let btnBack = new Button(this, globalSounds, 0, 0, 'btn-green', () => {
-      this.restart()
-    })
-    btnBack.setText('Voltar')
-    btnBack.setFontFamily('sans-serif')
-    btnBack.setFontSize(120)
-    btnBack.setScale(this.grid.scale)
-    this.grid.placeAt(3, 7, btnBack.sprite, 7)
-    btnBack.ajustTextPosition(80, 30)
-  }
-
-  restart() {
-    this.scene.start('pre-game')
+    this.grid.addImage(0, 0, "background", this.grid.cols, this.grid.rows);
   }
 }

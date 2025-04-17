@@ -19,6 +19,8 @@ export default class CodeEditor {
   programs: Program[];
   dropZones: SpriteDropZone[]
   onClickRun: () => void = () => { };
+  onRotateLeft: () => void = () => { };
+  onRotateRight: () => void = () => { };
   onEditProgram: () => void = () => { };
   onReplayCurrentPhase: () => void = () => { };
   onInteract: () => void = () => { };
@@ -36,6 +38,8 @@ export default class CodeEditor {
   btnStep: Button;
   btnStop: Button;
   btnPlay: Button;
+  btnLeft: Button;
+  btnRight: Button;
   availableCommands: Command[] = [];
   onShowInstruction: (instruction: string) => void = () => { };
   onHideLastInstruction: () => void = () => { };
@@ -47,12 +51,14 @@ export default class CodeEditor {
     this.scene = scene;
     this.grid = grid;
     this.scale = grid.scale
-    this.createGlobalDragLogic();
+    //this.createGlobalDragLogic();
 
-    this.createStartStopStepButtons();
-    this.createToolbox();
-    this.createDraggableProgramCommands();
-    this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
+    //this.createStartStopStepButtons();
+    this.createStartStopStepButton();
+
+    //this.createToolbox();
+    //this.createDraggableProgramCommands();
+    //this.trash = new Trash(this.scene, this.grid, 17, 2, 8, 7)
   }
 
   setOnBlinkBtnStep(onBlink: (blinked: boolean) => void) {
@@ -426,6 +432,22 @@ export default class CodeEditor {
     return new Date().getTime()
   }
 
+  //Aqui é chamado o botão de play
+  private createStartStopStepButton() {
+    this.btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
+      this.onClickRun();
+    })
+    this.btnRight = new Button(this.scene, this.sounds, 0, 0, 'giroright', () => {
+      this.onRotateRight();
+    })
+    this.btnLeft = new Button(this.scene, this.sounds, 0, 0, 'giroleft', () => {
+      this.onRotateLeft();
+    })
+    this.resetPositionsStartStopStepButton();
+    this.setPlayBtnModeStoppeds();
+  }
+  
+  
   private createStartStopStepButtons() {
     this.btnPlay = new Button(this.scene, this.sounds, 0, 0, 'btn-play', () => {
       this.onClickRun();
@@ -442,6 +464,12 @@ export default class CodeEditor {
     this.setPlayBtnModeStopped();
   }
 
+  resetPositionsStartStopStepButton() {
+    this.grid.placeAt(6, 17, this.btnPlay.sprite, 2)
+    this.grid.placeAt(9, 17, this.btnLeft.sprite, 2)
+    this.grid.placeAt(11, 17, this.btnRight.sprite, 2)
+  }
+
   resetPositionsStartStopStepButtons() {
     this.grid.placeAt(6.5, 17, this.btnPlay.sprite, 2)
     this.grid.placeAt(9, 17, this.btnStep.sprite, 2)
@@ -450,6 +478,16 @@ export default class CodeEditor {
 
   showStopBtnAtLeft() {
     this.grid.placeAt(4, 17, this.btnStop.sprite, 2)
+  }
+
+  setPlayBtnModeStoppeds() {
+    this.resetPositionsStartStopStepButton()
+    this.btnPlay.show()
+    this.btnLeft.show()
+    this.btnRight.show()
+    //this.btnStep.show()
+    //this.btnStop.hide();
+    //this.unhighlightStepButton();
   }
 
   setPlayBtnModeStopped() {

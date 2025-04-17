@@ -31,14 +31,14 @@ export const Logger = {
     console.error(values.join(' '))
   },
   clear: () => {
-    //console.clear()
+   
   }
 }
 
 export default new Phaser.Game({
   type: Phaser.AUTO,
-  width: width,
-  height: height,
+  width: 1024,
+  height: 768,
   fps: {
     smoothStep: true,
     min: 13,

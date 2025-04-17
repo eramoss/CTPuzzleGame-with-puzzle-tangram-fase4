@@ -5,17 +5,14 @@ import AlignGrid from "../geom/AlignGrid";
 import Matrix, { MatrixMode } from "../geom/Matrix";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
-import TestApplicationService from "../test-application/TestApplicationService";
-import MazePhase, {
-  DEFAULT_EXIT_MESSAGE,
-  DEFAULT_RESTART_MESSAGE,
-  DEFAULT_SKIP_MESSAGE,
-} from "./MazePhase";
+import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_RESTART_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
 import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
+import TestApplicationService from "../test-application/TestApplicationService";
 import TutorialHelper from "./tutorial/TutorialHelper";
 
 export default class MazePhasesLoader {
-  currentPhase: number = -1;
+
+  currentPhase: number = -1
   phases: Array<MazePhase>;
   scene: Scene;
   grid: AlignGrid;
@@ -25,17 +22,16 @@ export default class MazePhasesLoader {
   gridCellWidth: number;
   codeEditor: CodeEditor;
   testApplicationService: TestApplicationService;
-  tutorial: TutorialHelper;
+  tutorial: TutorialHelper
 
-  constructor(
-    scene: Scene,
+  constructor(scene: Scene,
     grid: AlignGrid,
     codeEditor: CodeEditor,
     matrixMode: MatrixMode,
     gridCenterX: number,
     gridCenterY: number,
-    gridCellWidth: number
-  ) {
+    gridCellWidth: number) {
+
     this.matrixMode = matrixMode;
     this.gridCenterX = gridCenterX;
     this.gridCenterY = gridCenterY;
@@ -48,6 +44,7 @@ export default class MazePhasesLoader {
     this.tutorial = new TutorialHelper(scene, codeEditor);
   }
 
+  //Aqui é carregado, se vier da plataforma, prioriza este, se não, carrega o hardcoded
   async load(gameParams: GameParams): Promise<MazePhasesLoader> {
     this.testApplicationService = new TestApplicationService(gameParams);
     let phasesLoader: MazePhasesLoader;
@@ -73,6 +70,7 @@ export default class MazePhasesLoader {
     return phasesLoader;
   }
 
+  //as fases estão em um array
   private async loadTestItem(): Promise<MazePhasesLoader> {
     let item =
       await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
@@ -81,6 +79,7 @@ export default class MazePhasesLoader {
     return this;
   }
 
+  //aqui é aonde busca do json
   private loadTestApplication(): MazePhasesLoader {
     let item = this.testApplicationService.getFirstItem();
     if (item) {
@@ -94,6 +93,25 @@ export default class MazePhasesLoader {
     phase.mecanicaRope = mecanicaRope;
 
     phase.setupTutorialsAndObjectsPositions = () => {
+
+      // Conversão dos polígonos
+      phase.poligonos = mecanicaRope.poligonos.map(polygon => {
+        return {
+        pontos: polygon.pontos.map(point => ({ x: point.x, y: point.y })),
+        posicao: polygon.posicao.map(position => ({ x: position.x, y: position.y })),
+        cor: polygon.cor
+        };
+      });
+
+      phase.poligonoDestino = phase.mecanicaRope.poligonoDestino.map(p => {
+        return { x: p.x, y: p.y }
+      })
+
+      phase.pontosDestino = phase.mecanicaRope.pontosDestino.map(p => {
+        return { x: p.x, y: p.y }
+      })
+      //aqui termina o poligono
+
       phase.obstacles = new Matrix(
         this.scene,
         MatrixMode.ISOMETRIC,
@@ -118,26 +136,8 @@ export default class MazePhasesLoader {
         mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
       phase.restartPhaseMessage =
         mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
-      phase.dudeStartPosition = {
-        row: phase.mecanicaRope.y,
-        col: phase.mecanicaRope.x,
-      };
-      phase.dudeFacedTo = mecanicaRope.face;
-      phase.batteryLevel = mecanicaRope.nivelBateria;
-      phase.maxBatteryLevel = mecanicaRope.nivelMaximoBateria;
-      phase.batteryDecreaseOnEachMove =
-        mecanicaRope.custoBateriaEmCadaMovimento;
-      phase.batteryGainOnCapture = mecanicaRope.ganhoBateriaAoCapturarPilha;
-      phase.messagesBeforeStartPlay = mecanicaRope.falasAntesDeIniciar;
 
-      let tutorialSteps = mecanicaRope.acoesTutorial.map((acao) => {
-        let affect = "";
-        if (acao.arrastarSobre) {
-          affect = `to ${acao.arrastarSobre}`;
-        }
-        return `${acao.acao} ${acao.elemento} ${affect} say ${acao.frase}`;
-      });
-      this.tutorial.buildTutorial(phase, tutorialSteps);
+
     };
     return phase;
   }
@@ -148,8 +148,8 @@ export default class MazePhasesLoader {
       this.codeEditor,
       this.gridCenterX,
       this.gridCenterY,
-      this.gridCellWidth
-    ).createHardCodedPhases(testing);
+      this.gridCellWidth)
+      .createHardCodedPhases(testing)
     return this;
   }
 

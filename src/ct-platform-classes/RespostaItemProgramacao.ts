@@ -14,7 +14,9 @@ export class RespostaItemProgramacao {
   contadorUsoStop: number = 0
   contadorReinicioFase: number = 0
   contadorTentativas: number = 0
-  ambiente: Ambiente = 'celular'
+  contadorCliques: number = 0
+  contadorGiros: number = 0
+  ambiente: Ambiente = 'computador'
   caminhoPercorrido: { x: number, y: number }[] = []
   caminhoPercorridoTexto:string = ""
   finalizou = false
@@ -36,9 +38,19 @@ export class RespostaItemProgramacao {
   countStop() {
     this.contadorUsoStop++
   }
+
+  countGiros() {
+    this.contadorGiros++
+  }
+
+  countCliques() {
+    this.contadorCliques++
+  }
+
   countPlay() {
     this.contadorUsoPlay++
   }
+
   countDebug() {
     this.contadorUsoDebug++
   }

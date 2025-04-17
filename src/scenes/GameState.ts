@@ -1,8 +1,8 @@
 import { Comando } from "../ct-platform-classes/MecanicaRope";
-import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao";
-import { Logger } from "../main";
-import { getItem, getTypedItem, removeItem, setItem } from "../utils/storage";
-import { isAndroidAmbient } from "../utils/Utils";
+import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao"
+import { Logger } from "../main"
+import { getItem, getTypedItem, removeItem, setItem } from "../utils/storage"
+
 
 export default class GameState {
   setReplayingPhase(replaying: boolean) {
@@ -14,21 +14,17 @@ export default class GameState {
   }
 
   initializeResponse() {
-    let resposta = new RespostaItemProgramacao();
-    resposta.tempoEmSegundos = -1;
-    resposta.contadorUsoLixeira = 0;
-    resposta.contadorUsoDebug = 0;
-    resposta.contadorUsoPlay = 0;
-    resposta.contadorUsoStop = 0;
-    resposta.caminhoPercorrido = [];
-    resposta.caminhoPercorridoTexto = "";
-    resposta.finalizou = false;
-    resposta.ambiente = isAndroidAmbient() ? "celular" : "computador";
+    let resposta = new RespostaItemProgramacao()
+    resposta.tempoEmSegundos = 0
+    resposta.contadorCliques = 0
+    resposta.contadorGiros = 0
+    resposta.finalizou = false
     this.setResponse(resposta);
     this.initializeStartTime();
     removeItem("replaying");
   }
 
+  
   pushMove(position: { x: number; y: number }) {
     let response = this.getResponse();
     response.caminhoPercorrido.push(position);
@@ -76,16 +72,16 @@ export default class GameState {
 
   private calculateTimeSpent(): number {
     let response = this.getResponse();
-    let tempoEmSegundos = 0;
+    let tempoEmSegundos = 0
     if (response) {
-      tempoEmSegundos = Math.floor(
-        this.getTimeInSeconds() - response.tempoInicio
-      );
-      response.tempoEmSegundos = tempoEmSegundos;
-      this.setResponse(response);
+      tempoEmSegundos = Math.floor(this.getTimeInSeconds() - response.tempoInicio)
+      response.tempoEmSegundos = tempoEmSegundos
+      this.setResponse(response)
     }
-    return tempoEmSegundos;
+    console.log('Tempo em segundos', tempoEmSegundos)
+    return tempoEmSegundos
   }
+
 
   registerGiveUp() {
     const response = this.getResponse();
@@ -111,6 +107,18 @@ export default class GameState {
     this.setResponse(response);
   }
 
+  registerClickUse() {
+    let response = this.getResponse()
+    response.countCliques()
+    this.setResponse(response)
+  }
+
+  registerRotationUse() {
+    let response = this.getResponse()
+    response.countGiros()
+    this.setResponse(response)
+  }
+
   registerStopUse() {
     let response = this.getResponse();
     response.countStop();
@@ -123,28 +131,41 @@ export default class GameState {
     this.setResponse(response);
   }
 
+  /*
   registerAddedCommands(addedCommands: string[]) {
-    this.log("GAME_STATE register coding", addedCommands);
+    this.log('GAME_STATE register coding', addedCommands);
     let response = this.getResponse();
-    let ultimaTentativa = "";
+    let ultimaTentativa = ""
     if (response.tentativas?.length) {
-      ultimaTentativa =
-        response.tentativas[response.tentativas.length - 1].toString();
+      ultimaTentativa = response.tentativas[response.tentativas.length - 1].toString()
     }
-    let tentativa = addedCommands.map((it) => {
-      it = it.replace("arrow-", "");
+    let tentativa = addedCommands.map(it => {
+      it = it.replace('arrow-', '');
       it = it.toUpperCase();
-      return it.toUpperCase() as Comando;
-    });
+      return it.toUpperCase() as Comando
+    })
     if (tentativa.toString() != ultimaTentativa) {
       response.adicionarTentativa(tentativa);
-      response.tempoEmSegundos = this.calculateTimeSpent();
+      response.tempoEmSegundos = this.calculateTimeSpent()
     }
     this.setResponse(response);
   }
+  */
+
+  registerTimeSpent() {
+    let response = this.getResponse();
+    if (response) {
+      response.tempoEmSegundos = this.calculateTimeSpent();
+      this.setResponse(response);
+    }
+  }
 
   getTimeInSeconds(): number {
-    return new Date().getTime() / 1000;
+    return new Date().getTime() / 1000 
+  }
+
+  getTimeInMinutes(): number {
+    return new Date().getTime() / 1000 / 60
   }
 
   setResponse(respostaItemProgramacao: RespostaItemProgramacao) {

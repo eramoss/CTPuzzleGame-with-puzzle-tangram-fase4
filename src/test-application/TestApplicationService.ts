@@ -107,7 +107,6 @@ export default class TestApplicationService {
   async sendResponse(
     response: RespostaItemProgramacao
   ): Promise<{ next: string }> {
-    debugger
     return (await POST(this.participation.urlToSendResponses.url, response)).json();
   }
 

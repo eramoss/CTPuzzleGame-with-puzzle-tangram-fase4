@@ -7,11 +7,9 @@ import GameParams from "../settings/GameParams";
 import UserRepository from "../user/UserRepository";
 import User from "../user/User";
 import TestApplicationService from "../test-application/TestApplicationService";
-import { isAndroidAmbient } from "../utils/Utils";
 import { Logger } from "../main";
 import PhasesGrid from "../controls/PhasesGrid";
 import { Loading } from "../controls/Loading";
-import { TestApplication } from "../test-application/TestApplication";
 
 let globalSounds: Sounds;
 

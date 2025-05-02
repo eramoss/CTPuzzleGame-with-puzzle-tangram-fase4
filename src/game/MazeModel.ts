@@ -122,23 +122,6 @@ export default class MazeModel {
     Logger.log('GAME_OBJECTS', logMatrix)
   }
 
-  private updateByZIndex() {
-    /* let logMatrix = '\n';
-    for (let y = 0; y < this.matrix.height; y++) {
-      for (let x = 0; x < this.matrix.width; x++) {
-        let c = '-';
-        let object = this.gameObjects[y][x];
-        if (object) {
-          c = this.obstaclesMatrix[y][x].toString();
-          this.scene.children.bringToTop(object);
-        }
-        logMatrix += c + ' ';
-      }
-      logMatrix += '\n';
-    }
-    Logger.log('GAME_OBJECTS', logMatrix) */
-  }
-
   putSprite(x: number, y: number, sprite: GameObjects.GameObject, spriteName: Obstaculo = null) {
     const existentObjectOnPosition = this.getObjectAt(y, x);
     if (sprite) {

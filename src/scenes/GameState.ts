@@ -131,27 +131,6 @@ export default class GameState {
     this.setResponse(response);
   }
 
-  /*
-  registerAddedCommands(addedCommands: string[]) {
-    this.log('GAME_STATE register coding', addedCommands);
-    let response = this.getResponse();
-    let ultimaTentativa = ""
-    if (response.tentativas?.length) {
-      ultimaTentativa = response.tentativas[response.tentativas.length - 1].toString()
-    }
-    let tentativa = addedCommands.map(it => {
-      it = it.replace('arrow-', '');
-      it = it.toUpperCase();
-      return it.toUpperCase() as Comando
-    })
-    if (tentativa.toString() != ultimaTentativa) {
-      response.adicionarTentativa(tentativa);
-      response.tempoEmSegundos = this.calculateTimeSpent()
-    }
-    this.setResponse(response);
-  }
-  */
-
   registerTimeSpent() {
     let response = this.getResponse();
     if (response) {

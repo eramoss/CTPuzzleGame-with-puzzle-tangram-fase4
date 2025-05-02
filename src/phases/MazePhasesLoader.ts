@@ -6,9 +6,7 @@ import Matrix, { MatrixMode } from "../geom/Matrix";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_RESTART_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
-import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
 import TestApplicationService from "../test-application/TestApplicationService";
-import TutorialHelper from "./tutorial/TutorialHelper";
 
 export default class MazePhasesLoader {
 
@@ -22,7 +20,6 @@ export default class MazePhasesLoader {
   gridCellWidth: number;
   codeEditor: CodeEditor;
   testApplicationService: TestApplicationService;
-  tutorial: TutorialHelper
 
   constructor(scene: Scene,
     grid: AlignGrid,
@@ -41,7 +38,6 @@ export default class MazePhasesLoader {
     this.scene = scene;
     this.grid = grid;
 
-    this.tutorial = new TutorialHelper(scene, codeEditor);
   }
 
   //Aqui é carregado, se vier da plataforma, prioriza este, se não, carrega o hardcoded
@@ -63,9 +59,6 @@ export default class MazePhasesLoader {
       }
     } catch (e) {
       Logger.error(e);
-      phasesLoader = this.createHardCodedPhases(
-        gameParams.isAutomaticTesting()
-      );
     }
     return phasesLoader;
   }
@@ -142,16 +135,6 @@ export default class MazePhasesLoader {
     return phase;
   }
 
-  private createHardCodedPhases(testing: boolean): MazePhasesLoader {
-    this.phases = new HardcodedPhasesCreator(
-      this.scene,
-      this.codeEditor,
-      this.gridCenterX,
-      this.gridCenterY,
-      this.gridCellWidth)
-      .createHardCodedPhases(testing)
-    return this;
-  }
 
   getNextPhase(): MazePhase {
     this.currentPhase++;

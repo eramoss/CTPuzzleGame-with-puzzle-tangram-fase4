@@ -1,8 +1,6 @@
 import { GameObjects } from "phaser";
-import { Mapa, Obstaculo } from "../ct-platform-classes/MecanicaRope";
 import Matrix from "../geom/Matrix";
 import { Logger } from "../main";
-import { Block } from "../scenes/Block";
 import { MyGameObject } from "../scenes/MyGameObject";
 
 export class MazeModelObject {

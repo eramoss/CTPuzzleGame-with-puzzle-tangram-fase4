@@ -1,6 +1,6 @@
 import { GameObjects, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
+//import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
 import InterfaceElement from "../InterfaceElement";
@@ -63,7 +63,6 @@ export default class MazePhase {
   }
 
   setupMatrixAndTutorials() {
-    this.clearTutorials();
     this.setupTutorialsAndObjectsPositions();
   }
 

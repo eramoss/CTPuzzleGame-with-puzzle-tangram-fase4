@@ -37,7 +37,6 @@ export default class EndGame extends Phaser.Scene {
       this.game.config.width as number,
       this.game.config.height as number
     );
-    //grid.show(0.4);
     this.grid = grid;
   }
 

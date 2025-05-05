@@ -1,4 +1,3 @@
-import { Comando } from "../ct-platform-classes/MecanicaRope";
 import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao"
 import { Logger } from "../main"
 import { getItem, getTypedItem, removeItem, setItem } from "../utils/storage"

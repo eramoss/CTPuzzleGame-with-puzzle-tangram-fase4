@@ -23,7 +23,6 @@ export default class Game extends Scene {
   codeEditor: CodeEditor
   poligonoSelecionado: GameObjects.Image;
   sounds: Sounds
-  cursors: Types.Input.Keyboard.CursorKeys
   grid: AlignGrid
   mode: MatrixMode = MatrixMode.ISOMETRIC
   phasesLoader: MazePhasesLoader

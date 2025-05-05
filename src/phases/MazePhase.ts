@@ -2,6 +2,7 @@ import { GameObjects, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
+import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
 
 export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-left" | "prog_1" | "prog_0" | "prog_2" | "if_coin" | "if_block"
 | "arrow-up:if_block" | "arrow-down:if_block" | "arrow-right:if_block" | "arrow-left:if_block" | "prog_1:if_block" | "prog_0:if_block" | "prog_2:if_block"
@@ -24,22 +25,14 @@ export default class MazePhase {
   restartPhaseMessage:string = DEFAULT_RESTART_MESSAGE
   setupTutorialsAndObjectsPositions: () => void;
   messagesBeforeStartPlay:string[] = []
-  obstacles: Matrix;
-  ground: Matrix;
   scene: Scene;
   grid: AlignGrid
   itemId: number
-
+  mecanicaRope: MecanicaRope;
   next: MazePhase
   backgroundOverlay: GameObjects.Sprite;
 
-  dudeFacedTo: string = 'right'
-  dudeStartPosition: { row: number, col: number } = { row: 0, col: 0 }
   codeEditor: CodeEditor;
-  batteryLevel: number = 10;
-  maxBatteryLevel: number = 10
-  batteryDecreaseOnEachMove: number = 1
-  batteryGainOnCapture: number = 1;
   commands: Array<CommandName[]> = [];
   poligonos: Poligonos[] = [];
   poligonoDestino: { x: number, y: number }[] = [];

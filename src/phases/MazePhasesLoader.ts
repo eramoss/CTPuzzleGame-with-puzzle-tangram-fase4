@@ -105,23 +105,6 @@ export default class MazePhasesLoader {
       })
       //aqui termina o poligono
 
-      phase.obstacles = new Matrix(
-        this.scene,
-        MatrixMode.ISOMETRIC,
-        phase.mecanicaRope.obstaculos,
-        this.gridCenterX,
-        this.gridCenterY,
-        this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        MatrixMode.ISOMETRIC,
-        phase.mecanicaRope.mapa,
-        this.gridCenterX,
-        this.gridCenterY,
-        this.gridCellWidth
-      );
 
       phase.skipPhaseMessage =
         mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
@@ -129,7 +112,6 @@ export default class MazePhasesLoader {
         mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
       phase.restartPhaseMessage =
         mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
-
 
     };
     return phase;

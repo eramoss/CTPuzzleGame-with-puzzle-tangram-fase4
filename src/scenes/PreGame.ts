@@ -2,7 +2,6 @@ import Phaser from "phaser";
 import Button from "../controls/Button";
 import AlignGrid from "../geom/AlignGrid";
 import Sounds from "../sounds/Sounds";
-import Keyboard from "../controls/Keyboard";
 import GameParams from "../settings/GameParams";
 import UserRepository from "../user/UserRepository";
 import User from "../user/User";
@@ -18,7 +17,6 @@ export default class PreGame extends Phaser.Scene {
   playBtn: Button;
   inputObject: Phaser.GameObjects.Text;
   testNumberValue: string = "";
-  keyboard: Keyboard;
   userRepository: UserRepository;
   testApplicationService: TestApplicationService;
   grid: AlignGrid;
@@ -40,12 +38,10 @@ export default class PreGame extends Phaser.Scene {
       frameHeight: 152,
     });
     this.sounds.preload(this);
-    this.keyboard.preload(this);
   }
 
   init() {
     this.sounds = new Sounds();
-    this.keyboard = new Keyboard();
     this.userRepository = new UserRepository();
 
     let queryParams = window.location.search;

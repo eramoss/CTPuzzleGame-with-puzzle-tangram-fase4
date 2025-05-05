@@ -61,7 +61,7 @@ export default class TestApplicationService {
     let url = getDefaultPlatformApiUrl(this.gameParams);
     let testApplications = [];
     try {
-      let name = "PROGRAMAÇÃO ROPE";
+      let name = "PROGRAMAÇÃO";
       let response = await GET(
         `${url}/test-applications/public/getPuplicApplicationsByMechanicName/${name}`
       );

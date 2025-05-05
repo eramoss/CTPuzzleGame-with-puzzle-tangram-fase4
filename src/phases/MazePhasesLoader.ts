@@ -1,6 +1,6 @@
 import { Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
+import { Mecanica } from "../ct-platform-classes/Mecanica";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix, { MatrixMode } from "../geom/Matrix";
 import { Logger } from "../main";
@@ -66,8 +66,8 @@ export default class MazePhasesLoader {
   //as fases estão em um array
   private async loadTestItem(): Promise<MazePhasesLoader> {
     let item =
-      await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
-    const mazePhase = this.convertMecanicaRopeToPhase(item);
+      await this.testApplicationService.instantiatePlaygroundItem<Mecanica>();
+    const mazePhase = this.convertMecanicaToPhase(item);
     this.phases = [mazePhase];
     return this;
   }
@@ -81,14 +81,14 @@ export default class MazePhasesLoader {
     return this;
   }
 
-  convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
+  convertMecanicaToPhase(Mecanica: Mecanica): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);
-    phase.mecanicaRope = mecanicaRope;
+    phase.Mecanica = Mecanica;
 
     phase.setupTutorialsAndObjectsPositions = () => {
 
       // Conversão dos polígonos
-      phase.poligonos = mecanicaRope.poligonos.map(polygon => {
+      phase.poligonos = Mecanica.poligonos.map(polygon => {
         return {
         pontos: polygon.pontos.map(point => ({ x: point.x, y: point.y })),
         posicao: polygon.posicao.map(position => ({ x: position.x, y: position.y })),
@@ -96,22 +96,22 @@ export default class MazePhasesLoader {
         };
       });
 
-      phase.poligonoDestino = phase.mecanicaRope.poligonoDestino.map(p => {
+      phase.poligonoDestino = phase.Mecanica.poligonoDestino.map(p => {
         return { x: p.x, y: p.y }
       })
 
-      phase.pontosDestino = phase.mecanicaRope.pontosDestino.map(p => {
+      phase.pontosDestino = phase.Mecanica.pontosDestino.map(p => {
         return { x: p.x, y: p.y }
       })
       //aqui termina o poligono
 
 
       phase.skipPhaseMessage =
-        mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
+        Mecanica.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
       phase.exitPhaseMessage =
-        mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
+        Mecanica.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
       phase.restartPhaseMessage =
-        mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
+        Mecanica.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
 
     };
     return phase;

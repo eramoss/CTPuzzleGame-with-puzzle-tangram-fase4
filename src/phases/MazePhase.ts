@@ -2,7 +2,7 @@ import { GameObjects, Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix from "../geom/Matrix";
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
+import { Mecanica } from "../ct-platform-classes/Mecanica";
 
 export type CommandName = "arrow-up" | "arrow-down" | "arrow-right" | "arrow-left" | "prog_1" | "prog_0" | "prog_2" | "if_coin" | "if_block"
 | "arrow-up:if_block" | "arrow-down:if_block" | "arrow-right:if_block" | "arrow-left:if_block" | "prog_1:if_block" | "prog_0:if_block" | "prog_2:if_block"
@@ -28,7 +28,7 @@ export default class MazePhase {
   scene: Scene;
   grid: AlignGrid
   itemId: number
-  mecanicaRope: MecanicaRope;
+  Mecanica: Mecanica;
   next: MazePhase
   backgroundOverlay: GameObjects.Sprite;
 

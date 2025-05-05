@@ -5,7 +5,6 @@ import { GameObjects, Types, Scene } from 'phaser'
 import { MatrixMode } from '../geom/Matrix'
 import CodeEditor, { PlayPhaseOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
-import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
 import MazePhasesLoader from '../phases/MazePhasesLoader'
 import MazePhase, { CommandName } from '../phases/MazePhase'
@@ -14,7 +13,6 @@ import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
 import TestApplicationService from '../test-application/TestApplicationService'
 import GameState from './GameState'
-//import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
 import MessageBox from '../sprites/MessageBox'
 import Button from '../controls/Button'
 
@@ -26,8 +24,6 @@ export default class Game extends Scene {
   poligonoSelecionado: GameObjects.Image;
   sounds: Sounds
   cursors: Types.Input.Keyboard.CursorKeys
-  obstaclesMazeModel: MazeModel
-  groundMazeModel: MazeModel
   grid: AlignGrid
   mode: MatrixMode = MatrixMode.ISOMETRIC
   phasesLoader: MazePhasesLoader

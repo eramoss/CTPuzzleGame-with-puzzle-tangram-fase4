@@ -1,6 +1,4 @@
 import { Scene } from "phaser";
-import AlignGrid from "../geom/AlignGrid";
-import SpriteDropZone from "../controls/SpriteDropZone";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 
@@ -44,12 +42,6 @@ export default function drawRect(scene: Scene, x: number, y: number, width: numb
   }
 }
 
-export function createDropZone(grid: AlignGrid, cellx: number, celly: number, colspan: number, rowspan: number, texture: string): SpriteDropZone {
-  const rect: Phaser.Geom.Rectangle = grid.getArea(cellx, celly, colspan, rowspan);
-  const dropZone = new SpriteDropZone(grid.scene, rect.x, rect.y, rect.width, rect.height, texture);
-  grid.placeAt(cellx, celly, dropZone.sprite, colspan, rowspan);
-  return dropZone;
-}
 
 export function getDefaultPlatformApiUrl(gameParams: GameParams) {
   const defaultOnlineApi = 'https://api.ctplatform.playerweb.com.br';
@@ -153,12 +145,4 @@ export function isDebug(scene: Phaser.Scene) {
 
 export function writeText(newText: string, existentText: string, textObject: Phaser.GameObjects.Text, onWrite: () => void) {
   textObject?.setText(newText);
-  // if (existentText.length < newText.length) {
-  //   existentText = newText.substring(0, existentText.length + 1);
-  //   textObject?.setText(existentText);
-  //   setTimeout(() => {
-  //     writeText(newText, existentText, textObject, onWrite)
-  //     onWrite()
-  //   }, 20)
-  // }
 }

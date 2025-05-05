@@ -6,7 +6,6 @@ import { GET, POST, PUT } from "../utils/internet";
 import { getItem, getTypedItem, setItem } from "../utils/storage";
 import {
   getDefaultPlatformApiUrl,
-  isAndroidAmbient,
   replaceUserUuidTokenByUserHash,
 } from "../utils/Utils";
 import {

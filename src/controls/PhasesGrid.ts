@@ -65,7 +65,6 @@ export default class PhasesGrid {
       btn.setText(name);
       btn.ajustTextPosition(20, 25)
     })
-
-
+    
   }
 }

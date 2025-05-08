@@ -1,4 +1,4 @@
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
+import { Mecanica } from "../ct-platform-classes/Mecanica";
 
 export class TestApplication {
   name: string;
@@ -24,6 +24,6 @@ export class Test {
 export class TestItem {
   id: number;
   url: string;
-  item: MecanicaRope;
+  item: Mecanica;
   hasResponse: boolean;
 }

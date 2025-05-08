@@ -11,8 +11,6 @@ export default class AlignGrid {
   graphics: Phaser.GameObjects.Graphics;
   width: number = 1024;
   height: number = 768;
-  //width: number = 500;
-  //height: number = 500;
   scale: number;
 
   constructor(scene: Scene, cols: number, rows: number, width: number, height: number) {

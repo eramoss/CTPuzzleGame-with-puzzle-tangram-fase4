@@ -1,14 +1,12 @@
 import { Scene } from "phaser";
 import CodeEditor from "../controls/CodeEditor";
-import { MecanicaRope } from "../ct-platform-classes/MecanicaRope";
+import { Mecanica } from "../ct-platform-classes/Mecanica";
 import AlignGrid from "../geom/AlignGrid";
 import Matrix, { MatrixMode } from "../geom/Matrix";
 import { Logger } from "../main";
 import GameParams from "../settings/GameParams";
 import MazePhase, { DEFAULT_EXIT_MESSAGE, DEFAULT_RESTART_MESSAGE, DEFAULT_SKIP_MESSAGE } from "./MazePhase";
-import HardcodedPhasesCreator from "./hardcodedPhases/HardcodedPhasesCreator";
 import TestApplicationService from "../test-application/TestApplicationService";
-import TutorialHelper from "./tutorial/TutorialHelper";
 
 export default class MazePhasesLoader {
 
@@ -22,7 +20,6 @@ export default class MazePhasesLoader {
   gridCellWidth: number;
   codeEditor: CodeEditor;
   testApplicationService: TestApplicationService;
-  tutorial: TutorialHelper
 
   constructor(scene: Scene,
     grid: AlignGrid,
@@ -41,7 +38,6 @@ export default class MazePhasesLoader {
     this.scene = scene;
     this.grid = grid;
 
-    this.tutorial = new TutorialHelper(scene, codeEditor);
   }
 
   //Aqui é carregado, se vier da plataforma, prioriza este, se não, carrega o hardcoded
@@ -63,9 +59,6 @@ export default class MazePhasesLoader {
       }
     } catch (e) {
       Logger.error(e);
-      phasesLoader = this.createHardCodedPhases(
-        gameParams.isAutomaticTesting()
-      );
     }
     return phasesLoader;
   }
@@ -73,8 +66,8 @@ export default class MazePhasesLoader {
   //as fases estão em um array
   private async loadTestItem(): Promise<MazePhasesLoader> {
     let item =
-      await this.testApplicationService.instantiatePlaygroundItem<MecanicaRope>();
-    const mazePhase = this.convertMecanicaRopeToPhase(item);
+      await this.testApplicationService.instantiatePlaygroundItem<Mecanica>();
+    const mazePhase = this.convertMecanicaToPhase(item);
     this.phases = [mazePhase];
     return this;
   }
@@ -88,14 +81,14 @@ export default class MazePhasesLoader {
     return this;
   }
 
-  convertMecanicaRopeToPhase(mecanicaRope: MecanicaRope): MazePhase {
+  convertMecanicaToPhase(Mecanica: Mecanica): MazePhase {
     let phase = new MazePhase(this.scene, this.codeEditor);
-    phase.mecanicaRope = mecanicaRope;
+    phase.Mecanica = Mecanica;
 
     phase.setupTutorialsAndObjectsPositions = () => {
 
       // Conversão dos polígonos
-      phase.poligonos = mecanicaRope.poligonos.map(polygon => {
+      phase.poligonos = Mecanica.poligonos.map(polygon => {
         return {
         pontos: polygon.pontos.map(point => ({ x: point.x, y: point.y })),
         posicao: polygon.posicao.map(position => ({ x: position.x, y: position.y })),
@@ -103,55 +96,27 @@ export default class MazePhasesLoader {
         };
       });
 
-      phase.poligonoDestino = phase.mecanicaRope.poligonoDestino.map(p => {
+      phase.poligonoDestino = phase.Mecanica.poligonoDestino.map(p => {
         return { x: p.x, y: p.y }
       })
 
-      phase.pontosDestino = phase.mecanicaRope.pontosDestino.map(p => {
+      phase.pontosDestino = phase.Mecanica.pontosDestino.map(p => {
         return { x: p.x, y: p.y }
       })
       //aqui termina o poligono
 
-      phase.obstacles = new Matrix(
-        this.scene,
-        MatrixMode.ISOMETRIC,
-        phase.mecanicaRope.obstaculos,
-        this.gridCenterX,
-        this.gridCenterY,
-        this.gridCellWidth
-      );
-
-      phase.ground = new Matrix(
-        this.scene,
-        MatrixMode.ISOMETRIC,
-        phase.mecanicaRope.mapa,
-        this.gridCenterX,
-        this.gridCenterY,
-        this.gridCellWidth
-      );
 
       phase.skipPhaseMessage =
-        mecanicaRope.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
+        Mecanica.mensagemAoPularFase || DEFAULT_SKIP_MESSAGE;
       phase.exitPhaseMessage =
-        mecanicaRope.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
+        Mecanica.mensagemAoSairDoJogo || DEFAULT_EXIT_MESSAGE;
       phase.restartPhaseMessage =
-        mecanicaRope.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
-
+        Mecanica.mensagemAoReiniciarFase || DEFAULT_RESTART_MESSAGE;
 
     };
     return phase;
   }
 
-  private createHardCodedPhases(testing: boolean): MazePhasesLoader {
-    this.phases = new HardcodedPhasesCreator(
-      this.scene,
-      this.codeEditor,
-      this.gridCenterX,
-      this.gridCenterY,
-      this.gridCellWidth)
-      .createHardCodedPhases(testing)
-    return this;
-  }
 
   getNextPhase(): MazePhase {
     this.currentPhase++;

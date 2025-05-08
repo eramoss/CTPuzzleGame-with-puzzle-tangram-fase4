@@ -1,4 +1,3 @@
-import { Comando } from "./MecanicaRope"
 
 type Ambiente = "celular" | "computador"
 export class RespostaItemProgramacao {
@@ -6,7 +5,6 @@ export class RespostaItemProgramacao {
   comandosUtilizados: string[] = []
   tempoInicio: number
   tempoEmSegundos: number
-  tentativas: Comando[][] = []
   pulouFase: boolean
   contadorUsoLixeira: number = 0
   contadorUsoDebug: number = 0
@@ -21,11 +19,7 @@ export class RespostaItemProgramacao {
   caminhoPercorridoTexto:string = ""
   finalizou = false
 
-  adicionarTentativa(comandosUtilizados: Comando[]) {
-    this.comandosUtilizados = comandosUtilizados
-    this.tentativas.push(comandosUtilizados)
-    this.contadorTentativas = this.tentativas.length
-  }
+
 
   countTrashUse() {
     this.contadorUsoLixeira++

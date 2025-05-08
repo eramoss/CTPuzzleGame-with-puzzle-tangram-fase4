@@ -1,4 +1,3 @@
-import { Comando } from "../ct-platform-classes/MecanicaRope";
 import { RespostaItemProgramacao } from "../ct-platform-classes/RespostaItemProgramacao"
 import { Logger } from "../main"
 import { getItem, getTypedItem, removeItem, setItem } from "../utils/storage"
@@ -130,27 +129,6 @@ export default class GameState {
     response.countRestartUse();
     this.setResponse(response);
   }
-
-  /*
-  registerAddedCommands(addedCommands: string[]) {
-    this.log('GAME_STATE register coding', addedCommands);
-    let response = this.getResponse();
-    let ultimaTentativa = ""
-    if (response.tentativas?.length) {
-      ultimaTentativa = response.tentativas[response.tentativas.length - 1].toString()
-    }
-    let tentativa = addedCommands.map(it => {
-      it = it.replace('arrow-', '');
-      it = it.toUpperCase();
-      return it.toUpperCase() as Comando
-    })
-    if (tentativa.toString() != ultimaTentativa) {
-      response.adicionarTentativa(tentativa);
-      response.tempoEmSegundos = this.calculateTimeSpent()
-    }
-    this.setResponse(response);
-  }
-  */
 
   registerTimeSpent() {
     let response = this.getResponse();

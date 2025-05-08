@@ -5,7 +5,7 @@ class Poligonos {
   cor: string = '';
 }
 
-export class MecanicaRope {
+export class Mecanica {
 
   tempoEsperado!: number
   tentativasEsperadas!: number

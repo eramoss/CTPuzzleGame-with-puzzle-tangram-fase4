@@ -2,16 +2,13 @@ import Phaser from "phaser";
 import Button from "../controls/Button";
 import AlignGrid from "../geom/AlignGrid";
 import Sounds from "../sounds/Sounds";
-import Keyboard from "../controls/Keyboard";
 import GameParams from "../settings/GameParams";
 import UserRepository from "../user/UserRepository";
 import User from "../user/User";
 import TestApplicationService from "../test-application/TestApplicationService";
-import { isAndroidAmbient } from "../utils/Utils";
 import { Logger } from "../main";
 import PhasesGrid from "../controls/PhasesGrid";
 import { Loading } from "../controls/Loading";
-import { TestApplication } from "../test-application/TestApplication";
 
 let globalSounds: Sounds;
 
@@ -20,7 +17,6 @@ export default class PreGame extends Phaser.Scene {
   playBtn: Button;
   inputObject: Phaser.GameObjects.Text;
   testNumberValue: string = "";
-  keyboard: Keyboard;
   userRepository: UserRepository;
   testApplicationService: TestApplicationService;
   grid: AlignGrid;
@@ -37,29 +33,19 @@ export default class PreGame extends Phaser.Scene {
       "assets/ct/pregame/test-game-box-clear.png"
     );
     this.load.image("background", "assets/ct/radial_gradient.png");
-    this.load.image("big-rope", "assets/ct/big_rope.png");
     this.load.spritesheet("play-btn", "assets/ct/pregame/play-button.png", {
       frameWidth: 400,
       frameHeight: 152,
     });
-    this.load.spritesheet("yellow-btn", "assets/ct/pregame/yellow_btn.png", {
-      frameWidth: 678,
-      frameHeight: 99,
-    });
     this.sounds.preload(this);
-    this.keyboard.preload(this);
   }
 
   init() {
     this.sounds = new Sounds();
-    this.keyboard = new Keyboard();
     this.userRepository = new UserRepository();
 
     let queryParams = window.location.search;
-    if (isAndroidAmbient()) {
-      //@ts-ignore
-      queryParams = window.search;
-    }
+
     this.initializeGameParams(queryParams);
   }
 
@@ -81,46 +67,14 @@ export default class PreGame extends Phaser.Scene {
       this.game.config.width as number,
       this.game.config.height as number
     );
-   
-    const isPlaygroundTest = this.testApplicationService.isPlayground();
-    const isAutoTesting = this.testApplicationService.isAutoTesting();
-    const isTestApplication = this.testApplicationService.mustLoadFirstItem();
-    const isOpenedDirectlty =
-      !isPlaygroundTest && !isAutoTesting && !isTestApplication;
 
-    if (isOpenedDirectlty) {
-      let applications = await this.loadPublicApplications();
-      if (applications.length) {
-        this.createTestApplicationsGrid(applications);
-        return;
-      }
-    }
+    const isTestApplication = this.testApplicationService.mustLoadFirstItem();
+
 
     if (isTestApplication) {
       await this.loadTestApplication();
     }
     this.startGame();
-  }
-
-  private createTestApplicationsGrid(testApplications: TestApplication[]) {
-    this.phasesGrid = new PhasesGrid(this, this.grid, this.userRepository);
-    this.phasesGrid.onRequestPlay = async (gameUrl: string) => {
-      this.loading.show();
-      this.initializeGameParams(gameUrl.split("?")[1]);
-      await this.loadTestApplication();
-      this.startGame();
-    };
-    this.phasesGrid.setApplications(testApplications);
-  }
-
-  private async loadPublicApplications(): Promise<TestApplication[]> {
-    let testApplications = [];
-    testApplications =
-      await this.testApplicationService.loadPublicApplications();
-    if (testApplications.length > 1) {
-      this.loading.hide();
-    }
-    return testApplications;
   }
 
   async loadTestApplication() {

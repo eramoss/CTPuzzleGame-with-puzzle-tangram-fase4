@@ -3,10 +3,8 @@ import { fitShape } from './class/fitShape'
 import { positionValidation } from './class/positionValidation'
 import { GameObjects, Types, Scene } from 'phaser'
 import { MatrixMode } from '../geom/Matrix'
-import Program from '../program/Program'
 import CodeEditor, { PlayPhaseOptions } from '../controls/CodeEditor'
 import Sounds from '../sounds/Sounds'
-import MazeModel, { MazeModelObject } from '../game/MazeModel'
 import AlignGrid from '../geom/AlignGrid'
 import MazePhasesLoader from '../phases/MazePhasesLoader'
 import MazePhase, { CommandName } from '../phases/MazePhase'
@@ -15,25 +13,16 @@ import { globalSounds } from './PreGame'
 import GameParams from '../settings/GameParams'
 import TestApplicationService from '../test-application/TestApplicationService'
 import GameState from './GameState'
-import { Mapa, Obstaculo } from '../ct-platform-classes/MecanicaRope'
-import { MyGameObject } from './MyGameObject'
-import { Block } from './Block'
-import { Coin } from './Coin'
 import MessageBox from '../sprites/MessageBox'
 import Button from '../controls/Button'
-import Command from '../program/Command'
 
 export const DEPTH_OVERLAY_PANEL_TUTORIAL = 50
 
 export default class Game extends Scene {
 
-
   codeEditor: CodeEditor
   poligonoSelecionado: GameObjects.Image;
   sounds: Sounds
-  cursors: Types.Input.Keyboard.CursorKeys
-  obstaclesMazeModel: MazeModel
-  groundMazeModel: MazeModel
   grid: AlignGrid
   mode: MatrixMode = MatrixMode.ISOMETRIC
   phasesLoader: MazePhasesLoader
@@ -47,46 +36,21 @@ export default class Game extends Scene {
   shapes: Phaser.GameObjects.Polygon[] = [];
   private positionValidationInstance: positionValidation;
 
-
-
   constructor() {
     super('game')
     this.positionValidationInstance = new positionValidation(this);
   }
 
   preload() {
-    this.load.image('arrow-up', 'assets/ct/arrow_up.png');
-    this.load.image('arrow-down', 'assets/ct/arrow_down.png');
-    this.load.image('arrow-right', 'assets/ct/arrow_right.png');
-    this.load.image('arrow-left', 'assets/ct/arrow_left.png');
     this.load.image('background', 'assets/ct/radial_gradient.png');
     this.load.image('tile', `assets/ct/tile_${this.mode}.png`);
-    this.load.image('grass', `assets/ct/grass.png`);
-    this.load.image('asphalt', `assets/ct/asphalt.png`);
-    this.load.image('toolbox', 'assets/ct/toolbox.png');
     this.load.image('x', 'assets/ct/x.png');
     this.load.image('block', `assets/ct/obstacle_orange_${this.mode}.png`);
-    this.load.image('prog_0', 'assets/ct/prog_0.png');
-    this.load.image('prog_1', 'assets/ct/prog_1.png');
-    this.load.image('prog_2', 'assets/ct/prog_2.png');
-    this.load.image('prog_0_fnName', 'assets/ct/prog_0_fnName.png');
-    this.load.image('prog_1_fnName', 'assets/ct/prog_1_fnName.png');
-    this.load.image('prog_2_fnName', 'assets/ct/prog_2_fnName.png');
-    this.load.image('battery', 'assets/ct/battery.png');
     this.load.image('message_box', 'assets/ct/message.png');
     this.load.image('intention_comamnd', 'assets/ct/intention_comamnd.png');
-    this.load.image('if_coin', 'assets/ct/if_coin.png');
-    this.load.image('if_block', 'assets/ct/if_block.png');
-    this.load.image('if_highlight', 'assets/ct/if_highlight.png');
-    this.load.image('ballon', 'assets/ct/ballon.png');
     this.load.image('tutorial-block-click-background', 'assets/ct/tutorial-block-click-background.png');
-    this.load.image('tutorial-drop-indicator', 'assets/ct/tutorial_drop_indicator.png');
-
-    //giro
     this.load.spritesheet('giroleft', 'assets/ct/giro_left.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('giroright', 'assets/ct/giro_right.png', { frameWidth: 100, frameHeight: 100 });
-    //
-
     this.load.spritesheet('btn-play', 'assets/ct/btn_play.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-exit', 'assets/ct/btn_exit.png', { frameWidth: 81, frameHeight: 96 });
     this.load.spritesheet('btn-jump', 'assets/ct/btn_jump.png', { frameWidth: 81, frameHeight: 96 });
@@ -98,22 +62,14 @@ export default class Game extends Scene {
     this.load.spritesheet('btn-close-message', 'assets/ct/btn_close_message.png', { frameWidth: 68, frameHeight: 69 });
     this.load.spritesheet('btn-stop', 'assets/ct/btn_stop.png', { frameWidth: 100, frameHeight: 100 });
     this.load.spritesheet('btn-step', 'assets/ct/btn_step.png', { frameWidth: 100, frameHeight: 100 });
-    this.load.spritesheet('drop-zone', 'assets/ct/programming_zone.png', { frameWidth: 649, frameHeight: 108 });
     this.load.spritesheet('tile-drop-zone', 'assets/ct/tile_drop_zone.png', { frameWidth: 79, frameHeight: 69 });
-    this.load.spritesheet('sprite-rope-NORMAL', 'assets/ct/rope_walk_NORMAL.png', { frameWidth: 65, frameHeight: 89 });
-    this.load.spritesheet('sprite-rope-ISOMETRIC', 'assets/ct/rope_walk_ISOMETRIC.png', { frameWidth: 97.5, frameHeight: 111 });
-    this.load.spritesheet('coin-gold', 'assets/ct/coin_gold.png', { frameWidth: 92, frameHeight: 124 });
     this.load.spritesheet('block-sprite', 'assets/ct/block_sprite.png', { frameWidth: 92, frameHeight: 81 });
-    this.load.spritesheet('trash', 'assets/ct/trash.png', { frameWidth: 632, frameHeight: 415 });
-    this.load.spritesheet('hand-tutorial', 'assets/ct/hand_tutorial.png', { frameWidth: 134, frameHeight: 176 });
-    this.load.spritesheet('hand-tutorial-drag', 'assets/ct/hand_tutorial_drag.png', { frameWidth: 77, frameHeight: 101 });
   }
 
   init(data: GameParams) {
     this.gameParams = data
     this.testApplicationService = new TestApplicationService(this.gameParams)
     this.gameState = new GameState()
-
   }
 
   async create() {
@@ -128,7 +84,6 @@ export default class Game extends Scene {
     //this.grid.showPoints();
 
     //this.grid.showPointsEvery50PX();
-
 
     this.grid.addImage(0, 0, 'background', this.grid.cols, this.grid.rows);
     this.input.setDefaultCursor('pointer');
@@ -150,7 +105,6 @@ export default class Game extends Scene {
     }
     this.hideLoading();
 
-
     this.createTextCurrentPhase();
     this.createBtnExit()
     this.createBtnJump()
@@ -167,7 +121,6 @@ export default class Game extends Scene {
       this.gameState.registerRotationUse()
     }
 
-
     //Aqui está a lógica de quando o botão de play é clicado
     //Trocou de fase sem nenhuma validação. Depois eu devo colocar uma validação
     this.codeEditor.onClickRun = () => {
@@ -178,10 +131,6 @@ export default class Game extends Scene {
       }else{
         this.showErrorMessage()
       }
-    }
-
-    this.codeEditor.onRemoveCommand = (command: Command) => {
-      this.gameState.registerTrashUse()
     }
 
     this.codeEditor.onReplayCurrentPhase = () => {
@@ -461,6 +410,7 @@ export default class Game extends Scene {
   }
 
   async playPhase(phase: MazePhase, playPhaseOptions: PlayPhaseOptions) {
+
     this.playBackgroundMusic();
     if (!phase) {
       if (this.gameParams.isPlaygroundTest()) {
@@ -469,14 +419,8 @@ export default class Game extends Scene {
       }
     }
 
-    if (phase != this.currentPhase) {
-      //this.initializeCodeEditorProgrammingAreas()
-    }
-
-    this.currentPhase?.clearTutorials()
     this.currentPhase = phase
 
-    console.log('Fase atual:', this.currentPhase);
     if (!this.currentPhase) {
       this.startEndScene();
     }
@@ -487,7 +431,7 @@ export default class Game extends Scene {
       }
       this.updateLabelCurrentPhase();
 
-      const MatrixAndTutorials = this.currentPhase.setupMatrixAndTutorials()
+      this.currentPhase.setupMatrixAndTutorials()
 
       //remove os poligonos
       this.removePoligonos();
@@ -519,19 +463,6 @@ export default class Game extends Scene {
   startEndScene() {
     this.destroy();
     this.scene.start('end-game', this.testApplicationService);
-  }
-
-  private initializeCodeEditorProgrammingAreas() {
-    if (!this.codeEditor.programs) {
-      let prog0 = new Program(this, 'prog_0', this.grid, 17.5, 11, 8, 2.3, 'drop-zone', 0xFBFF94)
-      let prog1 = new Program(this, 'prog_1', this.grid, 17.5, 14.5, 8, 2.3, 'drop-zone', 0xFBFF94)
-      let prog2 = new Program(this, 'prog_2', this.grid, 17.5, 18, 8, 2.3, 'drop-zone', 0xFBFF94)
-      this.codeEditor.setPrograms([
-        prog0,
-        prog1,
-        prog2
-      ])
-    }
   }
 
   async sendResponse(
@@ -568,4 +499,3 @@ export default class Game extends Scene {
     }
   }
 }
-
